@@ -813,13 +813,29 @@ def polish_markdown(md: str) -> tuple[str, int]:
 # MODO SITE — HTML → Markdown (somente conteúdo principal)
 # --------------------------------------------------------------------------- #
 
-MAIN_SELECTORS = [
-    "main div.markdown-body",
-    "div.markdown-body",
-    "main article",
-    "article",
-    "main",
+# Cadeias (tag, classe) equivalentes aos seletores CSS do conteúdo principal.
+# Não usamos soup.select_one(): soupsieve 3.x é incompatível com bs4 4.15
+# (SelectorSyntaxError em QUALQUER seletor) e o fallback por find() é estável.
+MAIN_SELECTOR_CHAINS: list[tuple[tuple[str, str | None], ...]] = [
+    (("main", None), ("div", "markdown-body")),
+    (("div", "markdown-body"),),
+    (("main", None), ("article", None)),
+    (("article", None),),
+    (("main", None),),
 ]
+
+
+def chain_label(chain: tuple[tuple[str, str | None], ...]) -> str:
+    return " ".join(f"{tag}.{cls}" if cls else tag for tag, cls in chain)
+
+
+def find_chain(node: Any, chain: tuple[tuple[str, str | None], ...]) -> Any:
+    """Desce a cadeia de (tag, classe) com BeautifulSoup.find — sem CSS/soupsieve."""
+    for tag, cls in chain:
+        if node is None:
+            return None
+        node = node.find(tag, class_=cls) if cls else node.find(tag)
+    return node
 
 REMOVE_TAGS = ["script", "style", "noscript", "nav", "aside", "footer", "header", "form",
                "button", "svg", "iframe", "input", "select", "textarea", "dialog"]
@@ -942,13 +958,13 @@ def html_to_fragment(page_html: str, base_url: str) -> tuple[Any, str, list[str]
     warnings: list[str] = []
     soup = BeautifulSoup(page_html, "lxml")
     chosen, selector = None, ""
-    for sel in MAIN_SELECTORS:
-        cand = soup.select_one(sel)
+    for chain in MAIN_SELECTOR_CHAINS:
+        cand = find_chain(soup, chain)
         if cand is not None and len(cand.get_text(strip=True)) > 200:
-            chosen, selector = cand, sel
+            chosen, selector = cand, chain_label(chain)
             break
     if chosen is None:
-        chosen = soup.select_one("main") or soup.body or soup
+        chosen = soup.find("main") or soup.body or soup
         selector = "fallback:main/body"
         warnings.append("seletor principal não encontrado; usado fallback")
 
@@ -1308,7 +1324,11 @@ def heal_with_html(res: PageResult, dest: Path, lang: str, scope: str) -> None:
         else:
             res.warnings.append(f"markdown da API com imperfeições (score={api_score}{api_counts}); HTML não melhorou ({html_score})")
     except Exception as exc:
-        res.warnings.append(f"cura via HTML falhou: {type(exc).__name__}: {exc}")
+        tb = [ln.strip() for ln in traceback.format_exc().splitlines() if "extract.py" in ln]
+        frame = tb[-1] if tb else ""
+        res.warnings.append(f"cura via HTML falhou: {type(exc).__name__}: {exc}"
+                            + (f" [{frame}]" if frame else ""))
+        traceback.print_exc()
 
 
 def extract_api_page(pathname: str, lang: str, scope: str, results_root: Path,

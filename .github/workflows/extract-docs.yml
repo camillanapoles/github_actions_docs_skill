@@ -56,6 +56,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Sincroniza com a ponta do branch
+        # Corridas concorrentes (ou commits do próprio CI) podem ter avançado o branch
+        # depois do checkout; partir da ponta evita rebase conflitante e push no-op.
+        run: |
+          git fetch origin "${GITHUB_REF_NAME}"
+          git reset --hard FETCH_HEAD
+          echo "HEAD=$(git rev-parse --short HEAD)"
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -127,6 +135,9 @@ jobs:
             echo "Nenhuma alteração para commitar."
           else
             git commit -m "docs(knowledge): captura de knowledge/${LANG_CODE} (limit=${LIMIT}) [skip ci]"
-            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
-            git push origin "HEAD:${GITHUB_REF_NAME}"
+            if ! git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              echo "push rejeitado — rebaseando sobre a ponta do branch (mantendo a captura nova)"
+              git pull --rebase --autostash -X theirs origin "${GITHUB_REF_NAME}"
+              git push origin "HEAD:${GITHUB_REF_NAME}"
+            fi
           fi

@@ -230,7 +230,7 @@ Exemplos de consultas de alta frequência:
 - Expressões e funções: `knowledge/pt/actions/reference/workflows-and-actions/expressions.md`
 - Eventos: `knowledge/pt/actions/reference/workflows-and-actions/events-that-trigger-workflows.md`
 - Limites de uso: `knowledge/pt/actions/reference/limits.md`
-- Endurecimento de segurança: `knowledge/pt/actions/reference/security/security-hardening-for-github-actions.md`
+- Endurecimento de segurança: `knowledge/pt/actions/reference/security/secure-use.md`
 - OIDC: `knowledge/pt/actions/reference/security/oidc.md`
 
 Cada página traz frontmatter com `source:` (URL oficial), `captured:` (data) e
