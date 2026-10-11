@@ -34,6 +34,7 @@ import json
 import os
 import re
 import sys
+import threading
 import time
 import traceback
 import urllib.error
@@ -63,10 +64,27 @@ TODAY = dt.date.today().isoformat()
 # --------------------------------------------------------------------------- #
 
 
-def http_get(url: str, timeout: int = 60, retries: int = 4, accept: str = "*/*") -> tuple[bytes, int]:
-    """GET com retry exponencial e User-Agent estável. Retorna (body, status)."""
+_RATE_LOCK = threading.Lock()
+_LAST_REQUEST = [0.0]
+MIN_INTERVAL = float(os.environ.get("EXTRACT_MIN_INTERVAL", "0.22"))
+
+
+def _throttle() -> None:
+    """Limitador de taxa global (respeita o docs.github.com: evita HTTP 429 do Fastly)."""
+    if MIN_INTERVAL <= 0:
+        return
+    with _RATE_LOCK:
+        wait = _LAST_REQUEST[0] + MIN_INTERVAL - time.monotonic()
+        if wait > 0:
+            time.sleep(wait)
+        _LAST_REQUEST[0] = time.monotonic()
+
+
+def http_get(url: str, timeout: int = 60, retries: int = 6, accept: str = "*/*") -> tuple[bytes, int]:
+    """GET com retry exponencial (honra `Retry-After` em 429/403) e User-Agent estável."""
     last_err: Exception | None = None
     for attempt in range(retries):
+        _throttle()
         try:
             req = urllib.request.Request(
                 url,
@@ -79,14 +97,23 @@ def http_get(url: str, timeout: int = 60, retries: int = 4, accept: str = "*/*")
             )
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 return resp.read(), resp.status
-        except urllib.error.HTTPError as exc:  # 429/5xx → retry
+        except urllib.error.HTTPError as exc:  # 429/403/5xx → retry com backoff
             last_err = exc
-            if exc.code in (403, 404, 410):
+            if exc.code in (404, 410):
                 raise
-            time.sleep(min(2 ** attempt * 1.5, 20))
+            retry_after = exc.headers.get("Retry-After") if exc.headers else None
+            if retry_after and re.fullmatch(r"\d+(?:\.\d+)?", retry_after.strip()):
+                delay = min(float(retry_after.strip()) + 0.5, 120.0)
+            elif exc.code in (429, 403):
+                delay = min(3.0 * (2 ** attempt), 90.0)
+            else:
+                delay = min(1.5 * (2 ** attempt), 30.0)
+            print(f"[retry] HTTP {exc.code} em {url} — aguardando {delay:.1f}s "
+                  f"(tentativa {attempt + 1}/{retries})", file=sys.stderr)
+            time.sleep(delay)
         except Exception as exc:  # rede/timeout → retry
             last_err = exc
-            time.sleep(min(2 ** attempt * 1.5, 20))
+            time.sleep(min(1.5 * (2 ** attempt), 30.0))
     raise RuntimeError(f"GET falhou após {retries} tentativas: {url} ({last_err})")
 
 
@@ -1912,6 +1939,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--plan", default="free-pro-team@latest",
                     help="plano/versão do docs (free-pro-team@latest, enterprise-cloud@latest, enterprise-server@3.x)")
     ap.add_argument("--max-failures", type=int, default=5)
+    ap.add_argument("--passes", type=int, default=3,
+                    help="passadas de captura (re-tentativa das páginas com falha, com menos paralelismo)")
     ap.add_argument("--no-heal", action="store_true",
                     help="desativa a recaptura via HTML de páginas cujo markdown da API veio danificado")
     ap.add_argument("--fail-on-warning", action="store_true")
@@ -1925,22 +1954,49 @@ def main(argv: list[str] | None = None) -> int:
         paths = discover_site_urls(args.lang, args.scope, args.limit, args.plan)
         print(f"[info] {len(paths)} páginas descobertas para /{args.lang}/{args.scope}", file=sys.stderr)
         started = time.time()
+        by_path: dict[str, PageResult] = {}
+        pending = list(paths)
+        for attempt in range(1, max(1, args.passes) + 1):
+            workers = max(1, args.jobs if attempt == 1 else args.jobs // (2 ** (attempt - 1)))
 
-        def work(pathname: str) -> PageResult:
-            try:
-                return extract_api_page(pathname, args.lang, args.scope, results_root, args.plan,
-                                        heal=not args.no_heal)
-            except Exception as exc:
-                res = PageResult(url=f"{DOCS_HOST}{pathname}", lang=args.lang, source="api", status="error")
-                res.error = f"{type(exc).__name__}: {exc}"
-                return res
+            def work(pathname: str) -> PageResult:
+                try:
+                    return extract_api_page(pathname, args.lang, args.scope, results_root, args.plan,
+                                            heal=not args.no_heal)
+                except Exception as exc:
+                    res = PageResult(url=f"{DOCS_HOST}{pathname}", lang=args.lang, source="api", status="error")
+                    res.path = normalize_docs_path(pathname, args.lang, args.scope) or ""
+                    res.error = f"{type(exc).__name__}: {exc}"
+                    return res
 
-        with cf.ThreadPoolExecutor(max_workers=max(1, args.jobs)) as pool:
-            for idx, res in enumerate(pool.map(work, paths), start=1):
-                results.append(res)
-                mark = {"ok": "ok ", "skipped": "skip"}[res.status] if res.status in ("ok", "skipped") else "ERR"
-                print(f"[{idx:>4}/{len(paths)}] {mark} {res.path or res.url} ({res.bytes} bytes)", file=sys.stderr)
-        print(f"[info] captura em {time.time() - started:.1f}s", file=sys.stderr)
+            print(f"[info] passada {attempt}/{args.passes}: {len(pending)} páginas, {workers} workers",
+                  file=sys.stderr)
+            with cf.ThreadPoolExecutor(max_workers=workers) as pool:
+                for idx, res in enumerate(pool.map(work, pending), start=1):
+                    key = res.path or res.url
+                    by_path[key] = res
+                    mark = {"ok": "ok ", "skipped": "skip"}.get(res.status, "ERR")
+                    print(f"[{idx:>4}/{len(pending)}] {mark} {res.path or res.url} ({res.bytes} bytes)",
+                          file=sys.stderr)
+            pending = []
+            for pathname in paths:
+                rel = normalize_docs_path(pathname, args.lang, args.scope) or pathname
+                res = by_path.get(rel) or by_path.get(pathname)
+                if res is None or res.status == "error":
+                    pending.append(pathname)
+            if not pending:
+                break
+            if attempt < args.passes:
+                wait = 10 * attempt
+                print(f"[warn] {len(pending)} páginas ainda com falha; aguardando {wait}s antes da "
+                      f"próxima passada", file=sys.stderr)
+                time.sleep(wait)
+        results = [by_path.get(normalize_docs_path(u, args.lang, args.scope) or u)
+                   or by_path.get(u) for u in paths]
+        results = [r for r in results if r is not None]
+        print(f"[info] captura em {time.time() - started:.1f}s "
+              f"({len([r for r in results if r.status == 'ok'])} ok / "
+              f"{len([r for r in results if r.status == 'error'])} falhas)", file=sys.stderr)
     elif args.source == "repo":
         repo_dir = Path(args.repo_dir or os.environ.get("GITHUB_DOCS_DIR", "/tmp/ghdocs"))
         if not (repo_dir / "content" / args.scope).exists():
