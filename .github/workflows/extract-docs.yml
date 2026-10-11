@@ -17,6 +17,10 @@ on:
         description: "Paralelismo da captura"
         default: "4"
         type: string
+      plan:
+        description: "Plano/versão do docs"
+        default: "free-pro-team@latest"
+        type: string
       commit:
         description: "Commitar o resultado no branch"
         default: true
@@ -46,6 +50,7 @@ jobs:
       LANG_CODE: ${{ github.event.inputs.lang || 'pt' }}
       LIMIT: ${{ github.event_name == 'push' && '8' || (github.event.inputs.limit || '0') }}
       JOBS: ${{ github.event.inputs.jobs || '4' }}
+      PLAN: ${{ github.event.inputs.plan || 'free-pro-team@latest' }}
       DO_COMMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.commit == 'false' && 'no' || 'yes' }}
     steps:
       - name: Checkout
@@ -68,11 +73,12 @@ jobs:
         run: |
           mkdir -p .ci
           python scripts/extract.py \
-            --source site \
+            --source api \
             --lang "${LANG_CODE}" \
             --scope actions \
             --out "knowledge/${LANG_CODE}" \
             --jobs "${JOBS}" \
+            --plan "${PLAN}" \
             --limit "${LIMIT}" \
             --manifest "knowledge/${LANG_CODE}/manifest.json" \
             --report ".ci/extract-report.md" \

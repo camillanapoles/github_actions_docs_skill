@@ -582,36 +582,155 @@ def yaml_front_matter(data: dict[str, Any]) -> str:
     return f"---\n{text}\n---\n"
 
 
-def discover_site_urls(lang: str, scope: str = "actions", limit: int = 0) -> list[str]:
-    """Inventário de páginas: sitemap.xml (preferido) → árvore do repo github/docs (fallback)."""
-    urls: list[str] = []
+def discover_site_urls(lang: str, scope: str = "actions", limit: int = 0,
+                       version: str = "free-pro-team@latest") -> list[str]:
+    """Inventário canônico de páginas.
+
+    Ordem de preferência:
+      1. ``GET /api/pagelist/<lang>/<version>``  — permalinks canônicos do próprio site;
+      2. ``sitemap.xml``                          — filtrado e saneado;
+      3. árvore ``content/<scope>`` do repo ``github/docs`` — fallback offline-ish.
+    """
+    paths: list[str] = []
+    warnings: list[str] = []
+
+    # 1) API pagelist
     try:
-        sm = http_get_text(f"{DOCS_HOST}/sitemap.xml", timeout=120)
-        urls = re.findall(r"<loc>(.*?)</loc>", sm)
-        urls = [u for u in urls if f"/{lang}/{scope}" in u]
-        urls = [u.split("#")[0].rstrip("/") for u in urls]
-        urls = sorted(dict.fromkeys(urls))
-    except Exception as exc:
-        print(f"[warn] sitemap indisponível ({exc}); usando árvore do repositório github/docs", file=sys.stderr)
-    if len(urls) < 5:
-        data = json.loads(http_get_text(
-            f"https://api.github.com/repos/github/docs/git/trees/main:content/{scope}?recursive=1",
-            accept="application/vnd.github+json"))
-        for item in data.get("tree", []):
-            p = item["path"]
-            if item["type"] != "blob" or not p.endswith(".md"):
+        raw = http_get_text(f"{DOCS_HOST}/api/pagelist/{lang}/{version}", timeout=120)
+        if raw.strip().startswith("<") or raw.strip().startswith("{"):
+            raise RuntimeError("resposta inesperada do /api/pagelist")
+        for line in raw.splitlines():
+            line = line.strip()
+            if not line:
                 continue
-            p = p[len(f"content/{scope}/"):]
-            p = re.sub(r"\.md$", "", p)
-            if p == "index":
-                urls.append(f"{DOCS_HOST}/{lang}/{scope}")
-            else:
-                p = re.sub(r"/index$", "", p)
-                urls.append(f"{DOCS_HOST}/{lang}/{scope}/{p}")
-        urls = sorted(dict.fromkeys(urls))
-    if limit:
-        urls = urls[:limit]
-    return urls
+            if line == f"/{lang}/{scope}" or line.startswith(f"/{lang}/{scope}/"):
+                paths.append(line.rstrip("/"))
+        paths = sorted(dict.fromkeys(paths))
+    except Exception as exc:
+        warnings.append(f"pagelist indisponível ({exc})")
+
+    # 2) sitemap
+    if len(paths) < 5:
+        try:
+            sm = http_get_text(f"{DOCS_HOST}/sitemap.xml", timeout=180)
+            urls = re.findall(r"<loc>(.*?)</loc>", sm)
+            extra = []
+            for u in urls:
+                parsed = urllib.parse.urlparse(u)
+                if parsed.netloc != "docs.github.com":
+                    continue
+                seg = parsed.path.strip("/").split("/")
+                if len(seg) >= 2 and seg[0] == lang and seg[1] == scope:
+                    if any(part.startswith("-") for part in seg):
+                        continue  # alias legado (404)
+                    extra.append(parsed.path.rstrip("/"))
+            merged = sorted(dict.fromkeys(paths + extra))
+            if merged:
+                paths = merged
+        except Exception as exc:
+            warnings.append(f"sitemap indisponível ({exc})")
+
+    # 3) árvore do repositório github/docs
+    if len(paths) < 5:
+        try:
+            data = json.loads(http_get_text(
+                f"https://api.github.com/repos/github/docs/git/trees/main:content/{scope}?recursive=1",
+                accept="application/vnd.github+json"))
+            for item in data.get("tree", []):
+                pth = item["path"]
+                if item["type"] != "blob" or not pth.endswith(".md"):
+                    continue
+                pth = re.sub(r"\.md$", "", pth[len(f"content/{scope}/"):])
+                if pth == "index":
+                    paths.append(f"/{lang}/{scope}")
+                else:
+                    paths.append(f"/{lang}/{scope}/" + re.sub(r"/index$", "", pth))
+            paths = sorted(dict.fromkeys(paths))
+        except Exception as exc:
+            warnings.append(f"árvore do repositório indisponível ({exc})")
+
+    for w in warnings:
+        print(f"[warn] {w}", file=sys.stderr)
+    print(f"[info] inventário: {len(paths)} páginas /{lang}/{scope} (version={version})", file=sys.stderr)
+    return paths[:limit] if limit else paths
+
+
+def extract_api_page(pathname: str, lang: str, scope: str, results_root: Path,
+                     version: str = "free-pro-team@latest") -> PageResult:
+    """Captura SOMENTE o conteúdo principal via Article API oficial do docs.github.com.
+
+    ``GET /api/article?pathname=<path>`` → ``{"meta": {...}, "body": "<markdown>"}``
+    (sem navegação, sidebar, breadcrumbs, TOC ou rodapé).
+    """
+    url = f"{DOCS_HOST}{pathname}"
+    res = PageResult(url=url, lang=lang, source="api", selector="api:/api/article")
+    api_url = f"{DOCS_HOST}/api/article?pathname={urllib.parse.quote(pathname, safe='/')}"
+    try:
+        payload = json.loads(http_get_text(api_url, accept="application/json"))
+    except urllib.error.HTTPError as exc:
+        if exc.code == 404:
+            res.status = "skipped"
+            res.error = "404 (página inexistente para este idioma/plano)"
+            return res
+        raise
+    meta = payload.get("meta") or {}
+    body = payload.get("body") or ""
+    if payload.get("redirectedFrom"):
+        res.warnings.append(f"redirecionado de {payload['redirectedFrom']}")
+    title = str(meta.get("title") or "").strip()
+    intro = re.sub(r"\s+", " ", str(meta.get("intro") or "").strip())
+    res.title = title or pathname.rsplit("/", 1)[-1]
+    res.short_title = str(meta.get("shortTitle") or "")
+    res.description = intro[:300]
+
+    rel = normalize_docs_path(pathname, lang, scope) or "index.md"
+    res.path = rel
+    res.section = str(meta.get("product") or "") or " / ".join(
+        x.replace("-", " ").capitalize() for x in Path(rel).parent.parts if x != scope) or scope.capitalize()
+
+    stats = {"internal": 0, "external": 0}
+    body = heading_from_link_lines(body)
+    body = collapse_escapes(body)
+    body, adm = blockquotes_to_admonitions(body)
+    body = rewrite_links(body, rel, lang, stats, scope)
+    body = normalize_markdown(body)
+    res.links_internal = stats["internal"]
+    res.links_external = stats["external"]
+    res.admonitions = adm + body.count("!!! ")
+
+    fm = {
+        "title": res.title,
+        "description": res.description,
+        "product": str(meta.get("product") or ""),
+        "documentType": str(meta.get("documentType") or "article"),
+        "lang": {"pt": "pt-BR"}.get(lang, lang),
+        "plan": version,
+        "source": url,
+        "captured": TODAY,
+        "section": res.section,
+    }
+    content = yaml_front_matter({k: v for k, v in fm.items() if v}) + f"\n# {res.title}\n\n"
+    if intro:
+        content += f"_{intro}_\n\n"
+    content += body
+
+    dest = results_root / rel
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(content, encoding="utf-8")
+
+    res.bytes = len(content.encode("utf-8"))
+    res.headings = len(re.findall(r"^#{1,6}\s", content, flags=re.M))
+    res.h2 = len(re.findall(r"^##\s", content, flags=re.M))
+    res.code_blocks = len(re.findall(r"^```", content, flags=re.M)) // 2
+    res.tables = len(re.findall(r"^\|.*\|\s*$\n^\|[-: |]+\|\s*$", content, flags=re.M))
+    res.images = len(re.findall(r"!\[[^\]]*\]\(", content))
+    if res.bytes < 400:
+        res.warnings.append("conteúdo curto")
+    if res.headings < 2:
+        res.warnings.append("poucos headings")
+    if re.search(r"\{%-?\s*(data|ifversion|note|tip|warning)", body):
+        res.warnings.append("liquid residual")
+    return res
 
 
 # --------------------------------------------------------------------------- #
@@ -1097,7 +1216,8 @@ def write_report(results: list[PageResult], dest: Path, meta: dict[str, Any]) ->
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Extrator da documentação do GitHub Actions → Markdown MkDocs-ready")
-    ap.add_argument("--source", choices=["site", "repo"], default="site")
+    ap.add_argument("--source", choices=["api", "site", "html", "repo"], default="api",
+                    help="api = Article API oficial (markdown do artigo); html = scraping do HTML; repo = github/docs")
     ap.add_argument("--lang", default="pt", help="idioma do site (pt|en|es|...)")
     ap.add_argument("--scope", default="actions")
     ap.add_argument("--out", required=True, help="diretório de destino (raiz do idioma)")
@@ -1106,7 +1226,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--jobs", type=int, default=4, help="paralelismo da captura")
     ap.add_argument("--report", default="", help="caminho do relatório markdown")
     ap.add_argument("--manifest", default="", help="caminho do manifest.json")
-    ap.add_argument("--version-profile", default="flatten", choices=["flatten", "fpt"])
+    ap.add_argument("--version-profile", default="auto", choices=["auto", "flatten", "fpt"])
+    ap.add_argument("--plan", default="free-pro-team@latest",
+                    help="plano/versão do docs (free-pro-team@latest, enterprise-cloud@latest, enterprise-server@3.x)")
     ap.add_argument("--max-failures", type=int, default=5)
     ap.add_argument("--fail-on-warning", action="store_true")
     args = ap.parse_args(argv)
@@ -1115,13 +1237,32 @@ def main(argv: list[str] | None = None) -> int:
     results_root = out_root
     results: list[PageResult] = []
 
-    if args.source == "repo":
+    if args.source in ("api", "site"):
+        paths = discover_site_urls(args.lang, args.scope, args.limit, args.plan)
+        print(f"[info] {len(paths)} páginas descobertas para /{args.lang}/{args.scope}", file=sys.stderr)
+        started = time.time()
+
+        def work(pathname: str) -> PageResult:
+            try:
+                return extract_api_page(pathname, args.lang, args.scope, results_root, args.plan)
+            except Exception as exc:
+                res = PageResult(url=f"{DOCS_HOST}{pathname}", lang=args.lang, source="api", status="error")
+                res.error = f"{type(exc).__name__}: {exc}"
+                return res
+
+        with cf.ThreadPoolExecutor(max_workers=max(1, args.jobs)) as pool:
+            for idx, res in enumerate(pool.map(work, paths), start=1):
+                results.append(res)
+                mark = {"ok": "ok ", "skipped": "skip"}[res.status] if res.status in ("ok", "skipped") else "ERR"
+                print(f"[{idx:>4}/{len(paths)}] {mark} {res.path or res.url} ({res.bytes} bytes)", file=sys.stderr)
+        print(f"[info] captura em {time.time() - started:.1f}s", file=sys.stderr)
+    elif args.source == "html":
         repo_dir = Path(args.repo_dir or os.environ.get("GITHUB_DOCS_DIR", "/tmp/ghdocs"))
         if not (repo_dir / "content" / args.scope).exists():
             raise SystemExit(f"repo-dir inválido: {repo_dir} (esperado content/{args.scope})")
         results = extract_repo_tree(repo_dir, args.scope, results_root, args.version_profile)
     else:
-        urls = discover_site_urls(args.lang, args.scope, args.limit)
+        urls = [f"{DOCS_HOST}{p}" for p in discover_site_urls(args.lang, args.scope, args.limit, args.plan)]
         print(f"[info] {len(urls)} URLs descobertas para /{args.lang}/{args.scope}", file=sys.stderr)
         started = time.time()
 
@@ -1141,7 +1282,8 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"[{idx:>4}/{len(urls)}] {mark} {res.path or res.url} ({res.bytes} bytes)", file=sys.stderr)
         print(f"[info] captura em {time.time() - started:.1f}s", file=sys.stderr)
 
-    meta = {"source": args.source, "lang": args.lang, "scope": args.scope, "out": str(out_root)}
+    meta = {"source": args.source, "lang": args.lang, "scope": args.scope, "out": str(out_root),
+            "plan": args.plan}
     manifest_path = Path(args.manifest) if args.manifest else out_root / "manifest.json"
     write_manifest(results, manifest_path, meta)
     if args.report:
