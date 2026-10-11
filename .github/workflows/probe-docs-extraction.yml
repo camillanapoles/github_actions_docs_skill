@@ -3,11 +3,11 @@ name: probe-docs-extraction
 on:
   push:
     branches: ["arena/c91bd6a1-github-actions-docs-skill"]
-    paths: [".github/workflows/probe-docs-extraction.yml"]
+    paths: [".github/workflows/probe-docs-extraction.yml", "scripts/*"]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: probe-${{ github.ref }}
@@ -16,83 +16,27 @@ concurrency:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
       - name: Tooling
         run: |
           python3 --version
-          pandoc --version | head -1
-          pip install --quiet beautifulsoup4 lxml
-          echo "OK"
+          pip install --quiet beautifulsoup4 lxml markdownify
+          (sudo apt-get update -qq && sudo apt-get install -y -qq pandoc) >/dev/null 2>&1 || true
+          pandoc --version 2>/dev/null | head -1 || echo "PANDOC_MISSING"
 
-      - name: Fetch one pt page
-        run: |
-          curl -sSL --retry 3 --max-time 60 \
-            -A "Mozilla/5.0 (X11; Linux x86_64) docs-kb-extractor" \
-            -o page.html -w "http=%{http_code} bytes=%{size_download} time=%{time_total}\n" \
-            "https://docs.github.com/pt/actions/reference/workflows-and-actions/contexts"
-          ls -la page.html
+      - name: Probe
+        run: python3 scripts/probe.py > .ci/probe-report.md 2>&1
 
-      - name: Inspect DOM
+      - name: Publish report
         run: |
-          python3 - <<'PY'
-          from bs4 import BeautifulSoup
-          html = open("page.html", encoding="utf-8").read()
-          soup = BeautifulSoup(html, "lxml")
-          print("TITLE:", soup.title.get_text(strip=True) if soup.title else None)
-          for tag in ("main", "article", "aside", "nav"):
-              els = soup.find_all(tag)
-              print(f"{tag}: {len(els)}", [ (e.get('id'), e.get('class')) for e in els ][:6])
-          for cls in ("markdown-body", "prose", "width-full"):
-              print("class", cls, len(soup.select("." + cls)))
-          mb = soup.select_one(".markdown-body")
-          if mb:
-              print("MB parent chain:", [p.name + str(p.get('class')) for p in mb.parents][:5])
-              txt = mb.get_text(" ", strip=True)
-              print("MB text len:", len(txt))
-              print("MB HEAD 400:", txt[:400].replace("\n"," "))
-              print("MB children:", [(c.name, c.get('class'), (c.get('id') or '')) for c in mb.children if getattr(c,'name',None)][:12])
-          h1 = soup.select_one("h1")
-          print("H1:", h1.get_text(strip=True) if h1 else None)
-          # code block shapes
-          import re
-          print("highlight divs:", len(soup.select("div.highlight")))
-          hl = soup.select_one("div.highlight")
-          if hl: print("HL class:", hl.get("class"), "attrs:", list(hl.attrs.keys()))
-          print("snippet divs:", len(soup.select("div[data-snippet-clipboard-copy]")))
-          sn = soup.select_one("div[data-snippet-clipboard-copy]")
-          if sn: print("SNIPPET sample:", sn["data-snippet-clipboard-copy"][:120].replace("\n","\\n"))
-          PY
-
-      - name: Sitemap inventory
-        run: |
-          curl -sSL --retry 2 --max-time 120 -A "Mozilla/5.0 docs-kb-extractor" \
-            -o sitemap.xml -w "http=%{http_code} bytes=%{size_download}\n" \
-            "https://docs.github.com/sitemap.xml"
-          python3 - <<'PY'
-          import re
-          s = open("sitemap.xml", encoding="utf-8").read()
-          urls = re.findall(r"<loc>(.*?)</loc>", s)
-          print("total urls:", len(urls))
-          pt = [u for u in urls if "/pt/actions" in u]
-          en = [u for u in urls if "/en/actions" in u]
-          print("pt actions:", len(pt), "en actions:", len(en))
-          for u in pt[:12]: print("  ", u)
-          open("pt_urls.txt","w").write("\n".join(pt))
-          PY
-          wc -l pt_urls.txt || true
-
-      - name: Pandoc conversion trial
-        run: |
-          python3 - <<'PY'
-          from bs4 import BeautifulSoup
-          html = open("page.html", encoding="utf-8").read()
-          soup = BeautifulSoup(html, "lxml")
-          mb = soup.select_one(".markdown-body") or soup.select_one("main")
-          open("frag.html","w",encoding="utf-8").write(str(mb))
-          PY
-          pandoc -f html -t gfm-raw_html --wrap=none -o frag.md frag.html
-          echo "--- frag.md size:"; wc -c frag.md
-          echo "--- first 60 lines:"; head -60 frag.md
-          echo "--- grep table:"; grep -n '^|' frag.md | head -5
-          echo "--- grep fences:"; grep -n '^```' frag.md | head -10
+          mkdir -p .ci
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .ci/probe-report.md
+          git commit -q -m "ci(probe): DOM/sitemap/converter diagnostics [skip ci]" || echo "nothing to commit"
+          git push -q origin HEAD:arena/c91bd6a1-github-actions-docs-skill
