@@ -10,15 +10,15 @@ captured: '2026-10-11'
 section: How tos / Write workflows / Choose what workflows do
 ---
 
-# Executando variações de tarefas em um workflow { #running-variations-of-jobs-in-a-workflow }
+# Executando variações de tarefas em um workflow
 
 _Crie uma matriz para definir as variações de cada trabalho._
 
-## Sobre estratégias de matriz { #about-matrix-strategies }
+## Sobre estratégias de matriz
 
 Uma estratégia de matriz permite que você use variáveis em uma única definição de trabalho para criar automaticamente várias execuções de trabalho baseadas nas combinações das variáveis. Por exemplo, você pode usar uma estratégia de matriz para testar seu código em várias versões de um idioma ou em vários sistemas operacionais.
 
-## Como adicionar uma estratégia de matriz ao seu trabalho de fluxo de trabalho { #adding-a-matrix-strategy-to-your-workflow-job }
+## Como adicionar uma estratégia de matriz ao seu trabalho de fluxo de trabalho
 
 Use `jobs.<job_id>.strategy.matrix` para definir uma matriz de diferentes configurações de trabalho. Dentro de sua matriz, defina uma ou mais variáveis seguidas por uma matriz de valores. Por exemplo, a matriz a seguir tem uma variável chamada `version` com o valor `[10, 12, 14]` e uma variável chamada `os` com o valor `[ubuntu-latest, windows-latest]`:
 
@@ -44,7 +44,7 @@ A matriz acima criará os trabalhos na ordem a seguir.
 
 Para obter informações de referência e exemplos, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategymatrix).
 
-## Usar contextos para criar matrizes { #using-contexts-to-create-matrices }
+## Usar contextos para criar matrizes
 
 Para criar matrizes com informações sobre execuções de fluxo de trabalho, variáveis, ambientes de executor, trabalhos e etapas, acesse contextos usando a `${{ <context> }}` sintaxe de expressão. Para obter mais informações sobre contextos, confira [Referência de contextos](../../../reference/workflows-and-actions/contexts.md).
 
@@ -77,7 +77,7 @@ jobs:
           node-version: ${{ matrix.version }}
 ```
 
-## Expandir ou adicionar configurações de matriz { #expanding-or-adding-matrix-configurations }
+## Expandir ou adicionar configurações de matriz
 
 Para expandir as configurações de matriz existentes ou para adicionar novas configurações, use `jobs.<job_id>.strategy.matrix.include`. O valor de `include` é uma lista de objetos.
 
@@ -118,7 +118,7 @@ Cada entrada `include` foi aplicada das maneiras a seguir.
 
 Para obter referência e configurações de exemplo, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategymatrixinclude).
 
-## Excluindo configurações de matriz { #excluding-matrix-configurations }
+## Excluindo configurações de matriz
 
 Para remover configurações específicas definidas na matriz, use `jobs.<job_id>.strategy.matrix.exclude`.
 
@@ -141,7 +141,7 @@ runs-on: ${{ matrix.os }}
 
 Para obter informações de referência, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategymatrixexclude)
 
-## Usar uma saída para definir duas matrizes { #using-an-output-to-define-two-matrices }
+## Usar uma saída para definir duas matrizes
 
 Você pode usar a saída de um trabalho para definir matrizes para vários trabalhos.
 
@@ -205,7 +205,7 @@ jobs:
         cat color
 ```
 
-## Tratamento de falhas { #handling-failures }
+## Tratamento de falhas
 
 Para controlar como as falhas de trabalho são tratadas, use `jobs.<job_id>.strategy.fail-fast` e `jobs.<job_id>.continue-on-error`.
 
@@ -228,7 +228,7 @@ jobs:
 
 Para obter informações de referência, confira [`jobs.<job_id>.strategy.fail-fast`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategyfail-fast) e [`jobs.<job_id>.continue-on-error`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idcontinue-on-error).
 
-## Como definir o número máximo de trabalhos simultâneos { #defining-the-maximum-number-of-concurrent-jobs }
+## Como definir o número máximo de trabalhos simultâneos
 
 Para definir o número máximo de trabalhos que podem ser executados simultaneamente com uma estratégia de trabalho `matrix`, use `jobs.<job_id>.strategy.max-parallel`.
 

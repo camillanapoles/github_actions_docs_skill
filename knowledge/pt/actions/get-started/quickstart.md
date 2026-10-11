@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Get started
 ---
 
-# Guia Rápido do GitHub Actions { #quickstart-for-github-actions }
+# Guia Rápido do GitHub Actions
 
 _Experimente os principais recursos em GitHub Actions minutos._
 
-## Introdução { #introduction }
+## Introdução
 
 GitHub Actions é uma plataforma de integração contínua e entrega contínua (CI/CD) que permite automatizar a sua compilação, testar e pipeline de implantação. Você pode criar fluxos de trabalho que executam testes sempre que você envia uma alteração por push para o repositório ou que implantam solicitações de pull mescladas para produção.
 
@@ -24,7 +24,7 @@ Para começar a usar fluxos de trabalho pré-configurados, navegue pela lista de
 
 Para obter uma visão geral dos fluxos de GitHub Actions trabalho, consulte [Fluxos de trabalho](../concepts/workflows-and-actions/workflows.md). Se você quiser saber mais sobre os vários componentes que compõem GitHub Actions, consulte [Noções básicas sobre GitHub Actions](understand-github-actions.md).
 
-## Usando modelos de fluxo de trabalho { #using-workflow-templates }
+## Usando modelos de fluxo de trabalho
 
 O GitHub fornece modelos de fluxo de trabalho pré-configurados que você pode usar no estado em que se encontram ou personalizar para criar seu fluxo de trabalho. O GitHub analisa seu código e mostra os modelos de fluxo de trabalho que podem ser úteis para seu repositório. Por exemplo, se o seu repositório contiver o código Node.js, você verá sugestões para projetos Node.js.
 
@@ -38,7 +38,7 @@ Esses modelos de fluxo de trabalho são projetados para ajudar a entrar em funci
 
 Use esses fluxos de trabalho como ponto de partida para criar seu fluxo de trabalho personalizado ou usá-los no estado em que se encontram. É possível navegar pela lista completa de modelos de fluxo de trabalho no repositório [actions/starter-workflows](https://github.com/actions/starter-workflows).
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Este guia supõe que:
 
@@ -48,7 +48,7 @@ Este guia supõe que:
 
   > [!NOTE] Se a guia **(play) Ações** não for exibida com o nome do repositório ativado GitHub, pode ser porque As ações estão desabilitadas para o repositório. Para saber mais, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository).
 
-## Criar o seu primeiro fluxo de trabalho { #creating-your-first-workflow }
+## Criar o seu primeiro fluxo de trabalho
 
 1. Em seu repositório, GitHubcrie um arquivo de fluxo de trabalho chamado `github-actions-demo.yml` no `.github/workflows` diretório. Para fazer isso:
    * Se o `.github/workflows` diretório já existir, navegue até esse diretório, clique em GitHub**Adicionar arquivo** e, em seguida, clique em **Criar novo arquivo** e nomeie o arquivo`github-actions-demo.yml`.
@@ -95,7 +95,7 @@ O commit do arquivo de fluxo de trabalho em um branch no repositório dispara o 
 
 Se você optar por iniciar uma solicitação de pull, poderá continuar e criar a solicitação de pull, mas isso não será necessário para os fins deste início rápido, pois a confirmação ainda foi feita em um branch e acionará o novo fluxo de trabalho.
 
-## Visualizar os resultados do seu fluxo de trabalho { #viewing-your-workflow-results }
+## Visualizar os resultados do seu fluxo de trabalho
 
 1. Em GitHub, acesse a página principal do repositório.
 
@@ -123,7 +123,7 @@ Se você optar por iniciar uma solicitação de pull, poderá continuar e criar 
 
 O fluxo de trabalho de exemplo que você acabou de adicionar é disparado sempre que o código é enviado por push para o branch e mostra como GitHub Actions você pode trabalhar com o conteúdo do repositório. Para obter um tutorial detalhado, confira [Noções básicas sobre GitHub Actions](understand-github-actions.md).
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 GitHub Actions pode ajudá-lo a automatizar quase todos os aspectos dos processos de desenvolvimento de aplicativos. Pronto para começar? Aqui estão alguns recursos úteis para executar suas próximas etapas com GitHub Actions:
 

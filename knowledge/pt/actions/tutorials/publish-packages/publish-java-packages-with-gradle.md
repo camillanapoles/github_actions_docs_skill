@@ -10,17 +10,17 @@ captured: '2026-10-11'
 section: Tutorials / Publish packages
 ---
 
-# Publicando pacotes Java com o Gradle { #publishing-java-packages-with-gradle }
+# Publicando pacotes Java com o Gradle
 
 _Neste tutorial, você aprenderá a usar o Gradle para publicar pacotes Java em um registro como parte do fluxo de trabalho de CI (integração contínua)._
 
-## Introdução { #introduction }
+## Introdução
 
 Este guia mostra como criar um fluxo de trabalho que publica pacotes Java no GitHub Packages e no Maven Central Repository. Com um único fluxo de trabalho, você pode publicar pacotes em um único repositório ou em vários repositórios.
 
 > [!WARNING] Os exemplos usados neste guia referem-se ao serviço OSSRH herdado. Consulte [Publicação](https://central.sonatype.org/faq/what-is-different-between-central-portal-and-legacy-ossrh/#publishing) na documentação do Repositório Central do Maven.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Recomendamos que você tenha um entendimento básico dos arquivos de fluxo de trabalho e das opções de configuração. Para saber mais, confira [Escrevendo fluxos de trabalho](../../how-tos/write-workflows.md).
 
@@ -33,13 +33,13 @@ Você também pode achar útil ter um entendimento básico do seguinte:
 * [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md)
 * [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md)
 
-## Sobre a configuração do pacote { #about-package-configuration }
+## Sobre a configuração do pacote
 
 Os campos `groupId` e `artifactId` da seção `MavenPublication` do arquivo *build.gradle* criam um identificador exclusivo para o pacote que os registros usam para vincular seu pacote a um registro. Isso é semelhante aos campos `groupId` e `artifactId` do arquivo *pom.xml* do Maven. Para obter mais informações, confira o [Plug-in do Maven Publish](https://docs.gradle.org/current/userguide/publishing_maven.html) na documentação do Gradle.
 
 O arquivo *build.gradle* também contém a configuração para os repositórios de gerenciamento de distribuição nos quais o Gradle publicará os pacotes. Cada repositório deve ter um nome, uma URL de implementação e e credenciais para autenticação.
 
-## Publicar pacotes no Repositório Central do Maven { #publishing-packages-to-the-maven-central-repository }
+## Publicar pacotes no Repositório Central do Maven
 
 Cada vez que você criar uma nova versão, você poderá acionar um fluxo de trabalho para publicar o seu pacote. O fluxo de trabalho no exemplo abaixo é executado quando o evento `release` é disparado com o tipo `created`. O fluxo de trabalho publica o pacote no Repositório Central Maven se o teste de CI for aprovado. Para saber mais sobre o evento `release`, confira [Eventos que disparam fluxos de trabalho](../../reference/workflows-and-actions/events-that-trigger-workflows.md#release).
 
@@ -114,7 +114,7 @@ Este fluxo de trabalho realiza as etapas a seguir:
 
    Para saber mais sobre como usar segredos em seu fluxo de trabalho, confira [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 
-## Publicando pacotes para GitHub Packages { #publishing-packages-to-github-packages }
+## Publicando pacotes para GitHub Packages
 
 Cada vez que você criar uma nova versão, você poderá acionar um fluxo de trabalho para publicar o seu pacote. O fluxo de trabalho no exemplo abaixo é executado quando o evento `release` é disparado com o tipo `created`. O fluxo de trabalho publica o pacote para GitHub Packages se os testes de CI forem aprovados. Para saber mais sobre o evento `release`, confira [Eventos que disparam fluxos de trabalho](../../reference/workflows-and-actions/events-that-trigger-workflows.md#release).
 
@@ -193,7 +193,7 @@ Este fluxo de trabalho realiza as etapas a seguir:
 
    Para saber mais sobre como usar segredos em seu fluxo de trabalho, confira [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 
-## Publicação de pacotes no repositório Maven Central e GitHub Packages { #publishing-packages-to-the-maven-central-repository-and-github-packages }
+## Publicação de pacotes no repositório Maven Central e GitHub Packages
 
 Você pode publicar seus pacotes no Repositório Central do Maven e GitHub Packages configurando cada um em seu arquivo *build.gradle* .
 

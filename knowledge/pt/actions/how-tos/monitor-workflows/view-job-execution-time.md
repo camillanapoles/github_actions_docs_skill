@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: How tos / Monitor workflows
 ---
 
-# Visualizar o tempo de execução do trabalho { #viewing-job-execution-time }
+# Visualizar o tempo de execução do trabalho
 
 _Você pode visualizar o tempo de execução de um trabalho, incluindo os minutos faturáveis que um trabalho acumulou._
 

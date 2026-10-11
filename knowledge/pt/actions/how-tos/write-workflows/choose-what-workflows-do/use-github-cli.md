@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: How tos / Write workflows / Choose what workflows do
 ---
 
-# Usando GitHub CLI em fluxos de trabalho { #using-github-cli-in-workflows }
+# Usando GitHub CLI em fluxos de trabalho
 
 _Você pode fazer o script com GitHub CLI em fluxos de trabalho GitHub Actions._
 

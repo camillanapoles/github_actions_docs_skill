@@ -114,7 +114,7 @@ Você pode adicionar executores auto-hospedados no nível da organização, onde
      * No Windows, o script `config` também pergunta se você deseja instalar o aplicativo do executor auto-hospedado como um serviço. Para Linux e macOS, você pode instalar um serviço depois de terminar de adicionar o executor. Para saber mais, confira [Configurar o aplicativo do executor auto-hospedado como um serviço](configure-the-application.md).
    * Executar o aplicativo executor auto-hospedado para conectar o computador a GitHub Actions.
 
-### Verificando se o seu executor auto-hospedado foi adicionado com sucesso { #verificando-se-o-seu-executor-auto-hospedado-foi-adicionado-com-sucesso-1 }
+### Verificando se o seu executor auto-hospedado foi adicionado com sucesso
 
 Após concluir as etapas para adicionar um executor auto-hospedado, o executor e seu status agora estão listados em "Executores".
 

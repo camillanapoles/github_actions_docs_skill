@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Reference / Security
 ---
 
-# Referência de segredos { #secrets-reference }
+# Referência de segredos
 
 _Encontre informações técnicas sobre segredos em GitHub Actions._
 
-## Nomear os seus segredos { #naming-your-secrets }
+## Nomear os seus segredos
 
 !!! tip
     Para ajudar a garantir que GitHub os segredos sejam redigidos nos logs corretamente, evite usar dados estruturados como os valores dos segredos.
@@ -29,7 +29,7 @@ As regras a seguir aplicam-se aos nomes dos segredos:
 
 Se houver um segredo com o mesmo nome em vários níveis, o segredo no nível mais baixo terá precedência. Por exemplo, se um segredo a nível de organização tiver o mesmo nome que um segredo a nível de repositório, o segredo a nível de repositório terá prioridade. Da mesma forma, se uma organização, repositório e ambiente tiverem um segredo com o mesmo nome, o segredo no nível do ambiente terá precedência.
 
-## Limites para segredos { #limits-for-secrets }
+## Limites para segredos
 
 Você pode armazenar até 1.000 segredos da organização, 100 segredos de repositório e 100 segredos de ambiente.
 
@@ -41,11 +41,11 @@ Um fluxo de trabalho criado em um repositório pode acessar o seguinte número d
 
 Os segredos são limitados a 48 KB. Para armazenar segredos maiores, confira [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md#storing-large-secrets).
 
-## Quando GitHub Actions lê segredos { #when-github-actions-reads-secrets }
+## Quando GitHub Actions lê segredos
 
 Os segredos da organização e do repositório são lidos quando uma execução de fluxo de trabalho é enfileirada e os segredos de ambiente são lidos quando um trabalho que faz referência ao ambiente é iniciado.
 
-## Segredos ocultados automaticamente { #automatically-redacted-secrets }
+## Segredos ocultados automaticamente
 
 GitHub oculta automaticamente as seguintes informações confidenciais dos logs do fluxo de trabalho.
 
@@ -66,6 +66,6 @@ GitHub oculta automaticamente as seguintes informações confidenciais dos logs 
 * Tokens de instalação do GitHub v2 (`ghp`, `gho`, `ghu`, `ghs`, `ghr`)
 * PATs do GitHub v2
 
-## Segurança { #security }
+## Segurança
 
 Para conhecer as práticas recomendadas de segurança para usar segredos, consulte [Referência de uso seguro](secure-use.md#use-secrets-for-sensitive-information).

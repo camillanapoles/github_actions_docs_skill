@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T23:40:36+00:00",
+  "generated": "2026-10-11T23:50:09+00:00",
   "source": "api",
   "lang": "pt",
   "page_count": 247,
@@ -3025,7 +3025,7 @@
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
-        "cura via HTML falhou: AttributeError: 'NoneType' object has no attribute 'get' [File \"/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py\", line 868, in clean_fragment]"
+        "markdown da API com imperfeições (score=3{'table': 1, 'fence': 0, 'alert': 0, 'html': 0, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não preservou o conteúdo (16573/17113 B, 0/15 headings) (score html=0)"
       ],
       "error": ""
     },
@@ -6541,7 +6541,7 @@
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
-        "cura via HTML falhou: AttributeError: 'NoneType' object has no attribute 'get' [File \"/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py\", line 868, in clean_fragment]"
+        "markdown da API com imperfeições (score=3{'table': 1, 'fence': 0, 'alert': 0, 'html': 0, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não preservou o conteúdo (15291/15871 B, 0/8 headings) (score html=0)"
       ],
       "error": ""
     },
@@ -8258,7 +8258,7 @@
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
-        "cura via HTML falhou: AttributeError: 'NoneType' object has no attribute 'get' [File \"/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py\", line 868, in clean_fragment]"
+        "markdown da API com imperfeições (score=40{'table': 1, 'fence': 0, 'alert': 0, 'html': 37, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não preservou o conteúdo (23386/29883 B, 0/34 headings) (score html=0)"
       ],
       "error": ""
     },
@@ -8687,9 +8687,9 @@
   "out": "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/knowledge/pt",
   "plan": "free-pro-team@latest,enterprise-cloud@latest",
   "links": {
-    "files": 247,
-    "links": 1720,
+    "files": 248,
+    "links": 1731,
     "reverted": 7,
-    "ok": 1713
+    "ok": 1724
   }
 }

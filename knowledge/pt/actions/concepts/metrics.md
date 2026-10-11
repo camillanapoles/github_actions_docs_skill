@@ -10,22 +10,22 @@ captured: '2026-10-11'
 section: Concepts
 ---
 
-# Sobre as métricas do GitHub Actions { #about-github-actions-metrics }
+# Sobre as métricas do GitHub Actions
 
 _Saiba mais sobre as GitHub Actions métricas disponíveis para suas organizações e repositórios._
 
-## Sobre as métricas do GitHub Actions { #about-github-actions-metrics-1 }
+## Sobre as métricas do GitHub Actions
 
 As métricas do GitHub Actions trazem insights sobre o desempenho dos seus fluxos de trabalho e trabalhos na organização e no repositório. Há dois tipos de métricas para ajudar você a analisar diferentes aspectos dos seus fluxos de trabalho:
 
 * **Métricas de uso do GitHub Actions**: as métricas de uso ajudam a acompanhar os minutos consumidos pelos seus fluxos de trabalho e trabalhos. Você pode usar esses dados para entender como funciona o custo de execução do Actions e garantir que esteja dentro dos limites do seu plano. Isso é especialmente útil para identificar fluxos de trabalho ou repositórios de alto uso.
 * **Métricas de desempenho do GitHub Actions**: as métricas de desempenho têm como foco a eficiência e a confiabilidade dos seus trabalhos e fluxos de trabalho. Com as métricas de desempenho, você pode monitorar indicadores importantes, como tempos de execução de trabalho, tempos de fila e taxas de falha para identificar gargalos, trabalhos de execução lenta ou fluxos de trabalho com falha frequente.
 
-## Habilitando o acesso às GitHub Actions métricas { #enabling-access-to-github-actions-metrics }
+## Habilitando o acesso às GitHub Actions métricas
 
 Os proprietários da organização podem criar papéis personalizados na organização para permitir que as pessoas visualizem as GitHub Actionsmétricas de uso da organização. Para fornecer acesso aos usuários, escolha a função “Exibir métricas do Actions da organização” ao criar uma função de organização personalizada. Para saber mais, confira [Permissões de funções de organização personalizadas](https://docs.github.com/pt/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
 
-## Sobre métricas de uso de GitHub Actions { #about-github-actions-usage-metrics }
+## Sobre métricas de uso de GitHub Actions
 
 As métricas de uso de GitHub Actions permitem que você analise como sua organização está usando os minutos do Actions. Você pode exibir informações de uso relacionadas a:
 
@@ -35,7 +35,7 @@ As métricas de uso de GitHub Actions permitem que você analise como sua organi
 * **SO do runtime**. Entenda como os executores de cada sistema operacional estão usando os minutos do Actions e em quais tipos de sistemas operacionais seus fluxos de trabalho estão sendo executados com mais frequência.
 * **Tipo de executor**. Compare como seus executores auto-hospedados e os executores hospedados no GitHub usam os minutos do Actions e o volume de execuções do fluxo de trabalho para cada tipo de executor.
 
-## Sobre GitHub Actions as métricas de desempenho { #about-github-actions-performance-metrics }
+## Sobre GitHub Actions as métricas de desempenho
 
 As métricas de desempenho do GitHub Actions permitem que você analise a eficiência e a confiabilidade dos seus fluxos de trabalho. Você pode ver informações de desempenho, como tempos médios de execução, tempos médios de fila e taxas de falha, relacionadas a:
 
@@ -45,6 +45,6 @@ As métricas de desempenho do GitHub Actions permitem que você analise a efici�
 * **SO do runtime**. Entenda como está o desempenho dos executores de cada sistema operacional.
 * **Tipo de executor**. Compare o desempenho de executores auto-hospedados e dos executores hospedados no GitHub para tomar decisões sobre os tipos de executores.
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 Para saber como encontrar métricas para sua organização ou repositório, confira [Como ver as métricas do GitHub Actions](../how-tos/administer/view-metrics.md).

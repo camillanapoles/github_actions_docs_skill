@@ -10,18 +10,18 @@ captured: '2026-10-11'
 section: Tutorials / Publish packages
 ---
 
-# Publicando imagens do Docker { #publishing-docker-images }
+# Publicando imagens do Docker
 
 _Neste tutorial, você aprenderá a publicar imagens do Docker em um registro, como Docker Hub ou GitHub Packages, como parte do fluxo de trabalho de CI (integração contínua)._
 
-## Introdução { #introduction }
+## Introdução
 
 Este guia mostra como criar um fluxo de trabalho que executa um build do Docker e, em seguida, publica imagens do Docker para Docker Hub ou GitHub Packages. Com um único fluxo de trabalho, você pode publicar imagens em um único registro ou em vários registros.
 
 !!! note
     Se você quiser fazer push para outro registro Docker de terceiros, o exemplo na seção [Publicando imagens no GitHub Packages](#publishing-images-to-github-packages) poderá servir como um bom modelo.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Recomendamos que você tenha um entendimento básico das opções de configuração do fluxo de trabalho e de como criar um arquivo do fluxo de trabalho. Para saber mais, confira [Escrevendo fluxos de trabalho](../../how-tos/write-workflows.md).
 
@@ -31,7 +31,7 @@ Você também pode achar útil ter um entendimento básico do seguinte:
 * [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md)
 * [Trabalhando com o registro de contêiner](https://docs.github.com/pt/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 
-## Sobre a configuração da imagem { #about-image-configuration }
+## Sobre a configuração da imagem
 
 Este guia pressupõe que você tenha uma definição completa para uma imagem do Docker armazenada em um GitHub repositório. Por exemplo, seu repositório precisa conter um *Dockerfile* e todos os outros arquivos necessários para executar um build do Docker para criar uma imagem.
 
@@ -39,7 +39,7 @@ Você pode usar chaves de anotação pré-definidas para adicionar metadados, in
 
 Neste guia, usaremos a ação `build-push-action` do Docker para compilar a imagem do Docker e efetuar push dela para um ou mais registros do Docker. Para obter mais informações, confira [`build-push-action`](https://github.com/marketplace/actions/build-and-push-docker-images).
 
-## Publicando imagens no Docker Hub { #publishing-images-to-docker-hub }
+## Publicando imagens no Docker Hub
 
 !!! note
     O Docker Hub normalmente impõe limites de taxa em operações de push e pull, o que afetará os trabalhos em executores auto-hospedados. No entanto, executores hospedados pelo GitHub não estão sujeitos a esses limites com base em um contrato entre o GitHub e o Docker.
@@ -126,7 +126,7 @@ O fluxo de trabalho acima verifica o repositório do GitHub usa o `login-action`
 
 Na última etapa, gera um atestado de artefato para a imagem, o que aumenta a segurança da cadeia de fornecedores. Para saber mais, confira [Usar atestados de artefatos para estabelecer a procedência de compilações](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md).
 
-## Publicando imagens para GitHub Packages { #publishing-images-to-github-packages }
+## Publicando imagens para GitHub Packages
 
 Você pode acionar um fluxo de trabalho para publicar sua imagem sempre que criar uma nova versão no GitHub. O fluxo de trabalho no exemplo abaixo é executado quando uma alteração é enviada por push para o branch `release`.
 
@@ -217,7 +217,7 @@ jobs:
 
 O fluxo de trabalho acima é acionado por um push para o branch da "versão". Ele verifica o repositório GitHub e usa o `login-action` para fazer logon no Container registry. Em seguida, extrai etiquetas e tags para a imagem do Docker. Por fim, ele usa a ação `build-push-action` para criar a imagem e publicá-la no Container registry.
 
-## Publicando imagens em Docker Hub e GitHub Packages { #publishing-images-to-docker-hub-and-github-packages }
+## Publicando imagens em Docker Hub e GitHub Packages
 
 Em um fluxo de trabalho individual, você pode publicar sua imagem do Docker em vários registros usando as ações `login-action` e `build-push-action` para cada registro.
 
@@ -291,7 +291,7 @@ Em seguida, a ação `build-push-action` cria e envia por push a imagem do Docke
     * Para manter um resumo consistente e permitir que um único atestado verifique todas as cópias, envie por push para um registro primeiro e use uma ferramenta como [`crane copy`](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md) para replicar a imagem em outros locais.
     * Se você optar por compilar e enviar para cada repositório separadamente, deverá gerar um atestado distinto para cada um, para garantir que seus artefatos permaneçam verificáveis.
 
-## Atividade prática { #hands-on-practice }
+## Atividade prática
 
 Pratique a publicação de imagens Docker com o exercício [Publicação de Imagens Docker](https://github.com/skills/publish-docker-images)GitHub Skills.
 

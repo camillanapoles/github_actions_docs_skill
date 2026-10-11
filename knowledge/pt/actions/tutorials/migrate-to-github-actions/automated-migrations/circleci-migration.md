@@ -180,7 +180,7 @@ A seguir estão alguns termos-chave que podem aparecer na seção "Build steps":
   * Se você usar GitHub Enterprise Server, reunindo a lista de ações para sincronizar com sua instância.
   * Definir uma lista de permissões em nível organizacional para as ações utilizadas. Essa lista de ações é abrangente e inclui as ações que as equipes de segurança ou conformidade podem precisar analisar.
 
-#### Tarefas manuais { #tarefas-manuais-1 }
+#### Tarefas manuais
 
 A seção "Tarefas manuais" contém uma visão geral das tarefas que GitHub Actions Importer não podem ser concluídas automaticamente e que você deve concluir manualmente.
 

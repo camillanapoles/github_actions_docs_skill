@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Tutorials / Use containerized services
 ---
 
-# Criar contêineres de serviço PostgreSQL { #creating-postgresql-service-containers }
+# Criar contêineres de serviço PostgreSQL
 
 _Você pode criar um contêiner de serviço PostgreSQL para usar no seu fluxo de trabalho. Este guia mostra exemplos para criar um serviço PostgreSQL para trabalhos executados em contêineres ou diretamente na máquina executora._
 
-## Introdução { #introduction }
+## Introdução
 
 Este guia mostra exemplos de fluxo de trabalho que configuram um contêiner de serviço usando a imagem Docker Hub `postgres`. O fluxo de trabalho executa um script que se conecta ao serviço do PostgreSQL, cria uma tabela e, em seguida, preenche-a com dados. Para testar se o fluxo de trabalho cria e preenche a tabela do PostgreSQL, o script imprime os dados da tabela para o console.
 
@@ -24,7 +24,7 @@ Este guia mostra exemplos de fluxo de trabalho que configuram um contêiner de s
     * Se você estiver usando executores hospedados em GitHub, você deverá usar um executor do Ubuntu.
     * Se você estiver usando executores auto-hospedados, você deve usar uma máquina Linux, pois seu executor e o Docker precisam ser instalados.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Você deve estar familiarizado com a forma como contêineres de serviço funcionam com GitHub Actions e as diferenças de rede entre trabalhos em execução diretamente no executor ou em um contêiner. Para saber mais, confira [Comunicar-se com os contêineres de serviço do Docker](use-docker-service-containers.md).
 
@@ -33,7 +33,7 @@ Você também pode achar útil ter um conhecimento básico de YAML, da sintaxe p
 * [Escrevendo fluxos de trabalho](../../how-tos/write-workflows.md)
 * [Tutorial do PostgreSQL](https://www.postgresqltutorial.com/) na documentação do PostgreSQL
 
-## Executar trabalhos em contêineres { #running-jobs-in-containers }
+## Executar trabalhos em contêineres
 
 A configuração de tarefas a serem executadas em um contêiner simplifica as configurações de rede entre o trabalho e os contêineres do serviço. Docker contêineres na mesma rede de ponte definida pelo usuário expõe todas as portas umas para as outras, então você não precisa mapear nenhuma das portas de contêiner de serviço para o host Docker. Você pode acessar o contêiner de serviço do contêiner de trabalho usando a etiqueta que você configurar no fluxo de trabalho.
 
@@ -89,7 +89,7 @@ jobs:
           POSTGRES_PORT: 5432
 ```
 
-### Com configurar o trabalho do executor para trabalhos em contêineres { #configuring-the-runner-job-for-jobs-in-containers }
+### Com configurar o trabalho do executor para trabalhos em contêineres
 
 Este fluxo de trabalho configura uma tarefa que é executada no contêiner `node:20-bookworm-slim` e usa o executor do `ubuntu-latest`  hospedado no GitHub como host do Docker para o contêiner. Para obter mais informações sobre o contêiner `node:20-bookworm-slim`, confira a [imagem do nó](https://hub.docker.com/_/node) no Docker Hub.
 
@@ -121,7 +121,7 @@ jobs:
           --health-retries 5
 ```
 
-### Configurar as etapas para trabalhos em contêineres { #configuring-the-steps-for-jobs-in-containers }
+### Configurar as etapas para trabalhos em contêineres
 
 O fluxo de trabalho executa as seguintes etapas:
 
@@ -157,7 +157,7 @@ O script *client.js* procura as variáveis de ambiente `POSTGRES_HOST` e `POSTGR
 
 O nome do host do serviço PostgreSQL é o rótulo configurado no fluxo de trabalho, nesse caso, `postgres`. Uma vez que os contêineres do Docker na mesma rede da ponte definida pelo usuário abrem todas as portas por padrão, você poderá acessar o contêiner de serviço na porta-padrão 5432 do PostgreSQL.
 
-## Executar trabalhos diretamente na máquina executora { #running-jobs-directly-on-the-runner-machine }
+## Executar trabalhos diretamente na máquina executora
 
 Ao executar um trabalho diretamente na máquina executora, você deverá mapear as portas no contêiner de serviço às portas do host Docker. Você pode acessar os contêineres de serviço do host do Docker usando o `localhost` e o número da porta do host do Docker.
 
@@ -215,7 +215,7 @@ jobs:
           POSTGRES_PORT: 5432
 ```
 
-### Configurar o trabalho do executor para trabalhos diretamente no computador do executor { #configuring-the-runner-job-for-jobs-directly-on-the-runner-machine }
+### Configurar o trabalho do executor para trabalhos diretamente no computador do executor
 
 O exemplo usa o executor hospedado no `ubuntu-latest`  GitHub como o host do Docker.
 
@@ -250,7 +250,7 @@ jobs:
           - 5432:5432
 ```
 
-### Configurar as etapas para trabalhos diretamente no computador executor { #configuring-the-steps-for-jobs-directly-on-the-runner-machine }
+### Configurar as etapas para trabalhos diretamente no computador executor
 
 O fluxo de trabalho executa as seguintes etapas:
 
@@ -286,7 +286,7 @@ O script *client.js* procura as variáveis de ambiente `POSTGRES_HOST` e `POSTGR
 
 O nome do host é `localhost` ou `127.0.0.1`.
 
-## Testar o contêiner de serviço do PostgreSQL { #testing-the-postgresql-service-container }
+## Testar o contêiner de serviço do PostgreSQL
 
 Você pode testar o seu fluxo de trabalho usando o seguinte script, que se conecta ao serviço do PostgreSQL e adiciona uma nova tabela com alguns dados de espaço reservado. Em seguida, o script imprime os valores armazenados na tabela do PostgreSQL no terminal. Seu script pode usar qualquer idioma desejado, mas este exemplo usa o Node.js e o módulo npm `pg`. Para obter mais informações, confira o [módulo npm pg](https://www.npmjs.com/package/pg).
 

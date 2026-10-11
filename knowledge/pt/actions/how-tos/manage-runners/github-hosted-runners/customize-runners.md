@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: How tos / Manage runners / Github hosted runners
 ---
 
-# Personalizando executores hospedados no GitHub { #customizing-github-hosted-runners }
+# Personalizando executores hospedados no GitHub
 
 _Você pode instalar software adicional em executores hospedados em GitHub como parte do fluxo de trabalho._
 
@@ -20,7 +20,7 @@ Para ver os pacotes que já estão instalados por padrão, confira [Executores h
 
 Este guia demonstra como criar um trabalho que instala software adicional em um executor hospedado em GitHub.
 
-## Instalando software nos executores do Ubuntu { #installing-software-on-ubuntu-runners }
+## Instalando software nos executores do Ubuntu
 
 O exemplo a seguir demonstra como instalar um pacote `apt` como parte de um trabalho.
 
@@ -43,7 +43,7 @@ jobs:
 !!! note
     Sempre execute `sudo apt-get update` antes de instalar um pacote. Caso o índice `apt` esteja obsoleto, esse comando busca e indexa novamente todos os pacotes disponíveis, o que ajuda a evitar falhas de instalação do pacote.
 
-## Instalando o software nos executores do macOS { #installing-software-on-macos-runners }
+## Instalando o software nos executores do macOS
 
 O exemplo a seguir demonstra como instalar pacotes de Brew e cascas como parte de um trabalho.
 
@@ -67,7 +67,7 @@ jobs:
           brew install --cask microsoft-edge
 ```
 
-## Instalando software em executores do Windows { #installing-software-on-windows-runners }
+## Instalando software em executores do Windows
 
 O exemplo a seguir demonstra como usar o [Chocolatey](https://community.chocolatey.org/packages) para instalar a GitHub CLI como parte de um trabalho.
 

@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Create and publish actions
 ---
 
-# Aprovando e mantendo ações { #releasing-and-maintaining-actions }
+# Aprovando e mantendo ações
 
 _Você pode aproveitar a automação e as melhores práticas de código aberto para liberar e manter ações automatizadas._
 
-## Introdução { #introduction }
+## Introdução
 
 Depois de criar uma ação, você irá continuar lançando novas funcionalidades enquanto trabalha com contribuições da comunidade. Este tutorial descreve um processo de exemplo que você pode seguir para liberar e manter ações em código aberto. O exemplo:
 
@@ -25,11 +25,11 @@ Depois de criar uma ação, você irá continuar lançando novas funcionalidades
 
 Para ver um exemplo aplicado desse processo, confira [actions/javascript-action](https://github.com/actions/javascript-action).
 
-## Desenvolver e lançar ações { #developing-and-releasing-actions }
+## Desenvolver e lançar ações
 
 Nesta seção, discutiremos um processo de exemplo para desenvolver e liberar ações e mostrar como usar GitHub Actions para automatizar o processo.
 
-### Sobre ações do JavaScript { #about-javascript-actions }
+### Sobre ações do JavaScript
 
 As ações do JavaScript são repositórios do Node.js com metadados. No entanto, as ações do JavaScript têm propriedades adicionais comparadas aos projetos tradicionais do Node.js:
 
@@ -39,7 +39,7 @@ As ações do JavaScript são repositórios do Node.js com metadados. No entanto
 
 * Muitas ações usam GitHubAPIs e APIs de terceiros, portanto, incentivamos testes de ponta a ponta robustos.
 
-### Configurando GitHub Actions fluxos de trabalho { #setting-up-github-actions-workflows }
+### Configurando GitHub Actions fluxos de trabalho
 
 Para dar suporte ao processo de desenvolvedor na próxima seção, adicione dois GitHub Actions fluxos de trabalho ao repositório:
 
@@ -50,7 +50,7 @@ Para dar suporte ao processo de desenvolvedor na próxima seção, adicione dois
 
    > Se você habilitar versões imutáveis para o seu repositório, não poderá usar esta ação para forçar o envio de tags associadas a versões em GitHub. Para saber como gerenciar suas versões com versões imutáveis, confira [Como usar versões e marcas imutáveis para gerenciar as versões da sua ação](using-immutable-releases-and-tags-to-manage-your-actions-releases.md).
 
-### Exemplo do processo de desenvolvedor { #example-developer-process }
+### Exemplo do processo de desenvolvedor
 
 Aqui está um processo de exemplo que você pode seguir para executar testes automaticamente, criar uma versão, publicar em GitHub Marketplace e publicar sua ação.
 
@@ -71,13 +71,13 @@ Aqui está um processo de exemplo que você pode seguir para executar testes aut
 
    * Recomendamos criar versões usando tags com controle de versão semântico (por exemplo, `v1.1.3`) e manter as tags de principal (`v1`) e secundário (`v1.1`) atuais com o último commit apropriado. Para obter mais informações, confira [Como gerenciar ações personalizadas](manage-custom-actions.md#using-release-management-for-actions) e [Sobre o controle de versão semântico](https://docs.npmjs.com/about-semantic-versioning).
 
-### Resultados { #results }
+### Resultados
 
 Ao contrário de algumas outras estratégias de gerenciamento de versão automatizadas, esse processo intencionalmente não faz commit das dependências no branch `main`, apenas para os commits de versão marcados. Ao fazer isso, você incentiva os usuários da sua ação a referenciar os `sha`s ou as tags nomeadas e ajuda a garantir a segurança das solicitações de pull de terceiros fazendo o build por conta própria durante uma versão.
 
 Usar versões semânticas significa que os usuários das suas ações podem fixar os seus fluxos de trabalho a uma versão e saber que podem continuar recebendo a última estabilidade recursos não relevantes, dependendo de seu nível de conforto.
 
-## Trabalhando com a comunidade { #working-with-the-community }
+## Trabalhando com a comunidade
 
 GitHubfornece ferramentas e guias para ajudá-lo a trabalhar com a comunidade código aberto. Aqui estão algumas ferramentas que recomendamos a criação de uma comunicação bidirecional saudável. Ao fornecer os seguintes sinais à comunidade, você incentiva outras pessoas a usar, modificar e contribuir para sua ação:
 
@@ -87,7 +87,7 @@ GitHubfornece ferramentas e guias para ajudá-lo a trabalhar com a comunidade c�
 * Mantenha os problemas atuais utilizando ações como [actions/stale](https://github.com/actions/stale).
 * Use os recursos de segurança de GitHub para se comunicar sobre vulnerabilidades e como corrigi-las. Para obter mais informações, consulte [Referência de uso seguro](../../reference/security/secure-use.md#protecting-actions-youve-created).
 
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 Os exemplos em que os padrões similares são empregados incluem:
 

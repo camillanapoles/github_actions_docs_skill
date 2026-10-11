@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: How tos / Manage workflow runs
 ---
 
-# Aprovando execuções de fluxo de trabalho de forks { #approving-workflow-runs-from-forks }
+# Aprovando execuções de fluxo de trabalho de forks
 
 _Você pode aprovar manualmente as execuções de fluxo de trabalho disparadas pela solicitação de pull de um colaborador._
 
@@ -18,7 +18,7 @@ As execuções de fluxo de trabalho disparadas pela pull request de um colaborad
 
 As execuções de fluxo de trabalho que aguardam aprovação há mais de 30 dias expiram e são marcadas como com falha. Uma anotação explica que a aprovação expirou.
 
-## Aprovando as execuções do fluxo de trabalho em um pull request a partir de uma bifurcação pública { #approving-workflow-runs-on-a-pull-request-from-a-public-fork }
+## Aprovando as execuções do fluxo de trabalho em um pull request a partir de uma bifurcação pública
 
 Os mantenedores com permissão de gravação a um repositório podem usar o seguinte procedimento para revisar e executar workflows em pull requests de colaboradores que exigem aprovação.
 

@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Write workflows
 ---
 
-# Usando modelos de fluxo de trabalho { #using-workflow-templates }
+# Usando modelos de fluxo de trabalho
 
 _GitHub fornece modelos de fluxo de trabalho para uma variedade de linguagens e ferramentas._
 
-## Escolhendo e usando um modelo de fluxo de trabalho { #choosing-and-using-a-workflow-template }
+## Escolhendo e usando um modelo de fluxo de trabalho
 
 1. Em GitHub, acesse a página principal do repositório.
 
@@ -38,7 +38,7 @@ _GitHub fornece modelos de fluxo de trabalho para uma variedade de linguagens e 
 
 9. Escreva uma mensagem de commit e decida se você deseja de fazer o commit diretamente para o branch padrão ou abrir um pull request.
 
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 * [Integração contínua](../../get-started/continuous-integration.md)
 * [Gerenciar fluxos de trabalho](../manage-workflow-runs.md)

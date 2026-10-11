@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Write workflows / Choose what workflows do
 ---
 
-# Usar segredos em ações do GitHub { #using-secrets-in-github-actions }
+# Usar segredos em ações do GitHub
 
 _Aprenda a criar segredos nos níveis de repositório, ambiente e organização para fluxos de trabalho GitHub Actions._
 
-## Como criar segredos para um repositório { #creating-secrets-for-a-repository }
+## Como criar segredos para um repositório
 
 Para criar segredos ou variáveis em GitHub para um repositório de organização, você deve ter `write` acesso. Para um repositório de conta pessoal, você deve ser um colaborador do repositório.
 
@@ -48,7 +48,7 @@ gh secret set SECRET_NAME < secret.txt
 
 Para listar todos os segredos do repositório, use o subcomando `gh secret list`.
 
-## Criação de segredos para um ambiente { #creating-secrets-for-an-environment }
+## Criação de segredos para um ambiente
 
 Para criar segredos ou variáveis para um ambiente em um repositório de conta pessoal, você deve ser o proprietário do repositório. Para criar segredos ou variáveis para um ambiente em um repositório de uma organização, é necessário ter acesso `admin`. Para saber mais sobre os ambientes, confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md).
 
@@ -75,7 +75,7 @@ Para listar todos os segredos de um ambiente, use o subcomando `gh secret list` 
 gh secret list --env ENV_NAME
 ```
 
-## Criando segredos para uma organização { #creating-secrets-for-an-organization }
+## Criando segredos para uma organização
 
 !!! note
     Os segredos e variáveis no nível da organização não são acessíveis por repositórios privados para GitHub Free. Para obter mais informações sobre como atualizar sua GitHub assinatura, consulte [Atualizando o plano da sua conta](https://docs.github.com/pt/billing/how-tos/manage-plan-and-licenses/upgrade-plan).
@@ -137,7 +137,7 @@ Para listar todos os segredos de uma organização, use o subcomando `gh secret 
 gh secret list --org ORG_NAME
 ```
 
-## Revisão do acesso aos segredos a nível organizacional { #reviewing-access-to-organization-level-secrets }
+## Revisão do acesso aos segredos a nível organizacional
 
 Você pode verificar quais políticas de acesso são aplicadas a um segredo na sua organização.
 
@@ -148,7 +148,7 @@ Você pode verificar quais políticas de acesso são aplicadas a um segredo na s
 3. Na seção "Security" da barra lateral, selecione **(key-asterisk) Secrets and variables** e clique em **Actions**.
 4. A lista de segredos inclui quaisquer permissões e políticas configuradas. Para obter mais detalhes sobre as permissões configuradas para cada segredo, clique em **Atualizar**.
 
-## Usar segredos em um fluxo de trabalho { #using-secrets-in-a-workflow }
+## Usar segredos em um fluxo de trabalho
 
 !!! note
     * Com exceção do `GITHUB_TOKEN`, os segredos não são transmitidos para o executor quando um fluxo de trabalho é disparado de um repositório com fork.
@@ -177,7 +177,7 @@ Evite a transmissão de segredos entre processos da linha de comando sempre que 
 
 Se você passar segredos dentro de uma linha de comando, inclua-os dentro das regras de aspas corretas. Muitas vezes, os segredos contêm caracteres especiais que não intencionalmente podem afetar o seu shell. Para escapar desses caracteres especiais, use aspas com suas variáveis de ambiente. Por exemplo:
 
-### Exemplo de uso do Bash { #example-using-bash }
+### Exemplo de uso do Bash
 
 ```yaml
 steps:
@@ -188,7 +188,7 @@ steps:
       example-command "$SUPER_SECRET"
 ```
 
-### Exemplo de uso do PowerShell { #example-using-powershell }
+### Exemplo de uso do PowerShell
 
 ```yaml
 steps:
@@ -199,7 +199,7 @@ steps:
       example-command "$env:SUPER_SECRET"
 ```
 
-### Exemplo de uso do Cmd.exe { #example-using-cmdexe }
+### Exemplo de uso do Cmd.exe
 
 ```yaml
 steps:
@@ -210,7 +210,7 @@ steps:
       example-command "%SUPER_SECRET%"
 ```
 
-## Armazenamento de grandes segredos { #storing-large-secrets }
+## Armazenamento de grandes segredos
 
 Para usar segredos maiores que 48 KB, você pode usar uma solução alternativa para armazenar segredos em seu repositório e salvar a frase secreta de descriptografia em GitHub. Por exemplo, você pode usar `gpg` para criptografar um arquivo que contém seu segredo localmente antes de verificar o arquivo criptografado no repositório.GitHub Para obter mais informações, confira a [Página do manual do GPG](https://www.gnupg.org/gph/de/manual/r1023.html).
 
@@ -284,7 +284,7 @@ Para usar segredos maiores que 48 KB, você pode usar uma solução alternativa 
            run: cat $HOME/secrets/my_secret.json
    ```
 
-## Armazenamento de blobs binários em Base64 como segredos { #storing-base64-binary-blobs-as-secrets }
+## Armazenamento de blobs binários em Base64 como segredos
 
 Você pode usar a codificação de Base64 para armazenar pequenos blobs binários como segredos. Em seguida, você pode referenciar o segredo em seu fluxo de trabalho e decodificá-lo para uso no runner. Para ver os limites de tamanho, confira [Referência de segredos](../../../reference/security/secrets.md#limits-for-secrets).
 
@@ -335,6 +335,6 @@ Você pode usar a codificação de Base64 para armazenar pequenos blobs binário
              openssl x509 -in cert.der -inform DER -text -noout
    ```
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 Para obter informações de referência, confira [Referência de segredos](../../../reference/security/secrets.md).

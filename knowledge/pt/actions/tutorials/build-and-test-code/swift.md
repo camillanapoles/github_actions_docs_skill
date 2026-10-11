@@ -10,23 +10,23 @@ captured: '2026-10-11'
 section: Tutorials / Build and test code
 ---
 
-# Construção e teste Swift { #building-and-testing-swift }
+# Construção e teste Swift
 
 _Saiba como criar um fluxo de trabalho de integração contínua (CI) para criar e testar seu projeto Swift._
 
-## Introdução { #introduction }
+## Introdução
 
 Este guia mostra como criar e testar um pacote do Swift.
 
 Os executores hospedados do GitHub contam com um cache de ferramentas com ferramentas pré-instaladas, e os executores do Ubuntu e do macOS incluem as dependências para compilar pacotes Swift. Para ver a lista completa de softwares atualizados e as versões pré-instaladas do Swift e do Xcode, consulte [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images).
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Você já deve estar familiarizado com a sintaxe YAML e como ela é usada com GitHub Actions. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md).
 
 Recomendamos que você tenha uma compreensão básica dos pacotes Swift. Para obter mais informações, consulte [Pacotes do Swift](https://developer.apple.com/documentation/xcode/swift-packages) na documentação do desenvolvedor da Apple.
 
-## Usando um modelo de workflow do Swift { #using-a-swift-workflow-template }
+## Usando um modelo de workflow do Swift
 
 Para uma introdução rápida, adicione um modelo de fluxo de trabalho ao diretório `.github/workflows` do repositório.
 
@@ -52,7 +52,7 @@ GitHub fornece um modelo de fluxo de trabalho para Swift que deve funcionar para
 
    O `swift.yml` arquivo de fluxo de trabalho é adicionado ao `.github/workflows` diretório do repositório.
 
-## Especificando uma versão do Swift { #specifying-a-swift-version }
+## Especificando uma versão do Swift
 
 Para usar uma versão pré-instalada específica do Swift em um executor hospedado no GitHub, use a ação `swift-actions/setup-swift`. Essa ação localiza uma versão específica do Swift do cache de ferramentas no executor e adiciona os binários necessários a `PATH`. Estas alterações persistirão para o restante de um trabalho. Para obter mais informações, consulte a ação [`swift-actions/setup-swift`](https://github.com/marketplace/actions/setup-swift).
 
@@ -60,7 +60,7 @@ Se você estiver usando um executor auto-hospedado, precisará instalar as vers�
 
 Os exemplos abaixo demonstram o uso da ação `swift-actions/setup-swift`.
 
-### Usando várias versões do Swift { #using-multiple-swift-versions }
+### Usando várias versões do Swift
 
 Você pode configurar seu trabalho para usar várias versões do Swift em uma matriz.
 
@@ -98,7 +98,7 @@ jobs:
         run: swift test
 ```
 
-### Usando uma única versão específica do Swift { #using-a-single-specific-swift-version }
+### Usando uma única versão específica do Swift
 
 Você pode configurar seu trabalho para usar uma só versão específica do Swift, como `5.3.3`.
 
@@ -115,7 +115,7 @@ steps:
     run: swift --version # Swift 5.3.3
 ```
 
-## Criar e testar seu código { #building-and-testing-your-code }
+## Criar e testar seu código
 
 Você pode usar os mesmos comandos usados localmente para criar e testar seu código usando o Swift. Este exemplo demonstra como usar `swift build` e `swift test` em um trabalho:
 

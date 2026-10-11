@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Deploy / Deploy to third party platforms
 ---
 
-# Implantando no Azure Kubernetes Service { #deploying-to-azure-kubernetes-service }
+# Implantando no Azure Kubernetes Service
 
 _Saiba como implantar um projeto no serviço Azure Kubernetes (AKS) como parte de um fluxo de trabalho de implantação contínua (CD)._
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Antes de criar seu fluxo de trabalho de GitHub Actions, primeiro você precisa concluir as etapas de configuração a seguir:
 
@@ -22,7 +22,7 @@ Antes de criar seu fluxo de trabalho de GitHub Actions, primeiro você precisa c
 
 1. Crie um segredo chamado `AZURE_CREDENTIALS` para armazenar suas credenciais de Azure. Para obter mais informações sobre como encontrar essas informações e estruturar o segredo, consulte [a documentação da ação `Azure/login`](https://github.com/Azure/login#configure-a-service-principal-with-a-secret).
 
-## Criar o fluxo de trabalho { #creating-the-workflow }
+## Criar o fluxo de trabalho
 
 Depois de preencher os pré-requisitos, você pode prosseguir com a criação do fluxo de trabalho.
 
@@ -108,7 +108,7 @@ jobs:
           ${{ env.PROJECT_NAME }}
 ```
 
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 * Para o modelo de fluxo de trabalho original, confira [`azure-kubernetes-service.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/azure-kubernetes-service.yml) no repositório `starter-workflows` do GitHub Actions.
 * As ações usadas neste fluxo de trabalho são as ações oficiais do Azure [`Azure/login`](https://github.com/Azure/login), [`Azure/aks-set-context`](https://github.com/Azure/aks-set-context), [`Azure/CLI`](https://github.com/Azure/CLI), [`Azure/k8s-bake`](https://github.com/Azure/k8s-bake) e [`Azure/k8s-deploy`](https://github.com/Azure/k8s-deploy).

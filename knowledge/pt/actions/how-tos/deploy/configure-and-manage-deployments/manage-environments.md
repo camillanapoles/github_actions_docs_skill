@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Deploy / Configure and manage deployments
 ---
 
-# Gerenciar ambientes para implantação { #managing-environments-for-deployment }
+# Gerenciar ambientes para implantação
 
 _Você pode criar ambientes e proteger esses ambientes com regras de proteção de implantação. Um trabalho que faz referência a um ambiente deve seguir quaisquer regras de proteção para o ambiente antes de executar ou acessar os segredos do ambiente._
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 !!! note
     Os usuários com GitHub Free planos só podem configurar ambientes para repositórios públicos. Se você converter um repositório de público em privado, todas as regras de proteção ou segredos de ambiente configurados serão ignorados, e você não conseguirá configurar nenhum ambiente. Se você converter seu repositório de volta para público, você terá acesso a todas as regras de proteção e segredos de ambiente previamente configurados.
@@ -24,7 +24,7 @@ _Você pode criar ambientes e proteger esses ambientes com regras de proteção 
 * Para obter informações gerais sobre ambientes, confira [Implantando com GitHub Actions](control-deployments.md#using-environments).
 * Para obter informações sobre as regras disponíveis, confira [Implantações e ambientes](../../../reference/workflows-and-actions/deployments-and-environments.md).
 
-## Criando um ambiente { #creating-an-environment }
+## Criando um ambiente
 
 Para configurar um ambiente em um repositório de conta pessoal, você deve ser o proprietário do repositório. Para configurar um ambiente em um repositório da organização, você precisa ter acesso de `admin`.
 
@@ -83,7 +83,7 @@ Também é possível criar e configurar ambientes por meio da API REST. Para sab
 
 Executar um fluxo de trabalho que faz referência a um ambiente que não existe criará um ambiente com o nome referenciado. Se o ambiente for criado a partir da execução de builds de página implícitos (por exemplo, a partir de uma ramificação ou pasta de origem), a ramificação de origem será adicionada como uma regra de proteção ao ambiente. Caso contrário, o novo ambiente criado não terá nenhuma regra de proteção ou segredo configurado. Qualquer pessoa que possa editar fluxos de trabalho no repositório pode criar ambientes por meio de um arquivo de fluxo de trabalho, mas apenas os administradores do repositório podem configurar o ambiente.
 
-## Excluir um ambiente { #deleting-an-environment }
+## Excluir um ambiente
 
 Para configurar um ambiente em um repositório de conta pessoal, você deve ser o proprietário do repositório. Para configurar um ambiente em um repositório da organização, você precisa ter acesso de `admin`.
 
@@ -99,12 +99,12 @@ A exclusão de um ambiente apagará todos os segredos e regras de proteção ass
 
 Também é possível excluir ambientes por meio da API REST. Para saber mais, confira [Pontos de extremidade da API REST para repositórios](https://docs.github.com/pt/rest/repos#environments).
 
-## Como os ambientes relacionam-se com as implantações { #how-environments-relate-to-deployments }
+## Como os ambientes relacionam-se com as implantações
 
 Quando um trabalho de fluxo de trabalho que referencia um ambiente é executado, ele cria um objeto de implantação com a propriedade `environment` definida como o nome do ambiente. À medida que o fluxo de trabalho progride, ele também cria objetos de status de implantação com a propriedade `environment` definida como o nome do ambiente, a propriedade `environment_url` definida como a URL para o ambiente (se especificado no fluxo de trabalho) e a propriedade `state` definida como o status do trabalho.
 
 Você pode acessar esses objetos por meio da API REST ou API do GraphQL. Você também pode se inscrever nesses eventos de webhook. Para obter mais informações, confira [Pontos de extremidade da API REST para repositórios](https://docs.github.com/pt/rest/repos#deployments), [Deployments](https://docs.github.com/pt/graphql/reference/deployments#object-deployment) (API do GraphQL) ou [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#deployment).
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 GitHub Actions fornece vários recursos para gerenciar suas implantações. Para saber mais, confira [Implantando com GitHub Actions](control-deployments.md).

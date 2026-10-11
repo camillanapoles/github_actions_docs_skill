@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Create and publish actions
 ---
 
-# Publicar ações no GitHub Marketplace { #publishing-actions-in-github-marketplace }
+# Publicar ações no GitHub Marketplace
 
 _Você pode publicar ações em GitHub Marketplace e compartilhar as ações que você criou com a comunidade GitHub._
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 !!! note
     Você deve aceitar os termos de serviço para publicar ações em GitHub Marketplace.
@@ -35,7 +35,7 @@ As ações são publicadas em GitHub Marketplace imediatamente e não são revis
   * Não é possível que `name` corresponda a uma categoria GitHub Marketplace existente.
   * GitHub reserva os nomes dos GitHub recursos.
 
-## Publicação de uma ação { #publishing-an-action }
+## Publicação de uma ação
 
 Você pode adicionar a ação criada ao GitHub Marketplace marcando-a como uma nova versão e, em seguida, publicando-a.
 
@@ -63,7 +63,7 @@ Para criar uma nova versão e publicar a ação em GitHub Marketplace, siga esta
 
 9. Preencha todos os outros campos e clique em **Publicar versão**. A publicação exige a utilização de uma autenticação de dois fatores. Para saber mais, confira [Configurar a autenticação de dois fatores](https://docs.github.com/pt/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication).
 
-## Removendo uma ação de GitHub Marketplace { #removing-an-action-from-github-marketplace }
+## Removendo uma ação de GitHub Marketplace
 
 Para remover uma ação publicada de GitHub Marketplace, você precisará atualizar cada release publicada. Siga as etapas a seguir para cada versão da ação que você publicou em GitHub Marketplace.
 
@@ -77,7 +77,7 @@ Para remover uma ação publicada de GitHub Marketplace, você precisará atuali
 4. Selecione **Publicar esta ação para a GitHub Marketplace** para remover a marca da caixa.
 5. Clique em **Atualizar versão** na parte inferior da página.
 
-## Transferência de um repositório de ações { #transferring-an-action-repository }
+## Transferência de um repositório de ações
 
 É possível transferir um repositório de ações para outro usuário ou organização. Para saber mais, confira [Transferir um repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/transferring-a-repository).
 
@@ -88,7 +88,7 @@ As ações publicadas em GitHub Marketplace são vinculadas a um repositório pe
 !!! note
     O selo "Verificado" visto no perfil de GitHub uma organização é diferente do selo do criador verificado em GitHub Marketplace. Se você transferir um repositório de ações, a GitHub Marketplace listagem perderá o selo do criador verificado, a menos que o novo proprietário também seja um criador verificado.
 
-## Sobre emblemas em GitHub Marketplace { #about-badges-in-github-marketplace }
+## Sobre emblemas em GitHub Marketplace
 
 Ações com o (The verified badge), ou selo de criador verificado, indicam que GitHub verificou o criador da ação como uma organização parceira. Os parceiros podem enviar um email para [<partnerships@github.com>](mailto:partnerships@github.com) a fim de solicitar o selo de criador verificado.
 

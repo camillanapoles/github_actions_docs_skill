@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Manage runners / Github hosted runners / Connect to a private network
 ---
 
-# Usando um gateway de API com o OIDC { #using-an-api-gateway-with-oidc }
+# Usando um gateway de API com o OIDC
 
 _Você pode usar tokens OpenID Connect (OIDC) para autenticar seu fluxo de trabalho._
 
-## Usando um gateway de API com o OIDC { #using-an-api-gateway-with-oidc-1 }
+## Usando um gateway de API com o OIDC
 
 Com o GitHub Actions, você pode usar tokens OIDC (OpenID Connect) para autenticar seu fluxo de trabalho fora do GitHub Actions. Por exemplo, você pode executar um gateway de API na borda da rede privada que autentica solicitações de entrada com o token OIDC e, em seguida, faz solicitações de API em nome do fluxo de trabalho em sua rede privada.
 

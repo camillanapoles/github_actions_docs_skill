@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Tutorials
 ---
 
-# Criando um exemplo de fluxo de trabalho { #creating-an-example-workflow }
+# Criando um exemplo de fluxo de trabalho
 
 _Neste tutorial, você aprenderá a criar um fluxo de trabalho básico disparado por um evento push._
 
-## Introdução { #introduction }
+## Introdução
 
 Este guia mostra como criar um fluxo de trabalho básico que é disparado quando o código é enviado por push para o repositório.
 
@@ -22,7 +22,7 @@ Para começar a usar fluxos de trabalho pré-configurados, navegue pela lista de
 
 > [!IMPORTANT] Para obter mais informações sobre as práticas recomendadas para proteger seus fluxos de trabalho e o uso seguro de GitHub Actions recursos, consulte [Referência de uso seguro](../reference/security/secure-use.md#writing-workflows).
 
-## Criando um exemplo de fluxo de trabalho { #creating-an-example-workflow-1 }
+## Criando um exemplo de fluxo de trabalho
 
 GitHub Actions usa a sintaxe YAML para definir o fluxo de trabalho. Cada fluxo de trabalho é armazenado como um arquivo YAML separado no seu repositório de código, em um diretório chamado `.github/workflows`.
 
@@ -52,7 +52,7 @@ Você pode criar um exemplo de fluxo de trabalho no repositório que aciona auto
 
 Seu novo GitHub Actions arquivo de fluxo de trabalho agora está instalado em seu repositório e será executado automaticamente sempre que alguém enviar uma alteração por push para o repositório. Para conferir os detalhes sobre o histórico de execução de um fluxo de trabalho, confira [Exibir a atividade de uma execução de fluxo de trabalho](#viewing-the-activity-for-a-workflow-run).
 
-## Entender o arquivo de fluxo de trabalho { #understanding-the-workflow-file }
+## Entender o arquivo de fluxo de trabalho
 
 Para ajudar você a entender como a sintaxe de YAML é usada para criar um arquivo de fluxo de trabalho, esta seção explica cada linha do exemplo Introdução:
 
@@ -93,13 +93,13 @@ jobs:
       - run: bats -v
 ```
 
-### Visualizar o arquivo de fluxo de trabalho { #visualizing-the-workflow-file }
+### Visualizar o arquivo de fluxo de trabalho
 
 Neste diagrama, você pode ver o arquivo de fluxo de trabalho que acabou de criar e como os GitHub Actions componentes são organizados em uma hierarquia. Cada etapa executa uma única ação ou script do shell. As etapas 1 e 2 executam ações, enquanto as etapas 3 e 4 executam scripts de shell. Para encontrar mais ações predefinidas para seus fluxos de trabalho, confira [Usando blocos de construção pré-gravados no seu fluxo de trabalho](../how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions.md).
 
 ![Diagrama mostrando o gatilho, o executante e a tarefa de um fluxo de trabalho. O trabalho é dividido em quatro etapas.](/assets/images/help/actions/overview-actions-event.png)
 
-## Exibir a atividade para uma execução de fluxo de trabalho { #viewing-the-activity-for-a-workflow-run }
+## Exibir a atividade para uma execução de fluxo de trabalho
 
 Quando seu fluxo de trabalho é acionado, é criada uma *execução de fluxo de trabalho* que executa o fluxo de trabalho. Depois que uma execução de fluxo de trabalho for iniciada, você poderá visualizar um gráfico do progresso da execução e acompanhar a atividade de cada etapa em GitHub.
 

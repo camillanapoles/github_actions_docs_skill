@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Tutorials / Use containerized services
 ---
 
-# Comunicar-se com os contêineres de serviço do Docker { #communicating-with-docker-service-containers }
+# Comunicar-se com os contêineres de serviço do Docker
 
 _Saiba como usar contêineres de serviço do Docker para conectar bancos de dados, serviços web, memória cache e outras ferramentas ao seu fluxo de trabalho._
 
-## Comunicar-se com os contêineres de serviço do Docker { #communicating-with-docker-service-containers-1 }
+## Comunicar-se com os contêineres de serviço do Docker
 
 Os contêineres de serviço são contêineres Docker que oferecem uma maneira simples e portátil de hospedar serviços que você pode precisar testar ou executar sua aplicação em um fluxo de trabalho. Por exemplo, o seu fluxo de trabalho pode precisar executar testes de integração que necessitem de acesso a um banco de dados e a uma memória cache.
 
@@ -29,7 +29,7 @@ GitHub cria um novo contêiner do Docker para cada serviço configurado no fluxo
 
 Você pode configurar trabalhos em um fluxo de trabalho para ser executados diretamente em uma máquina executora ou em um contêiner Docker. A comunicação entre o trabalho e seus contêineres de serviço é diferente, dependendo se um trabalho é executado diretamente na máquina executora ou em um contêiner.
 
-### Executar trabalhos em um contêiner { #running-jobs-in-a-container }
+### Executar trabalhos em um contêiner
 
 Quando você executa trabalhos em um contêiner, GitHub conecta contêineres de serviço ao trabalho usando redes de ponte definidas pelo usuário do Docker. Para obter mais informações, confira [Driver de rede de ponte](https://docs.docker.com/engine/network/drivers/bridge/) na documentação do Docker.
 
@@ -37,14 +37,14 @@ Executar o trabalho e os serviços em um contêiner simplifica o acesso à rede.
 
 Você não precisa configurar nenhuma porta para os contêineres de serviço. Por padrão, todos os contêineres que fazem parte da mesma rede do Docker expõem todas as portas entre si e nenhuma porta é exposta fora da rede do Docker.
 
-### Executar trabalhos na máquina executora { #running-jobs-on-the-runner-machine }
+### Executar trabalhos na máquina executora
 
 Ao executar trabalhos diretamente na máquina do runner, você pode acessar os contêineres de serviço usando `localhost:<port>` ou `127.0.0.1:<port>`.
 GitHub configura a rede de contêiner para habilitar a comunicação do contêiner de serviço para o host do Docker.
 
 Quando um trabalho é executado diretamente em uma máquina executora, o serviço executado no contêiner do Docker não expõe suas portas ao trabalho no executor por padrão. Você deve mapear as portas do contêiner de serviço para o host do Docker. Para saber mais, confira [Comunicar-se com os contêineres de serviço do Docker](use-docker-service-containers.md#mapping-docker-host-and-service-container-ports).
 
-## Criar contêineres de serviço { #creating-service-containers }
+## Criar contêineres de serviço
 
 Use a palavra-chave `services` para criar contêineres de serviço que fazem parte de um trabalho no fluxo de trabalho. Para obter mais informações, confira [`jobs.<job_id>.services`](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idservices).
 
@@ -70,7 +70,7 @@ jobs:
         image: redis
 ```
 
-## Mapear o host do Docker e as portas do contêiner de serviço { #mapping-docker-host-and-service-container-ports }
+## Mapear o host do Docker e as portas do contêiner de serviço
 
 Se o seu trabalho for executado em um contêiner do Docker, você não precisará mapear as portas no host ou no contêiner de serviço. Se o seu trabalho for executado diretamente na máquina executora, você precisará mapear todas as portas do contêiner de serviço necessárias com as portas na máquina executora do host.
 
@@ -87,7 +87,7 @@ Quando você mapeia portas usando a `ports` palavra-chave, GitHub usa o `--publi
 Ao especificar a porta do contêiner mas não a porta do Docker, a porta do contêiner será atribuída aleatoriamente a uma porta livre.
 GitHub define a porta de contêiner atribuída no contexto do contêiner de serviço. Por exemplo, para um contêiner de serviço `redis`, se você tiver configurado a porta de host do Docker 5432, poderá acessar a porta de contêiner correspondente usando o contexto `job.services.redis.ports[5432]`. Para saber mais, confira [Referência de contextos](../../reference/workflows-and-actions/contexts.md#job-context).
 
-### Exemplo de mapeamento de portas Redis { #example-mapping-redis-ports }
+### Exemplo de mapeamento de portas Redis
 
 Este exemplo mapeia a porta `redis` do contêiner de serviço 6379 para a porta 6379 do host do Docker.
 
@@ -113,7 +113,7 @@ jobs:
           - 6379:6379
 ```
 
-## Autenticando com registros de imagem { #authenticating-with-image-registries }
+## Autenticando com registros de imagem
 
 Você poderá especificar credenciais para os contêineres de serviço se precisar fazer autenticação com um registro de imagem. Isso permite a você usar imagens de registros privados ou [aumentar o limite de taxa do DockerHub](https://www.docker.com/increase-rate-limits/).
 
@@ -139,7 +139,7 @@ jobs:
           password: ${{ secrets.ghcr_password }}
 ```
 
-## Personalizando os pontos de entrada e os comandos do contêiner de serviço { #customizing-service-container-entrypoints-and-commands }
+## Personalizando os pontos de entrada e os comandos do contêiner de serviço
 
 Por padrão, os contêineres de serviço são executados com o ponto de entrada e o comando definidos na imagem do Docker. Você pode substituí-los usando as teclas `entrypoint` e `command`. Isso é útil quando você precisa passar sinalizadores para um serviço (como um banco de dados) ou trocar totalmente o ponto de entrada da imagem, sem criar uma imagem de wrapper personalizada.
 
@@ -172,7 +172,7 @@ services:
 
 A nomenclatura e o comportamento correspondem ao Docker Compose. Para obter mais informações, consulte [`jobs.<job_id>.services.<service_id>.command`](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idservicesservice_idcommand) e [`jobs.<job_id>.services.<service_id>.entrypoint`](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idservicesservice_identrypoint).
 
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 * [Criando contêineres de serviço Redis](create-redis-service-containers.md)
 * [Criar contêineres de serviço PostgreSQL](create-postgresql-service-containers.md)

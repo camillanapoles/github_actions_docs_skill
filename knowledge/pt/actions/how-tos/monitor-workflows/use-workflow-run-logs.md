@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: How tos / Monitor workflows
 ---
 
-# Usando registros de execução de fluxo de trabalho { #using-workflow-run-logs }
+# Usando registros de execução de fluxo de trabalho
 
 _Você pode visualizar, pesquisar e fazer download dos logs para cada trabalho em uma execução de fluxo de trabalho._
 
@@ -25,7 +25,7 @@ GitHub Actions são executados como uma etapa em um fluxo de trabalho. Para sabe
 !!! note
     Faça commit apenas de arquivos de fluxo de trabalho válidos em seu repositório. Se `.github/workflows` contiver um arquivo de fluxo de trabalho inválido, GitHub Actions gerará uma execução de fluxo de trabalho com falha para cada nova confirmação.
 
-## Exibir logs para diagnosticar falhas { #viewing-logs-to-diagnose-failures }
+## Exibir logs para diagnosticar falhas
 
 Se houver falha na execução do fluxo de trabalho, você poderá ver qual etapa causou a falha e revisar os logs de criação da etapa com falha para resolver os problemas. Também é possível ver a duração da execução de cada etapa. Além disso, você pode copiar um permalink para determinada linha no arquivo de log a fim de compartilhar com a sua equipe. É necessário o acesso de leitura ao repositório é para executar essas etapas.
 
@@ -47,7 +47,7 @@ Para trabalhos executados em executores hospedados no GitHub, "Configurar trabal
 
    ![Captura de tela dos logs de um trabalho. Os logs de uma etapa com falha são expandidos, e um número de linha está realçado com um contorno laranja.](/assets/images/help/repository/copy-link-button-updated-2.png)
 
-## Pesquisar registros { #searching-logs }
+## Pesquisar registros
 
 É possível pesquisar os logs de criação em determinadas etapas. Quando você pesquisa os logs, somente as etapas expandidas são incluídas nos resultados. É necessário o acesso de leitura ao repositório é para executar essas etapas.
 
@@ -62,7 +62,7 @@ Para trabalhos executados em executores hospedados no GitHub, "Configurar trabal
 5. Em **Trabalhos** ou no grafo de visualização, clique no trabalho que deseja ver.
 6. No canto superior direito da saída do log, na caixa de pesquisa **Pesquisar logs**, digite uma consulta de pesquisa.
 
-## Baixar registros { #downloading-logs }
+## Baixar registros
 
 Você pode fazer o download dos arquivos de registro da execução do seu fluxo de trabalho. Você também pode fazer o download dos artefatos de um fluxo de trabalho. Para saber mais, confira [Armazenar e compartilhar dados com artefatos de fluxo de trabalho](../../tutorials/store-and-share-data.md). É necessário o acesso de leitura ao repositório é para executar essas etapas.
 
@@ -82,11 +82,11 @@ Você pode fazer o download dos arquivos de registro da execução do seu fluxo 
 !!! note
     Quando você baixa o arquivo morto de log de um fluxo de trabalho que foi parcialmente executado novamente, o arquivo morto só inclui os trabalhos que foram executados de novo. Para obter um conjunto completo de logs de trabalhos que foram executados a partir de um fluxo de trabalho, você deve fazer o download dos arquivos de logs para as tentativas anteriores que executaram os outros trabalhos.
 
-## Excluir registros { #deleting-logs }
+## Excluir registros
 
 Você pode excluir os arquivos de log das execuções do seu fluxo de trabalho por meio da interface web GitHub ou programaticamente. É necessário o acesso de gravação ao repositório é para executar essas etapas.
 
-### Excluindo logs por meio da interface da Web GitHub { #deleting-logs-via-the-github-web-interface }
+### Excluindo logs por meio da interface da Web GitHub
 
 1. Em GitHub, acesse a página principal do repositório.
 
@@ -108,7 +108,7 @@ Você pode excluir os arquivos de log das execuções do seu fluxo de trabalho p
 
 Após a exclusão dos logs, o botão **Excluir todos os logs** é removido para indicar que nenhum arquivo de log permanece na execução de fluxo de trabalho.
 
-### Excluir logs programaticamente { #deleting-logs-programmatically }
+### Excluir logs programaticamente
 
 Você pode usar o script a seguir para excluir automaticamente todos os logs de um fluxo de trabalho. Essa pode ser uma maneira útil de limpar logs para várias execuções de fluxo de trabalho.
 
@@ -124,7 +124,7 @@ Para executar o script de exemplo abaixo:
 
    Por exemplo, para excluir todos os logs no repositório `monalisa/octocat` do fluxo de trabalho `.github/workflows/ci.yaml`, você executaria `./delete-logs.sh monalisa/octocat ci.yaml`.
 
-#### Script de exemplo { #example-script }
+#### Script de exemplo
 
 ```bash copy
 #!/usr/bin/env bash
@@ -176,7 +176,7 @@ for RUN in $RUNS; do
 done
 ```
 
-## Exibindo logs com GitHub CLI { #viewing-logs-with-github-cli }
+## Exibindo logs com GitHub CLI
 
 !!! note
     Para saber mais sobre GitHub CLI, confira [Sobre GitHub CLI](https://docs.github.com/pt/github-cli/github-cli/about-github-cli).

@@ -88,19 +88,6 @@
 [  83/247] ok  actions/how-tos/secure-your-work/security-harden-deployments/oidc-with-reusable-workflows.md (6653 bytes)
 [  84/247] ok  actions/how-tos/deploy.md (822 bytes)
 [  85/247] ok  actions/how-tos/deploy/configure-and-manage-deployments.md (1928 bytes)
-Traceback (most recent call last):
-  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 1304, in heal_with_html
-    fragment, selector, warnings = html_to_fragment(html_text, res.url)
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 975, in html_to_fragment
-    clean_fragment(chosen, base_url)
-  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 868, in clean_fragment
-    classes = " ".join(el.get("class") or [])
-                       ^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/bs4/element.py", line 2449, in get
-    return self.attrs.get(key, default)
-           ^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'get'
 [  86/247] ok  actions/how-tos/deploy/configure-and-manage-deployments/control-deployments.md (17577 bytes)
 [  87/247] ok  actions/how-tos/deploy/configure-and-manage-deployments/view-deployment-history.md (3514 bytes)
 [  88/247] ok  actions/how-tos/deploy/configure-and-manage-deployments/manage-environments.md (11236 bytes)
@@ -201,19 +188,6 @@ AttributeError: 'NoneType' object has no attribute 'get'
 [ 183/247] ok  actions/reference/security/securely-using-pull_request_target.md (15113 bytes)
 [ 184/247] ok  actions/reference/security/secrets.md (3604 bytes)
 [ 185/247] ok  actions/reference/security/oidc.md (43585 bytes)
-Traceback (most recent call last):
-  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 1304, in heal_with_html
-    fragment, selector, warnings = html_to_fragment(html_text, res.url)
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 975, in html_to_fragment
-    clean_fragment(chosen, base_url)
-  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 868, in clean_fragment
-    classes = " ".join(el.get("class") or [])
-                       ^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/bs4/element.py", line 2449, in get
-    return self.attrs.get(key, default)
-           ^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'get'
 [ 186/247] ok  actions/reference/limits.md (16251 bytes)
 [ 187/247] ok  actions/reference/github-actions-importer.md (1045 bytes)
 [ 188/247] ok  actions/reference/github-actions-importer/supplemental-arguments-and-settings.md (10289 bytes)
@@ -263,19 +237,8 @@ AttributeError: 'NoneType' object has no attribute 'get'
 [ 232/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md (29355 bytes)
 [ 233/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations/gitlab-migration.md (40020 bytes)
 [ 234/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations/jenkins-migration.md (26579 bytes)
-Traceback (most recent call last):
-  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 1304, in heal_with_html
-    fragment, selector, warnings = html_to_fragment(html_text, res.url)
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 975, in html_to_fragment
-    clean_fragment(chosen, base_url)
-  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 868, in clean_fragment
-    classes = " ".join(el.get("class") or [])
-                       ^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/bs4/element.py", line 2449, in get
-    return self.attrs.get(key, default)
-           ^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'get'
+[WARNING] Duplicate identifier 'manual-tasks' at input line 154 column 37
+
 [ 235/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration.md (30380 bytes)
 [ 236/247] ok  actions/tutorials/migrate-to-github-actions/manual-migrations.md (1816 bytes)
 [ 237/247] ok  actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-azure-pipelines.md (11809 bytes)
@@ -289,6 +252,6 @@ AttributeError: 'NoneType' object has no attribute 'get'
 [ 245/247] ok  actions/tutorials/develop-agentic-workflows-in-github-actions.md (7153 bytes)
 [ 246/247] ok  actions/how-tos/reuse-automations/share-with-your-enterprise.md (3640 bytes)
 [ 247/247] ok  actions/how-tos/administer/reuse-namespaces-on-ghecom.md (2693 bytes)
-[info] captura em 54.9s (247 ok / 0 falhas)
-[info] integridade de links: {'files': 247, 'links': 1720, 'reverted': 7, 'ok': 1713}
+[info] captura em 56.6s (247 ok / 0 falhas)
+[info] integridade de links: {'files': 248, 'links': 1731, 'reverted': 7, 'ok': 1724}
 [done] 247 ok / 0 falhas / 16 avisos → /home/runner/work/github_actions_docs_skill/github_actions_docs_skill/knowledge/pt

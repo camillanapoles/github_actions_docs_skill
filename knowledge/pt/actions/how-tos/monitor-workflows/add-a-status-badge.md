@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: How tos / Monitor workflows
 ---
 
-# Adicionar um selo de status de fluxo de trabalho { #adding-a-workflow-status-badge }
+# Adicionar um selo de status de fluxo de trabalho
 
 _Você pode exibir um selo de status no seu repositório para indicar o status dos seus fluxos de trabalho._
 
@@ -23,7 +23,7 @@ Um selo de status mostra se um fluxo de trabalho está falhando ou passando. Um 
 
 Para adicionar uma notificação de status de fluxo de trabalho ao arquivo `README.md`, primeiro localize a URL da notificação de status que você gostaria de exibir. Em seguida, você pode usar o Markdown para exibir a notificação como uma imagem em seu arquivo `README.md`. Para saber mais sobre a marcação de imagem no Markdown, confira [Sintaxe básica de escrita e formatação](https://docs.github.com/pt/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#images).
 
-## Usando a IU { #using-the-ui }
+## Usando a IU
 
 Você pode criar um emblema de status do fluxo de trabalho diretamente na interface usando o nome do arquivo de fluxo de trabalho, o parâmetro de branch e o parâmetro de evento.
 
@@ -40,7 +40,7 @@ Você pode criar um emblema de status do fluxo de trabalho diretamente na interf
 7. Clique em **(copy) Copy status badge Markdown**.
 8. Copie o Markdown para o arquivo `README.md`.
 
-## Usar o nome do arquivo do fluxo de trabalho { #using-the-workflow-file-name }
+## Usar o nome do arquivo do fluxo de trabalho
 
 Você pode criar a URL para uma notificação de status de fluxo de trabalho usando o nome do arquivo de fluxo de trabalho:
 
@@ -56,7 +56,7 @@ Por exemplo, adicione o Markdown a seguir ao arquivo `README.md` para adicionar 
 ![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 ```
 
-## Como usar o parâmetro `branch` { #using-the-branch-parameter }
+## Como usar o parâmetro `branch`
 
 Para exibir o status de uma execução de fluxo de trabalho para um branch específico, adicione `?branch=BRANCH-NAME` ao final da URL da notificação de status.
 
@@ -66,7 +66,7 @@ Por exemplo, adicione o seguinte Markdown ao seu arquivo `README.md` para exibir
 ![example branch parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=feature-1)
 ```
 
-## Como usar o parâmetro `event` { #using-the-event-parameter }
+## Como usar o parâmetro `event`
 
 Para exibir o status das execuções de fluxo de trabalho disparadas pelo evento `push`, adicione `?event=push` ao final da URL da notificação de status.
 

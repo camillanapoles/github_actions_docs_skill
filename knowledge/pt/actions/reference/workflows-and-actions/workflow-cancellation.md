@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: Reference / Workflows and actions
 ---
 
-# Referência de cancelamento de fluxo de trabalho { #workflow-cancellation-reference }
+# Referência de cancelamento de fluxo de trabalho
 
 _Encontre informações sobre as etapas que GitHub executa para cancelar uma execução de um fluxo de trabalho._
 

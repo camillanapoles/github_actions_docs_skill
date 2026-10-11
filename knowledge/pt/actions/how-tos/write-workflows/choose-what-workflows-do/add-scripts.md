@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: How tos / Write workflows / Choose what workflows do
 ---
 
-# Adicionar scripts ao seu fluxo de trabalho { #adding-scripts-to-your-workflow }
+# Adicionar scripts ao seu fluxo de trabalho
 
 _Você pode usar GitHub Actions fluxos de trabalho para executar scripts._
 

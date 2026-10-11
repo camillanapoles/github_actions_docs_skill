@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Reference / Runners
 ---
 
-# Referência de executores hospedados pelo GitHub { #github-hosted-runners-reference }
+# Referência de executores hospedados pelo GitHub
 
 _Encontre informações sobre executores hospedados em GitHub, incluindo suas especificações e opções de personalização._
 
-## Executores e recursos de hardware suportados { #supported-runners-and-hardware-resources }
+## Executores e recursos de hardware suportados
 
 Tipos de executores hospedados em GitHub estão disponíveis para uso em repositórios públicos e privados.
 
@@ -31,7 +31,7 @@ GitHubOs executores do Linux hospedados dão suporte à aceleração de hardware
     [!WARNING]
     As imagens beta e preteridas são fornecidas “no estado em que se encontram”, “com todas as falhas” e “conforme disponível” e são excluídas do contrato de nível de serviço e da garantia. As imagens beta podem não ser cobertas pelo atendimento ao cliente.
 
-### Executores padrão hospedados GitHubpara repositórios públicos { #standard-github-hosted-runners-for-public-repositories }
+### Executores padrão hospedados GitHubpara repositórios públicos
 
 Para repositórios públicos, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados com as especificações associadas.
 Com exceção dos executores de CPU única, cada executor hospedado por GitHub é uma nova máquina virtual (VM) hospedada por GitHub. Processos de CPU única são hospedados em um contêiner em uma VM compartilhada—consulte [Referência de executores hospedados pelo GitHub](github-hosted-runners.md#single-cpu-runners). O uso dos executores hospedados padrão GitHubé gratuito e ilimitado em repositórios públicos.
@@ -94,7 +94,7 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
 </tr>
 ```
 
-### Executores hospedados padrão GitHubpara  privados { #standard-github-hosted-runners-for-internal-and-private-repositories }
+### Executores hospedados padrão GitHubpara  privados
 
 Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a alocação de minutos gratuitos da sua GitHub conta e, posteriormente, são cobrados a taxas por minuto de uso. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
@@ -158,14 +158,14 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
 
 Os registros do fluxo de trabalho listam o executor usado para rodar uma tarefa. Para saber mais, confira [Visualizar o histórico de execução do fluxo de trabalho](../../how-tos/monitor-workflows/view-workflow-run-history.md).
 
-### Limitações dos executores macOS arm64 { #limitations-for-arm64-macos-runners }
+### Limitações dos executores macOS arm64
 
 * Todas as ações fornecidas pelo GitHub são compatíveis com executores arm64 hospedados pelo GitHub. No entanto, as ações da comunidade podem não ser compatíveis com o arm64 e precisam ser instaladas manualmente em tempo de execução.
 * Não há suporte para virtualização aninhada devido à limitação da Estrutura de Virtualização da Apple.
 * Os recursos de rede, como a rede privada do Azure e a atribuição de IPs estáticos, não estão disponíveis atualmente para corredores maiores do macOS.
 * Os executores macOS arm64 não têm um UUID/UDID estático atribuído a eles porque a Apple não suporta esse recurso. No entanto, os executores Intel MacOS recebem um UDID estático, especificamente `4203018E-580F-C1B5-9525-B745CECA79EB`. Caso esteja criando e assinando no mesmo host no qual planeja testar a compilação, você poderá assinar com um [perfil de provisionamento de desenvolvimento](https://developer.apple.com/help/account/provisioning-profiles/create-a-development-provisioning-profile/). Caso precise de um DID estático, você poderá usar os executores Intel e adicionar seu UDID à sua conta de desenvolvedor da Apple.
 
-### Agentes de single-CPU { #single-cpu-runners }
+### Agentes de single-CPU
 
 Executores de CPU única hospedados em GitHub estão disponíveis em ambos os repositórios públicos e privados. Esses executores, especificados usando o rótulo de fluxo de trabalho `ubuntu-slim`, oferecem uma opção de menor custo para executar operações leves. Esse tipo de agente é otimizado para tarefas de automação, operações de problemas e tarefas de curta duração. Eles não são adequados para builds típicos de CI/CD pesados.
 
@@ -176,13 +176,13 @@ Executores de CPU única hospedados em GitHub estão disponíveis em ambos os re
 
 Um conjunto mínimo de ferramentas é instalado na imagem do agente `ubuntu-slim`, apropriado para tarefas leves. Para obter detalhes sobre qual software está instalado na `ubuntu-slim` imagem, consulte o [arquivo README](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md) no `actions/runner-images` repositório.
 
-#### Limites de uso { #usage-limits }
+#### Limites de uso
 
 Executores de CPU única seguem o mesmo modelo de concorrência que outros executores padrão hospedados em GitHub. Confira [Limites do Actions](../limits.md#job-concurrency-limits-for-github-hosted-runners). A concorrência dos agentes é determinada pelo seu plano.
 
 O tempo limite do trabalho para agentes single-CPU é de 15 minutos. Se um trabalho atingir esse limite, ele será terminado e falhará.
 
-### Executor avançados { #larger-runners }
+### Executor avançados
 
 Executor avançados estão disponíveis para organizações e empresas nos planos GitHub Team e GitHub Enterprise Cloud.
 
@@ -199,13 +199,13 @@ Esses executores avançados são hospedados por GitHub e têm o aplicativo runne
 
 Para saber mais, confira [Usando executores maiores](../../how-tos/manage-runners/larger-runners.md).
 
-## Privilégios administrativos { #administrative-privileges }
+## Privilégios administrativos
 
 As máquinas virtuais do Linux e do macOS são executadas sem senha por meio do `sudo`. Quando precisar executar comandos ou instalar ferramentas que exigem mais privilégios do que o usuário atual, use o `sudo` sem precisar fornecer uma senha. Para obter mais informações, confira o [Manual do sudo](https://www.sudo.ws/man/1.8.27/sudo.man.html).
 
 As máquinas virtuais do Windows estão configuradas para ser executadas como administradores com Controle de Conta de Usuário (UAC) desativado. Para obter mais informações, confira [Como funciona o Controle de Conta de Usuário](https://docs.microsoft.com/windows/security/identity-protection/user-account-control/how-user-account-control-works) na documentação do Windows.
 
-## Endereços IP { #ip-addresses }
+## Endereços IP
 
 Para obter uma lista de intervalos de endereços IP que GitHub Actions usa para executores hospedados em GitHub, você pode usar a API REST GitHub. Para obter mais informações, confira a chave `actions` na resposta do endpoint `GET /meta`. Para saber mais, confira [Pontos de extremidade da API REST para metadados](https://docs.github.com/pt/rest/meta/meta#get-github-meta-information).
 
@@ -215,7 +215,7 @@ Como há muitas faixas de endereços IP para os executores hospedados em GitHub,
 
 A lista de GitHub Actions endereços IP retornados pela API é atualizada uma vez por semana.
 
-## Requisitos de comunicação para executores hospedados em GitHub { #communication-requirements-for-github-hosted-runners }
+## Requisitos de comunicação para executores hospedados em GitHub
 
 Um executor hospedado em GitHub deve estabelecer conexões com pontos de extremidade pertencentes a GitHub para executar operações essenciais de comunicação. Além disso, seu executor pode exigir acesso a redes adicionais que você especificar ou utilizar dentro de uma ação.
 
@@ -294,7 +294,7 @@ api.snapcraft.io
 *.core.windows.net
 ```
 
-## Sistemas de arquivos { #file-systems }
+## Sistemas de arquivos
 
 GitHub executa ações e comandos de shell em diretórios específicos na máquina virtual. Os caminhos dos arquivos nas máquinas virtuais não são estáticos. Use as variáveis de ambiente fornecidas GitHub para construir caminhos de arquivo para os `home`diretórios e `workspace` os `workflow`diretórios.
 
@@ -304,7 +304,7 @@ GitHub executa ações e comandos de shell em diretórios específicos na máqui
 | `workspace` | `GITHUB_WORKSPACE` | A execução de ações e comandos do shell acontece neste diretório. Uma ação pode modificar o conteúdo desse diretório, que fica acessível nas ações subsequentes. |
 | `workflow/event.json` | `GITHUB_EVENT_PATH` | A carga `POST` do evento de webhook que disparou o fluxo de trabalho. |
 | GitHub reescreve isso sempre que uma ação é executada para isolar o conteúdo do arquivo entre ações. |  | Para obter uma lista das variáveis de ambiente criadas GitHub para cada fluxo de trabalho, consulte [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md). |
-### Sistema de arquivos do contêiner Docker { #docker-container-filesystem }
+### Sistema de arquivos do contêiner Docker
 
 As ações executadas em contêineres do Docker têm diretórios estáticos no caminho `/github`. No entanto, é altamente recomendável usar as variáveis de ambiente padrão para elaborar caminhos de arquivos em contêineres do Docker.
 

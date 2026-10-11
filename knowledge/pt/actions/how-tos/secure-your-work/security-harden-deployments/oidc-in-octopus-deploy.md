@@ -10,17 +10,17 @@ captured: '2026-10-11'
 section: How tos / Secure your work / Security harden deployments
 ---
 
-# Configurando o OpenID Connect no Octopus Deploy { #configuring-openid-connect-in-octopus-deploy }
+# Configurando o OpenID Connect no Octopus Deploy
 
 _Use OpenID Connect em seus fluxos de trabalho para autenticar com o Octopus Deploy._
 
-## Visão geral { #overview }
+## Visão geral
 
 OpenID Connect (OIDC) permite que seus fluxos de trabalho GitHub Actions se autentiquem com o [Octopus Deploy](https://octopus.com/) para enviar pacotes, criar versões ou acionar implantações sem armazenar senhas ou chaves de API do Octopus Deploy como segredos de GitHub de longa duração.
 
 Este guia fornece uma visão geral de como configurar o Octopus Deploy para confiar no OIDC do GitHub como uma identidade federada e inclui um exemplo de fluxo de trabalho para a ação [`octopusdeploy/login`](https://github.com/OctopusDeploy/login) que utiliza tokens para autenticar em sua instância do Octopus Deploy.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 * Para saber os conceitos básicos de como GitHub usa o OpenID Connect (OIDC) e sua arquitetura e benefícios, consulte [OpenID Connect](../../../concepts/security/openid-connect.md).
 
@@ -28,7 +28,7 @@ Este guia fornece uma visão geral de como configurar o Octopus Deploy para conf
 
 * Os tokens OIDC solicitados para Dependabot trabalhos de atualização têm uma declaração `event_name` de `dynamic`. Se sua política de confiança se destina a autorizar apenas GitHub Actions fluxos de trabalho e seu provedor de nuvem dá suporte a condições `event_name`, permita apenas os nomes de eventos esperados por seus fluxos de trabalho. Para obter mais informações, consulte [Referência do OpenID Connect](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
-## Adicionando o provedor de identidade ao Octopus Deploy { #adding-the-identity-provider-to-octopus-deploy }
+## Adicionando o provedor de identidade ao Octopus Deploy
 
 Para usar o OIDC com o Octopus Deploy, primeiro estabeleça uma relação de confiança entre GitHub Actions e sua instância do Octopus Deploy. Para obter mais informações sobre esse processo, consulte [Como usar o OpenID Connect com a API do Octopus](https://octopus.com/docs/octopus-rest-api/openid-connect) na documentação do Octopus Deploy.
 
@@ -36,7 +36,7 @@ Para usar o OIDC com o Octopus Deploy, primeiro estabeleça uma relação de con
 2. Crie ou abra a Conta de Serviço que receberá acesso por meio da solicitação de token.
 3. Configure uma nova identidade OIDC, definindo o sujeito relevante com o qual a solicitação de token do fluxo de trabalho GitHub Actions será validada.
 
-## Atualizar o seu fluxo de trabalho de GitHub Actions { #updating-your-github-actions-workflow }
+## Atualizar o seu fluxo de trabalho de GitHub Actions
 
 Para atualizar seus fluxos de trabalho para o OIDC, você deverá fazer duas alterações no seu YAML:
 
@@ -46,7 +46,7 @@ Para atualizar seus fluxos de trabalho para o OIDC, você deverá fazer duas alt
 !!! note
     Quando os ambientes são usados em fluxos de trabalho ou em políticas OIDC, recomendamos adicionar regras de proteção ao ambiente para segurança adicional. Por exemplo, você pode configurar regras de implantação em um ambiente para restringir quais ramificações e tags podem ser implantadas no ambiente ou acessar segredos de ambiente. Para saber mais, confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md).
 
-### Adicionando configurações de permissões { #adding-permissions-settings }
+### Adicionando configurações de permissões
 
 A execução do trabalho ou do fluxo de trabalho requer uma configuração `permissions` com [`id-token: write`](../../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token) para permitir que o provedor OIDC de GitHub crie um token JWT para cada execução.
 
@@ -54,7 +54,7 @@ A execução do trabalho ou do fluxo de trabalho requer uma configuração `perm
 
 Para obter informações detalhadas sobre permissões necessárias, exemplos de configuração e cenários avançados, confira [Referência do OpenID Connect](../../../reference/security/oidc.md#workflow-permissions-for-the-requesting-the-oidc-token).
 
-### Solicitando o token de acesso { #requesting-the-access-token }
+### Solicitando o token de acesso
 
 A ação [`OctopusDeploy/login`](https://github.com/OctopusDeploy/login) recebe um JWT do provedor OIDC GitHub e, em seguida, solicita um token de acesso da sua instância do Octopus Server. Para obter mais informações, consulte a documentação do [`OctopusDeploy/login`](https://github.com/OctopusDeploy/login) .
 
@@ -87,7 +87,7 @@ jobs:
           project: My Octopus Project
 ```
 
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 * [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](oidc-with-reusable-workflows.md)
 * [Referência de executores auto-hospedados](../../../reference/runners/self-hosted-runners.md)

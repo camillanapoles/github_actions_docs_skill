@@ -2,12 +2,12 @@
 
 - **Fonte:** `api`  
 - **Idioma:** `pt`  
-- **Executado em:** 2026-10-11T23:40:36+00:00  
+- **Executado em:** 2026-10-11T23:50:09+00:00  
 - **Páginas OK:** 247  
 - **Falhas:** 0  
 - **Com avisos:** 16  
 - **Score de qualidade (0 = impecável):** 46 em 3 página(s)  
-- **Links internos íntegros:** 1713 (revertidos para URL absoluta: 7)  
+- **Links internos íntegros:** 1724 (revertidos para URL absoluta: 7)  
 - **Bytes totais:** 2,505,131  
 - **Headings totais:** 2,713  
 - **Blocos de código:** 1,057  
@@ -27,7 +27,7 @@
 | `actions/concepts/workflows-and-actions/notifications-for-workflow-runs.md` | poucos headings | 1,987 |
 | `actions/how-tos/write-workflows/choose-what-workflows-do/use-github-cli.md` | poucos headings | 2,838 |
 | `actions/how-tos/write-workflows/choose-what-workflows-do/add-scripts.md` | poucos headings | 3,156 |
-| `actions/how-tos/deploy/configure-and-manage-deployments/control-deployments.md` | cura via HTML falhou: AttributeError: 'NoneType' object has no attribute 'get' [File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 868, in clean_fragment] | 17,577 |
+| `actions/how-tos/deploy/configure-and-manage-deployments/control-deployments.md` | markdown da API com imperfeições (score=3{'table': 1, 'fence': 0, 'alert': 0, 'html': 0, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não preservou o conteúdo (16573/17113 B, 0/15 headings) (score html=0) | 17,577 |
 | `actions/how-tos/create-and-publish-actions/using-immutable-releases-and-tags-to-manage-your-actions-releases.md` | poucos headings | 2,748 |
 | `actions/how-tos/manage-workflow-runs/skip-workflow-runs.md` | poucos headings | 3,209 |
 | `actions/how-tos/manage-workflow-runs/delete-a-workflow-run.md` | poucos headings | 1,739 |
@@ -35,8 +35,8 @@
 | `actions/how-tos/monitor-workflows/use-the-visualization-graph.md` | poucos headings | 1,778 |
 | `actions/how-tos/monitor-workflows/view-job-execution-time.md` | poucos headings | 2,186 |
 | `actions/reference/workflows-and-actions/workflow-cancellation.md` | poucos headings | 2,713 |
-| `actions/reference/limits.md` | cura via HTML falhou: AttributeError: 'NoneType' object has no attribute 'get' [File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 868, in clean_fragment] | 16,251 |
-| `actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration.md` | cura via HTML falhou: AttributeError: 'NoneType' object has no attribute 'get' [File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 868, in clean_fragment] | 30,380 |
+| `actions/reference/limits.md` | markdown da API com imperfeições (score=3{'table': 1, 'fence': 0, 'alert': 0, 'html': 0, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não preservou o conteúdo (15291/15871 B, 0/8 headings) (score html=0) | 16,251 |
+| `actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration.md` | markdown da API com imperfeições (score=40{'table': 1, 'fence': 0, 'alert': 0, 'html': 37, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não preservou o conteúdo (23386/29883 B, 0/34 headings) (score html=0) | 30,380 |
 
 ## Amostra (10 primeiras páginas)
 

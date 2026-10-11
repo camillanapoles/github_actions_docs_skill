@@ -10,17 +10,17 @@ captured: '2026-10-11'
 section: How tos / Secure your work / Security harden deployments
 ---
 
-# Usando o OpenID Connect com fluxos de trabalho reutilizáveis { #using-openid-connect-with-reusable-workflows }
+# Usando o OpenID Connect com fluxos de trabalho reutilizáveis
 
 _Você pode usar fluxos de trabalho reutilizáveis com o OIDC para padronizar e melhorar as suas etapas de implantação._
 
-## Sobre fluxos de trabalho reutilizáveis { #about-reusable-workflows }
+## Sobre fluxos de trabalho reutilizáveis
 
 Em vez de copiar e colar trabalhos de implantação de um fluxo de trabalho para outro, é possível criar um fluxo de trabalho reutilizável que executa as etapas de implantação. Um fluxo de trabalho reutilizável poderá ser usado por outro fluxo de trabalho se atender a um dos requisitos de acesso descritos em [Reutilizando configurações de fluxo de trabalho](../../../reference/workflows-and-actions/reusing-workflow-configurations.md#access-to-reusable-workflows).
 
 Você deve ter familiaridade com os conceitos descritos em [Reutilizar fluxos de trabalho](../../reuse-automations/reuse-workflows.md) e [Referência do OpenID Connect](../../../reference/security/oidc.md#customizing-the-token-claims).
 
-## Definindo as condições de confiança { #defining-the-trust-conditions }
+## Definindo as condições de confiança
 
 Quando combinado com o OpenID Connect (OIDC), os fluxos de trabalho reutilizáveis permitem que você aplique implantações consistentes no seu repositório, organização ou empresa. Você pode fazer isso definindo condições de confiança nas funções da nuvem com base em fluxos de trabalho reutilizáveis. As opções disponíveis variam dependendo do provedor de nuvem:
 
@@ -31,7 +31,7 @@ Quando combinado com o OpenID Connect (OIDC), os fluxos de trabalho reutilizáve
 * **Personalizar as declarações de token:**
   * Você pode configurar condições de confiança mais granulares personalizando as declarações de assunto (`sub`)  que são incluídas no JWT. Para saber mais, confira [OpenID Connect](../../../concepts/security/openid-connect.md).
 
-## Como o token funciona com fluxos de trabalho reutilizáveis { #how-the-token-works-with-reusable-workflows }
+## Como o token funciona com fluxos de trabalho reutilizáveis
 
 Durante uma execução de um fluxo de trabalho, o provedor OIDC de GitHub apresenta um token OIDC ao provedor de nuvem, que contém informações sobre o job. Se esse trabalho fizer parte de um fluxo de trabalho reutilizável, o token incluirá as declarações padrão que contêm informações sobre o fluxo de trabalho chamador e incluirá uma declaração personalizada chamada `job_workflow_ref` que contém informações sobre o fluxo de trabalho chamado.
 
@@ -74,7 +74,7 @@ Por exemplo, o token OIDC a seguir é para um trabalho que fazia parte de um flu
 
 Se o seu fluxo de trabalho reutilizável executa etapas de implantação, ele, de modo geral, irá precisar de acesso a um função de nuvem específica, e você deverá permitir que qualquer repositório da sua organização chame esse fluxo de trabalho reutilizável. Para permitir isso, você criará uma condição de confiança que permite qualquer repositório e fluxo de trabalho de chamadas, e, em seguida, irá filtrar a organização e o fluxo de trabalho chamado. Veja a próxima seção para obter alguns exemplos.
 
-## Exemplos { #examples }
+## Exemplos
 
 **Filtragem para fluxos de trabalho reutilizáveis em um repositório específico**
 

@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Tutorials / Use actions runner controller
 ---
 
-# Comece a usar o Actions Runner Controller { #get-started-with-actions-runner-controller }
+# Comece a usar o Actions Runner Controller
 
 _Neste tutorial, você experimentará as noções básicas de Actions Runner Controller._
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Para usar o ARC, verifique se você tem os itens a seguir.
 
@@ -27,7 +27,7 @@ Para usar o ARC, verifique se você tem os itens a seguir.
 
 * Embora não seja necessário implantar o ARC, é recomendável garantir que você tenha uma maneira de coletar e reter logs do controlador, dos ouvintes e dos executores efêmeros antes de implantar o ARC em fluxos de trabalho da produção.
 
-## Como instalar o Actions Runner Controller { #installing-actions-runner-controller }
+## Como instalar o Actions Runner Controller
 
 1. Para instalar o operador e as CRDs (definições de recursos personalizados) no cluster, execute as etapas a seguir.
 
@@ -48,7 +48,7 @@ Para usar o ARC, verifique se você tem os itens a seguir.
 
 2. Para permitir que o ARC se autentique em GitHub, escolha um método de autenticação para o conjunto de dimensionamento de executores. Se você estiver registrando corredores no repositório ou no nível da organização, recomendamos autenticar com um GitHub App. Os conjuntos de escala de executores registrados no nível empresarial exigem autenticação personal access token (classic). Para obter mais informações, consulte [Autenticando o ARC na API de GitHub](../../how-tos/manage-runners/use-actions-runner-controller/authenticate-to-the-api.md).
 
-## Como configurar um conjunto de dimensionamento de executores { #configuring-a-runner-scale-set }
+## Como configurar um conjunto de dimensionamento de executores
 
 1. Para configurar o conjunto de dimensionamento de executores, execute o comando a seguir no terminal usando valores da configuração do ARC.
 
@@ -121,7 +121,7 @@ Como uma melhor prática de segurança, crie segredos do Kubernetes e passe as r
 
 Se a instalação não tiver sido bem-sucedida, confira [Solução de problemas dos erros do Actions Runner Controller](troubleshoot.md) para obter informações sobre solução de problemas.
 
-## Como usar conjuntos de dimensionamento de executores { #using-runner-scale-sets }
+## Como usar conjuntos de dimensionamento de executores
 
 Agora você criará e executará um fluxo de trabalho de teste simples que usa os executores do conjunto de dimensionamento de executores.
 
@@ -157,7 +157,7 @@ Agora você criará e executará um fluxo de trabalho de teste simples que usa o
    arc-runners   arc-runner-set-rmrgw-runner-p9p5n                     1/1     Running   0             21s
    ```
 
-## Próximas Etapas { #next-steps }
+## Próximas Etapas
 
 O Actions Runner Controller pode ajudá-lo a gerenciar os executores do GitHub Actions com eficiência. Pronto para começar? Confira alguns recursos úteis para dar seus próximos passos com o ARC:
 
@@ -165,7 +165,7 @@ O Actions Runner Controller pode ajudá-lo a gerenciar os executores do GitHub A
 * Para obter ajuda no uso de executores do ARC nos fluxos de trabalho, confira [Usar executores do Controlador do Executor de Ações em um fluxo de trabalho](../../how-tos/manage-runners/use-actions-runner-controller/use-arc-in-a-workflow.md).
 * Para obter informações sobre a implantação, consulte [Como implantar conjuntos de dimensionamento de executores com o Actions Runner Controller](../../how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets.md).
 
-## Aviso legal { #legal-notice }
+## Aviso legal
 
 Partes foram adaptadas do <https://github.com/actions/actions-runner-controller/> de acordo com a licença Apache-2.0:
 

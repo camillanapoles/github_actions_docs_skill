@@ -10,15 +10,15 @@ captured: '2026-10-11'
 section: How tos / Deploy / Deploy to third party platforms
 ---
 
-# Implantar no Google Kubernetes Engine { #deploying-to-google-kubernetes-engine }
+# Implantar no Google Kubernetes Engine
 
 _Saiba como implantar um projeto no Google Kubernetes Engine (GKE) como parte de um fluxo de trabalho de CD (implantação contínua)._
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Antes de prosseguir com a criação do fluxo de trabalho, você precisará concluir as etapas a seguir para seu projeto do Kubernetes. Este guia pressupõe que a raiz do seu projeto já tenha um `Dockerfile` e um arquivo de configuração de Implantação do Kubernetes.
 
-### Criando um cluster do GKE { #creating-a-gke-cluster }
+### Criando um cluster do GKE
 
 Para criar o cluster do GKE, primeiro, você precisará se autenticar usando a CLI do `gcloud`. Para obter mais informações sobre esta etapa, veja os artigos a seguir:
 
@@ -36,7 +36,7 @@ $ gcloud container clusters create $GKE_CLUSTER \
     --zone=$GKE_ZONE
 ```
 
-### Habilitar as APIs { #enabling-the-apis }
+### Habilitar as APIs
 
 Habilite as APIs do Motor Kubernetes e do Registro de Contêineres. Por exemplo:
 
@@ -46,7 +46,7 @@ $ gcloud services enable \
     container.googleapis.com
 ```
 
-### Configurar uma conta de serviço e armazenar as suas credenciais { #configuring-a-service-account-and-storing-its-credentials }
+### Configurar uma conta de serviço e armazenar as suas credenciais
 
 Este procedimento demonstra como criar a conta de serviço para sua integração com o GKE. Ele explica como criar a conta, adicionar funções a ela, recuperar suas chaves e armazená-las como um segredo de repositório criptografado codificado em base64 chamado `GKE_SA_KEY`.
 
@@ -94,19 +94,19 @@ Este procedimento demonstra como criar a conta de serviço para sua integração
 
    Para saber mais sobre como armazenar um segredo, confira [Usar segredos em ações do GitHub](../../write-workflows/choose-what-workflows-do/use-secrets.md).
 
-### Armazenando o nome do seu projeto { #storing-your-project-name }
+### Armazenando o nome do seu projeto
 
 Armazene o nome do projeto como um segredo chamado `GKE_PROJECT`. Para saber mais sobre como armazenar um segredo, confira [Usar segredos em ações do GitHub](../../write-workflows/choose-what-workflows-do/use-secrets.md).
 
-### (Opcional) Configurar kustomize { #optional-configuring-kustomize }
+### (Opcional) Configurar kustomize
 
 Kustomize é uma ferramenta opcional usada para gerenciar especificações do YAML. Depois que você criar um arquivo `kustomization`, o fluxo de trabalho abaixo poderá ser usado para definir dinamicamente os campos da imagem e encaminhar o resultado para `kubectl`. Para obter mais informações, confira [Uso do Kustomize](https://github.com/kubernetes-sigs/kustomize#usage).
 
-### (Opcional) Configure um ambiente de implantação { #optional-configure-a-deployment-environment }
+### (Opcional) Configure um ambiente de implantação
 
 Os ambientes são usados para descrever um destino de implantação geral, como `production`, `staging` ou `development`. Quando um GitHub Actions fluxo de trabalho é implantado em um ambiente, o ambiente é exibido na página principal do repositório. Você pode usar ambientes para exigir aprovação para um trabalho prosseguir, restringir quais ramificações podem acionar um fluxo de trabalho, bloquear implantações com regras de proteção de implantação personalizadas ou limitar o acesso a segredos. Para saber mais sobre como criar ambientes, confira [Gerenciar ambientes para implantação](../configure-and-manage-deployments/manage-environments.md).
 
-## Criar o fluxo de trabalho { #creating-the-workflow }
+## Criar o fluxo de trabalho
 
 Depois de preencher os pré-requisitos, você pode prosseguir com a criação do fluxo de trabalho.
 
@@ -197,7 +197,7 @@ jobs:
         kubectl get services -o wide
 ```
 
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 Para mais informações sobre as ferramentas usadas nesses exemplos, consulte a documentação a seguir:
 

@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Manage runners / Github hosted runners
 ---
 
-# Usar executores hospedados no GitHub { #using-github-hosted-runners }
+# Usar executores hospedados no GitHub
 
 _Você pode atribuir um trabalho para ser executado em uma máquina virtual hospedada por GitHub._
 
-## Usando um executor hospedado em GitHub { #using-a-github-hosted-runner }
+## Usando um executor hospedado em GitHub
 
 Para usar um GitHubexecutor hospedado, crie um trabalho e use `runs-on` para especificar o tipo de executor que processará o trabalho, como `ubuntu-latest`, `windows-latest`ou `macos-latest`. Para obter a lista completa de tipos de executores, consulte [Referência de executores hospedados pelo GitHub](../../../reference/runners/github-hosted-runners.md#supported-runners-and-hardware-resources). Se você tiver `repo: write` acesso a um repositório, poderá exibir uma lista dos executores disponíveis para uso em fluxos de trabalho no repositório. Para obter mais informações, consulte [Exibindo os executores disponíveis para um repositório](#viewing-available-runners-for-a-repository).
 
@@ -70,7 +70,7 @@ Enquanto a tarefa é executada, os logs e a saída podem ser visualizados na UI 
 
 O aplicativo de executor do GitHub Actions tem código aberto. Você pode contribuir e apresentar problemas no repositório do [executor](https://github.com/actions/runner).
 
-## Exibindo executores disponíveis para um repositório { #viewing-available-runners-for-a-repository }
+## Exibindo executores disponíveis para um repositório
 
 Se você tiver `repo: write` acesso a um repositório, poderá exibir uma lista dos executores disponíveis para o repositório.
 

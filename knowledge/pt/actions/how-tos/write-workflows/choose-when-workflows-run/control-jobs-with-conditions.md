@@ -10,13 +10,13 @@ captured: '2026-10-11'
 section: How tos / Write workflows / Choose when workflows run
 ---
 
-# Usando condições para controlar a execução do trabalho { #using-conditions-to-control-job-execution }
+# Usando condições para controlar a execução do trabalho
 
 _Impeça que um trabalho seja executado a menos que suas condições sejam atendidas._
 
 Use o condicional `jobs.<job_id>.if` para impedir que um trabalho seja executado, a não ser que uma condição seja atendida. Você pode usar qualquer contexto e expressão compatível para criar uma condicional. Para obter mais informações sobre quais contextos têm suporte nessa chave, confira [Referência de contextos](../../../reference/workflows-and-actions/contexts.md#context-availability).
 
-### Exemplo: somente executar o trabalho para um repositório específico { #example-only-run-job-for-a-specific-repository }
+### Exemplo: somente executar o trabalho para um repositório específico
 
 Este exemplo usa `if` para controlar quando o trabalho `production-deploy` pode ser executado. Ele só será executado se o repositório for chamado `octo-repo-prod` e estiver na organização `octo-org`. Caso contrário, o trabalho será marcado como *ignorado*.
 

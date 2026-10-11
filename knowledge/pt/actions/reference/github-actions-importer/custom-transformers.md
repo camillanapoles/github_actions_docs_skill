@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Reference / Github actions importer
 ---
 
-# Estendendo o Importador do GitHub Actions com transformadores personalizados { #extending-github-actions-importer-with-custom-transformers }
+# Estendendo o Importador do GitHub Actions com transformadores personalizados
 
 _GitHub Actions Importer oferece a capacidade de estender seu mapeamento interno._
 
-## Sobre transformadores personalizados { #about-custom-transformers }
+## Sobre transformadores personalizados
 
 GitHub Actions Importer oferece a capacidade de estender seu mapeamento interno criando transformadores personalizados. Os transformadores personalizados podem ser usados para:
 
@@ -22,7 +22,7 @@ GitHub Actions Importer oferece a capacidade de estender seu mapeamento interno 
 * Converta referências em executores para usar rótulos de executores diferentes. Para mais informações, consulte [Como criar transformadores personalizados para executores](#creating-custom-transformers-for-runners).
 * Converta os valores das variáveis de ambiente dos seus pipelines existentes para fluxos de trabalho GitHub Actions. Para obter mais informações, confira [Como criar transformadores personalizados para variáveis de ambiente](#creating-custom-transformers-for-environment-variables).
 
-## Usando transformadores personalizados com GitHub Actions Importer { #using-custom-transformers-with-github-actions-importer }
+## Usando transformadores personalizados com GitHub Actions Importer
 
 Um transformador personalizado contém a lógica de mapeamento que GitHub Actions Importer pode usar para transformar seus plug-ins, tarefas, rótulos de executores ou variáveis de ambiente para funcionarem com GitHub Actions. Os transformadores personalizados são gravados com uma DSL (linguagem específica de domínio) criada com base no Ruby e são definidos em um arquivo com a extensão de arquivo `.rb`.
 
@@ -43,7 +43,7 @@ gh actions-importer ... --custom-transformers transformers/*.rb
 !!! note
     Quando você usa transformadores personalizados, os arquivos de transformador personalizados precisam residir no mesmo diretório ou em subdiretórios, no local em que o comando `gh actions-importer` é executado.
 
-## Criar transformadores personalizados para itens { #creating-custom-transformers-for-items }
+## Criar transformadores personalizados para itens
 
 Você pode criar transformadores personalizados que GitHub Actions Importer usará ao converter etapas de build existentes ou gatilhos em seus equivalentes no GitHub Actions. Isso é especialmente útil quando:
 
@@ -56,7 +56,7 @@ GitHub Actions Importer usa transformadores personalizados que são definidos us
 * Cada arquivo de transformador personalizado deve conter pelo menos um método `transform`.
 * Cada método `transform` deve retornar um `Hash`, uma matriz de `Hash` ou `nil`. Esse valor retornado corresponderá a uma ação definida no YAML. Para obter mais informações sobre ações, confira [Noções básicas sobre GitHub Actions](../../get-started/understand-github-actions.md).
 
-### Exemplo de transformador personalizado para uma etapa de compilação { #example-custom-transformer-for-a-build-step }
+### Exemplo de transformador personalizado para uma etapa de compilação
 
 O seguinte exemplo converte uma etapa de compilação que usa o identificador "buildJavaScriptApp" para executar vários comandos `npm`:
 
@@ -88,7 +88,7 @@ O método `transform` usa o identificador da etapa de compilação da instância
 !!! note
     A estrutura de dados de `item` será diferente dependendo da plataforma de CI/CD e do tipo de item que está sendo convertido.
 
-## Criando transformadores customizados para runners { #creating-custom-transformers-for-runners }
+## Criando transformadores customizados para runners
 
 Você pode personalizar o mapeamento entre os executores na instância de CI/CD de origem e seus executores GitHub Actions equivalentes.
 
@@ -97,7 +97,7 @@ GitHub Actions Importer usa transformadores personalizados que são definidos us
 * O arquivo de transformador personalizado deve ter pelo menos um método `runner`.
 * O método `runner` aceita dois parâmetros. O primeiro parâmetro é o rótulo de executor da instância de CI/CD de origem e o segundo parâmetro é o rótulo de executor correspondente GitHub Actions . Para obter mais informações sobre os executores GitHub Actions, consulte [Referência de executores hospedados pelo GitHub](../runners/github-hosted-runners.md#supported-runners-and-hardware-resources).
 
-### Exemplo de transformadores personalizados para runners { #example-custom-transformers-for-runners }
+### Exemplo de transformadores personalizados para runners
 
 O exemplo a seguir mostra um método `runner` que converte um rótulo de executor em um rótulo de executor GitHub Actions no fluxo de trabalho resultante.
 
@@ -117,7 +117,7 @@ GitHub Actions Importer tenta mapear o rótulo do executor da melhor forma poss�
 runner :default, "macos-latest"
 ```
 
-## Criar transformadores personalizados para variáveis de ambiente { #creating-custom-transformers-for-environment-variables }
+## Criar transformadores personalizados para variáveis de ambiente
 
 Você pode personalizar o mapeamento entre as variáveis de ambiente dos seus pipelines de CI/CD de origem e seus respectivos valores em GitHub Actions.
 
@@ -126,7 +126,7 @@ GitHub Actions Importer usa transformadores personalizados que são definidos us
 * O arquivo de transformador personalizado deve ter pelo menos um método `env`.
 * O método `env` aceita dois parâmetros. O primeiro parâmetro é o nome da variável de ambiente no pipeline original e o segundo parâmetro é o valor atualizado da variável de ambiente para GitHub Actions. Para obter mais informações sobre GitHub Actions variáveis de ambiente, consulte [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md).
 
-### Exemplo de transformadores personalizados para variáveis de ambiente { #example-custom-transformers-for-environment-variables }
+### Exemplo de transformadores personalizados para variáveis de ambiente
 
 Há várias maneiras de configurar os transformadores personalizados para mapear suas variáveis de ambiente.
 
@@ -166,7 +166,7 @@ Há várias maneiras de configurar os transformadores personalizados para mapear
 
   > A ordem na qual os métodos `env` são definidos importa ao usar expressões regulares. O primeiro transformador `env` que corresponde a um nome de variável de ambiente tem precedência sobre métodos `env` subsequentes. Você deve definir primeiro os transformadores de variáveis de ambiente mais específicos.
 
-## Aviso legal { #legal-notice }
+## Aviso legal
 
 Partes foram adaptadas do <https://github.com/github/gh-actions-importer/> de acordo com a licença MIT:
 

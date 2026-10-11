@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Manage runners / Self hosted runners
 ---
 
-# Usar os executores auto-hospedados em um fluxo de trabalho { #using-self-hosted-runners-in-a-workflow }
+# Usar os executores auto-hospedados em um fluxo de trabalho
 
 _Para usar executores auto-hospedados em um fluxo de trabalho, você pode usar rótulos ou grupos para especificar o executor para uma tarefa._
 
-## Exibindo executores disponíveis para um repositório { #viewing-available-runners-for-a-repository }
+## Exibindo executores disponíveis para um repositório
 
 Se você tiver `repo: write` acesso a um repositório, poderá exibir uma lista dos executores disponíveis para o repositório.
 
@@ -32,7 +32,7 @@ Se você tiver `repo: write` acesso a um repositório, poderá exibir uma lista 
 
     Para obter mais informações, consulte [Gerenciar executores maiores](../larger-runners/manage-larger-runners.md) e [Adicionar executores auto-hospedados](add-runners.md).
 
-## Usar etiquetas-padrão para rotear tarefas { #using-default-labels-to-route-jobs }
+## Usar etiquetas-padrão para rotear tarefas
 
 Um executor hospedado localmente recebe automaticamente determinados rótulos ao ser adicionado a GitHub Actions. Elas são usadas para indicar seu sistema operacional e sua plataforma de hardware:
 
@@ -52,7 +52,7 @@ runs-on: [self-hosted, linux, ARM64]
 
 Para criar corredores auto-hospedados individuais sem os rótulos padrão, passe o sinalizador `--no-default-labels` ao criar o corredor.
 
-## Usar etiquetas personalizadas para rotear trabalhos { #using-custom-labels-to-route-jobs }
+## Usar etiquetas personalizadas para rotear trabalhos
 
 Você pode criar etiquetas personalizadas e atribuí-las aos seus executores auto-hospedados a qualquer momento. As etiquetas personalizadas permitem que você envie trabalhos para determinados tipos de executores auto-hospedados, com base no modo como como são rotulados.
 
@@ -71,7 +71,7 @@ runs-on: [self-hosted, linux, x64, gpu]
 
 Esses rótulos operam cumulativamente. Portanto, um executor auto-hospedado precisa ter todos os quatro rótulos para estar qualificado a processar o trabalho.
 
-## Como usar grupos para rotear trabalhos { #using-groups-to-route-jobs }
+## Como usar grupos para rotear trabalhos
 
 Neste exemplo, foram adicionados executores a um grupo chamado `build-runners`. A chave `runs-on` envia o trabalho para qualquer executor disponível no grupo `build-runners`:
 
@@ -91,7 +91,7 @@ jobs:
       - run: bats -v
 ```
 
-## Como usar rótulos e grupos para rotear trabalhos { #using-labels-and-groups-to-route-jobs }
+## Como usar rótulos e grupos para rotear trabalhos
 
 Quando você combina grupos e rótulos, o executor deve atender aos dois requisitos para ser qualificado para executar o trabalho.
 

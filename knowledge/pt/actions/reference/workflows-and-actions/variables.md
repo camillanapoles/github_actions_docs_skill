@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: Reference / Workflows and actions
 ---
 
-# Referência de variáveis { #variables-reference }
+# Referência de variáveis
 
 _Encontre informações para variáveis com suporte, convenções de nomenclatura, limites e contextos em GitHub Actions fluxos de trabalho._
 
@@ -18,7 +18,7 @@ Este artigo lista as variáveis com suporte que você pode usar em GitHub Action
 
 Para obter mais informações sobre variáveis, confira [Variáveis](../../concepts/workflows-and-actions/variables.md).
 
-## Variáveis de ambiente padrão { #default-environment-variables }
+## Variáveis de ambiente padrão
 
 As variáveis de ambiente padrão que GitHub definem estão disponíveis para cada etapa em um fluxo de trabalho.
 
@@ -84,7 +84,7 @@ GitHub define variáveis para ações a serem usadas em todos os ambientes de ex
 | O caminho para um diretório temporário no executor. Este diretório é esvaziado no início e no final de cada trabalho. Observe que os arquivos não serão removidos se a conta de usuário do executor não tiver permissão para excluí-los. Por exemplo `D:\a_temp` |  |
 | `RUNNER_TOOL_CACHE` |  |
 | O caminho para o diretório contendo ferramentas pré-instaladas de executores GitHub hospedados. Para saber mais, confira [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images). Por exemplo `C:\hostedtoolcache\windows` | !!! note<br>Caso precise usar a URL de execução de um fluxo de trabalho dentro de um trabalho, combine estas variáveis: `$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID` |
-## Convenções de nomenclatura para variáveis de configuração { #naming-conventions-for-configuration-variables }
+## Convenções de nomenclatura para variáveis de configuração
 
 As seguintes regras se aplicam aos nomes de variáveis de configuração:
 
@@ -94,14 +94,14 @@ As seguintes regras se aplicam aos nomes de variáveis de configuração:
 * Não diferenciam maiúsculas de minúsculas quando referenciados. GitHub armazena nomes secretos como maiúsculas, independentemente de como eles são inseridos.
 * Deve ser exclusivo para o repositório, a organização ou a empresa em que são criados.
 
-## Convenções de nomenclatura para variáveis de ambiente { #naming-conventions-for-environment-variables }
+## Convenções de nomenclatura para variáveis de ambiente
 
 Ao definir uma variável de ambiente, você não pode usar nenhum dos nomes das variáveis de ambiente padrão. Para obter uma lista completa de variáveis de ambiente padrão, confira [Referência de variáveis](variables.md#default-environment-variables) abaixo. Se você tentar substituir o valor de uma dessas variáveis padrão, a atribuição será ignorada.
 
 !!! note
     Você pode listar todo o conjunto de variáveis de ambiente disponíveis para uma etapa de fluxo de trabalho usando `run: env` em uma etapa e analisando a saída da etapa.
 
-## Precedência da variável de configuração { #configuration-variable-precedence }
+## Precedência da variável de configuração
 
 Se houver uma variável com mesmo nome em vários níveis, a variável do nível mais baixo terá precedência. Por exemplo, se uma variável no nível da organização tiver o mesmo nome que uma no nível do repositório, a segunda terá precedência. Da mesma forma, se uma organização, um repositório e um ambiente tiverem uma variável com mesmo nome, àquela no nível do ambiente terá precedência.
 
@@ -110,7 +110,7 @@ Se houver uma variável com mesmo nome em vários níveis, a variável do nível
 
 Para fluxos de trabalho reutilizáveis, são usadas as variáveis do repositório do fluxo de trabalho do chamador. As variáveis do repositório que contém o fluxo de trabalho chamado não são disponibilizadas para o fluxo de trabalho do chamador.
 
-## Limites para variáveis de configuração { #limits-for-configuration-variables }
+## Limites para variáveis de configuração
 
 As variáveis individuais são limitadas a 48 KB.
 
@@ -125,7 +125,7 @@ Um fluxo de trabalho criado em um repositório pode acessar o seguinte número d
 !!! note
     As variáveis de nível de ambiente não contam para o limite de tamanho total de 256 KB. Se você exceder o limite de tamanho combinado para variáveis de repositório e de organização e ainda precisar de variáveis adicionais, poderá usar um ambiente e definir mais variáveis no ambiente.
 
-## Contextos com suporte { #supported-contexts }
+## Contextos com suporte
 
 Normalmente, você usará o contexto `env` ou `github` para acessar valores de variáveis em partes do fluxo de trabalho processadas antes que os trabalhos sejam enviados aos executores.
 

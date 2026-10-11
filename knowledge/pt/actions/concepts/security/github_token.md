@@ -14,7 +14,7 @@ section: Concepts / Security
 
 _Saiba o que GITHUB_TOKEN é, como funciona e por que ele é importante para a automação segura em GitHub Actions fluxos de trabalho._
 
-## Sobre o `GITHUB_TOKEN` { #about-the-githubtoken }
+## Sobre o `GITHUB_TOKEN`
 
 No início de cada tarefa do fluxo de trabalho, GitHub cria automaticamente um segredo exclusivo `GITHUB_TOKEN` a ser usado no fluxo de trabalho. Use o `GITHUB_TOKEN` para se autenticar em um fluxo de trabalho.
 
@@ -29,7 +29,7 @@ O tempo de vida útil máximo efetivo do token depende do tipo de runner:
 
 O token também está disponível no contexto `github.token`. Para obter mais informações, consulte [Referência de contextos](../../reference/workflows-and-actions/contexts.md#github-context).
 
-## Quando `GITHUB_TOKEN` dispara execuções do fluxo de trabalho { #when-githubtoken-triggers-workflow-runs }
+## Quando `GITHUB_TOKEN` dispara execuções do fluxo de trabalho
 
 Quando você usa o `GITHUB_TOKEN` do repositório para executar tarefas, os eventos acionados pelo `GITHUB_TOKEN` não criarão uma nova execução de fluxo de trabalho, com as seguintes exceções:
 
@@ -47,7 +47,7 @@ Para todos os outros eventos, esse comportamento impede que você crie acidental
 
 Commits enviados por push por um fluxo de trabalho de GitHub Actions que usa o `GITHUB_TOKEN` não disparam um build de GitHub Pages.
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 * [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md)
 * [Sintaxe de fluxo de trabalho para o GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md#permissions)

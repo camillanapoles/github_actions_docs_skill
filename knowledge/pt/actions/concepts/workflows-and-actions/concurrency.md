@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: Concepts / Workflows and actions
 ---
 
-# Concorrência { #concurrency }
+# Concorrência
 
 _Saiba mais sobre como executar fluxos de trabalho e trabalhos ao mesmo tempo._
 
