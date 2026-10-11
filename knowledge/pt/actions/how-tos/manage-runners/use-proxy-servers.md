@@ -20,9 +20,9 @@ Se o executor precisar se comunicar por meio de um servidor proxy, você poderá
 
 | Variable | Description | Example |
 | --- | --- | --- |
-| `https_proxy` | URL de proxy para tráfego HTTPS. Você pode incluir a autenticação básica, se necessário. | `http://proxy.local` `http://192.168.1.1:8080` `http://username:password@proxy.local` |
-| `http_proxy` | URL de proxy para tráfego HTTP. Você pode incluir a autenticação básica, se necessário. | `http://proxy.local` `http://192.168.1.1:8080` `http://username:password@proxy.local` |
-| `no_proxy` | Uma lista separada por vírgulas de hosts ou endereços IP que devem ignorar o proxy. Alguns clientes só respeitam endereços IP quando as conexões são feitas diretamente com o IP em vez de um nome de host. | `example.com` `example.com,myserver.local:443,example.org` |
+| `https_proxy` | URL de proxy para tráfego HTTPS. Você pode incluir a autenticação básica, se necessário. | `http://proxy.local`<br>`http://192.168.1.1:8080`<br>`http://username:password@proxy.local` |
+| `http_proxy` | URL de proxy para tráfego HTTP. Você pode incluir a autenticação básica, se necessário. | `http://proxy.local`<br>`http://192.168.1.1:8080`<br>`http://username:password@proxy.local` |
+| `no_proxy` | Uma lista separada por vírgulas de hosts ou endereços IP que devem ignorar o proxy. Alguns clientes só respeitam endereços IP quando as conexões são feitas diretamente com o IP em vez de um nome de host. | `example.com`<br>`example.com,myserver.local:443,example.org` |
 
 As variáveis de ambiente de proxy são lidas quando o aplicativo executor é iniciado, portanto, você deve definir as variáveis de ambiente antes de configurar ou iniciar o aplicativo executor. Se a configuração do proxy for alterada, você deverá reiniciar o aplicativo executor.
 

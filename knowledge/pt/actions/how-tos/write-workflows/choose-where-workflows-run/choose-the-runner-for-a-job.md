@@ -74,27 +74,9 @@ Para saber mais, confira [Executores hospedados no GitHub](../../../concepts/run
 Para repositórios públicos, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados com as especificações associadas.
 Com exceção dos executores de CPU única, cada executor hospedado por GitHub é uma nova máquina virtual (VM) hospedada por GitHub. Processos de CPU única são hospedados em um contêiner em uma VM compartilhada—consulte [Referência de executores hospedados pelo GitHub](../../../reference/runners/github-hosted-runners.md#single-cpu-runners). O uso dos executores hospedados padrão GitHubé gratuito e ilimitado em repositórios públicos.
 
-**Máquina virtual/contêiner**
-
-**Processador (CPU)**
-
-**Memória (RAM)**
-
-**Armazenamento (SSD)**
-
-**Arquitetura**
-
-**Rótulo do fluxo de trabalho**
-
-Linux
-
-1
-
-5 GB
-
-14 GB
-
-x64
+| **Máquina virtual/contêiner** | **Processador (CPU)** | **Memória (RAM)** | **Armazenamento (SSD)** | **Arquitetura** | **Rótulo do fluxo de trabalho** |
+|-----------------------------|---------------------|-----------------|-----------------------|---------------|-------------------------------|
+| Linux                         | 1                     | 5 GB              | 14 GB                   | x64             |                                 |
             `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
 Linux
 
@@ -165,27 +147,9 @@ x64
 
 Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a alocação de minutos gratuitos da sua GitHub conta e, posteriormente, são cobrados a taxas por minuto de uso. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
-**Máquina virtual**
-
-**Processador (CPU)**
-
-**Memória (RAM)**
-
-**Armazenamento (SSD)**
-
-**Arquitetura**
-
-**Rótulo do fluxo de trabalho**
-
-Linux
-
-1
-
-5 GB
-
-14 GB
-
-x64
+| **Máquina virtual** | **Processador (CPU)** | **Memória (RAM)** | **Armazenamento (SSD)** | **Arquitetura** | **Rótulo do fluxo de trabalho** |
+|-------------------|---------------------|-----------------|-----------------------|---------------|-------------------------------|
+| Linux               | 1                     | 5 GB              | 14 GB                   | x64             |                                 |
             `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
 Linux
 

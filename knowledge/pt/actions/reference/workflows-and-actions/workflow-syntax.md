@@ -775,7 +775,7 @@ Permissões disponíveis e detalhes do que cada uma permite que uma ação faça
 | `packages` | Trabalhar com GitHub Packages. Por exemplo, `packages: write` permite que uma ação carregue e publique pacotes no GitHub Packages. Para obter mais informações, confira [Sobre permissões para o GitHub Packages](https://docs.github.com/pt/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries). |
 | `pages` | Trabalhar com páginas do GitHub. Por exemplo, `pages: write` permite que uma ação solicite um build de GitHub Pages. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pages). |
 | `pull-requests` | Trabalhar com solicitações de pull. Por exemplo, `pull-requests: write` permite que uma ação adicione um rótulo a uma PR. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pull-requests). |
-| `security-events` | Trabalhar com alertas de verificação de código do GitHub. Por exemplo, `security-events: read` permite que uma ação liste os alertas da digitalização de código para o repositório e `security-events: write` permite que uma ação atualize o status de um alerta de digitalização de código. Para obter mais informações, consulte [as permissões do Repositório para "Alertas de verificação de código"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts). |
+| `security-events` | Trabalhar com alertas de verificação de código do GitHub. Por exemplo, `security-events: read` permite que uma ação liste os alertas da digitalização de código para o repositório e `security-events: write` permite que uma ação atualize o status de um alerta de digitalização de código. Para obter mais informações, consulte [as permissões do Repositório para "Alertas de verificação de código"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts). <br><br> |
 | Para alertas do Dependabot, use a permissão `vulnerability-alerts`. Os alertas de verificação secreta não podem ser lidos com essa permissão e exigem um aplicativo GitHub ou um personal access token. Para obter mais informações, consulte [Permissões de Repositório para "Alertas de verificação de segredos"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) em "Permissões necessárias para aplicativos GitHub". |  |
 | `statuses` | Trabalhar com status de commits. Por exemplo, `statuses:read` permite que uma ação liste os status de commit de uma determinada referência. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses). |
 | `vulnerability-alerts` | Leia os alertas do Dependabot. Por exemplo, `vulnerability-alerts: read` permite que uma ação liste os alertas do Dependabot para o repositório. Somente `read` e `none` há suporte; `write` não é válido. Quando `write-all` ou `read-all` é usado, `vulnerability-alerts` é incluído automaticamente como `read`. Para obter mais informações, consulte [as permissões do Repositório para "Alertas do Dependabot"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
@@ -1167,7 +1167,7 @@ Permissões disponíveis e detalhes do que cada uma permite que uma ação faça
 | `packages` | Trabalhar com GitHub Packages. Por exemplo, `packages: write` permite que uma ação carregue e publique pacotes no GitHub Packages. Para obter mais informações, confira [Sobre permissões para o GitHub Packages](https://docs.github.com/pt/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries). |
 | `pages` | Trabalhar com páginas do GitHub. Por exemplo, `pages: write` permite que uma ação solicite um build de GitHub Pages. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pages). |
 | `pull-requests` | Trabalhar com solicitações de pull. Por exemplo, `pull-requests: write` permite que uma ação adicione um rótulo a uma PR. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pull-requests). |
-| `security-events` | Trabalhar com alertas de verificação de código do GitHub. Por exemplo, `security-events: read` permite que uma ação liste os alertas da digitalização de código para o repositório e `security-events: write` permite que uma ação atualize o status de um alerta de digitalização de código. Para obter mais informações, consulte [as permissões do Repositório para "Alertas de verificação de código"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts). |
+| `security-events` | Trabalhar com alertas de verificação de código do GitHub. Por exemplo, `security-events: read` permite que uma ação liste os alertas da digitalização de código para o repositório e `security-events: write` permite que uma ação atualize o status de um alerta de digitalização de código. Para obter mais informações, consulte [as permissões do Repositório para "Alertas de verificação de código"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts). <br><br> |
 | Para alertas do Dependabot, use a permissão `vulnerability-alerts`. Os alertas de verificação secreta não podem ser lidos com essa permissão e exigem um aplicativo GitHub ou um personal access token. Para obter mais informações, consulte [Permissões de Repositório para "Alertas de verificação de segredos"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) em "Permissões necessárias para aplicativos GitHub". |  |
 | `statuses` | Trabalhar com status de commits. Por exemplo, `statuses:read` permite que uma ação liste os status de commit de uma determinada referência. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses). |
 | `vulnerability-alerts` | Leia os alertas do Dependabot. Por exemplo, `vulnerability-alerts: read` permite que uma ação liste os alertas do Dependabot para o repositório. Somente `read` e `none` há suporte; `write` não é válido. Quando `write-all` ou `read-all` é usado, `vulnerability-alerts` é incluído automaticamente como `read`. Para obter mais informações, consulte [as permissões do Repositório para "Alertas do Dependabot"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
@@ -1369,27 +1369,9 @@ Para saber mais, confira [Executores hospedados no GitHub](../../concepts/runner
 Para repositórios públicos, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados com as especificações associadas.
 Com exceção dos executores de CPU única, cada executor hospedado por GitHub é uma nova máquina virtual (VM) hospedada por GitHub. Processos de CPU única são hospedados em um contêiner em uma VM compartilhada—consulte [Referência de executores hospedados pelo GitHub](../runners/github-hosted-runners.md#single-cpu-runners). O uso dos executores hospedados padrão GitHubé gratuito e ilimitado em repositórios públicos.
 
-**Máquina virtual/contêiner**
-
-**Processador (CPU)**
-
-**Memória (RAM)**
-
-**Armazenamento (SSD)**
-
-**Arquitetura**
-
-**Rótulo do fluxo de trabalho**
-
-Linux
-
-1
-
-5 GB
-
-14 GB
-
-x64
+| **Máquina virtual/contêiner** | **Processador (CPU)** | **Memória (RAM)** | **Armazenamento (SSD)** | **Arquitetura** | **Rótulo do fluxo de trabalho** |
+|-----------------------------|---------------------|-----------------|-----------------------|---------------|-------------------------------|
+| Linux                         | 1                     | 5 GB              | 14 GB                   | x64             |                                 |
             `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
 Linux
 
@@ -1460,27 +1442,9 @@ x64
 
 Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a alocação de minutos gratuitos da sua GitHub conta e, posteriormente, são cobrados a taxas por minuto de uso. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
-**Máquina virtual**
-
-**Processador (CPU)**
-
-**Memória (RAM)**
-
-**Armazenamento (SSD)**
-
-**Arquitetura**
-
-**Rótulo do fluxo de trabalho**
-
-Linux
-
-1
-
-5 GB
-
-14 GB
-
-x64
+| **Máquina virtual** | **Processador (CPU)** | **Memória (RAM)** | **Armazenamento (SSD)** | **Arquitetura** | **Rótulo do fluxo de trabalho** |
+|-------------------|---------------------|-----------------|-----------------------|---------------|-------------------------------|
+| Linux               | 1                     | 5 GB              | 14 GB                   | x64             |                                 |
             `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
 Linux
 

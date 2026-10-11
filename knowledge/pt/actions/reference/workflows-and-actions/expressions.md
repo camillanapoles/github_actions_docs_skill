@@ -80,7 +80,7 @@ GitHub executa comparações de igualdade soltas.
 
 `true` retorna `1`
 `false` retorna `0` |
-\| String  | Analisado de qualquer formato de número JSON legal, caso contrário, `NaN`.   Observação: a cadeia de caracteres vazia retorna `0`. |
+\| String  | Analisado de qualquer formato de número JSON legal, caso contrário, `NaN`.  Observação: a cadeia de caracteres vazia retorna `0`. |
 \| Array   | `NaN` |
 \| Objeto  | `NaN` |
 

@@ -29,7 +29,7 @@ Assim como os fluxos de trabalho GitHub Actions, agentic workflows podem ser dis
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`branch_protection_rule`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#branch_protection_rule) | - `created` - `edited` - `deleted` | Último commit no branch padrão | Branch padrão |
+| [`branch_protection_rule`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#branch_protection_rule) | - `created`<br>- `edited`<br>- `deleted` | Último commit no branch padrão | Branch padrão |
 
 !!! note
     \*
@@ -51,7 +51,7 @@ on:
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`check_run`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#check_run) | - `created` - `rerequested` - `completed` - `requested_action` | Último commit no branch padrão | Branch padrão |
+| [`check_run`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#check_run) | - `created`<br>- `rerequested`<br>- `completed`<br>- `requested_action` | Último commit no branch padrão | Branch padrão |
 
 !!! note
     \*
@@ -167,7 +167,7 @@ on:
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`discussion`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#discussion) | - `created` - `edited` - `deleted` - `transferred` - `pinned` - `unpinned` - `labeled` - `unlabeled` - `locked` - `unlocked` - `category_changed`  - `answered`  - `unanswered` | Último commit no branch padrão | Branch padrão |
+| [`discussion`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#discussion) | - `created`<br>- `edited`<br>- `deleted`<br>- `transferred`<br>- `pinned`<br>- `unpinned`<br>- `labeled`<br>- `unlabeled`<br>- `locked`<br>- `unlocked`<br>- `category_changed`<br> - `answered`<br> - `unanswered` | Último commit no branch padrão | Branch padrão |
 
 !!! note
     \*
@@ -190,7 +190,7 @@ on:
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`discussion_comment`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#discussion_comment) | - `created` - `edited` - `deleted` | Último commit no branch padrão | Branch padrão |
+| [`discussion_comment`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#discussion_comment) | - `created`<br>- `edited`<br>- `deleted`<br> | Último commit no branch padrão | Branch padrão |
 
 !!! note
     \*
@@ -270,7 +270,7 @@ on:
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`issue_comment`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#issue_comment) | - `created` - `edited` - `deleted` | Último commit no branch padrão | Branch padrão |
+| [`issue_comment`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#issue_comment) | - `created`<br>- `edited`<br>- `deleted`<br> | Último commit no branch padrão | Branch padrão |
 
 !!! note
     \*
@@ -325,7 +325,7 @@ jobs:
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`issues`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#issues) | - `opened` - `edited` - `deleted` - `transferred` - `pinned` - `unpinned` - `closed` - `reopened` - `assigned` - `unassigned` - `labeled` - `unlabeled` - `locked` - `unlocked` - `milestoned`  - `demilestoned`  - `typed`  - `untyped`  - `field_added`  - `field_removed` | Último commit no branch padrão | Branch padrão |
+| [`issues`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#issues) | - `opened`<br>- `edited`<br>- `deleted`<br>- `transferred`<br>- `pinned`<br>- `unpinned`<br>- `closed`<br>- `reopened`<br>- `assigned`<br>- `unassigned`<br>- `labeled`<br>- `unlabeled`<br>- `locked`<br>- `unlocked`<br>- `milestoned`<br> - `demilestoned`<br> - `typed`<br> - `untyped`<br> - `field_added`<br> - `field_removed` | Último commit no branch padrão | Branch padrão |
 
 !!! note
     \*
@@ -355,7 +355,7 @@ on:
 
 | Carga de evento webhook                                   | Tipos de Atividade                              | `GITHUB_SHA`                   | `GITHUB_REF`  |
 |---------------------------------------------------------|-----------------------------------------------|------------------------------|-------------|
-| [`label`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#label) | - `created` - `edited` - `deleted`              | Último commit no branch padrão | Branch padrão |
+| [`label`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#label) | - `created`<br>- `edited`<br>- `deleted`<br>    | Último commit no branch padrão | Branch padrão |
 
 !!! note
     \*
@@ -407,7 +407,7 @@ on:
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`milestone`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#milestone) | - `created` - `closed` - `opened` - `edited` - `deleted` | Último commit no branch padrão | Branch padrão |
+| [`milestone`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#milestone) | - `created`<br>- `closed`<br>- `opened`<br>- `edited`<br>- `deleted`<br> | Último commit no branch padrão | Branch padrão |
 
 !!! note
     \*
@@ -467,7 +467,7 @@ on:
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`pull_request`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#pull_request) | - `assigned` - `unassigned` - `labeled` - `unlabeled` - `opened` - `edited` - `closed` - `reopened` - `synchronize` - `converted_to_draft` - `locked` - `unlocked` - `enqueued` - `dequeued` - `milestoned` - `demilestoned` - `ready_for_review` - `review_requested` - `review_request_removed` - `auto_merge_enabled` - `auto_merge_disabled` | Último commit de mesclagem no branch `GITHUB_REF` | Branch de mesclagem de PR `refs/pull/PULL_REQUEST_NUMBER/merge` |
+| [`pull_request`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#pull_request) | - `assigned`<br>- `unassigned`<br>- `labeled`<br>- `unlabeled`<br>- `opened`<br>- `edited`<br>- `closed`<br>- `reopened`<br>- `synchronize`<br>- `converted_to_draft`<br>- `locked`<br>- `unlocked`<br>- `enqueued`<br>- `dequeued`<br>- `milestoned`<br>- `demilestoned`<br>- `ready_for_review`<br>- `review_requested`<br>- `review_request_removed`<br>- `auto_merge_enabled`<br>- `auto_merge_disabled` | Último commit de mesclagem no branch `GITHUB_REF` | Branch de mesclagem de PR `refs/pull/PULL_REQUEST_NUMBER/merge` |
 
 !!! note
     \*
@@ -628,7 +628,7 @@ Para executar o fluxo de trabalho quando um comentário em uma solicitação de 
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`pull_request_review`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#pull_request_review) | - `submitted` - `edited` - `dismissed` | Último commit de mesclagem no branch `GITHUB_REF` | Branch de mesclagem de PR `refs/pull/PULL_REQUEST_NUMBER/merge` |
+| [`pull_request_review`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#pull_request_review) | - `submitted`<br>- `edited`<br>- `dismissed` | Último commit de mesclagem no branch `GITHUB_REF` | Branch de mesclagem de PR `refs/pull/PULL_REQUEST_NUMBER/merge` |
 
 !!! note
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#pull_request_review). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
@@ -681,7 +681,7 @@ Para pull requests de um repositório com forks para um repositório privado, os
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`pull_request_review_comment`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#pull_request_review_comment) | - `created` - `edited` - `deleted` | Último commit de mesclagem no branch `GITHUB_REF` | Branch de mesclagem de PR `refs/pull/PULL_REQUEST_NUMBER/merge` |
+| [`pull_request_review_comment`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#pull_request_review_comment) | - `created`<br>- `edited`<br>- `deleted` | Último commit de mesclagem no branch `GITHUB_REF` | Branch de mesclagem de PR `refs/pull/PULL_REQUEST_NUMBER/merge` |
 
 !!! note
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#pull_request_review_comment). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
@@ -906,7 +906,7 @@ on:
 
 | Carga de evento webhook                                                | Tipos de Atividade            | `GITHUB_SHA`               | `GITHUB_REF`                      |
 |----------------------------------------------------------------------|-----------------------------|--------------------------|---------------------------------|
-| [`registry_package`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#package) | - `published` - `updated`     | Commit do pacote publicado | Branch ou tag do pacote publicado |
+| [`registry_package`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#package) | - `published`<br>- `updated`  | Commit do pacote publicado | Branch ou tag do pacote publicado |
 
 !!! note
     \*
@@ -935,7 +935,7 @@ on:
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`release`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#release) | - `published`  - `unpublished`  - `created`  - `edited`  - `deleted`  - `prereleased`  - `released` | Último commit na versão com tag | Referência de marca da versão `refs/tags/<tag_name>` |
+| [`release`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#release) | - `published` <br>- `unpublished` <br>- `created` <br>- `edited` <br>- `deleted` <br>- `prereleased`<br> - `released` | Último commit na versão com tag | Referência de marca da versão `refs/tags/<tag_name>` |
 
 !!! note
     \*
@@ -1260,7 +1260,7 @@ Para obter mais informações, consulte as GitHub CLI informações em [Executar
 
 | Carga de evento webhook                                                 | Tipos de Atividade                                  | `GITHUB_SHA`                   | `GITHUB_REF`  |
 |-----------------------------------------------------------------------|---------------------------------------------------|------------------------------|-------------|
-| [`workflow_run`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#workflow_run) | - `completed` - `requested` - `in_progress`         | Último commit no branch padrão | Branch padrão |
+| [`workflow_run`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#workflow_run) | - `completed`<br>- `requested`<br>- `in_progress`   | Último commit no branch padrão | Branch padrão |
 
 !!! note
     \*
