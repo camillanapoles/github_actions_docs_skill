@@ -72,7 +72,7 @@ sudo ./svc.sh start
     Em sistemas Linux baseados em Debian (como Debian ou Ubuntu) com `needrestart` habilitado, `needrestart` você pode impedir a reinicialização do serviço executor durante um trabalho de fluxo de trabalho configurando-o para ignorar o serviço executor. Execute o comando a seguir:
 
                 ```bash
-    echo '$nrconf{override_rc}{qr(^actions.runner..+.service$)} = 0;' | sudo tee /etc/needrestart/conf.d/actions_runner_services.conf
+    echo '$nrconf{override_rc}{qr(^actions\.runner\..+\.service$)} = 0;' | sudo tee /etc/needrestart/conf.d/actions_runner_services.conf
     ```
 
 ```shell

@@ -230,7 +230,7 @@ jobs:
 
 ## Como aninhar fluxos de trabalho reutilizáveis
 
-Você pode conectar no máximo dez níveis de fluxos de trabalho, ou seja, o fluxo de trabalho de chamadas de nível superior e até nove níveis de fluxos de trabalho reutilizáveis. Por exemplo: *caller-workflow.yml\_\_→ called-workflow-1.yml\_\_→ called-workflow-2.yml* → *called-workflow-3.yml* →... → *called-workflow-9.yml*.
+Você pode conectar no máximo dez níveis de fluxos de trabalho, ou seja, o fluxo de trabalho de chamadas de nível superior e até nove níveis de fluxos de trabalho reutilizáveis. Por exemplo: *caller-workflow\.yml\_\_→ called-workflow-1.yml\_\_→ called-workflow-2.yml* → *called-workflow-3.yml* →... → *called-workflow-9.yml*.
 
 Loops na árvore de fluxo de trabalho não são permitidos.
 

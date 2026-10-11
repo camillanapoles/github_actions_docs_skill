@@ -37,19 +37,8 @@ Para repositórios públicos, os trabalhos que usam os rótulos de fluxo de trab
 Com exceção dos executores de CPU única, cada executor hospedado por GitHub é uma nova máquina virtual (VM) hospedada por GitHub. Processos de CPU única são hospedados em um contêiner em uma VM compartilhada—consulte [Referência de executores hospedados pelo GitHub](github-hosted-runners.md#single-cpu-runners). O uso dos executores hospedados padrão GitHubé gratuito e ilimitado em repositórios públicos.
 
 | **Máquina virtual/contêiner** | **Processador (CPU)** | **Memória (RAM)** | **Armazenamento (SSD)** | **Arquitetura** | **Rótulo do fluxo de trabalho** |
-|-----------------------------|---------------------|-----------------|-----------------------|---------------|-------------------------------|
-| Linux                         | 1                     | 5 GB              | 14 GB                   | x64             |                                 |
-            `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
-Linux
-
-4
-
-16 GB
-
-14 GB
-
-x64
-
+| --- | --- | --- | --- | --- | --- |
+| Linux | 1 | 5 GB | 14 GB | x64 | `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`<br>Linux<br>4<br>16 GB<br>14 GB<br>x64 |
 ```
     <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
 </tr>
@@ -110,19 +99,8 @@ x64
 Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a alocação de minutos gratuitos da sua GitHub conta e, posteriormente, são cobrados a taxas por minuto de uso. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
 | **Máquina virtual** | **Processador (CPU)** | **Memória (RAM)** | **Armazenamento (SSD)** | **Arquitetura** | **Rótulo do fluxo de trabalho** |
-|-------------------|---------------------|-----------------|-----------------------|---------------|-------------------------------|
-| Linux               | 1                     | 5 GB              | 14 GB                   | x64             |                                 |
-            `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
-Linux
-
-2
-
-8 GB
-
-14 GB
-
-x64
-
+| --- | --- | --- | --- | --- | --- |
+| Linux | 1 | 5 GB | 14 GB | x64 | `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`<br>Linux<br>2<br>8 GB<br>14 GB<br>x64 |
 ```
     <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
 </tr>
@@ -325,10 +303,7 @@ GitHub executa ações e comandos de shell em diretórios específicos na máqui
 | `home` | `HOME` | Contém dados relacionados ao usuário. Por exemplo, esse diretório pode conter credenciais de uma tentativa de login. |
 | `workspace` | `GITHUB_WORKSPACE` | A execução de ações e comandos do shell acontece neste diretório. Uma ação pode modificar o conteúdo desse diretório, que fica acessível nas ações subsequentes. |
 | `workflow/event.json` | `GITHUB_EVENT_PATH` | A carga `POST` do evento de webhook que disparou o fluxo de trabalho. |
-| GitHub reescreve isso sempre que uma ação é executada para isolar o conteúdo do arquivo entre ações. |  |  |
-
-Para obter uma lista das variáveis de ambiente criadas GitHub para cada fluxo de trabalho, consulte [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md).
-
+| GitHub reescreve isso sempre que uma ação é executada para isolar o conteúdo do arquivo entre ações. |  | Para obter uma lista das variáveis de ambiente criadas GitHub para cada fluxo de trabalho, consulte [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md). |
 ### Sistema de arquivos do contêiner Docker
 
 As ações executadas em contêineres do Docker têm diretórios estáticos no caminho `/github`. No entanto, é altamente recomendável usar as variáveis de ambiente padrão para elaborar caminhos de arquivos em contêineres do Docker.

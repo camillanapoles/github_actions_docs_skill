@@ -131,8 +131,8 @@ Você pode ajudar a mitigar esse risco seguindo estas boas práticas:
   Para obter um exemplo de como usar um SHA de commit de comprimento completo em um fluxo de trabalho, confira [Usando blocos de construção pré-gravados no seu fluxo de trabalho](../../how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions.md#using-shas).
 
 GitHub oferece políticas nos níveis de repositório empresa para exigir que as ações sejam vinculadas a um SHA de commit completo:
-\* Para configurar a política no nível do repositório, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository).
-\* Para configurar a política no nível da organização, confira [Desabilitando ou limitando GitHub Actions para sua organização](https://docs.github.com/pt/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization).
+* Para configurar a política no nível do repositório, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository).
+* Para configurar a política no nível da organização, confira [Desabilitando ou limitando GitHub Actions para sua organização](https://docs.github.com/pt/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization).
 
 * **Auditar o código-fonte da ação**
 

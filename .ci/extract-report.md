@@ -2,12 +2,13 @@
 
 - **Fonte:** `api`  
 - **Idioma:** `pt`  
-- **Executado em:** 2026-10-11T19:25:47+00:00  
+- **Executado em:** 2026-10-11T19:31:28+00:00  
 - **Páginas OK:** 191  
 - **Falhas:** 56  
-- **Com avisos:** 13  
+- **Com avisos:** 15  
+- **Score de qualidade (0 = impecável):** 6 em 2 página(s)  
 - **Links internos íntegros:** 1713 (revertidos para URL absoluta: 3)  
-- **Bytes totais:** 1,838,390  
+- **Bytes totais:** 1,836,995  
 - **Headings totais:** 1,834  
 - **Blocos de código:** 743  
 - **Tabelas:** 102  
@@ -26,6 +27,7 @@
 | `actions/concepts/workflows-and-actions/notifications-for-workflow-runs.md` | poucos headings | 1,987 |
 | `actions/how-tos/write-workflows/choose-what-workflows-do/use-github-cli.md` | poucos headings | 2,838 |
 | `actions/how-tos/write-workflows/choose-what-workflows-do/add-scripts.md` | poucos headings | 3,156 |
+| `actions/how-tos/deploy/configure-and-manage-deployments/control-deployments.md` | cura via HTML falhou: AttributeError: 'NoneType' object has no attribute 'get' | 17,577 |
 | `actions/how-tos/create-and-publish-actions/using-immutable-releases-and-tags-to-manage-your-actions-releases.md` | poucos headings | 2,748 |
 | `actions/how-tos/manage-workflow-runs/skip-workflow-runs.md` | poucos headings | 3,209 |
 | `actions/how-tos/manage-workflow-runs/delete-a-workflow-run.md` | poucos headings | 1,739 |
@@ -33,6 +35,7 @@
 | `actions/how-tos/monitor-workflows/use-the-visualization-graph.md` | poucos headings | 1,778 |
 | `actions/how-tos/monitor-workflows/view-job-execution-time.md` | poucos headings | 2,186 |
 | `actions/reference/workflows-and-actions/workflow-cancellation.md` | poucos headings | 2,713 |
+| `actions/reference/limits.md` | cura via HTML falhou: AttributeError: 'NoneType' object has no attribute 'get' | 16,251 |
 
 ## Falhas
 

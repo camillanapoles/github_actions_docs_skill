@@ -32,7 +32,7 @@ Assim como os fluxos de trabalho GitHub Actions, agentic workflows podem ser dis
 | [`branch_protection_rule`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#branch_protection_rule) | - `created`<br>- `edited`<br>- `deleted` | Último commit no branch padrão | Branch padrão |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#branch_protection_rule). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.
@@ -54,7 +54,7 @@ on:
 | [`check_run`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#check_run) | - `created`<br>- `rerequested`<br>- `completed`<br>- `requested_action` | Último commit no branch padrão | Branch padrão |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#check_run). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.
@@ -77,7 +77,7 @@ on:
 | [`check_suite`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#check_suite) | - `completed`      | Último commit no branch padrão | Branch padrão |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#check_suite). Embora apenas o tipo de atividade `completed` seja compatível, a especificação do tipo de atividade manterá o fluxo de trabalho específico se mais tipos de atividade forem adicionados no futuro. Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.
@@ -170,7 +170,7 @@ on:
 | [`discussion`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#discussion) | - `created`<br>- `edited`<br>- `deleted`<br>- `transferred`<br>- `pinned`<br>- `unpinned`<br>- `labeled`<br>- `unlabeled`<br>- `locked`<br>- `unlocked`<br>- `category_changed`<br> - `answered`<br> - `unanswered` | Último commit no branch padrão | Branch padrão |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#discussion). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.
@@ -193,7 +193,7 @@ on:
 | [`discussion_comment`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#discussion_comment) | - `created`<br>- `edited`<br>- `deleted`<br> | Último commit no branch padrão | Branch padrão |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#discussion_comment). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.
@@ -273,7 +273,7 @@ on:
 | [`issue_comment`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#issue_comment) | - `created`<br>- `edited`<br>- `deleted`<br> | Último commit no branch padrão | Branch padrão |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#issue_comment). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.
@@ -328,7 +328,7 @@ jobs:
 | [`issues`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#issues) | - `opened`<br>- `edited`<br>- `deleted`<br>- `transferred`<br>- `pinned`<br>- `unpinned`<br>- `closed`<br>- `reopened`<br>- `assigned`<br>- `unassigned`<br>- `labeled`<br>- `unlabeled`<br>- `locked`<br>- `unlocked`<br>- `milestoned`<br> - `demilestoned`<br> - `typed`<br> - `untyped`<br> - `field_added`<br> - `field_removed` | Último commit no branch padrão | Branch padrão |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#issues). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.
@@ -358,7 +358,7 @@ on:
 | [`label`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#label) | - `created`<br>- `edited`<br>- `deleted`<br>    | Último commit no branch padrão | Branch padrão |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#label). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.
@@ -410,7 +410,7 @@ on:
 | [`milestone`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#milestone) | - `created`<br>- `closed`<br>- `opened`<br>- `edited`<br>- `deleted`<br> | Último commit no branch padrão | Branch padrão |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#milestone). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.
@@ -470,7 +470,7 @@ on:
 | [`pull_request`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#pull_request) | - `assigned`<br>- `unassigned`<br>- `labeled`<br>- `unlabeled`<br>- `opened`<br>- `edited`<br>- `closed`<br>- `reopened`<br>- `synchronize`<br>- `converted_to_draft`<br>- `locked`<br>- `unlocked`<br>- `enqueued`<br>- `dequeued`<br>- `milestoned`<br>- `demilestoned`<br>- `ready_for_review`<br>- `review_requested`<br>- `review_request_removed`<br>- `auto_merge_enabled`<br>- `auto_merge_disabled` | Último commit de mesclagem no branch `GITHUB_REF` | Branch de mesclagem de PR `refs/pull/PULL_REQUEST_NUMBER/merge` |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#pull_request). Por padrão, um fluxo de trabalho só é executado quando o tipo de atividade de um evento `pull_request` é `opened`, `synchronize` ou `reopened`. Para disparar fluxos de trabalho em diferentes tipos de atividades, use a palavra-chave `types`. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Os fluxos de trabalho não serão executados na atividade `pull_request` se a solicitação de pull tiver um conflito de mesclagem. O conflito de merge tem de ser resolvido primeiro. Inversamente, os fluxos de trabalho com o evento `pull_request_target` serão executados mesmo que a solicitação de pull tenha um conflito de mesclagem. Antes de usar o gatilho `pull_request_target`, você deve estar ciente dos riscos de segurança. Para obter mais informações, confira [`pull_request_target`](#pull_request_target).
@@ -716,22 +716,8 @@ Para pull requests de um repositório com forks para um repositório privado, os
 ## `pull_request_target`
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
-|-----------------------|------------------|------------|------------|
-
-!!! note
-    Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#pull_request). Por padrão, um fluxo de trabalho só é executado quando o tipo de atividade de um evento `pull_request_target` é `opened`, `synchronize` ou `reopened`. Para disparar fluxos de trabalho em diferentes tipos de atividades, use a palavra-chave `types`. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
-
-Executa o fluxo de trabalho quando ocorre uma atividade em uma pull request no repositório do fluxo de trabalho. Por exemplo, se nenhum tipo de atividade for especificado, o fluxo de trabalho será executado quando uma pull request é aberta ou reaberta, ou quando o branch principal da pull request é atualizado.
-
-Esse evento é executado no contexto da ramificação padrão do repositório base, em vez de ser no contexto do commit de mesclagem, como ocorre no evento `pull_request`. Isso impede a execução de código inseguro do cabeçalho da pull request que poderia alterar seu repositório ou roubar quaisquer segredos que você usa no fluxo de trabalho. Este evento permite que seu fluxo de trabalho faça coisas como etiquetar ou comentar nas pull requests a partir das bifurcações. Evite usar este evento se você precisar criar ou executar o código a partir da pull request.
-
-Para garantir a segurança do repositório, branches com nomes que correspondem a determinados padrões (como aqueles que se parecem com SHAs) podem não disparar fluxos de trabalho com o evento `pull_request_target`.
-
-!!! warning
-    A execução de código não confiável no gatilho `pull_request_target` pode levar a vulnerabilidades de segurança. Essas vulnerabilidades incluem o envenenamento de cache e a concessão de acesso não intencional a segredos ou privilégios de gravação. Para saber como usar esse gatilho com segurança, consulte [Uso seguro de pull_request_target](../security/securely-using-pull_request_target.md). Para obter mais detalhes sobre os riscos envolvidos, consulte [Referência de uso seguro](../security/secure-use.md#mitigating-the-risks-of-untrusted-code-checkout) e [Preventing pwn requests](https://securitylab.github.com/research/github-actions-preventing-pwn-requests) em GitHub Security Lab.
-
-Por exemplo, você poderá executar um fluxo de trabalho quando uma solicitação de pull for `assigned`, `opened`, `synchronize` ou `reopened`.
-
+| --- | --- | --- | --- |
+|  |  |  | !!! note<br>Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#pull_request). Por padrão, um fluxo de trabalho só é executado quando o tipo de atividade de um evento `pull_request_target` é `opened`, `synchronize` ou `reopened`. Para disparar fluxos de trabalho em diferentes tipos de atividades, use a palavra-chave `types`. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).<br>Executa o fluxo de trabalho quando ocorre uma atividade em uma pull request no repositório do fluxo de trabalho. Por exemplo, se nenhum tipo de atividade for especificado, o fluxo de trabalho será executado quando uma pull request é aberta ou reaberta, ou quando o branch principal da pull request é atualizado.<br>Esse evento é executado no contexto da ramificação padrão do repositório base, em vez de ser no contexto do commit de mesclagem, como ocorre no evento `pull_request`. Isso impede a execução de código inseguro do cabeçalho da pull request que poderia alterar seu repositório ou roubar quaisquer segredos que você usa no fluxo de trabalho. Este evento permite que seu fluxo de trabalho faça coisas como etiquetar ou comentar nas pull requests a partir das bifurcações. Evite usar este evento se você precisar criar ou executar o código a partir da pull request.<br>Para garantir a segurança do repositório, branches com nomes que correspondem a determinados padrões (como aqueles que se parecem com SHAs) podem não disparar fluxos de trabalho com o evento `pull_request_target`.<br>!!! warning<br>A execução de código não confiável no gatilho `pull_request_target` pode levar a vulnerabilidades de segurança. Essas vulnerabilidades incluem o envenenamento de cache e a concessão de acesso não intencional a segredos ou privilégios de gravação. Para saber como usar esse gatilho com segurança, consulte [Uso seguro de pull_request_target](../security/securely-using-pull_request_target.md). Para obter mais detalhes sobre os riscos envolvidos, consulte [Referência de uso seguro](../security/secure-use.md#mitigating-the-risks-of-untrusted-code-checkout) e [Preventing pwn requests](https://securitylab.github.com/research/github-actions-preventing-pwn-requests) em GitHub Security Lab.<br>Por exemplo, você poderá executar um fluxo de trabalho quando uma solicitação de pull for `assigned`, `opened`, `synchronize` ou `reopened`. |
 ```yaml
 on:
   pull_request_target:
@@ -909,7 +895,7 @@ on:
 | [`registry_package`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#package) | - `published`<br>- `updated`  | Commit do pacote publicado | Branch ou tag do pacote publicado |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#registry_package). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.
@@ -938,7 +924,7 @@ on:
 | [`release`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#release) | - `published` <br>- `unpublished` <br>- `created` <br>- `edited` <br>- `deleted` <br>- `prereleased`<br> - `released` | Último commit na versão com tag | Referência de marca da versão `refs/tags/<tag_name>` |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Para obter informações sobre cada tipo de atividade, consulte [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#release). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Os fluxos de trabalho não são disparados para os tipos de atividade `created`, `edited`, ou `deleted` para versões de rascunho. Quando você cria sua versão pela interface de usuário do GitHub, sua versão pode ser salva automaticamente como um rascunho.
@@ -1060,10 +1046,7 @@ Você pode usar estes operadores em qualquer um dos cinco campos:
 | - | Intervalo de valores |  |
 | `30 4-6 * * *` é executado no minuto 30 da 4ª, 5ª e 6ª hora. |  |  |
 | / | Valores de etapa |  |
-| `20/15 * * * *` é executado a cada 15 minutos, começando do minuto 20 ao 59 (minutos 20, 35 e 50). |  |  |
-
-Este exemplo inicia o fluxo de trabalho para ser executado às 5h30, no fuso horário América/New_York, de segunda a sexta-feira.
-
+| `20/15 * * * *` é executado a cada 15 minutos, começando do minuto 20 ao 59 (minutos 20, 35 e 50). |  | Este exemplo inicia o fluxo de trabalho para ser executado às 5h30, no fuso horário América/New_York, de segunda a sexta-feira. |
 ```yaml
 on:
   schedule:
@@ -1153,7 +1136,7 @@ jobs:
 | [`watch`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#watch) | - `started`        | Último commit no branch padrão | Branch padrão |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. Embora haja suporte apenas para o `started` tipo de atividade, especificar o tipo de atividade manterá seu fluxo de trabalho específico se mais tipos de atividade forem adicionados no futuro. Para obter informações sobre cada tipo de atividade, confira [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#watch). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.
@@ -1263,7 +1246,7 @@ Para obter mais informações, consulte as GitHub CLI informações em [Executar
 | [`workflow_run`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#workflow_run) | - `completed`<br>- `requested`<br>- `in_progress`   | Último commit no branch padrão | Branch padrão |
 
 !!! note
-    \*
+    *
     Mais de um tipo de atividade aciona este evento. O `requested` tipo de atividade não ocorre quando um fluxo de trabalho é executado novamente. Para obter informações sobre cada tipo de atividade, confira [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#workflow_run). Por padrão, todos os tipos de atividade disparam fluxos de trabalho que são executados nesse evento. Você pode limitar suas execuções de fluxo de trabalho a tipos de atividades específicos usando a palavra-chave `types`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onevent_nametypes).
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.

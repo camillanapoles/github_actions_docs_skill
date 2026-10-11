@@ -61,7 +61,7 @@ Esse procedimento demonstra como criar um modelo de fluxo de trabalho e um arqui
        "filePatterns": [
            "package.json$",
            "^Dockerfile",
-           ".*\.md$"
+           ".*\\.md$"
        ]
    }
    ```

@@ -460,10 +460,7 @@ Você pode usar estes operadores em qualquer um dos cinco campos:
 | - | Intervalo de valores |  |
 | `30 4-6 * * *` é executado no minuto 30 da 4ª, 5ª e 6ª hora. |  |  |
 | / | Valores de etapa |  |
-| `20/15 * * * *` é executado a cada 15 minutos, começando do minuto 20 ao 59 (minutos 20, 35 e 50). |  |  |
-
-Este exemplo inicia o fluxo de trabalho para ser executado às 5h30, no fuso horário América/New_York, de segunda a sexta-feira.
-
+| `20/15 * * * *` é executado a cada 15 minutos, começando do minuto 20 ao 59 (minutos 20, 35 e 50). |  | Este exemplo inicia o fluxo de trabalho para ser executado às 5h30, no fuso horário América/New_York, de segunda a sexta-feira. |
 ```yaml
 on:
   schedule:
@@ -1370,19 +1367,8 @@ Para repositórios públicos, os trabalhos que usam os rótulos de fluxo de trab
 Com exceção dos executores de CPU única, cada executor hospedado por GitHub é uma nova máquina virtual (VM) hospedada por GitHub. Processos de CPU única são hospedados em um contêiner em uma VM compartilhada—consulte [Referência de executores hospedados pelo GitHub](../runners/github-hosted-runners.md#single-cpu-runners). O uso dos executores hospedados padrão GitHubé gratuito e ilimitado em repositórios públicos.
 
 | **Máquina virtual/contêiner** | **Processador (CPU)** | **Memória (RAM)** | **Armazenamento (SSD)** | **Arquitetura** | **Rótulo do fluxo de trabalho** |
-|-----------------------------|---------------------|-----------------|-----------------------|---------------|-------------------------------|
-| Linux                         | 1                     | 5 GB              | 14 GB                   | x64             |                                 |
-            `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
-Linux
-
-4
-
-16 GB
-
-14 GB
-
-x64
-
+| --- | --- | --- | --- | --- | --- |
+| Linux | 1 | 5 GB | 14 GB | x64 | `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`<br>Linux<br>4<br>16 GB<br>14 GB<br>x64 |
 ```
     <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
 </tr>
@@ -1443,19 +1429,8 @@ x64
 Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a alocação de minutos gratuitos da sua GitHub conta e, posteriormente, são cobrados a taxas por minuto de uso. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
 | **Máquina virtual** | **Processador (CPU)** | **Memória (RAM)** | **Armazenamento (SSD)** | **Arquitetura** | **Rótulo do fluxo de trabalho** |
-|-------------------|---------------------|-----------------|-----------------------|---------------|-------------------------------|
-| Linux               | 1                     | 5 GB              | 14 GB                   | x64             |                                 |
-            `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
-Linux
-
-2
-
-8 GB
-
-14 GB
-
-x64
-
+| --- | --- | --- | --- | --- | --- |
+| Linux | 1 | 5 GB | 14 GB | x64 | `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`<br>Linux<br>2<br>8 GB<br>14 GB<br>x64 |
 ```
     <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
 </tr>

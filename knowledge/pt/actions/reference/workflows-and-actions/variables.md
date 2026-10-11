@@ -83,11 +83,7 @@ GitHub define variáveis para ações a serem usadas em todos os ambientes de ex
 | `RUNNER_TEMP` |  |
 | O caminho para um diretório temporário no executor. Este diretório é esvaziado no início e no final de cada trabalho. Observe que os arquivos não serão removidos se a conta de usuário do executor não tiver permissão para excluí-los. Por exemplo `D:\a_temp` |  |
 | `RUNNER_TOOL_CACHE` |  |
-| O caminho para o diretório contendo ferramentas pré-instaladas de executores GitHub hospedados. Para saber mais, confira [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images). Por exemplo `C:\hostedtoolcache\windows` |  |
-
-!!! note
-    Caso precise usar a URL de execução de um fluxo de trabalho dentro de um trabalho, combine estas variáveis: `$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID`
-
+| O caminho para o diretório contendo ferramentas pré-instaladas de executores GitHub hospedados. Para saber mais, confira [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images). Por exemplo `C:\hostedtoolcache\windows` | !!! note<br>Caso precise usar a URL de execução de um fluxo de trabalho dentro de um trabalho, combine estas variáveis: `$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID` |
 ## Convenções de nomenclatura para variáveis de configuração
 
 As seguintes regras se aplicam aos nomes de variáveis de configuração:

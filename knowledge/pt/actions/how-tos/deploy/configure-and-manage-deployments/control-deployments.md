@@ -86,13 +86,13 @@ Isso é útil quando você deseja usar ambientes para:
 
 A propriedade `deployment` controla quais regras de proteção são aplicáveis:
 
-\| Regra de proteção |
+| Regra de proteção |
 `deployment: true` (padrão) | `deployment: false` |
-\|----------------|------------------------------|---------------------|
-\| **Nenhum** | Implantação criada, trabalho em execução | Sem implantação, execuções de trabalhos |
-\| **Temporizador de espera** | Temporizador de espera imposto | Temporizador de espera ainda imposto |
-\| **Revisores necessários** | Os revisores devem aprovar | Os revisores devem aprovar |
-\| **Aplicativo de regras de proteção de implantação personalizadas** | Webhook do aplicativo foi enviado, precisa ser aprovado | **Tarefa falhou com erro** |
+|----------------|------------------------------|---------------------|
+| **Nenhum** | Implantação criada, trabalho em execução | Sem implantação, execuções de trabalhos |
+| **Temporizador de espera** | Temporizador de espera imposto | Temporizador de espera ainda imposto |
+| **Revisores necessários** | Os revisores devem aprovar | Os revisores devem aprovar |
+| **Aplicativo de regras de proteção de implantação personalizadas** | Webhook do aplicativo foi enviado, precisa ser aprovado | **Tarefa falhou com erro** |
 
 As regras de proteção de implantação personalizada (GitHub Apps) exigem que um objeto de implantação funcione. Se você definir `deployment: false` em um ambiente que tenha regras de proteção de implantação personalizadas, o trabalho falhará imediatamente com uma anotação ou mensagem de erro explicando que as regras de proteção do ambiente são incompatíveis com `deployment: false`. Ou remova `deployment: false` do fluxo de trabalho ou remova as regras de proteção de implantação personalizadas do ambiente.
 

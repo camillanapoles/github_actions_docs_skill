@@ -50,7 +50,7 @@ Para privados, é necessário configurar explicitamente a política de **Acesso*
 
 * Você pode chamar até 50 fluxos de trabalho reutilizáveis exclusivos por meio de um só arquivo de fluxo de trabalho. Esse limite inclui árvores de fluxos de trabalho aninhados reutilizáveis que podem ser chamados começando do arquivo de fluxo de trabalho do chamador de nível superior.
 
-  Por exemplo, *top-level-caller-workflow.yml* → *called-workflow-1.yml* → *called-workflow-2.yml* conta como 2 fluxos de trabalho reutilizáveis.
+  Por exemplo, *top-level-caller-workflow\.yml* → *called-workflow-1.yml* → *called-workflow-2.yml* conta como 2 fluxos de trabalho reutilizáveis.
 
 * As variáveis de ambiente definidas em um contexto `env` definido no nível do fluxo de trabalho do chamador não são propagadas para o fluxo de trabalho chamado. Para saber mais, confira [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md) e [Referência de contextos](contexts.md#env-context).
 
@@ -174,7 +174,7 @@ O arquivo de metadados precisa ter o mesmo nome do arquivo de fluxo de trabalho,
     "filePatterns": [
         "package.json$",
         "^Dockerfile",
-        ".*\.md$"
+        ".*\\.md$"
     ]
 }
 ```

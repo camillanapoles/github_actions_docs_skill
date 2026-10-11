@@ -63,15 +63,15 @@ Cada arquivo de fluxo de trabalho no `.github/workflows` diretório deve ter 500
 
 GitHub O suporte **pode** aumentar os limites de concorrência de tarefas para GitHub Actions. Para solicitar um aumento, envie um tíquete de suporte.
 
-\| Tipo de executor |
+| Tipo de executor |
 GitHub Plano | Total de tarefas simultâneas | Máximo de tarefas macOS simultâneas | Máximo de trabalhos de GPU simultâneos |
-\|---|---|---|---|---|
-\| Executor padrão hospedado pelo GitHub | Gratuito | 20 | 5 | Não aplicável |
-\| Executor padrão hospedado pelo GitHub | Pro | 40 | 5 | Não aplicável |
-\| Executor padrão hospedado pelo GitHub | Equipe | 60 | 5 | Não aplicável |
-\| Executor padrão hospedado pelo GitHub | Enterprise | 500 | 50 | Não aplicável |
-\| Executor avançado | Equipe | 1000 | 5 | 100 |
-\| Executor avançado | Enterprise | 1000 | 50 | 100 |
+|---|---|---|---|---|
+| Executor padrão hospedado pelo GitHub | Gratuito | 20 | 5 | Não aplicável |
+| Executor padrão hospedado pelo GitHub | Pro | 40 | 5 | Não aplicável |
+| Executor padrão hospedado pelo GitHub | Equipe | 60 | 5 | Não aplicável |
+| Executor padrão hospedado pelo GitHub | Enterprise | 500 | 50 | Não aplicável |
+| Executor avançado | Equipe | 1000 | 5 | 100 |
+| Executor avançado | Enterprise | 1000 | 50 | 100 |
 
 !!! note
     O número máximo de trabalhos simultâneos no macOS é compartilhado entre os executores padrão hospedados pelo GitHub e os executores maiores hospedados pelo GitHub

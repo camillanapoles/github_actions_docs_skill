@@ -60,9 +60,9 @@ env:
 | `\|\|`            | Ou                    |
 
 !!! note
-    \*
+    *
     GitHub ignora maiúsculas e minúsculas ao comparar cadeias de caracteres.
-    \*
+    *
     `steps.<step_id>.outputs.<output_name>` é avaliada como cadeia de caracteres.
     É necessário usar uma sintaxe específica para avisar o GitHub para avaliar a expressão e não tratá-la como uma string. Para obter mais informações, consulte [Referência de contextos](contexts.md#steps-context).
 
@@ -73,16 +73,13 @@ GitHub executa comparações de igualdade soltas.
 * Se os tipos não corresponderem, GitHub coagi o tipo a um número.
   GitHub converte tipos de dados em um número usando estas conversões:
 
-| Tipo     | Result |
-|--------|------|
-| Nulo     | `0`    |
-| booleano |        |
-
-`true` retorna `1`
-`false` retorna `0` |
-\| String  | Analisado de qualquer formato de número JSON legal, caso contrário, `NaN`.  Observação: a cadeia de caracteres vazia retorna `0`. |
-\| Array   | `NaN` |
-\| Objeto  | `NaN` |
+| Tipo | Result |
+| --- | --- |
+| Nulo | `0` |
+| booleano | `true` retorna `1`<br>`false` retorna `0` |
+| String | Analisado de qualquer formato de número JSON legal, caso contrário, `NaN`.  Observação: a cadeia de caracteres vazia retorna `0`. |
+| Array | `NaN` |
+| Objeto | `NaN` |
 
 * Quando `NaN` é um dos operandos de qualquer comparação relacional (`>`, `<`, `>=`, `<=`), o resultado é sempre `false`. Para obter mais informações, confira os [documentos do NaN Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN).
 * GitHub ignora maiúsculas e minúsculas ao comparar cadeias de caracteres.
