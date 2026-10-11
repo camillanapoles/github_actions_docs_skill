@@ -14,10 +14,6 @@ section: GitHub Actions
 
 _GitHub oferece máquinas virtuais hospedadas para executar fluxos de trabalho. A máquina virtual contém um ambiente de ferramentas, pacotes e configurações disponíveis para GitHub Actions usar._
 
-# Executores hospedados no GitHub
-
-GitHub oferece máquinas virtuais hospedadas para executar fluxos de trabalho. A máquina virtual contém um ambiente de ferramentas, pacotes e configurações disponíveis para GitHub Actions usar.
-
 ## Visão geral dos executores hospedados em GitHub
 
 Os runners são as máquinas responsáveis por executar trabalhos em um GitHub Actions fluxo de trabalho. Por exemplo, um executor pode clonar seu repositório localmente, instalar software de teste e executar comandos que avaliam seu código.
@@ -26,7 +22,7 @@ GitHub fornece corredores que você pode usar para executar seus trabalhos ou po
 
 Cada runner vem com o aplicativo runner e outras ferramentas pré-instaladas.               Os executores hospedados em GitHub estão disponíveis com Ubuntu Linux, Windows ou macOS. Quando você utiliza um executor hospedado em GitHub, a manutenção e as atualizações do computador ficam a cargo do sistema.
 
-Você pode escolher uma das opções de executor hospedado padrão GitHub ou, se estiver no plano GitHub Team ou GitHub Enterprise Cloud, pode provisionar um executor com mais núcleos, ou um executor alimentado por um processador GPU. Esses computadores são chamados de "executor avançado". Para obter mais informações, consulte [Executores avançados](https://docs.github.com/pt/enterprise-cloud@latest/actions/concepts/runners/larger-runners).
+Você pode escolher uma das opções de executor hospedado padrão GitHub ou, se estiver no plano GitHub Team ou GitHub Enterprise Cloud, pode provisionar um executor com mais núcleos, ou um executor alimentado por um processador GPU. Esses computadores são chamados de "executor avançado". Para obter mais informações, consulte [Executores avançados](larger-runners.md).
 
 Executores avançados também dá suporte a imagens personalizadas, que permitem criar e gerenciar suas próprias imagens de VM pré-configuradas. Para obter mais informações, consulte [Imagens personalizadas](#custom-images).
 

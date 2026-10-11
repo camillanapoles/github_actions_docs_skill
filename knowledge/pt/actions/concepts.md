@@ -14,10 +14,6 @@ section: GitHub Actions
 
 _Conheça os principais conceitos que você precisará para entender o GitHub Actions._
 
-# Conceitos do GitHub Actions
-
-Conheça os principais conceitos que você precisará para entender o GitHub Actions.
-
 ## Links
 
 * [Fluxos de trabalho e ações](concepts/workflows-and-actions.md)

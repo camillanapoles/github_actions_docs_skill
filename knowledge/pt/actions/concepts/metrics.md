@@ -14,10 +14,6 @@ section: GitHub Actions
 
 _Saiba mais sobre as GitHub Actions métricas disponíveis para suas organizações e repositórios._
 
-# Sobre as métricas do GitHub Actions
-
-Saiba mais sobre as GitHub Actions métricas disponíveis para suas organizações e repositórios.
-
 ## Sobre as métricas do GitHub Actions
 
 As métricas do GitHub Actions trazem insights sobre o desempenho dos seus fluxos de trabalho e trabalhos na organização e no repositório. Há dois tipos de métricas para ajudar você a analisar diferentes aspectos dos seus fluxos de trabalho:

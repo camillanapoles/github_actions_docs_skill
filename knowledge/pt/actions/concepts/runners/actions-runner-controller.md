@@ -14,10 +14,6 @@ section: GitHub Actions
 
 _Você pode hospedar seus próprios executores e personalizar o ambiente usado para executar trabalhos em seus GitHub Actions fluxos de trabalho._
 
-# Controlador de Ações Runner
-
-Você pode hospedar seus próprios executores e personalizar o ambiente usado para executar trabalhos em seus GitHub Actions fluxos de trabalho.
-
 ## Sobre o Actions Runner Controller
 
 Actions Runner Controller (ARC) é um operador de Kubernetes que orquestra e dimensiona executores auto-hospedados para GitHub Actions. Para obter mais informações, confira [Padrão do operador](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) da documentação do Kubernetes.

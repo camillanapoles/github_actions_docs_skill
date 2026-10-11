@@ -14,10 +14,6 @@ section: GitHub Actions
 
 _Há limites de uso para GitHub Actions fluxos de trabalho. As taxas de uso são aplicadas a repositórios que excedem a quantidade de minutos gratuitos e armazenamento disponíveis gratuitamente._
 
-# Cobrança e uso
-
-Há limites de uso para GitHub Actions fluxos de trabalho. As taxas de uso são aplicadas a repositórios que excedem a quantidade de minutos gratuitos e armazenamento disponíveis gratuitamente.
-
 ## Sobre faturamento de GitHub Actions
 
 O uso do GitHub Actions é gratuito para executores padrão hospedados por GitHub em repositórios públicos, e executores auto-hospedados. Confira [Escolhendo o executor para um trabalho](../how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job.md#standard-github-hosted-runners-for-public-repositories). Para repositórios privados, cada conta GitHub recebe uma cota de minutos e de armazenamento gratuitos para uso com executores hospedados no GitHub, de acordo com o plano da conta. Qualquer uso além dos valores incluídos é cobrado em sua conta. Para obter mais informações, consulte [Cobrança do GitHub Actions](https://docs.github.com/pt/billing/concepts/product-billing/github-actions).

@@ -14,10 +14,6 @@ section: GitHub Actions
 
 _Saiba mais sobre o conceito de runners no GitHub Actions._
 
-# Executores do GitHub Actions
-
-Saiba mais sobre o conceito de runners no GitHub Actions.
-
 ## Links
 
 * [Executores hospedados no GitHub](runners/github-hosted-runners.md)

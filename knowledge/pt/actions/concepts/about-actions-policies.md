@@ -14,10 +14,6 @@ section: GitHub Actions
 
 _Governe como GitHub Actions os fluxos de trabalho são executados em seu repositório, organização ou empresa._
 
-# Sobre as políticas do Actions
-
-Governe como GitHub Actions os fluxos de trabalho são executados em seu repositório, organização ou empresa.
-
 ## Sobre as políticas do Actions
 
 As políticas de ações permitem que você governe como GitHub Actions os fluxos de trabalho são executados. Você pode configurá-las na seção **Políticas** de suas GitHub Actions configurações (separadas das configurações **gerais** ).
