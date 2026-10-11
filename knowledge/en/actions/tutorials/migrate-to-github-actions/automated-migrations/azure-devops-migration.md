@@ -437,24 +437,24 @@ The following table shows the type of properties that GitHub Actions Importer is
 
 | Azure Pipelines | GitHub Actions | Status |
 | :-- | :-- | :-- |
-| condition | <ul><li>`jobs.<job_id>.if`</li><li>`jobs.<job_id>.steps[*].if`</li></ul> | Supported |
-| container | <ul><li>`jobs.<job_id>.container`</li><li>`jobs.<job_id>.name`</li></ul> | Supported |
-| continuousIntegration | <ul><li>`on.<push>.<branches>`</li><li>`on.<push>.<tags>`</li><li>`on.<push>.paths`</li></ul> | Supported |
-| job | <ul><li>`jobs.<job_id>`</li></ul> | Supported |
-| pullRequest | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.paths`</li></ul> | Supported |
-| stage | <ul><li>`jobs`</li></ul> | Supported |
-| steps | <ul><li>`jobs.<job_id>.steps`</li></ul> | Supported |
-| strategy | <ul><li>`jobs.<job_id>.strategy.fail-fast`</li><li>`jobs.<job_id>.strategy.max-parallel`</li><li>`jobs.<job_id>.strategy.matrix`</li></ul> | Supported |
-| timeoutInMinutes | <ul><li>`jobs.<job_id>.timeout-minutes`</li></ul> | Supported |
-| variables | <ul><li>`env`</li><li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li></ul> | Supported |
-| manual deployment | <ul><li>`jobs.<job_id>.environment`</li></ul> | Partially supported |
-| pool | <ul><li>`runners`</li><li>`self hosted runners`</li></ul> | Partially supported |
-| services | <ul><li>`jobs.<job_id>.services`</li></ul> | Partially supported |
-| strategy | <ul><li>`jobs.<job_id>.strategy`</li></ul> | Partially supported |
-| triggers | <ul><li>`on`</li></ul> | Partially supported |
-| pullRequest | <ul><li>`on.<pull_request>.<tags>`</li></ul> | Unsupported |
-| schedules | <ul><li>`on.schedule`</li><li>`on.workflow_run`</li></ul> | Unsupported |
-| triggers | <ul><li>`on.<event_name>.types`</li></ul> | Unsupported |
+| condition | `jobs.<job_id>.if`<br>`jobs.<job_id>.steps[*].if` | Supported |
+| container | `jobs.<job_id>.container`<br>`jobs.<job_id>.name` | Supported |
+| continuousIntegration | `on.<push>.<branches>`<br>`on.<push>.<tags>`<br>`on.<push>.paths` | Supported |
+| job | `jobs.<job_id>` | Supported |
+| pullRequest | `on.<pull_request>.<branches>`<br>`on.<pull_request>.paths` | Supported |
+| stage | `jobs` | Supported |
+| steps | `jobs.<job_id>.steps` | Supported |
+| strategy | `jobs.<job_id>.strategy.fail-fast`<br>`jobs.<job_id>.strategy.max-parallel`<br>`jobs.<job_id>.strategy.matrix` | Supported |
+| timeoutInMinutes | `jobs.<job_id>.timeout-minutes` | Supported |
+| variables | `env`<br>`jobs.<job_id>.env`<br>`jobs.<job_id>.steps.env` | Supported |
+| manual deployment | `jobs.<job_id>.environment` | Partially supported |
+| pool | `runners`<br>`self hosted runners` | Partially supported |
+| services | `jobs.<job_id>.services` | Partially supported |
+| strategy | `jobs.<job_id>.strategy` | Partially supported |
+| triggers | `on` | Partially supported |
+| pullRequest | `on.<pull_request>.<tags>` | Unsupported |
+| schedules | `on.schedule`<br>`on.workflow_run` | Unsupported |
+| triggers | `on.<event_name>.types` | Unsupported |
 
 For more information about supported Azure DevOps tasks, see the [`github/gh-actions-importer` repository](https://github.com/github/gh-actions-importer/blob/main/docs/azure_devops/index.md).
 

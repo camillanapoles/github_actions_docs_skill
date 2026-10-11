@@ -772,7 +772,7 @@ Available permissions and details of what each allows an action to do:
 | `packages` | Work with GitHub Packages. For example, `packages: write` permits an action to upload and publish packages on GitHub Packages. For more information, see [About permissions for github packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries#about-scopes-and-permissions-for-package-registries). |
 | `pages` | Work with GitHub Pages. For example, `pages: write` permits an action to request a GitHub Pages build. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pages#repository-permissions-for-pages). |
 | `pull-requests` | Work with pull requests. For example, `pull-requests: write` permits an action to add a label to a pull request. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pull-requests#repository-permissions-for-pull-requests). |
-| `security-events` | Work with GitHub code scanning alerts. For example, `security-events: read` permits an action to list the code scanning alerts for the repository, and `security-events: write` allows an action to update the status of a code scanning alert. For more information, see [Repository permissions for "Code scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts).    Dependabot and secret scanning alerts cannot be read with this permission and require a GitHub App or a personal access token. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts) and [Repository permissions for "Secret scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) in "Permissions required for GitHub Apps." |
+| `security-events` | Work with GitHub code scanning alerts. For example, `security-events: read` permits an action to list the code scanning alerts for the repository, and `security-events: write` allows an action to update the status of a code scanning alert. For more information, see [Repository permissions for "Code scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts). <br><br> Dependabot and secret scanning alerts cannot be read with this permission and require a GitHub App or a personal access token. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts) and [Repository permissions for "Secret scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) in "Permissions required for GitHub Apps." |
 | `statuses` | Work with commit statuses. For example, `statuses:read` permits an action to list the commit statuses for a given reference. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses#repository-permissions-for-commit-statuses). |
 | `vulnerability-alerts` | Read Dependabot alerts. For example, `vulnerability-alerts: read` permits an action to list Dependabot alerts for the repository. Only `read` and `none` are supported; `write` is not valid. When `write-all` or `read-all` is used, `vulnerability-alerts` is automatically included as `read`. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
 
@@ -1162,7 +1162,7 @@ Available permissions and details of what each allows an action to do:
 | `packages` | Work with GitHub Packages. For example, `packages: write` permits an action to upload and publish packages on GitHub Packages. For more information, see [About permissions for github packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries#about-scopes-and-permissions-for-package-registries). |
 | `pages` | Work with GitHub Pages. For example, `pages: write` permits an action to request a GitHub Pages build. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pages#repository-permissions-for-pages). |
 | `pull-requests` | Work with pull requests. For example, `pull-requests: write` permits an action to add a label to a pull request. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pull-requests#repository-permissions-for-pull-requests). |
-| `security-events` | Work with GitHub code scanning alerts. For example, `security-events: read` permits an action to list the code scanning alerts for the repository, and `security-events: write` allows an action to update the status of a code scanning alert. For more information, see [Repository permissions for "Code scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts).    Dependabot and secret scanning alerts cannot be read with this permission and require a GitHub App or a personal access token. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts) and [Repository permissions for "Secret scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) in "Permissions required for GitHub Apps." |
+| `security-events` | Work with GitHub code scanning alerts. For example, `security-events: read` permits an action to list the code scanning alerts for the repository, and `security-events: write` allows an action to update the status of a code scanning alert. For more information, see [Repository permissions for "Code scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts). <br><br> Dependabot and secret scanning alerts cannot be read with this permission and require a GitHub App or a personal access token. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts) and [Repository permissions for "Secret scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) in "Permissions required for GitHub Apps." |
 | `statuses` | Work with commit statuses. For example, `statuses:read` permits an action to list the commit statuses for a given reference. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses#repository-permissions-for-commit-statuses). |
 | `vulnerability-alerts` | Read Dependabot alerts. For example, `vulnerability-alerts: read` permits an action to list Dependabot alerts for the repository. Only `read` and `none` are supported; `write` is not valid. When `write-all` or `read-all` is used, `vulnerability-alerts` is automatically included as `read`. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
 
@@ -1361,27 +1361,9 @@ For more information, see [GitHub-hosted runners](../../concepts/runners/github-
 
 For public repositories, jobs using the workflow labels shown in the table below will run with the associated specifications. With the exception of single-CPU runners, each GitHub-hosted runner is a new virtual machine (VM) hosted by GitHub. Single-CPU runners are hosted in a container on a shared VM—see [GitHub-hosted runners reference](../runners/github-hosted-runners.md#single-cpu-runners#single-cpu-runners). Use of the standard GitHub-hosted runners is free and unlimited on public repositories.
 
-**Virtual machine / container**
-
-**Processor (CPU)**
-
-**Memory (RAM)**
-
-**Storage (SSD)**
-
-**Architecture**
-
-**Workflow label**
-
-Linux
-
-1
-
-5 GB
-
-14 GB
-
-x64
+| **Virtual machine / container** | **Processor (CPU)** | **Memory (RAM)** | **Storage (SSD)** | **Architecture** | **Workflow label** |
+|-------------------------------|-------------------|----------------|-----------------|----------------|------------------|
+| Linux                           | 1                   | 5 GB             | 14 GB             | x64              |                    |
         `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
 Linux
 
@@ -1462,27 +1444,9 @@ arm64
 
 For internal and private repositories, jobs using the workflow labels shown in the table below will run on virtual machines with the associated specifications. These runners use your GitHub account's allotment of free minutes, and are then charged at the per minute rates. See [Actions runner pricing](https://docs.github.com/billing/reference/actions-runner-pricing).
 
-**Virtual Machine**
-
-**Processor (CPU)**
-
-**Memory (RAM)**
-
-**Storage (SSD)**
-
-**Architecture**
-
-**Workflow label**
-
-Linux
-
-1
-
-5 GB
-
-14 GB
-
-x64
+| **Virtual Machine** | **Processor (CPU)** | **Memory (RAM)** | **Storage (SSD)** | **Architecture** | **Workflow label** |
+|-------------------|-------------------|----------------|-----------------|----------------|------------------|
+| Linux               | 1                   | 5 GB             | 14 GB             | x64              |                    |
         `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
 Linux
 
@@ -3305,14 +3269,14 @@ For more information about branch, tag, and path filter syntax, see [`on.<push>.
 
 | Pattern | Description | Example matches |
 | --- | --- | --- |
-| `feature/*` | The `*` wildcard matches any character, but does not match slash (`/`). | `feature/my-branch`  `feature/your-branch` |
-| `feature/**` | The `**` wildcard matches any character including slash (`/`) in branch and tag names. | `feature/beta-a/my-branch`  `feature/your-branch`  `feature/mona/the/octocat` |
-| `main`  `releases/mona-the-octocat` | Matches the exact name of a branch or tag name. | `main`  `releases/mona-the-octocat` |
-| `'*'` | Matches all branch and tag names that don't contain a slash (`/`). The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `main`  `releases` |
-| `'**'` | Matches all branch and tag names. This is the default behavior when you don't use a `branches` or `tags` filter. | `all/the/branches`  `every/tag` |
-| `'*feature'` | The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `mona-feature`  `feature`  `ver-10-feature` |
-| `v2*` | Matches branch and tag names that start with `v2`. | `v2`  `v2.0`  `v2.9` |
-| `v[12].[0-9]+.[0-9]+` | Matches all semantic versioning branches and tags with major version 1 or 2. | `v1.10.1`  `v2.0.0` |
+| `feature/*` | The `*` wildcard matches any character, but does not match slash (`/`). | `feature/my-branch`<br><br>`feature/your-branch` |
+| `feature/**` | The `**` wildcard matches any character including slash (`/`) in branch and tag names. | `feature/beta-a/my-branch`<br><br>`feature/your-branch`<br><br>`feature/mona/the/octocat` |
+| `main`<br><br>`releases/mona-the-octocat` | Matches the exact name of a branch or tag name. | `main`<br><br>`releases/mona-the-octocat` |
+| `'*'` | Matches all branch and tag names that don't contain a slash (`/`). The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `main`<br><br>`releases` |
+| `'**'` | Matches all branch and tag names. This is the default behavior when you don't use a `branches` or `tags` filter. | `all/the/branches`<br><br>`every/tag` |
+| `'*feature'` | The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `mona-feature`<br><br>`feature`<br><br>`ver-10-feature` |
+| `v2*` | Matches branch and tag names that start with `v2`. | `v2`<br><br>`v2.0`<br><br>`v2.9` |
+| `v[12].[0-9]+.[0-9]+` | Matches all semantic versioning branches and tags with major version 1 or 2. | `v1.10.1`<br><br>`v2.0.0` |
 
 ### Patterns to match file paths
 
@@ -3320,18 +3284,18 @@ Path patterns must match the whole path, and start from the repository's root.
 
 | Pattern | Description of matches | Example matches |
 | --- | --- | --- |
-| `'*'` | The `*` wildcard matches any character, but does not match slash (`/`). The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `README.md`  `server.rb` |
-| `'*.jsx?'` | The `?` character matches zero or one of the preceding character. | `page.js`  `page.jsx` |
+| `'*'` | The `*` wildcard matches any character, but does not match slash (`/`). The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `README.md`<br><br>`server.rb` |
+| `'*.jsx?'` | The `?` character matches zero or one of the preceding character. | `page.js`<br><br>`page.jsx` |
 | `'**'` | The `**` wildcard matches any character including slash (`/`). This is the default behavior when you don't use a `path` filter. | `all/the/files.md` |
-| `'*.js'` | The `*` wildcard matches any character, but does not match slash (`/`). Matches all `.js` files at the root of the repository. | `app.js`  `index.js` |
-| `'**.js'` | Matches all `.js` files in the repository. | `index.js`  `js/index.js`  `src/js/app.js` |
-| `docs/*` | All files within the root of the `docs` directory only, at the root of the repository. | `docs/README.md`  `docs/file.txt` |
-| `docs/**` | Any files in the `docs` directory and its subdirectories at the root of the repository. | `docs/README.md`  `docs/mona/octocat.txt` |
-| `docs/**/*.md` | A file with a `.md` suffix anywhere in the `docs` directory. | `docs/README.md`  `docs/mona/hello-world.md`  `docs/a/markdown/file.md` |
-| `'**/docs/**'` | Any files in a `docs` directory anywhere in the repository. | `docs/hello.md`  `dir/docs/my-file.txt`  `space/docs/plan/space.doc` |
-| `'**/README.md'` | A README.md file anywhere in the repository. | `README.md`  `js/README.md` |
-| `'**/*src/**'` | Any file in a folder with a `src` suffix anywhere in the repository. | `a/src/app.js`  `my-src/code/js/app.js` |
-| `'**/*-post.md'` | A file with the suffix `-post.md` anywhere in the repository. | `my-post.md`  `path/their-post.md` |
-| `'**/migrate-*.sql'` | A file with the prefix `migrate-` and suffix `.sql` anywhere in the repository. | `migrate-10909.sql`  `db/migrate-v1.0.sql`  `db/sept/migrate-v1.sql` |
-| `'*.md'`  `'!README.md'` | Using an exclamation mark (`!`) in front of a pattern negates it. When a file matches a pattern and also matches a negative pattern defined later in the file, the file will not be included. | `hello.md`  _Does not match_  `README.md`  `docs/hello.md` |
-| `'*.md'`  `'!README.md'`  `README*` | Patterns are checked sequentially. A pattern that negates a previous pattern will re-include file paths. | `hello.md`  `README.md`  `README.doc` |
+| `'*.js'` | The `*` wildcard matches any character, but does not match slash (`/`). Matches all `.js` files at the root of the repository. | `app.js`<br><br>`index.js` |
+| `'**.js'` | Matches all `.js` files in the repository. | `index.js`<br><br>`js/index.js`<br><br>`src/js/app.js` |
+| `docs/*` | All files within the root of the `docs` directory only, at the root of the repository. | `docs/README.md`<br><br>`docs/file.txt` |
+| `docs/**` | Any files in the `docs` directory and its subdirectories at the root of the repository. | `docs/README.md`<br><br>`docs/mona/octocat.txt` |
+| `docs/**/*.md` | A file with a `.md` suffix anywhere in the `docs` directory. | `docs/README.md`<br><br>`docs/mona/hello-world.md`<br><br>`docs/a/markdown/file.md` |
+| `'**/docs/**'` | Any files in a `docs` directory anywhere in the repository. | `docs/hello.md`<br><br>`dir/docs/my-file.txt`<br><br>`space/docs/plan/space.doc` |
+| `'**/README.md'` | A README.md file anywhere in the repository. | `README.md`<br><br>`js/README.md` |
+| `'**/*src/**'` | Any file in a folder with a `src` suffix anywhere in the repository. | `a/src/app.js`<br><br>`my-src/code/js/app.js` |
+| `'**/*-post.md'` | A file with the suffix `-post.md` anywhere in the repository. | `my-post.md`<br><br>`path/their-post.md` |
+| `'**/migrate-*.sql'` | A file with the prefix `migrate-` and suffix `.sql` anywhere in the repository. | `migrate-10909.sql`<br><br>`db/migrate-v1.0.sql`<br><br>`db/sept/migrate-v1.sql` |
+| `'*.md'`<br><br>`'!README.md'` | Using an exclamation mark (`!`) in front of a pattern negates it. When a file matches a pattern and also matches a negative pattern defined later in the file, the file will not be included. | `hello.md`<br><br>_Does not match_<br><br>`README.md`<br><br>`docs/hello.md` |
+| `'*.md'`<br><br>`'!README.md'`<br><br>`README*` | Patterns are checked sequentially. A pattern that negates a previous pattern will re-include file paths. | `hello.md`<br><br>`README.md`<br><br>`README.doc` |

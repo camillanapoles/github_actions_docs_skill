@@ -73,27 +73,9 @@ For more information, see [GitHub-hosted runners](../../../concepts/runners/gith
 
 For public repositories, jobs using the workflow labels shown in the table below will run with the associated specifications. With the exception of single-CPU runners, each GitHub-hosted runner is a new virtual machine (VM) hosted by GitHub. Single-CPU runners are hosted in a container on a shared VM—see [GitHub-hosted runners reference](../../../reference/runners/github-hosted-runners.md#single-cpu-runners#single-cpu-runners). Use of the standard GitHub-hosted runners is free and unlimited on public repositories.
 
-**Virtual machine / container**
-
-**Processor (CPU)**
-
-**Memory (RAM)**
-
-**Storage (SSD)**
-
-**Architecture**
-
-**Workflow label**
-
-Linux
-
-1
-
-5 GB
-
-14 GB
-
-x64
+| **Virtual machine / container** | **Processor (CPU)** | **Memory (RAM)** | **Storage (SSD)** | **Architecture** | **Workflow label** |
+|-------------------------------|-------------------|----------------|-----------------|----------------|------------------|
+| Linux                           | 1                   | 5 GB             | 14 GB             | x64              |                    |
         `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
 Linux
 
@@ -174,27 +156,9 @@ arm64
 
 For internal and private repositories, jobs using the workflow labels shown in the table below will run on virtual machines with the associated specifications. These runners use your GitHub account's allotment of free minutes, and are then charged at the per minute rates. See [Actions runner pricing](https://docs.github.com/billing/reference/actions-runner-pricing).
 
-**Virtual Machine**
-
-**Processor (CPU)**
-
-**Memory (RAM)**
-
-**Storage (SSD)**
-
-**Architecture**
-
-**Workflow label**
-
-Linux
-
-1
-
-5 GB
-
-14 GB
-
-x64
+| **Virtual Machine** | **Processor (CPU)** | **Memory (RAM)** | **Storage (SSD)** | **Architecture** | **Workflow label** |
+|-------------------|-------------------|----------------|-----------------|----------------|------------------|
+| Linux               | 1                   | 5 GB             | 14 GB             | x64              |                    |
         `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
 Linux
 

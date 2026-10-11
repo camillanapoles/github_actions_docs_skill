@@ -27,7 +27,7 @@ Like GitHub Actions workflows, agentic workflows can be triggered by repository 
 
 | Webhook event payload | Activity types | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`branch_protection_rule`](https://docs.github.com/webhooks/webhook-events-and-payloads#branch_protection_rule) | - `created` - `edited` - `deleted` | Last commit on default branch | Default branch |
+| [`branch_protection_rule`](https://docs.github.com/webhooks/webhook-events-and-payloads#branch_protection_rule) | - `created`<br>- `edited`<br>- `deleted` | Last commit on default branch | Default branch |
 
 !!! note
     * More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#branch_protection_rule#branch_protection_rule). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -45,9 +45,9 @@ on:
 
 ## `check_run`
 
-| Webhook event payload                                          | Activity types                                                 | `GITHUB_SHA`                  | `GITHUB_REF`   |
-|--------------------------------------------------------------|--------------------------------------------------------------|-----------------------------|--------------|
-| [`check_run`](https://docs.github.com/webhooks/webhook-events-and-payloads#check_run) | - `created` - `rerequested` - `completed` - `requested_action` | Last commit on default branch | Default branch |
+| Webhook event payload                                          | Activity types                                                          | `GITHUB_SHA`                  | `GITHUB_REF`   |
+|--------------------------------------------------------------|-----------------------------------------------------------------------|-----------------------------|--------------|
+| [`check_run`](https://docs.github.com/webhooks/webhook-events-and-payloads#check_run) | - `created`<br>- `rerequested`<br>- `completed`<br>- `requested_action` | Last commit on default branch | Default branch |
 
 !!! note
     * More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#check_run#check_run). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -159,7 +159,7 @@ on:
 
 | Webhook event payload | Activity types | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`discussion`](https://docs.github.com/webhooks/webhook-events-and-payloads#discussion) | - `created` - `edited` - `deleted` - `transferred` - `pinned` - `unpinned` - `labeled` - `unlabeled` - `locked` - `unlocked` - `category_changed`  - `answered`  - `unanswered` | Last commit on default branch | Default branch |
+| [`discussion`](https://docs.github.com/webhooks/webhook-events-and-payloads#discussion) | - `created`<br>- `edited`<br>- `deleted`<br>- `transferred`<br>- `pinned`<br>- `unpinned`<br>- `labeled`<br>- `unlabeled`<br>- `locked`<br>- `unlocked`<br>- `category_changed`<br> - `answered`<br> - `unanswered` | Last commit on default branch | Default branch |
 
 !!! note
     * More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#discussion#discussion). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -180,7 +180,7 @@ on:
 
 | Webhook event payload | Activity types | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`discussion_comment`](https://docs.github.com/webhooks/webhook-events-and-payloads#discussion_comment) | - `created` - `edited` - `deleted` | Last commit on default branch | Default branch |
+| [`discussion_comment`](https://docs.github.com/webhooks/webhook-events-and-payloads#discussion_comment) | - `created`<br>- `edited`<br>- `deleted`<br> | Last commit on default branch | Default branch |
 
 !!! note
     * More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#discussion_comment#discussion_comment). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -256,9 +256,9 @@ on:
 
 ## `issue_comment`
 
-| Webhook event payload                                                  | Activity types                     | `GITHUB_SHA`                  | `GITHUB_REF`   |
-|----------------------------------------------------------------------|----------------------------------|-----------------------------|--------------|
-| [`issue_comment`](https://docs.github.com/webhooks/webhook-events-and-payloads#issue_comment) | - `created` - `edited` - `deleted` | Last commit on default branch | Default branch |
+| Webhook event payload                                                  | Activity types                               | `GITHUB_SHA`                  | `GITHUB_REF`   |
+|----------------------------------------------------------------------|--------------------------------------------|-----------------------------|--------------|
+| [`issue_comment`](https://docs.github.com/webhooks/webhook-events-and-payloads#issue_comment) | - `created`<br>- `edited`<br>- `deleted`<br> | Last commit on default branch | Default branch |
 
 !!! note
     * More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#issue_comment#issue_comment). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -311,7 +311,7 @@ jobs:
 
 | Webhook event payload | Activity types | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`issues`](https://docs.github.com/webhooks/webhook-events-and-payloads#issues) | - `opened` - `edited` - `deleted` - `transferred` - `pinned` - `unpinned` - `closed` - `reopened` - `assigned` - `unassigned` - `labeled` - `unlabeled` - `locked` - `unlocked` - `milestoned`  - `demilestoned`  - `typed`  - `untyped`  - `field_added`  - `field_removed` | Last commit on default branch | Default branch |
+| [`issues`](https://docs.github.com/webhooks/webhook-events-and-payloads#issues) | - `opened`<br>- `edited`<br>- `deleted`<br>- `transferred`<br>- `pinned`<br>- `unpinned`<br>- `closed`<br>- `reopened`<br>- `assigned`<br>- `unassigned`<br>- `labeled`<br>- `unlabeled`<br>- `locked`<br>- `unlocked`<br>- `milestoned`<br> - `demilestoned`<br> - `typed`<br> - `untyped`<br> - `field_added`<br> - `field_removed` | Last commit on default branch | Default branch |
 
 !!! note
     * More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#issues#issues). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -337,9 +337,9 @@ on:
 
 ## `label`
 
-| Webhook event payload                                  | Activity types                     | `GITHUB_SHA`                  | `GITHUB_REF`   |
-|------------------------------------------------------|----------------------------------|-----------------------------|--------------|
-| [`label`](https://docs.github.com/webhooks/webhook-events-and-payloads#label) | - `created` - `edited` - `deleted` | Last commit on default branch | Default branch |
+| Webhook event payload                                  | Activity types                               | `GITHUB_SHA`                  | `GITHUB_REF`   |
+|------------------------------------------------------|--------------------------------------------|-----------------------------|--------------|
+| [`label`](https://docs.github.com/webhooks/webhook-events-and-payloads#label) | - `created`<br>- `edited`<br>- `deleted`<br> | Last commit on default branch | Default branch |
 
 !!! note
     * More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#label#label). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -384,9 +384,9 @@ on:
 
 ## `milestone`
 
-| Webhook event payload                                          | Activity types                                           | `GITHUB_SHA`                  | `GITHUB_REF`   |
-|--------------------------------------------------------------|--------------------------------------------------------|-----------------------------|--------------|
-| [`milestone`](https://docs.github.com/webhooks/webhook-events-and-payloads#milestone) | - `created` - `closed` - `opened` - `edited` - `deleted` | Last commit on default branch | Default branch |
+| Webhook event payload                                          | Activity types                                                           | `GITHUB_SHA`                  | `GITHUB_REF`   |
+|--------------------------------------------------------------|------------------------------------------------------------------------|-----------------------------|--------------|
+| [`milestone`](https://docs.github.com/webhooks/webhook-events-and-payloads#milestone) | - `created`<br>- `closed`<br>- `opened`<br>- `edited`<br>- `deleted`<br> | Last commit on default branch | Default branch |
 
 !!! note
     * More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#milestone#milestone). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -444,7 +444,7 @@ on:
 
 | Webhook event payload | Activity types | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`pull_request`](https://docs.github.com/webhooks/webhook-events-and-payloads#pull_request) | - `assigned` - `unassigned` - `labeled` - `unlabeled` - `opened` - `edited` - `closed` - `reopened` - `synchronize` - `converted_to_draft` - `locked` - `unlocked` - `enqueued` - `dequeued` - `milestoned` - `demilestoned` - `ready_for_review` - `review_requested` - `review_request_removed` - `auto_merge_enabled` - `auto_merge_disabled` | Last merge commit on the `GITHUB_REF` branch | PR merge branch `refs/pull/PULL_REQUEST_NUMBER/merge` |
+| [`pull_request`](https://docs.github.com/webhooks/webhook-events-and-payloads#pull_request) | - `assigned`<br>- `unassigned`<br>- `labeled`<br>- `unlabeled`<br>- `opened`<br>- `edited`<br>- `closed`<br>- `reopened`<br>- `synchronize`<br>- `converted_to_draft`<br>- `locked`<br>- `unlocked`<br>- `enqueued`<br>- `dequeued`<br>- `milestoned`<br>- `demilestoned`<br>- `ready_for_review`<br>- `review_requested`<br>- `review_request_removed`<br>- `auto_merge_enabled`<br>- `auto_merge_disabled` | Last merge commit on the `GITHUB_REF` branch | PR merge branch `refs/pull/PULL_REQUEST_NUMBER/merge` |
 
 !!! note
     * More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#pull_request#pull_request). By default, a workflow only runs when a `pull_request` event's activity type is `opened`, `synchronize`, or `reopened`. To trigger workflows by different activity types, use the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -603,7 +603,7 @@ To run your workflow when a comment on a pull request (not on a pull request's d
 
 | Webhook event payload | Activity types | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`pull_request_review`](https://docs.github.com/webhooks/webhook-events-and-payloads#pull_request_review) | - `submitted` - `edited` - `dismissed` | Last merge commit on the `GITHUB_REF` branch | PR merge branch `refs/pull/PULL_REQUEST_NUMBER/merge` |
+| [`pull_request_review`](https://docs.github.com/webhooks/webhook-events-and-payloads#pull_request_review) | - `submitted`<br>- `edited`<br>- `dismissed` | Last merge commit on the `GITHUB_REF` branch | PR merge branch `refs/pull/PULL_REQUEST_NUMBER/merge` |
 
 !!! note
     More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#pull_request_review#pull_request_review). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -656,7 +656,7 @@ For pull requests from a forked repository to a private repository, workflows on
 
 | Webhook event payload | Activity types | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`pull_request_review_comment`](https://docs.github.com/webhooks/webhook-events-and-payloads#pull_request_review_comment) | - `created` - `edited` - `deleted` | Last merge commit on the `GITHUB_REF` branch | PR merge branch `refs/pull/PULL_REQUEST_NUMBER/merge` |
+| [`pull_request_review_comment`](https://docs.github.com/webhooks/webhook-events-and-payloads#pull_request_review_comment) | - `created`<br>- `edited`<br>- `deleted` | Last merge commit on the `GITHUB_REF` branch | PR merge branch `refs/pull/PULL_REQUEST_NUMBER/merge` |
 
 !!! note
     More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#pull_request_review_comment#pull_request_review_comment). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -692,7 +692,7 @@ For pull requests from a forked repository to a private repository, workflows on
 
 | Webhook event payload | Activity types | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`pull_request`](https://docs.github.com/webhooks/webhook-events-and-payloads#pull_request) | - `assigned` - `unassigned` - `labeled` - `unlabeled` - `opened` - `edited` - `closed` - `reopened` - `synchronize` - `converted_to_draft` - `locked` - `unlocked` - `enqueued` - `dequeued` - `milestoned` - `demilestoned` - `ready_for_review` - `review_requested` - `review_request_removed` - `auto_merge_enabled` - `auto_merge_disabled` | Last commit on default branch | Default branch |
+| [`pull_request`](https://docs.github.com/webhooks/webhook-events-and-payloads#pull_request) | - `assigned`<br>- `unassigned`<br>- `labeled`<br>- `unlabeled`<br>- `opened`<br>- `edited`<br>- `closed`<br>- `reopened`<br>- `synchronize`<br>- `converted_to_draft`<br>- `locked`<br>- `unlocked`<br>- `enqueued`<br>- `dequeued`<br>- `milestoned`<br>- `demilestoned`<br>- `ready_for_review`<br>- `review_requested`<br>- `review_request_removed`<br>- `auto_merge_enabled`<br>- `auto_merge_disabled` | Last commit on default branch | Default branch |
 
 !!! note
     More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#pull_request#pull_request). By default, a workflow only runs when a `pull_request_target` event's activity type is `opened`, `synchronize`, or `reopened`. To trigger workflows by different activity types, use the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -880,9 +880,9 @@ on:
 
 ## `registry_package`
 
-| Webhook event payload                                               | Activity types            | `GITHUB_SHA`                    | `GITHUB_REF`                           |
-|-------------------------------------------------------------------|-------------------------|-------------------------------|--------------------------------------|
-| [`registry_package`](https://docs.github.com/webhooks/webhook-events-and-payloads#package) | - `published` - `updated` | Commit of the published package | Branch or tag of the published package |
+| Webhook event payload                                               | Activity types               | `GITHUB_SHA`                    | `GITHUB_REF`                           |
+|-------------------------------------------------------------------|----------------------------|-------------------------------|--------------------------------------|
+| [`registry_package`](https://docs.github.com/webhooks/webhook-events-and-payloads#package) | - `published`<br>- `updated` | Commit of the published package | Branch or tag of the published package |
 
 !!! note
     * More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#registry_package#registry_package). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -909,7 +909,7 @@ on:
 
 | Webhook event payload | Activity types | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`release`](https://docs.github.com/webhooks/webhook-events-and-payloads#release) | - `published`  - `unpublished`  - `created`  - `edited`  - `deleted`  - `prereleased`  - `released` | Last commit in the tagged release | Tag ref of release `refs/tags/<tag_name>` |
+| [`release`](https://docs.github.com/webhooks/webhook-events-and-payloads#release) | - `published` <br>- `unpublished` <br>- `created` <br>- `edited` <br>- `deleted` <br>- `prereleased`<br> - `released` | Last commit in the tagged release | Tag ref of release `refs/tags/<tag_name>` |
 
 !!! note
     * More than one activity type triggers this event. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#release#release). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).
@@ -1222,9 +1222,9 @@ For more information, see the GitHub CLI information in [Manually running a work
 
 ## `workflow_run`
 
-| Webhook event payload                                                | Activity types                              | `GITHUB_SHA`                  | `GITHUB_REF`   |
-|--------------------------------------------------------------------|-------------------------------------------|-----------------------------|--------------|
-| [`workflow_run`](https://docs.github.com/webhooks/webhook-events-and-payloads#workflow_run) | - `completed` - `requested` - `in_progress` | Last commit on default branch | Default branch |
+| Webhook event payload                                                | Activity types                                    | `GITHUB_SHA`                  | `GITHUB_REF`   |
+|--------------------------------------------------------------------|-------------------------------------------------|-----------------------------|--------------|
+| [`workflow_run`](https://docs.github.com/webhooks/webhook-events-and-payloads#workflow_run) | - `completed`<br>- `requested`<br>- `in_progress` | Last commit on default branch | Default branch |
 
 !!! note
     * More than one activity type triggers this event. The `requested` activity type does not occur when a workflow is re-run. For information about each activity type, see [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads#workflow_run#workflow_run). By default, all activity types trigger workflows that run on this event. You can limit your workflow runs to specific activity types using the `types` keyword. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#onevent_nametypes#onevent_nametypes).

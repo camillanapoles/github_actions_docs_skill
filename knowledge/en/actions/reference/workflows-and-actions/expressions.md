@@ -69,8 +69,8 @@ GitHub performs loose equality comparisons.
 | Type | Result |
 | --- | --- |
 | Null | `0` |
-| Boolean | `true` returns `1`   `false` returns `0` |
-| String | Parsed from any legal JSON number format, otherwise `NaN`.   Note: empty string returns `0`. |
+| Boolean | `true` returns `1` <br> `false` returns `0` |
+| String | Parsed from any legal JSON number format, otherwise `NaN`. <br> Note: empty string returns `0`. |
 | Array | `NaN` |
 | Object | `NaN` |
 * When `NaN` is one of the operands of any relational comparison (`>`, `<`, `>=`, `<=`), the result is always `false`. For more information, see the [NaN Mozilla docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN).

@@ -271,7 +271,12 @@ BLOCK_HTML_RE = re.compile(
     r"</?\s*(div|table|thead|tbody|tfoot|tr|td|th|ul|ol|li|dl|dt|dd|p|section|article|"
     r"details|summary|figure|figcaption|blockquote|pre|h[1-6]|br|hr)\b", re.I)
 INLINE_HTML_RULES: list[tuple[re.Pattern[str], str]] = [
-    (re.compile(r"<br\s*/?>", re.I), " "),
+    (re.compile(r"<br\s*/?>", re.I), "<br>"),
+    (re.compile(r"<ul[^>]*>(.*?)</ul>", re.I | re.S),
+     lambda m: "<br>".join(x.strip() for x in re.findall(r"<li[^>]*>(.*?)</li>", m.group(1), re.I | re.S) if x.strip())),
+    (re.compile(r"<ol[^>]*>(.*?)</ol>", re.I | re.S),
+     lambda m: "<br>".join(x.strip() for x in re.findall(r"<li[^>]*>(.*?)</li>", m.group(1), re.I | re.S) if x.strip())),
+    (re.compile(r"</?\s*(ul|ol|li)\b[^>]*>", re.I), ""),
     (re.compile(r"<code>(.*?)</code>", re.I | re.S), r"`\1`"),
     (re.compile(r"<strong>(.*?)</strong>", re.I | re.S), r"**\1**"),
     (re.compile(r"<b>(.*?)</b>", re.I | re.S), r"**\1**"),
@@ -282,6 +287,7 @@ INLINE_HTML_RULES: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"<a\s+[^>]*href=\"([^\"]+)\"[^>]*>(.*?)</a>", re.I | re.S), r"[\2](\1)"),
     (re.compile(r"</?\s*(span|small|sub|sup|div|p|code|em|strong|b|i|a|kbd|font|u|mark|abbr|tt|var|pre)\b[^>]*>", re.I), ""),
 ]
+BR_TOKEN = "\x00MDBR\x00"
 NEEDS_PANDOC_RE = re.compile(r"<\s*(table|ul|ol|dl|details|thead|tbody|tr|td|th|li)\b", re.I)
 STRIP_TAG_RE = re.compile(r"</?\s*[a-zA-Z][^>]*>")
 ALERT_RE = re.compile(r"^>\s*\\?\[!\s*(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\s*\]\\?\s*$", re.I)
@@ -318,6 +324,103 @@ def inline_html_to_md(line: str) -> str:
     return line
 
 
+
+def _inline_md_from_html(fragment_html: str) -> str:
+    """HTML de uma célula → markdown inline (uma linha, `<br>` entre blocos)."""
+    if BeautifulSoup is None:
+        fragment_html = re.sub(r"<[^>]+>", " ", fragment_html)
+    else:
+        soup = BeautifulSoup(fragment_html, "lxml")
+        for lst in soup.find_all(["ul", "ol", "dl"]):
+            items = []
+            for li in lst.find_all(["li", "dd"], recursive=False):
+                items.append(li.get_text(" ", strip=True))
+            lst.replace_with("<br>".join(items))
+        fragment_html = str(soup)
+    # <br> precisa sobreviver ao pandoc (que escapa HTML cru) → usa placeholder
+    fragment_html = re.sub(r"<br\s*/?>", BR_TOKEN, fragment_html, flags=re.I)
+    try:
+        md = pandoc_html_to_gfm(fragment_html)
+    except Exception:
+        md = re.sub(r"<[^>]+>", "", fragment_html)
+    md = md.replace(BR_TOKEN, "<br>").replace("\\<br\\>", "<br>")
+    md = md.strip()
+    md = re.sub(r"\n{2,}", "<br><br>", md)
+    md = re.sub(r"\n+", "<br>", md)
+    md = md.replace("|", "\\|")
+    return re.sub(r"\s{2,}", " ", md).strip()
+
+
+def html_table_to_pipe_table(table: Any) -> str:
+    """Converte uma `<table>` HTML (mesmo com blocos nas células) em pipe table GFM."""
+    header: list[str] | None = None
+    rows: list[list[str]] = []
+    for tr in table.find_all("tr"):
+        cells = tr.find_all(["td", "th"])
+        if not cells:
+            continue
+        row = [_inline_md_from_html(str(c)) for c in cells]
+        is_header = tr.find_parent("thead") is not None or (cells and all(c.name == "th" for c in cells))
+        if is_header and header is None:
+            header = row
+        else:
+            rows.append(row)
+    if header is None and rows:
+        header = rows.pop(0)
+    if not header:
+        return ""
+    width = max([len(header)] + [len(r) for r in rows])
+    header += [""] * (width - len(header))
+    out = ["| " + " | ".join(header) + " |", "| " + " | ".join(["---"] * width) + " |"]
+    for row in rows:
+        row += [""] * (width - len(row))
+        out.append("| " + " | ".join(row) + " |")
+    return "\n".join(out)
+
+
+def convert_html_region(block: str) -> str:
+    """Converte uma região HTML: tabelas → pipe tables; demais blocos → pandoc; restos → strip."""
+    if BeautifulSoup is None:
+        try:
+            return pandoc_html_to_gfm(block).strip()
+        except Exception:
+            return STRIP_TAG_RE.sub("", block)
+    soup = BeautifulSoup(block, "lxml")
+    placeholders: dict[str, str] = {}
+    for i, table in enumerate(soup.find_all("table")):
+        key = f"MDTABLEPLACEHOLDER{i}MD"
+        placeholders[key] = html_table_to_pipe_table(table)
+        table.replace_with(key)
+    remaining = str(soup)
+    if NEEDS_PANDOC_RE.search(remaining):
+        try:
+            converted = pandoc_html_to_gfm(remaining)
+        except Exception:
+            converted = None
+        remaining = converted if converted is not None else STRIP_TAG_RE.sub("", remaining)
+    else:
+        remaining = inline_html_to_md(remaining)
+        remaining = STRIP_TAG_RE.sub("", remaining)
+    lines: list[str] = []
+    for line in remaining.split("\n"):
+        hit = None
+        for key in placeholders:
+            if key in line:
+                hit = key
+                break
+        if hit:
+            lines.append("")
+            lines.append(placeholders.pop(hit))
+            lines.append("")
+        else:
+            lines.append(line)
+    for key, value in placeholders.items():
+        if value:
+            lines += ["", value, ""]
+    text = "\n".join(lines)
+    return re.sub(r"\n{3,}", "\n\n", text).strip()
+
+
 def html_regions_to_markdown(md: str) -> str:
     """Converte regiões de HTML em bloco (fora de cercas e de tabelas) para Markdown via pandoc."""
     lines = md.split("\n")
@@ -330,12 +433,12 @@ def html_regions_to_markdown(md: str) -> str:
             return
         block = "\n".join(region)
         if NEEDS_PANDOC_RE.search(block):
-            # tabelas/listas em HTML: conversão fiel via pandoc (uma chamada por região)
+            # tabelas/listas em HTML: conversão fiel (pipe tables + pandoc para o resto)
             try:
-                converted = pandoc_html_to_gfm(block).strip()
+                converted = convert_html_region(block)
             except Exception:
                 converted = block
-            out.append(converted if converted is not None else block)
+            out.append(converted if converted else "")
         else:
             # wrappers (<div>, <p>, <span>, ...): remoção barata de tags
             cleaned = inline_html_to_md(block)

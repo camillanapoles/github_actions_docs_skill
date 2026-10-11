@@ -397,22 +397,22 @@ The following table shows the type of properties GitHub Actions Importer is curr
 
 | Travis CI | GitHub Actions | Status |
 | :-- | :-- | --: |
-| branches | <ul><li>`on.<push>.<branches>`</li> | Supported |
-| build_pull_requests | <ul><li>`on.<pull_request>`</li> | Supported |
-| env | <ul><li>`env`</li> <li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li> | Supported |
-| if | <ul><li>`jobs.<job_id>.if`</li></ul> | Supported |
-| job | <ul><li>`jobs.<job_id>`</li><li>`jobs.<job_id>.name`</li></ul> | Supported |
-| matrix | <ul><li>`jobs.<job_id>.strategy`</li><li>`jobs.<job_id>.strategy.fail-fast`</li><li>`jobs.<job_id>.strategy.matrix`</li> | Supported |
-| os & dist | <ul><li>`runners`</li></ul> | Supported |
-| scripts | <ul><li>`jobs.<job_id>.steps`</li></ul> | Supported |
-| stages | <ul><li>`jobs`</li></ul> | Supported |
-| env | <ul><li>`on`</li> | Partially supported |
-| branches | <ul><li>`on.<push>.<tags>`</li><li>`on.<push>.paths`</li> | Unsupported |
-| build_pull_requests | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.<tags>`</li><li>`on.<pull_request>.paths`</li> | Unsupported |
-| cron triggers | <ul><li>`on.schedule`</li><li>`on.workflow_run`</li></ul> | Unsupported |
-| env | <ul><li>`jobs.<job_id>.timeout-minutes`</li><li>`on.<event_name>.types`</li> | Unsupported |
-| job | <ul><li>`jobs.<job_id>.container`</li> | Unsupported |
-| os & dist | <ul><li>`self hosted runners`</li></ul> | Unsupported |
+| branches | `on.<push>.<branches>` | Supported |
+| build_pull_requests | `on.<pull_request>` | Supported |
+| env | `env` `jobs.<job_id>.env``jobs.<job_id>.steps.env` | Supported |
+| if | `jobs.<job_id>.if` | Supported |
+| job | `jobs.<job_id>`<br>`jobs.<job_id>.name` | Supported |
+| matrix | `jobs.<job_id>.strategy``jobs.<job_id>.strategy.fail-fast``jobs.<job_id>.strategy.matrix` | Supported |
+| os & dist | `runners` | Supported |
+| scripts | `jobs.<job_id>.steps` | Supported |
+| stages | `jobs` | Supported |
+| env | `on` | Partially supported |
+| branches | `on.<push>.<tags>``on.<push>.paths` | Unsupported |
+| build_pull_requests | `on.<pull_request>.<branches>``on.<pull_request>.<tags>``on.<pull_request>.paths` | Unsupported |
+| cron triggers | `on.schedule`<br>`on.workflow_run` | Unsupported |
+| env | `jobs.<job_id>.timeout-minutes``on.<event_name>.types` | Unsupported |
+| job | `jobs.<job_id>.container` | Unsupported |
+| os & dist | `self hosted runners` | Unsupported |
 
 For information about supported Travis CI constructs, see the [`github/gh-actions-importer` repository](https://github.com/github/gh-actions-importer/blob/main/docs/travis_ci/index.md).
 

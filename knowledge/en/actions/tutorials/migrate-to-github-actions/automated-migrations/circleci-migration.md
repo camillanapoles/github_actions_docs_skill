@@ -395,23 +395,23 @@ repository_three
 
 The following table shows the type of properties that GitHub Actions Importer is currently able to convert.
 
-| CircleCI Pipelines | GitHub Actions | Status |
-| :-- | :-- | :-- |
-| cron triggers | <ul><li>`on.schedule`</li></ul> | Supported |
-| environment | <ul><li>`env`</li><li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li></ul> | Supported |
-| executors | <ul><li>`runs-on`</li></ul> | Supported |
-| jobs | <ul><li>`jobs`</li></ul> | Supported |
-| job | <ul><li>`jobs.<job_id>`</li><li>`jobs.<job_id>.name`</li></ul> | Supported |
-| matrix | <ul><li>`jobs.<job_id>.strategy`</li><li>`jobs.<job_id>.strategy.matrix`</li></ul> | Supported |
-| parameters | <ul><li>`env`</li><li>`workflow-dispatch.inputs`</li></ul> | Supported |
-| steps | <ul><li>`jobs.<job_id>.steps`</li></ul> | Supported |
-| when, unless | <ul><li>`jobs.<job_id>.if`</li></ul> | Supported |
-| triggers | <ul><li>`on`</li></ul> | Supported |
-| executors | <ul><li>`container`</li><li>`services`</li></ul> | Partially Supported |
-| orbs | <ul><li>`actions`</li></ul> | Partially Supported |
-| executors | <ul><li>`self hosted runners`</li></ul> | Unsupported |
-| setup | Not applicable | Unsupported |
-| version | Not applicable | Unsupported |
+| CircleCI Pipelines  | GitHub Actions                                              | Status              |
+|:------------------|:----------------------------------------------------------|:------------------|
+| cron triggers       | `on.schedule`                                               | Supported           |
+| environment         | `env`<br>`jobs.<job_id>.env`<br>`jobs.<job_id>.steps.env`   | Supported           |
+| executors           | `runs-on`                                                   | Supported           |
+| jobs                | `jobs`                                                      | Supported           |
+| job                 | `jobs.<job_id>`<br>`jobs.<job_id>.name`                     | Supported           |
+| matrix              | `jobs.<job_id>.strategy`<br>`jobs.<job_id>.strategy.matrix` | Supported           |
+| parameters          | `env`<br>`workflow-dispatch.inputs`                         | Supported           |
+| steps               | `jobs.<job_id>.steps`                                       | Supported           |
+| when, unless        | `jobs.<job_id>.if`                                          | Supported           |
+| triggers            | `on`                                                        | Supported           |
+| executors           | `container`<br>`services`                                   | Partially Supported |
+| orbs                | `actions`                                                   | Partially Supported |
+| executors           | `self hosted runners`                                       | Unsupported         |
+| setup               | Not applicable                                              | Unsupported         |
+| version             | Not applicable                                              | Unsupported         |
 
 For more information about supported CircleCI concept and orb mappings, see the [`github/gh-actions-importer` repository](https://github.com/github/gh-actions-importer/blob/main/docs/circle_ci/index.md).
 
