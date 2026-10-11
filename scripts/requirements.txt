@@ -1,0 +1,6 @@
+# Dependências do extrator/validador da base de conhecimento
+beautifulsoup4>=4.12
+lxml>=5.0
+pypandoc-binary>=1.13   # traz o binário do pandoc (HTML -> GFM de alta fidelidade)
+markdownify>=0.13       # fallback quando o pandoc não está disponível
+PyYAML>=6.0
