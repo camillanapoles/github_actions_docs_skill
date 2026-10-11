@@ -1,0 +1,174 @@
+# ==============================================================================
+# Base de conhecimento GitHub Actions — MkDocs (Material)
+#
+# O bloco `nav:` entre os marcadores abaixo é GERADO por scripts/build_site.py
+# (ordem oficial da sidebar do docs.github.com + índices por seção).
+#   python3 scripts/build_site.py
+# ==============================================================================
+
+site_name: GitHub Actions — Base de Conhecimento & Skill
+site_description: >-
+  Documentação oficial do GitHub Actions capturada página a página (conteúdo
+  principal, sem nav/sidebar) + skill com templates de workflows e actions
+  validados para CI/CD, GitOps e DevOps.
+site_author: camillanapoles
+site_url: https://camillanapoles.github.io/github_actions_docs_skill/
+repo_url: https://github.com/camillanapoles/github_actions_docs_skill
+repo_name: camillanapoles/github_actions_docs_skill
+edit_uri: edit/arena/c91bd6a1-github-actions-docs-skill/knowledge/
+
+docs_dir: knowledge
+site_dir: site
+use_directory_urls: true
+strict: false
+
+theme:
+  name: material
+  language: pt
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+    logo: octicons/rocket-16
+    annotation: material/plus-circle-outline
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - content.tooltips
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.path
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Trocar para modo escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Trocar para modo claro
+
+plugins:
+  - search:
+      lang:
+        - pt
+        - en
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - tags:
+      tags_file: tags.md
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - meta
+  - sane_lists
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Link para esta seção
+      toc_depth: 4
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      base_path:
+        - skills/github-actions/templates
+        - .
+      check_paths: false
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  generator: false
+  status:
+    new: Recém-adicionado
+  alternate:
+    - name: Português (pt-BR)
+      link: /pt/
+      lang: pt-BR
+    - name: English (source-of-truth)
+      link: /en/
+      lang: en
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/camillanapoles/github_actions_docs_skill
+
+validation:
+  omitted_files: warn
+  absolute_links: relative_to_docs_dir
+  unrecognized_links: warn
+  anchors: warn
+
+exclude_docs: |
+  nav.generated.yml
+  */manifest.json
+  manifest.json
+  .ci/
+
+extra_css:
+  - assets/extra.css
+
+copyright: >-
+  Conteúdo da documentação: © GitHub, Inc. — licenciado sob
+  <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a>
+  (repositório <a href="https://github.com/github/docs">github/docs</a>).
+  Código, scripts, templates e skill deste repositório: MIT.
+
+# BEGIN GENERATED NAV
+nav:
+  - Início: index.md
+# END GENERATED NAV

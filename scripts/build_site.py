@@ -425,6 +425,99 @@ def sync_skill(knowledge: Path) -> list[str]:
 
 
 # --------------------------------------------------------------------------- #
+# Alinhamento de âncoras pt-BR ↔ inglês
+# --------------------------------------------------------------------------- #
+
+HEADING_RE = re.compile(r"^(#{1,6})\s+(.*?)\s*$")
+EXPLICIT_ID_RE = re.compile(r"\{\s*#([A-Za-z0-9_.:\-]+)\s*\}\s*$")
+FENCE_RE = re.compile(r"^\s*(```|~~~)")
+
+
+def github_slug(text: str) -> str:
+    text = EXPLICIT_ID_RE.sub("", text).strip().lower()
+    text = re.sub(r"[`*_]", "", text)
+    text = re.sub(r"[^\w\s\-]", "", text, flags=re.UNICODE)
+    return re.sub(r"\s+", "-", text).strip("-")
+
+
+def headings_of(path: Path) -> list[tuple[int, int, str, str]]:
+    """[(índice da linha, nível, texto, id explícito)] fora de cercas de código."""
+    out: list[tuple[int, int, str, str]] = []
+    fence = False
+    fence_char = ""
+    for i, line in enumerate(path.read_text(encoding="utf-8").split("\n")):
+        m = FENCE_RE.match(line)
+        if m:
+            if not fence:
+                fence, fence_char = True, m.group(1)
+            elif m.group(1) == fence_char:
+                fence = False
+            continue
+        if fence:
+            continue
+        h = HEADING_RE.match(line)
+        if h:
+            explicit = EXPLICIT_ID_RE.search(line)
+            out.append((i, len(h.group(1)), h.group(2), explicit.group(1) if explicit else ""))
+    return out
+
+
+def align_anchors(knowledge: Path, langs: list[str]) -> dict[str, int]:
+    """Ancora headings pt-BR nos slugs oficiais (inglês) usados pelos links do docs.
+
+    O docs.github.com preserva os IDs de heading do source inglês mesmo na versão
+    traduzida (ex.: `#secrets-context`). Sem IDs explícitos, o MkDocs geraria
+    `#contexto-secrets` e todos os links capturados quebrariam. Como pt e en
+    derivam do MESMO documento, a sequência de headings é alinhável 1:1.
+    """
+    stats = {"pages": 0, "aligned_pages": 0, "headings": 0, "skipped": 0}
+    en_root = knowledge / "en"
+    for lang in langs:
+        root = knowledge / lang
+        if not root.exists():
+            continue
+        for md in sorted(root.rglob("*.md")):
+            rel = md.relative_to(root).as_posix()
+            if lang == "en":
+                reference = None
+            else:
+                candidate = en_root / rel
+                reference = candidate if candidate.exists() else None
+            headings = headings_of(md)
+            if not headings:
+                continue
+            stats["pages"] += 1
+            ref_headings = headings_of(reference) if reference else []
+            use_reference = bool(ref_headings) and len(ref_headings) == len(headings) and \
+                [h[1] for h in ref_headings] == [h[1] for h in headings]
+            if reference and not use_reference:
+                stats["skipped"] += 1
+            source_headings = ref_headings if use_reference else headings
+            counts: dict[str, int] = {}
+            lines = md.read_text(encoding="utf-8").split("\n")
+            changed = False
+            for (lineno, _level, text, explicit), (_rl, _rlvl, rtext, rid) in zip(headings, source_headings):
+                slug = rid or github_slug(rtext or text)
+                if not slug:
+                    continue
+                counts[slug] = counts.get(slug, 0) + 1
+                final = slug if counts[slug] == 1 else f"{slug}-{counts[slug] - 1}"
+                current = lines[lineno]
+                current_clean = EXPLICIT_ID_RE.sub("", current).rstrip()
+                if github_slug(text) == final and not explicit:
+                    continue  # slug nativo já coincide
+                new_line = f"{current_clean} {{ #{final} }}"
+                if new_line != current:
+                    lines[lineno] = new_line
+                    changed = True
+                    stats["headings"] += 1
+            if changed:
+                md.write_text("\n".join(lines), encoding="utf-8")
+                stats["aligned_pages"] += 1
+    return stats
+
+
+# --------------------------------------------------------------------------- #
 # mkdocs.yml
 # --------------------------------------------------------------------------- #
 
@@ -554,6 +647,10 @@ def main(argv: list[str] | None = None) -> int:
     knowledge = Path(args.knowledge).resolve()
     langs = [x.strip() for x in args.langs.split(",") if x.strip()]
     manifests: dict[str, dict[str, Any]] = {}
+
+    anchor_stats = align_anchors(knowledge, langs)
+    print(f"[info] âncoras: {anchor_stats['aligned_pages']}/{anchor_stats['pages']} páginas alinhadas, "
+          f"{anchor_stats['headings']} headings com ID explícito, {anchor_stats['skipped']} sem par 1:1")
 
     if not args.no_skill:
         created = sync_skill(knowledge)

@@ -70,8 +70,10 @@ jobs:
           python -c "import pypandoc; print('pandoc', pypandoc.get_pandoc_version())"
 
       - name: Extract main content (docs.github.com → Markdown)
+        continue-on-error: true
         run: |
           mkdir -p .ci
+          set -o pipefail
           python scripts/extract.py \
             --source api \
             --lang "${LANG_CODE}" \
@@ -82,7 +84,7 @@ jobs:
             --limit "${LIMIT}" \
             --manifest "knowledge/${LANG_CODE}/manifest.json" \
             --report ".ci/extract-report.md" \
-            --max-failures 10
+            --max-failures 10 2>&1 | tee .ci/extract-log.txt
 
       - name: Job summary
         if: always()
@@ -114,10 +116,12 @@ jobs:
           cat .ci/extract-report.md >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
 
       - name: Commit knowledge base
-        if: env.DO_COMMIT == 'yes'
+        if: always() && env.DO_COMMIT == 'yes'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          tail -c 200000 .ci/extract-log.txt > .ci/extract-log.tail.txt 2>/dev/null || true
+          rm -f .ci/extract-log.txt
           git add -A knowledge .ci
           if git diff --cached --quiet; then
             echo "Nenhuma alteração para commitar."
