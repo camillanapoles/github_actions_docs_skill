@@ -12,8 +12,8 @@ section: Reference / Workflows and actions
 
 _You can create actions to perform tasks in your repository. If you're making a custom action, it will require a metadata file that uses YAML syntax._
 
->[!NOTE]
-> You can build Docker container, JavaScript, and composite actions. Actions require a metadata file to define the inputs, outputs, and runs configuration for your action. Action metadata files use YAML syntax, and the metadata filename must be either `action.yml` or `action.yaml`. The preferred format is `action.yml`.
+!!! note
+    You can build Docker container, JavaScript, and composite actions. Actions require a metadata file to define the inputs, outputs, and runs configuration for your action. Action metadata files use YAML syntax, and the metadata filename must be either `action.yml` or `action.yaml`. The preferred format is `action.yml`.
 
 ## `name`
 
@@ -35,8 +35,8 @@ _You can create actions to perform tasks in your repository. If you're making a 
 
 This example configures two inputs: `num-octocats` and `octocat-eye-color`. The `num-octocats` input is not required and will default to a value of `1`. `octocat-eye-color` is required and has no default value.
 
-> [!NOTE]
-> Actions using `required: true` will not automatically return an error if the input is not specified.
+!!! note
+    Actions using `required: true` will not automatically return an error if the input is not specified.
 
 Workflow files that use this action can use the `with` keyword to set an input value for `octocat-eye-color`. For more information about the `with` syntax, see [Workflow syntax for GitHub Actions](workflow-syntax.md#jobsjob_idstepswith#jobsjob_idstepswith).
 
@@ -161,8 +161,8 @@ runs:
 
 **Optional** Allows you to run a script at the start of a job, before the `main:` action begins. For example, you can use `pre:` to run a prerequisite setup script. The runtime specified with the [`using`](#runsusing-for-javascript-actions) syntax will execute this file. The `pre:` action always runs by default but you can override this using [`runs.pre-if`](#runspre-if).
 
-> [!NOTE]
-> `runs.pre` is not supported for local actions.
+!!! note
+    `runs.pre` is not supported for local actions.
 
 In this example, the `pre:` action runs a script called `setup.js`:
 
@@ -500,21 +500,19 @@ The name of the v4.28.0 [Feather](https://feathericons.com/) icon to use.
 
 Brand icons, and all the following icons, are omitted.
 
-<ul style="-webkit-column-count: 4; -moz-column-count: 4; column-count: 4;">
-<li>coffee</li>
-<li>columns</li>
-<li>divide-circle</li>
-<li>divide-square</li>
-<li>divide</li>
-<li>frown</li>
-<li>hexagon</li>
-<li>key</li>
-<li>meh</li>
-<li>mouse-pointer</li>
-<li>smile</li>
-<li>tool</li>
-<li>x-octagon</li>
-</ul>
+- coffee
+- columns
+- divide-circle
+- divide-square
+- divide
+- frown
+- hexagon
+- key
+- meh
+- mouse-pointer
+- smile
+- tool
+- x-octagon
 
 #### Exhaustive list of all currently supported icons
 
@@ -523,265 +521,263 @@ Brand icons, and all the following icons, are omitted.
   To support a new icon, update `app/models/repository_actions/icons.rb` and add the svg to `/static/images/icons/feather` in the internal github repo.
 -->
 
-<ul style="-webkit-column-count: 4; -moz-column-count: 4; column-count: 4;">
-<li>activity</li>
-<li>airplay</li>
-<li>alert-circle</li>
-<li>alert-octagon</li>
-<li>alert-triangle</li>
-<li>align-center</li>
-<li>align-justify</li>
-<li>align-left</li>
-<li>align-right</li>
-<li>anchor</li>
-<li>aperture</li>
-<li>archive</li>
-<li>arrow-down-circle</li>
-<li>arrow-down-left</li>
-<li>arrow-down-right</li>
-<li>arrow-down</li>
-<li>arrow-left-circle</li>
-<li>arrow-left</li>
-<li>arrow-right-circle</li>
-<li>arrow-right</li>
-<li>arrow-up-circle</li>
-<li>arrow-up-left</li>
-<li>arrow-up-right</li>
-<li>arrow-up</li>
-<li>at-sign</li>
-<li>award</li>
-<li>bar-chart-2</li>
-<li>bar-chart</li>
-<li>battery-charging</li>
-<li>battery</li>
-<li>bell-off</li>
-<li>bell</li>
-<li>bluetooth</li>
-<li>bold</li>
-<li>book-open</li>
-<li>book</li>
-<li>bookmark</li>
-<li>box</li>
-<li>briefcase</li>
-<li>calendar</li>
-<li>camera-off</li>
-<li>camera</li>
-<li>cast</li>
-<li>check-circle</li>
-<li>check-square</li>
-<li>check</li>
-<li>chevron-down</li>
-<li>chevron-left</li>
-<li>chevron-right</li>
-<li>chevron-up</li>
-<li>chevrons-down</li>
-<li>chevrons-left</li>
-<li>chevrons-right</li>
-<li>chevrons-up</li>
-<li>circle</li>
-<li>clipboard</li>
-<li>clock</li>
-<li>cloud-drizzle</li>
-<li>cloud-lightning</li>
-<li>cloud-off</li>
-<li>cloud-rain</li>
-<li>cloud-snow</li>
-<li>cloud</li>
-<li>code</li>
-<li>command</li>
-<li>compass</li>
-<li>copy</li>
-<li>corner-down-left</li>
-<li>corner-down-right</li>
-<li>corner-left-down</li>
-<li>corner-left-up</li>
-<li>corner-right-down</li>
-<li>corner-right-up</li>
-<li>corner-up-left</li>
-<li>corner-up-right</li>
-<li>cpu</li>
-<li>credit-card</li>
-<li>crop</li>
-<li>crosshair</li>
-<li>database</li>
-<li>delete</li>
-<li>disc</li>
-<li>dollar-sign</li>
-<li>download-cloud</li>
-<li>download</li>
-<li>droplet</li>
-<li>edit-2</li>
-<li>edit-3</li>
-<li>edit</li>
-<li>external-link</li>
-<li>eye-off</li>
-<li>eye</li>
-<li>fast-forward</li>
-<li>feather</li>
-<li>file-minus</li>
-<li>file-plus</li>
-<li>file-text</li>
-<li>file</li>
-<li>film</li>
-<li>filter</li>
-<li>flag</li>
-<li>folder-minus</li>
-<li>folder-plus</li>
-<li>folder</li>
-<li>gift</li>
-<li>git-branch</li>
-<li>git-commit</li>
-<li>git-merge</li>
-<li>git-pull-request</li>
-<li>globe</li>
-<li>grid</li>
-<li>hard-drive</li>
-<li>hash</li>
-<li>headphones</li>
-<li>heart</li>
-<li>help-circle</li>
-<li>home</li>
-<li>image</li>
-<li>inbox</li>
-<li>info</li>
-<li>italic</li>
-<li>layers</li>
-<li>layout</li>
-<li>life-buoy</li>
-<li>link-2</li>
-<li>link</li>
-<li>list</li>
-<li>loader</li>
-<li>lock</li>
-<li>log-in</li>
-<li>log-out</li>
-<li>mail</li>
-<li>map-pin</li>
-<li>map</li>
-<li>maximize-2</li>
-<li>maximize</li>
-<li>menu</li>
-<li>message-circle</li>
-<li>message-square</li>
-<li>mic-off</li>
-<li>mic</li>
-<li>minimize-2</li>
-<li>minimize</li>
-<li>minus-circle</li>
-<li>minus-square</li>
-<li>minus</li>
-<li>monitor</li>
-<li>moon</li>
-<li>more-horizontal</li>
-<li>more-vertical</li>
-<li>move</li>
-<li>music</li>
-<li>navigation-2</li>
-<li>navigation</li>
-<li>octagon</li>
-<li>package</li>
-<li>paperclip</li>
-<li>pause-circle</li>
-<li>pause</li>
-<li>percent</li>
-<li>phone-call</li>
-<li>phone-forwarded</li>
-<li>phone-incoming</li>
-<li>phone-missed</li>
-<li>phone-off</li>
-<li>phone-outgoing</li>
-<li>phone</li>
-<li>pie-chart</li>
-<li>play-circle</li>
-<li>play</li>
-<li>plus-circle</li>
-<li>plus-square</li>
-<li>plus</li>
-<li>pocket</li>
-<li>power</li>
-<li>printer</li>
-<li>radio</li>
-<li>refresh-ccw</li>
-<li>refresh-cw</li>
-<li>repeat</li>
-<li>rewind</li>
-<li>rotate-ccw</li>
-<li>rotate-cw</li>
-<li>rss</li>
-<li>save</li>
-<li>scissors</li>
-<li>search</li>
-<li>send</li>
-<li>server</li>
-<li>settings</li>
-<li>share-2</li>
-<li>share</li>
-<li>shield-off</li>
-<li>shield</li>
-<li>shopping-bag</li>
-<li>shopping-cart</li>
-<li>shuffle</li>
-<li>sidebar</li>
-<li>skip-back</li>
-<li>skip-forward</li>
-<li>slash</li>
-<li>sliders</li>
-<li>smartphone</li>
-<li>speaker</li>
-<li>square</li>
-<li>star</li>
-<li>stop-circle</li>
-<li>sun</li>
-<li>sunrise</li>
-<li>sunset</li>
-<li>table</li>
-<li>tablet</li>
-<li>tag</li>
-<li>target</li>
-<li>terminal</li>
-<li>thermometer</li>
-<li>thumbs-down</li>
-<li>thumbs-up</li>
-<li>toggle-left</li>
-<li>toggle-right</li>
-<li>trash-2</li>
-<li>trash</li>
-<li>trending-down</li>
-<li>trending-up</li>
-<li>triangle</li>
-<li>truck</li>
-<li>tv</li>
-<li>type</li>
-<li>umbrella</li>
-<li>underline</li>
-<li>unlock</li>
-<li>upload-cloud</li>
-<li>upload</li>
-<li>user-check</li>
-<li>user-minus</li>
-<li>user-plus</li>
-<li>user-x</li>
-<li>user</li>
-<li>users</li>
-<li>video-off</li>
-<li>video</li>
-<li>voicemail</li>
-<li>volume-1</li>
-<li>volume-2</li>
-<li>volume-x</li>
-<li>volume</li>
-<li>watch</li>
-<li>wifi-off</li>
-<li>wifi</li>
-<li>wind</li>
-<li>x-circle</li>
-<li>x-square</li>
-<li>x</li>
-<li>zap-off</li>
-<li>zap</li>
-<li>zoom-in</li>
-<li>zoom-out</li>
-</ul>
+- activity
+- airplay
+- alert-circle
+- alert-octagon
+- alert-triangle
+- align-center
+- align-justify
+- align-left
+- align-right
+- anchor
+- aperture
+- archive
+- arrow-down-circle
+- arrow-down-left
+- arrow-down-right
+- arrow-down
+- arrow-left-circle
+- arrow-left
+- arrow-right-circle
+- arrow-right
+- arrow-up-circle
+- arrow-up-left
+- arrow-up-right
+- arrow-up
+- at-sign
+- award
+- bar-chart-2
+- bar-chart
+- battery-charging
+- battery
+- bell-off
+- bell
+- bluetooth
+- bold
+- book-open
+- book
+- bookmark
+- box
+- briefcase
+- calendar
+- camera-off
+- camera
+- cast
+- check-circle
+- check-square
+- check
+- chevron-down
+- chevron-left
+- chevron-right
+- chevron-up
+- chevrons-down
+- chevrons-left
+- chevrons-right
+- chevrons-up
+- circle
+- clipboard
+- clock
+- cloud-drizzle
+- cloud-lightning
+- cloud-off
+- cloud-rain
+- cloud-snow
+- cloud
+- code
+- command
+- compass
+- copy
+- corner-down-left
+- corner-down-right
+- corner-left-down
+- corner-left-up
+- corner-right-down
+- corner-right-up
+- corner-up-left
+- corner-up-right
+- cpu
+- credit-card
+- crop
+- crosshair
+- database
+- delete
+- disc
+- dollar-sign
+- download-cloud
+- download
+- droplet
+- edit-2
+- edit-3
+- edit
+- external-link
+- eye-off
+- eye
+- fast-forward
+- feather
+- file-minus
+- file-plus
+- file-text
+- file
+- film
+- filter
+- flag
+- folder-minus
+- folder-plus
+- folder
+- gift
+- git-branch
+- git-commit
+- git-merge
+- git-pull-request
+- globe
+- grid
+- hard-drive
+- hash
+- headphones
+- heart
+- help-circle
+- home
+- image
+- inbox
+- info
+- italic
+- layers
+- layout
+- life-buoy
+- link-2
+- link
+- list
+- loader
+- lock
+- log-in
+- log-out
+- mail
+- map-pin
+- map
+- maximize-2
+- maximize
+- menu
+- message-circle
+- message-square
+- mic-off
+- mic
+- minimize-2
+- minimize
+- minus-circle
+- minus-square
+- minus
+- monitor
+- moon
+- more-horizontal
+- more-vertical
+- move
+- music
+- navigation-2
+- navigation
+- octagon
+- package
+- paperclip
+- pause-circle
+- pause
+- percent
+- phone-call
+- phone-forwarded
+- phone-incoming
+- phone-missed
+- phone-off
+- phone-outgoing
+- phone
+- pie-chart
+- play-circle
+- play
+- plus-circle
+- plus-square
+- plus
+- pocket
+- power
+- printer
+- radio
+- refresh-ccw
+- refresh-cw
+- repeat
+- rewind
+- rotate-ccw
+- rotate-cw
+- rss
+- save
+- scissors
+- search
+- send
+- server
+- settings
+- share-2
+- share
+- shield-off
+- shield
+- shopping-bag
+- shopping-cart
+- shuffle
+- sidebar
+- skip-back
+- skip-forward
+- slash
+- sliders
+- smartphone
+- speaker
+- square
+- star
+- stop-circle
+- sun
+- sunrise
+- sunset
+- table
+- tablet
+- tag
+- target
+- terminal
+- thermometer
+- thumbs-down
+- thumbs-up
+- toggle-left
+- toggle-right
+- trash-2
+- trash
+- trending-down
+- trending-up
+- triangle
+- truck
+- tv
+- type
+- umbrella
+- underline
+- unlock
+- upload-cloud
+- upload
+- user-check
+- user-minus
+- user-plus
+- user-x
+- user
+- users
+- video-off
+- video
+- voicemail
+- volume-1
+- volume-2
+- volume-x
+- volume
+- watch
+- wifi-off
+- wifi
+- wind
+- x-circle
+- x-square
+- x
+- zap-off
+- zap
+- zoom-in
+- zoom-out
 
 ## Changing the metadata file name
 

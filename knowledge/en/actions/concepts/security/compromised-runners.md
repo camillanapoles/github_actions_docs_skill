@@ -16,8 +16,8 @@ _Understand the security risks associated with compromised GitHub Actions runner
 
 These sections consider some of the steps an attacker can take if they're able to run malicious commands on a GitHub Actions runner.
 
-> [!NOTE]
-> GitHub-hosted runners do not scan for malicious code downloaded by a user during their job, such as a compromised third party library.
+!!! note
+    GitHub-hosted runners do not scan for malicious code downloaded by a user during their job, such as a compromised third party library.
 
 ### Accessing secrets
 
@@ -51,7 +51,7 @@ The attacker server can use the GitHub API to [modify repository content](../../
 
 GitHub Actions is intentionally scoped for a single repository at a time. The `GITHUB_TOKEN` grants the same level of access as a write-access user, because any write-access user can access this token by creating or modifying a workflow file, elevating the permissions of the `GITHUB_TOKEN` if necessary. Users have specific permissions for each repository, so allowing the `GITHUB_TOKEN` for one repository to grant access to another would impact the GitHub permission model if not implemented carefully. Similarly, caution must be taken when adding GitHub authentication tokens to a workflow, because this can also affect the GitHub permission model by inadvertently granting broad access to collaborators.
 
-If your organization is owned by an enterprise account, then you can share and reuse GitHub Actions by storing them in internal repositories. For more information, see [Sharing actions and workflows with your enterprise](https://docs.github.com/enterprise-cloud@latest/actions/how-tos/reuse-automations/share-with-your-enterprise).
+If your organization is owned by an enterprise account, then you can share and reuse GitHub Actions by storing them in internal repositories. For more information, see [Sharing actions and workflows with your enterprise](../../how-tos/reuse-automations/share-with-your-enterprise.md).
 
 You can perform other privileged, cross-repository interactions by referencing a GitHub authentication token or SSH key as a secret within the workflow. Because many authentication token types do not allow for granular access to specific resources, there is significant risk in using the wrong token type, as it can grant much broader access than intended.
 

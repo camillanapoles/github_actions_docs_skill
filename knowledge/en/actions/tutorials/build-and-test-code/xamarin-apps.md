@@ -12,8 +12,8 @@ section: Tutorials / Build and test code
 
 _Learn how to create a continuous integration (CI) workflow in GitHub Actions to build and test your Xamarin application._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 

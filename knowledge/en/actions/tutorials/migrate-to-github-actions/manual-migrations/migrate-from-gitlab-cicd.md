@@ -12,8 +12,8 @@ section: Tutorials / Migrate to github actions / Manual migrations
 
 _GitHub Actions and GitLab CI/CD share several configuration similarities, which makes migrating to GitHub Actions relatively straightforward._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -283,9 +283,7 @@ artifacts:
 
 ```yaml
 - name: Upload math result for job 1
-  uses: actions/upload-artifact@v4
-
-v3
+  uses: actions/upload-artifact@v3
   with:
     name: homework
     path: math-homework.txt

@@ -24,7 +24,8 @@ The instructions below will guide you through configuring your environment to us
   * Docker is [installed](https://docs.docker.com/get-docker/) and running.
   * [GitHub CLI](https://cli.github.com) is installed.
 
-  > [!NOTE]
+!!! note
+
   > The GitHub Actions Importer container and CLI do not need to be installed on the same server as your CI platform.
 
 ### Limitations
@@ -88,14 +89,12 @@ The `configure` CLI command is used to set required credentials and options for 
 
    The `configure` command will prompt you for the following information:
 
-   * For "Which CI providers are you configuring?", use the arrow keys to select `CircleCI`, press <kbd>Space</kbd> to select it, then press <kbd>Enter</kbd>.
-   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the GitHub instance", enter the URL for your GitHub Enterprise Server instance, and press <kbd>Enter</kbd>.
-
-press <kbd>Enter</kbd> to accept the default value (`https://github.com`).
-   * For "Personal access token for CircleCI", enter the value for the CircleCI personal API token that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the CircleCI instance", press <kbd>Enter</kbd> to accept the default value (`https://circleci.com`).
-   * For "CircleCI organization name", enter the name for your CircleCI organization, and press <kbd>Enter</kbd>.
+   * For "Which CI providers are you configuring?", use the arrow keys to select `CircleCI`, press `Space` to select it, then press `Enter`.
+   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press `Enter`.
+   * For "Base url of the GitHub instance", press `Enter` to accept the default value (`https://github.com`).
+   * For "Personal access token for CircleCI", enter the value for the CircleCI personal API token that you created earlier, and press `Enter`.
+   * For "Base url of the CircleCI instance", press `Enter` to accept the default value (`https://circleci.com`).
+   * For "CircleCI organization name", enter the name for your CircleCI organization, and press `Enter`.
 
    An example of the `configure` command is shown below:
 
@@ -396,23 +395,23 @@ repository_three
 
 The following table shows the type of properties that GitHub Actions Importer is currently able to convert.
 
-| CircleCI Pipelines  | GitHub Actions                     |              Status |
-| :------------------ | :--------------------------------- | :------------------ |
-| cron triggers       | <ul><li>`on.schedule`</li></ul>    |           Supported |
-| environment         | <ul><li>`env`</li><li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li></ul>          |           Supported |
-| executors           | <ul><li>`runs-on`</li></ul>                          |           Supported |
-| jobs                | <ul><li>`jobs`</li></ul>                             |           Supported |
-| job                 | <ul><li>`jobs.<job_id>`</li><li>`jobs.<job_id>.name`</li></ul> |           Supported |
-| matrix              | <ul><li>`jobs.<job_id>.strategy`</li><li>`jobs.<job_id>.strategy.matrix`</li></ul>    |           Supported |
-| parameters          | <ul><li>`env`</li><li>`workflow-dispatch.inputs`</li></ul>  |           Supported |
-| steps               | <ul><li>`jobs.<job_id>.steps`</li></ul>              |           Supported |
-| when, unless        | <ul><li>`jobs.<job_id>.if`</li></ul>                 |           Supported |
-| triggers            | <ul><li>`on`</li></ul>                               |           Supported |
-| executors           | <ul><li>`container`</li><li>`services`</li></ul>     | Partially Supported |
-| orbs                | <ul><li>`actions`</li></ul>                          | Partially Supported |
-| executors           | <ul><li>`self hosted runners`</li></ul>              |         Unsupported |
-| setup               | Not applicable                                       |         Unsupported |
-| version             | Not applicable                                       |         Unsupported |
+| CircleCI Pipelines | GitHub Actions | Status |
+| :-- | :-- | :-- |
+| cron triggers | <ul><li>`on.schedule`</li></ul> | Supported |
+| environment | <ul><li>`env`</li><li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li></ul> | Supported |
+| executors | <ul><li>`runs-on`</li></ul> | Supported |
+| jobs | <ul><li>`jobs`</li></ul> | Supported |
+| job | <ul><li>`jobs.<job_id>`</li><li>`jobs.<job_id>.name`</li></ul> | Supported |
+| matrix | <ul><li>`jobs.<job_id>.strategy`</li><li>`jobs.<job_id>.strategy.matrix`</li></ul> | Supported |
+| parameters | <ul><li>`env`</li><li>`workflow-dispatch.inputs`</li></ul> | Supported |
+| steps | <ul><li>`jobs.<job_id>.steps`</li></ul> | Supported |
+| when, unless | <ul><li>`jobs.<job_id>.if`</li></ul> | Supported |
+| triggers | <ul><li>`on`</li></ul> | Supported |
+| executors | <ul><li>`container`</li><li>`services`</li></ul> | Partially Supported |
+| orbs | <ul><li>`actions`</li></ul> | Partially Supported |
+| executors | <ul><li>`self hosted runners`</li></ul> | Unsupported |
+| setup | Not applicable | Unsupported |
+| version | Not applicable | Unsupported |
 
 For more information about supported CircleCI concept and orb mappings, see the [`github/gh-actions-importer` repository](https://github.com/github/gh-actions-importer/blob/main/docs/circle_ci/index.md).
 
@@ -421,26 +420,26 @@ For more information about supported CircleCI concept and orb mappings, see the 
 GitHub Actions Importer uses the mapping in the table below to convert default CircleCI environment variables to the closest equivalent in GitHub Actions.
 
 | CircleCI                              | GitHub Actions                                 |
-| :------------------------------------ | :--------------------------------------------- |
-| `CI`                                  | `$CI`                                       |
-| `CIRCLE_BRANCH`                       | `${{ github.ref }}`                         |
-| `CIRCLE_JOB`                          | `${{ github.job }}`                         |
-| `CIRCLE_PR_NUMBER`                    | `${{ github.event.number }}`                |
-| `CIRCLE_PR_REPONAME`                  | `${{ github.repository }}`                  |
-| `CIRCLE_PROJECT_REPONAME`             | `${{ github.repository }}`                  |
-| `CIRCLE_SHA1`                         | `${{ github.sha }}`                         |
-| `CIRCLE_TAG`                          | `${{ github.ref }}`                         |
-| `CIRCLE_USERNAME`                     | `${{ github.actor }}`                        |
-| `CIRCLE_WORKFLOW_ID`                  | `${{ github.run_number }}`                  |
-| `CIRCLE_WORKING_DIRECTORY`            | `${{ github.workspace }}`                   |
-| `<< pipeline.id >>`                   | `${{ github.workflow }}`                    |
-| `<< pipeline.number >>`               | `${{ github.run_number }}`                  |
-| `<< pipeline.project.git_url >>`      | `$GITHUB_SERVER_URL/$GITHUB_REPOSITORY`                          |
-| `<< pipeline.project.type >>`         | `github`                                                         |
-| `<< pipeline.git.tag >>`              | `${{ github.ref }}`                         |
-| `<< pipeline.git.branch >>`           | `${{ github.ref }}`                         |
-| `<< pipeline.git.revision >>`         | `${{ github.event.pull_request.head.sha }}` |
-| `<< pipeline.git.base_revision >>`    | `${{ github.event.pull_request.base.sha }}` |
+|:------------------------------------|:---------------------------------------------|
+| `CI`                                  | `$CI`                                          |
+| `CIRCLE_BRANCH`                       | `${{ github.ref }}`                            |
+| `CIRCLE_JOB`                          | `${{ github.job }}`                            |
+| `CIRCLE_PR_NUMBER`                    | `${{ github.event.number }}`                   |
+| `CIRCLE_PR_REPONAME`                  | `${{ github.repository }}`                     |
+| `CIRCLE_PROJECT_REPONAME`             | `${{ github.repository }}`                     |
+| `CIRCLE_SHA1`                         | `${{ github.sha }}`                            |
+| `CIRCLE_TAG`                          | `${{ github.ref }}`                            |
+| `CIRCLE_USERNAME`                     | `${{ github.actor }}`                          |
+| `CIRCLE_WORKFLOW_ID`                  | `${{ github.run_number }}`                     |
+| `CIRCLE_WORKING_DIRECTORY`            | `${{ github.workspace }}`                      |
+| `<< pipeline.id >>`                   | `${{ github.workflow }}`                       |
+| `<< pipeline.number >>`               | `${{ github.run_number }}`                     |
+| `<< pipeline.project.git_url >>`      | `$GITHUB_SERVER_URL/$GITHUB_REPOSITORY`        |
+| `<< pipeline.project.type >>`         | `github`                                       |
+| `<< pipeline.git.tag >>`              | `${{ github.ref }}`                            |
+| `<< pipeline.git.branch >>`           | `${{ github.ref }}`                            |
+| `<< pipeline.git.revision >>`         | `${{ github.event.pull_request.head.sha }}`    |
+| `<< pipeline.git.base_revision >>`    | `${{ github.event.pull_request.base.sha }}`    |
 
 ## Legal notice
 

@@ -12,8 +12,8 @@ section: Concepts / Workflows and actions
 
 _Actions are individual tasks that you can combine to create jobs and customize your workflow. You can create your own actions, or use and customize actions shared by the GitHub community._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## About custom actions
 
@@ -25,14 +25,14 @@ Actions can run directly on a machine or in a Docker container. You can define a
 
 ## Types of actions
 
->[!NOTE]
-> You can build Docker container, JavaScript, and composite actions. Actions require a metadata file to define the inputs, outputs, and runs configuration for your action. Action metadata files use YAML syntax, and the metadata filename must be either `action.yml` or `action.yaml`. The preferred format is `action.yml`.
+!!! note
+    You can build Docker container, JavaScript, and composite actions. Actions require a metadata file to define the inputs, outputs, and runs configuration for your action. Action metadata files use YAML syntax, and the metadata filename must be either `action.yml` or `action.yaml`. The preferred format is `action.yml`.
 
-| Type | Linux | macOS | Windows |
-| ---- | ----- | ----- | -------- |
-| Docker container |  |  |  |
-| JavaScript |  |  |  |
-| Composite Actions |  |  |  |
+| Type              | Linux | macOS | Windows  |
+|-----------------|-----|-----|--------|
+| Docker container  |       |       |          |
+| JavaScript        |       |       |          |
+| Composite Actions |       |       |          |
 
 ### Docker container actions
 

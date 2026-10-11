@@ -21,14 +21,13 @@ Self-hosted runners:
 * Are free to use with GitHub Actions, but you are responsible for the cost of maintaining your runner machines.
 * Let you create custom hardware configurations that meet your needs with processing power or memory to run larger jobs, install software available on your local network.
 * Receive automatic updates for the self-hosted runner application only, though you may disable automatic updates of the runner.
-* Don't need to have a clean instance for every job execution.* Can be organized into groups to restrict access to specific workflows, organizations, and repositories. See [Managing access to self-hosted runners using groups](../../how-tos/manage-runners/self-hosted-runners/manage-access.md).
+* Don't need to have a clean instance for every job execution.
+* Can be organized into groups to restrict access to specific workflows, organizations, and repositories. See [Managing access to self-hosted runners using groups](../../how-tos/manage-runners/self-hosted-runners/manage-access.md).
 * Can be physical, virtual, in a container, on-premises, or in a cloud.
 
 You can use self-hosted runners anywhere in the management hierarchy. Repository-level runners are dedicated to a single repository, while organization-level runners can process jobs for multiple repositories in an organization. Organization owners can choose which repositories are allowed to create repository-level self-hosted runners. See [Disabling or limiting github actions for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#limiting-the-use-of-self-hosted-runners#limiting-the-use-of-self-hosted-runners). Finally, enterprise-level runners can be assigned to multiple organizations in an enterprise account.
 
 ## Next steps
-
-To get hands-on experience with the policies and usage of self-hosted runners, see [Getting started with self hosted runners for your enterprise](https://docs.github.com/admin/managing-github-actions-for-your-enterprise/getting-started-with-github-actions-for-your-enterprise/getting-started-with-self-hosted-runners-for-your-enterprise)
 
 To set up a self-hosted runner in your workspace, see [Adding self-hosted runners](../../how-tos/manage-runners/self-hosted-runners/add-runners.md).
 

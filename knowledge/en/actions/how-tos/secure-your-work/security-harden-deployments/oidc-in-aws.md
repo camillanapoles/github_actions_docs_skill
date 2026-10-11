@@ -12,8 +12,8 @@ section: How tos / Secure your work / Security harden deployments
 
 _Use OpenID Connect within your workflows to authenticate with Amazon Web Services._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Overview
 
@@ -21,19 +21,16 @@ OpenID Connect (OIDC) allows your GitHub Actions workflows to access resources i
 
 This guide explains how to configure AWS to trust GitHub's OIDC as a federated identity, and includes a workflow example for the [`aws-actions/configure-aws-credentials`](https://github.com/aws-actions/configure-aws-credentials) that uses tokens to authenticate to AWS and access resources.
 
-> [!NOTE]
-> Support for custom claims for OIDC is unavailable in AWS.
+!!! note
+    Support for custom claims for OIDC is unavailable in AWS.
 
 ## Prerequisites
 
 * To learn the basic concepts of how GitHub uses OpenID Connect (OIDC), and its architecture and benefits, see [OpenID Connect](../../../concepts/security/openid-connect.md).
 
-* Before proceeding, you must plan your security strategy to ensure that access tokens are only allocated in a predictable way. To control how your cloud provider issues access tokens, you **must** define at least one condition, so that untrusted repositories can’t request access tokens for your cloud resources. For more information, see [OpenID Connect](../../../concepts/security/openid-connect.md#establishing-oidc-trust-with-your-cloud-provider#establishing-oidc-trust-with-your-cloud-provider)
+* Before proceeding, you must plan your security strategy to ensure that access tokens are only allocated in a predictable way. To control how your cloud provider issues access tokens, you **must** define at least one condition, so that untrusted repositories can’t request access tokens for your cloud resources. For more information, see [OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
-[OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
-* OIDC tokens requested for Dependabot update jobs have an `event_name` claim of `dynamic`. If your trust policy is intended to authorize only GitHub Actions workflows and your cloud provider supports conditions on `event_name`, allow only the event names expected by your workflows. For more information, see [OpenID Connect](../../../concepts/security/openid-connect.md#establishing-oidc-trust-with-your-cloud-provider#establishing-oidc-trust-with-your-cloud-provider)
-
-[OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
+* OIDC tokens requested for Dependabot update jobs have an `event_name` claim of `dynamic`. If your trust policy is intended to authorize only GitHub Actions workflows and your cloud provider supports conditions on `event_name`, allow only the event names expected by your workflows. For more information, see [OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
 * If you're following this guide on GHE.com, understand that you must substitute certain values in the following documentation. See [OpenID Connect](../../../concepts/security/openid-connect.md#configuring-oidc-on-ghecom#configuring-oidc-on-ghecom).
 
@@ -42,39 +39,35 @@ This guide explains how to configure AWS to trust GitHub's OIDC as a federated i
   * `https://HOSTNAME/_services/token/.well-known/jwks`
   <!-- This note is indented to align with the above reusable. -->
 
-  > [!NOTE]
+!!! note
+
   > You can restrict access to the OIDC endpoints by allowing only [AWS IP address ranges](https://docs.aws.amazon.com/vpc/latest/userguide/aws-ip-ranges.html).
 
-  > [!NOTE]
+!!! note
+
   > GitHub does not natively support AWS session tags.
 
 ## Adding the identity provider to AWS
 
 To add the GitHub OIDC provider to IAM, see the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html).
 
-* For the provider URL: Use `https://HOSTNAME/_services/token`
-
-`https://token.actions.githubusercontent.com`
+* For the provider URL: Use `https://token.actions.githubusercontent.com`
 * For the "Audience": Use `sts.amazonaws.com` if you are using the [official action](https://github.com/aws-actions/configure-aws-credentials).
 
 ### Configuring the role and trust policy
 
 To configure the role and trust in IAM, see the AWS documentation [Configure AWS Credentials for GitHub Actions](https://github.com/aws-actions/configure-aws-credentials#configure-aws-credentials-for-github-actions) and [Configuring a role for GitHub OIDC identity provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html#idp_oidc_Create_GitHub).
 
-> [!NOTE]
-> AWS Identity and Access Management (IAM) recommends that users evaluate the IAM condition key, `token.actions.githubusercontent.com:sub`, in the trust policy of any role that trusts GitHub’s OIDC identity provider (IdP). Evaluating this condition key in the role trust policy limits which GitHub actions are able to assume the role.
+!!! note
+    AWS Identity and Access Management (IAM) recommends that users evaluate the IAM condition key, `token.actions.githubusercontent.com:sub`, in the trust policy of any role that trusts GitHub’s OIDC identity provider (IdP). Evaluating this condition key in the role trust policy limits which GitHub actions are able to assume the role.
 
 Edit the trust policy, adding the `sub` field to the validation conditions. For example:
 
 ```json copy
 "Condition": {
   "StringEquals": {
-    "HOSTNAME/_services/token
-
-token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
-    "HOSTNAME/_services/token
-
-token.actions.githubusercontent.com:sub": "repo:octo-org/octo-repo:ref:refs/heads/octo-branch"
+    "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+    "token.actions.githubusercontent.com:sub": "repo:octo-org/octo-repo:ref:refs/heads/octo-branch"
   }
 }
 ```
@@ -92,18 +85,14 @@ For repositories created after July 15, 2026, or that have opted in to immutable
 
 If you use a workflow with an environment, the `sub` field must reference the environment name: `repo:ORG-NAME/REPO-NAME:environment:ENVIRONMENT-NAME`. For more information, see [OpenID Connect reference](../../../reference/security/oidc.md#filtering-for-a-specific-environment#filtering-for-a-specific-environment).
 
-> [!NOTE]
-> When environments are used in workflows or in OIDC policies, we recommend adding protection rules to the environment for additional security. For example, you can configure deployment rules on an environment to restrict which branches and tags can deploy to the environment or access environment secrets. For more information, see [Managing environments for deployment](../../deploy/configure-and-manage-deployments/manage-environments.md).
+!!! note
+    When environments are used in workflows or in OIDC policies, we recommend adding protection rules to the environment for additional security. For example, you can configure deployment rules on an environment to restrict which branches and tags can deploy to the environment or access environment secrets. For more information, see [Managing environments for deployment](../../deploy/configure-and-manage-deployments/manage-environments.md).
 
 ```json copy
 "Condition": {
   "StringEquals": {
-    "HOSTNAME/_services/token
-
-token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
-    "HOSTNAME/_services/token
-
-token.actions.githubusercontent.com:sub": "repo:octo-org/octo-repo:environment:prod"
+    "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+    "token.actions.githubusercontent.com:sub": "repo:octo-org/octo-repo:environment:prod"
   }
 }
 ```

@@ -12,8 +12,8 @@ section: Tutorials / Manage your work
 
 _You can use GitHub Actions to comment on or close issues that have been inactive for a certain period of time._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -65,8 +65,8 @@ In the tutorial, you will first make a workflow file that uses the [`actions/sta
 
 Based on the `schedule` parameter (for example, every day at 1:30 UTC), your workflow will find issues that have been inactive for the specified period of time and will add the specified comment and label. Additionally, your workflow will close any previously labeled issues if no additional activity has occurred for the specified period of time.
 
-> [!NOTE]
-> The `schedule` event can be delayed during periods of high loads of GitHub Actions workflow runs. High load times include the start of every hour. If the load is sufficiently high enough, some queued jobs may be dropped. To decrease the chance of delay, schedule your workflow to run at a different time of the hour.
+!!! note
+    The `schedule` event can be delayed during periods of high loads of GitHub Actions workflow runs. High load times include the start of every hour. If the load is sufficiently high enough, some queued jobs may be dropped. To decrease the chance of delay, schedule your workflow to run at a different time of the hour.
 
 You can view the history of your workflow runs to see this workflow run periodically. For more information, see [Viewing workflow run history](../../how-tos/monitor-workflows/view-workflow-run-history.md).
 

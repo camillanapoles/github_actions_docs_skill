@@ -12,8 +12,8 @@ section: How tos / Secure your work / Security harden deployments
 
 _You can use reusable workflows with OIDC to standardize and security harden your deployment steps._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## About reusable workflows
 
@@ -30,9 +30,7 @@ When combined with OpenID Connect (OIDC), reusable workflows let you enforce con
   * For clouds that only support the standard claims (audience (`aud`) and subject (`sub`)), you can use the API to customize the `sub` claim to include `job_workflow_ref`. For more information, see [OpenID Connect reference](../../../reference/security/oidc.md#customizing-the-token-claims#customizing-the-token-claims). Support for custom claims is currently available for Google Cloud Platform and HashiCorp Vault.
 
 * **Customizing the token claims:**
-  * You can configure more granular trust conditions by customizing the issuer (`iss`) andsubject (`sub`) claims that are
-
-that's included with the JWT. For more information, see [OpenID Connect](../../../concepts/security/openid-connect.md).
+  * You can configure more granular trust conditions by customizing the issuer (`iss`) and subject (`sub`) claim that's included with the JWT. For more information, see [OpenID Connect](../../../concepts/security/openid-connect.md).
 
 ## How the token works with reusable workflows
 
@@ -50,9 +48,7 @@ For example, the following OIDC token is for a job that was part of a called wor
 {
   "jti": "example-id",
   "sub": "repo:octo-org/octo-repo:environment:prod",
-  "aud": "https://HOSTNAME
-
-https://github.com/octo-org",
+  "aud": "https://github.com/octo-org",
   "ref": "refs/heads/main",
   "sha": "example-sha",
   "repository": "octo-org/octo-repo",
@@ -70,9 +66,7 @@ https://github.com/octo-org",
   "event_name": "workflow_dispatch",
   "ref_type": "branch",
   "job_workflow_ref": "octo-org/octo-automation/.github/workflows/oidc.yml@refs/heads/main",
-  "iss": "https://HOSTNAME/_services/token
-
-https://token.actions.githubusercontent.com",
+  "iss": "https://token.actions.githubusercontent.com",
   "nbf": 1632492967,
   "exp": 1632493867,
   "iat": 1632493567

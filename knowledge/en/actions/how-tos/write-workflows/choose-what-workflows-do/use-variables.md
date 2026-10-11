@@ -57,8 +57,6 @@ When you define configuration variables, they are automatically available in the
 
 ### Creating configuration variables for a repository
 
-To create secrets or variables on GitHub for an organization repository, you must have `write` access.
-
 To create secrets or variables on GitHub for an organization repository, you must have `admin` access. For a personal account repository, you must be a repository collaborator.
 
 1. On GitHub, navigate to the main page of the repository.
@@ -90,12 +88,14 @@ To create secrets or variables for an environment in a personal account reposito
 
 ### Creating configuration variables for an organization
 
-> [!NOTE]
-> Organization-level secrets and variables are not accessible by private repositories for GitHub Free. For more information about upgrading your GitHub subscription, see [Upgrade plan](https://docs.github.com/billing/how-tos/manage-plan-and-licenses/upgrade-plan).
+!!! note
+    Organization-level secrets and variables are not accessible by private repositories for GitHub Free. For more information about upgrading your GitHub subscription, see [Upgrade plan](https://docs.github.com/billing/how-tos/manage-plan-and-licenses/upgrade-plan).
 
 When creating a secret or variable in an organization, you can use a policy to limit access by repository. For example, you can grant access to all repositories, or limit access to only private repositories or a specified list of repositories.
 
-Organization ownersand users with the "Manage organization Actions variables" or "Manage organization Actions secrets" permissions can create secrets or variables at the organization level.For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
+Organization owners and users with the "Manage organization Actions variables" or "Manage organization Actions secrets" permissions can create secrets or variables at the organization level.
+
+For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
 
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
@@ -106,8 +106,9 @@ Organization ownersand users with the "Manage organization Actions variables" or
 
    ![Screenshot of the "Actions secrets and variables" page. The "Variables" tab is outlined in dark orange.](/assets/images/help/repository/actions-variables-tab.png)
 
-   > [!NOTE]
-> The "Actions secrets and variables" page may not show distinct tabs for secrets and variables depending on your permissions. Organization owners and users with both the "Manage organization Actions variables" and "Manage organization Actions secrets" permissions will see the **Variables** and **Secrets** tabs. For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
+!!! note
+    The "Actions secrets and variables" page may not show distinct tabs for secrets and variables depending on your permissions. Organization owners and users with both the "Manage organization Actions variables" and "Manage organization Actions secrets" permissions will see the **Variables** and **Secrets** tabs. For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
+
 1. Click **New organization variable**.
 1. In the **Name** field, enter a name for your variable.
 1. In the **Value** field, enter the value for your variable.
@@ -155,11 +156,11 @@ In this modification of the earlier example, we've introduced an `if` conditiona
 run: echo "${{ env.Greeting }} ${{ env.First_Name }}. Today is ${{ env.DAY_OF_WEEK }}!"
 ```
 
-> [!NOTE]
-> Contexts are usually denoted using the dollar sign and curly braces, as `${{ context.property }}`. In an `if` conditional, the `${{` and `}}` are optional, but if you use them they must enclose the entire comparison statement, as shown above.
+!!! note
+    Contexts are usually denoted using the dollar sign and curly braces, as `${{ context.property }}`. In an `if` conditional, the `${{` and `}}` are optional, but if you use them they must enclose the entire comparison statement, as shown above.
 
-> [!WARNING]
-> When creating workflows and actions, you should always consider whether your code might execute untrusted input from possible attackers. Certain contexts should be treated as untrusted input, as an attacker could insert their own malicious content. For more information, see [Secure use reference](../../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks#good-practices-for-mitigating-script-injection-attacks).
+    [!WARNING]
+    When creating workflows and actions, you should always consider whether your code might execute untrusted input from possible attackers. Certain contexts should be treated as untrusted input, as an attacker could insert their own malicious content. For more information, see [Secure use reference](../../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks#good-practices-for-mitigating-script-injection-attacks).
 
 ### Using the `vars` context to access configuration variable values
 
@@ -204,7 +205,7 @@ jobs:
 
 ## Detecting the operating system
 
-You can write a single workflow file that can be used for different operating systems by using the `RUNNER_OS` default environment variable and the corresponding context property <span style="white-space: nowrap;">`${{ runner.os }}`</span>. For example, the following workflow could be run successfully if you changed the operating system from `macos-latest` to `windows-latest` without having to alter the syntax of the environment variables, which differs depending on the shell being used by the runner.
+You can write a single workflow file that can be used for different operating systems by using the `RUNNER_OS` default environment variable and the corresponding context property `${{ runner.os }}`. For example, the following workflow could be run successfully if you changed the operating system from `macos-latest` to `windows-latest` without having to alter the syntax of the environment variables, which differs depending on the shell being used by the runner.
 
 ```yaml copy
 on: workflow_dispatch

@@ -18,11 +18,11 @@ Service containers are Docker containers that provide a simple and portable way 
 
 You can configure service containers for each job in a workflow. GitHub creates a fresh Docker container for each service configured in the workflow, and destroys the service container when the job completes. Steps in a job can communicate with all service containers that are part of the same job. However, you cannot create and use service containers inside a composite action.
 
-> [!NOTE]
-> If your workflows use Docker container actions, job containers, or service containers, then you must use a Linux runner:
->
-> * If you are using GitHub-hosted runners, you must use an Ubuntu runner.
-> * If you are using self-hosted runners, you must use a Linux machine as your runner and Docker must be installed.
+!!! note
+    If your workflows use Docker container actions, job containers, or service containers, then you must use a Linux runner:
+
+    * If you are using GitHub-hosted runners, you must use an Ubuntu runner.
+    * If you are using self-hosted runners, you must use a Linux machine as your runner and Docker must be installed.
 
 You can configure jobs in a workflow to run directly on a runner machine or in a Docker container. Communication between a job and its service containers is different depending on whether a job runs directly on the runner machine or in a container.
 
@@ -72,11 +72,11 @@ If your job runs in a Docker container, you do not need to map ports on the host
 
 You can map service containers ports to the Docker host using the `ports` keyword. For more information, see [`jobs.<job_id>.services`](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idservices).
 
-| Value of `ports` |	Description |
-|------------------|--------------|
-| `8080:80` |	Maps TCP port 80 in the container to port 8080 on the Docker host. |
-| `8080:80/udp` |	Maps UDP port 80 in the container to port 8080 on the Docker host. |
-| `8080/udp`	| Maps a randomly chosen port on the Docker host to UDP port 8080 in the container. |
+| Value of `ports` | Description |
+| --- | --- |
+| `8080:80` | Maps TCP port 80 in the container to port 8080 on the Docker host. |
+| `8080:80/udp` | Maps UDP port 80 in the container to port 8080 on the Docker host. |
+| `8080/udp` | Maps a randomly chosen port on the Docker host to UDP port 8080 in the container. |
 
 When you map ports using the `ports` keyword, GitHub uses the `--publish` command to publish the container’s ports to the Docker host. For more information, see [Docker container networking](https://docs.docker.com/config/containers/container-networking/) in the Docker documentation.
 

@@ -12,8 +12,8 @@ section: How tos / Secure your work / Security harden deployments
 
 _Use OpenID Connect within your workflows to authenticate with Azure._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Overview
 
@@ -25,12 +25,9 @@ This guide gives an overview of how to configure Azure to trust GitHub's OIDC as
 
 * To learn the basic concepts of how GitHub uses OpenID Connect (OIDC), and its architecture and benefits, see [OpenID Connect](../../../concepts/security/openid-connect.md).
 
-* Before proceeding, you must plan your security strategy to ensure that access tokens are only allocated in a predictable way. To control how your cloud provider issues access tokens, you **must** define at least one condition, so that untrusted repositories can’t request access tokens for your cloud resources. For more information, see [OpenID Connect](../../../concepts/security/openid-connect.md#establishing-oidc-trust-with-your-cloud-provider#establishing-oidc-trust-with-your-cloud-provider)
+* Before proceeding, you must plan your security strategy to ensure that access tokens are only allocated in a predictable way. To control how your cloud provider issues access tokens, you **must** define at least one condition, so that untrusted repositories can’t request access tokens for your cloud resources. For more information, see [OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
-[OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
-* OIDC tokens requested for Dependabot update jobs have an `event_name` claim of `dynamic`. If your trust policy is intended to authorize only GitHub Actions workflows and your cloud provider supports conditions on `event_name`, allow only the event names expected by your workflows. For more information, see [OpenID Connect](../../../concepts/security/openid-connect.md#establishing-oidc-trust-with-your-cloud-provider#establishing-oidc-trust-with-your-cloud-provider)
-
-[OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
+* OIDC tokens requested for Dependabot update jobs have an `event_name` claim of `dynamic`. If your trust policy is intended to authorize only GitHub Actions workflows and your cloud provider supports conditions on `event_name`, allow only the event names expected by your workflows. For more information, see [OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
 * If you're following this guide on GHE.com, understand that you must substitute certain values in the following documentation. See [OpenID Connect](../../../concepts/security/openid-connect.md#configuring-oidc-on-ghecom#configuring-oidc-on-ghecom).
 
@@ -41,7 +38,8 @@ For repositories created after July 15, 2026, and repository renames or transfer
   * `https://HOSTNAME/_services/token/.well-known/jwks`
   <!-- This note is indented to align with the above reusable. -->
 
-  > [!NOTE]
+!!! note
+
   > Microsoft Entra ID (previously known as Azure AD) does not have fixed IP ranges defined for these endpoints.
 
 * Make sure that the value of the issuer claim that's included with the JSON Web Token (JWT) is set to a publicly routable URL. For more information, see [OpenID Connect](https://docs.github.com/enterprise-server@latest/actions/concepts/security/openid-connect).
@@ -60,9 +58,7 @@ In the following procedure, you will create an application for Microsoft Entra I
 
 Additional guidance for configuring the identity provider:
 
-* For security hardening, make sure you've reviewed [OpenID Connect](../../../concepts/security/openid-connect.md#establishing-oidc-trust-with-your-cloud-provider#establishing-oidc-trust-with-your-cloud-provider)
-
-[OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles). For an example, see [OpenID Connect reference](../../../reference/security/oidc.md#configuring-the-subject-in-your-cloud-provider#configuring-the-subject-in-your-cloud-provider).
+* For security hardening, make sure you've reviewed [OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles). For an example, see [OpenID Connect reference](../../../reference/security/oidc.md#configuring-the-subject-in-your-cloud-provider#configuring-the-subject-in-your-cloud-provider).
 * For the `audience` setting, `api://AzureADTokenExchange` is the recommended value, but you can also specify other values here.
 
 ## Updating your GitHub Actions workflow
@@ -71,8 +67,8 @@ To update your workflows for OIDC, you will need to make two changes to your YAM
 1. Add permissions settings for the token.
 1. Use the [`azure/login`](https://github.com/Azure/login) action to exchange the OIDC token (JWT) for a cloud access token.
 
-> [!NOTE]
-> When environments are used in workflows or in OIDC policies, we recommend adding protection rules to the environment for additional security. For example, you can configure deployment rules on an environment to restrict which branches and tags can deploy to the environment or access environment secrets. For more information, see [Managing environments for deployment](../../deploy/configure-and-manage-deployments/manage-environments.md).
+!!! note
+    When environments are used in workflows or in OIDC policies, we recommend adding protection rules to the environment for additional security. For example, you can configure deployment rules on an environment to restrict which branches and tags can deploy to the environment or access environment secrets. For more information, see [Managing environments for deployment](../../deploy/configure-and-manage-deployments/manage-environments.md).
 
 ### Adding permissions settings
 

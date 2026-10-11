@@ -24,7 +24,8 @@ The instructions below will guide you through configuring your environment to us
   * Docker is [installed](https://docs.docker.com/get-docker/) and running.
   * [GitHub CLI](https://cli.github.com) is installed.
 
-  > [!NOTE]
+!!! note
+
   > The GitHub Actions Importer container and CLI do not need to be installed on the same server as your CI platform.
 
 ### Limitations
@@ -84,14 +85,12 @@ The `configure` CLI command is used to set required credentials and options for 
 
    The `configure` command will prompt you for the following information:
 
-   * For "Which CI providers are you configuring?", use the arrow keys to select `Jenkins`, press <kbd>Space</kbd> to select it, then press <kbd>Enter</kbd>.
-   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the GitHub instance", enter the URL for your GitHub Enterprise Server instance, and press <kbd>Enter</kbd>.
-
-press <kbd>Enter</kbd> to accept the default value (`https://github.com`).
-   * For "Personal access token for Jenkins", enter the value for the Jenkins personal API token that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Username of Jenkins user", enter your Jenkins username and press <kbd>Enter</kbd>.
-   * For "Base url of the Jenkins instance", enter the URL of your Jenkins instance, and press <kbd>Enter</kbd>.
+   * For "Which CI providers are you configuring?", use the arrow keys to select `Jenkins`, press `Space` to select it, then press `Enter`.
+   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press `Enter`.
+   * For "Base url of the GitHub instance", press `Enter` to accept the default value (`https://github.com`).
+   * For "Personal access token for Jenkins", enter the value for the Jenkins personal API token that you created earlier, and press `Enter`.
+   * For "Username of Jenkins user", enter your Jenkins username and press `Enter`.
+   * For "Base url of the Jenkins instance", enter the URL of your Jenkins instance, and press `Enter`.
 
    An example of the `configure` command is shown below:
 
@@ -297,7 +296,8 @@ GitHub Actions Importer uses the following environment variables to connect to y
 * `GITHUB_INSTANCE_URL`: The URL to the target GitHub instance (for example, `https://github.com`).
 * `JENKINS_ACCESS_TOKEN`: The Jenkins API token used to view Jenkins resources.
 
-  > [!NOTE]
+!!! note
+
   > This token requires access to all jobs that you want to migrate or audit. In cases where a folder or job does not inherit access control lists from their parent, you must grant explicit permissions or full admin privileges.
 
 * `JENKINS_USERNAME`: The username of the user account that created the Jenkins API token.
@@ -364,9 +364,9 @@ For information about supported Jenkins plugins, see the [`github/gh-actions-imp
 
 #### Supported syntax for Freestyle pipelines
 
-| Jenkins                   | GitHub Actions                     |              Status |
-| :------------------------ | :--------------------------------- | :------------------ |
-| docker template           | `jobs.<job_id>.container`          |           Supported |
+| Jenkins                   | GitHub Actions                     | Status              |
+|:------------------------|:---------------------------------|:------------------|
+| docker template           | `jobs.<job_id>.container`          | Supported           |
 | build                     | `jobs`                             | Partially supported |
 | build environment         | `env`                              | Partially supported |
 | build triggers            | `on`                               | Partially supported |
@@ -374,34 +374,34 @@ For information about supported Jenkins plugins, see the [`github/gh-actions-imp
 
 #### Supported syntax for Jenkinsfile pipelines
 
-| Jenkins     | GitHub Actions                     |              Status |
-| :---------- | :--------------------------------- | :------------------ |
-| docker      | `jobs.<job_id>.container`          |           Supported |
-| stage       | `jobs.<job_id>`                    |           Supported |
+| Jenkins     | GitHub Actions                     | Status              |
+|:----------|:---------------------------------|:------------------|
+| docker      | `jobs.<job_id>.container`          | Supported           |
+| stage       | `jobs.<job_id>`                    | Supported           |
 | agent       | `runners`                          | Partially supported |
 | environment | `env`                              | Partially supported |
 | stages      | `jobs`                             | Partially supported |
 | steps       | `jobs.<job_id>.steps`              | Partially supported |
 | triggers    | `on`                               | Partially supported |
 | when        | `jobs.<job_id>.if`                 | Partially supported |
-| inputs      | `inputs`                           |         Unsupported |
-| matrix      | `jobs.<job_id>.strategy.matrix`    |         Unsupported |
-| options     | `jobs.<job_id>.strategy`           |         Unsupported |
-| parameters  | `inputs`                           |         Unsupported |
+| inputs      | `inputs`                           | Unsupported         |
+| matrix      | `jobs.<job_id>.strategy.matrix`    | Unsupported         |
+| options     | `jobs.<job_id>.strategy`           | Unsupported         |
+| parameters  | `inputs`                           | Unsupported         |
 
 ### Environment variables syntax
 
 GitHub Actions Importer uses the mapping in the table below to convert default Jenkins environment variables to the closest equivalent in GitHub Actions.
 
-| Jenkins           | GitHub Actions                                                                        |
-| :---------------- | :------------------------------------------------------------------------------------ |
-| `${BUILD_ID}`     | `${{ github.run_id }}`                                                                |
-| `${BUILD_NUMBER}` | `${{ github.run_id }}`                                                                |
-| `${BUILD_TAG}`    | `${{ github.workflow }}-${{ github.run_id }}`                                         |
-| `${BUILD_URL}`    | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
-| `${JENKINS_URL}`  | `${{ github.server_url }}`                                                            |
-| `${JOB_NAME}`     | `${{ github.workflow }}`                                                              |
-| `${WORKSPACE}`    | `${{ github.workspace }}`                                                             |
+| Jenkins | GitHub Actions |
+| :-- | :-- |
+| `${BUILD_ID}` | `${{ github.run_id }}` |
+| `${BUILD_NUMBER}` | `${{ github.run_id }}` |
+| `${BUILD_TAG}` | `${{ github.workflow }}-${{ github.run_id }}` |
+| `${BUILD_URL}` | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
+| `${JENKINS_URL}` | `${{ github.server_url }}` |
+| `${JOB_NAME}` | `${{ github.workflow }}` |
+| `${WORKSPACE}` | `${{ github.workspace }}` |
 
 ## Legal notice
 

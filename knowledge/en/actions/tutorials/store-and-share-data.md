@@ -20,9 +20,7 @@ Before you can complete this tutorial, you need to understand workflow artifacts
 
 The output of building and testing your code often produces files you can use to debug test failures and production code that you can deploy. You can configure a workflow to build and test the code pushed to your repository and report a success or failure status. You can upload the build and test output to use for deployments, debugging failed tests or crashes, and viewing test suite coverage.
 
-You can use the `upload-artifact` action to upload artifacts. When uploading an artifact, you can specify a single file or directory, or multiple files or directories. You can also exclude certain files or directories, and use wildcard patterns. We recommend that you provide a name for an artifact, but if no name is provided then `artifact` will be used as the default name. For more information on syntax, see the [actions/upload-artifact](https://github.com/actions/upload-artifact) action
-
-`actions/upload-artifact` action on GitHub Enterprise Server.
+You can use the `upload-artifact` action to upload artifacts. When uploading an artifact, you can specify a single file or directory, or multiple files or directories. You can also exclude certain files or directories, and use wildcard patterns. We recommend that you provide a name for an artifact, but if no name is provided then `artifact` will be used as the default name. For more information on syntax, see the  `actions/upload-artifact` action on GitHub Enterprise Server.
 
 ### Example
 
@@ -61,25 +59,21 @@ jobs:
           npm run build --if-present
           npm test
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
           name: dist-without-markdown
           path: |
             dist
             !dist/**/*.md
       - name: Archive code coverage results
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
           path: output/test/code-coverage.html
 ```
 
-> [!TIP]
-> To display code coverage results directly on pull requests instead of downloading artifacts, you can upload a Cobertura XML coverage report to Code Quality. See [Set up code coverage](https://docs.github.com/code-security/how-tos/maintain-quality-code/set-up-code-coverage).
+!!! tip
+    To display code coverage results directly on pull requests instead of downloading artifacts, you can upload a Cobertura XML coverage report to Code Quality. See [Set up code coverage](https://docs.github.com/code-security/how-tos/maintain-quality-code/set-up-code-coverage).
 
 ## Configuring a custom artifact retention period
 
@@ -87,9 +81,7 @@ You can define a custom retention period for individual artifacts created by a w
 
 ```yaml copy
   - name: 'Upload Artifact'
-    uses: actions/upload-artifact@v4
-
-v3
+    uses: actions/upload-artifact@v3
     with:
       name: my-artifact
       path: my_file.txt
@@ -102,18 +94,14 @@ The `retention-days` value cannot exceed the retention limit set by the reposito
 
 You can use the [`actions/download-artifact`](https://github.com/actions/download-artifact) action to download previously uploaded artifacts during a workflow run.
 
-> [!NOTE]
-> If you want to download artifacts from a different workflow or workflow run, you need to supply a token and run identifier. See [Download Artifacts from other Workflow Runs or Repositories](https://github.com/actions/download-artifact?tab=readme-ov-file#download-artifacts-from-other-workflow-runs-or-repositories) in the documentation for the `download-artifact` action.
-
-You can only download artifacts in a workflow that were uploaded during the same workflow run.
+!!! note
+    If you want to download artifacts from a different workflow or workflow run, you need to supply a token and run identifier. See [Download Artifacts from other Workflow Runs or Repositories](https://github.com/actions/download-artifact?tab=readme-ov-file#download-artifacts-from-other-workflow-runs-or-repositories) in the documentation for the `download-artifact` action.
 
 Specify an artifact's name to download an individual artifact. If you uploaded an artifact without specifying a name, the default name is `artifact`.
 
 ```yaml
 - name: Download a single artifact
-  uses: actions/download-artifact@v5
-
-v3
+  uses: actions/download-artifact@v3
   with:
     name: my-artifact
 ```
@@ -122,44 +110,30 @@ You can also download all artifacts in a workflow run by not specifying a name. 
 
 ```yaml
 - name: Download all workflow run artifacts
-  uses: actions/download-artifact@v5
-
-v3
+  uses: actions/download-artifact@v3
 ```
 
 If you download all workflow run's artifacts, a directory for each artifact is created using its name.
 
-For more information on syntax, see the [actions/download-artifact](https://github.com/actions/download-artifact) action
-
-`actions/download-artifact` action on GitHub Enterprise Server.
+For more information on syntax, see the  `actions/download-artifact` action on GitHub Enterprise Server.
 
 ## Passing data between jobs in a workflow
 
-You can use the `upload-artifact` and `download-artifact` actions to share data between jobs in a workflow. This example workflow illustrates how to pass data between jobs in the same workflow. For more information, see the [actions/upload-artifact](https://github.com/actions/upload-artifact) and [download-artifact](https://github.com/actions/download-artifact) actions
-
-`actions/upload-artifact` and `download-artifact` actions on GitHub Enterprise Server.
+You can use the `upload-artifact` and `download-artifact` actions to share data between jobs in a workflow. This example workflow illustrates how to pass data between jobs in the same workflow. For more information, see the  `actions/upload-artifact` and `download-artifact` actions on GitHub Enterprise Server.
 
 Jobs that are dependent on a previous job's artifacts must wait for the dependent job to complete successfully. This workflow uses the `needs` keyword to ensure that `job_1`, `job_2`, and `job_3` run sequentially. For example, `job_2` requires `job_1` using the `needs: job_1` syntax.
 
 Job 1 performs these steps:
 * Performs a math calculation and saves the result to a text file called `math-homework.txt`.
-* Uses the `upload-artifact` action to upload the `math-homework.txt` file with the artifact name `homework_pre`
-
-`homework`.
+* Uses the `upload-artifact` action to upload the `math-homework.txt` file with the artifact name `homework`.
 
 Job 2 uses the result in the previous job:
-* Downloads the `homework_pre`
-
-`homework` artifact uploaded in the previous job. By default, the `download-artifact` action downloads artifacts to the workspace directory that the step is executing in. You can use the `path` input parameter to specify a different download directory.
+* Downloads the `homework` artifact uploaded in the previous job. By default, the `download-artifact` action downloads artifacts to the workspace directory that the step is executing in. You can use the `path` input parameter to specify a different download directory.
 * Reads the value in the `math-homework.txt` file, performs a math calculation, and saves the result to `math-homework.txt` again, overwriting its contents.
-* Uploads the `math-homework.txt` file. As artifacts are considered immutable in `v4`, the artifact is passed a different input, `homework_final`, as a name.
-
-This upload overwrites the previously uploaded artifact because they share the same name.
+* Uploads the `math-homework.txt` file. This upload overwrites the previously uploaded artifact because they share the same name.
 
 Job 3 displays the result uploaded in the previous job:
-* Downloads the `homework_final` artifact from Job 2.
-
-`homework` artifact.
+* Downloads the `homework` artifact.
 * Prints the result of the math equation to the log.
 
 The full math operation performed in this workflow example is `(3 + 7) x 9 = 90`.
@@ -178,13 +152,9 @@ jobs:
         run: |
           expr 3 + 7 > math-homework.txt
       - name: Upload math result for job 1
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
-          name: homework_pre
-
-homework
+          name: homework
           path: math-homework.txt
 
   job_2:
@@ -193,25 +163,17 @@ homework
     runs-on: windows-latest
     steps:
       - name: Download math result for job 1
-        uses: actions/download-artifact@v5
-
-v3
+        uses: actions/download-artifact@v3
         with:
-          name: homework_pre
-
-homework
+          name: homework
       - shell: bash
         run: |
           value=`cat math-homework.txt`
           expr $value \* 9 > math-homework.txt
       - name: Upload math result for job 2
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
-          name: homework_final
-
-homework
+          name: homework
           path: math-homework.txt
 
   job_3:
@@ -220,13 +182,9 @@ homework
     runs-on: macOS-latest
     steps:
       - name: Download math result for job 2
-        uses: actions/download-artifact@v5
-
-v3
+        uses: actions/download-artifact@v3
         with:
-          name: homework_final
-
-homework
+          name: homework
       - name: Print the final result
         shell: bash
         run: |

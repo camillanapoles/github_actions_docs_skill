@@ -12,8 +12,8 @@ section: How tos / Manage workflow runs
 
 _You can download archived artifacts before they automatically expire._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 By default, GitHub stores build logs and artifacts for 90 days, and you can customize this retention period, depending on the type of repository. For more information, see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#configuring-the-retention-period-for-github-actions-artifacts-and-logs-in-your-repository#configuring-the-retention-period-for-github-actions-artifacts-and-logs-in-your-repository).
 
@@ -35,8 +35,8 @@ Read access to the repository is required to perform these steps.
 
 **Usando a CLI do GitHub**
 
-> [!NOTE]
-> To learn more about GitHub CLI, see [About github cli](https://docs.github.com/github-cli/github-cli/about-github-cli).
+!!! note
+    To learn more about GitHub CLI, see [About github cli](https://docs.github.com/github-cli/github-cli/about-github-cli).
 
 GitHub CLI will download each artifact into separate directories based on the artifact name. If only a single artifact is specified, it will be extracted into the current directory.
 

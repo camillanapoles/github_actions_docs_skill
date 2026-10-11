@@ -41,7 +41,7 @@ To create a custom image, you must first set up an image-generation runner. When
 
 1. Create a larger runner:
    * For organizations, see [Adding a larger runner to an organization](manage-larger-runners.md#adding-a-larger-runner-to-an-organization).
-   * For enterprises, see [Adding a larger runner to an enterprise](https://docs.github.com/enterprise-cloud@latest/actions/how-tos/manage-runners/larger-runners/manage-larger-runners#adding-a-larger-runner-to-an-enterprise).
+   * For enterprises, see [Adding a larger runner to an enterprise](manage-larger-runners.md#adding-a-larger-runner-to-an-enterprise).
 1. When configuring the runner, select the following configurations for your image-generation runner:
    * **Platform**: Select a supported platform that matches the platform of the image you plan to create (Linux x64, Linux ARM64, or Windows x64).
    * **Image**: Select an image to build on, then enable the checkbox **Enable this runner to generate custom images**.
@@ -60,7 +60,8 @@ To configure a workflow for image generation:
   * Each job that includes the `snapshot` keyword creates a separate image. To generate only one image or image version, include all workflow steps in a single job.
   * Each successful run of a job that includes the `snapshot` keyword creates a new version of that image.
 
- > [!NOTE]
+!!! note
+
  > GitHub recommends configuring image generation as a scheduled workflow on a weekly basis. This approach ensures dependencies remain up-to-date and have the latest security patches. For more information, see [Events that trigger workflows](../../../reference/workflows-and-actions/events-that-trigger-workflows.md#schedule#schedule).
 
 It can take some time for your image to be fully generated and ready to use after the workflow completes. Provisioning time varies based on runner size and configuration, and may take several hours for larger runners.
@@ -139,8 +140,8 @@ Patch versions are not supported.
 The most recent workflow run for an image is always tagged as latest.
 If you specify an older major version in the YAML (for example, version: 1.* when a 2.0 version exists), GitHub generates a new minor version under the older major version and marks it as latest.
 
-> [!NOTE]
-> GitHub-hosted larger runner creation does not support wildcards in image version selection.
+!!! note
+    GitHub-hosted larger runner creation does not support wildcards in image version selection.
 
 ## Expiration for images built from custom images
 
@@ -172,7 +173,7 @@ Once your custom image is ready, you can install it on a new GitHub-hosted large
 
 1. Follow the steps for creating a larger runner:
    * For organizations, see [Adding a larger runner to an organization](manage-larger-runners.md#adding-a-larger-runner-to-an-organization).
-   * For enterprises, see [Adding a larger runner to an enterprise](https://docs.github.com/enterprise-cloud@latest/actions/how-tos/manage-runners/larger-runners/manage-larger-runners#adding-a-larger-runner-to-an-enterprise).
+   * For enterprises, see [Adding a larger runner to an enterprise](manage-larger-runners.md#adding-a-larger-runner-to-an-enterprise).
 1. When configuring the runner:
    * **Platform**: Select the same platform that you used to generate the image (Linux x64, Linux ARM64, or Windows x64).
    * **Image**: Select the **Custom** tab, then choose your custom image from the list.

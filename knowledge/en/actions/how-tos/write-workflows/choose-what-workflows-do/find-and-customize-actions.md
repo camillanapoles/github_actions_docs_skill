@@ -12,8 +12,8 @@ section: How tos / Write workflows / Choose what workflows do
 
 _You can use and customize pre-written actions to power your workflow._
 
-> [!NOTE]
-> GitHub Actions on GitHub Enterprise Server may have limited access to actions on GitHub.com or GitHub Marketplace. For more information, see [Managing access to actions from githubcom](https://docs.github.com/admin/managing-github-actions-for-your-enterprise/managing-access-to-actions-from-githubcom) and contact your GitHub Enterprise site administrator.
+!!! note
+    GitHub Actions on GitHub Enterprise Server may have limited access to actions on GitHub.com or GitHub Marketplace. For more information, see [Managing access to actions from githubcom](https://docs.github.com/admin/managing-github-actions-for-your-enterprise/managing-access-to-actions-from-githubcom) and contact your GitHub Enterprise site administrator.
 
 If you access GitHub at GHE.com, be aware that actions that include hard-coded API calls to GitHub.com may not work as expected.
 
@@ -31,14 +31,15 @@ You can search and browse actions directly in your repository's workflow editor.
 
 You can add an action to your workflow by referencing the action in your workflow file. The actions you use in your workflow can be defined in:
 
-* The same repository as your workflow file* An internal repository within the same enterprise account that is configured to allow access to workflows
+* The same repository as your workflow file
+* An internal repository within the same enterprise account that is configured to allow access to workflows
 * Any public repository
 * A published Docker container image on Docker Hub
 
 You can view the actions referenced in your GitHub Actions workflows as dependencies in the dependency graph of the repository containing your workflows. For more information, see “[Dependency graph](https://docs.github.com/code-security/concepts/supply-chain-security/dependency-graph).”
 
-> [!NOTE]
-> To enhance security, GitHub Actions does not support redirects for actions or reusable workflows. This means that when the owner, name of an action's repository, or name of an action is changed, any workflows using that action with the previous name will fail.
+!!! note
+    To enhance security, GitHub Actions does not support redirects for actions or reusable workflows. This means that when the owner, name of an action's repository, or name of an action is changed, any workflows using that action with the previous name will fail.
 
 ### Adding an action from GitHub Marketplace
 
@@ -107,9 +108,7 @@ The `action.yml` file is used to provide metadata for the action. Learn about th
 
 If an action is defined in a different repository than your workflow file, you can reference the action with the `{owner}/{repo}@{ref}` syntax in your workflow file.
 
-The action must be stored in a public repositoryor an internal repository that is configured to allow access to workflows. For more information, see [Sharing actions and workflows with your enterprise](../../reuse-automations/share-with-your-enterprise.md).
-
-.
+The action must be stored in a public repository.
 
 ```yaml
 jobs:
@@ -119,9 +118,7 @@ jobs:
         uses: actions/setup-node@v7
 ```
 
-If you're on GHE.com
-
-an enterprise owner has enabled access to actions on GitHub.com, you can use this syntax to reference actions either within your enterprise or on GitHub.com. GitHub Actions will look for the action in your enterprise first, then fall back to GitHub.com.
+If you're on GHE.com, you can use this syntax to reference actions either within your enterprise or on GitHub.com. GitHub Actions will look for the action in your enterprise first, then fall back to GitHub.com.
 
 ### Referencing a container on Docker Hub
 
@@ -147,8 +144,8 @@ The creators of a community action have the option to use tags, branches, or SHA
 
 You will designate the version of the action in your workflow file. Check the action's documentation for information on their approach to release management, and to see which tag, branch, or SHA value to use.
 
-> [!NOTE]
-> We recommend that you use a SHA value when using third-party actions. However, it's important to note Dependabot will only create Dependabot alerts for vulnerable GitHub Actions that use semantic versioning. For more information, see [Secure use reference](../../../reference/security/secure-use.md#using-third-party-actions#using-third-party-actions) and [Dependabot alerts](https://docs.github.com/code-security/concepts/supply-chain-security/dependabot-alerts).
+!!! note
+    We recommend that you use a SHA value when using third-party actions. However, it's important to note Dependabot will only create Dependabot alerts for vulnerable GitHub Actions that use semantic versioning. For more information, see [Secure use reference](../../../reference/security/secure-use.md#using-third-party-actions#using-third-party-actions) and [Dependabot alerts](https://docs.github.com/code-security/concepts/supply-chain-security/dependabot-alerts).
 
 ### Using tags
 

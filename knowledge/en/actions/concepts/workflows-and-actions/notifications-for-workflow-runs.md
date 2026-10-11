@@ -18,4 +18,4 @@ Notifications for scheduled workflows are sent to the user who initially created
  * If a different user updates the cron syntax, in the `schedule` event in the workflow file, subsequent notifications will be sent to that user instead.
  * If a scheduled workflow is disabled and then re-enabled, notifications will be sent to the user who re-enabled the workflow rather than the user who last modified the cron syntax.
 
-You can also see the status of workflow runs on a repository's Actions tab. For more information, see [Manage workflow runs](../../how-tos/manage-workflow-runs.md).
+You can also see the status of workflow runs on a repository's Actions tab. For more information, see [Manage workflow runs](https://docs.github.com/en/actions/how-tos/manage-workflow-runs).

@@ -12,12 +12,9 @@ section: How tos / Manage runners / Github hosted runners
 
 _You can assign a job to run on a virtual machine hosted by GitHub._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
-
 ## Using a GitHub-hosted runner
 
-To use a GitHub-hosted runner, create a job and use `runs-on` to specify the type of runner that will process the job, such as `ubuntu-latest`, `windows-latest`, or `macos-latest`. For the full list of runner types, see [GitHub-hosted runners reference](../../../reference/runners/github-hosted-runners.md#supported-runners-and-hardware-resources#supported-runners-and-hardware-resources).If you have `repo: write` access to a repository, you can view a list of the runners available to use in workflows in the repository. For more information, see [Viewing available runners for a repository](#viewing-available-runners-for-a-repository).
+To use a GitHub-hosted runner, create a job and use `runs-on` to specify the type of runner that will process the job, such as `ubuntu-latest`, `windows-latest`, or `macos-latest`. For the full list of runner types, see [GitHub-hosted runners reference](../../../reference/runners/github-hosted-runners.md#supported-runners-and-hardware-resources#supported-runners-and-hardware-resources). If you have `repo: write` access to a repository, you can view a list of the runners available to use in workflows in the repository. For more information, see [Viewing available runners for a repository](#viewing-available-runners-for-a-repository).
 
 When the job begins, GitHub automatically provisions a new VM for that job. All steps in the job execute on the VM, allowing the steps in that job to share information using the runner's filesystem. You can run workflows directly on the VM or in a Docker container. When the job has finished, the VM is automatically decommissioned.
 
@@ -83,8 +80,9 @@ If you have `repo: write` access to a repository, you can view a list of the run
 1. Review the list of available GitHub-hosted runners for the repository.
 1. Optionally, to copy a runner's label to use it in a workflow, click  to the right of the runner, then click **Copy label**.
 
-> [!NOTE]
-> Enterprise and organization ownersand users with the "Manage organization runners and runner groups" permission can create runners from this page. To create a new runner, click **New runner** at the top right of the list of runners to add runners to the repository.
->
-> For more information, see [Managing larger runners](../larger-runners/manage-larger-runners.md) and[Adding self-hosted runners](../self-hosted-runners/add-runners.md).
-> For more information about custom organization roles, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
+!!! note
+    Enterprise and organization owners and users with the "Manage organization runners and runner groups" permission can create runners from this page. To create a new runner, click **New runner** at the top right of the list of runners to add runners to the repository.
+
+    For more information, see [Managing larger runners](../larger-runners/manage-larger-runners.md) and [Adding self-hosted runners](../self-hosted-runners/add-runners.md).
+
+    For more information about custom organization roles, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).

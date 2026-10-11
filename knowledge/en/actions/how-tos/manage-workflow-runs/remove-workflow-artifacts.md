@@ -12,13 +12,13 @@ section: How tos / Manage workflow runs
 
 _You can reclaim used GitHub Actions storage by deleting artifacts before they expire on GitHub._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Deleting an artifact
 
-> [!WARNING]
-> Once you delete an artifact, it cannot be restored.
+!!! warning
+    Once you delete an artifact, it cannot be restored.
 
 Write access to the repository is required to perform these steps.
 

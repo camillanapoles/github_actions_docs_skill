@@ -259,6 +259,260 @@ def collapse_escapes(md: str) -> str:
 
 
 # --------------------------------------------------------------------------- #
+# Polimento de Markdown (octicons, HTML residual, alertas → admonitions)
+# --------------------------------------------------------------------------- #
+
+SVG_RE = re.compile(r"<svg\b[^>]*?>.*?</svg>", re.S | re.I)
+OCTICON_LABELS = {
+    "supported": "✅", "not supported": "❌", "yes": "✅", "no": "❌",
+    "check": "✅", "x": "❌", "warning": "⚠️", "info": "ℹ️",
+}
+BLOCK_HTML_RE = re.compile(
+    r"</?\s*(div|table|thead|tbody|tfoot|tr|td|th|ul|ol|li|dl|dt|dd|p|section|article|"
+    r"details|summary|figure|figcaption|blockquote|pre|h[1-6]|br|hr)\b", re.I)
+INLINE_HTML_RULES: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(r"<br\s*/?>", re.I), " "),
+    (re.compile(r"<code>(.*?)</code>", re.I | re.S), r"`\1`"),
+    (re.compile(r"<strong>(.*?)</strong>", re.I | re.S), r"**\1**"),
+    (re.compile(r"<b>(.*?)</b>", re.I | re.S), r"**\1**"),
+    (re.compile(r"<em>(.*?)</em>", re.I | re.S), r"*\1*"),
+    (re.compile(r"<i>(.*?)</i>", re.I | re.S), r"*\1*"),
+    (re.compile(r"<kbd>(.*?)</kbd>", re.I | re.S), r"`\1`"),
+    (re.compile(r"<sup>(.*?)</sup>", re.I | re.S), r"^\1^"),
+    (re.compile(r"<a\s+[^>]*href=\"([^\"]+)\"[^>]*>(.*?)</a>", re.I | re.S), r"[\2](\1)"),
+    (re.compile(r"</?\s*(span|small|sub|sup|div|p|code|em|strong|b|i|a|kbd|font|u|mark|abbr|tt|var|pre)\b[^>]*>", re.I), ""),
+]
+NEEDS_PANDOC_RE = re.compile(r"<\s*(table|ul|ol|dl|details|thead|tbody|tr|td|th|li)\b", re.I)
+STRIP_TAG_RE = re.compile(r"</?\s*[a-zA-Z][^>]*>")
+ALERT_RE = re.compile(r"^>\s*\\?\[!\s*(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\s*\]\\?\s*$", re.I)
+ALERT_KIND = {"note": "note", "tip": "tip", "important": "important",
+              "warning": "warning", "caution": "warning"}
+
+
+def octicons_to_text(md: str) -> str:
+    """Substitui SVGs de octicon por glifos legíveis (preserva o significado em tabelas)."""
+
+    def repl(m: re.Match) -> str:
+        tag = m.group(0)
+        label = re.search(r'aria-label="([^"]+)"', tag)
+        cls = re.search(r"octicon-([\w-]+)", tag)
+        if label:
+            key = label.group(1).strip().lower()
+            if key in OCTICON_LABELS:
+                return OCTICON_LABELS[key]
+            return f"({label.group(1).strip()})"
+        if cls:
+            name = cls.group(1).lower()
+            if name in ("check", "check-circle"):
+                return "✅"
+            if name in ("x", "x-circle"):
+                return "❌"
+        return ""
+
+    return SVG_RE.sub(repl, md)
+
+
+def inline_html_to_md(line: str) -> str:
+    for pattern, repl in INLINE_HTML_RULES:
+        line = pattern.sub(repl, line)
+    return line
+
+
+def html_regions_to_markdown(md: str) -> str:
+    """Converte regiões de HTML em bloco (fora de cercas e de tabelas) para Markdown via pandoc."""
+    lines = md.split("\n")
+    out: list[str] = []
+    region: list[str] = []
+    in_fence = False
+
+    def flush() -> None:
+        if not region:
+            return
+        block = "\n".join(region)
+        if NEEDS_PANDOC_RE.search(block):
+            # tabelas/listas em HTML: conversão fiel via pandoc (uma chamada por região)
+            try:
+                converted = pandoc_html_to_gfm(block).strip()
+            except Exception:
+                converted = block
+            out.append(converted if converted is not None else block)
+        else:
+            # wrappers (<div>, <p>, <span>, ...): remoção barata de tags
+            cleaned = inline_html_to_md(block)
+            cleaned = STRIP_TAG_RE.sub("", cleaned)
+            cleaned = re.sub(r"^[ \t]*\n", "", cleaned)
+            out.append(cleaned.strip("\n"))
+        region.clear()
+
+    for line in lines:
+        if FENCE_RE.match(line.strip()[:3]) if line.strip() else False:
+            flush()
+            in_fence = not in_fence
+            out.append(line)
+            continue
+        if in_fence:
+            out.append(line)
+            continue
+        if line.lstrip().startswith("|"):
+            flush()
+            out.append(inline_html_to_md(line))
+            continue
+        if BLOCK_HTML_RE.search(line):
+            region.append(line)
+            continue
+        flush()
+        out.append(inline_html_to_md(line) if re.search(r"<\w+[^>]*>", line) else line)
+    flush()
+    return "\n".join(out)
+
+
+def alerts_to_admonitions(md: str) -> tuple[str, int]:
+    """`> [!NOTE]` (GitHub alerts, inclusive escapados) → admonições MkDocs Material."""
+    lines = md.split("\n")
+    out: list[str] = []
+    count = 0
+    i = 0
+    while i < len(lines):
+        m = ALERT_RE.match(lines[i].strip())
+        if not m:
+            out.append(lines[i])
+            i += 1
+            continue
+        kind = ALERT_KIND[m.group(1).lower()]
+        i += 1
+        block: list[str] = []
+        while i < len(lines) and (lines[i].startswith(">") or (not lines[i].strip() and i + 1 < len(lines) and lines[i + 1].startswith(">"))):
+            block.append(re.sub(r"^>\s?", "", lines[i]) if lines[i].startswith(">") else "")
+            i += 1
+        body = normalize_markdown("\n".join(block)).strip()
+        out.append(f"!!! {kind}")
+        for bl in (body.split("\n") if body else [""]):
+            out.append(f"    {bl}".rstrip())
+        out.append("")
+        count += 1
+    return "\n".join(out), count
+
+
+def unescape_noise(md: str) -> str:
+    """Desescapa ruído que prejudica a leitura: `GITHUB\_TOKEN`, `\[!NOTE]`, `\#`."""
+    md = re.sub(r"(?<=[\w])\\_(?=[\w])", "_", md)
+    md = re.sub(r"\\\[(!)", r"[\1", md)
+    md = re.sub(r"\\\.", ".", md)
+    md = re.sub(r"\\(?=[`])", "", md)
+    md = md.replace("\\|", "|") if False else md
+    return md
+
+
+
+TABLE_ROW_RE = re.compile(r"^\s*\|.*\|\s*$")
+
+
+def _split_row(line: str) -> list[str]:
+    core = line.strip()
+    core = core[1:] if core.startswith("|") else core
+    core = core[:-1] if core.endswith("|") else core
+    cells, buf, escaped = [], [], False
+    for ch in core:
+        if ch == "\\" and not escaped:
+            escaped = True
+            buf.append(ch)
+            continue
+        if ch == "|" and not escaped:
+            cells.append("".join(buf).strip())
+            buf = []
+        else:
+            buf.append(ch)
+        escaped = False
+    cells.append("".join(buf).strip())
+    return cells
+
+
+def compact_tables(md: str, max_width: int = 72) -> str:
+    """Realinha tabelas pipe: padding consistente e largura controlada (markdown impecável)."""
+    lines = md.split("\n")
+    out: list[str] = []
+    i = 0
+    in_fence = False
+    while i < len(lines):
+        line = lines[i]
+        if line.strip().startswith("```") or line.strip().startswith("~~~"):
+            in_fence = not in_fence
+            out.append(line)
+            i += 1
+            continue
+        if not in_fence and TABLE_ROW_RE.match(line) and i + 1 < len(lines) and re.match(r"^\s*\|[\s:|-]+\|\s*$", lines[i + 1]):
+            rows = [_split_row(line), _split_row(lines[i + 1])]
+            j = i + 2
+            while j < len(lines) and TABLE_ROW_RE.match(lines[j]):
+                candidate = _split_row(lines[j])
+                # linhas separadoras duplicadas (ex.: "| --- | --- |" extras) são descartadas
+                if candidate and all(re.fullmatch(r":?-{1,}:?", c or "-") for c in candidate):
+                    j += 1
+                    continue
+                rows.append(candidate)
+                j += 1
+            width = max(len(r) for r in rows)
+            rows = [r + [""] * (width - len(r)) for r in rows]
+            colw = [max(len(r[c]) for r in rows) for c in range(width)]
+            aligns = []
+            for c in range(width):
+                cell = rows[1][c]
+                left, right = cell.startswith(":"), cell.endswith(":")
+                aligns.append(("left" if left and right else "center") if left and right else
+                              ("right" if right else ("left" if left else "")))
+            wide = any(w > max_width for w in colw)
+            pad = 1 if wide else 0
+            rendered = []
+            for r_i, row in enumerate(rows):
+                if r_i == 1:
+                    continue  # linha separadora original: apenas fonte de alinhamento
+                cells = []
+                for c, cell in enumerate(row):
+                    if wide:
+                        cells.append(f" {cell} ")
+                    else:
+                        if aligns[c] == "right":
+                            cells.append(" " + cell.rjust(colw[c]) + " ")
+                        elif aligns[c] == "center":
+                            total = colw[c] - len(cell)
+                            left = total // 2
+                            cells.append(" " * (left + 1) + cell + " " * (total - left + 1))
+                        else:
+                            cells.append(" " + cell.ljust(colw[c]) + " ")
+                rendered.append("|" + "|".join(cells) + "|")
+                if r_i == 0:
+                    sep = []
+                    for c in range(width):
+                        dashes = max(3, (colw[c] if not wide else 3))
+                        if aligns[c] == "center":
+                            sep.append(":" + "-" * (dashes - 2) + ":")
+                        elif aligns[c] == "right":
+                            sep.append("-" * (dashes - 1) + ":")
+                        elif aligns[c] == "left":
+                            sep.append(":" + "-" * (dashes - 1))
+                        else:
+                            sep.append("-" * dashes)
+                    rendered.append("|" + "|".join(f" {x} " if wide else x for x in sep) + "|")
+            out.extend(rendered)
+            i = j
+            continue
+        out.append(line)
+        i += 1
+    return "\n".join(out)
+
+
+def polish_markdown(md: str) -> tuple[str, int]:
+    """Pipeline de polimento aplicado a todo corpo capturado."""
+    md = octicons_to_text(md)
+    md = html_regions_to_markdown(md)
+    md, alerts = alerts_to_admonitions(md)
+    md, quotes = blockquotes_to_admonitions(md)
+    md = unescape_noise(md)
+    md = compact_tables(md)
+    return md, alerts + quotes
+
+
+# --------------------------------------------------------------------------- #
 # MODO SITE — HTML → Markdown (somente conteúdo principal)
 # --------------------------------------------------------------------------- #
 
@@ -751,13 +1005,14 @@ def extract_api_page(pathname: str, lang: str, scope: str, results_root: Path,
 
     rel = normalize_docs_path(pathname, lang, scope) or "index.md"
     res.path = rel
-    res.section = str(meta.get("product") or "") or " / ".join(
-        x.replace("-", " ").capitalize() for x in Path(rel).parent.parts if x != scope) or scope.capitalize()
+    res.section = " / ".join(
+        x.replace("-", " ").capitalize() for x in Path(rel).parent.parts if x != scope
+    ) or scope.capitalize()
 
     stats = {"internal": 0, "external": 0}
     body = heading_from_link_lines(body)
     body = collapse_escapes(body)
-    body, adm = blockquotes_to_admonitions(body)
+    body, adm = polish_markdown(body)
     body = rewrite_links(body, rel, lang, stats, scope)
     body = strip_duplicate_title(body, res.title, intro)
     body = normalize_markdown(body)
@@ -1167,9 +1422,9 @@ def extract_repo_tree(repo_dir: Path, scope: str, out_root: Path, version_profil
             intro = resolve_autotitles(intro, title_map)
             body = resolve_autotitles(body, title_map)
             stats = {"internal": 0, "external": 0}
+            body, _adm = polish_markdown(body)
             body = rewrite_links(body, out_rel, "en", stats, scope)
             body = normalize_markdown(body)
-            body, _adm = blockquotes_to_admonitions(body)
 
             content_md = (
                 yaml_front_matter({
@@ -1364,12 +1619,12 @@ def main(argv: list[str] | None = None) -> int:
                 mark = {"ok": "ok ", "skipped": "skip"}[res.status] if res.status in ("ok", "skipped") else "ERR"
                 print(f"[{idx:>4}/{len(paths)}] {mark} {res.path or res.url} ({res.bytes} bytes)", file=sys.stderr)
         print(f"[info] captura em {time.time() - started:.1f}s", file=sys.stderr)
-    elif args.source == "html":
+    elif args.source == "repo":
         repo_dir = Path(args.repo_dir or os.environ.get("GITHUB_DOCS_DIR", "/tmp/ghdocs"))
         if not (repo_dir / "content" / args.scope).exists():
             raise SystemExit(f"repo-dir inválido: {repo_dir} (esperado content/{args.scope})")
         results = extract_repo_tree(repo_dir, args.scope, results_root, args.version_profile)
-    else:
+    else:  # html — scraping do HTML renderizado (fallback quando a Article API não está disponível)
         urls = [f"{DOCS_HOST}{p}" for p in discover_site_urls(args.lang, args.scope, args.limit, args.plan)]
         print(f"[info] {len(urls)} URLs descobertas para /{args.lang}/{args.scope}", file=sys.stderr)
         started = time.time()

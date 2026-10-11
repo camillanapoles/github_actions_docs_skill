@@ -12,8 +12,8 @@ section: Get started
 
 _Try out the core features of GitHub Actions in minutes._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -53,7 +53,8 @@ This guide assumes that:
    * If the `.github/workflows` directory already exists, navigate to that directory on GitHub, click **Add file**, then click **Create new file**, and name the file `github-actions-demo.yml`.
    * If your repository doesn't have a `.github/workflows` directory, go to the main page of the repository on GitHub, click **Add file**, then click **Create new file**, and name the file `.github/workflows/github-actions-demo.yml`. This creates the `.github` and `workflows` directories and the `github-actions-demo.yml` file in a single step.
 
-   > [!NOTE]
+!!! note
+
    > For GitHub to discover any GitHub Actions workflows in your repository, you must save the workflow files in a directory called `.github/workflows`.
    >
    > You can give the workflow file any name you like, but you must use `.yml` or `.yaml` as the file name extension. YAML is a markup language that's commonly used for configuration files.
@@ -122,8 +123,9 @@ The example workflow you just added is triggered each time code is pushed to the
 GitHub Actions can help you automate nearly every aspect of your application development processes. Ready to get started? Here are some helpful resources for taking your next steps with GitHub Actions:
 
 * To create a GitHub Actions workflow, see [Using workflow templates](../how-tos/write-workflows/use-workflow-templates.md).
-* For continuous integration (CI) workflows, see [Build and test code](../tutorials/build-and-test-code.md).
-* For building and publishing packages, see [Publish packages](../tutorials/publish-packages.md).
-* For deploying projects, see [Deploy to third party platforms](../how-tos/deploy/deploy-to-third-party-platforms.md).
-* For automating tasks and processes on GitHub, see [Manage your work](../tutorials/manage-your-work.md).
-* For examples that demonstrate more complex features of GitHub Actions, see [Choose what workflows do](../how-tos/write-workflows/choose-what-workflows-do.md). These detailed examples explain how to test your code on a runner, access the GitHub CLI, and use advanced features such as concurrency and test matrices.* To certify your proficiency in automating workflows and accelerating development with GitHub Actions, earn a GitHub Actions certificate with GitHub Certifications. For more information, see [About github certifications](https://docs.github.com/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications).
+* For continuous integration (CI) workflows, see [Build and test code](https://docs.github.com/en/actions/tutorials/build-and-test-code).
+* For building and publishing packages, see [Publish packages](https://docs.github.com/en/actions/tutorials/publish-packages).
+* For deploying projects, see [Deploy to third party platforms](https://docs.github.com/en/actions/how-tos/deploy/deploy-to-third-party-platforms).
+* For automating tasks and processes on GitHub, see [Manage your work](https://docs.github.com/en/actions/tutorials/manage-your-work).
+* For examples that demonstrate more complex features of GitHub Actions, see [Choose what workflows do](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do). These detailed examples explain how to test your code on a runner, access the GitHub CLI, and use advanced features such as concurrency and test matrices.
+* To certify your proficiency in automating workflows and accelerating development with GitHub Actions, earn a GitHub Actions certificate with GitHub Certifications. For more information, see [About github certifications](https://docs.github.com/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications).

@@ -66,7 +66,7 @@ The following example workflow demonstrates how to build and deploy a Python pro
 
 Ensure that you set `AZURE_WEBAPP_NAME` in the workflow `env` key to the name of the web app you created. If you use a version of Python other than `3.8`, change `PYTHON_VERSION` to the version that you use.
 
-If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environmentor if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
+If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environment or if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
 
 ```yaml copy
 # This workflow uses actions that are not certified by GitHub.
@@ -120,9 +120,7 @@ jobs:
       # Optional: Add a step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Upload artifact for deployment jobs
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
           name: python-app
           path: |
@@ -137,9 +135,7 @@ v3
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v5
-
-v3
+        uses: actions/download-artifact@v3
         with:
           name: python-app
           path: .

@@ -12,8 +12,8 @@ section: Get started
 
 _You can create custom continuous integration (CI) workflows directly in your GitHub repository with GitHub Actions._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## About continuous integration
 
@@ -33,10 +33,10 @@ GitHub runs your CI tests and provides the results of each test in the pull requ
 
 When you set up CI in your repository, GitHub analyzes the code in your repository and recommends CI workflows based on the language and framework in your repository. For example, if you use [Node.js](https://nodejs.org/en/), GitHub will suggest a workflow template that installs your Node.js packages and runs your tests. You can use the CI workflow template suggested by GitHub, customize the suggested workflow template, or create your own custom workflow file to run your CI tests.
 
-In addition to helping you set up CI workflows for your project, you can use GitHub Actions to create workflows across the full software development life cycle. For example, you can use actions to deploy, package, or release your project. For more information, see [Write workflows](../how-tos/write-workflows.md).
+In addition to helping you set up CI workflows for your project, you can use GitHub Actions to create workflows across the full software development life cycle. For example, you can use actions to deploy, package, or release your project. For more information, see [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows).
 
 For a definition of common terms, see [Understanding GitHub Actions](understand-github-actions.md).
 
 ## Next steps
 
-GitHub offers CI workflow templates for a variety of languages and frameworks. For tutorials on setting up continuous integration with these templates, see [Build and test code](../tutorials/build-and-test-code.md).
+GitHub offers CI workflow templates for a variety of languages and frameworks. For tutorials on setting up continuous integration with these templates, see [Build and test code](https://docs.github.com/en/actions/tutorials/build-and-test-code).

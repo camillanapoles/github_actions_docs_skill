@@ -12,8 +12,8 @@ section: Tutorials / Use containerized services
 
 _In this tutorial, you'll learn how to build a Docker container action._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -23,8 +23,8 @@ Once you complete this project, you should understand how to build your own Dock
 
 Self-hosted runners must use a Linux operating system and have Docker installed to run Docker container actions. For more information about the requirements of self-hosted runners, see [Self-hosted runners reference](../../reference/runners/self-hosted-runners.md#requirements-for-self-hosted-runner-machines#requirements-for-self-hosted-runner-machines).
 
-> [!WARNING]
-> When creating workflows and actions, you should always consider whether your code might execute untrusted input from possible attackers. Certain contexts should be treated as untrusted input, as an attacker could insert their own malicious content. For more information, see [Secure use reference](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks#good-practices-for-mitigating-script-injection-attacks).
+!!! warning
+    When creating workflows and actions, you should always consider whether your code might execute untrusted input from possible attackers. Certain contexts should be treated as untrusted input, as an attacker could insert their own malicious content. For more information, see [Secure use reference](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks#good-practices-for-mitigating-script-injection-attacks).
 
 ## Prerequisites
 
@@ -173,13 +173,11 @@ git push --follow-tags
 Now you're ready to test your action out in a workflow.
 
 * When an action is in a private repository, you can control who can access it. For more information, see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository#allowing-access-to-components-in-a-private-repository).
-* When an action is in an internal repository, you can control who can access it. For more information, see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository#allowing-access-to-components-in-an-internal-repository).
-
-When an action is in an internal repository, the action can only be used in workflows in the same repository.
+* When an action is in an internal repository, the action can only be used in workflows in the same repository.
 * Public actions can be used by workflows in any repository.
 
-> [!NOTE]
-> GitHub Actions on GitHub Enterprise Server may have limited access to actions on GitHub.com or GitHub Marketplace. For more information, see [Managing access to actions from githubcom](https://docs.github.com/admin/managing-github-actions-for-your-enterprise/managing-access-to-actions-from-githubcom) and contact your GitHub Enterprise site administrator.
+!!! note
+    GitHub Actions on GitHub Enterprise Server may have limited access to actions on GitHub.com or GitHub Marketplace. For more information, see [Managing access to actions from githubcom](https://docs.github.com/admin/managing-github-actions-for-your-enterprise/managing-access-to-actions-from-githubcom) and contact your GitHub Enterprise site administrator.
 
 ### Example using a public action
 
@@ -256,9 +254,7 @@ jobs:
         uses: ./.github/actions/my-container-action
 
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
           name: workspace_artifacts
           path: ${{ github.workspace }}

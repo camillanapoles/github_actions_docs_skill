@@ -40,8 +40,8 @@ While ARC may be deployed successfully with different tooling and configurations
 
 For more information about contacting GitHub Support, see [Contacting github support](https://docs.github.com/support/contacting-github-support).
 
-> [!NOTE]
-> * ARC is only supported on GitHub Enterprise Server versions 3.9 and greater.
+!!! note
+    * ARC is only supported on GitHub Enterprise Server versions 3.9 and greater.
 
 ## Working with GitHub Support for Actions Runner Controller
 

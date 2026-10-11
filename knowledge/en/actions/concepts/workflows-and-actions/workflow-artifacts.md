@@ -16,9 +16,7 @@ _Learn about storing and sharing data as artifacts of GitHub Actions workflows._
 
 An artifact is a file or collection of files produced during a workflow run. Artifacts allow you to persist data after a job has completed, and share that data with another job in the same workflow. For example, you can use artifacts to save your build and test output after a workflow run has ended.
 
-GitHub provides two actions that you can use to upload and download build artifacts, [upload-artifact](https://github.com/actions/upload-artifact) and [download-artifact](https://github.com/actions/download-artifact)
-
-`upload-artifact` and `download-artifact` on GitHub Enterprise Server.
+GitHub provides two actions that you can use to upload and download build artifacts,  `upload-artifact` and `download-artifact` on GitHub Enterprise Server.
 
 Common artifacts include:
 

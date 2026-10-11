@@ -64,7 +64,7 @@ The following example workflow demonstrates how to build and deploy a .NET proje
 
 Ensure that you set `AZURE_WEBAPP_NAME` in the workflow `env` key to the name of the web app you created. If the path to your project is not the repository root, change `AZURE_WEBAPP_PACKAGE_PATH`. If you use a version of .NET other than `5`, change `DOTNET_VERSION`.
 
-If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environmentor if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
+If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environment or if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
 
 ```yaml copy
 # This workflow uses actions that are not certified by GitHub.
@@ -115,9 +115,7 @@ jobs:
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
@@ -131,9 +129,7 @@ v3
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v5
-
-v3
+        uses: actions/download-artifact@v3
         with:
           name: .net-app
 

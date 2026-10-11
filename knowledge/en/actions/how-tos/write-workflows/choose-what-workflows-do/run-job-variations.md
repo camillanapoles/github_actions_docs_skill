@@ -178,9 +178,7 @@ jobs:
         run: |
           echo "$color" > color
       - name: Produce Artifact
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.color }}
           path: color
@@ -196,9 +194,7 @@ v3
 
     steps:
     - name: Retrieve Artifact
-      uses: actions/download-artifact@v5
-
-v3
+      uses: actions/download-artifact@v3
       with:
         name: ${{ matrix.color }}
 

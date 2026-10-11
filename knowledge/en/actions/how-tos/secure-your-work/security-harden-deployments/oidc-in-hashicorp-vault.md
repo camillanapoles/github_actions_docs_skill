@@ -12,8 +12,8 @@ section: How tos / Secure your work / Security harden deployments
 
 _Use OpenID Connect within your workflows to authenticate with HashiCorp Vault._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Overview
 
@@ -25,12 +25,9 @@ This guide gives an overview of how to configure HashiCorp Vault to trust GitHub
 
 * To learn the basic concepts of how GitHub uses OpenID Connect (OIDC), and its architecture and benefits, see [OpenID Connect](../../../concepts/security/openid-connect.md).
 
-* Before proceeding, you must plan your security strategy to ensure that access tokens are only allocated in a predictable way. To control how your cloud provider issues access tokens, you **must** define at least one condition, so that untrusted repositories can’t request access tokens for your cloud resources. For more information, see [OpenID Connect](../../../concepts/security/openid-connect.md#establishing-oidc-trust-with-your-cloud-provider#establishing-oidc-trust-with-your-cloud-provider)
+* Before proceeding, you must plan your security strategy to ensure that access tokens are only allocated in a predictable way. To control how your cloud provider issues access tokens, you **must** define at least one condition, so that untrusted repositories can’t request access tokens for your cloud resources. For more information, see [OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
-[OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
-* OIDC tokens requested for Dependabot update jobs have an `event_name` claim of `dynamic`. If your trust policy is intended to authorize only GitHub Actions workflows and your cloud provider supports conditions on `event_name`, allow only the event names expected by your workflows. For more information, see [OpenID Connect](../../../concepts/security/openid-connect.md#establishing-oidc-trust-with-your-cloud-provider#establishing-oidc-trust-with-your-cloud-provider)
-
-[OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
+* OIDC tokens requested for Dependabot update jobs have an `event_name` claim of `dynamic`. If your trust policy is intended to authorize only GitHub Actions workflows and your cloud provider supports conditions on `event_name`, allow only the event names expected by your workflows. For more information, see [OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
 * If you're following this guide on GHE.com, understand that you must substitute certain values in the following documentation. See [OpenID Connect](../../../concepts/security/openid-connect.md#configuring-oidc-on-ghecom#configuring-oidc-on-ghecom).
 
@@ -41,9 +38,7 @@ To use OIDC with HashiCorp Vault, you will need to add a trust configuration for
 To configure your Vault server to accept JSON Web Tokens (JWT) for authentication:
 
 1. Enable the JWT `auth` method, and use `write` to apply the configuration to your Vault.
-   For `oidc_discovery_url` and `bound_issuer` parameters, use `https://HOSTNAME/_services/token`
-
-`https://token.actions.githubusercontent.com`. These parameters allow the Vault server to verify the received JSON Web Tokens (JWT) during the authentication process.
+   For `oidc_discovery_url` and `bound_issuer` parameters, use `https://token.actions.githubusercontent.com`. These parameters allow the Vault server to verify the received JSON Web Tokens (JWT) during the authentication process.
 
             ```shell copy
    vault auth enable jwt
@@ -51,15 +46,12 @@ To configure your Vault server to accept JSON Web Tokens (JWT) for authenticatio
 
             ```shell copy
    vault write auth/jwt/config \
-     bound_issuer="https://HOSTNAME/_services/token
-
-https://token.actions.githubusercontent.com" \
-     oidc_discovery_url="https://HOSTNAME/_services/token
-
-https://token.actions.githubusercontent.com"
+     bound_issuer="https://token.actions.githubusercontent.com" \
+     oidc_discovery_url="https://token.actions.githubusercontent.com"
    ```
 
-   > [!NOTE]
+!!! note
+
    > If a unique issuer URL for an enterprise was set using the REST API (as described in [OpenID Connect](../../../concepts/security/openid-connect.md#switching-to-a-unique-token-url#switching-to-a-unique-token-url)), the values for `bound_issuer` and `oidc_discover_url` must match that unique URL. For example, for an enterprise named `octocat` that uses the unique issuer URL, `bound_issuer` and `oidc_discovery_url` must be set to `https://token.actions.githubusercontent.com/octocat`.
 
 1. Configure a policy that only grants access to the specific paths your workflows will use to retrieve secrets. For more advanced policies, see the HashiCorp Vault [Policies documentation](https://www.vaultproject.io/docs/concepts/policies).
@@ -103,8 +95,8 @@ To update your workflows for OIDC, you will need to make two changes to your YAM
 1. Add permissions settings for the token.
 1. Use the [`hashicorp/vault-action`](https://github.com/hashicorp/vault-action) action to exchange the OIDC token (JWT) for a cloud access token.
 
-> [!NOTE]
-> When environments are used in workflows or in OIDC policies, we recommend adding protection rules to the environment for additional security. For example, you can configure deployment rules on an environment to restrict which branches and tags can deploy to the environment or access environment secrets. For more information, see [Managing environments for deployment](../../deploy/configure-and-manage-deployments/manage-environments.md).
+!!! note
+    When environments are used in workflows or in OIDC policies, we recommend adding protection rules to the environment for additional security. For example, you can configure deployment rules on an environment to restrict which branches and tags can deploy to the environment or access environment secrets. For more information, see [Managing environments for deployment](../../deploy/configure-and-manage-deployments/manage-environments.md).
 
 To add OIDC integration to your workflows that allow them to access secrets in Vault, you will need to add the following code changes:
 
@@ -123,8 +115,8 @@ The job or workflow run requires a `permissions` setting with [`id-token: write`
 
 For detailed information on required permissions, configuration examples, and advanced scenarios, see [OpenID Connect reference](../../../reference/security/oidc.md#workflow-permissions-for-the-requesting-the-oidc-token#workflow-permissions-for-the-requesting-the-oidc-token).
 
-> [!NOTE]
-> When the `permissions` key is used, all unspecified permissions are set to _no access_, with the exception of the metadata scope, which always gets _read_ access. As a result, you may need to add other permissions, such as `contents: read`. See [Automatic token authentication](../../../tutorials/authenticate-with-github_token.md) for more information.
+!!! note
+    When the `permissions` key is used, all unspecified permissions are set to _no access_, with the exception of the metadata scope, which always gets _read_ access. As a result, you may need to add other permissions, such as `contents: read`. See [Automatic token authentication](../../../tutorials/authenticate-with-github_token.md) for more information.
 
 ### Requesting the access token
 
@@ -163,9 +155,9 @@ jobs:
           # This step has access to the secret retrieved above; see hashicorp/vault-action for more details.
 ```
 
-> [!NOTE]
-> * If your Vault server is not accessible from the public network, consider using a self-hosted runner with other available Vault [auth methods](https://www.vaultproject.io/docs/auth). For more information, see [Self-hosted runners](../../../concepts/runners/self-hosted-runners.md).
-> * `VAULT-NAMESPACE` must be set for a Vault Enterprise (including HCP Vault) deployment. For more information, see [Vault namespace](https://www.vaultproject.io/docs/enterprise/namespaces).
+!!! note
+    * If your Vault server is not accessible from the public network, consider using a self-hosted runner with other available Vault [auth methods](https://www.vaultproject.io/docs/auth). For more information, see [Self-hosted runners](../../../concepts/runners/self-hosted-runners.md).
+    * `VAULT-NAMESPACE` must be set for a Vault Enterprise (including HCP Vault) deployment. For more information, see [Vault namespace](https://www.vaultproject.io/docs/enterprise/namespaces).
 
 ### Revoking the access token
 

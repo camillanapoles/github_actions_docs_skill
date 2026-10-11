@@ -64,7 +64,7 @@ The following example workflow demonstrates how to build and deploy a Java proje
 
 Ensure that you set `AZURE_WEBAPP_NAME` in the workflow `env` key to the name of the web app you created. If you want to use a Java version other than `11`, change `JAVA_VERSION`.
 
-If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environmentor if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
+If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environment or if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
 
 ```yaml copy
 # This workflow uses actions that are not certified by GitHub.
@@ -104,9 +104,7 @@ jobs:
         run: mvn clean install
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
           name: java-app
           path: '${{ github.workspace }}/target/*.jar'
@@ -120,9 +118,7 @@ v3
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v5
-
-v3
+        uses: actions/download-artifact@v3
         with:
           name: java-app
 

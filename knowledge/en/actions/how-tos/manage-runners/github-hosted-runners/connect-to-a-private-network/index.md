@@ -12,5 +12,5 @@ section: How tos / Manage runners / Github hosted runners / Connect to a private
 
 _You can connect GitHub-hosted runners to resources on a private network, including package registries, secret managers, and other on-premises services._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.

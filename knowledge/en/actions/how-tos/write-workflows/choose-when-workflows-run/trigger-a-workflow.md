@@ -12,8 +12,8 @@ section: How tos / Write workflows / Choose when workflows run
 
 _How to automatically trigger GitHub Actions workflows_
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Prerequisites
 
@@ -23,11 +23,12 @@ To learn more about workflows and triggering workflows, see [Workflows](../../..
 
 When you use the repository's `GITHUB_TOKEN` to perform tasks, events triggered by the `GITHUB_TOKEN` will not create a new workflow run, with the following exceptions:
 
-* `workflow_dispatch` and `repository_dispatch` events always create workflow runs.* `pull_request` events with the `opened`, `synchronize`, or `reopened` activity types: when a workflow using `GITHUB_TOKEN` creates or updates a pull request, the resulting `pull_request` event creates workflow runs in an **approval-required** state. The pull request displays a banner in the merge box, and a user with write access to the repository can start the runs by selecting **Approve workflows to run**. Other `pull_request` activity types (such as `labeled`, `edited`, or `closed`) do not create workflow runs. This prevents recursive workflow runs while still allowing CI workflows to run on pull requests created by automation. For more information about approving workflow runs, see [Approving workflow runs from forks](../../manage-workflow-runs/approve-runs-from-forks.md).
+* `workflow_dispatch` and `repository_dispatch` events always create workflow runs.
+* `pull_request` events with the `opened`, `synchronize`, or `reopened` activity types: when a workflow using `GITHUB_TOKEN` creates or updates a pull request, the resulting `pull_request` event creates workflow runs in an **approval-required** state. The pull request displays a banner in the merge box, and a user with write access to the repository can start the runs by selecting **Approve workflows to run**. Other `pull_request` activity types (such as `labeled`, `edited`, or `closed`) do not create workflow runs. This prevents recursive workflow runs while still allowing CI workflows to run on pull requests created by automation. For more information about approving workflow runs, see [Approving workflow runs from forks](../../manage-workflow-runs/approve-runs-from-forks.md).
 
 For all other events, this behavior prevents you from accidentally creating recursive workflow runs. For example, if a workflow run pushes code using the repository's `GITHUB_TOKEN`, a new workflow will not run even when the repository contains a workflow configured to run when `push` events occur. For more information, see [Use GITHUB_TOKEN for authentication in workflows](../../../tutorials/authenticate-with-github_token.md).
 
-If you do want to trigger a workflow from within a workflow run, you can use a GitHub App installation access token or a personal access token instead of `GITHUB_TOKEN` to trigger events that require a token.Using one of these alternatives also lets `pull_request` workflows run automatically (without the approval prompt described above) when the pull request is created or updated by automation.
+If you do want to trigger a workflow from within a workflow run, you can use a GitHub App installation access token or a personal access token instead of `GITHUB_TOKEN` to trigger events that require a token. Using one of these alternatives also lets `pull_request` workflows run automatically (without the approval prompt described above) when the pull request is created or updated by automation.
 
 If you use a GitHub App, you'll need to create a GitHub App and store the app ID and private key as secrets. For more information, see [Making authenticated api requests with a github app in a github actions workflow](https://docs.github.com/apps/creating-github-apps/authenticating-with-a-github-app/making-authenticated-api-requests-with-a-github-app-in-a-github-actions-workflow). If you use a personal access token, you'll need to create a personal access token and store it as a secret. For more information about creating a personal access token, see [Managing your personal access tokens](https://docs.github.com/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens). For more information about storing secrets, see [Using secrets in GitHub Actions](../choose-what-workflows-do/use-secrets.md).
 
@@ -161,7 +162,7 @@ Use the `branches` filter when you want to include branch name patterns or when 
 
 If you define both `branches`/`branches-ignore` and [`paths`/`paths-ignore`](../../../reference/workflows-and-actions/workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore), the workflow will only run when both filters are satisfied.
 
-The `branches` and `branches-ignore` keywords accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch name. If a name contains any of these characters and you want a literal match, you need to escape each of these special characters with `\`. For more information about glob patterns, see the [Workflow syntax for GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
+The `branches` and `branches-ignore` keywords accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch name. If a name contains any of these characters and you want a literal match, you need to escape each of these special characters with ``. For more information about glob patterns, see the [Workflow syntax for GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
 
 #### Example: Including branches
 
@@ -232,7 +233,7 @@ Use the `tags` filter when you want to include tag name patterns or when you wan
 
 If you define only `tags`/`tags-ignore` or only `branches`/`branches-ignore`, the workflow won't run for events affecting the undefined Git ref. If you define neither `tags`/`tags-ignore` or `branches`/`branches-ignore`, the workflow will run for events affecting either branches or tags. If you define both `branches`/`branches-ignore` and [`paths`/`paths-ignore`](../../../reference/workflows-and-actions/workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore), the workflow will only run when both filters are satisfied.
 
-The `branches`, `branches-ignore`, `tags`, and `tags-ignore` keywords accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch or tag name. If a name contains any of these characters and you want a literal match, you need to _escape_ each of these special characters with `\`. For more information about glob patterns, see the [Workflow syntax for GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
+The `branches`, `branches-ignore`, `tags`, and `tags-ignore` keywords accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch or tag name. If a name contains any of these characters and you want a literal match, you need to _escape_ each of these special characters with ``. For more information about glob patterns, see the [Workflow syntax for GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
 
 #### Example: Including branches and tags
 
@@ -307,11 +308,11 @@ When using the `push` and `pull_request` events, you can configure a workflow to
 
 Use the `paths` filter when you want to include file path patterns or when you want to both include and exclude file path patterns. Use the `paths-ignore` filter when you only want to exclude file path patterns. You cannot use both the `paths` and `paths-ignore` filters for the same event in a workflow. If you want to both include and exclude path patterns for a single event, use the `paths` filter prefixed with the `!` character to indicate which paths should be excluded.
 
-> [!NOTE]
-> The order that you define `paths` patterns matters:
->
-> * A matching negative pattern (prefixed with `!`) after a positive match will exclude the path.
-> * A matching positive pattern after a negative match will include the path again.
+!!! note
+    The order that you define `paths` patterns matters:
+
+    * A matching negative pattern (prefixed with `!`) after a positive match will exclude the path.
+    * A matching positive pattern after a negative match will include the path again.
 
 If you define both `branches`/`branches-ignore` and `paths`/`paths-ignore`, the workflow will only run when both filters are satisfied.
 
@@ -379,11 +380,7 @@ In some situations, GitHub Actions applies limits that change how filtered workf
 
 * If a push contains more than 1,000 commits, the workflow will **always** run.
 * If generating the diff times out, the workflow will **always** run.
-* If the generated diff contains more than 3,000
-
-300 files and the files the workflow filter matches are not in the first 3,000
-
-300 returned by the filter, the workflow will **not** run.
+* If the generated diff contains more than 300 files and the files the workflow filter matches are not in the first 300 returned by the filter, the workflow will **not** run.
 
 If you observe these behaviors, you might need to make your filters more specific, or change how you work with pushes and pull requests to generate simpler diffs.
 
@@ -393,7 +390,7 @@ For more information, see [Branches](https://docs.github.com/pull-requests/refer
 
 When using the `workflow_run` event, you can specify what branches the triggering workflow must run on in order to trigger your workflow.
 
-The `branches` and `branches-ignore` filters accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch name. If a name contains any of these characters and you want a literal match, you need to _escape_ each of these special characters with `\`. For more information about glob patterns, see the [Workflow syntax for GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
+The `branches` and `branches-ignore` filters accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch name. If a name contains any of these characters and you want a literal match, you need to _escape_ each of these special characters with ``. For more information about glob patterns, see the [Workflow syntax for GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
 
 For example, a workflow with the following trigger will only run when the workflow named `Build` runs on a branch whose name starts with `releases/`:
 
@@ -443,12 +440,11 @@ When using the `workflow_dispatch` event, you can optionally specify inputs that
 This trigger only receives events when the workflow file is on the default branch.
 The triggered workflow receives the inputs in the `inputs` context. For more information, see [Contexts](../../../reference/workflows-and-actions/contexts.md#inputs-context).
 
-> [!NOTE]
-> * The workflow will also receive the inputs in the `github.event.inputs` context. The information in the `inputs` context and `github.event.inputs` context is identical except that the `inputs` context preserves Boolean values as Booleans instead of converting them to strings. The `choice` type resolves to a string and is a single selectable option.
-> * The maximum number of top-level properties for `inputs` is 25
+!!! note
+    * The workflow will also receive the inputs in the `github.event.inputs` context. The information in the `inputs` context and `github.event.inputs` context is identical except that the `inputs` context preserves Boolean values as Booleans instead of converting them to strings. The `choice` type resolves to a string and is a single selectable option.
+    * The maximum number of top-level properties for `inputs` is 10 .
+    * The maximum payload for `inputs` is 65,535 characters.
 
-10.
-> * The maximum payload for `inputs` is 65,535 characters.
 ```yaml
 on:
   workflow_dispatch:
@@ -626,8 +622,8 @@ jobs:
           echo 'publishing'
 ```
 
-> [!NOTE]
-> Environments, environment secrets, and deployment protection rules are available in public repositories for all current GitHub plans. They are not available on legacy plans, such as Bronze, Silver, or Gold. For access to environments, environment secrets, and deployment branches in private or internal repositories, you must use GitHub Pro, GitHub Team, or GitHub Enterprise. If you are on a GitHub Free, GitHub Pro, or GitHub Team plan, other deployment protection rules, such as a wait timer or required reviewers, are only available for public repositories.
+!!! note
+    Environments, environment secrets, and deployment protection rules are available in public repositories for all current GitHub plans. They are not available on legacy plans, such as Bronze, Silver, or Gold. For access to environments, environment secrets, and deployment branches in private or internal repositories, you must use GitHub Pro, GitHub Team, or GitHub Enterprise. If you are on a GitHub Free, GitHub Pro, or GitHub Team plan, other deployment protection rules, such as a wait timer or required reviewers, are only available for public repositories.
 
 ## Available events
 

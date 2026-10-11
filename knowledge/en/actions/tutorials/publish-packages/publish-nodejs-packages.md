@@ -18,7 +18,7 @@ This guide shows you how to create a workflow that publishes Node.js packages to
 
 ## Prerequisites
 
-We recommend that you have a basic understanding of workflow configuration options and how to create a workflow file. For more information, see [Write workflows](../../how-tos/write-workflows.md).
+We recommend that you have a basic understanding of workflow configuration options and how to create a workflow file. For more information, see [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows).
 
 For more information about creating a CI workflow for your Node.js project, see [Building and testing Node.js](../build-and-test-code/nodejs.md).
 
@@ -93,11 +93,9 @@ You can trigger a workflow to publish your package every time you publish a new 
 
 ### Configuring the destination repository
 
-Linking your package to GitHub Packages using the `repository` key is optional. If you choose not to provide the `repository` key in your `package.json` file, then your package will not be linked to a repository when it is published, but you can choose to connect the package to a repository later.
+Linking your package to GitHub Packages using the `repository` key is optional. If you choose not to provide the `repository` key in your `package.json` file, then GitHub Packages publishes a package in the GitHub repository you specify in the `name` field of the `package.json` file. For example, a package named `@my-org/test` is published to the `my-org/test` GitHub repository. If the `url` specified in the `repository` key is invalid, your package may still be published however it won't be linked to the repository source as intended.
 
-GitHub Packages publishes a package in the GitHub repository you specify in the `name` field of the `package.json` file. For example, a package named `@my-org/test` is published to the `my-org/test` GitHub repository. If the `url` specified in the `repository` key is invalid, your package may still be published however it won't be linked to the repository source as intended.
-
-If you do provide the `repository` key in your `package.json` file, then the repository in that key is used as the destination npm registry for GitHub Packages. For example, publishing the below `package.json` results in a package named `my-package` published to the `octocat/my-other-repo` GitHub repository.Once published, only the repository source is updated, and the package doesn't inherit any permissions from the destination repository.
+If you do provide the `repository` key in your `package.json` file, then the repository in that key is used as the destination npm registry for GitHub Packages. For example, publishing the below `package.json` results in a package named `my-package` published to the `octocat/my-other-repo` GitHub repository. Once published, only the repository source is updated, and the package doesn't inherit any permissions from the destination repository.
 
 ```json
 {

@@ -104,8 +104,8 @@ To add an ephemeral runner to your environment, include the `--ephemeral` parame
 
 The GitHub Actions service will then automatically de-register the runner after it has processed one job. You can then create your own automation that wipes the runner after it has been de-registered.
 
-> [!NOTE]
-> If a job is labeled for a certain type of runner, but none matching that type are available, the job does not immediately fail at the time of queueing. Instead, the job will remain queued until the 24 hour timeout period expires.
+!!! note
+    If a job is labeled for a certain type of runner, but none matching that type are available, the job does not immediately fail at the time of queueing. Instead, the job will remain queued until the 24 hour timeout period expires.
 
 Alternatively, you can create ephemeral, just-in-time runners using the REST API. For more information, see [Self hosted runners](https://docs.github.com/rest/actions/self-hosted-runners).
 
@@ -157,107 +157,16 @@ Your access token will require the `manage_runners:enterprise` scope.
 
 ## Communication
 
-Self-hosted runners connect to GitHub
+Self-hosted runners connect to your GitHub Enterprise Server instance to receive job assignments and download new versions of the runner application.
 
-your GitHub Enterprise Server instance to receive job assignments and download new versions of the runner application.
+The GitHub Actions runner application is open source. You can contribute and file issues in the [runner](https://github.com/actions/runner) repository.  When a new version is released, the runner application automatically updates itself when a job is assigned to the runner, or within a week of release if the runner hasn't been assigned any jobs.  When a new version is released, the runner application will automatically update within 24 hours.
 
-The GitHub Actions runner application is open source. You can contribute and file issues in the [runner](https://github.com/actions/runner) repository. When a new version is released, the runner application automatically updates itself when a job is assigned to the runner, or within a week of release if the runner hasn't been assigned any jobs.  When a new version is released, the runner application will automatically update within 24 hours.
-
-### Requirements for communicationwith GitHub
-
-with your GitHub Enterprise Server instance
+### Requirements for communication with your GitHub Enterprise Server instance
 
 * The self-hosted runner application must be running on the host machine to accept and run GitHub Actions jobs.
-* The host machine must have appropriate network access with at least 70 kilobits per second upload and download speed.
-* The host machine must be able to make outbound HTTPS connections over port 443.
-* Depending on the function of the workflows assigned to your self-hosted runner, the host machine must be able to communicate with the GitHub domains listed below.
 
 * GitHub Enterprise Server must accept inbound connections from your runners over HTTP(S) at your GitHub Enterprise Server instance's hostname and API subdomain, and your runners must allow outbound connections over HTTP(S) to your GitHub Enterprise Server instance's hostname and API subdomain.
 * For caching to work, the runner must be able to communicate with, and directly download content from, blob storage.
-
-### Accessible domains by function
-
-> [!NOTE]
-> Some of the domains listed are configured using `CNAME` records. Some firewalls might require you to add rules recursively for all `CNAME` records. Note that the `CNAME` records might change in the future, and that only the domains listed will remain constant.
-
-> [!NOTE]
-> If you use GitHub Enterprise Cloud with data residency, your runners must communicate with additional hostnames beyond those listed below. For the complete network requirements, see [Network details for ghecom](https://docs.github.com/admin/data-residency/network-details-for-ghecom).
-
-**Needed for essential operations:**
-
-```shell copy
-github.com
-api.github.com
-*.actions.githubusercontent.com
-```
-
-**Needed for downloading actions:**
-
-```shell copy
-codeload.github.com
-```
-
-**Needed for uploading/downloading job summaries, logs, workflow artifacts, and caches:**
-
-```shell copy
-results-receiver.actions.githubusercontent.com
-*.blob.core.windows.net
-```
-
-**Needed for runner version updates:**
-
-```shell copy
-objects.githubusercontent.com
-objects-origin.githubusercontent.com
-github-releases.githubusercontent.com
-github-registry-files.githubusercontent.com
-```
-
-**Needed for retrieving OIDC tokens:**
-
-```shell copy
-*.actions.githubusercontent.com
-```
-
-**Needed for downloading or publishing packages or containers to GitHub Packages:**
-
-```shell copy
-*.pkg.github.com
-pkg-containers.githubusercontent.com
-ghcr.io
-```
-
-**Needed for Git Large File Storage**
-
-```shell copy
-github-cloud.githubusercontent.com
-github-cloud.s3.amazonaws.com
-```
-
-**Needed for jobs for Dependabot updates**
-
-```shell copy
-dependabot-actions.githubapp.com
-```
-
-**Needed for downloading release assets:**
-
-```shell copy
-release-assets.githubusercontent.com
-```
-
-**Needed for VNet:**
-
-```shell copy
-api.snapcraft.io
-*.core.windows.net
-```
-
-In addition, your workflow may require access to other network resources.
-
-If you use an IP address allow list for your GitHub organization or enterprise account, you must add your self-hosted runner's IP address to the allow list. See [Managing allowed IP addresses for your organization](https://docs.github.com/enterprise-cloud@latest/organizations/keeping-your-organization-secure/managing-allowed-ip-addresses-for-your-organization#using-github-actions-with-an-ip-allow-list) or [Enforcing policies for security settings in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-security-settings-in-your-enterprise)in the GitHub Enterprise Cloud documentation.
-
-.
 
 ### Communication with GitHub.com
 
@@ -282,5 +191,5 @@ github.com
 ghcr.io
 ```
 
-> [!NOTE]
-> Some of the domains listed are configured using `CNAME` records. Some firewalls might require you to add rules recursively for all `CNAME` records. Note that the `CNAME` records might change in the future, and that only the domains listed will remain constant.
+!!! note
+    Some of the domains listed are configured using `CNAME` records. Some firewalls might require you to add rules recursively for all `CNAME` records. Note that the `CNAME` records might change in the future, and that only the domains listed will remain constant.

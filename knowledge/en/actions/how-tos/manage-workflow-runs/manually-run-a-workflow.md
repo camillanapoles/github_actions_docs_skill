@@ -12,8 +12,8 @@ section: How tos / Manage workflow runs
 
 _When a workflow is configured to run on the `workflow_dispatch` event, you can run the workflow using the Actions tab on GitHub, GitHub CLI, or the REST API._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Configuring a workflow to run manually
 
@@ -37,7 +37,8 @@ Write access to the repository is required to perform these steps.
 
 1. Above the list of workflow runs, click the **Run workflow** button.
 
-   > [!NOTE]
+!!! note
+
    > To see the **Run workflow** button, your workflow file must use the `workflow_dispatch` event trigger. Only workflow files that use the `workflow_dispatch` event trigger will have the option to run the workflow manually using the **Run workflow** button. For more information about configuring the `workflow_dispatch` event, see [Events that trigger workflows](../../reference/workflows-and-actions/events-that-trigger-workflows.md#workflow_dispatch#workflow_dispatch).
 
    ![Screenshot of a workflow page. Above the list of workflow runs, a button, labeled "Run workflow", is outlined in dark orange.](/assets/images/help/actions/actions-workflow-dispatch.png)
@@ -47,8 +48,8 @@ Write access to the repository is required to perform these steps.
 
 **Usando a CLI do GitHub**
 
-> [!NOTE]
-> To learn more about GitHub CLI, see [About github cli](https://docs.github.com/github-cli/github-cli/about-github-cli).
+!!! note
+    To learn more about GitHub CLI, see [About github cli](https://docs.github.com/github-cli/github-cli/about-github-cli).
 
 To run a workflow, use the `workflow run` subcommand. Replace the `workflow` parameter with either the name, ID, or file name of the workflow you want to run. For example, `"Link Checker"`, `1234567`, or `"link-check-test.yml"`. If you don't specify a workflow, GitHub CLI returns an interactive menu for you to choose a workflow.
 
@@ -84,9 +85,7 @@ gh run watch
 
 When using the REST API, you configure the `inputs` and `ref` as request body parameters. If the inputs are omitted, the default values defined in the workflow file are used.
 
-> [!NOTE]
-> You can define up to 25
-
-10 `inputs` for a `workflow_dispatch` event.
+!!! note
+    You can define up to 10  `inputs` for a `workflow_dispatch` event.
 
 For more information about using the REST API, see [Workflows](https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event#create-a-workflow-dispatch-event).

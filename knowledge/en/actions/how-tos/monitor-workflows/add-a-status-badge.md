@@ -12,11 +12,11 @@ section: How tos / Monitor workflows
 
 _You can display a status badge in your repository to indicate the status of your workflows._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
-> [!NOTE]
-> Workflow badges in a private repository are not accessible externally, so you won't be able to embed them or link to them from an external site.
+!!! note
+    Workflow badges in a private repository are not accessible externally, so you won't be able to embed them or link to them from an external site.
 
 A status badge shows whether a workflow is currently failing or passing. A common place to add a status badge is in the `README.md` file of your repository, but you can add it to any web page you'd like. By default, badges display the status of your default branch. If there are no workflow runs on your default branch, it will display the status of the most recent run across all branches. You can display the status of a workflow run for a specific branch or event using the `branch` and `event` query parameters in the URL.
 
@@ -46,8 +46,6 @@ You can create a workflow status badge directly on the UI using the workflow fil
 You can build the URL for a workflow status badge using the name of the workflow file:
 
 ```text
-https://github.com
-
 HOSTNAME/OWNER/REPOSITORY/actions/workflows/WORKFLOW-FILE/badge.svg
 ```
 

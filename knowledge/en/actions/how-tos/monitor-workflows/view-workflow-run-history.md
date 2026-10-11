@@ -12,8 +12,8 @@ section: How tos / Monitor workflows
 
 _You can view logs for each run of a workflow. Logs include the status for each job and step in a workflow._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 Read access to the repository is required to perform these steps.
 
@@ -30,8 +30,8 @@ Read access to the repository is required to perform these steps.
 
 **Usando a CLI do GitHub**
 
-> [!NOTE]
-> To learn more about GitHub CLI, see [About github cli](https://docs.github.com/github-cli/github-cli/about-github-cli).
+!!! note
+    To learn more about GitHub CLI, see [About github cli](https://docs.github.com/github-cli/github-cli/about-github-cli).
 
 ## Viewing recent workflow runs
 

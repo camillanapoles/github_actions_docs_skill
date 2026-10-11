@@ -12,18 +12,18 @@ section: Tutorials / Use containerized services
 
 _You can use service containers to create a Redis client in your workflow. This guide shows examples of creating a Redis service for jobs that run in containers or directly on the runner machine._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
 This guide shows you workflow examples that configure a service container using the Docker Hub `redis` image. The workflow runs a script to create a Redis client and populate the client with data. To test that the workflow creates and populates the Redis client, the script prints the client's data to the console.
 
-> [!NOTE]
-> If your workflows use Docker container actions, job containers, or service containers, then you must use a Linux runner:
->
-> * If you are using GitHub-hosted runners, you must use an Ubuntu runner.
-> * If you are using self-hosted runners, you must use a Linux machine as your runner and Docker must be installed.
+!!! note
+    If your workflows use Docker container actions, job containers, or service containers, then you must use a Linux runner:
+
+    * If you are using GitHub-hosted runners, you must use an Ubuntu runner.
+    * If you are using self-hosted runners, you must use a Linux machine as your runner and Docker must be installed.
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ You should be familiar with how service containers work with GitHub Actions and 
 
 You may also find it helpful to have a basic understanding of YAML, the syntax for GitHub Actions, and Redis. For more information, see:
 
-* [Write workflows](../../how-tos/write-workflows.md)
+* [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows)
 * [Getting Started with Redis](https://redis.io/learn/howtos/quick-start) in the Redis documentation
 
 ## Running jobs in containers
@@ -89,7 +89,7 @@ jobs:
 
 ### Configuring the container job
 
-This workflow configures a job that runs in the `node:20-bookworm-slim` container and uses the `ubuntu-latest` GitHub-hosted runner as the Docker host for the container. For more information about the `node:20-bookworm-slim` container, see the [node image](https://hub.docker.com/_/node) on Docker Hub.
+This workflow configures a job that runs in the `node:20-bookworm-slim` container and uses the `ubuntu-latest`  GitHub-hosted  runner as the Docker host for the container. For more information about the `node:20-bookworm-slim` container, see the [node image](https://hub.docker.com/_/node) on Docker Hub.
 
 The workflow configures a service container with the label `redis`. All services must run in a container, so each service requires that you specify the container `image`. This example uses the `redis` container image, and includes health check options to make sure the service is running. Append a tag to the image name to specify a version, e.g. `redis:6`. For more information, see the [redis image](https://hub.docker.com/_/redis) on Docker Hub.
 
@@ -208,7 +208,7 @@ jobs:
 
 ### Configuring the runner job
 
-The example uses the `ubuntu-latest` GitHub-hosted runner as the Docker host.
+The example uses the `ubuntu-latest`  GitHub-hosted  runner as the Docker host.
 
 The workflow configures a service container with the label `redis`. All services must run in a container, so each service requires that you specify the container `image`. This example uses the `redis` container image, and includes health check options to make sure the service is running. Append a tag to the image name to specify a version, e.g. `redis:6`. For more information, see the [redis image](https://hub.docker.com/_/redis) on Docker Hub.
 

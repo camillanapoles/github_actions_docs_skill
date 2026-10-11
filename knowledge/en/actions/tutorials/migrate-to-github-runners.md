@@ -71,7 +71,7 @@ After estimating your capacity needs, configure runner groups and access policie
 
 Configuring runner groups before provisioning runners helps ensure that migration doesn’t accidentally open access too broadly or create unexpected cost increases.
 
-1. Create runner groups at the enterprise level to define who can use your hosted runners. See [Controlling access to larger runners](https://docs.github.com/enterprise-cloud@latest/actions/how-tos/manage-runners/larger-runners/control-access#creating-a-runner-group-for-an-enterprise#creating-a-runner-group-for-an-enterprise).
+1. Create runner groups at the enterprise level to define who can use your hosted runners. See [Controlling access to larger runners](../how-tos/manage-runners/larger-runners/control-access.md#creating-a-runner-group-for-an-enterprise#creating-a-runner-group-for-an-enterprise).
 
    Use runner groups to scope access by organization, repository, or workflow. If you are migrating from self-hosted runners, consider reusing existing runner group names or labels where possible. This allows workflows to continue working without changes when you switch to GitHub-hosted runners.
 
@@ -90,7 +90,7 @@ Next, provision your GitHub-hosted runners based on the machine types and capaci
    * Use custom images when you need pre-installed dependencies to reduce setup time. See [Using custom images](../how-tos/manage-runners/larger-runners/use-custom-images.md).
 
 1. Apply any required customizations, such as environment variables, software installation, or startup scripts. For more examples, see [Customizing GitHub-hosted runners](../how-tos/manage-runners/github-hosted-runners/customize-runners.md).
-1. Optionally, configure private networking if runners must access internal resources. See [Private networking with GitHub-hosted runners](https://docs.github.com/enterprise-cloud@latest/actions/concepts/runners/private-networking).
+1. Optionally, configure private networking if runners must access internal resources. See [Private networking with GitHub-hosted runners](../concepts/runners/private-networking.md).
 
 ### Configure private connectivity options
 

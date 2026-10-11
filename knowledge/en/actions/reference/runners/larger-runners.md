@@ -12,11 +12,6 @@ section: Reference / Runners
 
 _Find information about larger runners, including their specifications and customization options._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
-
-For reference information about larger runners, see [the GitHub Enterprise Cloud documentation](https://docs.github.com/enterprise-cloud@latest/actions/reference/runners/larger-runners).
-
 ## Machine sizes for larger runners
 
 You can choose from several specifications for larger runners.
@@ -24,7 +19,7 @@ You can choose from several specifications for larger runners.
 ### Specifications for general larger runners
 
 | CPU | Memory (RAM)  | Storage (SSD) | Architecture | Operating system (OS) |
-| --- | ------------- | ------------- | ------------ | --------------------- |
+|---|-------------|-------------|------------|---------------------|
 | 5   | 14 GB         | 14 GB         | arm64 (M2)   | macOS                 |
 | 12  | 30 GB         | 14 GB         | x64 (Intel)  | macOS                 |
 | 2   | 8 GB          | 75 GB         | x64, arm64   | Ubuntu                |
@@ -34,14 +29,14 @@ You can choose from several specifications for larger runners.
 | 32  | 128 GB        | 1200 GB       | x64, arm64   | Ubuntu, Windows       |
 | 64  | 208 GB        | 2040 GB       | arm64        | Ubuntu, Windows       |
 | 64  | 256 GB        | 2040 GB       | x64          | Ubuntu, Windows       |
-| 96 | 384 GB         | 2040 GB       | x64          | Ubuntu, Windows        |
+| 96  | 384 GB        | 2040 GB       | x64          | Ubuntu, Windows       |
 
 > [!NOTE] The 4-vCPU Windows runner only works with the Windows Server 2025 or the Base Windows 11 Desktop image.
 
 ### Specifications for GPU larger runners
 
 | CPU | GPU | GPU card | Memory (RAM) | GPU memory (VRAM) | Storage (SSD) | Operating system (OS) |
-| --- | --- | -------- | ------------ | ----------------- | ------------- | --------------------- |
+|---|---|--------|------------|-----------------|-------------|---------------------|
 | 4   | 1   | Tesla T4 | 28 GB        | 16 GB             | 176 GB        | Ubuntu, Windows       |
 
 ## Runner images
@@ -59,10 +54,10 @@ Larger runners run on virtual machines (VMs), and GitHub installs a virtual hard
 
 The following machines are available for macOS larger runners. When you create a macOS larger runner, the runner name is also available as a workflow label that you can use with `runs-on`.
 
-| Runner Size | Architecture| Processor (CPU)| Memory (RAM)  | Storage (SSD) | Workflow label                                                                                                                                   |
-| ------------| ------------| -------------- | ------------- | ------------- |--------------------------------------------------------------------------------------------------------------------------------------------------|
-| Large       | Intel       | 12             | 30 GB         | 14 GB         | <code>macos-latest-large</code>, <code>macos-14-large</code>, <code>macos-15-large</code> (latest), <code>macos-26-large</code> |
-| XLarge      | arm64 (M2)  | 5 (+ 8 GPU hardware acceleration) | 14 GB         | 14 GB         | <code>macos-latest-xlarge</code>, <code>macos-14-xlarge</code>, <code>macos-15-xlarge</code> (latest), <code>macos-26-xlarge</code>, <code>xcode-27-xlarge</code> (Public preview) |
+| Runner Size | Architecture | Processor (CPU) | Memory (RAM) | Storage (SSD) | Workflow label |
+| --- | --- | --- | --- | --- | --- |
+| Large | Intel | 12 | 30 GB | 14 GB | `macos-latest-large`, `macos-14-large`, `macos-15-large` (latest), `macos-26-large` |
+| XLarge | arm64 (M2) | 5 (+ 8 GPU hardware acceleration) | 14 GB | 14 GB | `macos-latest-xlarge`, `macos-14-xlarge`, `macos-15-xlarge` (latest), `macos-26-xlarge`, `xcode-27-xlarge` (Public preview) |
 
 ## Limitations for macOS larger runners
 
@@ -70,6 +65,7 @@ The following machines are available for macOS larger runners. When you create a
 * Nested-virtualization is not supported due to the limitation of Apple's Virtualization Framework.
 * Networking capabilities such as Azure private networking and assigning static IPs are not currently available for macOS larger runners.
 * The arm64 macOS runners do not have a static UUID/UDID assigned to them because Apple does not support this feature. However, Intel MacOS runners are assigned a static UDID, specifically `4203018E-580F-C1B5-9525-B745CECA79EB`. If you are building and signing on the same host you plan to test the build on, you can sign with a [development provisioning profile](https://developer.apple.com/help/account/provisioning-profiles/create-a-development-provisioning-profile/). If you do require a static UDID, you can use Intel runners and add their UDID to your Apple Developer account.
+
 * macOS runners are not available on subdomains of GHE.com, such as `octocorp.ghe.com`.
 
 ## Troubleshooting larger runners
@@ -89,12 +85,10 @@ By default, larger runners receive a dynamic IP address that changes for each jo
 
 When enabled, instances of the larger runner will receive IP addresses from specific ranges that are unique to the runner, allowing you to use the ranges to configure a firewall allowlist. Each larger runner is a pool that automatically scales out to its configured maximum concurrency, and all jobs in that pool share the same static IP address range. This means you do not need to create additional runners to run more concurrent jobs. You can use up to 10 larger runner pools with static IP address ranges in total across all your larger runnersYou can use up to 10 larger runner pools with static IP address ranges at the enterprise level. In addition, you can use up to 10 larger runner pools with static IP address ranges at the organization level, for each organization in your enterprise. For more information, see [Managing larger runners](../../how-tos/manage-runners/larger-runners/manage-larger-runners.md).
 
-If you would like to use more than 10 larger runner pools with static IP address ranges, please contact us through the [GitHub Support portal](https://support.github.com)
+If you would like to use more than 10 larger runner pools with static IP address ranges, please contact us through the [GitHub Support portal](https://support.github.com).
 
-your site administrator.
-
-> [!NOTE]
-> If runners are unused for more than 90 days, their IP address ranges are automatically removed and cannot be recovered.
+!!! note
+    If runners are unused for more than 90 days, their IP address ranges are automatically removed and cannot be recovered.
 
 ## Communication requirements for larger runners
 
@@ -102,11 +96,11 @@ A larger runner must establish connections to GitHub-owned endpoints to perform 
 
 To ensure proper communications for larger runners between networks within your configuration, ensure that the following communications are allowed.
 
-> [!NOTE]
-> Some of the domains listed are configured using `CNAME` records. Some firewalls might require you to add rules recursively for all `CNAME` records. Note that the `CNAME` records might change in the future, and that only the domains listed will remain constant.
+!!! note
+    Some of the domains listed are configured using `CNAME` records. Some firewalls might require you to add rules recursively for all `CNAME` records. Note that the `CNAME` records might change in the future, and that only the domains listed will remain constant.
 
-> [!NOTE]
-> If you use GitHub Enterprise Cloud with data residency, your runners must communicate with additional hostnames beyond those listed below. For the complete network requirements, see [Network details for ghecom](https://docs.github.com/admin/data-residency/network-details-for-ghecom).
+!!! note
+    If you use GitHub Enterprise Cloud with data residency, your runners must communicate with additional hostnames beyond those listed below. For the complete network requirements, see [Network details for ghecom](https://docs.github.com/admin/data-residency/network-details-for-ghecom).
 
 **Needed for essential operations:**
 

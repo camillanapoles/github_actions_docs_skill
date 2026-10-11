@@ -12,8 +12,8 @@ section: Tutorials / Migrate to github actions / Manual migrations
 
 _GitHub Actions and Jenkins share multiple similarities, which makes migration to GitHub Actions relatively straightforward._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -44,57 +44,55 @@ Similarly, GitHub Actions can send jobs to GitHub-hosted or self-hosted runners,
 Jenkins splits its Declarative Pipelines into multiple sections. Similarly, GitHub Actions organizes its workflows into separate sections. The table below compares Jenkins sections with the GitHub Actions workflow.
 
 | Jenkins Directives | GitHub Actions |
-| ------------- | ------------- |
-| [`agent`](https://jenkins.io/doc/book/pipeline/syntax/#agent)   | [`jobs.<job_id>.runs-on`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idruns-on) <br> [`jobs.<job_id>.container`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idcontainer) |
-| [`post`](https://jenkins.io/doc/book/pipeline/syntax/#post)     | None  |
+| --- | --- |
+| [`agent`](https://jenkins.io/doc/book/pipeline/syntax/#agent) | [`jobs.<job_id>.runs-on`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idruns-on)   [`jobs.<job_id>.container`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idcontainer) |
+| [`post`](https://jenkins.io/doc/book/pipeline/syntax/#post) | None |
 | [`stages`](https://jenkins.io/doc/book/pipeline/syntax/#stages) | [`jobs`](../../../reference/workflows-and-actions/workflow-syntax.md#jobs) |
-| [`steps`](https://jenkins.io/doc/book/pipeline/syntax/#steps)   | [`jobs.<job_id>.steps`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idsteps) |
+| [`steps`](https://jenkins.io/doc/book/pipeline/syntax/#steps) | [`jobs.<job_id>.steps`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idsteps) |
 
 ## Using directives
 
 Jenkins uses directives to manage _Declarative Pipelines_. These directives define the characteristics of your workflow and how it will execute. The table below demonstrates how these directives map to concepts within GitHub Actions.
 
 | Jenkins Directives | GitHub Actions |
-| ------------- | ------------- |
-| [`environment`](https://jenkins.io/doc/book/pipeline/syntax/#environment)                  | [`jobs.<job_id>.env`](../../../reference/workflows-and-actions/workflow-syntax.md#env) <br> [`jobs.<job_id>.steps[*].env`](/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsenv) |
-| [`options`](https://jenkins.io/doc/book/pipeline/syntax/#options)                       | [`jobs.<job_id>.strategy`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategy) <br> [`jobs.<job_id>.strategy.fail-fast`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategyfail-fast) <br> [`jobs.<job_id>.timeout-minutes`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idtimeout-minutes) |
-| [`parameters`](https://jenkins.io/doc/book/pipeline/syntax/#options)                    | [`inputs`](../../../reference/workflows-and-actions/metadata-syntax.md#inputs) <br> [`outputs`](../../../reference/workflows-and-actions/metadata-syntax.md#outputs-for-docker-container-and-javascript-actions) |
-| [`triggers`](https://jenkins.io/doc/book/pipeline/syntax/#triggers)                        | [`on`](../../../reference/workflows-and-actions/workflow-syntax.md#on) <br> [`on.<event_name>.types`](../../../reference/workflows-and-actions/workflow-syntax.md#onevent_nametypes) <br> [<code>on.<push\>.<branches\|tags></code>](../../../reference/workflows-and-actions/workflow-syntax.md#onpushbranchestagsbranches-ignoretags-ignore) <br> [<code>on.<pull_request\>.<branches\></code>](../../../reference/workflows-and-actions/workflow-syntax.md#onpull_requestpull_request_targetbranchesbranches-ignore) <br> [<code>on.<push\|pull_request>.paths</code>](../../../reference/workflows-and-actions/workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore) |
+| --- | --- |
+| [`environment`](https://jenkins.io/doc/book/pipeline/syntax/#environment) | [`jobs.<job_id>.env`](../../../reference/workflows-and-actions/workflow-syntax.md#env)   [`jobs.<job_id>.steps[*].env`](/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsenv) |
+| [`options`](https://jenkins.io/doc/book/pipeline/syntax/#options) | [`jobs.<job_id>.strategy`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategy)   [`jobs.<job_id>.strategy.fail-fast`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategyfail-fast)   [`jobs.<job_id>.timeout-minutes`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idtimeout-minutes) |
+| [`parameters`](https://jenkins.io/doc/book/pipeline/syntax/#options) | [`inputs`](../../../reference/workflows-and-actions/metadata-syntax.md#inputs)   [`outputs`](../../../reference/workflows-and-actions/metadata-syntax.md#outputs-for-docker-container-and-javascript-actions) |
+| [`triggers`](https://jenkins.io/doc/book/pipeline/syntax/#triggers) | [`on`](../../../reference/workflows-and-actions/workflow-syntax.md#on)   [`on.<event_name>.types`](../../../reference/workflows-and-actions/workflow-syntax.md#onevent_nametypes)   [`on.<push\>.<branches\|tags>`](../../../reference/workflows-and-actions/workflow-syntax.md#onpushbranchestagsbranches-ignoretags-ignore)   [`on.<pull_request\>.<branches\>`](../../../reference/workflows-and-actions/workflow-syntax.md#onpull_requestpull_request_targetbranchesbranches-ignore)   [`on.<push\|pull_request>.paths`](../../../reference/workflows-and-actions/workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore) |
 | [`triggers { upstreamprojects() }`](https://jenkins.io/doc/book/pipeline/syntax/#triggers) | [`jobs.<job_id>.needs`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idneeds) |
-| [Jenkins cron syntax](https://jenkins.io/doc/book/pipeline/syntax/#cron-syntax)            | [`on.schedule`](../../../reference/workflows-and-actions/workflow-syntax.md#onschedule) |
-| [`stage`](https://jenkins.io/doc/book/pipeline/syntax/#stage)                              | [`jobs.<job_id>`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_id) <br> [`jobs.<job_id>.name`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idname) |
-| [`tools`](https://jenkins.io/doc/book/pipeline/syntax/#tools)                              | [Specifications for GitHub-hosted runners](../../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images) |
-| [`input`](https://jenkins.io/doc/book/pipeline/syntax/#input)                              | [`inputs`](../../../reference/workflows-and-actions/metadata-syntax.md#inputs) |
-| [`when`](https://jenkins.io/doc/book/pipeline/syntax/#when)                                | [`jobs.<job_id>.if`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idif) |
+| [Jenkins cron syntax](https://jenkins.io/doc/book/pipeline/syntax/#cron-syntax) | [`on.schedule`](../../../reference/workflows-and-actions/workflow-syntax.md#onschedule) |
+| [`stage`](https://jenkins.io/doc/book/pipeline/syntax/#stage) | [`jobs.<job_id>`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_id)   [`jobs.<job_id>.name`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idname) |
+| [`tools`](https://jenkins.io/doc/book/pipeline/syntax/#tools) | [Specifications for GitHub-hosted runners](../../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images) |
+| [`input`](https://jenkins.io/doc/book/pipeline/syntax/#input) | [`inputs`](../../../reference/workflows-and-actions/metadata-syntax.md#inputs) |
+| [`when`](https://jenkins.io/doc/book/pipeline/syntax/#when) | [`jobs.<job_id>.if`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idif) |
 
 ## Using sequential stages
 
 ### Parallel job processing
 
-Jenkins can run the `stages` and `steps` in parallel. GitHub Actions runs jobs in parallel and can also run steps concurrently within a job using step-level syntax. For more information, see [Workflow syntax for GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstepsbackground#jobsjob_idstepsbackground).
-
 Jenkins can run the `stages` and `steps` in parallel, while GitHub Actions currently only runs jobs in parallel.
 
 | Jenkins Parallel | GitHub Actions |
-| ------------- | ------------- |
+| --- | --- |
 | [`parallel`](https://jenkins.io/doc/book/pipeline/syntax/#parallel) | [`jobs.<job_id>.strategy.max-parallel`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategymax-parallel) |
 
 ### Matrix
 
 Both GitHub Actions and Jenkins let you use a matrix to define various system combinations.
 
-| Jenkins       | GitHub Actions |
-| ------------- | ------------- |
-| [`axis`](https://jenkins.io/doc/book/pipeline/syntax/#matrix-axes)       | [`strategy/matrix`](../../../how-tos/write-workflows/choose-what-workflows-do/run-job-variations.md#about-matrix-strategies) <br> [`context`](../../../reference/workflows-and-actions/contexts.md) |
-| [`stages`](https://jenkins.io/doc/book/pipeline/syntax/#matrix-stages)   | [`steps-context`](../../../reference/workflows-and-actions/contexts.md#steps-context) |
+| Jenkins | GitHub Actions |
+| --- | --- |
+| [`axis`](https://jenkins.io/doc/book/pipeline/syntax/#matrix-axes) | [`strategy/matrix`](../../../how-tos/write-workflows/choose-what-workflows-do/run-job-variations.md#about-matrix-strategies)   [`context`](../../../reference/workflows-and-actions/contexts.md) |
+| [`stages`](https://jenkins.io/doc/book/pipeline/syntax/#matrix-stages) | [`steps-context`](../../../reference/workflows-and-actions/contexts.md#steps-context) |
 | [`excludes`](https://jenkins.io/doc/book/pipeline/syntax/#matrix-stages) | None |
 
 ### Using steps to execute tasks
 
 Jenkins groups `steps` together in `stages`. Each of these steps can be a script, function, or command, among others. Similarly, GitHub Actions uses `jobs` to execute specific groups of `steps`.
 
-| Jenkins       | GitHub Actions |
-| ------------- | ------------- |
+| Jenkins | GitHub Actions |
+| --- | --- |
 | [`steps`](https://jenkins.io/doc/book/pipeline/syntax/#steps) | [`jobs.<job_id>.steps`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idsteps) |
 
 ## Examples of common tasks

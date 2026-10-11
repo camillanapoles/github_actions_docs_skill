@@ -12,8 +12,8 @@ section: Tutorials
 
 _Use GitHub Agentic Workflows to turn Markdown instructions into automations powered by third-party coding agents._
 
-> [!NOTE]
-> GitHub Agentic Workflows are in public preview and subject to change.
+!!! note
+    GitHub Agentic Workflows are in public preview and subject to change.
 
 ## Introduction
 
@@ -97,8 +97,8 @@ Use a coding agent to create the workflow from a natural language description.
 
 1. Review the generated workflow, then ask the agent to commit and push the files.
 
-> [!TIP]
-> You can use the same agentic approach to update and improve the workflow after it runs. Ask the agent to refine the review criteria, add more checks, or debug a failed run—all in natural language. If you edit the workflow frontmatter later, run `gh aw compile` before committing your changes.
+!!! tip
+    You can use the same agentic approach to update and improve the workflow after it runs. Ask the agent to refine the review criteria, add more checks, or debug a failed run—all in natural language. If you edit the workflow frontmatter later, run `gh aw compile` before committing your changes.
 
 ## Running the workflow
 

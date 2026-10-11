@@ -12,8 +12,8 @@ section: Tutorials / Migrate to github actions / Manual migrations
 
 _GitHub Actions and CircleCI share several similarities in configuration, which makes migration to GitHub Actions relatively straightforward._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -41,9 +41,7 @@ Both CircleCI and GitHub Actions configure `jobs` in the configuration file usin
 
 ## Migrating orbs to actions
 
-Both CircleCI and GitHub Actions provide a mechanism to reuse and share tasks in a workflow. CircleCI uses a concept called orbs, written in YAML, to provide tasks that people can reuse in a workflow. GitHub Actions has powerful and flexible reusable components called actions, which you build with either JavaScript files or Docker images. You can create actions by writing custom code that interacts with your repository in any way you'd like, including integrating with GitHub's APIs and any publicly available third-party API. For example, an action can publish npm modules, send SMS alerts when urgent issues are created, or deploy production-ready code. For more information, see [Reuse automations](../../../how-tos/reuse-automations.md).
-
-CircleCI can reuse pieces of workflows with YAML anchors and aliases. GitHub Actions supports YAML anchors and aliases for reusability, and also provides matrices for running jobs with different configurations. For more information about matrices, see [Running variations of jobs in a workflow](../../../how-tos/write-workflows/choose-what-workflows-do/run-job-variations.md).
+Both CircleCI and GitHub Actions provide a mechanism to reuse and share tasks in a workflow. CircleCI uses a concept called orbs, written in YAML, to provide tasks that people can reuse in a workflow. GitHub Actions has powerful and flexible reusable components called actions, which you build with either JavaScript files or Docker images. You can create actions by writing custom code that interacts with your repository in any way you'd like, including integrating with GitHub's APIs and any publicly available third-party API. For example, an action can publish npm modules, send SMS alerts when urgent issues are created, or deploy production-ready code. For more information, see [Reuse automations](https://docs.github.com/en/actions/how-tos/reuse-automations).
 
 CircleCI can reuse pieces of workflows with YAML anchors and aliases. GitHub Actions supports the most common need for reusability using matrices. For more information about matrices, see [Running variations of jobs in a workflow](../../../how-tos/write-workflows/choose-what-workflows-do/run-job-variations.md).
 
@@ -117,9 +115,7 @@ Below is an example in CircleCI and GitHub Actions configuration syntax.
 
 ```yaml
 - name: Upload math result for job 1
-  uses: actions/upload-artifact@v4
-
-v3
+  uses: actions/upload-artifact@v3
   with:
     name: homework
     path: math-homework.txt
@@ -127,9 +123,7 @@ v3
 ...
 
 - name: Download math result for job 1
-  uses: actions/download-artifact@v5
-
-v3
+  uses: actions/download-artifact@v3
   with:
     name: homework
 ```

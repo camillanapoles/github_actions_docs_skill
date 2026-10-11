@@ -12,8 +12,8 @@ section: Tutorials / Build and test code
 
 _Learn how to create a continuous integration (CI) workflow in GitHub Actions to build and test your Java project with Gradle._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -25,7 +25,7 @@ GitHub-hosted runners have a tools cache with pre-installed software, which incl
 
 You should be familiar with YAML and the syntax for GitHub Actions. For more information, see:
 * [Workflow syntax for GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md)
-* [Write workflows](../../how-tos/write-workflows.md)
+* [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows)
 
 We recommend that you have a basic understanding of Java and the Gradle framework. For more information, see the [Gradle User Manual](https://docs.gradle.org/current/userguide/userguide.html).
 
@@ -47,7 +47,7 @@ GitHub provides a workflow template for Gradle that should work for most Java wi
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "Java with Gradle".
 1. On the "Java with Gradle" workflow, click **Configure**.
 
-If you don't find the "Java with Gradle" workflow template, copy the following workflow code to a new file called `gradle.yml` in the `.github/workflows` directory of your repository.
+   If you don't find the "Java with Gradle" workflow template, copy the following workflow code to a new file called `gradle.yml` in the `.github/workflows` directory of your repository.
 
             ```yaml copy
    # This workflow uses actions that are not certified by GitHub.
@@ -82,6 +82,7 @@ If you don't find the "Java with Gradle" workflow template, copy the following w
        - name: Build with Gradle
          run: ./gradlew build
    ```
+
 This workflow performs the following steps:
 
 1. Checks out a copy of project's repository.
@@ -91,13 +92,14 @@ This workflow performs the following steps:
 
 1. Edit the workflow as required. For example, change the Java version.
 
-      > [!NOTE]
+!!! note
+
    > * This workflow template contains an action that is not certified by GitHub. Actions provided by third parties are governed by separate terms of service, privacy policy, and support documentation.
    > * If you use actions from third parties you should use a version specified by a commit SHA. If the action is revised and you want to use the newer version, you will need to update the SHA. You can specify a version by referencing a tag or a branch, however the action may change without warning. For more information, see [Secure use reference](../../reference/security/secure-use.md#using-third-party-actions#using-third-party-actions).
 
 1. Click **Commit changes**.
 
-The `gradle.yml` workflow file is added to the `.github/workflows` directory of your repository.
+   The `gradle.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
 ### Specifying the Java version and architecture
 
@@ -176,9 +178,7 @@ steps:
     run: ./gradlew build
 
   - name: Upload build artifacts
-    uses: actions/upload-artifact@v4
-
-v3
+    uses: actions/upload-artifact@v3
     with:
       name: Package
       path: build/libs

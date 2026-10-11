@@ -20,9 +20,7 @@ Storing an action in its own repository makes it easier for the GitHub community
 
 To share actions across your enterprise without publishing the actions publicly, you can store the actions in an internal repository, then configure the repository to allow access to GitHub Actions workflows in other repositories owned by the same organization or by any organization in the enterprise. For more information, see [Sharing actions and workflows with your enterprise](../reuse-automations/share-with-your-enterprise.md).
 
-If you're building an action that you don't plan to make available to others, you
-
-You can store the action's files in any location in your repository. If you plan to combine action, workflow, and application code in a single repository, we recommend storing actions in the `.github` directory. For example, `.github/actions/action-a` and `.github/actions/action-b`.
+ You can store the action's files in any location in your repository. If you plan to combine action, workflow, and application code in a single repository, we recommend storing actions in the `.github` directory. For example, `.github/actions/action-a` and `.github/actions/action-b`.
 
 ## Ensuring compatibility with other platforms
 

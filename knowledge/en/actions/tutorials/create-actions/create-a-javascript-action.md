@@ -12,8 +12,8 @@ section: Tutorials / Create actions
 
 _In this tutorial, you'll learn how to build a JavaScript action using the actions toolkit._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -25,8 +25,8 @@ Once you complete this project, you should understand how to build your own Java
 
 To ensure your JavaScript actions are compatible with all GitHub-hosted runners (Ubuntu, Windows, and macOS), the packaged JavaScript code you write should be pure JavaScript and not rely on other binaries. JavaScript actions run directly on the runner and use binaries that already exist in the runner image.
 
-> [!WARNING]
-> When creating workflows and actions, you should always consider whether your code might execute untrusted input from possible attackers. Certain contexts should be treated as untrusted input, as an attacker could insert their own malicious content. For more information, see [Secure use reference](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks#good-practices-for-mitigating-script-injection-attacks).
+!!! warning
+    When creating workflows and actions, you should always consider whether your code might execute untrusted input from possible attackers. Certain contexts should be treated as untrusted input, as an attacker could insert their own malicious content. For more information, see [Secure use reference](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks#good-practices-for-mitigating-script-injection-attacks).
 
 ## Prerequisites
 
@@ -229,12 +229,10 @@ hello-world-javascript-action/
 
 Now you're ready to test your action out in a workflow.
 
-Public actions can be used by workflows in any repository. When an action is in a privateor internal repository, the repository settings dictate whether the action is available only within the same repository or also to other repositories owned by the same organization or enterprise
+Public actions can be used by workflows in any repository. When an action is in a private or internal repository, the repository settings dictate whether the action is available only within the same repository or also to other repositories owned by the same user or organization. For more information, see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository).
 
-user or organization. For more information, see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository).
-
-> [!NOTE]
-> GitHub Actions on GitHub Enterprise Server may have limited access to actions on GitHub.com or GitHub Marketplace. For more information, see [Managing access to actions from githubcom](https://docs.github.com/admin/managing-github-actions-for-your-enterprise/managing-access-to-actions-from-githubcom) and contact your GitHub Enterprise site administrator.
+!!! note
+    GitHub Actions on GitHub Enterprise Server may have limited access to actions on GitHub.com or GitHub Marketplace. For more information, see [Managing access to actions from githubcom](https://docs.github.com/admin/managing-github-actions-for-your-enterprise/managing-access-to-actions-from-githubcom) and contact your GitHub Enterprise site administrator.
 
 ### Example using a public action
 

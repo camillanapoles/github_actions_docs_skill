@@ -12,32 +12,27 @@ section: How tos / Manage runners / Self hosted runners
 
 _You can monitor your self-hosted runners to view their activity and diagnose common issues._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Checking access levels
 
 You may not be able to create a self-hosted runner for an organization-owned repository.
 
-Enterprise owners and organization
-
-Organizationowners can choose which repositories are allowed to create repository-level self-hosted runners. Users with the “Manage organization runners and runner groups” permission can only choose which repositories are allowed to create repository-level self-hosted runners for repositories in your organization.
+Organization owners can choose which repositories are allowed to create repository-level self-hosted runners. Users with the “Manage organization runners and runner groups” permission can only choose which repositories are allowed to create repository-level self-hosted runners for repositories in your organization.
 
 For more information about custom organization roles, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
 
-For more information, see [Enforcing policies for github actions in your enterprise](https://docs.github.com/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#runners#runners) and[Disabling or limiting github actions for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#limiting-the-use-of-self-hosted-runners#limiting-the-use-of-self-hosted-runners).
+For more information, see [Enforcing policies for github actions in your enterprise](https://docs.github.com/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#runners#runners) and [Disabling or limiting github actions for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#limiting-the-use-of-self-hosted-runners#limiting-the-use-of-self-hosted-runners).
 
 ## Checking the status of a self-hosted runner
 
-A self-hosted runner can be located in either your repository, organization, or enterprise account settings on GitHub
-
-enterprise settings on GitHub Enterprise Server. To manage a self-hosted runner, you must have the following permissions, depending on where the self-hosted runner was added:
+A self-hosted runner can be located in either your repository, organization, or enterprise account settings on GitHub. To manage a self-hosted runner, you must have the following permissions, depending on where the self-hosted runner was added:
 * **User repository:** You must be the repository owner.
 * **Organization:** You must be an organization owner.
 * **Organization repository:** You must be an organization owner, or have admin access to the repository.
-* **Enterprise account:** You must be an enterprise owner.
 
-* **Enterprise:** You must be a GitHub Enterprise site administrator.
+* **Enterprise account:** You must be an enterprise owner.
 
 1. In your organization or repository, navigate to the main page and click ** Settings**.
 1. In the left sidebar, click ** Actions**, then click **Runners**.
@@ -87,8 +82,6 @@ If you have any failing checks, you should also verify that your self-hosted run
 
 ### Disabling TLS certificate verification
 
-By default, the self-hosted runner application verifies the TLS certificate for GitHub. If your GitHub Enterprise Server instance has a self-signed or internally-issued certificate, you may wish to disable TLS certificate verification for testing purposes.
-
 By default, the self-hosted runner application verifies the TLS certificate for GitHub. If you encounter network problems, you may wish to disable TLS certificate verification for testing purposes.
 
 To disable TLS certification verification in the self-hosted runner application, set the `GITHUB_ACTIONS_RUNNER_TLS_NO_VERIFY` environment variable to `1` before configuring and running the self-hosted runner application.
@@ -117,18 +110,18 @@ export GITHUB_ACTIONS_RUNNER_TLS_NO_VERIFY=1
 ./run.cmd
 ```
 
-> [!WARNING]
-> Disabling TLS verification is not recommended since TLS provides privacy and data integrity between the self-hosted runner application and GitHub. We recommend that you install the GitHub certificate in the operating system certificate store for your self-hosted runner. For guidance on how to install the GitHub certificate, check with your operating system vendor.
+!!! warning
+    Disabling TLS verification is not recommended since TLS provides privacy and data integrity between the self-hosted runner application and GitHub. We recommend that you install the GitHub certificate in the operating system certificate store for your self-hosted runner. For guidance on how to install the GitHub certificate, check with your operating system vendor.
 
-> [!NOTE]
-> For GitHub-hosted larger runners using Azure private networking, see the TLS interception requirements in [Configuring private networking for github hosted runners in your organization](https://docs.github.com/organizations/managing-organization-settings/configuring-private-networking-for-github-hosted-runners-in-your-organization#prerequisites#prerequisites).
+!!! note
+    For GitHub-hosted larger runners using Azure private networking, see the TLS interception requirements in [Configuring private networking for github hosted runners in your organization](https://docs.github.com/organizations/managing-organization-settings/configuring-private-networking-for-github-hosted-runners-in-your-organization#prerequisites#prerequisites).
 
 ## Reviewing the self-hosted runner application log files
 
 You can monitor the status of the self-hosted runner application and its activities. Log files are kept in the `_diag` directory where you installed the runner application, and a new log is generated each time the application is started. The filename begins with `Runner_`, and is followed by a UTC timestamp of when the application was started.
 
-> [!WARNING]
-> Runner application log files for ephemeral runners must be forwarded and preserved externally for troubleshooting and diagnostic purposes. For more information about ephemeral runners and autoscaling self-hosted runners, see [Self-hosted runners reference](../../../reference/runners/self-hosted-runners.md#ephemeral-runners-for-autoscaling#ephemeral-runners-for-autoscaling).
+!!! warning
+    Runner application log files for ephemeral runners must be forwarded and preserved externally for troubleshooting and diagnostic purposes. For more information about ephemeral runners and autoscaling self-hosted runners, see [Self-hosted runners reference](../../../reference/runners/self-hosted-runners.md#ephemeral-runners-for-autoscaling#ephemeral-runners-for-autoscaling).
 
 For detailed logs on workflow job executions, see the next section describing the `Worker_` files.
 

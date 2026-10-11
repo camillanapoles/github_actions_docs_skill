@@ -38,8 +38,8 @@ Alternatively, you can use the glob pattern syntax to specify multiple custom tr
 gh actions-importer ... --custom-transformers transformers/*.rb
 ```
 
-> [!NOTE]
-> When you use custom transformers, the custom transformer files must reside in the same directory, or in subdirectories, from where the `gh actions-importer` command is run.
+!!! note
+    When you use custom transformers, the custom transformer files must reside in the same directory, or in subdirectories, from where the `gh actions-importer` command is run.
 
 ## Creating custom transformers for items
 
@@ -83,8 +83,8 @@ The above example results in the following GitHub Actions workflow step. It is c
 
 The `transform` method uses the identifier of the build step from your source CI/CD instance in an argument. In this example, the identifier is `buildJavaScriptLibrary`. You can also use comma-separated values to pass multiple identifiers to the `transform` method. For example, `transform "buildJavaScriptApp", "buildTypeScriptApp" { |item| ... }`.
 
-> [!NOTE]
-> The data structure of `item` will be different depending on the CI/CD platform and the type of item being converted.
+!!! note
+    The data structure of `item` will be different depending on the CI/CD platform and the type of item being converted.
 
 ## Creating custom transformers for runners
 
@@ -160,7 +160,8 @@ There are several ways you can set up custom transformers to map your environmen
   env /^(.+)_SSH_KEY/, secret("%s_SSH_KEY)
   ```
 
-  > [!NOTE]
+!!! note
+
   > The order in which `env` methods are defined matters when using regular expressions. The first `env` transformer that matches an environment variable name takes precedence over subsequent `env` methods. You should define your most specific environment variable transformers first.
 
 ## Legal notice

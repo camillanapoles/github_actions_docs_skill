@@ -12,8 +12,8 @@ section: Tutorials / Build and test code
 
 _You can create a continuous integration (CI) workflow to build and test your Ruby project._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -23,7 +23,7 @@ This guide shows you how to create a continuous integration (CI) workflow that b
 
 We recommend that you have a basic understanding of Ruby, YAML, workflow configuration options, and how to create a workflow file. For more information, see:
 
-* [Learn GitHub Actions](../../how-tos/write-workflows.md)
+* [Learn GitHub Actions](https://docs.github.com/en/actions/how-tos/write-workflows)
 * [Ruby in 20 minutes](https://www.ruby-lang.org/en/documentation/quickstart/)
 
 ## Using a Ruby workflow template
@@ -41,7 +41,7 @@ GitHub provides a workflow template for Ruby that should work for most Ruby proj
 1. Filter the selection of workflows by clicking **Continuous integration**.
 1. On the "Ruby" workflow, click **Configure**.
 
-If you don't find the "Ruby" workflow template, copy the following workflow code to a new file called `ruby.yml` in the `.github/workflows` directory of your repository.
+   If you don't find the "Ruby" workflow template, copy the following workflow code to a new file called `ruby.yml` in the `.github/workflows` directory of your repository.
 
             ```yaml copy
    # This workflow uses actions that are not certified by GitHub.
@@ -82,13 +82,14 @@ If you don't find the "Ruby" workflow template, copy the following workflow code
 
 1. Edit the workflow as required. For example, change the Ruby versions you want to use.
 
-      > [!NOTE]
+!!! note
+
    > * This workflow template contains an action that is not certified by GitHub. Actions provided by third parties are governed by separate terms of service, privacy policy, and support documentation.
    > * If you use actions from third parties you should use a version specified by a commit SHA. If the action is revised and you want to use the newer version, you will need to update the SHA. You can specify a version by referencing a tag or a branch, however the action may change without warning. For more information, see [Secure use reference](../../reference/security/secure-use.md#using-third-party-actions#using-third-party-actions).
 
 1. Click **Commit changes**.
 
-The `ruby.yml` workflow file is added to the `.github/workflows` directory of your repository.
+   The `ruby.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
 ## Specifying the Ruby version
 

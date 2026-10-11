@@ -26,18 +26,15 @@ For an example GitHub Actions workflow using the JFrog CLI, see [`build-publish.
 
 * To learn the basic concepts of how GitHub uses OpenID Connect (OIDC), and its architecture and benefits, see [OpenID Connect](../../../concepts/security/openid-connect.md).
 
-* Before proceeding, you must plan your security strategy to ensure that access tokens are only allocated in a predictable way. To control how your cloud provider issues access tokens, you **must** define at least one condition, so that untrusted repositories can’t request access tokens for your cloud resources. For more information, see [OpenID Connect](../../../concepts/security/openid-connect.md#establishing-oidc-trust-with-your-cloud-provider#establishing-oidc-trust-with-your-cloud-provider)
+* Before proceeding, you must plan your security strategy to ensure that access tokens are only allocated in a predictable way. To control how your cloud provider issues access tokens, you **must** define at least one condition, so that untrusted repositories can’t request access tokens for your cloud resources. For more information, see [OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
-[OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
-* OIDC tokens requested for Dependabot update jobs have an `event_name` claim of `dynamic`. If your trust policy is intended to authorize only GitHub Actions workflows and your cloud provider supports conditions on `event_name`, allow only the event names expected by your workflows. For more information, see [OpenID Connect](../../../concepts/security/openid-connect.md#establishing-oidc-trust-with-your-cloud-provider#establishing-oidc-trust-with-your-cloud-provider)
-
-[OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
+* OIDC tokens requested for Dependabot update jobs have an `event_name` claim of `dynamic`. If your trust policy is intended to authorize only GitHub Actions workflows and your cloud provider supports conditions on `event_name`, allow only the event names expected by your workflows. For more information, see [OpenID Connect reference](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
 * If you're following this guide on GHE.com, understand that you must substitute certain values in the following documentation. See [OpenID Connect](../../../concepts/security/openid-connect.md#configuring-oidc-on-ghecom#configuring-oidc-on-ghecom).
 
 * To be secure, you need to set a Claims JSON in JFrog when configuring identity mappings. For more information, see [Configure identity mappings](https://jfrog.com/help/r/jfrog-platform-administration-documentation/configure-identity-mappings) and [OpenID Connect reference](../../../reference/security/oidc.md#customizing-the-token-claims#customizing-the-token-claims).
 
-  For example, you can set `iss` to `https://token.actions.githubusercontent.com`, and the `repository` to something like `octo-org/octo-repo`.JFrog identity mappings match each claim against an exact value, so to ensure only GitHub Actions workflows from the specified repository have access to your JFrog platform, also set `event_name` to the event that triggers your workflow, such as `push`. This prevents OIDC tokens requested for Dependabot update jobs, which have an `event_name` of `dynamic`, from matching the identity mapping. If your workflows are triggered by more than one event, create a separate identity mapping for each event name. The following is an example Claims JSON when configuring identity mappings.
+  For example, you can set `iss` to `https://token.actions.githubusercontent.com`, and the `repository` to something like `octo-org/octo-repo`. JFrog identity mappings match each claim against an exact value, so to ensure only GitHub Actions workflows from the specified repository have access to your JFrog platform, also set `event_name` to the event that triggers your workflow, such as `push`. This prevents OIDC tokens requested for Dependabot update jobs, which have an `event_name` of `dynamic`, from matching the identity mapping. If your workflows are triggered by more than one event, create a separate identity mapping for each event name. The following is an example Claims JSON when configuring identity mappings.
 
                 ```json copy
 {
@@ -89,10 +86,10 @@ jobs:
 
 ```
 
-> [!TIP]
-> When OIDC authentication is used, the `setup-jfrog-cli` action automatically provides `oidc-user` and `oidc-token` as step outputs.
-> These can be used for other integrations that require authentication with JFrog.
-> To reference these outputs, ensure the step has an explicit `id` defined (for example `id: setup-jfrog-cli`).
+!!! tip
+    When OIDC authentication is used, the `setup-jfrog-cli` action automatically provides `oidc-user` and `oidc-token` as step outputs.
+    These can be used for other integrations that require authentication with JFrog.
+    To reference these outputs, ensure the step has an explicit `id` defined (for example `id: setup-jfrog-cli`).
 
 ### Using OIDC Credentials in other steps
 

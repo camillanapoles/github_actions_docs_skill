@@ -12,5 +12,5 @@ section: How tos / Manage runners / Self hosted runners
 
 _You can host your own runners to run workflows in a highly customizable environment._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.

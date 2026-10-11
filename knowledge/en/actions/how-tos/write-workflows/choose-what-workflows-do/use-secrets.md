@@ -14,8 +14,6 @@ _Learn how to create secrets at the repository, environment, and organization le
 
 ## Creating secrets for a repository
 
-To create secrets or variables on GitHub for an organization repository, you must have `write` access.
-
 To create secrets or variables on GitHub for an organization repository, you must have `admin` access. For a personal account repository, you must be a repository collaborator.
 
 **Usando a interface do GitHub**
@@ -83,12 +81,14 @@ gh secret list --env ENV_NAME
 
 ## Creating secrets for an organization
 
-> [!NOTE]
-> Organization-level secrets and variables are not accessible by private repositories for GitHub Free. For more information about upgrading your GitHub subscription, see [Upgrade plan](https://docs.github.com/billing/how-tos/manage-plan-and-licenses/upgrade-plan).
+!!! note
+    Organization-level secrets and variables are not accessible by private repositories for GitHub Free. For more information about upgrading your GitHub subscription, see [Upgrade plan](https://docs.github.com/billing/how-tos/manage-plan-and-licenses/upgrade-plan).
 
 When creating a secret or variable in an organization, you can use a policy to limit access by repository. For example, you can grant access to all repositories, or limit access to only private repositories or a specified list of repositories.
 
-Organization ownersand users with the "Manage organization Actions variables" or "Manage organization Actions secrets" permissions can create secrets or variables at the organization level.For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
+Organization owners and users with the "Manage organization Actions variables" or "Manage organization Actions secrets" permissions can create secrets or variables at the organization level.
+
+For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
 
 **Usando a interface do GitHub**
 
@@ -101,8 +101,8 @@ Organization ownersand users with the "Manage organization Actions variables" or
 
    ![Screenshot of the "Actions secrets and variables" page. The "Secrets" tab is outlined in dark orange.](/assets/images/help/repository/actions-secrets-tab.png)
 
-   > [!NOTE]
-> The "Actions secrets and variables" page may not show distinct tabs for secrets and variables depending on your permissions. Organization owners and users with both the "Manage organization Actions variables" and "Manage organization Actions secrets" permissions will see the **Variables** and **Secrets** tabs. For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
+!!! note
+    The "Actions secrets and variables" page may not show distinct tabs for secrets and variables depending on your permissions. Organization owners and users with both the "Manage organization Actions variables" and "Manage organization Actions secrets" permissions will see the **Variables** and **Secrets** tabs. For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
 
 1. Click **New organization secret**.
 1. Type a name for your secret in the **Name** input box.
@@ -112,12 +112,12 @@ Organization ownersand users with the "Manage organization Actions variables" or
 
 **Usando a CLI do GitHub**
 
-> [!NOTE]
-> By default, GitHub CLI authenticates with the `repo` and `read:org` scopes. To manage organization secrets, you must additionally authorize the `admin:org` scope.
->
-> ```shell
-> gh auth login --scopes "admin:org"
-> ```
+!!! note
+    By default, GitHub CLI authenticates with the `repo` and `read:org` scopes. To manage organization secrets, you must additionally authorize the `admin:org` scope.
+
+                ```shell
+    gh auth login --scopes "admin:org"
+    ```
 
 To add a secret for an organization, use the `gh secret set` subcommand with the `--org` or `-o` flag followed by the organization name.
 
@@ -156,13 +156,13 @@ You can check which access policies are being applied to a secret in your organi
 
 ## Using secrets in a workflow
 
-> [!NOTE]
-> * With the exception of `GITHUB_TOKEN`, secrets are not passed to the runner when a workflow is triggered from a forked repository.
-> * Secrets are not automatically passed to reusable workflows. For more information, see [Reuse workflows](../../reuse-automations/reuse-workflows.md#passing-inputs-and-secrets-to-a-reusable-workflow#passing-inputs-and-secrets-to-a-reusable-workflow).
-> * Secrets are not available to workflows triggered by Dependabot events. For more information, see [Dependabot on actions](https://docs.github.com/code-security/reference/supply-chain-security/troubleshoot-dependabot/dependabot-on-actions#accessing-secrets#accessing-secrets).
-> * If your GitHub Actions workflows need to access resources from a cloud provider that supports OpenID Connect (OIDC), you can configure your workflows to authenticate directly to the cloud provider. This will let you stop storing these credentials as long-lived secrets and provide other security benefits. For more information, see [OpenID Connect](../../../concepts/security/openid-connect.md).
+!!! note
+    * With the exception of `GITHUB_TOKEN`, secrets are not passed to the runner when a workflow is triggered from a forked repository.
+    * Secrets are not automatically passed to reusable workflows. For more information, see [Reuse workflows](../../reuse-automations/reuse-workflows.md#passing-inputs-and-secrets-to-a-reusable-workflow#passing-inputs-and-secrets-to-a-reusable-workflow).
+    * Secrets are not available to workflows triggered by Dependabot events. For more information, see [Dependabot on actions](https://docs.github.com/code-security/reference/supply-chain-security/troubleshoot-dependabot/dependabot-on-actions#accessing-secrets#accessing-secrets).
+    * If your GitHub Actions workflows need to access resources from a cloud provider that supports OpenID Connect (OIDC), you can configure your workflows to authenticate directly to the cloud provider. This will let you stop storing these credentials as long-lived secrets and provide other security benefits. For more information, see [OpenID Connect](../../../concepts/security/openid-connect.md).
 
-> [!WARNING] Mask all sensitive information that is not a GitHub secret by using `::add-mask::VALUE`. This causes the value to be treated as a secret and redacted from logs.
+    [!WARNING] Mask all sensitive information that is not a GitHub secret by using `::add-mask::VALUE`. This causes the value to be treated as a secret and redacted from logs.
 
 To provide an action with a secret as an input or environment variable, you can use the `secrets` context to access secrets you've created in your repository. For more information, see [Contexts reference](../../../reference/workflows-and-actions/contexts.md) and [Workflow syntax for GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md).
 
@@ -220,8 +220,8 @@ steps:
 
 To use secrets that are larger than 48 KB, you can use a workaround to store secrets in your repository and save the decryption passphrase as a secret on GitHub. For example, you can use `gpg` to encrypt a file containing your secret locally before checking the encrypted file in to your repository on GitHub. For more information, see the [gpg manpage](https://www.gnupg.org/gph/de/manual/r1023.html).
 
-> [!WARNING]
-> Be careful that your secrets do not get printed when your workflow runs. When using this workaround, GitHub does not redact secrets that are printed in logs.
+!!! warning
+    Be careful that your secrets do not get printed when your workflow runs. When using this workaround, GitHub does not redact secrets that are printed in logs.
 
 1. Run the following command from your terminal to encrypt the file containing your secret using `gpg` and the AES256 cipher algorithm. In this example, `my_secret.json` is the file containing the secret.
 
@@ -235,7 +235,8 @@ To use secrets that are larger than 48 KB, you can use a workaround to store sec
 
 1. Copy your encrypted file to a path in your repository and commit it. In this example, the encrypted file is `my_secret.json.gpg`.
 
-   > [!WARNING]
+!!! warning
+
    > Make sure to copy the encrypted `my_secret.json.gpg` file ending with the `.gpg` file extension, and **not** the unencrypted `my_secret.json` file.
 
             ```shell
@@ -293,9 +294,9 @@ To use secrets that are larger than 48 KB, you can use a workaround to store sec
 
 You can use Base64 encoding to store small binary blobs as secrets. You can then reference the secret in your workflow and decode it for use on the runner. For the size limits, see [Secrets reference](../../../reference/security/secrets.md#limits-for-secrets#limits-for-secrets).
 
-> [!NOTE]
-> * Note that Base64 only converts binary to text, and is not a substitute for actual encryption.
-> * Using another shell might require different commands for decoding the secret to a file. On Windows runners, we recommend [using a bash shell](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstepsshell) with `shell: bash` to use the commands in the `run` step above.
+!!! note
+    * Note that Base64 only converts binary to text, and is not a substitute for actual encryption.
+    * Using another shell might require different commands for decoding the secret to a file. On Windows runners, we recommend [using a bash shell](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstepsshell) with `shell: bash` to use the commands in the `run` step above.
 
 1. Use `base64` to encode your file into a Base64 string. For example:
 

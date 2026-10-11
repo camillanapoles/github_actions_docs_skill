@@ -12,33 +12,33 @@ section: How tos / Manage runners
 
 _You can configure runners in isolated environments to use a proxy server for secure communication with GitHub._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Configuring a proxy for Linux and Windows runners
 
 If your runner needs to communicate via a proxy server, you can configure proxy settings using environment variables or system-level configurations.
 
-| Variable      | Description                                                                                           | Example                                                                                     |
-| ------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `https_proxy` | Proxy URL for HTTPS traffic. You can include basic authentication if required.                        | `http://proxy.local`<br>`http://192.168.1.1:8080`<br>`http://username:password@proxy.local` |
-| `http_proxy`  | Proxy URL for HTTP traffic. You can include basic authentication if required.                         | `http://proxy.local`<br>`http://192.168.1.1:8080`<br>`http://username:password@proxy.local` |
-| `no_proxy`    | A comma-separated list of hosts or IP addresses that should bypass the proxy. Some clients only honor IP addresses when connections are made directly to the IP rather than a hostname. | `example.com`<br>`example.com,myserver.local:443,example.org`                               |
+| Variable | Description | Example |
+| --- | --- | --- |
+| `https_proxy` | Proxy URL for HTTPS traffic. You can include basic authentication if required. | `http://proxy.local` `http://192.168.1.1:8080` `http://username:password@proxy.local` |
+| `http_proxy` | Proxy URL for HTTP traffic. You can include basic authentication if required. | `http://proxy.local` `http://192.168.1.1:8080` `http://username:password@proxy.local` |
+| `no_proxy` | A comma-separated list of hosts or IP addresses that should bypass the proxy. Some clients only honor IP addresses when connections are made directly to the IP rather than a hostname. | `example.com` `example.com,myserver.local:443,example.org` |
 
 The proxy environment variables are read when the runner application starts, so you must set the environment variables before configuring or starting the runner application. If your proxy configuration changes, you must restart the runner application.
 
 On Windows machines, the proxy environment variable names are case-insensitive. On Linux and macOS machines, we recommend that you use all lowercase environment variables. If you have an environment variable in both lowercase and uppercase on Linux or macOS, for example `https_proxy` and `HTTPS_PROXY`, the self-hosted runner application uses the lowercase environment variable.
 
-The connection between self-hosted runners and GitHub is over HTTP (port 80) orHTTPS (port 443). To ensure connectivity over HTTPS, configure TLS for GitHub Enterprise Server. For more information, see [Configuring tls](https://docs.github.com/admin/configuring-settings/hardening-security-for-your-enterprise/configuring-tls).
+The connection between self-hosted runners and GitHub is over HTTP (port 80) or HTTPS (port 443). To ensure connectivity over HTTPS, configure TLS for GitHub Enterprise Server. For more information, see [Configuring tls](https://docs.github.com/admin/configuring-settings/hardening-security-for-your-enterprise/configuring-tls).
 
-> [!WARNING]
-> Self-hosted runners do not support using IP addresses and CIDR ranges in the `no_proxy` environment variable. If your GitHub Enterprise Server instance uses an IP address and you configure `no_proxy` to bypass the proxy for that address, the runner will still fail to connect.
-> If your GitHub Enterprise Server instance is accessed using an IP address and the connection must bypass the proxy, the runner will fail to connect, even if that IP address is listed in `no_proxy`.
+!!! warning
+    Self-hosted runners do not support using IP addresses and CIDR ranges in the `no_proxy` environment variable. If your GitHub Enterprise Server instance uses an IP address and you configure `no_proxy` to bypass the proxy for that address, the runner will still fail to connect.
+    If your GitHub Enterprise Server instance is accessed using an IP address and the connection must bypass the proxy, the runner will fail to connect, even if that IP address is listed in `no_proxy`.
 
 ### Example configurations
 
-> [!NOTE]
-> To avoid issues, it's good practice to treat environment variables as case sensitive, irrespective of the behavior of the operating system and shell you are using.
+!!! note
+    To avoid issues, it's good practice to treat environment variables as case sensitive, irrespective of the behavior of the operating system and shell you are using.
 
 #### Linux and macOS
 
@@ -95,8 +95,8 @@ The two Azure IPs are:
 
 ## Using a .env file to set the proxy configuration
 
-> [!NOTE]
-> Using a `.env` file to set the proxy configuration cannot be done on a GitHub-hosted runner.
+!!! note
+    Using a `.env` file to set the proxy configuration cannot be done on a GitHub-hosted runner.
 
 On self-hosted runners, you can configure proxy settings by adding the variables to a `.env` file in the self-hosted runner application directory (the directory where you downloaded and unpacked the runner software). This approach is useful when the runner is configured to run as a service under a system account. When the runner starts, it reads the variables set in `.env` for the proxy configuration.
 

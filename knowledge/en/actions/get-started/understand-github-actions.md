@@ -12,8 +12,8 @@ section: Get started
 
 _Learn the basics of core concepts and essential terminology in GitHub Actions._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Overview
 
@@ -22,10 +22,6 @@ GitHub Actions is a continuous integration and continuous delivery (CI/CD) platf
 GitHub Actions goes beyond just DevOps and lets you run workflows when other events happen in your repository. For example, you can run a workflow to automatically add the appropriate labels whenever someone creates a new issue in your repository.
 
 GitHub provides Linux, Windows, and macOS virtual machines to run your workflows, or you can host your own self-hosted runners in your own data center or cloud infrastructure.
-
-You must host your own Linux, Windows, or macOS virtual machines to run workflows for your GitHub Enterprise Server instance
-
-GitHub.com.
 
 For more information about introducing GitHub Actions to your enterprise, see [Introducing github actions to your enterprise](https://docs.github.com/admin/managing-github-actions-for-your-enterprise/getting-started-with-github-actions-for-your-enterprise/introducing-github-actions-to-your-enterprise).
 
@@ -46,7 +42,7 @@ Workflows are defined in the `.github/workflows` directory in a repository. A re
 
 You can reference a workflow within another workflow. For more information, see [Reuse workflows](../how-tos/reuse-automations/reuse-workflows.md).
 
-For more information, see [Write workflows](../how-tos/write-workflows.md).
+For more information, see [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows).
 
 ### Events
 
@@ -66,7 +62,7 @@ You can also use a **matrix** to run the same job multiple times, each with a di
 
 For example, you might configure multiple build jobs for different architectures without any job dependencies and a packaging job that depends on those builds. The build jobs run in parallel, and once they complete successfully, the packaging job runs.
 
-For more information, see [Choose what workflows do](../how-tos/write-workflows/choose-what-workflows-do.md).
+For more information, see [Choose what workflows do](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do).
 
 ### Actions
 
@@ -80,33 +76,33 @@ You can write your own actions, or you can find actions to use in your workflows
 
 To share actions across your enterprise without publishing the actions publicly, you can store the actions in an internal repository, then configure the repository to allow access to GitHub Actions workflows in other repositories owned by the same organization or by any organization in the enterprise. For more information, see [Sharing actions and workflows with your enterprise](../how-tos/reuse-automations/share-with-your-enterprise.md).
 
-For more information on actions, see [Reuse automations](../how-tos/reuse-automations.md).
+For more information on actions, see [Reuse automations](https://docs.github.com/en/actions/how-tos/reuse-automations).
 
 ### Runners
 
 A **runner** is a server that runs your workflows when they're triggered. Each runner can run a single **job** at a time.
-You must host your own runners for GitHub Enterprise Server.
-
 GitHub provides Ubuntu Linux, Microsoft Windows, and macOS runners to run your **workflows**. Each workflow run executes in a fresh, newly-provisioned virtual machine.
 
-GitHub also offers larger runners, which are available in larger configurations. For more information, see [Larger runners](../how-tos/manage-runners/larger-runners.md).
+ GitHub also offers larger runners, which are available in larger configurations. For more information, see [Larger runners](https://docs.github.com/en/actions/how-tos/manage-runners/larger-runners).
+
 If you need a different operating system or require a specific hardware configuration, you can host your own runners.
 
-For more informationabout self-hosted runners, see [Self hosted runners](../how-tos/manage-runners/self-hosted-runners.md).
+For more information about self-hosted runners, see [Self hosted runners](https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners).
 
 ## Next steps
 
 GitHub Actions can help you automate nearly every aspect of your application development processes. Ready to get started? Here are some helpful resources for taking your next steps with GitHub Actions:
 
 * To create a GitHub Actions workflow, see [Using workflow templates](../how-tos/write-workflows/use-workflow-templates.md).
-* For continuous integration (CI) workflows, see [Build and test code](../tutorials/build-and-test-code.md).
-* For building and publishing packages, see [Publish packages](../tutorials/publish-packages.md).
-* For deploying projects, see [Deploy to third party platforms](../how-tos/deploy/deploy-to-third-party-platforms.md).
-* For automating tasks and processes on GitHub, see [Manage your work](../tutorials/manage-your-work.md).
-* For examples that demonstrate more complex features of GitHub Actions, see [Choose what workflows do](../how-tos/write-workflows/choose-what-workflows-do.md). These detailed examples explain how to test your code on a runner, access the GitHub CLI, and use advanced features such as concurrency and test matrices.* To certify your proficiency in automating workflows and accelerating development with GitHub Actions, earn a GitHub Actions certificate with GitHub Certifications. For more information, see [About github certifications](https://docs.github.com/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications).
+* For continuous integration (CI) workflows, see [Build and test code](https://docs.github.com/en/actions/tutorials/build-and-test-code).
+* For building and publishing packages, see [Publish packages](https://docs.github.com/en/actions/tutorials/publish-packages).
+* For deploying projects, see [Deploy to third party platforms](https://docs.github.com/en/actions/how-tos/deploy/deploy-to-third-party-platforms).
+* For automating tasks and processes on GitHub, see [Manage your work](https://docs.github.com/en/actions/tutorials/manage-your-work).
+* For examples that demonstrate more complex features of GitHub Actions, see [Choose what workflows do](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do). These detailed examples explain how to test your code on a runner, access the GitHub CLI, and use advanced features such as concurrency and test matrices.
+* To certify your proficiency in automating workflows and accelerating development with GitHub Actions, earn a GitHub Actions certificate with GitHub Certifications. For more information, see [About github certifications](https://docs.github.com/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications).
 
-> [!NOTE]
-> For automations that require contextual judgment about your repository's content, you can also author agentic workflows in natural language instead of a traditional GitHub Actions workflow. For more information, see [Quickstart](https://docs.github.com/copilot/how-tos/github-agentic-workflows/quickstart) and [Creating github agentic workflows](https://docs.github.com/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
+!!! note
+    For automations that require contextual judgment about your repository's content, you can also author agentic workflows in natural language instead of a traditional GitHub Actions workflow. For more information, see [Quickstart](https://docs.github.com/copilot/how-tos/github-agentic-workflows/quickstart) and [Creating github agentic workflows](https://docs.github.com/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
 
 ## Further reading
 

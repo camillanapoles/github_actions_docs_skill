@@ -24,11 +24,12 @@ If you have `repo: write` access to a repository, you can view a list of the run
 1. Review the list of available runners for the repository.
 1. Optionally, to copy a runner's label to use it in a workflow, click  to the right of the runner, then click **Copy label**.
 
-> [!NOTE]
-> Enterprise and organization ownersand users with the "Manage organization runners and runner groups" permission can create runners from this page. To create a new runner, click **New runner** at the top right of the list of runners to add runners to the repository.
->
-> For more information, see [Managing larger runners](manage-larger-runners.md) and[Adding self-hosted runners](../self-hosted-runners/add-runners.md).
-> For more information about custom organization roles, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
+!!! note
+    Enterprise and organization owners and users with the "Manage organization runners and runner groups" permission can create runners from this page. To create a new runner, click **New runner** at the top right of the list of runners to add runners to the repository.
+
+    For more information, see [Managing larger runners](manage-larger-runners.md) and [Adding self-hosted runners](../self-hosted-runners/add-runners.md).
+
+    For more information about custom organization roles, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
 
 ## Targeting larger runners in a workflow
 

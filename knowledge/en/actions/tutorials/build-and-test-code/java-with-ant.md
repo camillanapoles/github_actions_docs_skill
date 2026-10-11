@@ -12,8 +12,8 @@ section: Tutorials / Build and test code
 
 _Learn how to create a continuous integration (CI) workflow in GitHub Actions to build and test your Java project with Ant._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -25,7 +25,7 @@ GitHub-hosted runners have a tools cache with pre-installed software, which incl
 
 You should be familiar with YAML and the syntax for GitHub Actions. For more information, see:
 * [Workflow syntax for GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md)
-* [Write workflows](../../how-tos/write-workflows.md)
+* [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows)
 
 We recommend that you have a basic understanding of Java and the Ant framework. For more information, see the [Apache Ant Manual](https://ant.apache.org/manual/).
 
@@ -47,7 +47,7 @@ GitHub provides a workflow template for Ant that should work for most Java with 
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "Java with Ant".
 1. On the "Java with Ant" workflow, click **Configure**.
 
-If you don't find the "Java with Ant" workflow template, copy the following workflow code to a new file called `ant.yml` in the `.github/workflows` directory of your repository.
+   If you don't find the "Java with Ant" workflow template, copy the following workflow code to a new file called `ant.yml` in the `.github/workflows` directory of your repository.
 
             ```yaml copy
    name: Java CI
@@ -76,7 +76,7 @@ If you don't find the "Java with Ant" workflow template, copy the following work
 1. Edit the workflow as required. For example, change the Java version.
 1. Click **Commit changes**.
 
-The `ant.yml` workflow file is added to the `.github/workflows` directory of your repository.
+   The `ant.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
 ### Specifying the Java version and architecture
 
@@ -131,9 +131,7 @@ steps:
       distribution: 'temurin'
 
   - run: ant -noinput -buildfile build.xml
-  - uses: actions/upload-artifact@v4
-
-v3
+  - uses: actions/upload-artifact@v3
     with:
       name: Package
       path: build/jar

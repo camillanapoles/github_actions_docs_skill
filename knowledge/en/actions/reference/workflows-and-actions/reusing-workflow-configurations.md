@@ -1,6 +1,6 @@
 ---
 title: Reusing workflow configurations
-description: Find information about avoiding duplication when creating a workflow by reusing existing workflowsand using YAML anchors and aliases.
+description: Find information about avoiding duplication when creating a workflow by reusing existing workflows and using YAML anchors and aliases.
 lang: en
 plan: fpt
 source: https://github.com/github/docs/blob/main/content/actions/reference/workflows-and-actions/reusing-workflow-configurations.md
@@ -10,56 +10,45 @@ section: Reference / Workflows and actions
 
 # Reusing workflow configurations
 
-_Find information about avoiding duplication when creating a workflow by reusing existing workflowsand using YAML anchors and aliases._
+_Find information about avoiding duplication when creating a workflow by reusing existing workflows and using YAML anchors and aliases._
 
 ## Reusable workflows
 
 This article provides reference information for reusable workflows and workflow templates, including access rules, limitations, supported keywords, and runner behavior.
 
 You can centralize deterministic, repeatable logic in reusable workflows, and use agentic workflows for tasks that require contextual judgment about your repository's content such as analysis, summaries, and recommendations. For more information, see [Creating github agentic workflows](https://docs.github.com/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
+
 ### Access to reusable workflows
 
 A reusable workflow can be used by another workflow if any of the following is true:
 
 * Both workflows are in the same repository.
-* The called workflow is stored in a public repositoryon GitHub Enterprise Server.
+* The called workflow is stored in a public repository on GitHub Enterprise Server.
 
-  You cannot directly use reusable workflows defined on GitHub.com. Instead store a copy of the reusable workflow on your GitHub Enterprise Server instance
+  You cannot directly use reusable workflows defined on GitHub.com. Instead store a copy of the reusable workflow on GitHub.com, and call the workflow from that path.
 
-GitHub.com, and call the workflow from that path.
-
-, and your enterprise
-
-organization allows you to use public reusable workflows.* The called workflow is stored in an internal repository and the settings for that repository allow it to be accessed. For more information, see [Sharing actions and workflows with your enterprise](../../how-tos/reuse-automations/share-with-your-enterprise.md).
-* The called workflow is stored in a private repository and the settings for that repository allow it to be accessed. For more information, see [Sharing actions and workflows with your enterprise](../../how-tos/reuse-automations/share-with-your-enterprise.md).
-
-[Sharing actions and workflows with your organization](../../how-tos/reuse-automations/share-with-your-organization.md) and [Sharing actions and workflows from your private repository](../../how-tos/reuse-automations/share-across-private-repositories.md).
+* The called workflow is stored in an internal repository and the settings for that repository allow it to be accessed. For more information, see [Sharing actions and workflows with your enterprise](../../how-tos/reuse-automations/share-with-your-enterprise.md).
+* The called workflow is stored in a private repository and the settings for that repository allow it to be accessed. For more information, see [Sharing actions and workflows with your organization](../../how-tos/reuse-automations/share-with-your-organization.md) and [Sharing actions and workflows from your private repository](../../how-tos/reuse-automations/share-across-private-repositories.md).
 
 The following table shows the accessibility of reusable workflows to a caller workflow, depending on the visibility of the host repository.
 
-| Caller repository | Accessible workflows repositories |
-|----|----|
-| `private` | `private`, `internal`, and `public` |
-| |
-| `internal` | `internal`, and `public` |
-| |
-| `public` | `public` |
+| Caller repository | Accessible workflows repositories   |
+|-----------------|-----------------------------------|
+| `private`         | `private`, `internal`, and `public` |
+| `internal`        | `internal`, and `public`            |
+| `public`          | `public`                            |
 
 The **Actions permissions** on the callers repository's Actions settings page must be configured to allow the use of actions and reusable workflows - see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-select-actions-and-reusable-workflows-to-run#allowing-select-actions-and-reusable-workflows-to-run).
 
-For internal orprivate repositories, the **Access** policy on the Actions settings page of the called workflow's repository must be explicitly configured to allow access from repositories containing caller workflows - see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository#allowing-access-to-components-in-a-private-repository).
+For internal or private repositories, the **Access** policy on the Actions settings page of the called workflow's repository must be explicitly configured to allow access from repositories containing caller workflows - see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository#allowing-access-to-components-in-a-private-repository).
 
-> [!NOTE]
-> To enhance security, GitHub Actions does not support redirects for actions or reusable workflows. This means that when the owner, name of an action's repository, or name of an action is changed, any workflows using that action with the previous name will fail.
+!!! note
+    To enhance security, GitHub Actions does not support redirects for actions or reusable workflows. This means that when the owner, name of an action's repository, or name of an action is changed, any workflows using that action with the previous name will fail.
 
 ### Limitations of reusable workflows
 
-* You can connect up to ten
-
-fourlevels of workflows. For more information, see [Nesting reusable workflows](../../how-tos/reuse-automations/reuse-workflows.md#nesting-reusable-workflows).
-* You can call a maximum of 50
-
-20unique reusable workflows from a single workflow file. This limit includes any trees of nested reusable workflows that may be called starting from your top-level caller workflow file.
+* You can connect up to four levels of workflows. For more information, see [Nesting reusable workflows](../../how-tos/reuse-automations/reuse-workflows.md#nesting-reusable-workflows).
+* You can call a maximum of 20 unique reusable workflows from a single workflow file. This limit includes any trees of nested reusable workflows that may be called starting from your top-level caller workflow file.
 
   For example, _top-level-caller-workflow.yml_ → _called-workflow-1.yml_ → _called-workflow-2.yml_ counts as 2 reusable workflows.
 
@@ -84,9 +73,11 @@ When you call a reusable workflow, you can only use the following keywords in th
 * [`jobs.<job_id>.if`](workflow-syntax.md#jobsjob_idif)
 * [`jobs.<job_id>.concurrency`](workflow-syntax.md#jobsjob_idconcurrency)
 * [`jobs.<job_id>.permissions`](workflow-syntax.md#jobsjob_idpermissions)
+
 * [`jobs.<job_id>.cache-mode`](workflow-syntax.md#jobsjob_idcache-mode)
 
-  > [!NOTE]
+!!! note
+
   >
   > * If `jobs.<job_id>.permissions` is not specified in the calling job, the called workflow will have the default permissions for the `GITHUB_TOKEN`. For more information, see [Workflow syntax for GitHub Actions](workflow-syntax.md#permissions#permissions).
   > * The `GITHUB_TOKEN` permissions passed from the caller workflow can be only downgraded (not elevated) by the called workflow.
@@ -100,9 +91,9 @@ The assignment of GitHub-hosted runners is always evaluated using only the calle
 
 #### Self-hosted runners
 
-Called workflows that are owned by the same user or organizationor enterprise as the caller workflow can access self-hosted runners from the caller's context. This means that a called workflow can access self-hosted runners that are:
+Called workflows that are owned by the same user or organization or enterprise as the caller workflow can access self-hosted runners from the caller's context. This means that a called workflow can access self-hosted runners that are:
 * In the caller repository
-* In the caller repository's organizationor enterprise, provided that the runner has been made available to the caller repository
+* In the caller repository's organization or enterprise, provided that the runner has been made available to the caller repository
 
 ### Access and permissions for nested workflows
 
@@ -190,7 +181,7 @@ The metadata file must have the same name as the workflow file, but instead of t
     "filePatterns": [
         "package.json$",
         "^Dockerfile",
-        ".*\\.md$"
+        ".*\.md$"
     ]
 }
 ```

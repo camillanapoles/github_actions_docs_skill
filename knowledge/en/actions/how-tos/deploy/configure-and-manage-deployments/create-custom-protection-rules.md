@@ -14,8 +14,8 @@ _Use GitHub Apps to automate protecting deployments with third-party systems._
 
 ## Prerequisites
 
-> [!NOTE]
-> Custom deployment protection rules are currently in public preview and subject to change.
+!!! note
+    Custom deployment protection rules are currently in public preview and subject to change.
 
 For general information about deployment protection rules, see [Deploying with GitHub Actions](control-deployments.md#using-custom-deployment-protection-rules#using-custom-deployment-protection-rules).
 
@@ -45,9 +45,7 @@ Custom deployment protection rules are not compatible when a workflow job's envi
 
             ```shell
    curl --request POST \
-   --url "https://api.github.com
-
-http(s)://HOSTNAME/api/v3/app/installations/INSTALLATION_ID/ACCESS_TOKENS" \
+   --url "https://api.github.com/app/installations/INSTALLATION_ID/ACCESS_TOKENS" \
    --header "Accept: application/vnd.github+json" \
    --header "Authorization: Bearer {jwt}" \
    --header "Content-Type: application/json" \

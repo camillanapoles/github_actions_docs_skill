@@ -14,7 +14,7 @@ _GitHub Actions gives you fine-grained control over deployments with environment
 
 ## Prerequisites
 
-You should be familiar with the syntax for GitHub Actions. For more information, see [Write workflows](../../write-workflows.md).
+You should be familiar with the syntax for GitHub Actions. For more information, see [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows).
 
 ## Triggering your deployment
 
@@ -47,7 +47,7 @@ You can configure environments with protection rules and secrets. When a workflo
 
 ## Using concurrency
 
-Concurrency ensures that only a single job or workflow using the same concurrency group will run at a time. You can use concurrency so that an environment has a maximum of one deployment in progressand one deployment pending at a time. For more information about concurrency, see [Control the concurrency of workflows and jobs](../../write-workflows/choose-when-workflows-run/control-workflow-concurrency.md).
+Concurrency ensures that only a single job or workflow using the same concurrency group will run at a time. You can use concurrency so that an environment has a maximum of one deployment in progress and one deployment pending at a time. For more information about concurrency, see [Control the concurrency of workflows and jobs](../../write-workflows/choose-when-workflows-run/control-workflow-concurrency.md).
 
 ## Using environments without deployments
 
@@ -84,12 +84,12 @@ This is useful when you want to use environments for:
 
 The `deployment` property controls which protection rules apply:
 
-| Protection rule | `deployment: true` (default) | `deployment: false` |
-|----------------|------------------------------|---------------------|
-| **None** | Deployment created, job runs | No deployment, job runs |
-| **Wait timer** | Wait timer enforced | Wait timer still enforced |
-| **Required reviewers** | Reviewers must approve | Reviewers must approve |
-| **Custom deployment protection rule app** | App webhook sent, must approve | **Job fails with error** |
+| Protection rule                           | `deployment: true` (default)   | `deployment: false`       |
+|-----------------------------------------|------------------------------|-------------------------|
+| **None**                                  | Deployment created, job runs   | No deployment, job runs   |
+| **Wait timer**                            | Wait timer enforced            | Wait timer still enforced |
+| **Required reviewers**                    | Reviewers must approve         | Reviewers must approve    |
+| **Custom deployment protection rule app** | App webhook sent, must approve | **Job fails with error**  |
 
 Custom deployment protection rules (GitHub Apps) require a deployment object to function. If you set `deployment: false` on an environment that has custom deployment protection rules, the job will fail immediately with an annotation or error message explaining that the environment's protection rules are incompatible with `deployment: false`. Either remove `deployment: false` from your workflow, or remove the custom deployment protection rules from the environment.
 
@@ -181,8 +181,8 @@ For more information about environments and required approvals, see [Managing en
 
 ## Using custom deployment protection rules
 
-> [!NOTE]
-> Custom deployment protection rules are currently in public preview and subject to change.
+!!! note
+    Custom deployment protection rules are currently in public preview and subject to change.
 
 You can enable your own custom protection rules to gate deployments with third-party services. For example, you can use services such as Datadog, Honeycomb, and ServiceNow to provide automated approvals for deployments to GitHub.
 

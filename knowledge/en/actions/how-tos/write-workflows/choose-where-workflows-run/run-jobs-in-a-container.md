@@ -12,8 +12,8 @@ section: How tos / Write workflows / Choose where workflows run
 
 _Use a container to run the steps in a job._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Overview
 
@@ -21,8 +21,8 @@ Use `jobs.<job_id>.container` to create a container to run any steps in a job th
 
 If you do not set a `container`, all steps will run directly on the host specified by `runs-on` unless a step refers to an action configured to run in a container.
 
-> [!NOTE]
-> The default shell for `run` steps inside a container is `sh` instead of `bash`. This can be overridden with [`jobs.<job_id>.defaults.run`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_iddefaultsrun) or [`jobs.<job_id>.steps[*].shell`](/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell).
+!!! note
+    The default shell for `run` steps inside a container is `sh` instead of `bash`. This can be overridden with [`jobs.<job_id>.defaults.run`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_iddefaultsrun) or [`jobs.<job_id>.steps[*].shell`](/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell).
 
 ### Example: Running a job within a container
 
@@ -68,8 +68,8 @@ For reference information, see [Dockerfile support for GitHub Actions](../../../
 ## Defining the container image
 
 Use `jobs.<job_id>.container.image` to define the Docker image to use as the container to run the action. The value can be the Docker Hub image name or a registry name.
-> [!NOTE]
-> Docker Hub normally imposes rate limits on both push and pull operations which will affect jobs on self-hosted runners. However, GitHub-hosted runners are not subject to these limits based on an agreement between GitHub and Docker.
+!!! note
+    Docker Hub normally imposes rate limits on both push and pull operations which will affect jobs on self-hosted runners. However, GitHub-hosted runners are not subject to these limits based on an agreement between GitHub and Docker.
 
 ## Defining credentials for a container registry
 
@@ -116,5 +116,5 @@ volumes:
 
 Use `jobs.<job_id>.container.options` to configure additional Docker container resource options. For a list of options, see [`docker create` options](https://docs.docker.com/engine/reference/commandline/create/#options).
 
-> [!WARNING]
-> The `--network` and `--entrypoint` options are not supported.
+!!! warning
+    The `--network` and `--entrypoint` options are not supported.

@@ -12,8 +12,8 @@ section: How tos / Create and publish actions
 
 _You can use exit codes to set the status of an action. GitHub displays statuses to indicate passing or failing actions._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## About exit codes
 

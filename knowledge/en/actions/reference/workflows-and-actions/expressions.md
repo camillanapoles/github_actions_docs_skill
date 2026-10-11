@@ -17,11 +17,11 @@ _Find information for expressions in GitHub Actions._
 As part of an expression, you can use `boolean`, `null`, `number`, or `string` data types.
 
 | Data type | Literal value |
-|-----------|---------------|
+| --- | --- |
 | `boolean` | `true` or `false` |
-| `null`    | `null` |
-| `number`  | Any number format supported by JSON. |
-| `string`  | You don't need to enclose strings in `${{` and `}}`. However, if you do, you must use single quotes (`'`) around the string. To use a literal single quote, escape the literal single quote using an additional single quote (`''`). Wrapping with double quotes (`"`) will throw an error. |
+| `null` | `null` |
+| `number` | Any number format supported by JSON. |
+| `string` | You don't need to enclose strings in `${{` and `}}`. However, if you do, you must use single quotes (`'`) around the string. To use a literal single quote, escape the literal single quote using an additional single quote (`''`). Wrapping with double quotes (`"`) will throw an error. |
 
 Note that in conditionals, falsy values (`false`, `0`, `-0`, `""`, `''`, `null`) are coerced to `false` and truthy (`true` and other non-falsy values) are coerced to `true`.
 
@@ -41,22 +41,23 @@ env:
 
 ## Operators
 
-| Operator    | Description |
-| ---         | ---         |
-| `( )`       | Logical grouping |
-| `[ ]`       | Index |
-| `.`         | Property de-reference |
-| `!`         | Not |
-| `<`         | Less than |
-| `<=`        | Less than or equal |
-| `>`         | Greater than |
-| `>=`        | Greater than or equal |
-| `==`        | Equal |
-| `!=`        | Not equal |
-| `&&`        | And |
-| <code>\|\|</code> | Or |
+| Operator | Description           |
+|--------|---------------------|
+| `( )`    | Logical grouping      |
+| `[ ]`    | Index                 |
+| `.`      | Property de-reference |
+| `!`      | Not                   |
+| `<`      | Less than             |
+| `<=`     | Less than or equal    |
+| `>`      | Greater than          |
+| `>=`     | Greater than or equal |
+| `==`     | Equal                 |
+| `!=`     | Not equal             |
+| `&&`     | And                   |
+| `\|\|`   | Or                    |
 
-  > [!NOTE]
+!!! note
+
   > * GitHub ignores case when comparing strings.
   > * `steps.<step_id>.outputs.<output_name>` evaluates as a string. You need to use specific syntax to tell GitHub to evaluate an expression rather than treat it as a string. For more information, see [Contexts reference](contexts.md#steps-context#steps-context).
   > * For numerical comparison, the `fromJSON()` function can be used to convert a string to a number. For more information on the `fromJSON()` function, see [fromJSON](#fromjson).
@@ -65,13 +66,13 @@ GitHub performs loose equality comparisons.
 
 * If the types do not match, GitHub coerces the type to a number. GitHub casts data types to a number using these conversions:
 
-  | Type    | Result |
-  | ---     | ---    |
-  | Null    | `0` |
-  | Boolean | `true` returns `1` <br /> `false` returns `0` |
-  | String  | Parsed from any legal JSON number format, otherwise `NaN`. <br /> Note: empty string returns `0`. |
-  | Array   | `NaN` |
-  | Object  | `NaN` |
+| Type | Result |
+| --- | --- |
+| Null | `0` |
+| Boolean | `true` returns `1`   `false` returns `0` |
+| String | Parsed from any legal JSON number format, otherwise `NaN`.   Note: empty string returns `0`. |
+| Array | `NaN` |
+| Object | `NaN` |
 * When `NaN` is one of the operands of any relational comparison (`>`, `<`, `>=`, `<=`), the result is always `false`. For more information, see the [NaN Mozilla docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN).
 * GitHub ignores case when comparing strings.
 * Objects and arrays are only considered equal when they are the same instance.
@@ -80,13 +81,13 @@ GitHub performs loose equality comparisons.
 
 GitHub offers a set of built-in functions that you can use in expressions. Some functions cast values to a string to perform comparisons. GitHub casts data types to a string using these conversions:
 
-| Type    | Result |
-| ---     | ---    |
-| Null    | `''` |
-| Boolean | `'true'` or `'false'` |
+| Type    | Result                                        |
+|-------|---------------------------------------------|
+| Null    | `''`                                          |
+| Boolean | `'true'` or `'false'`                         |
 | Number  | Decimal format, exponential for large numbers |
-| Array   | Arrays are not converted to a string |
-| Object  | Objects are not converted to a string |
+| Array   | Arrays are not converted to a string          |
+| Object  | Objects are not converted to a string         |
 
 ### contains
 
@@ -308,8 +309,8 @@ steps:
 
 Causes the step to always execute, and returns `true`, even when canceled. The `always` expression is best used at the step level or on tasks that you expect to run even when a job is canceled. For example, you can use `always` to send logs even when a job is canceled.
 
-> [!WARNING]
-> Avoid using `always` for any task that could suffer from a critical failure, for example: getting sources, otherwise the workflow may hang until it times out. If you want to run a job or step regardless of its success or failure, use the recommended alternative: `if: ${{ !cancelled() }}`
+!!! warning
+    Avoid using `always` for any task that could suffer from a critical failure, for example: getting sources, otherwise the workflow may hang until it times out. If you want to run a job or step regardless of its success or failure, use the recommended alternative: `if: ${{ !cancelled() }}`
 
 #### Example of `always`
 

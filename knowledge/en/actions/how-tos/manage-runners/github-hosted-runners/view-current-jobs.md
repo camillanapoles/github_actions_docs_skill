@@ -12,8 +12,8 @@ section: How tos / Manage runners / Github hosted runners
 
 _Monitor how GitHub-hosted runners are processing jobs in your organization or enterprise, and identify any related constraints._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Viewing active jobs in your organization or enterprise
 
@@ -23,12 +23,6 @@ You can get a list of all jobs currently running on GitHub-hosted runners in you
 1. Click ** Settings**.
 1. In the left sidebar, click **Actions**, then click **Runners**.
 
-1. Navigate to your runner settings:
-   * **In an organization or repository:** Navigate to the main page, then click ** Settings**.
-   * **If using an enterprise account:** Navigate to your enterprise account by clicking your profile picture in the top-right corner of GitHub, then clicking **Your enterprises**, then clicking the enterprise.
-1. Navigate to the GitHub Actions settings:
-   * **In an organization or repository:** Click **Actions** in the left sidebar, then click **Runners**.
-   * **If using an enterprise account:** In the left sidebar, click **" Policies"**, then click **Actions**, then click the **Runners** tab.
 1. In the "Runners" table, click the entry for **GitHub-hosted runners**. This entry will only be present if you're using GitHub-hosted runners.
 1. Review the "Active jobs" section, which contains a list of all jobs currently running on GitHub-hosted runners.
 
@@ -42,11 +36,5 @@ The following procedure demonstrates how to check the maximum number of concurre
 1. Click ** Settings**.
 1. In the left sidebar, click **Actions**, then click **Runners**.
 
-1. Navigate to your runner settings:
-   * **In an organization or repository:** Navigate to the main page, then click ** Settings**.
-   * **If using an enterprise account:** Navigate to your enterprise account by clicking your profile picture in the top-right corner of GitHub, then clicking **Your enterprises**, then clicking the enterprise.
-1. Navigate to the GitHub Actions settings:
-   * **In an organization or repository:** Click **Actions** in the left sidebar, then click **Runners**.
-   * **If using an enterprise account:** In the left sidebar, click **" Policies"**, then click **Actions**, then click the **Runners** tab.
 1. In the "Runners" table, click the entry for **GitHub-hosted runners**. This entry will only be present if you're using GitHub-hosted runners.
 1. Review the "All jobs usage" section, which lists the number of active jobs and the maximum number of jobs you can run.

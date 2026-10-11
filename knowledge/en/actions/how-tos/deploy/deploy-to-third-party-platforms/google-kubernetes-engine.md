@@ -43,7 +43,7 @@ $ gcloud services enable \
 
 ### Configuring a service account and storing its credentials
 
-This procedure demonstrates how to create the service account for your GKE integration. It explains how to create the account, add roles to it, retrieve its keys, and store them as a base64-encoded encryptedrepository secret named `GKE_SA_KEY`.
+This procedure demonstrates how to create the service account for your GKE integration. It explains how to create the account, add roles to it, retrieve its keys, and store them as a base64-encoded encrypted repository secret named `GKE_SA_KEY`.
 
 1. Create a new service account:
 
@@ -59,7 +59,8 @@ This procedure demonstrates how to create the service account for your GKE integ
 
 1. Add roles to the service account.
 
-   > [!NOTE]
+!!! note
+
    > Apply more restrictive roles to suit your requirements.
 
             ```shell copy
@@ -108,7 +109,7 @@ The following example workflow demonstrates how to build a container image and p
 
 Under the `env` key, change the value of `GKE_CLUSTER` to the name of your cluster, `GKE_ZONE` to your cluster zone, `DEPLOYMENT_NAME` to the name of your deployment, and `IMAGE` to the name of your image.
 
-If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environmentor if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
+If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environment or if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
 
 ```yaml copy
 # This workflow uses actions that are not certified by GitHub.

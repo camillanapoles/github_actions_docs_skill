@@ -12,5 +12,5 @@ section: How tos / Manage runners / Github hosted runners
 
 _You can use GitHub's runners to execute your GitHub Actions workflows._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.

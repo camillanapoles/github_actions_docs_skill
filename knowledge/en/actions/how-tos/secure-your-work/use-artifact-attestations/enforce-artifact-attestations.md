@@ -58,8 +58,8 @@ You've now installed the GitHub trust root, and an artifact attestation policy i
 
 ### Enable the policy in your namespace
 
-> [!WARNING]
-> This policy will not be enforced until you specify which namespaces it should apply to.
+!!! warning
+    This policy will not be enforced until you specify which namespaces it should apply to.
 
 Each namespace in your cluster can independently enforce policies. To enable enforcement in a namespace, you can add the following label to the namespace:
 

@@ -18,8 +18,6 @@ You can use `jobs.<job_id>.concurrency` to ensure that only a single job or work
 
 You can also specify `concurrency` at the workflow level. For more information, see [`concurrency`](../../../reference/workflows-and-actions/workflow-syntax.md#concurrency).
 
-This means that there can be at most one running job or workflow in a concurrency group at any time. When a concurrent job or workflow is queued, if another job or workflow using the same concurrency group in the repository is in progress, the queued job or workflow will be `pending`. By default, any existing `pending` job or workflow in the same concurrency group will be canceled and the new queued job or workflow will take its place.
-
 This means that there can be at most one running and one pending job in a concurrency group at any time. When a concurrent job or workflow is queued, if another job or workflow using the same concurrency group in the repository is in progress, the queued job or workflow will be `pending`. Any existing `pending` job or workflow in the same concurrency group, if it exists, will be canceled and the new queued job or workflow will take its place.
 
 To also cancel any currently running job or workflow in the same concurrency group, specify `cancel-in-progress: true`. To conditionally cancel currently running jobs or workflows in the same concurrency group, you can specify `cancel-in-progress` as an expression with any of the allowed expression contexts.
@@ -31,9 +29,9 @@ To allow more than one `pending` job or workflow run to wait in the same concurr
 
 The combination of `queue: max` and `cancel-in-progress: true` is not allowed and will result in a workflow validation error.
 
-> [!NOTE]
-> * The concurrency group name is case insensitive. For example, `prod` and `Prod` will be treated as the same concurrency group.
-> * Jobs or workflow runs in the same concurrency group are processed in first-in-first-out (FIFO) order according to the time each one started waiting on the concurrency group, not the time each workflow was dispatched. Since the actual start time of a job or run may vary, ordering is not guaranteed.
+!!! note
+    * The concurrency group name is case insensitive. For example, `prod` and `Prod` will be treated as the same concurrency group.
+    * Jobs or workflow runs in the same concurrency group are processed in first-in-first-out (FIFO) order according to the time each one started waiting on the concurrency group, not the time each workflow was dispatched. Since the actual start time of a job or run may vary, ordering is not guaranteed.
 
 ### Example: Using concurrency and the default behavior
 

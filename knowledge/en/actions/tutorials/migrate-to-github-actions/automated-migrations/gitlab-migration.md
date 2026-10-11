@@ -24,7 +24,8 @@ The instructions below will guide you through configuring your environment to us
   * Docker is [installed](https://docs.docker.com/get-docker/) and running.
   * [GitHub CLI](https://cli.github.com) is installed.
 
-  > [!NOTE]
+!!! note
+
   > The GitHub Actions Importer container and CLI do not need to be installed on the same server as your CI platform.
 
 ### Limitations
@@ -90,13 +91,11 @@ The `configure` CLI command is used to set required credentials and options for 
 
    The `configure` command will prompt you for the following information:
 
-   * For "Which CI providers are you configuring?", use the arrow keys to select `GitLab`, press <kbd>Space</kbd> to select it, then press <kbd>Enter</kbd>.
-   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the GitHub instance", enter the URL for your GitHub Enterprise Server instance, and press <kbd>Enter</kbd>.
-
-press <kbd>Enter</kbd> to accept the default value (`https://github.com`).
-   * For "Private token for GitLab", enter the value for the GitLab personal access token that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the GitLab instance", enter the URL of your GitLab instance, and press <kbd>Enter</kbd>.
+   * For "Which CI providers are you configuring?", use the arrow keys to select `GitLab`, press `Space` to select it, then press `Enter`.
+   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press `Enter`.
+   * For "Base url of the GitHub instance", press `Enter` to accept the default value (`https://github.com`).
+   * For "Private token for GitLab", enter the value for the GitLab personal access token that you created earlier, and press `Enter`.
+   * For "Base url of the GitLab instance", enter the URL of your GitLab instance, and press `Enter`.
 
    An example of the output of the `configure` command is shown below.
 
@@ -400,32 +399,32 @@ gh actions-importer migrate gitlab --project my-project-name --output-dir output
 
 The following table shows the type of properties GitHub Actions Importer is currently able to convert. For more details about how GitLab pipeline syntax aligns with GitHub Actions, see [Migrating from GitLab CI/CD to GitHub Actions](../manual-migrations/migrate-from-gitlab-cicd.md).
 
-| GitLab Pipelines                        | GitHub Actions                  | Status                      |
-| :-------------------------------------- | :------------------------------ | :-------------------------- |
-| `after_script`                          | `jobs.<job_id>.steps`           |                   Supported |
-| `auto_cancel_pending_pipelines`         | `concurrency`                   |                   Supported |
-| `before_script`                         | `jobs.<job_id>.steps`           |                   Supported |
-| `build_timeout` or `timeout`            | `jobs.<job_id>.timeout-minutes` |                   Supported |
-| `default`                               |  Not applicable                 |                   Supported |
-| `image`                                 | `jobs.<job_id>.container`       |                   Supported |
-| `job`                                   | `jobs.<job_id>`                 |                   Supported |
-| `needs`                                 | `jobs.<job_id>.needs`           |                   Supported |
-| `only_allow_merge_if_pipeline_succeeds` | `on.pull_request`               |                   Supported |
-| `resource_group`                        | `jobs.<job_id>.concurrency`     |                   Supported |
-| `schedule`                              | `on.schedule`                   |                   Supported |
-| `script`                                | `jobs.<job_id>.steps`           |                   Supported |
-| `stages`                                | `jobs`                          |                   Supported |
-| `tags`                                  | `jobs.<job_id>.runs-on`         |                   Supported |
-| `variables`                             | `env`, `jobs.<job_id>.env`      |                   Supported |
-| Run pipelines for new commits           | `on.push`                       |                   Supported |
-| Run pipelines manually                  | `on.workflow_dispatch`          |                   Supported |
-| `environment`                           | `jobs.<job_id>.environment`     |         Partially supported |
-| `include`                               | Files referenced in an `include` statement are merged into a single job graph before being transformed. |         Partially supported |
-| `only` or `except`                      | `jobs.<job_id>.if`              |         Partially supported |
-| `parallel`                              | `jobs.<job_id>.strategy`        |         Partially supported |
-| `rules`                                 | `jobs.<job_id>.if`              |         Partially supported |
-| `services`                              | `jobs.<job_id>.services`        |         Partially supported |
-| `workflow`                              | `if`                            |         Partially supported |
+| GitLab Pipelines | GitHub Actions | Status |
+| :-- | :-- | :-- |
+| `after_script` | `jobs.<job_id>.steps` | Supported |
+| `auto_cancel_pending_pipelines` | `concurrency` | Supported |
+| `before_script` | `jobs.<job_id>.steps` | Supported |
+| `build_timeout` or `timeout` | `jobs.<job_id>.timeout-minutes` | Supported |
+| `default` | Not applicable | Supported |
+| `image` | `jobs.<job_id>.container` | Supported |
+| `job` | `jobs.<job_id>` | Supported |
+| `needs` | `jobs.<job_id>.needs` | Supported |
+| `only_allow_merge_if_pipeline_succeeds` | `on.pull_request` | Supported |
+| `resource_group` | `jobs.<job_id>.concurrency` | Supported |
+| `schedule` | `on.schedule` | Supported |
+| `script` | `jobs.<job_id>.steps` | Supported |
+| `stages` | `jobs` | Supported |
+| `tags` | `jobs.<job_id>.runs-on` | Supported |
+| `variables` | `env`, `jobs.<job_id>.env` | Supported |
+| Run pipelines for new commits | `on.push` | Supported |
+| Run pipelines manually | `on.workflow_dispatch` | Supported |
+| `environment` | `jobs.<job_id>.environment` | Partially supported |
+| `include` | Files referenced in an `include` statement are merged into a single job graph before being transformed. | Partially supported |
+| `only` or `except` | `jobs.<job_id>.if` | Partially supported |
+| `parallel` | `jobs.<job_id>.strategy` | Partially supported |
+| `rules` | `jobs.<job_id>.if` | Partially supported |
+| `services` | `jobs.<job_id>.services` | Partially supported |
+| `workflow` | `if` | Partially supported |
 
 For information about supported GitLab constructs, see the [`github/gh-actions-importer` repository](https://github.com/github/gh-actions-importer/blob/main/docs/gitlab/index.md).
 
@@ -433,73 +432,73 @@ For information about supported GitLab constructs, see the [`github/gh-actions-i
 
 GitHub Actions Importer uses the mapping in the table below to convert default GitLab environment variables to the closest equivalent in GitHub Actions.
 
-| GitLab                                     | GitHub Actions                                                                        |
-| :-------------------------------------------- | :------------------------------------------------------------------------------------ |
-| `CI_API_V4_URL`                               | `${{ github.api_url }}`                                                               |
-| `CI_BUILDS_DIR`                               | `${{ github.workspace }}`                                                        |
-| `CI_COMMIT_BRANCH`                            | `${{ github.ref }}`                                                                |
-| `CI_COMMIT_REF_NAME`                          | `${{ github.ref }}`                                                                  |
-| `CI_COMMIT_REF_SLUG`                          | `${{ github.ref }}`                                                                  |
-| `CI_COMMIT_SHA`                               | `${{ github.sha }}`                                                                 |
-| `CI_COMMIT_SHORT_SHA`                         | `${{ github.sha }}`                                                                 |
-| `CI_COMMIT_TAG`                               | `${{ github.ref }}`                                                                 |
-| `CI_JOB_ID`                                   | `${{ github.job }}`                                                                 |
-| `CI_JOB_MANUAL`                               | `${{ github.event_name == 'workflow_dispatch' }}`                                   |
-| `CI_JOB_NAME`                                 | `${{ github.job }}`                                                                 |
-| `CI_JOB_STATUS`                               | `${{ job.status }}`                                                                   |
-| `CI_JOB_URL`                                  | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
-| `CI_JOB_TOKEN`                                | `${{ github.token }}`                                                                 |
-| `CI_NODE_INDEX`                               | `${{ strategy.job-index }}`                                                           |
-| `CI_NODE_TOTAL`                               | `${{ strategy.job-total }}`                                                           |
-| `CI_PIPELINE_ID`                              | `${{ github.repository}}/${{ github.workflow }}`                                      |
-| `CI_PIPELINE_IID`                             | `${{ github.workflow }}`                                                              |
-| `CI_PIPELINE_SOURCE`                          | `${{ github.event_name }}`                                                            |
-| `CI_PIPELINE_TRIGGERED`                       | `${{ github.actions }}`                                                               |
-| `CI_PIPELINE_URL`                             | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
-| `CI_PROJECT_DIR`                              | `${{ github.workspace }}`                                                             |
-| `CI_PROJECT_ID`                               | `${{ github.repository }}`                                                            |
-| `CI_PROJECT_NAME`                             | `${{ github.event.repository.name }}`                                                 |
-| `CI_PROJECT_NAMESPACE`                        | `${{ github.repository_owner }}`                                                      |
-| `CI_PROJECT_PATH_SLUG`                        | `${{ github.repository }}`                                                            |
-| `CI_PROJECT_PATH`                             | `${{ github.repository }}`                                                            |
-| `CI_PROJECT_ROOT_NAMESPACE`                   | `${{ github.repository_owner }}`                                                      |
-| `CI_PROJECT_TITLE`                            | `${{ github.event.repository.full_name }}`                                            |
-| `CI_PROJECT_URL`                              | `${{ github.server_url }}/${{ github.repository }}`                                   |
-| `CI_REPOSITORY_URL`                           | `${{ github.event.repository.clone_url }}`                                            |
-| `CI_RUNNER_EXECUTABLE_ARCH`                   | `${{ runner.os }}`                                                                    |
-| `CI_SERVER_HOST`                              | `${{ github.server_url }}`                                                            |
-| `CI_SERVER_URL`                               | `${{ github.server_url }}`                                                            |
-| `CI_SERVER`                                   | `${{ github.actions }}`                                                               |
-| `GITLAB_CI`                                   | `${{ github.actions }}`                                                               |
-| `GITLAB_USER_EMAIL`                           | `${{ github.actor }}`                                                                 |
-| `GITLAB_USER_ID`                              | `${{ github.actor }}`                                                                 |
-| `GITLAB_USER_LOGIN`                           | `${{ github.actor }}`                                                                 |
-| `GITLAB_USER_NAME`                            | `${{ github.actor }}`                                                                 |
-| `TRIGGER_PAYLOAD`                             | `${{ github.event_path }}`                                                            |
-| `CI_MERGE_REQUEST_ASSIGNEES`                  | `${{ github.event.pull_request.assignees }}`                                          |
-| `CI_MERGE_REQUEST_ID`                         | `${{ github.event.pull_request.number }}`                                             |
-| `CI_MERGE_REQUEST_IID`                        | `${{ github.event.pull_request.number }}`                                             |
-| `CI_MERGE_REQUEST_LABELS`                     | `${{ github.event.pull_request.labels }}`                                             |
-| `CI_MERGE_REQUEST_MILESTONE`                  | `${{ github.event.pull_request.milestone }}`                                          |
-| `CI_MERGE_REQUEST_PROJECT_ID`                 | `${{ github.repository }}`                                                            |
-| `CI_MERGE_REQUEST_PROJECT_PATH`               | `${{ github.repository }}`                                                            |
-| `CI_MERGE_REQUEST_PROJECT_URL`                | `${{ github.server_url }}/${{ github.repository }}`                                   |
-| `CI_MERGE_REQUEST_REF_PATH`                   | `${{ github.ref }}`                                                                   |
-| `CI_MERGE_REQUEST_SOURCE_BRANCH_NAME`         | `${{ github.event.pull_request.head.ref }}`                                           |
-| `CI_MERGE_REQUEST_SOURCE_BRANCH_SHA`          | `${{ github.event.pull_request.head.sha}}`                                            |
-| `CI_MERGE_REQUEST_SOURCE_PROJECT_ID`          | `${{ github.event.pull_request.head.repo.full_name }}`                                |
-| `CI_MERGE_REQUEST_SOURCE_PROJECT_PATH`        | `${{ github.event.pull_request.head.repo.full_name }}`                                |
-| `CI_MERGE_REQUEST_SOURCE_PROJECT_URL`         | `${{ github.event.pull_request.head.repo.url }}`                                      |
-| `CI_MERGE_REQUEST_TARGET_BRANCH_NAME`         | `${{ github.event.pull_request.base.ref }}`                                           |
-| `CI_MERGE_REQUEST_TARGET_BRANCH_SHA`          | `${{ github.event.pull_request.base.sha }}`                                           |
-| `CI_MERGE_REQUEST_TITLE`                      | `${{ github.event.pull_request.title }}`                                              |
-| `CI_EXTERNAL_PULL_REQUEST_IID`                | `${{ github.event.pull_request.number }}`                                             |
-| `CI_EXTERNAL_PULL_REQUEST_SOURCE_REPOSITORY`  | `${{ github.event.pull_request.head.repo.full_name }}`                                |
-| `CI_EXTERNAL_PULL_REQUEST_TARGET_REPOSITORY`  | `${{ github.event.pull_request.base.repo.full_name }}`                                |
-| `CI_EXTERNAL_PULL_REQUEST_SOURCE_BRANCH_NAME` | `${{ github.event.pull_request.head.ref }}`                                           |
-| `CI_EXTERNAL_PULL_REQUEST_SOURCE_BRANCH_SHA`  | `${{ github.event.pull_request.head.sha }}`                                           |
-| `CI_EXTERNAL_PULL_REQUEST_TARGET_BRANCH_NAME` | `${{ github.event.pull_request.base.ref }}`                                           |
-| `CI_EXTERNAL_PULL_REQUEST_TARGET_BRANCH_SHA`  | `${{ github.event.pull_request.base.sha }}`                                           |
+| GitLab | GitHub Actions |
+| :-- | :-- |
+| `CI_API_V4_URL` | `${{ github.api_url }}` |
+| `CI_BUILDS_DIR` | `${{ github.workspace }}` |
+| `CI_COMMIT_BRANCH` | `${{ github.ref }}` |
+| `CI_COMMIT_REF_NAME` | `${{ github.ref }}` |
+| `CI_COMMIT_REF_SLUG` | `${{ github.ref }}` |
+| `CI_COMMIT_SHA` | `${{ github.sha }}` |
+| `CI_COMMIT_SHORT_SHA` | `${{ github.sha }}` |
+| `CI_COMMIT_TAG` | `${{ github.ref }}` |
+| `CI_JOB_ID` | `${{ github.job }}` |
+| `CI_JOB_MANUAL` | `${{ github.event_name == 'workflow_dispatch' }}` |
+| `CI_JOB_NAME` | `${{ github.job }}` |
+| `CI_JOB_STATUS` | `${{ job.status }}` |
+| `CI_JOB_URL` | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
+| `CI_JOB_TOKEN` | `${{ github.token }}` |
+| `CI_NODE_INDEX` | `${{ strategy.job-index }}` |
+| `CI_NODE_TOTAL` | `${{ strategy.job-total }}` |
+| `CI_PIPELINE_ID` | `${{ github.repository}}/${{ github.workflow }}` |
+| `CI_PIPELINE_IID` | `${{ github.workflow }}` |
+| `CI_PIPELINE_SOURCE` | `${{ github.event_name }}` |
+| `CI_PIPELINE_TRIGGERED` | `${{ github.actions }}` |
+| `CI_PIPELINE_URL` | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
+| `CI_PROJECT_DIR` | `${{ github.workspace }}` |
+| `CI_PROJECT_ID` | `${{ github.repository }}` |
+| `CI_PROJECT_NAME` | `${{ github.event.repository.name }}` |
+| `CI_PROJECT_NAMESPACE` | `${{ github.repository_owner }}` |
+| `CI_PROJECT_PATH_SLUG` | `${{ github.repository }}` |
+| `CI_PROJECT_PATH` | `${{ github.repository }}` |
+| `CI_PROJECT_ROOT_NAMESPACE` | `${{ github.repository_owner }}` |
+| `CI_PROJECT_TITLE` | `${{ github.event.repository.full_name }}` |
+| `CI_PROJECT_URL` | `${{ github.server_url }}/${{ github.repository }}` |
+| `CI_REPOSITORY_URL` | `${{ github.event.repository.clone_url }}` |
+| `CI_RUNNER_EXECUTABLE_ARCH` | `${{ runner.os }}` |
+| `CI_SERVER_HOST` | `${{ github.server_url }}` |
+| `CI_SERVER_URL` | `${{ github.server_url }}` |
+| `CI_SERVER` | `${{ github.actions }}` |
+| `GITLAB_CI` | `${{ github.actions }}` |
+| `GITLAB_USER_EMAIL` | `${{ github.actor }}` |
+| `GITLAB_USER_ID` | `${{ github.actor }}` |
+| `GITLAB_USER_LOGIN` | `${{ github.actor }}` |
+| `GITLAB_USER_NAME` | `${{ github.actor }}` |
+| `TRIGGER_PAYLOAD` | `${{ github.event_path }}` |
+| `CI_MERGE_REQUEST_ASSIGNEES` | `${{ github.event.pull_request.assignees }}` |
+| `CI_MERGE_REQUEST_ID` | `${{ github.event.pull_request.number }}` |
+| `CI_MERGE_REQUEST_IID` | `${{ github.event.pull_request.number }}` |
+| `CI_MERGE_REQUEST_LABELS` | `${{ github.event.pull_request.labels }}` |
+| `CI_MERGE_REQUEST_MILESTONE` | `${{ github.event.pull_request.milestone }}` |
+| `CI_MERGE_REQUEST_PROJECT_ID` | `${{ github.repository }}` |
+| `CI_MERGE_REQUEST_PROJECT_PATH` | `${{ github.repository }}` |
+| `CI_MERGE_REQUEST_PROJECT_URL` | `${{ github.server_url }}/${{ github.repository }}` |
+| `CI_MERGE_REQUEST_REF_PATH` | `${{ github.ref }}` |
+| `CI_MERGE_REQUEST_SOURCE_BRANCH_NAME` | `${{ github.event.pull_request.head.ref }}` |
+| `CI_MERGE_REQUEST_SOURCE_BRANCH_SHA` | `${{ github.event.pull_request.head.sha}}` |
+| `CI_MERGE_REQUEST_SOURCE_PROJECT_ID` | `${{ github.event.pull_request.head.repo.full_name }}` |
+| `CI_MERGE_REQUEST_SOURCE_PROJECT_PATH` | `${{ github.event.pull_request.head.repo.full_name }}` |
+| `CI_MERGE_REQUEST_SOURCE_PROJECT_URL` | `${{ github.event.pull_request.head.repo.url }}` |
+| `CI_MERGE_REQUEST_TARGET_BRANCH_NAME` | `${{ github.event.pull_request.base.ref }}` |
+| `CI_MERGE_REQUEST_TARGET_BRANCH_SHA` | `${{ github.event.pull_request.base.sha }}` |
+| `CI_MERGE_REQUEST_TITLE` | `${{ github.event.pull_request.title }}` |
+| `CI_EXTERNAL_PULL_REQUEST_IID` | `${{ github.event.pull_request.number }}` |
+| `CI_EXTERNAL_PULL_REQUEST_SOURCE_REPOSITORY` | `${{ github.event.pull_request.head.repo.full_name }}` |
+| `CI_EXTERNAL_PULL_REQUEST_TARGET_REPOSITORY` | `${{ github.event.pull_request.base.repo.full_name }}` |
+| `CI_EXTERNAL_PULL_REQUEST_SOURCE_BRANCH_NAME` | `${{ github.event.pull_request.head.ref }}` |
+| `CI_EXTERNAL_PULL_REQUEST_SOURCE_BRANCH_SHA` | `${{ github.event.pull_request.head.sha }}` |
+| `CI_EXTERNAL_PULL_REQUEST_TARGET_BRANCH_NAME` | `${{ github.event.pull_request.base.ref }}` |
+| `CI_EXTERNAL_PULL_REQUEST_TARGET_BRANCH_SHA` | `${{ github.event.pull_request.base.sha }}` |
 
 ## Legal notice
 

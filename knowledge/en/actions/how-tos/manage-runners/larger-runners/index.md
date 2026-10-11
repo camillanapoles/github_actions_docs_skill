@@ -12,5 +12,5 @@ section: How tos / Manage runners / Larger runners
 
 _GitHub offers runners with more RAM, CPU, and disk space._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.

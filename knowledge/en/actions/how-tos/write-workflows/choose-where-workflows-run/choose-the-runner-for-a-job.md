@@ -12,16 +12,14 @@ section: How tos / Write workflows / Choose where workflows run
 
 _Define the type of machine that will process a job in your workflow._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Overview
 
 Use `jobs.<job_id>.runs-on` to define the type of machine to run the job on.
 
-* The destination machine can be either a [GitHub-hosted runner](#choosing-github-hosted-runners), [larger runner](#choosing-runners-in-a-group), or a [self-hosted runner](#choosing-self-hosted-runners)
-
-a [self-hosted runner](#choosing-self-hosted-runners).
+* The destination machine can be a [self-hosted runner](#choosing-self-hosted-runners).
 * You can target runners based on the labels assigned to them, or their group membership, or a combination of these.
 * You can provide `runs-on` as:
   * A single string
@@ -57,13 +55,13 @@ a [self-hosted runner](#choosing-self-hosted-runners).
 
 * If you would like to run your workflow on multiple machines, use [`jobs.<job_id>.strategy`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategy).
 
-> [!NOTE]
-> Quotation marks are not required around simple strings like `self-hosted`, but they are required for expressions like  `"${{ inputs.chosen-os }}"`.
+!!! note
+    Quotation marks are not required around simple strings like `self-hosted`, but they are required for expressions like  `"${{ inputs.chosen-os }}"`.
 
 ## Choosing GitHub-hosted runners
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 If you use a GitHub-hosted runner, each job runs in a fresh instance of a runner image specified by `runs-on`.
 
@@ -75,217 +73,212 @@ For more information, see [GitHub-hosted runners](../../../concepts/runners/gith
 
 For public repositories, jobs using the workflow labels shown in the table below will run with the associated specifications. With the exception of single-CPU runners, each GitHub-hosted runner is a new virtual machine (VM) hosted by GitHub. Single-CPU runners are hosted in a container on a shared VM—see [GitHub-hosted runners reference](../../../reference/runners/github-hosted-runners.md#single-cpu-runners#single-cpu-runners). Use of the standard GitHub-hosted runners is free and unlimited on public repositories.
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th scope="col"><b>Virtual machine / container</b></th>
-      <th scope="col"><b>Processor (CPU)</b></th>
-      <th scope="col"><b>Memory (RAM)</b></th>
-      <th scope="col"><b>Storage (SSD)</b></th>
-      <th scope="col"><b>Architecture</b></th>
-      <th scope="col"><b>Workflow label</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Linux</td>
-      <td>1</td>
-      <td>5 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md">ubuntu-slim</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Linux</td>
-      <td>4</td>
-      <td>16 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Windows</td>
-      <td>4</td>
-      <td>16 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-latest</a></code>,
-         <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-2025</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-2025-vs2026</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md">windows-2022</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Linux</td>
-      <td>4</td>
-      <td>16 GB</td>
-      <td>14 GB</td>
-      <td> arm64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md">ubuntu-24.04-arm</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md">ubuntu-22.04-arm</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md">ubuntu-26.04-arm</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Windows</td>
-      <td>4</td>
-      <td>16 GB</td>
-      <td>14 GB</td>
-      <td>arm64</td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-Readme.md">windows-11-arm</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md">windows-11-vs2026-arm</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td>4</td>
-      <td>14 GB</td>
-      <td>14 GB</td>
-      <td> Intel </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md">macos-15-intel</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md">macos-26-intel</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td>3 (M1)</td>
-      <td>7 GB</td>
-      <td>14 GB</td>
-      <td> arm64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md">macos-14</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code> (Public preview)
-      </td>
-    </tr>
-  </tbody>
+**Virtual machine / container**
 
-</table>
+**Processor (CPU)**
+
+**Memory (RAM)**
+
+**Storage (SSD)**
+
+**Architecture**
+
+**Workflow label**
+
+Linux
+
+1
+
+5 GB
+
+14 GB
+
+x64
+        `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
+Linux
+
+4
+
+16 GB
+
+14 GB
+
+x64
+        `[ubuntu-latest](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md)`,
+        `[ubuntu-24.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md)`,
+        `[ubuntu-22.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md)`,
+        `[ubuntu-26.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md)`
+Windows
+
+4
+
+16 GB
+
+14 GB
+
+x64
+        `[windows-latest](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md)`,
+         `[windows-2025](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md)`,
+        `[windows-2025-vs2026](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md)`,
+        `[windows-2022](https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md)`
+Linux
+
+4
+
+16 GB
+
+14 GB
+
+arm64
+        `[ubuntu-24.04-arm](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md)`,
+        `[ubuntu-22.04-arm](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md)`,
+        `[ubuntu-26.04-arm](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md)`
+Windows
+
+4
+
+16 GB
+
+14 GB
+
+arm64
+        `[windows-11-arm](https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-Readme.md)`,
+        `[windows-11-vs2026-arm](https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md)`
+macOS
+
+4
+
+14 GB
+
+14 GB
+
+Intel
+        `[macos-15-intel](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md)`,
+        `[macos-26-intel](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md)`
+macOS
+
+3 (M1)
+
+7 GB
+
+14 GB
+
+arm64
+        `[macos-latest](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md)`,
+        `[macos-14](https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md)`,
+        `[macos-15](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md)`,
+        `[macos-26](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md)`,
+        `[xcode-27](https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md)` (Public preview)
 
 ### Standard GitHub-hosted runners for internal and private repositories
 
 For internal and private repositories, jobs using the workflow labels shown in the table below will run on virtual machines with the associated specifications. These runners use your GitHub account's allotment of free minutes, and are then charged at the per minute rates. See [Actions runner pricing](https://docs.github.com/billing/reference/actions-runner-pricing).
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th scope="col"><b>Virtual Machine</b></th>
-      <th scope="col"><b>Processor (CPU)</b></th>
-      <th scope="col"><b>Memory (RAM)</b></th>
-      <th scope="col"><b>Storage (SSD)</b></th>
-      <th scope="col"><b>Architecture</b></th>
-      <th scope="col"><b>Workflow label</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Linux</td>
-      <td>1</td>
-      <td>5 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md">ubuntu-slim</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Linux</td>
-      <td>2</td>
-      <td>8 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Windows</td>
-      <td>2</td>
-      <td>8 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-latest</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-2025</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md">windows-2022</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Linux</td>
-      <td>2</td>
-      <td>8 GB</td>
-      <td>14 GB</td>
-      <td> arm64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md">ubuntu-24.04-arm</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md">ubuntu-22.04-arm</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md">ubuntu-26.04-arm</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Windows</td>
-      <td>2</td>
-      <td>8 GB</td>
-      <td>14 GB</td>
-      <td> arm64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-Readme.md">windows-11-arm</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-VS2026-Readme.md">windows-11-vs2026-arm</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td>4</td>
-      <td>14 GB</td>
-      <td>14 GB</td>
-      <td> Intel </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md">macos-15-intel</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md">macos-26-intel</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td>3 (M1)</td>
-      <td>7 GB</td>
-      <td>14 GB</td>
-      <td> arm64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md">macos-14</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code> (Public preview)
-      </td>
-    </tr>
-  </tbody>
-</table>
+**Virtual Machine**
+
+**Processor (CPU)**
+
+**Memory (RAM)**
+
+**Storage (SSD)**
+
+**Architecture**
+
+**Workflow label**
+
+Linux
+
+1
+
+5 GB
+
+14 GB
+
+x64
+        `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
+Linux
+
+2
+
+8 GB
+
+14 GB
+
+x64
+        `[ubuntu-latest](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md)`,
+        `[ubuntu-24.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md)`,
+        `[ubuntu-22.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md)`,
+        `[ubuntu-26.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md)`
+Windows
+
+2
+
+8 GB
+
+14 GB
+
+x64
+        `[windows-latest](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md)`,
+        `[windows-2025](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md)`,
+        `[windows-2022](https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md)`
+Linux
+
+2
+
+8 GB
+
+14 GB
+
+arm64
+        `[ubuntu-24.04-arm](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md)`,
+        `[ubuntu-22.04-arm](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md)`,
+        `[ubuntu-26.04-arm](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md)`
+Windows
+
+2
+
+8 GB
+
+14 GB
+
+arm64
+        `[windows-11-arm](https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-Readme.md)`,
+        `[windows-11-vs2026-arm](https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-VS2026-Readme.md)`
+macOS
+
+4
+
+14 GB
+
+14 GB
+
+Intel
+        `[macos-15-intel](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md)`,
+        `[macos-26-intel](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md)`
+macOS
+
+3 (M1)
+
+7 GB
+
+14 GB
+
+arm64
+        `[macos-latest](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md)`,
+        `[macos-14](https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md)`,
+        `[macos-15](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md)`,
+        `[macos-26](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md)`,
+        `[xcode-27](https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md)` (Public preview)
 
 > [!NOTE] macOS runners are not available on subdomains of GHE.com, such as `octocorp.ghe.com`.
 
 In addition to the standard GitHub-hosted runners, GitHub offers customers on GitHub Team and GitHub Enterprise Cloud plans a range of managed virtual machines with advanced features - for example, more cores and disk space, GPU-powered machines, and ARM-powered machines. For more information, see [Larger runners](../../../concepts/runners/larger-runners.md).
 
-> [!NOTE]
-> The `-latest` runner images are the latest stable images that GitHub provides, and might not be the most recent version of the operating system available from the operating system vendor.
+!!! note
+    The `-latest` runner images are the latest stable images that GitHub provides, and might not be the most recent version of the operating system available from the operating system vendor.
 
-> [!WARNING]
-> Beta and Deprecated Images are provided "as-is", "with all faults" and "as available" and are excluded from the service level agreement and warranty. Beta Images may not be covered by customer support.
+    [!WARNING]
+    Beta and Deprecated Images are provided "as-is", "with all faults" and "as available" and are excluded from the service level agreement and warranty. Beta Images may not be covered by customer support.
 
 #### Example: Specifying an operating system
 
@@ -315,7 +308,7 @@ For more information, see [Self-hosted runners](../../../concepts/runners/self-h
 
 You can use `runs-on` to target runner groups, so that the job will execute on any runner that is a member of that group. For more granular control, you can also combine runner groups with labels.
 
-Runner groups can only have [larger runners](../../../concepts/runners/larger-runners.md) or [self-hosted runners](../../manage-runners/self-hosted-runners.md) as members.
+Runner groups can only have [larger runners](../../../concepts/runners/larger-runners.md) or [self-hosted runners](https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners) as members.
 
 #### Example: Using groups to control where jobs are run
 

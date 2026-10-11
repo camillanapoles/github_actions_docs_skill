@@ -20,8 +20,8 @@ For reference information, see [Workflow syntax for GitHub Actions](../reference
 
 You can use the `GITHUB_TOKEN` by using the standard syntax for referencing secrets: `${{ secrets.GITHUB_TOKEN }}`. Examples of using the `GITHUB_TOKEN` include passing the token as an input to an action, or using it to make an authenticated GitHub API request.
 
-> [!IMPORTANT]
-> An action can access the `GITHUB_TOKEN` through the `github.token` context even if the workflow does not explicitly pass the `GITHUB_TOKEN` to the action. As a good security practice, you should always make sure that actions only have the minimum access they require by limiting the permissions granted to the `GITHUB_TOKEN`. For more information, see [Workflow syntax for GitHub Actions](../reference/workflows-and-actions/workflow-syntax.md#permissions#permissions).
+!!! important
+    An action can access the `GITHUB_TOKEN` through the `github.token` context even if the workflow does not explicitly pass the `GITHUB_TOKEN` to the action. As a good security practice, you should always make sure that actions only have the minimum access they require by limiting the permissions granted to the `GITHUB_TOKEN`. For more information, see [Workflow syntax for GitHub Actions](../reference/workflows-and-actions/workflow-syntax.md#permissions#permissions).
 
 ### Example 1: passing the `GITHUB_TOKEN` as an input
 
@@ -63,9 +63,7 @@ jobs:
       - name: Create issue using REST API
         run: |
           curl --request POST \
-          --url https://api.github.com
-
-http(s)://HOSTNAME/api/v3/repos/${{ github.repository }}/issues \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
           --header 'content-type: application/json' \
           --data '{

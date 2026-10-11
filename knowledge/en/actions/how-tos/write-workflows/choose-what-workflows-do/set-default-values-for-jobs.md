@@ -12,8 +12,8 @@ section: How tos / Write workflows / Choose what workflows do
 
 _Define the default settings that will apply to all jobs in the workflow, or all steps in a job._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Overview
 

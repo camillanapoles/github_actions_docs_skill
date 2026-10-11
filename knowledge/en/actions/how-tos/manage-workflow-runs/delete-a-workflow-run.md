@@ -12,8 +12,8 @@ section: How tos / Manage workflow runs
 
 _You can delete a workflow run that has been completed, or is more than two weeks old._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 Write access to the repository is required to perform these steps.
 

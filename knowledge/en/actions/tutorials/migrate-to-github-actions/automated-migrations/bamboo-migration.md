@@ -25,7 +25,8 @@ The instructions below will guide you through configuring your environment to us
   * Docker is [installed](https://docs.docker.com/get-docker/) and running.
   * [GitHub CLI](https://cli.github.com) is installed.
 
-  > [!NOTE]
+!!! note
+
   > The GitHub Actions Importer container and CLI do not need to be installed on the same server as your CI platform.
 
 ### Limitations
@@ -105,13 +106,11 @@ The `configure` CLI command is used to set required credentials and options for 
 
    The `configure` command will prompt you for the following information:
 
-   * For "Which CI providers are you configuring?", use the arrow keys to select `Bamboo`, press <kbd>Space</kbd> to select it, then press <kbd>Enter</kbd>.
-   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the GitHub instance", enter the URL for your GitHub Enterprise Server instance, and press <kbd>Enter</kbd>.
-
-press <kbd>Enter</kbd> to accept the default value (`https://github.com`).
-   * For "Personal access token for Bamboo", enter the value for the Bamboo personal access token that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the Bamboo instance", enter the URL for your Bamboo Server or Bamboo Data Center instance, and press <kbd>Enter</kbd>.
+   * For "Which CI providers are you configuring?", use the arrow keys to select `Bamboo`, press `Space` to select it, then press `Enter`.
+   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press `Enter`.
+   * For "Base url of the GitHub instance", press `Enter` to accept the default value (`https://github.com`).
+   * For "Personal access token for Bamboo", enter the value for the Bamboo personal access token that you created earlier, and press `Enter`.
+   * For "Base url of the Bamboo instance", enter the URL for your Bamboo Server or Bamboo Data Center instance, and press `Enter`.
 
    An example of the `configure` command is shown below:
 
@@ -391,31 +390,31 @@ gh actions-importer dry-run bamboo build --plan-slug IN-COM -o tmp/bamboo --conf
 
 The following table shows the type of properties that GitHub Actions Importer is currently able to convert.
 
-| Bamboo                              | GitHub Actions                                  |  Status                |
-| :---------------------------------- | :-----------------------------------------------| ---------------------: |
-| `environments`                      | `jobs`                                          |  Supported             |
-| `environments.<environment_id>`     | `jobs.<job_id>`                                 |  Supported             |
-| `<job_id>.artifacts`                | `jobs.<job_id>.steps.actions/upload-artifact`   |  Supported             |
-| `<job_id>.artifact-subscriptions`   | `jobs.<job_id>.steps.actions/download-artifact` |  Supported             |
-| `<job_id>.docker`                   | `jobs.<job_id>.container`                       |  Supported             |
-| `<job_id>.final-tasks`              | `jobs.<job_id>.steps.if`                        |  Supported             |
-| `<job_id>.requirements`             | `jobs.<job_id>.runs-on`                         |  Supported             |
-| `<job_id>.tasks`                    | `jobs.<job_id>.steps`                           |  Supported             |
-| `<job_id>.variables`                | `jobs.<job_id>.env`                             |  Supported             |
-| `stages`                            | `jobs.<job_id>.needs`                           |  Supported             |
-| `stages.<stage_id>.final`           | `jobs.<job_id>.if`                              |  Supported             |
-| `stages.<stage_id>.jobs`            | `jobs`                                          |  Supported             |
-| `stages.<stage_id>.jobs.<job_id>`   | `jobs.<job_id>`                                 |  Supported             |
-| `stages.<stage_id>.manual`          | `jobs.<job_id>.environment`                     |  Supported             |
-| `triggers`                          | `on`                                            |  Supported             |
-| `dependencies`                      | `jobs.<job_id>.steps.<gh cli step>`             |  Partially Supported   |
-| `branches`                          |  Not applicable                                 |  Unsupported           |
-| `deployment.deployment-permissions` | Not applicable                                  |  Unsupported           |
-| `environment-permissions`           | Not applicable                                  |  Unsupported           |
-| `notifications`                     | Not applicable                                  |  Unsupported           |
-| `plan-permissions`                  | Not applicable                                  |  Unsupported           |
-| `release-naming`                    | Not applicable                                  |  Unsupported           |
-| `repositories`                      | Not applicable                                  |  Unsupported           |
+| Bamboo                              | GitHub Actions                                   |                 Status |
+|:----------------------------------|:-----------------------------------------------|---------------------:|
+| `environments`                      | `jobs`                                           |              Supported |
+| `environments.<environment_id>`     | `jobs.<job_id>`                                  |              Supported |
+| `<job_id>.artifacts`                | `jobs.<job_id>.steps.actions/upload-artifact`    |              Supported |
+| `<job_id>.artifact-subscriptions`   | `jobs.<job_id>.steps.actions/download-artifact`  |              Supported |
+| `<job_id>.docker`                   | `jobs.<job_id>.container`                        |              Supported |
+| `<job_id>.final-tasks`              | `jobs.<job_id>.steps.if`                         |              Supported |
+| `<job_id>.requirements`             | `jobs.<job_id>.runs-on`                          |              Supported |
+| `<job_id>.tasks`                    | `jobs.<job_id>.steps`                            |              Supported |
+| `<job_id>.variables`                | `jobs.<job_id>.env`                              |              Supported |
+| `stages`                            | `jobs.<job_id>.needs`                            |              Supported |
+| `stages.<stage_id>.final`           | `jobs.<job_id>.if`                               |              Supported |
+| `stages.<stage_id>.jobs`            | `jobs`                                           |              Supported |
+| `stages.<stage_id>.jobs.<job_id>`   | `jobs.<job_id>`                                  |              Supported |
+| `stages.<stage_id>.manual`          | `jobs.<job_id>.environment`                      |              Supported |
+| `triggers`                          | `on`                                             |              Supported |
+| `dependencies`                      | `jobs.<job_id>.steps.<gh cli step>`              |    Partially Supported |
+| `branches`                          | Not applicable                                   |            Unsupported |
+| `deployment.deployment-permissions` | Not applicable                                   |            Unsupported |
+| `environment-permissions`           | Not applicable                                   |            Unsupported |
+| `notifications`                     | Not applicable                                   |            Unsupported |
+| `plan-permissions`                  | Not applicable                                   |            Unsupported |
+| `release-naming`                    | Not applicable                                   |            Unsupported |
+| `repositories`                      | Not applicable                                   |            Unsupported |
 
 For more information about supported Bamboo concept and plugin mappings, see the [`github/gh-actions-importer` repository](https://github.com/github/gh-actions-importer/blob/main/docs/bamboo/index.md).
 
@@ -424,7 +423,7 @@ For more information about supported Bamboo concept and plugin mappings, see the
 GitHub Actions Importer uses the mapping in the table below to convert default Bamboo environment variables to the closest equivalent in GitHub Actions.
 
 | Bamboo                                           | GitHub Actions                                      |
-| :----------------------------------------------- | :-------------------------------------------------- |
+|:-----------------------------------------------|:--------------------------------------------------|
 | `bamboo.agentId`                                 | `${{ github.runner_name }}`
 | `bamboo.agentWorkingDirectory`                   | `${{ github.workspace }}`
 | `bamboo.buildKey`                                | `${{ github.workflow }}-${{ github.job }}`
@@ -456,8 +455,8 @@ GitHub Actions Importer uses the mapping in the table below to convert default B
 | `bamboo.shortPlanKey`                            | `${{ github.workflow }}`
 | `bamboo.shortPlanName`                           | `${{ github.workflow }}`
 
-> [!NOTE]
-> Unknown variables are transformed to `${{ env.<variableName> }}` and must be replaced or added under `env` for proper operation. For example, `${bamboo.jira.baseUrl}` will become `${{ env.jira_baseUrl }}`.
+!!! note
+    Unknown variables are transformed to `${{ env.<variableName> }}` and must be replaced or added under `env` for proper operation. For example, `${bamboo.jira.baseUrl}` will become `${{ env.jira_baseUrl }}`.
 
 ### System Variables
 

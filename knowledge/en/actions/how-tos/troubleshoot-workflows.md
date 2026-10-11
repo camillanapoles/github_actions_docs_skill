@@ -12,8 +12,8 @@ section: How tos
 
 _You can use the tools in GitHub Actions to debug your workflows._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Initial troubleshooting suggestions
 
@@ -87,11 +87,7 @@ Specific events allow for filtering by branch, tag, and/or paths you can customi
 
 You can use special characters with filters. For more information, see [Workflow syntax for GitHub Actions](../reference/workflows-and-actions/workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
 
-For path filtering, evaluating diffs is limited to the first 3,000
-
-300 files. If there are files changed that are not matched in the first 3,000
-
-300 files returned by the filter, the workflow will not be run. For more information, see [Workflow syntax for GitHub Actions](../reference/workflows-and-actions/workflow-syntax.md#git-diff-comparisons#git-diff-comparisons).
+For path filtering, evaluating diffs is limited to the first 300 files. If there are files changed that are not matched in the first 300 files returned by the filter, the workflow will not be run. For more information, see [Workflow syntax for GitHub Actions](../reference/workflows-and-actions/workflow-syntax.md#git-diff-comparisons#git-diff-comparisons).
 
 ## Troubleshoot workflow execution
 
@@ -200,10 +196,9 @@ In addition to firewalls or proxies, customizations performed to GitHub-hosted r
 * For help configuring WireGuard, see [Using WireGuard to create a network overlay](manage-runners/github-hosted-runners/connect-to-a-private-network/connect-with-wireguard.md).
 
 * For details about configuring OpenID Connect (OIDC), see [Using an API gateway with OIDC](manage-runners/github-hosted-runners/connect-to-a-private-network/connect-with-oidc.md).
+
 ### Azure private networking for GitHub-hosted runners
 
 Issues may arise from the use of GitHub-hosted runners within your configured Azure Virtual Networks (VNETs) settings.
 
-For troubleshooting advice, see [Troubleshooting azure private network configurations for github hosted runners in your organization](https://docs.github.com/organizations/managing-organization-settings/troubleshooting-azure-private-network-configurations-for-github-hosted-runners-in-your-organization) or [Troubleshooting azure private network configurations for github hosted runners in your enterprise](https://docs.github.com/admin/configuring-settings/configuring-private-networking-for-hosted-compute-products/troubleshooting-azure-private-network-configurations-for-github-hosted-runners-in-your-enterprise)
-
-[Troubleshooting azure private network configurations for github hosted runners in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/configuring-settings/configuring-private-networking-for-hosted-compute-products/troubleshooting-azure-private-network-configurations-for-github-hosted-runners-in-your-enterprise) in the GitHub Enterprise Cloud docs.
+For troubleshooting advice, see [Troubleshooting azure private network configurations for github hosted runners in your organization](https://docs.github.com/organizations/managing-organization-settings/troubleshooting-azure-private-network-configurations-for-github-hosted-runners-in-your-organization) or [Troubleshooting azure private network configurations for github hosted runners in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/configuring-settings/configuring-private-networking-for-hosted-compute-products/troubleshooting-azure-private-network-configurations-for-github-hosted-runners-in-your-enterprise) in the GitHub Enterprise Cloud docs.

@@ -12,8 +12,8 @@ section: Get started
 
 _You can create custom continuous deployment (CD) workflows directly in your GitHub repository with GitHub Actions._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## About continuous deployment
 
@@ -27,10 +27,10 @@ You can set up a GitHub Actions workflow to deploy your software product. To ver
 
 You can configure your CD workflow to run when an event occurs (for example, when new code is pushed to the default branch of your repository), on a set schedule, manually, or when an external event occurs using the repository dispatch webhook. For more information about when your workflow can run, see [Events that trigger workflows](../reference/workflows-and-actions/events-that-trigger-workflows.md).
 
-GitHub Actions provides features that give you more control over deployments. For example, you can use environments to require approval for a job to proceed, restrict which branches can trigger a workflow, or limit access to secrets. You can use concurrency to limit your CD pipeline to a maximum of one in-progress deploymentand one pending deployment. For more information about these features, see [Deploying with GitHub Actions](../how-tos/deploy/configure-and-manage-deployments/control-deployments.md) and [Managing environments for deployment](../how-tos/deploy/configure-and-manage-deployments/manage-environments.md).
+GitHub Actions provides features that give you more control over deployments. For example, you can use environments to require approval for a job to proceed, restrict which branches can trigger a workflow, or limit access to secrets. You can use concurrency to limit your CD pipeline to a maximum of one in-progress deployment and one pending deployment. For more information about these features, see [Deploying with GitHub Actions](../how-tos/deploy/configure-and-manage-deployments/control-deployments.md) and [Managing environments for deployment](../how-tos/deploy/configure-and-manage-deployments/manage-environments.md).
 
-> [!TIP]
-> You can use agentic workflows for deployment preparation, such as release notes, change analysis, and rollout summaries, while keeping production deployments in deterministic GitHub Actions workflows. For more information, see [Creating github agentic workflows](https://docs.github.com/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
+!!! tip
+    You can use agentic workflows for deployment preparation, such as release notes, change analysis, and rollout summaries, while keeping production deployments in deterministic GitHub Actions workflows. For more information, see [Creating github agentic workflows](https://docs.github.com/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
 
 ## Workflow templates and third-party actions
 

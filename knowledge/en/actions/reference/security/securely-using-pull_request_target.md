@@ -83,8 +83,8 @@ For each affected workflow, decide whether `pull_request_target` is still requir
 * If the workflow must continue to use `pull_request_target`, create or update an applicable Actions event policy that explicitly allows `pull_request_target`.
 * If you do not want to allow `pull_request_target`, leave the default policy in place. After enforcement, GitHub will block workflows triggered by that event.
 
-> [!WARNING]
-> Only allow `pull_request_target` when it is necessary. Workflows triggered by this event should not check out, build, or run code from an untrusted pull request with access to repository secrets or a privileged `GITHUB_TOKEN`.
+!!! warning
+    Only allow `pull_request_target` when it is necessary. Workflows triggered by this event should not check out, build, or run code from an untrusted pull request with access to repository secrets or a privileged `GITHUB_TOKEN`.
 
 For more information about configuring event policies and viewing insights, see [Controlling who can execute GitHub Actions workflows](../../how-tos/administer/control-workflow-execution.md). To manage policies programmatically, see [Policies](https://docs.github.com/rest/actions/policies).
 
@@ -102,7 +102,7 @@ If you have confirmed you need `pull_request_target`, apply these controls to li
 
 * **Restrict secrets.** Confirm that the permissions set on the `GITHUB_TOKEN` have the least privileges and that only the necessary repository and organization secrets are used for the workflow. For more information, see [Use GITHUB_TOKEN for authentication in workflows](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token#modifying-the-permissions-for-the-github_token).
 
-* **Understand the impact to caching.** To reduce the risk of cache poisoning, workflows triggered by `pull_request_target` have read-only access to the cache in the default branch's scope. These workflows can restore existing cache entries but cannot create or overwrite them, so they cannot affect the execution of other, unrelated, workflows through the shared cache. If such a workflow attempts to save a cache, the save fails but the step and the job continue, and the failure is reported as a warning in the workflow log. If your workflow needs to populate the cache, save it from a workflow that runs on a trusted trigger such as `push`.A workflow or job can opt out of this read-only restriction by explicitly declaring a write-capable `cache-mode`, but doing so on a `pull_request_target` workflow reintroduces the cache-poisoning risk this restriction is designed to prevent. For more information, see [Dependency caching reference](../workflows-and-actions/dependency-caching.md#cache-access-for-low-trust-workflow-triggers#cache-access-for-low-trust-workflow-triggers).
+* **Understand the impact to caching.** To reduce the risk of cache poisoning, workflows triggered by `pull_request_target` have read-only access to the cache in the default branch's scope. These workflows can restore existing cache entries but cannot create or overwrite them, so they cannot affect the execution of other, unrelated, workflows through the shared cache. If such a workflow attempts to save a cache, the save fails but the step and the job continue, and the failure is reported as a warning in the workflow log. If your workflow needs to populate the cache, save it from a workflow that runs on a trusted trigger such as `push`. A workflow or job can opt out of this read-only restriction by explicitly declaring a write-capable `cache-mode`, but doing so on a `pull_request_target` workflow reintroduces the cache-poisoning risk this restriction is designed to prevent. For more information, see [Dependency caching reference](../workflows-and-actions/dependency-caching.md#cache-access-for-low-trust-workflow-triggers#cache-access-for-low-trust-workflow-triggers).
 
 * **Ensure the underlying compute is isolated and ephemeral.** If self-hosted runners are used, you must confirm that the runner environment is properly restricted from internal resources and is not reused across GitHub Actions runs. For more information, see [Secure use reference](secure-use.md#hardening-for-self-hosted-runners#hardening-for-self-hosted-runners).
 
@@ -110,7 +110,7 @@ If you have confirmed you need `pull_request_target`, apply these controls to li
 
 ## Opting out of built-in protections
 
-If you have worked through the questions above and confirmed your workflow requires `pull_request_target` and uses it safely, you can opt out of the default event policy and`actions/checkout` protection.
+If you have worked through the questions above and confirmed your workflow requires `pull_request_target` and uses it safely, you can opt out of the default event policy and `actions/checkout` protection.
 
 Setting `allow-unsafe-pr-checkout: true` as an `actions/checkout` input allows checking out pull request head refs from forks. Only do this after confirming the checked-out code is never executed. The input is intentionally named to be easy to spot in code review and static analysis.
 

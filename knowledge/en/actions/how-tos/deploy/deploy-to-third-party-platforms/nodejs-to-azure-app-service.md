@@ -64,7 +64,7 @@ The following example workflow demonstrates how to build, test, and deploy the N
 
 Ensure that you set `AZURE_WEBAPP_NAME` in the workflow `env` key to the name of the web app you created. If the path to your project is not the repository root, change `AZURE_WEBAPP_PACKAGE_PATH` to your project path. If you use a version of Node.js other than `10.x`, change `NODE_VERSION` to the version that you use.
 
-If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environmentor if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
+If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environment or if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
 
 ```yaml copy
 # This workflow uses actions that are not certified by GitHub.
@@ -104,9 +104,7 @@ jobs:
         npm run build --if-present
         npm run test --if-present
     - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v4
-
-v3
+      uses: actions/upload-artifact@v3
       with:
         name: node-app
         path: .
@@ -120,9 +118,7 @@ v3
 
     steps:
     - name: Download artifact from build job
-      uses: actions/download-artifact@v5
-
-v3
+      uses: actions/download-artifact@v3
       with:
         name: node-app
 

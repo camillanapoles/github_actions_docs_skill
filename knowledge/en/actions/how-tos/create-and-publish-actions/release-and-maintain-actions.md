@@ -12,8 +12,8 @@ section: How tos / Create and publish actions
 
 _You can leverage automation and open source best practices to release and maintain actions._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -47,12 +47,13 @@ To support the developer process in the next section, add two GitHub Actions wor
 1. Add a workflow that triggers when a commit is pushed to a feature branch or to `main` or when a pull request is created. Configure the workflow to run your unit and integration tests. For an example, see [this workflow](https://github.com/actions/javascript-action/blob/main/.github/workflows/ci.yml).
 1. Add a workflow that triggers when a release is published or edited. Configure the workflow to ensure semantic tags are in place. You can use an action like [JasonEtco/build-and-tag-action](https://github.com/JasonEtco/build-and-tag-action) to compile and bundle the JavaScript and metadata file and force push semantic major, minor, and patch tags. For more information about semantic tags, see [About semantic versioning](https://docs.npmjs.com/about-semantic-versioning).
 
-    > [!NOTE]
+!!! note
+
     > If you enable immutable releases for your repository, you cannot use this action to force push tags tied to releases on GitHub. To learn how to manage your releases with immutable releases, see [Using immutable releases and tags to manage your action's releases](using-immutable-releases-and-tags-to-manage-your-actions-releases.md).
 
 ### Example developer process
 
-Here is an example process that you can follow to automatically run tests, create a releaseand publish to GitHub Marketplace, and publish your action.
+Here is an example process that you can follow to automatically run tests, create a release and publish to GitHub Marketplace, and publish your action.
 
 1. Do feature work in branches per GitHub flow. For more information, see [Github flow](https://docs.github.com/get-started/using-github/github-flow).
    * Whenever a commit is pushed to the feature branch, your testing workflow will automatically run the tests.
@@ -63,7 +64,7 @@ Here is an example process that you can follow to automatically run tests, creat
 
    * **Note:** for security reasons, workflows triggered by `pull_request` from forks have restricted `GITHUB_TOKEN` permissions and do not have access to secrets. If your tests or other workflows triggered upon pull request require access to secrets, consider using a different event like a [manual trigger](../../reference/workflows-and-actions/events-that-trigger-workflows.md#workflow_dispatch) or a [`pull_request_target`](../../reference/workflows-and-actions/events-that-trigger-workflows.md#pull_request_target). For more information, see [Events that trigger workflows](../../reference/workflows-and-actions/events-that-trigger-workflows.md#pull-request-events-for-forked-repositories#pull-request-events-for-forked-repositories).
 
-1. Create a semantically tagged release. You may also publish to GitHub Marketplace with a simple checkbox. For more information, see [Managing releases in a repository](https://docs.github.com/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release#creating-a-release)and [Publishing actions in GitHub Marketplace](publish-in-github-marketplace.md#publishing-an-action#publishing-an-action).
+1. Create a semantically tagged release.  You may also publish to GitHub Marketplace with a simple checkbox.  For more information, see [Managing releases in a repository](https://docs.github.com/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release#creating-a-release) and [Publishing actions in GitHub Marketplace](publish-in-github-marketplace.md#publishing-an-action#publishing-an-action).
 
    * When a release is published or edited, your release workflow will automatically take care of compilation and adjusting tags.
 
@@ -82,7 +83,8 @@ GitHub provides tools and guides to help you work with the open source community
 * Maintain a `README` with plenty of usage examples and guidance. For more information, see [About readmes](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes).
 * Include a workflow status badge in your `README` file. For more information, see [Adding a workflow status badge](../monitor-workflows/add-a-status-badge.md). Also visit [shields.io](https://shields.io/) to learn about other badges that you can add.
 * Add community health files like `CODE_OF_CONDUCT`, `CONTRIBUTING`, and `SECURITY`. For more information, see [Creating a default community health file](https://docs.github.com/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file#supported-file-types#supported-file-types).
-* Keep issues current by utilizing actions like [actions/stale](https://github.com/actions/stale).* Use GitHub's security features to communicate about vulnerabilities and how to fix them. For more information, see [Secure use reference](../../reference/security/secure-use.md#protecting-actions-youve-created#protecting-actions-youve-created).
+* Keep issues current by utilizing actions like [actions/stale](https://github.com/actions/stale).
+* Use GitHub's security features to communicate about vulnerabilities and how to fix them. For more information, see [Secure use reference](../../reference/security/secure-use.md#protecting-actions-youve-created#protecting-actions-youve-created).
 
 ## Further reading
 

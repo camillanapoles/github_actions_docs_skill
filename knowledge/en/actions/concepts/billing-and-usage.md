@@ -14,8 +14,6 @@ _There are usage limits for GitHub Actions workflows. Usage charges apply to rep
 
 ## About billing for GitHub Actions
 
-GitHub Actions usage is free for standard GitHub-hosted runners in public repositories, and for self-hosted runners. See [Choosing the runner for a job](../how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job.md#standard-github-hosted-runners-for-public-repositories#standard-github-hosted-runners-for-public-repositories). For private repositories, each GitHub account receives a quota of free minutes and storage for use with GitHub-hosted runners, depending on the account's plan. Any usage beyond the included amounts is billed to your account. For more information, see [Github actions](https://docs.github.com/billing/concepts/product-billing/github-actions).
-
 GitHub Actions usage is free for GitHub Enterprise Server instances that use self-hosted runners. For more information, see [Self-hosted runners](runners/self-hosted-runners.md).
 
 ## Availability

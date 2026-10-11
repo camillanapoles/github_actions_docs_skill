@@ -127,11 +127,10 @@ You can help mitigate this risk by following these good practices:
 
   For an example of using a full-length commit SHA in a workflow, see [Using pre-written building blocks in your workflow](../../how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions.md#using-shas#using-shas).
 
-  GitHub offers policies at the repository, organization, and enterprise
-
-repository and organization level to require actions to be pinned to a full-length commit SHA:
+  GitHub offers policies at the repository and organization level to require actions to be pinned to a full-length commit SHA:
     * To configure the policy at the repository level, see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository#managing-github-actions-permissions-for-your-repository).
     * To configure the policy at the organization level, see [Disabling or limiting github actions for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization#managing-github-actions-permissions-for-your-organization).
+
     * To configure the policy at the enterprise level, see [Enforcing policies for github actions in your enterprise](https://docs.github.com/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#policies#policies).
 
 * **Audit the source code of the action**
@@ -173,8 +172,8 @@ For more information, see [Permissions of custom organization roles](https://doc
 
 If your GitHub Actions workflows need to access resources from a cloud provider that supports OpenID Connect (OIDC), you can configure your workflows to authenticate directly to the cloud provider. This will let you stop storing these credentials as long-lived secrets and provide other security benefits. For more information, see [OpenID Connect](../../concepts/security/openid-connect.md).
 
-> [!NOTE]
-> Support for custom claims for OIDC is unavailable in AWS.
+!!! note
+    Support for custom claims for OIDC is unavailable in AWS.
 
 ### Using Dependabot version updates to keep actions up to date
 
@@ -203,8 +202,8 @@ For more information on how to enable code scanning, see [Configure code scannin
 
 ### Hardening for GitHub-hosted runners
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 GitHub-hosted runners take measures to help you mitigate security risks.
 
@@ -222,23 +221,17 @@ GitHub-hosted runners are provisioned with an `etc/hosts` file that blocks netwo
 
 **GitHub-hosted** runners execute code within ephemeral and clean isolated virtual machines, meaning there is no way to persistently compromise this environment, or otherwise gain access to more information than was placed in this environment during the bootstrap process.
 
-**Self-hosted**
+**Self-hosted** runners for GitHub do not have guarantees around running in ephemeral clean virtual machines, and can be persistently compromised by untrusted code in a workflow.
 
-Self-hosted runners for GitHub do not have guarantees around running in ephemeral clean virtual machines, and can be persistently compromised by untrusted code in a workflow.
+As a result, self-hosted runners should almost [never be used for public repositories](secure-use.md) on GitHub, because any user can open pull requests against the repository and compromise the environment. Similarly, be cautious when using self-hosted runners on private or internal repositories, as anyone who can fork the repository and open a pull request (generally those with read access to the repository) are able to compromise the self-hosted runner environment, including gaining access to secrets and the `GITHUB_TOKEN` which, depending on its settings, can grant write access to the repository. Although workflows can control access to environment secrets by using environments and required reviews, these workflows are not run in an isolated environment and are still susceptible to the same risks when run on a self-hosted runner.
 
-As a result, self-hosted runners should almost [never be used for public repositories](secure-use.md) on GitHub, because any user can open pull requests against the repository and compromise the environment. Similarly, be
-
-Be cautious when using self-hosted runners on private or internal repositories, as anyone who can fork the repository and open a pull request (generally those with read access to the repository) are able to compromise the self-hosted runner environment, including gaining access to secrets and the `GITHUB_TOKEN` which, depending on its settings, can grant write access to the repository. Although workflows can control access to environment secrets by using environments and required reviews, these workflows are not run in an isolated environment and are still susceptible to the same risks when run on a self-hosted runner.
-
-Enterprise owners and organization
-
-Organizationowners can choose which repositories are allowed to create repository-level self-hosted runners. Users with the “Manage organization runners and runner groups” permission can only choose which repositories are allowed to create repository-level self-hosted runners for repositories in your organization.
+Organization owners can choose which repositories are allowed to create repository-level self-hosted runners. Users with the “Manage organization runners and runner groups” permission can only choose which repositories are allowed to create repository-level self-hosted runners for repositories in your organization.
 
 For more information about custom organization roles, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
 
-For more information, see [Enforcing policies for github actions in your enterprise](https://docs.github.com/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#runners#runners) and[Disabling or limiting github actions for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#limiting-the-use-of-self-hosted-runners#limiting-the-use-of-self-hosted-runners).
+For more information, see [Enforcing policies for github actions in your enterprise](https://docs.github.com/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#runners#runners) and [Disabling or limiting github actions for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#limiting-the-use-of-self-hosted-runners#limiting-the-use-of-self-hosted-runners).
 
-When a self-hosted runner is defined at the organization or enterprise level, GitHub can schedule workflows from multiple repositories onto the same runner. Consequently, a security compromise of these environments can result in a wide impact. To help reduce the scope of a compromise, you can create boundaries by organizing your self-hosted runners into separate groups. You can restrict what workflows,organizations and repositories can access runner groups. For more information, see [Managing access to self-hosted runners using groups](../../how-tos/manage-runners/self-hosted-runners/manage-access.md).
+When a self-hosted runner is defined at the organization or enterprise level, GitHub can schedule workflows from multiple repositories onto the same runner. Consequently, a security compromise of these environments can result in a wide impact. To help reduce the scope of a compromise, you can create boundaries by organizing your self-hosted runners into separate groups. You can restrict what workflows, organizations and repositories can access runner groups. For more information, see [Managing access to self-hosted runners using groups](../../how-tos/manage-runners/self-hosted-runners/manage-access.md).
 
 You should also consider the environment of the self-hosted runner machines:
 
@@ -251,8 +244,8 @@ Some customers might attempt to partially mitigate these risks by implementing s
 
 To improve runner registration security, you can use the REST API to create ephemeral, just-in-time (JIT) runners. These self-hosted runners perform at most one job before being automatically removed from the repository, organization, or enterprise. For more information about configuring JIT runners, see [Self hosted runners](https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization#create-configuration-for-a-just-in-time-runner-for-an-organization).
 
-> [!NOTE]
-> Re-using hardware to host JIT runners can risk exposing information from the environment. Use automation to ensure the JIT runner uses a clean environment. For more information, see [Self-hosted runners reference](../runners/self-hosted-runners.md#ephemeral-runners-for-autoscaling#ephemeral-runners-for-autoscaling).
+!!! note
+    Re-using hardware to host JIT runners can risk exposing information from the environment. Use automation to ensure the JIT runner uses a clean environment. For more information, see [Self-hosted runners reference](../runners/self-hosted-runners.md#ephemeral-runners-for-autoscaling#ephemeral-runners-for-autoscaling).
 
 Once you have the config file from the REST API response, you can pass it to the runner at startup.
 
@@ -280,7 +273,7 @@ If you are using GitHub Actions to deploy to a cloud provider, or intend to use 
 
 ### Auditing GitHub Actions events
 
-You can use the security log to monitor activity for your user account and the audit log to monitor activity in your organizationor enterprise. The security and audit log records the type of action, when it was run, and which personal account performed the action.
+You can use the security log to monitor activity for your user account and the audit log to monitor activity in your organization or enterprise. The security and audit log records the type of action, when it was run, and which personal account performed the action.
 
 For example, you can use the audit log to track the `org.update_actions_secret` event, which tracks changes to organization secrets.
 
@@ -290,6 +283,7 @@ For the full list of events that you can find in the audit log for each account 
 
 * [Security log events](https://docs.github.com/authentication/keeping-your-account-and-data-secure/security-log-events)
 * [Audit log events for your organization](https://docs.github.com/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/audit-log-events-for-your-organization)
+
 * [Audit log events for your enterprise](https://docs.github.com/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/audit-log-events-for-your-enterprise)
 
 ### Understanding dependencies in your workflows
@@ -303,8 +297,6 @@ The dependency graph shows the following information about actions used in workf
 * The version or SHA the action is pinned to.
 
 In the dependency graph, dependencies are automatically sorted by vulnerability severity. If any of the actions you use have security advisories, they will display at the top of the list. You can navigate to the advisory from the dependency graph and access instructions for resolving the vulnerability.
-
-The dependency graph is enabled for public repositories, and you can choose to enable it on private repositories. For more information about using the dependency graph, see [Explore dependencies](https://docs.github.com/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/explore-dependencies).
 
 Enterprise owners can configure the dependency graph and Dependabot alerts for an enterprise. For more information, see [Enable dependency graph](https://docs.github.com/code-security/how-tos/secure-at-scale/configure-enterprise-security/configure-specific-tools/enable-dependency-graph).
 
@@ -321,10 +313,8 @@ You can set up your repositories so that you:
 
 You can use Dependabot to monitor the actions in your workflows and enable Dependabot alerts to notify you when an action you use has a reported vulnerability. Dependabot performs a scan of the default branch of the repositories where it is enabled to detect insecure dependencies. Dependabot generates Dependabot alerts when a new advisory is added to the GitHub Advisory Database or when an action you use is updated.
 
-> [!NOTE]
-> Dependabot only creates alerts for vulnerable actions that use semantic versioning and will not create alerts for actions pinned to SHA values.
-
-You can enable Dependabot alerts for your personal account, for a repository, or for an organization. For more information, see [Configure dependabot alerts](https://docs.github.com/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/configure-dependabot-alerts).
+!!! note
+    Dependabot only creates alerts for vulnerable actions that use semantic versioning and will not create alerts for actions pinned to SHA values.
 
 An enterprise owner must first set up Dependabot for your enterprise before you can manage Dependabot alerts for your repository. For more information, see [Enabling dependabot for your enterprise](https://docs.github.com/admin/configuring-settings/configuring-github-connect/enabling-dependabot-for-your-enterprise).
 
@@ -352,8 +342,9 @@ The following features can automatically update the actions in your workflows.
 * **Dependabot version updates** open pull requests to update actions to the latest version when a new version is released.
 * **Dependabot security updates** open pull requests to update actions with reported vulnerabilities to the minimum patched version.
 
-> [!NOTE]
-> * Dependabot only supports updates to GitHub Actions using the GitHub repository syntax, such as `actions/checkout@v6` or `actions/checkout@<commit>` . Dependabot will ignore actions or reusable workflows referenced locally (for example, `./.github/actions/foo.yml`).
+!!! note
+    * Dependabot only supports updates to GitHub Actions using the GitHub repository syntax, such as `actions/checkout@v6` or `actions/checkout@<commit>` . Dependabot will ignore actions or reusable workflows referenced locally (for example, `./.github/actions/foo.yml`).
+
 * Dependabot updates the version documentation of GitHub Actions when the comment is on the same line, such as `actions/checkout@<commit> #<tag or link>` or `actions/checkout@<tag> #<tag or link>`.
 * If the commit you use is not associated with any tag, Dependabot will update the GitHub Actions to the latest commit (which might differ from the latest release).
 * Docker Hub and GitHub Packages Container registry URLs are currently not supported. For example, references to Docker container actions using `docker://` syntax aren't supported.

@@ -52,8 +52,8 @@ You cannot change the contents of an existing cache. Instead, you can create a n
 
 * `enableCrossOsArchive`: **Optional** A boolean value that when enabled, allows Windows runners to save or restore caches independent of the operating system the cache was created on. If this parameter is not set, it defaults to `false`. For more information, see [Cross OS cache](https://github.com/actions/cache/blob/main/tips-and-workarounds.md#cross-os-cache) in the Actions Cache documentation.
 
-> [!NOTE]
-> We recommend that you don't store any sensitive information, such as access tokens or login credentials, in files in the cache path. Anyone with read access can create a pull request on a repository and access the contents of a cache. Additionally, forks of a repository can create pull requests on the base branch and access caches on the base branch.
+!!! note
+    We recommend that you don't store any sensitive information, such as access tokens or login credentials, in files in the cache path. Anyone with read access can create a pull request on a repository and access the contents of a cache. Additionally, forks of a repository can create pull requests on the base branch and access caches on the base branch.
 
 ### Output parameters for the `cache` action
 
@@ -203,14 +203,14 @@ For example, if a pull request contains a `feature` branch and targets the defau
 
 If you are caching the package managers listed below, using their respective setup-* actions requires minimal configuration and will create and restore dependency caches for you.
 
-| Package managers    | setup-* action for caching                                                                        |
-| ------------------- | ------------------------------------------------------------------------------------------------- |
-| npm, Yarn, pnpm     | [setup-node](https://github.com/actions/setup-node#caching-global-packages-data)                  |
-| pip, pipenv, Poetry | [setup-python](https://github.com/actions/setup-python#caching-packages-dependencies)             |
-| Gradle, Maven       | [setup-java](https://github.com/actions/setup-java#caching-packages-dependencies)                 |
-| RubyGems            | [setup-ruby](https://github.com/ruby/setup-ruby#caching-bundle-install-automatically)             |
-| Go `go.sum`         | [setup-go](https://github.com/actions/setup-go#caching-dependency-files-and-build-outputs)        |
-| .NET NuGet          | [setup-dotnet](https://github.com/actions/setup-dotnet?tab=readme-ov-file#caching-nuget-packages) |
+| Package managers | setup-* action for caching |
+| --- | --- |
+| npm, Yarn, pnpm | [setup-node](https://github.com/actions/setup-node#caching-global-packages-data) |
+| pip, pipenv, Poetry | [setup-python](https://github.com/actions/setup-python#caching-packages-dependencies) |
+| Gradle, Maven | [setup-java](https://github.com/actions/setup-java#caching-packages-dependencies) |
+| RubyGems | [setup-ruby](https://github.com/ruby/setup-ruby#caching-bundle-install-automatically) |
+| Go `go.sum` | [setup-go](https://github.com/actions/setup-go#caching-dependency-files-and-build-outputs) |
+| .NET NuGet | [setup-dotnet](https://github.com/actions/setup-dotnet?tab=readme-ov-file#caching-nuget-packages) |
 
 ## Restrictions for accessing a cache
 
@@ -223,14 +223,14 @@ When a cache is created by a workflow run triggered on a pull request, the cache
 
 Multiple workflow runs in a repository can share caches. A cache created for a branch in a workflow run can be accessed and restored from another workflow run for the same repository and branch.
 
-> [!NOTE]
-> As objects are retrieved from or put into the cache directly from runners, Actions runners must have direct connectivity to the Actions object storage configured in GitHub Enterprise Server, such as AWS S3 or Azure Blob Storage. Self-hosted runners authenticate with the blob storage provider using an access URL provided by the GitHub Enterprise Server instance. This URL supplies the blob storage provider with valid temporary authentication credentials. This process is initiated by the instance itself, which mediates all requests to the object storage.
->
-> This means that `actions/cache` requires a HTTPS connection to the blob storage in order to work correctly.
->
-> All the metadata are managed by the artifact cache service, which is a microservice within GitHub Actions.
->
-> For more information on cache storage, see [External storage requirements](https://docs.github.com/admin/managing-github-actions-for-your-enterprise/getting-started-with-github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-server#external-storage-requirements).
+!!! note
+    As objects are retrieved from or put into the cache directly from runners, Actions runners must have direct connectivity to the Actions object storage configured in GitHub Enterprise Server, such as AWS S3 or Azure Blob Storage. Self-hosted runners authenticate with the blob storage provider using an access URL provided by the GitHub Enterprise Server instance. This URL supplies the blob storage provider with valid temporary authentication credentials. This process is initiated by the instance itself, which mediates all requests to the object storage.
+
+    This means that `actions/cache` requires a HTTPS connection to the blob storage in order to work correctly.
+
+    All the metadata are managed by the artifact cache service, which is a microservice within GitHub Actions.
+
+    For more information on cache storage, see [External storage requirements](https://docs.github.com/admin/managing-github-actions-for-your-enterprise/getting-started-with-github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-server#external-storage-requirements).
 
 ## Cache access for low-trust workflow triggers
 
@@ -245,7 +245,7 @@ To reduce this risk, only these workflow triggers can create or overwrite caches
  * `page_build`
  * `schedule`
 
-Runs triggered by any other event that resolves to the default branch are given read-only access to caches in the default branch's scope. These runs can restore existing caches but cannot create or overwrite them. This includes triggers whose payload or initiating actor can be influenced by someone outside the repository, such as `pull_request_target`, `issue_comment`, and `workflow_run`.A repository can opt out of this restriction for a specific workflow or job by explicitly declaring a write-capable `cache-mode`. See [Bypassing the default untrusted-trigger cache restriction](#bypassing-the-default-untrusted-trigger-cache-restriction).
+Runs triggered by any other event that resolves to the default branch are given read-only access to caches in the default branch's scope. These runs can restore existing caches but cannot create or overwrite them. This includes triggers whose payload or initiating actor can be influenced by someone outside the repository, such as `pull_request_target`, `issue_comment`, and `workflow_run`. A repository can opt out of this restriction for a specific workflow or job by explicitly declaring a write-capable `cache-mode`. See [Bypassing the default untrusted-trigger cache restriction](#bypassing-the-default-untrusted-trigger-cache-restriction).
 
 The `pull_request` event is not affected. Caches created by a `pull_request` run are already scoped to the merge ref (`refs/pull/.../merge`) and cannot be written to the default branch's scope. For more information, see [Restrictions for accessing a cache](#restrictions-for-accessing-a-cache).
 
@@ -259,25 +259,25 @@ Use the `cache-mode` workflow key to grant jobs the least amount of cache access
 
 `cache-mode` controls the cache access granted to the job's token, and it is enforced with scoped cache tokens. The key accepts the following values.
 
-| Value | Restore caches | Save caches |
-| ----- | -------------- | ----------- |
-| `read` | Yes | No |
-| `write` | Yes | Yes |
-| `write-only` | No | Yes |
-| `none` | No | No |
+| Value        | Restore caches | Save caches |
+|------------|--------------|-----------|
+| `read`       | Yes            | No          |
+| `write`      | Yes            | Yes         |
+| `write-only` | No             | Yes         |
+| `none`       | No             | No          |
 
 If you omit `cache-mode`, a `read` or `write` default is used based on the trigger type. See [Defaults](#defaults) and [Bypassing the default untrusted-trigger cache restriction](#bypassing-the-default-untrusted-trigger-cache-restriction).
 
 ### Defaults
 
-| Configuration | Trigger type | Effective access |
-| --- | --- | --- |
-| `cache-mode` omitted | Trusted | `write` |
-| `cache-mode` omitted | Low-trust | `read` |
-| `cache-mode: write` | Trusted or low-trust | `write` |
-| `cache-mode: write-only` | Trusted or low-trust | `write-only` |
-| `cache-mode: read` | Trusted or low-trust | `read` |
-| `cache-mode: none` | Trusted or low-trust | `none` |
+| Configuration            | Trigger type         | Effective access |
+|------------------------|--------------------|----------------|
+| `cache-mode` omitted     | Trusted              | `write`          |
+| `cache-mode` omitted     | Low-trust            | `read`           |
+| `cache-mode: write`      | Trusted or low-trust | `write`          |
+| `cache-mode: write-only` | Trusted or low-trust | `write-only`     |
+| `cache-mode: read`       | Trusted or low-trust | `read`           |
+| `cache-mode: none`       | Trusted or low-trust | `none`           |
 
 For the trusted-versus-low-trust trigger breakdown, see [Cache access for low-trust workflow triggers](#cache-access-for-low-trust-workflow-triggers).
 
@@ -295,8 +295,8 @@ If a called workflow declares a `cache-mode` that requests access beyond this ex
 
 A job or workflow that explicitly declares `cache-mode: write` or `cache-mode: write-only` overrides the secure read-only default that would otherwise apply to a run triggered by a low-trust event. See [Cache access for low-trust workflow triggers](#cache-access-for-low-trust-workflow-triggers).
 
-> [!WARNING]
-> Explicitly declaring `cache-mode: write` or `cache-mode: write-only` reintroduces the risk of cache-poisoning that the default untrusted-trigger read-only permissions are designed to prevent. If a workflow that runs on an untrusted trigger, such as `pull_request_target`, `issue_comment`, or `workflow_run`, declares a write-capable `cache-mode`, vulnerabilities or untrusted code execution in the workflow could then be used to save a cache. A more privileged workflow that later restores that cache could then execute attacker-controlled content.
+!!! warning
+    Explicitly declaring `cache-mode: write` or `cache-mode: write-only` reintroduces the risk of cache-poisoning that the default untrusted-trigger read-only permissions are designed to prevent. If a workflow that runs on an untrusted trigger, such as `pull_request_target`, `issue_comment`, or `workflow_run`, declares a write-capable `cache-mode`, vulnerabilities or untrusted code execution in the workflow could then be used to save a cache. A more privileged workflow that later restores that cache could then execute attacker-controlled content.
 
 Before declaring a write-capable `cache-mode` on a workflow with a low-trust trigger, consider whether a narrower mitigation meets your needs instead:
  * Keep the secure cache access restriction in effect by explicitly declaring `cache-mode: read` on the job, and have a trusted, `push`-triggered workflow maintain the cache instead. See [Cache access for low-trust workflow triggers](#cache-access-for-low-trust-workflow-triggers).
@@ -322,7 +322,8 @@ GitHub applies limits to cache storage and retention to manage storage costs and
 
 GitHub will remove any cache entries that have not been accessed in over 7 days. There is no limit on the number of caches you can store, but the total size of all caches in a repository is limited. By default, the limit is 10 GB per repository, but this limit can be increased by enterprise owners, organization owners, or repository administrators. Any usage beyond 10 GB is billed to your account. Once a repository has reached its maximum cache storage, the cache eviction policy will create space by deleting the caches in order of last access date, from oldest to most recent.
 
-If you exceed the limit, GitHub will save the new cache but will begin evicting caches until the total size is less than the repository limit. The cache eviction process may cause cache thrashing, where caches are created and deleted at a high frequency. To reduce this, you can review the caches for a repository and take corrective steps, such as removing caching from specific workflowsor increasing your cache size. This functionality is only available to users with a payment method on file who opt in by configuring cache settings. See [Managing caches](../../how-tos/manage-workflow-runs/manage-caches.md).You can also increase the cache size limit for a repository. For more information, see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#configuring-cache-storage-for-a-repository#configuring-cache-storage-for-a-repository).
+If you exceed the limit, GitHub will save the new cache but will begin evicting caches until the total size is less than the repository limit. The cache eviction process may cause cache thrashing, where caches are created and deleted at a high frequency. To reduce this, you can review the caches for a repository and take corrective steps, such as removing caching from specific workflows or increasing your cache size. This functionality is only available to users with a payment method on file who opt in by configuring cache settings. See [Managing caches](../../how-tos/manage-workflow-runs/manage-caches.md). You can also increase the cache size limit for a repository. For more information, see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#configuring-cache-storage-for-a-repository#configuring-cache-storage-for-a-repository).
+
 You can create cache entries at a rate of up to 200 uploads per minute per repository, and download them at a rate of 1500 downloads per minute per repository. If you exceed this rate, subsequent cache upload or download attempts will fail until the relevant rate limit resets. The time until the rate limit resets is returned in the `Retry-After` header of the response. See [Actions limits](../limits.md) for more information about GitHub Actions rate limits.
 
 ### Increasing cache size
@@ -341,7 +342,7 @@ Setting your Actions Cache Storage SKU budgets lower than the total cost of usin
 Below are some illustrative monthly costs to inform budgets you may wish to set for the Actions Cache Storage SKU.
 
 | Cache size | Monthly cost (if fully utilized) |
-| ---------- | -------------------------------- |
+|----------|--------------------------------|
 | 50GB       | $2.80                            |
 | 200GB      | $13.30                           |
 | 1000GB     | $69.30                           |

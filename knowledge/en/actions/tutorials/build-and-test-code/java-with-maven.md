@@ -12,8 +12,8 @@ section: Tutorials / Build and test code
 
 _Learn how to create a continuous integration (CI) workflow in GitHub Actions to build and test your Java project with Maven._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -25,7 +25,7 @@ GitHub-hosted runners have a tools cache with pre-installed software, which incl
 
 You should be familiar with YAML and the syntax for GitHub Actions. For more information, see:
 * [Workflow syntax for GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md)
-* [Write workflows](../../how-tos/write-workflows.md)
+* [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows)
 
 We recommend that you have a basic understanding of Java and the Maven framework. For more information, see the [Maven Getting Started Guide](https://maven.apache.org/guides/getting-started/index.html) in the Maven documentation.
 
@@ -47,7 +47,7 @@ GitHub provides a workflow template for Maven that should work for most Java wit
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "Java with Maven".
 1. On the "Java with Maven" workflow, click **Configure**.
 
-If you don't find the "Java with Maven" workflow template, copy the following workflow code to a new file called `maven.yml` in the `.github/workflows` directory of your repository.
+   If you don't find the "Java with Maven" workflow template, copy the following workflow code to a new file called `maven.yml` in the `.github/workflows` directory of your repository.
 
             ```yaml copy
    # This workflow uses actions that are not certified by GitHub.
@@ -85,7 +85,7 @@ If you don't find the "Java with Maven" workflow template, copy the following wo
 1. Edit the workflow as required. For example, change the Java version.
 1. Click **Commit changes**.
 
-The `maven.yml` workflow file is added to the `.github/workflows` directory of your repository.
+   The `maven.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
 ### Specifying the Java version and architecture
 
@@ -159,9 +159,7 @@ steps:
       distribution: 'temurin'
   - run: mvn --batch-mode --update-snapshots verify
   - run: mkdir staging && cp target/*.jar staging
-  - uses: actions/upload-artifact@v4
-
-v3
+  - uses: actions/upload-artifact@v3
     with:
       name: Package
       path: staging

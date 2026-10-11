@@ -12,8 +12,8 @@ section: Tutorials / Build and test code
 
 _Learn how to create a continuous integration (CI) workflow to build and test your Node.js project._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -23,7 +23,7 @@ This guide shows you how to create a continuous integration (CI) workflow that b
 
 We recommend that you have a basic understanding of Node.js, YAML, workflow configuration options, and how to create a workflow file. For more information, see:
 
-* [Write workflows](../../how-tos/write-workflows.md)
+* [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows)
 * [Getting started with Node.js](https://nodejs.org/learn/getting-started/introduction-to-nodejs)
 
 ### Using self-hosted runners on GitHub Enterprise Server
@@ -45,7 +45,7 @@ GitHub provides a workflow template for Node.js that should work for most Node.j
 1. Filter the selection of workflows by clicking **Continuous integration**.
 1. On the "Node.js" workflow, click **Configure**.
 
-If you don't find the "Node.js" workflow template, copy the following workflow code to a new file called `node.js.yml` in the `.github/workflows` directory of your repository.
+   If you don't find the "Node.js" workflow template, copy the following workflow code to a new file called `node.js.yml` in the `.github/workflows` directory of your repository.
 
             ```yaml copy
    name: Node.js CI
@@ -80,7 +80,7 @@ If you don't find the "Node.js" workflow template, copy the following workflow c
 1. Edit the workflow as required. For example, change the Node versions you want to use.
 1. Click **Commit changes**.
 
-The `node.js.yml` workflow file is added to the `.github/workflows` directory of your repository.
+   The `node.js.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
 ## Specifying the Node.js version
 

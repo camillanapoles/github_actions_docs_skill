@@ -12,32 +12,28 @@ section: How tos / Manage runners / Self hosted runners
 
 _You can use labels to organize your self-hosted runners based on their characteristics._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 For information on how to use labels to route jobs to specific types of self-hosted runners, see [Using self-hosted runners in a workflow](use-in-a-workflow.md). You can also route jobs to runners in a specific group. For more information, see [Choosing the runner for a job](../../write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job.md#choosing-runners-in-a-group#choosing-runners-in-a-group).
 
-A self-hosted runner can be located in either your repository, organization, or enterprise account settings on GitHub
-
-enterprise settings on GitHub Enterprise Server. To manage a self-hosted runner, you must have the following permissions, depending on where the self-hosted runner was added:
+A self-hosted runner can be located in either your repository, organization, or enterprise account settings on GitHub. To manage a self-hosted runner, you must have the following permissions, depending on where the self-hosted runner was added:
 * **User repository:** You must be the repository owner.
 * **Organization:** You must be an organization owner.
 * **Organization repository:** You must be an organization owner, or have admin access to the repository.
-* **Enterprise account:** You must be an enterprise owner.
 
-* **Enterprise:** You must be a GitHub Enterprise site administrator.
+* **Enterprise account:** You must be an enterprise owner.
 
 ## Creating a custom label
 
-You can create custom labels for runners at the repository, organization, and enterprise
-
-and organization levels.
+You can create custom labels for runners at the repository and organization levels.
 
 * [Creating a custom label for a repository runner](#creating-a-custom-label-for-a-repository-runner)
-* [Creating a custom label for an organization runner](#creating-a-custom-label-for-an-organization-runner)* [Creating a custom label for an enterprise runner](#creating-a-custom-label-for-an-enterprise-runner)
+* [Creating a custom label for an organization runner](#creating-a-custom-label-for-an-organization-runner)
+* [Creating a custom label for an enterprise runner](#creating-a-custom-label-for-an-enterprise-runner)
 
-> [!NOTE]
-> Labels are case-insensitive.
+!!! note
+    Labels are case-insensitive.
 
 ### Creating a custom label for a repository runner
 
@@ -59,9 +55,8 @@ and organization levels.
 
 ### Creating a custom label for an enterprise runner
 
-1. In the top-right corner of GitHub Enterprise Server, click your profile picture, then click **Enterprise settings**.
-
 1. Navigate to your enterprise. For example, from the [Enterprises](https://github.com/settings/enterprises?ref_product=ghec&ref_type=engagement&ref_style=text) page on GitHub.com.
+
 1. At the top of the page, click ** Policies**.
 1. Under " Policies", click **Actions**.
 1. Click the **Runners** tab.
@@ -71,12 +66,11 @@ and organization levels.
 
 ## Assigning a label to a self-hosted runner
 
-You can assign labels to self-hosted runners at the repository, organization, and enterprise
-
-and organization levels.
+You can assign labels to self-hosted runners at the repository and organization levels.
 
 * [Assigning a label to a repository runner](#assigning-a-label-to-a-repository-runner)
-* [Assigning a label to an organization runner](#assigning-a-label-to-an-organization-runner)* [Assigning a label to an enterprise runner](#assigning-a-label-to-an-enterprise-runner)
+* [Assigning a label to an organization runner](#assigning-a-label-to-an-organization-runner)
+* [Assigning a label to an enterprise runner](#assigning-a-label-to-an-enterprise-runner)
 
 ### Assigning a label to a repository runner
 
@@ -96,9 +90,8 @@ and organization levels.
 
 ### Assigning a label to an enterprise runner
 
-1. In the top-right corner of GitHub Enterprise Server, click your profile picture, then click **Enterprise settings**.
-
 1. Navigate to your enterprise. For example, from the [Enterprises](https://github.com/settings/enterprises?ref_product=ghec&ref_type=engagement&ref_style=text) page on GitHub.com.
+
 1. At the top of the page, click ** Policies**.
 1. Under " Policies", click **Actions**.
 1. Click the **Runners** tab.
@@ -108,12 +101,11 @@ and organization levels.
 
 ## Removing a custom label from a self-hosted runner
 
-You can remove custom labels from self-hosted runners at the repository, organization, and enterprise
-
-and organization levels.
+You can remove custom labels from self-hosted runners at the repository and organization levels.
 
 * [Removing a custom label from a repository runner](#removing-a-custom-label-from-a-repository-runner)
-* [Removing a custom label from an organization runner](#removing-a-custom-label-from-an-organization-runner)* [Removing a custom label from an enterprise runner](#removing-a-custom-label-from-an-enterprise-runner)
+* [Removing a custom label from an organization runner](#removing-a-custom-label-from-an-organization-runner)
+* [Removing a custom label from an enterprise runner](#removing-a-custom-label-from-an-enterprise-runner)
 
 ### Removing a custom label from a repository runner
 
@@ -133,9 +125,8 @@ and organization levels.
 
 ### Removing a custom label from an enterprise runner
 
-1. In the top-right corner of GitHub Enterprise Server, click your profile picture, then click **Enterprise settings**.
-
 1. Navigate to your enterprise. For example, from the [Enterprises](https://github.com/settings/enterprises?ref_product=ghec&ref_type=engagement&ref_style=text) page on GitHub.com.
+
 1. At the top of the page, click ** Policies**.
 1. Under " Policies", click **Actions**.
 1. Click the **Runners** tab.
@@ -150,7 +141,8 @@ You can programmatically assign labels to a self-hosted runner after the runner 
 * To programmatically assign labels to an existing self-hosted runner, you must use the REST API. For more information, see [Self hosted runners](https://docs.github.com/rest/actions/self-hosted-runners).
 * To programmatically assign labels to a self-hosted runner during the initial runner configuration, you can pass label names to the `config` script using the `labels` parameter.
 
-  > [!NOTE]
+!!! note
+
   > You cannot use the `config` script to assign labels to an existing self-hosted runner.
 
   For example, this command assigns a label named `gpu` when configuring a new self-hosted runner:
@@ -167,5 +159,6 @@ You can programmatically assign labels to a self-hosted runner after the runner 
   ./config.sh --url <REPOSITORY_URL> --token <REGISTRATION_TOKEN> --labels gpu,x64,linux
   ```
 
-  > [!NOTE]
+!!! note
+
   > If you replace an existing runner, then you must reassign any custom labels.

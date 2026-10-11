@@ -22,11 +22,11 @@ You need to use specific syntax to tell GitHub to evaluate an expression rather 
 
 `${{ <expression> }}`
 
-> [!NOTE]
-> The exception to this rule is when you are using expressions in an `if` clause, where, optionally, you can usually omit `${{` and `}}`. For more information about `if` conditionals, see [Workflow syntax for GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idif#jobsjob_idif).
+!!! note
+    The exception to this rule is when you are using expressions in an `if` clause, where, optionally, you can usually omit `${{` and `}}`. For more information about `if` conditionals, see [Workflow syntax for GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idif#jobsjob_idif).
 
-> [!WARNING]
-> When creating workflows and actions, you should always consider whether your code might execute untrusted input from possible attackers. Certain contexts should be treated as untrusted input, as an attacker could insert their own malicious content. For more information, see [Secure use reference](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks#good-practices-for-mitigating-script-injection-attacks).
+    [!WARNING]
+    When creating workflows and actions, you should always consider whether your code might execute untrusted input from possible attackers. Certain contexts should be treated as untrusted input, as an attacker could insert their own malicious content. For more information, see [Secure use reference](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks#good-practices-for-mitigating-script-injection-attacks).
 
 ### Example setting an environment variable
 

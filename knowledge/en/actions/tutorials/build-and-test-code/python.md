@@ -12,8 +12,8 @@ section: Tutorials / Build and test code
 
 _Learn how to create a continuous integration (CI) workflow to build and test your Python project._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -23,7 +23,7 @@ GitHub-hosted runners have a tools cache with pre-installed software, which incl
 
 ## Prerequisites
 
-You should be familiar with YAML and the syntax for GitHub Actions. For more information, see [Write workflows](../../how-tos/write-workflows.md).
+You should be familiar with YAML and the syntax for GitHub Actions. For more information, see [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows).
 
 We recommend that you have a basic understanding of Python, and pip. For more information, see:
 
@@ -48,7 +48,7 @@ GitHub provides a workflow template for Python that should work if your reposito
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "Python application".
 1. On the "Python application" workflow, click **Configure**.
 
-If you don't find the "Python application" workflow template, copy the following workflow code to a new file called `python-app.yml` in the `.github/workflows` directory of your repository.
+   If you don't find the "Python application" workflow template, copy the following workflow code to a new file called `python-app.yml` in the `.github/workflows` directory of your repository.
 
             ```yaml copy
    name: Python application
@@ -91,7 +91,7 @@ If you don't find the "Python application" workflow template, copy the following
 1. Edit the workflow as required. For example, change the Python version.
 1. Click **Commit changes**.
 
-The `python-app.yml` workflow file is added to the `.github/workflows` directory of your repository.
+   The `python-app.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
 ## Specifying a Python version
 
@@ -101,11 +101,11 @@ Using the `setup-python` action is the recommended way of using Python with GitH
 
 The table below describes the locations for the tools cache in each GitHub-hosted runner.
 
-|| Ubuntu | Mac | Windows |
-|------|-------|------|----------|
-|**Tool Cache Directory** |`/opt/hostedtoolcache/*`|`/Users/runner/hostedtoolcache/*`|`C:\hostedtoolcache\windows\*`|
-|**Python Tool Cache**|`/opt/hostedtoolcache/Python/*`|`/Users/runner/hostedtoolcache/Python/*`|`C:\hostedtoolcache\windows\Python\*`|
-|**PyPy Tool Cache**|`/opt/hostedtoolcache/PyPy/*`|`/Users/runner/hostedtoolcache/PyPy/*`|`C:\hostedtoolcache\windows\PyPy\*`|
+|                          | Ubuntu                          | Mac                                      | Windows                               |
+|------------------------|-------------------------------|----------------------------------------|-------------------------------------|
+| **Tool Cache Directory** | `/opt/hostedtoolcache/*`        | `/Users/runner/hostedtoolcache/*`        | `C:\hostedtoolcache\windows\*`        |
+| **Python Tool Cache**    | `/opt/hostedtoolcache/Python/*` | `/Users/runner/hostedtoolcache/Python/*` | `C:\hostedtoolcache\windows\Python\*` |
+| **PyPy Tool Cache**      | `/opt/hostedtoolcache/PyPy/*`   | `/Users/runner/hostedtoolcache/PyPy/*`   | `C:\hostedtoolcache\windows\PyPy\*`   |
 
 If you are using a self-hosted runner, you can configure the runner to use the `setup-python` action to manage your dependencies. For more information, see [using setup-python with a self-hosted runner](https://github.com/actions/setup-python#using-setup-python-with-a-self-hosted-runner) in the `setup-python` README.
 
@@ -199,9 +199,9 @@ jobs:
 We recommend using `setup-python` to configure the version of Python used in your workflows because it helps make your dependencies explicit. If you don't use `setup-python`, the default version of Python set in `PATH` is used in any shell when you call `python`. The default version of Python varies between GitHub-hosted runners, which may cause unexpected changes or use an older version than expected.
 
 | GitHub-hosted runner | Description |
-|----|----|
+| --- | --- |
 | Ubuntu | Ubuntu runners have multiple versions of system Python installed under `/usr/bin/python` and `/usr/bin/python3`. The Python versions that come packaged with Ubuntu are in addition to the versions that GitHub installs in the tools cache. |
-| Windows | Excluding the versions of Python that are in the tools cache, Windows does not ship with an equivalent version of system Python. To maintain consistent behavior with other runners and to allow Python to be used out-of-the-box without the `setup-python` action, GitHub adds a few versions from the tools cache to `PATH`.|
+| Windows | Excluding the versions of Python that are in the tools cache, Windows does not ship with an equivalent version of system Python. To maintain consistent behavior with other runners and to allow Python to be used out-of-the-box without the `setup-python` action, GitHub adds a few versions from the tools cache to `PATH`. |
 | macOS | The macOS runners have more than one version of system Python installed, in addition to the versions that are part of the tools cache. The system Python versions are located in the `/usr/local/Cellar/python/*` directory. |
 
 ## Installing dependencies
@@ -284,8 +284,8 @@ steps:
     pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
 ```
 
-> [!TIP]
-> This example already produces a Cobertura XML coverage report (`--cov-report=xml`). To display coverage results directly on pull requests, upload the report using the `actions/upload-code-coverage` action. See [Set up code coverage](https://docs.github.com/code-security/how-tos/maintain-quality-code/set-up-code-coverage).
+!!! tip
+    This example already produces a Cobertura XML coverage report (`--cov-report=xml`). To display coverage results directly on pull requests, upload the report using the `actions/upload-code-coverage` action. See [Set up code coverage](https://docs.github.com/code-security/how-tos/maintain-quality-code/set-up-code-coverage).
 
 ### Using Ruff to lint and/or format code
 
@@ -372,9 +372,7 @@ jobs:
       - name: Test with pytest
         run: pytest tests.py --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml
       - name: Upload pytest test results
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
           name: pytest-results-${{ matrix.python-version }}
           path: junit/test-results-${{ matrix.python-version }}.xml
@@ -425,9 +423,7 @@ jobs:
           python -m build
 
       - name: Upload distributions
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
           name: release-dists
           path: dist/
@@ -450,9 +446,7 @@ v3
 
     steps:
       - name: Retrieve release distributions
-        uses: actions/download-artifact@v5
-
-v3
+        uses: actions/download-artifact@v3
         with:
           name: release-dists
           path: dist/

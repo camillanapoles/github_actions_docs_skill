@@ -12,8 +12,8 @@ section: Tutorials / Migrate to github actions / Automated migrations
 
 _Use GitHub Actions Importer to plan and automate your migration to GitHub Actions._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## About GitHub Actions Importer
 
@@ -43,7 +43,8 @@ GitHub Actions Importer has the following requirements:
   * Docker is [installed](https://docs.docker.com/get-docker/) and running.
   * [GitHub CLI](https://cli.github.com) is installed.
 
-  > [!NOTE]
+!!! note
+
   > The GitHub Actions Importer container and CLI do not need to be installed on the same server as your CI platform.
 
 ### Installing the GitHub Actions Importer CLI extension

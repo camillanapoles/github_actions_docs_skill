@@ -12,8 +12,8 @@ section: Reference / Workflows and actions
 
 _You can use workflow commands when running shell commands in a workflow or in an action's code._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## About workflow commands
 
@@ -35,11 +35,11 @@ Write-Output "::workflow-command parameter1={data},parameter2={data}::{command v
 ```
 ```
 
-> [!NOTE]
-> Workflow command and parameter names are case insensitive.
+!!! note
+    Workflow command and parameter names are case insensitive.
 
-> [!WARNING]
-> If you are using Command Prompt, omit double quote characters (`"`) when using workflow commands.
+    [!WARNING]
+    If you are using Command Prompt, omit double quote characters (`"`) when using workflow commands.
 
 ## Using workflow commands to access toolkit functions
 
@@ -71,25 +71,25 @@ You can use the `error` command in your workflow to create the same error annota
 
 The following table shows which toolkit functions are available within a workflow:
 
-| Toolkit function | Equivalent workflow command |
-| ----------------- |  ------------- |
-| `core.addPath`    | Accessible using environment file `GITHUB_PATH` |
-| `core.debug`      | `debug` |
-| `core.notice`     | `notice` |
-| `core.error`      | `error` |
-| `core.endGroup`   | `endgroup` |
-| `core.exportVariable` | Accessible using environment file `GITHUB_ENV` |
-| `core.getInput`   | Accessible using environment variable `INPUT_{NAME}` |
-| `core.getState`   | Accessible using environment variable `STATE_{NAME}` |
-| `core.isDebug`    |  Accessible using environment variable `RUNNER_DEBUG` |
-| `core.summary` | Accessible using environment file `GITHUB_STEP_SUMMARY` |
-| `core.saveState`  | Accessible using environment file `GITHUB_STATE` |
-| `core.setCommandEcho` | `echo` |
-| `core.setFailed`  | Used as a shortcut for `::error` and `exit 1` |
-| `core.setOutput`  | Accessible using environment file `GITHUB_OUTPUT` |
-| `core.setSecret`  | `add-mask` |
-| `core.startGroup` | `group` |
-| `core.warning`    | `warning` |
+| Toolkit function      | Equivalent workflow command                             |
+|---------------------|-------------------------------------------------------|
+| `core.addPath`        | Accessible using environment file `GITHUB_PATH`         |
+| `core.debug`          | `debug`                                                 |
+| `core.notice`         | `notice`                                                |
+| `core.error`          | `error`                                                 |
+| `core.endGroup`       | `endgroup`                                              |
+| `core.exportVariable` | Accessible using environment file `GITHUB_ENV`          |
+| `core.getInput`       | Accessible using environment variable `INPUT_{NAME}`    |
+| `core.getState`       | Accessible using environment variable `STATE_{NAME}`    |
+| `core.isDebug`        | Accessible using environment variable `RUNNER_DEBUG`    |
+| `core.summary`        | Accessible using environment file `GITHUB_STEP_SUMMARY` |
+| `core.saveState`      | Accessible using environment file `GITHUB_STATE`        |
+| `core.setCommandEcho` | `echo`                                                  |
+| `core.setFailed`      | Used as a shortcut for `::error` and `exit 1`           |
+| `core.setOutput`      | Accessible using environment file `GITHUB_OUTPUT`       |
+| `core.setSecret`      | `add-mask`                                              |
+| `core.startGroup`     | `group`                                                 |
+| `core.warning`        | `warning`                                               |
 
 ## Setting a debug message
 
@@ -121,14 +121,14 @@ Creates a notice message and prints the message to the log. This message will cr
 ::notice file={name},line={line},endLine={endLine},title={title}::{message}
 ```
 
-| Parameter | Value | Required | Default |
-| :- | :- | :- | :- |
-| `title` | Custom title | No | None |
-| `file` | Filename | No | `.github` |
-| `col` | Column number, starting at 1 | No | None |
-| `endColumn` | End column number | No | None |
-| `line` | Line number, starting at 1 | No | `1` |
-| `endLine` | End line number | No | `1` |
+| Parameter   | Value                        | Required | Default   |
+|:----------|:---------------------------|:-------|:--------|
+| `title`     | Custom title                 | No       | None      |
+| `file`      | Filename                     | No       | `.github` |
+| `col`       | Column number, starting at 1 | No       | None      |
+| `endColumn` | End column number            | No       | None      |
+| `line`      | Line number, starting at 1   | No       | `1`       |
+| `endLine`   | End line number              | No       | `1`       |
 
 ### Example: Setting a notice message
 
@@ -152,14 +152,14 @@ Creates a warning message and prints the message to the log. This message will c
 ::warning file={name},line={line},endLine={endLine},title={title}::{message}
 ```
 
-| Parameter | Value | Required | Default |
-| :- | :- | :- | :- |
-| `title` | Custom title | No | None |
-| `file` | Filename | No | `.github` |
-| `col` | Column number, starting at 1 | No | None |
-| `endColumn` | End column number | No | None |
-| `line` | Line number, starting at 1 | No | `1` |
-| `endLine` | End line number | No | `1` |
+| Parameter   | Value                        | Required | Default   |
+|:----------|:---------------------------|:-------|:--------|
+| `title`     | Custom title                 | No       | None      |
+| `file`      | Filename                     | No       | `.github` |
+| `col`       | Column number, starting at 1 | No       | None      |
+| `endColumn` | End column number            | No       | None      |
+| `line`      | Line number, starting at 1   | No       | `1`       |
+| `endLine`   | End line number              | No       | `1`       |
 
 ### Example: Setting a warning message
 
@@ -183,14 +183,14 @@ Creates an error message and prints the message to the log. This message will cr
 ::error file={name},line={line},endLine={endLine},title={title}::{message}
 ```
 
-| Parameter | Value | Required | Default |
-| :- | :- | :- | :- |
-| `title` | Custom title | No | None |
-| `file` | Filename | No | `.github` |
-| `col` | Column number, starting at 1 | No | None |
-| `endColumn` | End column number | No | None |
-| `line` | Line number, starting at 1 | No | `1` |
-| `endLine` | End line number | No | `1` |
+| Parameter   | Value                        | Required | Default   |
+|:----------|:---------------------------|:-------|:--------|
+| `title`     | Custom title                 | No       | None      |
+| `file`      | Filename                     | No       | `.github` |
+| `col`       | Column number, starting at 1 | No       | None      |
+| `endColumn` | End column number            | No       | None      |
+| `line`      | Line number, starting at 1   | No       | `1`       |
+| `endLine`   | End line number              | No       | `1`       |
 
 ### Example: Setting an error message
 
@@ -271,8 +271,8 @@ Write-Output "::add-mask::Mona The Octocat"
 ```
 ```
 
-> [!WARNING]
-> Make sure you register the secret with 'add-mask' before outputting it in the build logs or using it in any other workflow commands.
+!!! warning
+    Make sure you register the secret with 'add-mask' before outputting it in the build logs or using it in any other workflow commands.
 
 ### Example: Masking an environment variable
 
@@ -362,8 +362,8 @@ If you want to pass a masked secret between jobs or workflows, you should store 
 
 #### Workflow
 
-> [!NOTE]
-> This workflow uses an imaginary secret store, `secret-store`, which has imaginary commands `store-secret` and `retrieve-secret`. `some/secret-store@ 27b31702a0e7fc50959f5ad993c78deac1bdfc29` is an imaginary action that installs the `secret-store` application and configures it to connect to an `instance` with `credentials`.
+!!! note
+    This workflow uses an imaginary secret store, `secret-store`, which has imaginary commands `store-secret` and `retrieve-secret`. `some/secret-store@ 27b31702a0e7fc50959f5ad993c78deac1bdfc29` is an imaginary action that installs the `secret-store` application and configures it to connect to an `instance` with `credentials`.
 
 ```bash
 ```
@@ -452,8 +452,8 @@ Stops processing any workflow commands. This special command allows you to log a
 
 To stop the processing of workflow commands, pass a unique token to `stop-commands`. To resume processing workflow commands, pass the same token that you used to stop workflow commands.
 
-> [!WARNING]
-> Make sure the token you're using is randomly generated and unique for each run.
+!!! warning
+    Make sure the token you're using is randomly generated and unique for each run.
 
 ```text copy
 ::{endtoken}::
@@ -557,36 +557,37 @@ steps:
 ```
 
 ```powershell
-> [!NOTE]
-> PowerShell versions 5.1 and below (`shell: powershell`) do not use UTF-8 by default, so you must specify the UTF-8 encoding. For example:
->
-> ```yaml copy
-> jobs:
->   legacy-powershell-example:
->     runs-on: windows-latest
->     steps:
->       - shell: powershell
->         run: |
->           "mypath" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-> ```
->
-> PowerShell Core versions 6 and higher (`shell: pwsh`) use UTF-8 by default. For example:
->
-> ```yaml copy
-> jobs:
->   powershell-core-example:
->     runs-on: windows-latest
->     steps:
->       - shell: pwsh
->         run: |
->           "mypath" >> $env:GITHUB_PATH
-> ```
+!!! note
+    PowerShell versions 5.1 and below (`shell: powershell`) do not use UTF-8 by default, so you must specify the UTF-8 encoding. For example:
+
+    ```
+    jobs:
+      legacy-powershell-example:
+        runs-on: windows-latest
+        steps:
+          - shell: powershell
+            run: |
+              "mypath" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+                ```
+
+    PowerShell Core versions 6 and higher (`shell: pwsh`) use UTF-8 by default. For example:
+
+    ```
+    jobs:
+      powershell-core-example:
+        runs-on: windows-latest
+        steps:
+          - shell: pwsh
+            run: |
+              "mypath" >> $env:GITHUB_PATH
+                ```
+
 ```
 
 ## Setting an environment variable
 
-> [!NOTE]
-> To avoid issues, it's good practice to treat environment variables as case sensitive, irrespective of the behavior of the operating system and shell you are using.
+!!! note
+    To avoid issues, it's good practice to treat environment variables as case sensitive, irrespective of the behavior of the operating system and shell you are using.
 
 ```bash
 ```
@@ -612,8 +613,8 @@ You can make an environment variable available to any subsequent steps in a work
 
 You can't overwrite the value of the default environment variables named `GITHUB_*` and `RUNNER_*`. Currently you can overwrite the value of the `CI` variable. However, it's not guaranteed that this will always be possible. For more information about the default environment variables, see [Variables reference](variables.md#default-environment-variables#default-environment-variables).
 
-> [!NOTE]
-> Due to security restrictions, `GITHUB_ENV` cannot be used to set the `NODE_OPTIONS` environment variable.
+!!! note
+    Due to security restrictions, `GITHUB_ENV` cannot be used to set the `NODE_OPTIONS` environment variable.
 
 ### Example of writing an environment variable to `GITHUB_ENV`
 
@@ -655,8 +656,8 @@ For multiline strings, you may use a delimiter with the following syntax.
 {delimiter}
 ```
 
-> [!WARNING]
-> Make sure the delimiter you're using won't occur on a line of its own within the value. If the value is completely arbitrary then you shouldn't use this format. Write the value to a file instead.
+!!! warning
+    Make sure the delimiter you're using won't occur on a line of its own within the value. If the value is completely arbitrary then you shouldn't use this format. Write the value to a file instead.
 
 #### Example of a multiline string
 

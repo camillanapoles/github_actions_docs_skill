@@ -12,8 +12,8 @@ section: How tos / Manage runners / Self hosted runners
 
 _Scripts can automatically execute on a self-hosted runner, directly before or after a job._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## About pre- and post-job scripts
 
@@ -35,8 +35,8 @@ Your custom scripts can use the following features:
 
 Your script files must use a file extension for the relevant language, such as `.sh` or `.ps1`, in order to run successfully.
 
-> [!NOTE]
-> Avoid using your scripts to output sensitive information to the console, as anyone with read access to the repository might be able to see the output in the UI logs.
+!!! note
+    Avoid using your scripts to output sensitive information to the console, as anyone with read access to the repository might be able to see the output in the UI logs.
 
 ### Handling exit codes
 
@@ -48,8 +48,8 @@ The [`continue-on-error`](../../../reference/workflows-and-actions/workflow-synt
 
 The custom scripts must be located on the runner, but should not be stored in the `actions-runner` application directory. The scripts are executed in the security context of the service account that's running the runner service.
 
-> [!NOTE]
-> The triggered scripts are processed synchronously, so they will block job execution while they are running.
+!!! note
+    The triggered scripts are processed synchronously, so they will block job execution while they are running.
 
 The scripts are automatically executed when the runner has the following environment variables containing an absolute path to the script:
 * `ACTIONS_RUNNER_HOOK_JOB_STARTED`: The script defined in this environment variable is triggered when a job has been assigned to a runner, but before the job starts running.
@@ -62,8 +62,8 @@ For example, the following `.env` entry will have the runner automatically run a
 ACTIONS_RUNNER_HOOK_JOB_STARTED=/opt/runner/cleanup_script.sh
 ```
 
-> [!NOTE]
-> The script defined in `ACTIONS_RUNNER_HOOK_JOB_COMPLETED` is executed at the end of the job, before the job completes. This makes it unsuitable for use cases that may interrupt a runner, such as deleting the runner machine as part of an autoscaling implementation.
+!!! note
+    The script defined in `ACTIONS_RUNNER_HOOK_JOB_COMPLETED` is executed at the end of the job, before the job completes. This makes it unsuitable for use cases that may interrupt a runner, such as deleting the runner machine as part of an autoscaling implementation.
 
 ## Troubleshooting
 

@@ -12,8 +12,8 @@ section: Tutorials / Build and test code
 
 _Learn how to create a continuous integration (CI) workflow to build and test your .NET project._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -41,7 +41,7 @@ GitHub provides a workflow template for .NET that should work for most .NET proj
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "dotnet".
 1. On the ".NET" workflow, click **Configure**.
 
-If you don't find the ".NET" workflow template, copy the following workflow code to a new file called `dotnet.yml` in the `.github/workflows` directory of your repository.
+   If you don't find the ".NET" workflow template, copy the following workflow code to a new file called `dotnet.yml` in the `.github/workflows` directory of your repository.
 
             ```yaml copy
    name: .NET
@@ -73,7 +73,7 @@ If you don't find the ".NET" workflow template, copy the following workflow code
 1. Edit the workflow as required. For example, change the .NET version.
 1. Click **Commit changes**.
 
-The `dotnet.yml` workflow file is added to the `.github/workflows` directory of your repository.
+   The `dotnet.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
 ## Specifying a .NET version
 
@@ -152,8 +152,8 @@ steps:
   run: dotnet add package Newtonsoft.Json --version 12.0.1
 ```
 
-> [!NOTE]
-> Depending on the number of dependencies, it may be faster to use the dependency cache. Projects with many large dependencies should see a performance increase as it cuts down the time required for downloading. Projects with fewer dependencies may not see a significant performance increase and may even see a slight decrease due to how NuGet installs cached dependencies. The performance varies from project to project.
+!!! note
+    Depending on the number of dependencies, it may be faster to use the dependency cache. Projects with many large dependencies should see a performance increase as it cuts down the time required for downloading. Projects with fewer dependencies may not see a significant performance increase and may even see a slight decrease due to how NuGet installs cached dependencies. The performance varies from project to project.
 
 ## Building and testing your code
 
@@ -204,9 +204,7 @@ jobs:
         - name: Test with dotnet
           run: dotnet test --no-restore --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
         - name: Upload dotnet test results
-          uses: actions/upload-artifact@v4
-
-v3
+          uses: actions/upload-artifact@v3
           with:
             name: dotnet-results-${{ matrix.dotnet-version }}
             path: TestResults-${{ matrix.dotnet-version }}

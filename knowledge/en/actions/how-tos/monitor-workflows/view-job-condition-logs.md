@@ -33,12 +33,12 @@ Result: false
 ```
 
 | Line | Description |
-|------|-------------|
+| --- | --- |
 | **Evaluating** | The original `if` expression from your workflow file. |
 | **Expanded** | The expression with context values substituted. This shows you exactly what values were used at runtime. |
 | **Result** | The final evaluation result (`true` or `false`). |
 
 In this example, the expanded line reveals that `github.repository` was `'my-username/octo-repo-prod'` (not `'octo-org/octo-repo-prod'`), which caused the condition to evaluate to `false`.
 
-> [!NOTE]
-> Expression logs are only available for job-level `if` conditions. For step-level conditions, you can enable debug logging to see expression evaluation in the job logs. For more information, see [Enabling debug logging](enable-debug-logging.md).
+!!! note
+    Expression logs are only available for job-level `if` conditions. For step-level conditions, you can enable debug logging to see expression evaluation in the job logs. For more information, see [Enabling debug logging](enable-debug-logging.md).

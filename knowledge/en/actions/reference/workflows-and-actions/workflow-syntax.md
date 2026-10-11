@@ -12,8 +12,8 @@ section: Reference / Workflows and actions
 
 _A workflow is a configurable automated process made up of one or more jobs. You must create a YAML file to define your workflow configuration._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## About YAML syntax for workflows
 
@@ -21,8 +21,9 @@ Workflow files use YAML syntax, and must have either a `.yml` or `.yaml` file ex
 
 You must store workflow files in the `.github/workflows` directory of your repository.
 
-> [!TIP]
-> Unlike traditional GitHub Actions workflows that require you to script every decision as YAML job steps, GitHub Agentic Workflows use YAML frontmatter for triggers and configuration, but let you describe what you want in natural-language Markdown—so you don't need to anticipate and encode every scenario in advance. For more information, see [Creating github agentic workflows](https://docs.github.com/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
+!!! tip
+    Unlike traditional GitHub Actions workflows that require you to script every decision as YAML job steps, GitHub Agentic Workflows use YAML frontmatter for triggers and configuration, but let you describe what you want in natural-language Markdown—so you don't need to anticipate and encode every scenario in advance. For more information, see [Creating github agentic workflows](https://docs.github.com/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
+
 ## `name`
 
 The name of the workflow. GitHub displays the names of your workflows under your repository's "Actions" tab. If you omit `name`, GitHub displays the workflow file path relative to the root of the repository.
@@ -143,7 +144,7 @@ Use the `branches` filter when you want to include branch name patterns or when 
 
 If you define both `branches`/`branches-ignore` and [`paths`/`paths-ignore`](workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore), the workflow will only run when both filters are satisfied.
 
-The `branches` and `branches-ignore` keywords accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch name. If a name contains any of these characters and you want a literal match, you need to escape each of these special characters with `\`. For more information about glob patterns, see the [Workflow syntax for GitHub Actions](workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
+The `branches` and `branches-ignore` keywords accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch name. If a name contains any of these characters and you want a literal match, you need to escape each of these special characters with ``. For more information about glob patterns, see the [Workflow syntax for GitHub Actions](workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
 
 ### Example: Including branches
 
@@ -210,7 +211,7 @@ When using the `merge_group` event, you can configure a workflow to run only for
 
 Use the `branches` filter when you want to include branch name patterns or when you want to both include and exclude branch name patterns. Use `branches-ignore` when you only want to exclude branch name patterns. You cannot use both `branches` and `branches-ignore` for the same event in a workflow.
 
-The `branches` and `branches-ignore` filters accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch name. If a name contains any of these characters and you want a literal match, you need to escape each of these special characters with `\`. For more information about glob patterns, see [Workflow syntax for github actions](../../using-workflows/workflow-syntax-for-github-actions.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
+The `branches` and `branches-ignore` filters accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch name. If a name contains any of these characters and you want a literal match, you need to escape each of these special characters with ``. For more information about glob patterns, see [Workflow syntax for github actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
 
 ### Example: Including branches
 
@@ -276,7 +277,7 @@ Use the `tags` filter when you want to include tag name patterns or when you wan
 
 If you define only `tags`/`tags-ignore` or only `branches`/`branches-ignore`, the workflow won't run for events affecting the undefined Git ref. If you define neither `tags`/`tags-ignore` or `branches`/`branches-ignore`, the workflow will run for events affecting either branches or tags. If you define both `branches`/`branches-ignore` and [`paths`/`paths-ignore`](workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore), the workflow will only run when both filters are satisfied.
 
-The `branches`, `branches-ignore`, `tags`, and `tags-ignore` keywords accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch or tag name. If a name contains any of these characters and you want a literal match, you need to _escape_ each of these special characters with `\`. For more information about glob patterns, see the [Workflow syntax for GitHub Actions](workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
+The `branches`, `branches-ignore`, `tags`, and `tags-ignore` keywords accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch or tag name. If a name contains any of these characters and you want a literal match, you need to _escape_ each of these special characters with ``. For more information about glob patterns, see the [Workflow syntax for GitHub Actions](workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
 
 ### Example: Including branches and tags
 
@@ -351,11 +352,11 @@ When using the `push` and `pull_request` events, you can configure a workflow to
 
 Use the `paths` filter when you want to include file path patterns or when you want to both include and exclude file path patterns. Use the `paths-ignore` filter when you only want to exclude file path patterns. You cannot use both the `paths` and `paths-ignore` filters for the same event in a workflow. If you want to both include and exclude path patterns for a single event, use the `paths` filter prefixed with the `!` character to indicate which paths should be excluded.
 
-> [!NOTE]
-> The order that you define `paths` patterns matters:
->
-> * A matching negative pattern (prefixed with `!`) after a positive match will exclude the path.
-> * A matching positive pattern after a negative match will include the path again.
+!!! note
+    The order that you define `paths` patterns matters:
+
+    * A matching negative pattern (prefixed with `!`) after a positive match will exclude the path.
+    * A matching positive pattern after a negative match will include the path again.
 
 If you define both `branches`/`branches-ignore` and `paths`/`paths-ignore`, the workflow will only run when both filters are satisfied.
 
@@ -423,11 +424,7 @@ In some situations, GitHub Actions applies limits that change how filtered workf
 
 * If a push contains more than 1,000 commits, the workflow will **always** run.
 * If generating the diff times out, the workflow will **always** run.
-* If the generated diff contains more than 3,000
-
-300 files and the files the workflow filter matches are not in the first 3,000
-
-300 returned by the filter, the workflow will **not** run.
+* If the generated diff contains more than 300 files and the files the workflow filter matches are not in the first 300 returned by the filter, the workflow will **not** run.
 
 If you observe these behaviors, you might need to make your filters more specific, or change how you work with pushes and pull requests to generate simpler diffs.
 
@@ -437,12 +434,10 @@ For more information, see [Branches](https://docs.github.com/pull-requests/refer
 
 You can use `on.schedule` to define a time schedule for your workflows.
 
-Use [POSIX cron syntax](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07) to schedule workflows to run at specific times. By default, scheduled workflows run in UTC. You can optionally specify a timezone using an [IANA timezone string](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for timezone-aware scheduling
+Use [POSIX cron syntax](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07) to schedule workflows to run at specific times. Scheduled workflows run in UTC. Scheduled workflows run on the latest commit on the default branch. The shortest interval you can run scheduled workflows is once every 5 minutes.
 
-Scheduled workflows run in UTC. Scheduled workflows run on the latest commit on the default branch. The shortest interval you can run scheduled workflows is once every 5 minutes.
-
-> [!NOTE]
-> For schedules that set `timezone` to a time zone that observes daylight saving time (DST), during DST spring-forward transitions, scheduled workflows in skipped hours advance to the next valid time. For example, a 2:30 AM schedule advances to 3:00 AM.
+!!! note
+    For schedules that set `timezone` to a time zone that observes daylight saving time (DST), during DST spring-forward transitions, scheduled workflows in skipped hours advance to the next valid time. For example, a 2:30 AM schedule advances to 3:00 AM.
 
 Cron syntax has five fields separated by a space, and each field represents a unit of time.
 
@@ -459,7 +454,7 @@ Cron syntax has five fields separated by a space, and each field represents a un
 You can use these operators in any of the five fields:
 
 | Operator | Description | Example |
-| -------- | ----------- | ------- |
+| --- | --- | --- |
 | * | Any value | `15 * * * *` runs at every minute 15 of every hour of every day. |
 | , | Value list separator | `2,10 4,5 * * *` runs at minute 2 and 10 of the 4th and 5th hour of every day. |
 | - | Range of values | `30 4-6 * * *` runs at minute 30 of the 4th, 5th, and 6th hour. |
@@ -567,8 +562,8 @@ A map of the secrets that can be used in the called workflow.
 
 Within the called workflow, you can use the `secrets` context to refer to a secret.
 
-> [!NOTE]
-> If you are passing the secret to a nested reusable workflow, then you must use [`jobs.<job_id>.secrets`](#jobsjob_idsecrets) again to pass the secret. For more information, see [Reuse workflows](../../how-tos/reuse-automations/reuse-workflows.md#passing-secrets-to-nested-workflows#passing-secrets-to-nested-workflows).
+!!! note
+    If you are passing the secret to a nested reusable workflow, then you must use [`jobs.<job_id>.secrets`](#jobsjob_idsecrets) again to pass the secret. For more information, see [Reuse workflows](../../how-tos/reuse-automations/reuse-workflows.md#passing-secrets-to-nested-workflows#passing-secrets-to-nested-workflows).
 
 If a caller workflow passes a secret that is not specified in the called workflow, this results in an error.
 
@@ -612,7 +607,7 @@ A boolean specifying whether the secret must be supplied.
 
 When using the `workflow_run` event, you can specify what branches the triggering workflow must run on in order to trigger your workflow.
 
-The `branches` and `branches-ignore` filters accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch name. If a name contains any of these characters and you want a literal match, you need to _escape_ each of these special characters with `\`. For more information about glob patterns, see the [Workflow syntax for GitHub Actions](workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
+The `branches` and `branches-ignore` filters accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch name. If a name contains any of these characters and you want a literal match, you need to _escape_ each of these special characters with ``. For more information about glob patterns, see the [Workflow syntax for GitHub Actions](workflow-syntax.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
 
 For example, a workflow with the following trigger will only run when the workflow named `Build` runs on a branch whose name starts with `releases/`:
 
@@ -659,7 +654,7 @@ on:
 
 When using the `workflow_run` event, you can specify which workflows can trigger your workflow.
 
-The `workflows` filters accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one workflow name. If a name contains any of these characters and you want a literal match, you need to _escape_ each of these special characters with `\`. For more information about glob patterns, see the [Workflow syntax for github actions](../../writing-workflows/workflow-syntax-for-github-actions.md#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
+The `workflows` filters accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one workflow name. If a name contains any of these characters and you want a literal match, you need to _escape_ each of these special characters with ``. For more information about glob patterns, see the [Workflow syntax for github actions](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
 
 For example, a workflow with the following trigger will only run when the workflow named `Build` runs:
 
@@ -698,12 +693,10 @@ This trigger only receives events when the workflow file is on the default branc
 
 The triggered workflow receives the inputs in the `inputs` context. For more information, see [Contexts](contexts.md#inputs-context).
 
-> [!NOTE]
-> * The workflow will also receive the inputs in the `github.event.inputs` context. The information in the `inputs` context and `github.event.inputs` context is identical except that the `inputs` context preserves Boolean values as Booleans instead of converting them to strings. The `choice` type resolves to a string and is a single selectable option.
-> * The maximum number of top-level properties for `inputs` is 25
-
-10.
-> * The maximum payload for `inputs` is 65,535 characters.
+!!! note
+    * The workflow will also receive the inputs in the `github.event.inputs` context. The information in the `inputs` context and `github.event.inputs` context is identical except that the `inputs` context preserves Boolean values as Booleans instead of converting them to strings. The `choice` type resolves to a string and is a single selectable option.
+    * The maximum number of top-level properties for `inputs` is 10 .
+    * The maximum payload for `inputs` is 65,535 characters.
 
 ### Example of `on.workflow_dispatch.inputs`
 
@@ -756,9 +749,7 @@ You can use `permissions` to modify the default permissions granted to the `GITH
 
 You can use `permissions` either as a top-level key, to apply to all jobs in the workflow, or within specific jobs. When you add the `permissions` key within a specific job, all actions and run commands within that job that use the `GITHUB_TOKEN` gain the access rights you specify. For more information, see [`jobs.<job_id>.permissions`](workflow-syntax.md#jobsjob_idpermissions).
 
-Owners of an organizationor enterprise can restrict write access for the `GITHUB_TOKEN` at the repository level. For more information, see [Disabling or limiting github actions for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)and [Enforcing policies for github actions in your enterprise](https://docs.github.com/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise).
-
-.
+Owners of an organization or enterprise can restrict write access for the `GITHUB_TOKEN` at the repository level. For more information, see [Disabling or limiting github actions for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization).
 
 When a workflow is triggered by the [`pull_request_target`](events-that-trigger-workflows.md#pull_request_target) event, the `GITHUB_TOKEN` is granted read/write repository permission, even when it is triggered from a public fork. For more information, see [Events that trigger workflows](events-that-trigger-workflows.md#pull_request_target#pull_request_target).
 
@@ -768,34 +759,22 @@ Available permissions and details of what each allows an action to do:
 
 | Permission | Allows an action using `GITHUB_TOKEN` to |
 | --- | --- |
-|  `actions` | Work with GitHub Actions. For example, `actions: write` permits an action to cancel a workflow run. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-actions#repository-permissions-for-actions). |
-| |
-|  `artifact-metadata` | Work with artifact metadata. For example, `artifact-metadata: write` permits an action to create storage records on behalf of a build artifact. For more information, see [Artifact metadata](https://docs.github.com/rest/orgs/artifact-metadata). |
-| |
-| |
-|  `attestations` | Work with artifact attestations. For example, `attestations: write` permits an action to generate an artifact attestation for a build. For more information, see [Using artifact attestations to establish provenance for builds](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md) |
-| |
-|  `checks` | Work with check runs and check suites. For example, `checks: write` permits an action to create a check run. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-checks#repository-permissions-for-checks). |
-| |
-|  `code-quality` | Work with code quality. For example, `code-quality: write` permits an action to upload code coverage reports. For more information, see [Code quality](https://docs.github.com/code-security/concepts/code-quality/code-quality). |
-| |
-|  `contents` | Work with the contents of the repository. For example, `contents: read` permits an action to list the commits, and `contents: write` allows the action to create a release. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-contents#repository-permissions-for-contents). |
-|  `deployments` | Work with deployments. For example, `deployments: write` permits an action to create a new deployment. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-deployments#repository-permissions-for-deployments). |
-|  `discussions` | Work with GitHub Discussions. For example, `discussions: write` permits an action to close or delete a discussion. For more information, see [Using the graphql api for discussions](https://docs.github.com/graphql/guides/using-the-graphql-api-for-discussions). |
-| |
-|  `id-token` | Fetch an OpenID Connect (OIDC) token. This requires `id-token: write`. For more information, see [OpenID Connect](../../concepts/security/openid-connect.md#updating-your-workflows-for-oidc#updating-your-workflows-for-oidc) |
-| |
-|  `issues` | Work with issues. For example, `issues: write` permits an action to add a comment to an issue. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-issues#repository-permissions-for-issues). |
-|  `packages` | Work with GitHub Packages. For example, `packages: write` permits an action to upload and publish packages on GitHub Packages. For more information, see [About permissions for github packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries#about-scopes-and-permissions-for-package-registries). |
-|  `pages` | Work with GitHub Pages. For example, `pages: write` permits an action to request a GitHub Pages build. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pages#repository-permissions-for-pages). |
-|  `pull-requests` | Work with pull requests. For example, `pull-requests: write` permits an action to add a label to a pull request. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pull-requests#repository-permissions-for-pull-requests). |
-|  `security-events` | Work with GitHub code scanning alerts. For example, `security-events: read` permits an action to list the code scanning alerts for the repository, and `security-events: write` allows an action to update the status of a code scanning alert. For more information, see [Repository permissions for "Code scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts). <br><br> For Dependabot alerts, use the `vulnerability-alerts` permission. Secret scanning alerts cannot be read with this permission and require a GitHub App or a personal access token. For more information, see [Repository permissions for "Secret scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) in "Permissions required for GitHub Apps."
-
-Dependabot and secret scanning alerts cannot be read with this permission and require a GitHub App or a personal access token. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts) and [Repository permissions for "Secret scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) in "Permissions required for GitHub Apps." |
+| `actions` | Work with GitHub Actions. For example, `actions: write` permits an action to cancel a workflow run. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-actions#repository-permissions-for-actions). |
+| `artifact-metadata` | Work with artifact metadata. For example, `artifact-metadata: write` permits an action to create storage records on behalf of a build artifact. For more information, see [Artifact metadata](https://docs.github.com/rest/orgs/artifact-metadata). |
+| `attestations` | Work with artifact attestations. For example, `attestations: write` permits an action to generate an artifact attestation for a build. For more information, see [Using artifact attestations to establish provenance for builds](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md) |
+| `checks` | Work with check runs and check suites. For example, `checks: write` permits an action to create a check run. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-checks#repository-permissions-for-checks). |
+| `code-quality` | Work with code quality. For example, `code-quality: write` permits an action to upload code coverage reports. For more information, see [Code quality](https://docs.github.com/code-security/concepts/code-quality/code-quality). |
+| `contents` | Work with the contents of the repository. For example, `contents: read` permits an action to list the commits, and `contents: write` allows the action to create a release. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-contents#repository-permissions-for-contents). |
+| `deployments` | Work with deployments. For example, `deployments: write` permits an action to create a new deployment. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-deployments#repository-permissions-for-deployments). |
+| `discussions` | Work with GitHub Discussions. For example, `discussions: write` permits an action to close or delete a discussion. For more information, see [Using the graphql api for discussions](https://docs.github.com/graphql/guides/using-the-graphql-api-for-discussions). |
+| `id-token` | Fetch an OpenID Connect (OIDC) token. This requires `id-token: write`. For more information, see [OpenID Connect](../../concepts/security/openid-connect.md#updating-your-workflows-for-oidc#updating-your-workflows-for-oidc) |
+| `issues` | Work with issues. For example, `issues: write` permits an action to add a comment to an issue. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-issues#repository-permissions-for-issues). |
+| `packages` | Work with GitHub Packages. For example, `packages: write` permits an action to upload and publish packages on GitHub Packages. For more information, see [About permissions for github packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries#about-scopes-and-permissions-for-package-registries). |
+| `pages` | Work with GitHub Pages. For example, `pages: write` permits an action to request a GitHub Pages build. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pages#repository-permissions-for-pages). |
+| `pull-requests` | Work with pull requests. For example, `pull-requests: write` permits an action to add a label to a pull request. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pull-requests#repository-permissions-for-pull-requests). |
+| `security-events` | Work with GitHub code scanning alerts. For example, `security-events: read` permits an action to list the code scanning alerts for the repository, and `security-events: write` allows an action to update the status of a code scanning alert. For more information, see [Repository permissions for "Code scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts).    Dependabot and secret scanning alerts cannot be read with this permission and require a GitHub App or a personal access token. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts) and [Repository permissions for "Secret scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) in "Permissions required for GitHub Apps." |
 | `statuses` | Work with commit statuses. For example, `statuses:read` permits an action to list the commit statuses for a given reference. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses#repository-permissions-for-commit-statuses). |
-| |
-|  `vulnerability-alerts` | Read Dependabot alerts. For example, `vulnerability-alerts: read` permits an action to list Dependabot alerts for the repository. Only `read` and `none` are supported; `write` is not valid. When `write-all` or `read-all` is used, `vulnerability-alerts` is automatically included as `read`. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
-| |
+| `vulnerability-alerts` | Read Dependabot alerts. For example, `vulnerability-alerts: read` permits an action to list Dependabot alerts for the repository. Only `read` and `none` are supported; `write` is not valid. When `write-all` or `read-all` is used, `vulnerability-alerts` is automatically included as `read`. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
 
 ### Defining access for the `GITHUB_TOKEN` scopes
 
@@ -803,10 +782,14 @@ You can define the access that the `GITHUB_TOKEN` will permit by specifying `rea
 
 ```yaml
 permissions:
-  actions: read|write|noneartifact-metadata: read|write|noneattestations: read|write|none
-  checks: read|write|nonecode-quality: read|write|none
+  actions: read|write|none
+  artifact-metadata: read|write|none
+  attestations: read|write|none
+  checks: read|write|none
+  code-quality: read|write|none
   contents: read|write|none
-  deployments: read|write|noneid-token: write|none
+  deployments: read|write|none
+  id-token: write|none
   issues: read|write|none
   discussions: read|write|none
   packages: read|write|none
@@ -814,7 +797,8 @@ permissions:
   pull-requests: read|write|none
 
   security-events: read|write|none
-  statuses: read|write|nonevulnerability-alerts: read|none
+  statuses: read|write|none
+  vulnerability-alerts: read|none
 ```
 
 If you specify the access for any of these permissions, all of those that are not specified are set to `none`.
@@ -910,16 +894,16 @@ defaults:
 
 Use `shell` to define the `shell` for a step. This keyword can reference several contexts. For more information, see [Contexts](contexts.md#context-availability).
 
-| Supported platform | `shell` parameter | Description                                                                                                                                                                                                                                                                             | Command run internally                          |
-| ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| Linux / macOS      | unspecified       | The default shell on non-Windows platforms. Note that this runs a different command to when `bash` is specified explicitly. If `bash` is not found in the path, this is treated as `sh`.                                                                                                | `bash -e {0}`                                   |
-| All                | `bash`            | The default shell on non-Windows platforms with a fallback to `sh`. When specifying a bash shell on Windows, the bash shell included with Git for Windows is used.                                                                                                                      | `bash --noprofile --norc -eo pipefail {0}`      |
-| All                | `pwsh`            | The PowerShell Core. GitHub appends the extension `.ps1` to your script name.                                                                                                                                                                     | `pwsh -command ". '{0}'"`                       |
-| All                | `python`          | Executes the python command.                                                                                                                                                                                                                                                            | `python {0}`                                    |
-| Linux / macOS      | `sh`              | The fallback behavior for non-Windows platforms if no shell is provided and `bash` is not found in the path.                                                                                                                                                                            | `sh -e {0}`                                     |
-| Windows            | `cmd`             | GitHub appends the extension `.cmd` to your script name and substitutes for `{0}`.                                                                                                                                                                | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
-| Windows            | `pwsh`            | This is the default shell used on Windows. The PowerShell Core. GitHub appends the extension `.ps1` to your script name. If your self-hosted Windows runner does not have _PowerShell Core_ installed, then _PowerShell Desktop_ is used instead. | `pwsh -command ". '{0}'"`.                      |
-| Windows            | `powershell`      | The PowerShell Desktop. GitHub appends the extension `.ps1` to your script name.                                                                                                                                                                  | `powershell -command ". '{0}'"`.                |
+| Supported platform | `shell` parameter | Description | Command run internally |
+| --- | --- | --- | --- |
+| Linux / macOS | unspecified | The default shell on non-Windows platforms. Note that this runs a different command to when `bash` is specified explicitly. If `bash` is not found in the path, this is treated as `sh`. | `bash -e {0}` |
+| All | `bash` | The default shell on non-Windows platforms with a fallback to `sh`. When specifying a bash shell on Windows, the bash shell included with Git for Windows is used. | `bash --noprofile --norc -eo pipefail {0}` |
+| All | `pwsh` | The PowerShell Core. GitHub appends the extension `.ps1` to your script name. | `pwsh -command ". '{0}'"` |
+| All | `python` | Executes the python command. | `python {0}` |
+| Linux / macOS | `sh` | The fallback behavior for non-Windows platforms if no shell is provided and `bash` is not found in the path. | `sh -e {0}` |
+| Windows | `cmd` | GitHub appends the extension `.cmd` to your script name and substitutes for `{0}`. | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
+| Windows | `pwsh` | This is the default shell used on Windows. The PowerShell Core. GitHub appends the extension `.ps1` to your script name. If your self-hosted Windows runner does not have _PowerShell Core_ installed, then _PowerShell Desktop_ is used instead. | `pwsh -command ". '{0}'"`. |
+| Windows | `powershell` | The PowerShell Desktop. GitHub appends the extension `.ps1` to your script name. | `powershell -command ". '{0}'"`. |
 
 When more than one default setting is defined with the same name, GitHub uses the most specific default setting. For example, a default setting defined in a job will override a default setting that has the same name defined in a workflow.
 
@@ -927,8 +911,9 @@ When more than one default setting is defined with the same name, GitHub uses th
 
 Use `working-directory` to define the working directory for the `shell` for a step. This keyword can reference several contexts. For more information, see [Contexts](contexts.md#context-availability).
 
-> [!TIP]
-> Ensure the `working-directory` you assign exists on the runner before you run your shell in it.
+!!! tip
+    Ensure the `working-directory` you assign exists on the runner before you run your shell in it.
+
 When more than one default setting is defined with the same name, GitHub uses the most specific default setting. For example, a default setting defined in a job will override a default setting that has the same name defined in a workflow.
 
 ## `concurrency`
@@ -936,8 +921,6 @@ When more than one default setting is defined with the same name, GitHub uses th
 Use `concurrency` to ensure that only a single job or workflow using the same concurrency group will run at a time. A concurrency group can be any string or expression. The expression can only use [`github`](contexts.md#github-context), [`inputs`](contexts.md#inputs-context) and [`vars`](contexts.md#vars-context) contexts. For more information about expressions, see [Evaluate expressions in workflows and actions](expressions.md).
 
 You can also specify `concurrency` at the job level. For more information, see [`jobs.<job_id>.concurrency`](workflow-syntax.md#jobsjob_idconcurrency).
-
-This means that there can be at most one running job or workflow in a concurrency group at any time. When a concurrent job or workflow is queued, if another job or workflow using the same concurrency group in the repository is in progress, the queued job or workflow will be `pending`. By default, any existing `pending` job or workflow in the same concurrency group will be canceled and the new queued job or workflow will take its place.
 
 This means that there can be at most one running and one pending job in a concurrency group at any time. When a concurrent job or workflow is queued, if another job or workflow using the same concurrency group in the repository is in progress, the queued job or workflow will be `pending`. Any existing `pending` job or workflow in the same concurrency group, if it exists, will be canceled and the new queued job or workflow will take its place.
 
@@ -950,9 +933,9 @@ To allow more than one `pending` job or workflow run to wait in the same concurr
 
 The combination of `queue: max` and `cancel-in-progress: true` is not allowed and will result in a workflow validation error.
 
-> [!NOTE]
-> * The concurrency group name is case insensitive. For example, `prod` and `Prod` will be treated as the same concurrency group.
-> * Jobs or workflow runs in the same concurrency group are processed in first-in-first-out (FIFO) order according to the time each one started waiting on the concurrency group, not the time each workflow was dispatched. Since the actual start time of a job or run may vary, ordering is not guaranteed.
+!!! note
+    * The concurrency group name is case insensitive. For example, `prod` and `Prod` will be treated as the same concurrency group.
+    * Jobs or workflow runs in the same concurrency group are processed in first-in-first-out (FIFO) order according to the time each one started waiting on the concurrency group, not the time each workflow was dispatched. Since the actual start time of a job or run may vary, ordering is not guaranteed.
 
 ### Example: Using concurrency and the default behavior
 
@@ -1094,17 +1077,17 @@ Use `cache-mode` to control the level of GitHub Actions cache access that jobs i
 
 Access is enforced with scoped cache tokens, so a job cannot restore or save caches beyond the mode it is granted. `cache-mode` accepts the following values.
 
-| Value | Restore caches | Save caches |
-| ----- | -------------- | ----------- |
-| `read` | Yes | No |
-| `write` | Yes | Yes |
-| `write-only` | No | Yes |
-| `none` | No | No |
+| Value        | Restore caches | Save caches |
+|------------|--------------|-----------|
+| `read`       | Yes            | No          |
+| `write`      | Yes            | Yes         |
+| `write-only` | No             | Yes         |
+| `none`       | No             | No          |
 
 If you omit `cache-mode`, a `read` or `write` default is used based on the trigger type. For trigger-dependent effective defaults, see [Dependency caching reference](dependency-caching.md#defaults#defaults).
 
-> [!WARNING]
-> Explicitly declaring `cache-mode: write` or `cache-mode: write-only` on low-trust triggers can bypass the secure default read-only cache restriction and reintroduce cache-poisoning risk. For guidance and mitigations, see [Dependency caching reference](dependency-caching.md#bypassing-the-default-untrusted-trigger-cache-restriction#bypassing-the-default-untrusted-trigger-cache-restriction).
+!!! warning
+    Explicitly declaring `cache-mode: write` or `cache-mode: write-only` on low-trust triggers can bypass the secure default read-only cache restriction and reintroduce cache-poisoning risk. For guidance and mitigations, see [Dependency caching reference](dependency-caching.md#bypassing-the-default-untrusted-trigger-cache-restriction#bypassing-the-default-untrusted-trigger-cache-restriction).
 
 When a cache operation is not permitted by the effective mode, the cache step logs an informational message and continues. The job and workflow do not fail. A skipped restore is treated as a cache miss; a skipped save is simply not performed. For more information, see [Dependency caching reference](dependency-caching.md#controlling-cache-access-with-cache-mode#controlling-cache-access-with-cache-mode).
 
@@ -1166,34 +1149,22 @@ Available permissions and details of what each allows an action to do:
 
 | Permission | Allows an action using `GITHUB_TOKEN` to |
 | --- | --- |
-|  `actions` | Work with GitHub Actions. For example, `actions: write` permits an action to cancel a workflow run. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-actions#repository-permissions-for-actions). |
-| |
-|  `artifact-metadata` | Work with artifact metadata. For example, `artifact-metadata: write` permits an action to create storage records on behalf of a build artifact. For more information, see [Artifact metadata](https://docs.github.com/rest/orgs/artifact-metadata). |
-| |
-| |
-|  `attestations` | Work with artifact attestations. For example, `attestations: write` permits an action to generate an artifact attestation for a build. For more information, see [Using artifact attestations to establish provenance for builds](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md) |
-| |
-|  `checks` | Work with check runs and check suites. For example, `checks: write` permits an action to create a check run. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-checks#repository-permissions-for-checks). |
-| |
-|  `code-quality` | Work with code quality. For example, `code-quality: write` permits an action to upload code coverage reports. For more information, see [Code quality](https://docs.github.com/code-security/concepts/code-quality/code-quality). |
-| |
-|  `contents` | Work with the contents of the repository. For example, `contents: read` permits an action to list the commits, and `contents: write` allows the action to create a release. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-contents#repository-permissions-for-contents). |
-|  `deployments` | Work with deployments. For example, `deployments: write` permits an action to create a new deployment. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-deployments#repository-permissions-for-deployments). |
-|  `discussions` | Work with GitHub Discussions. For example, `discussions: write` permits an action to close or delete a discussion. For more information, see [Using the graphql api for discussions](https://docs.github.com/graphql/guides/using-the-graphql-api-for-discussions). |
-| |
-|  `id-token` | Fetch an OpenID Connect (OIDC) token. This requires `id-token: write`. For more information, see [OpenID Connect](../../concepts/security/openid-connect.md#updating-your-workflows-for-oidc#updating-your-workflows-for-oidc) |
-| |
-|  `issues` | Work with issues. For example, `issues: write` permits an action to add a comment to an issue. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-issues#repository-permissions-for-issues). |
-|  `packages` | Work with GitHub Packages. For example, `packages: write` permits an action to upload and publish packages on GitHub Packages. For more information, see [About permissions for github packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries#about-scopes-and-permissions-for-package-registries). |
-|  `pages` | Work with GitHub Pages. For example, `pages: write` permits an action to request a GitHub Pages build. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pages#repository-permissions-for-pages). |
-|  `pull-requests` | Work with pull requests. For example, `pull-requests: write` permits an action to add a label to a pull request. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pull-requests#repository-permissions-for-pull-requests). |
-|  `security-events` | Work with GitHub code scanning alerts. For example, `security-events: read` permits an action to list the code scanning alerts for the repository, and `security-events: write` allows an action to update the status of a code scanning alert. For more information, see [Repository permissions for "Code scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts). <br><br> For Dependabot alerts, use the `vulnerability-alerts` permission. Secret scanning alerts cannot be read with this permission and require a GitHub App or a personal access token. For more information, see [Repository permissions for "Secret scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) in "Permissions required for GitHub Apps."
-
-Dependabot and secret scanning alerts cannot be read with this permission and require a GitHub App or a personal access token. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts) and [Repository permissions for "Secret scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) in "Permissions required for GitHub Apps." |
+| `actions` | Work with GitHub Actions. For example, `actions: write` permits an action to cancel a workflow run. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-actions#repository-permissions-for-actions). |
+| `artifact-metadata` | Work with artifact metadata. For example, `artifact-metadata: write` permits an action to create storage records on behalf of a build artifact. For more information, see [Artifact metadata](https://docs.github.com/rest/orgs/artifact-metadata). |
+| `attestations` | Work with artifact attestations. For example, `attestations: write` permits an action to generate an artifact attestation for a build. For more information, see [Using artifact attestations to establish provenance for builds](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md) |
+| `checks` | Work with check runs and check suites. For example, `checks: write` permits an action to create a check run. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-checks#repository-permissions-for-checks). |
+| `code-quality` | Work with code quality. For example, `code-quality: write` permits an action to upload code coverage reports. For more information, see [Code quality](https://docs.github.com/code-security/concepts/code-quality/code-quality). |
+| `contents` | Work with the contents of the repository. For example, `contents: read` permits an action to list the commits, and `contents: write` allows the action to create a release. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-contents#repository-permissions-for-contents). |
+| `deployments` | Work with deployments. For example, `deployments: write` permits an action to create a new deployment. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-deployments#repository-permissions-for-deployments). |
+| `discussions` | Work with GitHub Discussions. For example, `discussions: write` permits an action to close or delete a discussion. For more information, see [Using the graphql api for discussions](https://docs.github.com/graphql/guides/using-the-graphql-api-for-discussions). |
+| `id-token` | Fetch an OpenID Connect (OIDC) token. This requires `id-token: write`. For more information, see [OpenID Connect](../../concepts/security/openid-connect.md#updating-your-workflows-for-oidc#updating-your-workflows-for-oidc) |
+| `issues` | Work with issues. For example, `issues: write` permits an action to add a comment to an issue. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-issues#repository-permissions-for-issues). |
+| `packages` | Work with GitHub Packages. For example, `packages: write` permits an action to upload and publish packages on GitHub Packages. For more information, see [About permissions for github packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries#about-scopes-and-permissions-for-package-registries). |
+| `pages` | Work with GitHub Pages. For example, `pages: write` permits an action to request a GitHub Pages build. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pages#repository-permissions-for-pages). |
+| `pull-requests` | Work with pull requests. For example, `pull-requests: write` permits an action to add a label to a pull request. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pull-requests#repository-permissions-for-pull-requests). |
+| `security-events` | Work with GitHub code scanning alerts. For example, `security-events: read` permits an action to list the code scanning alerts for the repository, and `security-events: write` allows an action to update the status of a code scanning alert. For more information, see [Repository permissions for "Code scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts).    Dependabot and secret scanning alerts cannot be read with this permission and require a GitHub App or a personal access token. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts) and [Repository permissions for "Secret scanning alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) in "Permissions required for GitHub Apps." |
 | `statuses` | Work with commit statuses. For example, `statuses:read` permits an action to list the commit statuses for a given reference. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses#repository-permissions-for-commit-statuses). |
-| |
-|  `vulnerability-alerts` | Read Dependabot alerts. For example, `vulnerability-alerts: read` permits an action to list Dependabot alerts for the repository. Only `read` and `none` are supported; `write` is not valid. When `write-all` or `read-all` is used, `vulnerability-alerts` is automatically included as `read`. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
-| |
+| `vulnerability-alerts` | Read Dependabot alerts. For example, `vulnerability-alerts: read` permits an action to list Dependabot alerts for the repository. Only `read` and `none` are supported; `write` is not valid. When `write-all` or `read-all` is used, `vulnerability-alerts` is automatically included as `read`. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
 
 ### Defining access for the `GITHUB_TOKEN` scopes
 
@@ -1201,10 +1172,14 @@ You can define the access that the `GITHUB_TOKEN` will permit by specifying `rea
 
 ```yaml
 permissions:
-  actions: read|write|noneartifact-metadata: read|write|noneattestations: read|write|none
-  checks: read|write|nonecode-quality: read|write|none
+  actions: read|write|none
+  artifact-metadata: read|write|none
+  attestations: read|write|none
+  checks: read|write|none
+  code-quality: read|write|none
   contents: read|write|none
-  deployments: read|write|noneid-token: write|none
+  deployments: read|write|none
+  id-token: write|none
   issues: read|write|none
   discussions: read|write|none
   packages: read|write|none
@@ -1212,7 +1187,8 @@ permissions:
   pull-requests: read|write|none
 
   security-events: read|write|none
-  statuses: read|write|nonevulnerability-alerts: read|none
+  statuses: read|write|none
+  vulnerability-alerts: read|none
 ```
 
 If you specify the access for any of these permissions, all of those that are not specified are set to `none`.
@@ -1295,8 +1271,8 @@ In this example, `job3` uses the `always()` conditional expression so that it al
 
 You can use the `jobs.<job_id>.if` conditional to prevent a job from running unless a condition is met. You can use any supported context and expression to create a conditional. For more information on which contexts are supported in this key, see [Contexts reference](contexts.md#context-availability#context-availability).
 
-> [!NOTE]
-> The `jobs.<job_id>.if` condition is evaluated before [`jobs.<job_id>.strategy.matrix`](workflow-syntax.md#jobsjob_idstrategymatrix) is applied.
+!!! note
+    The `jobs.<job_id>.if` condition is evaluated before [`jobs.<job_id>.strategy.matrix`](workflow-syntax.md#jobsjob_idstrategymatrix) is applied.
 
 When you use expressions in an `if` conditional, you can, optionally, omit the `${{ }}` expression syntax because GitHub Actions automatically evaluates the `if` conditional as an expression. However, this exception does not apply everywhere.
 
@@ -1331,9 +1307,7 @@ jobs:
 
 Use `jobs.<job_id>.runs-on` to define the type of machine to run the job on.
 
-* The destination machine can be either a [GitHub-hosted runner](#choosing-github-hosted-runners), [larger runner](#choosing-runners-in-a-group), or a [self-hosted runner](#choosing-self-hosted-runners)
-
-a [self-hosted runner](#choosing-self-hosted-runners).
+* The destination machine can be a [self-hosted runner](#choosing-self-hosted-runners).
 * You can target runners based on the labels assigned to them, or their group membership, or a combination of these.
 * You can provide `runs-on` as:
   * A single string
@@ -1369,13 +1343,13 @@ a [self-hosted runner](#choosing-self-hosted-runners).
 
 * If you would like to run your workflow on multiple machines, use [`jobs.<job_id>.strategy`](workflow-syntax.md#jobsjob_idstrategy).
 
-> [!NOTE]
-> Quotation marks are not required around simple strings like `self-hosted`, but they are required for expressions like  `"${{ inputs.chosen-os }}"`.
+!!! note
+    Quotation marks are not required around simple strings like `self-hosted`, but they are required for expressions like  `"${{ inputs.chosen-os }}"`.
 
 ### Choosing GitHub-hosted runners
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 If you use a GitHub-hosted runner, each job runs in a fresh instance of a runner image specified by `runs-on`.
 
@@ -1387,217 +1361,212 @@ For more information, see [GitHub-hosted runners](../../concepts/runners/github-
 
 For public repositories, jobs using the workflow labels shown in the table below will run with the associated specifications. With the exception of single-CPU runners, each GitHub-hosted runner is a new virtual machine (VM) hosted by GitHub. Single-CPU runners are hosted in a container on a shared VM—see [GitHub-hosted runners reference](../runners/github-hosted-runners.md#single-cpu-runners#single-cpu-runners). Use of the standard GitHub-hosted runners is free and unlimited on public repositories.
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th scope="col"><b>Virtual machine / container</b></th>
-      <th scope="col"><b>Processor (CPU)</b></th>
-      <th scope="col"><b>Memory (RAM)</b></th>
-      <th scope="col"><b>Storage (SSD)</b></th>
-      <th scope="col"><b>Architecture</b></th>
-      <th scope="col"><b>Workflow label</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Linux</td>
-      <td>1</td>
-      <td>5 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md">ubuntu-slim</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Linux</td>
-      <td>4</td>
-      <td>16 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Windows</td>
-      <td>4</td>
-      <td>16 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-latest</a></code>,
-         <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-2025</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-2025-vs2026</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md">windows-2022</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Linux</td>
-      <td>4</td>
-      <td>16 GB</td>
-      <td>14 GB</td>
-      <td> arm64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md">ubuntu-24.04-arm</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md">ubuntu-22.04-arm</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md">ubuntu-26.04-arm</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Windows</td>
-      <td>4</td>
-      <td>16 GB</td>
-      <td>14 GB</td>
-      <td>arm64</td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-Readme.md">windows-11-arm</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md">windows-11-vs2026-arm</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td>4</td>
-      <td>14 GB</td>
-      <td>14 GB</td>
-      <td> Intel </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md">macos-15-intel</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md">macos-26-intel</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td>3 (M1)</td>
-      <td>7 GB</td>
-      <td>14 GB</td>
-      <td> arm64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md">macos-14</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code> (Public preview)
-      </td>
-    </tr>
-  </tbody>
+**Virtual machine / container**
 
-</table>
+**Processor (CPU)**
+
+**Memory (RAM)**
+
+**Storage (SSD)**
+
+**Architecture**
+
+**Workflow label**
+
+Linux
+
+1
+
+5 GB
+
+14 GB
+
+x64
+        `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
+Linux
+
+4
+
+16 GB
+
+14 GB
+
+x64
+        `[ubuntu-latest](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md)`,
+        `[ubuntu-24.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md)`,
+        `[ubuntu-22.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md)`,
+        `[ubuntu-26.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md)`
+Windows
+
+4
+
+16 GB
+
+14 GB
+
+x64
+        `[windows-latest](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md)`,
+         `[windows-2025](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md)`,
+        `[windows-2025-vs2026](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md)`,
+        `[windows-2022](https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md)`
+Linux
+
+4
+
+16 GB
+
+14 GB
+
+arm64
+        `[ubuntu-24.04-arm](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md)`,
+        `[ubuntu-22.04-arm](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md)`,
+        `[ubuntu-26.04-arm](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md)`
+Windows
+
+4
+
+16 GB
+
+14 GB
+
+arm64
+        `[windows-11-arm](https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-Readme.md)`,
+        `[windows-11-vs2026-arm](https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md)`
+macOS
+
+4
+
+14 GB
+
+14 GB
+
+Intel
+        `[macos-15-intel](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md)`,
+        `[macos-26-intel](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md)`
+macOS
+
+3 (M1)
+
+7 GB
+
+14 GB
+
+arm64
+        `[macos-latest](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md)`,
+        `[macos-14](https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md)`,
+        `[macos-15](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md)`,
+        `[macos-26](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md)`,
+        `[xcode-27](https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md)` (Public preview)
 
 ### Standard GitHub-hosted runners for internal and private repositories
 
 For internal and private repositories, jobs using the workflow labels shown in the table below will run on virtual machines with the associated specifications. These runners use your GitHub account's allotment of free minutes, and are then charged at the per minute rates. See [Actions runner pricing](https://docs.github.com/billing/reference/actions-runner-pricing).
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th scope="col"><b>Virtual Machine</b></th>
-      <th scope="col"><b>Processor (CPU)</b></th>
-      <th scope="col"><b>Memory (RAM)</b></th>
-      <th scope="col"><b>Storage (SSD)</b></th>
-      <th scope="col"><b>Architecture</b></th>
-      <th scope="col"><b>Workflow label</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Linux</td>
-      <td>1</td>
-      <td>5 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md">ubuntu-slim</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Linux</td>
-      <td>2</td>
-      <td>8 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Windows</td>
-      <td>2</td>
-      <td>8 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-latest</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-2025</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md">windows-2022</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Linux</td>
-      <td>2</td>
-      <td>8 GB</td>
-      <td>14 GB</td>
-      <td> arm64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md">ubuntu-24.04-arm</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md">ubuntu-22.04-arm</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md">ubuntu-26.04-arm</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>Windows</td>
-      <td>2</td>
-      <td>8 GB</td>
-      <td>14 GB</td>
-      <td> arm64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-Readme.md">windows-11-arm</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-VS2026-Readme.md">windows-11-vs2026-arm</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td>4</td>
-      <td>14 GB</td>
-      <td>14 GB</td>
-      <td> Intel </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md">macos-15-intel</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md">macos-26-intel</a></code>
-      </td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td>3 (M1)</td>
-      <td>7 GB</td>
-      <td>14 GB</td>
-      <td> arm64 </td>
-      <td>
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md">macos-14</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code>,
-        <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code> (Public preview)
-      </td>
-    </tr>
-  </tbody>
-</table>
+**Virtual Machine**
+
+**Processor (CPU)**
+
+**Memory (RAM)**
+
+**Storage (SSD)**
+
+**Architecture**
+
+**Workflow label**
+
+Linux
+
+1
+
+5 GB
+
+14 GB
+
+x64
+        `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
+Linux
+
+2
+
+8 GB
+
+14 GB
+
+x64
+        `[ubuntu-latest](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md)`,
+        `[ubuntu-24.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md)`,
+        `[ubuntu-22.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md)`,
+        `[ubuntu-26.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md)`
+Windows
+
+2
+
+8 GB
+
+14 GB
+
+x64
+        `[windows-latest](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md)`,
+        `[windows-2025](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md)`,
+        `[windows-2022](https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md)`
+Linux
+
+2
+
+8 GB
+
+14 GB
+
+arm64
+        `[ubuntu-24.04-arm](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md)`,
+        `[ubuntu-22.04-arm](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md)`,
+        `[ubuntu-26.04-arm](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md)`
+Windows
+
+2
+
+8 GB
+
+14 GB
+
+arm64
+        `[windows-11-arm](https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-Readme.md)`,
+        `[windows-11-vs2026-arm](https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-VS2026-Readme.md)`
+macOS
+
+4
+
+14 GB
+
+14 GB
+
+Intel
+        `[macos-15-intel](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md)`,
+        `[macos-26-intel](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md)`
+macOS
+
+3 (M1)
+
+7 GB
+
+14 GB
+
+arm64
+        `[macos-latest](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md)`,
+        `[macos-14](https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md)`,
+        `[macos-15](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md)`,
+        `[macos-26](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md)`,
+        `[xcode-27](https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md)` (Public preview)
 
 > [!NOTE] macOS runners are not available on subdomains of GHE.com, such as `octocorp.ghe.com`.
 
 In addition to the standard GitHub-hosted runners, GitHub offers customers on GitHub Team and GitHub Enterprise Cloud plans a range of managed virtual machines with advanced features - for example, more cores and disk space, GPU-powered machines, and ARM-powered machines. For more information, see [Larger runners](../../concepts/runners/larger-runners.md).
 
-> [!NOTE]
-> The `-latest` runner images are the latest stable images that GitHub provides, and might not be the most recent version of the operating system available from the operating system vendor.
+!!! note
+    The `-latest` runner images are the latest stable images that GitHub provides, and might not be the most recent version of the operating system available from the operating system vendor.
 
-> [!WARNING]
-> Beta and Deprecated Images are provided "as-is", "with all faults" and "as available" and are excluded from the service level agreement and warranty. Beta Images may not be covered by customer support.
+    [!WARNING]
+    Beta and Deprecated Images are provided "as-is", "with all faults" and "as available" and are excluded from the service level agreement and warranty. Beta Images may not be covered by customer support.
 
 #### Example: Specifying an operating system
 
@@ -1627,7 +1596,7 @@ For more information, see [Self-hosted runners](../../concepts/runners/self-host
 
 You can use `runs-on` to target runner groups, so that the job will execute on any runner that is a member of that group. For more granular control, you can also combine runner groups with labels.
 
-Runner groups can only have [larger runners](../../concepts/runners/larger-runners.md) or [self-hosted runners](../../how-tos/manage-runners/self-hosted-runners.md) as members.
+Runner groups can only have [larger runners](../../concepts/runners/larger-runners.md) or [self-hosted runners](https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners) as members.
 
 #### Example: Using groups to control where jobs are run
 
@@ -1708,8 +1677,8 @@ Use `jobs.<job_id>.environment` to define the environment that the job reference
 
 You can provide the environment as only the environment `name`, or as an environment object with the `name` and `url`. The URL maps to `environment_url` in the deployments API. For more information about the deployments API, see [Repos](https://docs.github.com/rest/repos#deployments#deployments).
 
-> [!NOTE]
-> All deployment protection rules must pass before a job referencing the environment is sent to a runner. For more information, see [Managing environments for deployment](../../how-tos/deploy/configure-and-manage-deployments/manage-environments.md).
+!!! note
+    All deployment protection rules must pass before a job referencing the environment is sent to a runner. For more information, see [Managing environments for deployment](../../how-tos/deploy/configure-and-manage-deployments/manage-environments.md).
 
 ### Example: Using a single environment name
 
@@ -1763,8 +1732,6 @@ You can use `jobs.<job_id>.concurrency` to ensure that only a single job or work
 
 You can also specify `concurrency` at the workflow level. For more information, see [`concurrency`](workflow-syntax.md#concurrency).
 
-This means that there can be at most one running job or workflow in a concurrency group at any time. When a concurrent job or workflow is queued, if another job or workflow using the same concurrency group in the repository is in progress, the queued job or workflow will be `pending`. By default, any existing `pending` job or workflow in the same concurrency group will be canceled and the new queued job or workflow will take its place.
-
 This means that there can be at most one running and one pending job in a concurrency group at any time. When a concurrent job or workflow is queued, if another job or workflow using the same concurrency group in the repository is in progress, the queued job or workflow will be `pending`. Any existing `pending` job or workflow in the same concurrency group, if it exists, will be canceled and the new queued job or workflow will take its place.
 
 To also cancel any currently running job or workflow in the same concurrency group, specify `cancel-in-progress: true`. To conditionally cancel currently running jobs or workflows in the same concurrency group, you can specify `cancel-in-progress` as an expression with any of the allowed expression contexts.
@@ -1776,9 +1743,9 @@ To allow more than one `pending` job or workflow run to wait in the same concurr
 
 The combination of `queue: max` and `cancel-in-progress: true` is not allowed and will result in a workflow validation error.
 
-> [!NOTE]
-> * The concurrency group name is case insensitive. For example, `prod` and `Prod` will be treated as the same concurrency group.
-> * Jobs or workflow runs in the same concurrency group are processed in first-in-first-out (FIFO) order according to the time each one started waiting on the concurrency group, not the time each workflow was dispatched. Since the actual start time of a job or run may vary, ordering is not guaranteed.
+!!! note
+    * The concurrency group name is case insensitive. For example, `prod` and `Prod` will be treated as the same concurrency group.
+    * Jobs or workflow runs in the same concurrency group are processed in first-in-first-out (FIFO) order according to the time each one started waiting on the concurrency group, not the time each workflow was dispatched. Since the actual start time of a job or run may vary, ordering is not guaranteed.
 
 ### Example: Using concurrency and the default behavior
 
@@ -1920,8 +1887,8 @@ Use `jobs.<job_id>.cache-mode` to set the level of GitHub Actions cache access f
 
 The accepted values are `read`, `write`, `write-only`, and `none`, with the same meanings as the top-level key. If neither the job nor the workflow sets `cache-mode`, a trigger-based default applies. For more information about each value, see [`cache-mode`](#cache-mode) and [Dependency caching reference](dependency-caching.md#defaults#defaults).
 
-> [!WARNING]
-> Explicitly declaring `cache-mode: write` or `cache-mode: write-only` on low-trust triggers can bypass the secure default read-only cache restriction and reintroduce cache-poisoning risk. For guidance and mitigations, see [Dependency caching reference](dependency-caching.md#bypassing-the-default-untrusted-trigger-cache-restriction#bypassing-the-default-untrusted-trigger-cache-restriction).
+!!! warning
+    Explicitly declaring `cache-mode: write` or `cache-mode: write-only` on low-trust triggers can bypass the secure default read-only cache restriction and reintroduce cache-poisoning risk. For guidance and mitigations, see [Dependency caching reference](dependency-caching.md#bypassing-the-default-untrusted-trigger-cache-restriction#bypassing-the-default-untrusted-trigger-cache-restriction).
 
 You can also set `cache-mode` on a job that calls a reusable workflow to limit the cache access granted to the called workflow. For more information, see [Reusing workflow configurations](reusing-workflow-configurations.md#supported-keywords-for-jobs-that-call-a-reusable-workflow#supported-keywords-for-jobs-that-call-a-reusable-workflow) and [Reuse workflows](../../how-tos/reuse-automations/reuse-workflows.md#controlling-cache-access-in-reusable-workflows#controlling-cache-access-in-reusable-workflows).
 
@@ -2008,8 +1975,8 @@ jobs:
       - run: echo '${{ toJSON(needs.job1.outputs) }}'
 ```
 
-> [!WARNING]
-> Actions does not guarantee the order that matrix jobs will run in. Ensure that the output name is unique, otherwise the last matrix job that runs will override the output value.
+!!! warning
+    Actions does not guarantee the order that matrix jobs will run in. Ensure that the output name is unique, otherwise the last matrix job that runs will override the output value.
 
 ## `jobs.<job_id>.env`
 
@@ -2046,16 +2013,16 @@ When more than one default setting is defined with the same name, GitHub uses th
 
 Use `shell` to define the `shell` for a step. This keyword can reference several contexts. For more information, see [Contexts](contexts.md#context-availability).
 
-| Supported platform | `shell` parameter | Description                                                                                                                                                                                                                                                                             | Command run internally                          |
-| ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| Linux / macOS      | unspecified       | The default shell on non-Windows platforms. Note that this runs a different command to when `bash` is specified explicitly. If `bash` is not found in the path, this is treated as `sh`.                                                                                                | `bash -e {0}`                                   |
-| All                | `bash`            | The default shell on non-Windows platforms with a fallback to `sh`. When specifying a bash shell on Windows, the bash shell included with Git for Windows is used.                                                                                                                      | `bash --noprofile --norc -eo pipefail {0}`      |
-| All                | `pwsh`            | The PowerShell Core. GitHub appends the extension `.ps1` to your script name.                                                                                                                                                                     | `pwsh -command ". '{0}'"`                       |
-| All                | `python`          | Executes the python command.                                                                                                                                                                                                                                                            | `python {0}`                                    |
-| Linux / macOS      | `sh`              | The fallback behavior for non-Windows platforms if no shell is provided and `bash` is not found in the path.                                                                                                                                                                            | `sh -e {0}`                                     |
-| Windows            | `cmd`             | GitHub appends the extension `.cmd` to your script name and substitutes for `{0}`.                                                                                                                                                                | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
-| Windows            | `pwsh`            | This is the default shell used on Windows. The PowerShell Core. GitHub appends the extension `.ps1` to your script name. If your self-hosted Windows runner does not have _PowerShell Core_ installed, then _PowerShell Desktop_ is used instead. | `pwsh -command ". '{0}'"`.                      |
-| Windows            | `powershell`      | The PowerShell Desktop. GitHub appends the extension `.ps1` to your script name.                                                                                                                                                                  | `powershell -command ". '{0}'"`.                |
+| Supported platform | `shell` parameter | Description | Command run internally |
+| --- | --- | --- | --- |
+| Linux / macOS | unspecified | The default shell on non-Windows platforms. Note that this runs a different command to when `bash` is specified explicitly. If `bash` is not found in the path, this is treated as `sh`. | `bash -e {0}` |
+| All | `bash` | The default shell on non-Windows platforms with a fallback to `sh`. When specifying a bash shell on Windows, the bash shell included with Git for Windows is used. | `bash --noprofile --norc -eo pipefail {0}` |
+| All | `pwsh` | The PowerShell Core. GitHub appends the extension `.ps1` to your script name. | `pwsh -command ". '{0}'"` |
+| All | `python` | Executes the python command. | `python {0}` |
+| Linux / macOS | `sh` | The fallback behavior for non-Windows platforms if no shell is provided and `bash` is not found in the path. | `sh -e {0}` |
+| Windows | `cmd` | GitHub appends the extension `.cmd` to your script name and substitutes for `{0}`. | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
+| Windows | `pwsh` | This is the default shell used on Windows. The PowerShell Core. GitHub appends the extension `.ps1` to your script name. If your self-hosted Windows runner does not have _PowerShell Core_ installed, then _PowerShell Desktop_ is used instead. | `pwsh -command ". '{0}'"`. |
+| Windows | `powershell` | The PowerShell Desktop. GitHub appends the extension `.ps1` to your script name. | `powershell -command ". '{0}'"`. |
 
 When more than one default setting is defined with the same name, GitHub uses the most specific default setting. For example, a default setting defined in a job will override a default setting that has the same name defined in a workflow.
 
@@ -2063,8 +2030,9 @@ When more than one default setting is defined with the same name, GitHub uses th
 
 Use `working-directory` to define the working directory for the `shell` for a step. This keyword can reference several contexts. For more information, see [Contexts](contexts.md#context-availability).
 
-> [!TIP]
-> Ensure the `working-directory` you assign exists on the runner before you run your shell in it.
+!!! tip
+    Ensure the `working-directory` you assign exists on the runner before you run your shell in it.
+
 When more than one default setting is defined with the same name, GitHub uses the most specific default setting. For example, a default setting defined in a job will override a default setting that has the same name defined in a workflow.
 
 ### Example: Setting default `run` step options for a job
@@ -2250,7 +2218,7 @@ A `$/` reference must not include an `@{ref}` suffix. The ref is always the comm
 The following table compares the ways to reference an action.
 
 | Syntax | Resolves to | Recommended for |
-| ------ | ----------- | --------------- |
+| --- | --- | --- |
 | `$/path/to/action` | The same repository as the running workflow or action, at the running commit | Actions in the same repository |
 | `{owner}/{repo}@{ref}` | The specified repository at the specified ref | Actions in another repository |
 | `./path/to/action` | A path in the runner's checked-out workspace, relative to the default working directory (`${{ github.workspace }}`) | Edge cases only |
@@ -2345,9 +2313,7 @@ jobs:
 
 ### Example: Using an action inside a different private repository than the workflow
 
-If the action is in an internal repository, or in a private repository configured to allow access from your workflow's repository, you can reference the action directly. For more information, see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository#allowing-access-to-components-in-an-internal-repository)
-
-[Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository) and [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository#allowing-access-to-components-in-a-private-repository).
+If the action is in an internal repository, or in a private repository configured to allow access from your workflow's repository, you can reference the action directly. For more information, see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository) and [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository#allowing-access-to-components-in-a-private-repository).
 
 If the action isn't in a repository configured to allow access, you need to check out the repository and reference the action locally. Generate a personal access token and add the token as a secret. The following example shows this method for referencing an action. For more information, see [Managing your personal access tokens](https://docs.github.com/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) and [Using secrets in GitHub Actions](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 
@@ -2412,16 +2378,16 @@ You can also use a `run` step to run a script. For more information, see [Adding
 
 You can override the default shell settings in the runner's operating system and the job's default using the `shell` keyword. You can use built-in `shell` keywords, or you can define a custom set of shell options. The shell command that is run internally executes a temporary file that contains the commands specified in the `run` keyword.
 
-| Supported platform | `shell` parameter | Description                                                                                                                                                                                                                                                                             | Command run internally                          |
-| ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| Linux / macOS      | unspecified       | The default shell on non-Windows platforms. Note that this runs a different command to when `bash` is specified explicitly. If `bash` is not found in the path, this is treated as `sh`.                                                                                                | `bash -e {0}`                                   |
-| All                | `bash`            | The default shell on non-Windows platforms with a fallback to `sh`. When specifying a bash shell on Windows, the bash shell included with Git for Windows is used.                                                                                                                      | `bash --noprofile --norc -eo pipefail {0}`      |
-| All                | `pwsh`            | The PowerShell Core. GitHub appends the extension `.ps1` to your script name.                                                                                                                                                                     | `pwsh -command ". '{0}'"`                       |
-| All                | `python`          | Executes the python command.                                                                                                                                                                                                                                                            | `python {0}`                                    |
-| Linux / macOS      | `sh`              | The fallback behavior for non-Windows platforms if no shell is provided and `bash` is not found in the path.                                                                                                                                                                            | `sh -e {0}`                                     |
-| Windows            | `cmd`             | GitHub appends the extension `.cmd` to your script name and substitutes for `{0}`.                                                                                                                                                                | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
-| Windows            | `pwsh`            | This is the default shell used on Windows. The PowerShell Core. GitHub appends the extension `.ps1` to your script name. If your self-hosted Windows runner does not have _PowerShell Core_ installed, then _PowerShell Desktop_ is used instead. | `pwsh -command ". '{0}'"`.                      |
-| Windows            | `powershell`      | The PowerShell Desktop. GitHub appends the extension `.ps1` to your script name.                                                                                                                                                                  | `powershell -command ". '{0}'"`.                |
+| Supported platform | `shell` parameter | Description | Command run internally |
+| --- | --- | --- | --- |
+| Linux / macOS | unspecified | The default shell on non-Windows platforms. Note that this runs a different command to when `bash` is specified explicitly. If `bash` is not found in the path, this is treated as `sh`. | `bash -e {0}` |
+| All | `bash` | The default shell on non-Windows platforms with a fallback to `sh`. When specifying a bash shell on Windows, the bash shell included with Git for Windows is used. | `bash --noprofile --norc -eo pipefail {0}` |
+| All | `pwsh` | The PowerShell Core. GitHub appends the extension `.ps1` to your script name. | `pwsh -command ". '{0}'"` |
+| All | `python` | Executes the python command. | `python {0}` |
+| Linux / macOS | `sh` | The fallback behavior for non-Windows platforms if no shell is provided and `bash` is not found in the path. | `sh -e {0}` |
+| Windows | `cmd` | GitHub appends the extension `.cmd` to your script name and substitutes for `{0}`. | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
+| Windows | `pwsh` | This is the default shell used on Windows. The PowerShell Core. GitHub appends the extension `.ps1` to your script name. If your self-hosted Windows runner does not have _PowerShell Core_ installed, then _PowerShell Desktop_ is used instead. | `pwsh -command ". '{0}'"`. |
+| Windows | `powershell` | The PowerShell Desktop. GitHub appends the extension `.ps1` to your script name. | `powershell -command ". '{0}'"`. |
 
 Alternatively, you can specify a default shell for all `run` steps in a job, or for all `run` steps in the entire workflow. For more information, see [`defaults.run.shell`](workflow-syntax.md#defaultsrunshell) and [`jobs.<job_id>.defaults.run.shell`](workflow-syntax.md#jobsjob_iddefaultsrunshell).
 
@@ -2606,8 +2572,8 @@ Outputs and environment changes from a background step are only available after 
 
 Use `background` when you need fine-grained control: starting a long-running process (like a server or database) that stays up while later steps run, referencing a specific step with [`wait`](#jobsjob_idstepswait) or [`cancel`](#jobsjob_idstepscancel), or interleaving background work with other steps. If you instead have a self-contained group of steps that should all finish before the job continues, [`parallel`](#jobsjob_idstepsparallel) is a more convenient shorthand.
 
-> [!NOTE]
-> You cannot use `background` on steps inside a composite action. A composite action can itself run as a background step, but it cannot declare background steps internally.
+!!! note
+    You cannot use `background` on steps inside a composite action. A composite action can itself run as a background step, but it cannot declare background steps internally.
 
 ### Example: Running a step in the background
 
@@ -2631,8 +2597,8 @@ Pauses the job until one or more background steps complete. A `wait` step perfor
 
 After a `wait` step completes, the outputs of the referenced background steps become available to subsequent steps. If a referenced background step failed, the `wait` step fails too.
 
-> [!NOTE]
-> A `wait` step always runs and does not support the [`if`](#jobsjob_idstepsif) conditional.
+!!! note
+    A `wait` step always runs and does not support the [`if`](#jobsjob_idstepsif) conditional.
 
 ### Example: Waiting for specific background steps
 
@@ -2664,8 +2630,8 @@ Pauses the job until all active background steps complete. This is useful when s
 
 The `wait-all` keyword takes no arguments.
 
-> [!NOTE]
-> A `wait-all` step always runs and does not support the [`if`](#jobsjob_idstepsif) conditional.
+!!! note
+    A `wait-all` step always runs and does not support the [`if`](#jobsjob_idstepsif) conditional.
 
 ### Example: Waiting for all background steps
 
@@ -2692,8 +2658,8 @@ steps:
 
 Gracefully terminates a running background step. The runner sends the step's process a termination signal (`SIGTERM`) so it can clean up, and forcibly stops it (`SIGKILL`) if it does not exit within a short grace period. The `cancel` keyword targets a single background step by its `id`.
 
-> [!NOTE]
-> A `cancel` step always runs and does not support the [`if`](#jobsjob_idstepsif) conditional.
+!!! note
+    A `cancel` step always runs and does not support the [`if`](#jobsjob_idstepsif) conditional.
 
 ### Example: Canceling a background step
 
@@ -2719,8 +2685,8 @@ Use `parallel` when you have a self-contained group of steps that should all fin
 
 Each step in the group is subject to the same 10-step concurrency limit as other background steps.
 
-> [!NOTE]
-> You cannot use `parallel` inside a composite action.
+!!! note
+    You cannot use `parallel` inside a composite action.
 
 ### Example: Running steps in parallel
 
@@ -2750,8 +2716,8 @@ The maximum number of minutes to let a job run before GitHub automatically cance
 
 If the timeout exceeds the job execution time limit for the runner, the job will be canceled when the execution time limit is met instead. For more information about job execution time limits, see [Billing and usage](../../concepts/billing-and-usage.md#usage-limits-and-policy#usage-limits-and-policy) for GitHub-hosted runners and [Actions limits](../limits.md) for self-hosted runner usage limits.
 
-> [!NOTE]
-> The `GITHUB_TOKEN` expires when a job finishes or after a maximum of 24 hours. For self-hosted runners, the token may be the limiting factor if the job timeout is greater than 24 hours. For more information on the `GITHUB_TOKEN`, see [Use GITHUB_TOKEN for authentication in workflows](../../tutorials/authenticate-with-github_token.md).
+!!! note
+    The `GITHUB_TOKEN` expires when a job finishes or after a maximum of 24 hours. For self-hosted runners, the token may be the limiting factor if the job timeout is greater than 24 hours. For more information on the `GITHUB_TOKEN`, see [Use GITHUB_TOKEN for authentication in workflows](../../tutorials/authenticate-with-github_token.md).
 
 ## `jobs.<job_id>.strategy`
 
@@ -2765,8 +2731,8 @@ A matrix will generate a maximum of 256 jobs per workflow run. This limit applie
 
 The variables that you define become properties in the `matrix` context, and you can reference the property in other areas of your workflow file. In this example, you can use `matrix.version` and `matrix.os` to access the current value of `version` and `os` that the job is using. For more information, see [Contexts reference](contexts.md).
 
-> [!NOTE]
-> The variable names are case insensitive. For example, `OS` and `os` will be treated as the same variable.
+!!! note
+    The variable names are case insensitive. For example, `OS` and `os` will be treated as the same variable.
 
 By default, GitHub will maximize the number of jobs run in parallel depending on runner availability. The order of the variables in the matrix determines the order in which the jobs are created. The first variable you define will be the first job that is created in your workflow run.
 
@@ -2961,18 +2927,18 @@ strategy:
 
 ## `jobs.<job_id>.container`
 
-> [!NOTE]
-> If your workflows use Docker container actions, job containers, or service containers, then you must use a Linux runner:
->
-> * If you are using GitHub-hosted runners, you must use an Ubuntu runner.
-> * If you are using self-hosted runners, you must use a Linux machine as your runner and Docker must be installed.
+!!! note
+    If your workflows use Docker container actions, job containers, or service containers, then you must use a Linux runner:
+
+    * If you are using GitHub-hosted runners, you must use an Ubuntu runner.
+    * If you are using self-hosted runners, you must use a Linux machine as your runner and Docker must be installed.
 
 Use `jobs.<job_id>.container` to create a container to run any steps in a job that don't already specify a container. If you have steps that use both script and container actions, the container actions will run as sibling containers on the same network with the same volume mounts.
 
 If you do not set a `container`, all steps will run directly on the host specified by `runs-on` unless a step refers to an action configured to run in a container.
 
-> [!NOTE]
-> The default shell for `run` steps inside a container is `sh` instead of `bash`. This can be overridden with [`jobs.<job_id>.defaults.run`](workflow-syntax.md#jobsjob_iddefaultsrun) or [`jobs.<job_id>.steps[*].shell`](/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell).
+!!! note
+    The default shell for `run` steps inside a container is `sh` instead of `bash`. This can be overridden with [`jobs.<job_id>.defaults.run`](workflow-syntax.md#jobsjob_iddefaultsrun) or [`jobs.<job_id>.steps[*].shell`](/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell).
 
 ### Example: Running a job within a container
 
@@ -3010,8 +2976,8 @@ jobs:
 ## `jobs.<job_id>.container.image`
 
 Use `jobs.<job_id>.container.image` to define the Docker image to use as the container to run the action. The value can be the Docker Hub image name or a registry name.
-> [!NOTE]
-> Docker Hub normally imposes rate limits on both push and pull operations which will affect jobs on self-hosted runners. However, GitHub-hosted runners are not subject to these limits based on an agreement between GitHub and Docker.
+!!! note
+    Docker Hub normally imposes rate limits on both push and pull operations which will affect jobs on self-hosted runners. However, GitHub-hosted runners are not subject to these limits based on an agreement between GitHub and Docker.
 
 ## `jobs.<job_id>.container.credentials`
 
@@ -3058,16 +3024,16 @@ volumes:
 
 Use `jobs.<job_id>.container.options` to configure additional Docker container resource options. For a list of options, see [`docker create` options](https://docs.docker.com/engine/reference/commandline/create/#options).
 
-> [!WARNING]
-> The `--network` and `--entrypoint` options are not supported.
+!!! warning
+    The `--network` and `--entrypoint` options are not supported.
 
 ## `jobs.<job_id>.services`
 
-> [!NOTE]
-> If your workflows use Docker container actions, job containers, or service containers, then you must use a Linux runner:
->
-> * If you are using GitHub-hosted runners, you must use an Ubuntu runner.
-> * If you are using self-hosted runners, you must use a Linux machine as your runner and Docker must be installed.
+!!! note
+    If your workflows use Docker container actions, job containers, or service containers, then you must use a Linux runner:
+
+    * If you are using GitHub-hosted runners, you must use an Ubuntu runner.
+    * If you are using self-hosted runners, you must use a Linux machine as your runner and Docker must be installed.
 
 Used to host service containers for a job in a workflow. Service containers are useful for creating databases or cache services like Redis. The runner automatically creates a Docker network and manages the life cycle of the service containers.
 
@@ -3162,8 +3128,8 @@ volumes:
 
 Additional Docker container resource options. For a list of options, see [`docker create` options](https://docs.docker.com/engine/reference/commandline/create/#options).
 
-> [!WARNING]
-> The `--network` option is not supported.
+!!! warning
+    The `--network` option is not supported.
 
 ## `jobs.<job_id>.services.<service_id>.command`
 
@@ -3205,9 +3171,7 @@ services:
 The location and version of a reusable workflow file to run as a job. Use one of the following syntaxes:
 
 * `$/.github/workflows/{filename}` for a reusable workflow in the same repository. This is the recommended syntax for referencing a reusable workflow in the same repository. This syntax is not available in GitHub Enterprise Server.
-* `{owner}/{repo}/.github/workflows/{filename}@{ref}` for reusable workflows in public and private
-
-public, internal and private repositories.
+* `{owner}/{repo}/.github/workflows/{filename}@{ref}` for reusable workflows in public and private repositories.
 * `./.github/workflows/{filename}` for reusable workflows in the same repository.
 
 When you reference a reusable workflow with `{owner}/{repo}` and `@{ref}`, the `{ref}` can be a SHA, a release tag, or a branch name. If a release tag and a branch have the same name, the release tag takes precedence over the branch name. Using the commit SHA is the safest option for stability and security. For more information, see [Secure use reference](../security/secure-use.md#reusing-third-party-workflows#reusing-third-party-workflows).
@@ -3339,35 +3303,35 @@ For more information about branch, tag, and path filter syntax, see [`on.<push>.
 
 ### Patterns to match branches and tags
 
-| Pattern                                     | Description                                                                                                                                                                  | Example matches                                                                               |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `feature/*`                                 | The `*` wildcard matches any character, but does not match slash (`/`).                                                                                                      | `feature/my-branch`<br/><br/>`feature/your-branch`                                            |
-| `feature/**`                                | The `**` wildcard matches any character including slash (`/`) in branch and tag names.                                                                                       | `feature/beta-a/my-branch`<br/><br/>`feature/your-branch`<br/><br/>`feature/mona/the/octocat` |
-| `main`<br/><br/>`releases/mona-the-octocat` | Matches the exact name of a branch or tag name.                                                                                                                              | `main`<br/><br/>`releases/mona-the-octocat`                                                   |
-| `'*'`                                       | Matches all branch and tag names that don't contain a slash (`/`). The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `main`<br/><br/>`releases`                                                                    |
-| `'**'`                                      | Matches all branch and tag names. This is the default behavior when you don't use a `branches` or `tags` filter.                                                             | `all/the/branches`<br/><br/>`every/tag`                                                       |
-| `'*feature'`                                | The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes.                                                                    | `mona-feature`<br/><br/>`feature`<br/><br/>`ver-10-feature`                                   |
-| `v2*`                                       | Matches branch and tag names that start with `v2`.                                                                                                                           | `v2`<br/><br/>`v2.0`<br/><br/>`v2.9`                                                          |
-| `v[12].[0-9]+.[0-9]+`                       | Matches all semantic versioning branches and tags with major version 1 or 2.                                                                                                 | `v1.10.1`<br/><br/>`v2.0.0`                                                                   |
+| Pattern | Description | Example matches |
+| --- | --- | --- |
+| `feature/*` | The `*` wildcard matches any character, but does not match slash (`/`). | `feature/my-branch`  `feature/your-branch` |
+| `feature/**` | The `**` wildcard matches any character including slash (`/`) in branch and tag names. | `feature/beta-a/my-branch`  `feature/your-branch`  `feature/mona/the/octocat` |
+| `main`  `releases/mona-the-octocat` | Matches the exact name of a branch or tag name. | `main`  `releases/mona-the-octocat` |
+| `'*'` | Matches all branch and tag names that don't contain a slash (`/`). The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `main`  `releases` |
+| `'**'` | Matches all branch and tag names. This is the default behavior when you don't use a `branches` or `tags` filter. | `all/the/branches`  `every/tag` |
+| `'*feature'` | The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `mona-feature`  `feature`  `ver-10-feature` |
+| `v2*` | Matches branch and tag names that start with `v2`. | `v2`  `v2.0`  `v2.9` |
+| `v[12].[0-9]+.[0-9]+` | Matches all semantic versioning branches and tags with major version 1 or 2. | `v1.10.1`  `v2.0.0` |
 
 ### Patterns to match file paths
 
 Path patterns must match the whole path, and start from the repository's root.
 
-| Pattern                                             | Description of matches                                                                                                                                                                        | Example matches                                                                         |
-| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `'*'`                                               | The `*` wildcard matches any character, but does not match slash (`/`). The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes.             | `README.md`<br/><br/>`server.rb`                                                        |
-| `'*.jsx?'`                                          | The `?` character matches zero or one of the preceding character.                                                                                                                             | `page.js`<br/><br/>`page.jsx`                                                           |
-| `'**'`                                              | The `**` wildcard matches any character including slash (`/`). This is the default behavior when you don't use a `path` filter.                                                               | `all/the/files.md`                                                                      |
-| `'*.js'`                                            | The `*` wildcard matches any character, but does not match slash (`/`). Matches all `.js` files at the root of the repository.                                                                | `app.js`<br/><br/>`index.js`                                                            |
-| `'**.js'`                                           | Matches all `.js` files in the repository.                                                                                                                                                    | `index.js`<br/><br/>`js/index.js`<br/><br/>`src/js/app.js`                              |
-| `docs/*`                                            | All files within the root of the `docs` directory only, at the root of the repository.                                                                                                             | `docs/README.md`<br/><br/>`docs/file.txt`                                               |
-| `docs/**`                                           | Any files in the `docs` directory and its subdirectories at the root of the repository.                                                                                                                             | `docs/README.md`<br/><br/>`docs/mona/octocat.txt`                                       |
-| `docs/**/*.md`                                      | A file with a `.md` suffix anywhere in the `docs` directory.                                                                                                                                  | `docs/README.md`<br/><br/>`docs/mona/hello-world.md`<br/><br/>`docs/a/markdown/file.md` |
-| `'**/docs/**'`                                      | Any files in a `docs` directory anywhere in the repository.                                                                                                                                   | `docs/hello.md`<br/><br/>`dir/docs/my-file.txt`<br/><br/>`space/docs/plan/space.doc`    |
-| `'**/README.md'`                                    | A README.md file anywhere in the repository.                                                                                                                                                  | `README.md`<br/><br/>`js/README.md`                                                     |
-| `'**/*src/**'`                                      | Any file in a folder with a `src` suffix anywhere in the repository.                                                                                                                          | `a/src/app.js`<br/><br/>`my-src/code/js/app.js`                                         |
-| `'**/*-post.md'`                                    | A file with the suffix `-post.md` anywhere in the repository.                                                                                                                                 | `my-post.md`<br/><br/>`path/their-post.md`                                              |
-| `'**/migrate-*.sql'`                                | A file with the prefix `migrate-` and suffix `.sql` anywhere in the repository.                                                                                                               | `migrate-10909.sql`<br/><br/>`db/migrate-v1.0.sql`<br/><br/>`db/sept/migrate-v1.sql`    |
-| `'*.md'`<br/><br/>`'!README.md'`                    | Using an exclamation mark (`!`) in front of a pattern negates it. When a file matches a pattern and also matches a negative pattern defined later in the file, the file will not be included. | `hello.md`<br/><br/>_Does not match_<br/><br/>`README.md`<br/><br/>`docs/hello.md`      |
-| `'*.md'`<br/><br/>`'!README.md'`<br/><br/>`README*` | Patterns are checked sequentially. A pattern that negates a previous pattern will re-include file paths.                                                                                      | `hello.md`<br/><br/>`README.md`<br/><br/>`README.doc`                                   |
+| Pattern | Description of matches | Example matches |
+| --- | --- | --- |
+| `'*'` | The `*` wildcard matches any character, but does not match slash (`/`). The `*` character is a special character in YAML. When you start a pattern with `*`, you must use quotes. | `README.md`  `server.rb` |
+| `'*.jsx?'` | The `?` character matches zero or one of the preceding character. | `page.js`  `page.jsx` |
+| `'**'` | The `**` wildcard matches any character including slash (`/`). This is the default behavior when you don't use a `path` filter. | `all/the/files.md` |
+| `'*.js'` | The `*` wildcard matches any character, but does not match slash (`/`). Matches all `.js` files at the root of the repository. | `app.js`  `index.js` |
+| `'**.js'` | Matches all `.js` files in the repository. | `index.js`  `js/index.js`  `src/js/app.js` |
+| `docs/*` | All files within the root of the `docs` directory only, at the root of the repository. | `docs/README.md`  `docs/file.txt` |
+| `docs/**` | Any files in the `docs` directory and its subdirectories at the root of the repository. | `docs/README.md`  `docs/mona/octocat.txt` |
+| `docs/**/*.md` | A file with a `.md` suffix anywhere in the `docs` directory. | `docs/README.md`  `docs/mona/hello-world.md`  `docs/a/markdown/file.md` |
+| `'**/docs/**'` | Any files in a `docs` directory anywhere in the repository. | `docs/hello.md`  `dir/docs/my-file.txt`  `space/docs/plan/space.doc` |
+| `'**/README.md'` | A README.md file anywhere in the repository. | `README.md`  `js/README.md` |
+| `'**/*src/**'` | Any file in a folder with a `src` suffix anywhere in the repository. | `a/src/app.js`  `my-src/code/js/app.js` |
+| `'**/*-post.md'` | A file with the suffix `-post.md` anywhere in the repository. | `my-post.md`  `path/their-post.md` |
+| `'**/migrate-*.sql'` | A file with the prefix `migrate-` and suffix `.sql` anywhere in the repository. | `migrate-10909.sql`  `db/migrate-v1.0.sql`  `db/sept/migrate-v1.sql` |
+| `'*.md'`  `'!README.md'` | Using an exclamation mark (`!`) in front of a pattern negates it. When a file matches a pattern and also matches a negative pattern defined later in the file, the file will not be included. | `hello.md`  _Does not match_  `README.md`  `docs/hello.md` |
+| `'*.md'`  `'!README.md'`  `README*` | Patterns are checked sequentially. A pattern that negates a previous pattern will re-include file paths. | `hello.md`  `README.md`  `README.doc` |

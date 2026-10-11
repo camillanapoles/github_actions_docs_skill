@@ -12,8 +12,8 @@ section: How tos / Write workflows / Choose what workflows do
 
 _You can script with GitHub CLI in GitHub Actions workflows._
 
-> [!NOTE]
-> To learn more about GitHub CLI, see [About github cli](https://docs.github.com/github-cli/github-cli/about-github-cli).
+!!! note
+    To learn more about GitHub CLI, see [About github cli](https://docs.github.com/github-cli/github-cli/about-github-cli).
 
 GitHub CLI is preinstalled on all GitHub-hosted runners. For each step that uses GitHub CLI, you must set an environment variable called `GH_TOKEN` to a token with the required scopes.
 

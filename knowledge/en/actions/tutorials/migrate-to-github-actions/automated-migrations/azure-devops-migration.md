@@ -24,7 +24,8 @@ The instructions below will guide you through configuring your environment to us
   * Docker is [installed](https://docs.docker.com/get-docker/) and running.
   * [GitHub CLI](https://cli.github.com) is installed.
 
-  > [!NOTE]
+!!! note
+
   > The GitHub Actions Importer container and CLI do not need to be installed on the same server as your CI platform.
 
 ### Limitations
@@ -108,15 +109,13 @@ The `configure` CLI command is used to set required credentials and options for 
 
    The `configure` command will prompt you for the following information:
 
-   * For "Which CI providers are you configuring?", use the arrow keys to select `Azure DevOps`, press <kbd>Space</kbd> to select it, then press <kbd>Enter</kbd>.
-   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the GitHub instance", enter the URL for your GitHub Enterprise Server instance, and press <kbd>Enter</kbd>.
-
-press <kbd>Enter</kbd> to accept the default value (`https://github.com`).
-   * For "Personal access token for Azure DevOps", enter the value for the Azure DevOps personal access token that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the Azure DevOps instance", press <kbd>Enter</kbd> to accept the default value (`https://dev.azure.com`).
-   * For "Azure DevOps organization name", enter the name for your Azure DevOps organization, and press <kbd>Enter</kbd>.
-   * For "Azure DevOps project name", enter the name for your Azure DevOps project, and press <kbd>Enter</kbd>.
+   * For "Which CI providers are you configuring?", use the arrow keys to select `Azure DevOps`, press `Space` to select it, then press `Enter`.
+   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press `Enter`.
+   * For "Base url of the GitHub instance", press `Enter` to accept the default value (`https://github.com`).
+   * For "Personal access token for Azure DevOps", enter the value for the Azure DevOps personal access token that you created earlier, and press `Enter`.
+   * For "Base url of the Azure DevOps instance", press `Enter` to accept the default value (`https://dev.azure.com`).
+   * For "Azure DevOps organization name", enter the name for your Azure DevOps organization, and press `Enter`.
+   * For "Azure DevOps project name", enter the name for your Azure DevOps project, and press `Enter`.
 
    An example of the `configure` command is shown below:
 
@@ -436,26 +435,26 @@ gh actions-importer migrate azure-devops pipeline --config-file-path config.yml 
 
 The following table shows the type of properties that GitHub Actions Importer is currently able to convert.
 
-| Azure Pipelines       | GitHub Actions                        |              Status |
-| :-------------------- | :------------------------------------ | :------------------ |
-| condition             | <ul><li>`jobs.<job_id>.if`</li><li>`jobs.<job_id>.steps[*].if`</li></ul> |           Supported |
-| container             | <ul><li>`jobs.<job_id>.container`</li><li>`jobs.<job_id>.name`</li></ul>                  |           Supported |
-| continuousIntegration | <ul><li>`on.<push>.<branches>`</li><li>`on.<push>.<tags>`</li><li>`on.<push>.paths`</li></ul> |           Supported |
-| job                   | <ul><li>`jobs.<job_id>`</li></ul> |           Supported |
-| pullRequest           | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.paths`</li></ul> |           Supported |
-| stage                 | <ul><li>`jobs`</li></ul> |           Supported |
-| steps                 | <ul><li>`jobs.<job_id>.steps`</li></ul> |           Supported |
-| strategy              | <ul><li>`jobs.<job_id>.strategy.fail-fast`</li><li>`jobs.<job_id>.strategy.max-parallel`</li><li>`jobs.<job_id>.strategy.matrix`</li></ul>       |           Supported |
-| timeoutInMinutes      | <ul><li>`jobs.<job_id>.timeout-minutes`</li></ul> |           Supported |
-| variables             | <ul><li>`env`</li><li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li></ul> |           Supported |
-| manual deployment     | <ul><li>`jobs.<job_id>.environment`</li></ul> | Partially supported |
-| pool                  | <ul><li>`runners`</li><li>`self hosted runners`</li></ul> | Partially supported |
-| services              | <ul><li>`jobs.<job_id>.services`</li></ul> | Partially supported |
-| strategy              | <ul><li>`jobs.<job_id>.strategy`</li></ul> | Partially supported |
-| triggers              | <ul><li>`on`</li></ul>                        | Partially supported |
-| pullRequest           | <ul><li>`on.<pull_request>.<tags>`</li></ul>  |         Unsupported |
-| schedules             | <ul><li>`on.schedule`</li><li>`on.workflow_run`</li></ul> |         Unsupported |
-| triggers              | <ul><li>`on.<event_name>.types`</li></ul>     |         Unsupported |
+| Azure Pipelines | GitHub Actions | Status |
+| :-- | :-- | :-- |
+| condition | <ul><li>`jobs.<job_id>.if`</li><li>`jobs.<job_id>.steps[*].if`</li></ul> | Supported |
+| container | <ul><li>`jobs.<job_id>.container`</li><li>`jobs.<job_id>.name`</li></ul> | Supported |
+| continuousIntegration | <ul><li>`on.<push>.<branches>`</li><li>`on.<push>.<tags>`</li><li>`on.<push>.paths`</li></ul> | Supported |
+| job | <ul><li>`jobs.<job_id>`</li></ul> | Supported |
+| pullRequest | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.paths`</li></ul> | Supported |
+| stage | <ul><li>`jobs`</li></ul> | Supported |
+| steps | <ul><li>`jobs.<job_id>.steps`</li></ul> | Supported |
+| strategy | <ul><li>`jobs.<job_id>.strategy.fail-fast`</li><li>`jobs.<job_id>.strategy.max-parallel`</li><li>`jobs.<job_id>.strategy.matrix`</li></ul> | Supported |
+| timeoutInMinutes | <ul><li>`jobs.<job_id>.timeout-minutes`</li></ul> | Supported |
+| variables | <ul><li>`env`</li><li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li></ul> | Supported |
+| manual deployment | <ul><li>`jobs.<job_id>.environment`</li></ul> | Partially supported |
+| pool | <ul><li>`runners`</li><li>`self hosted runners`</li></ul> | Partially supported |
+| services | <ul><li>`jobs.<job_id>.services`</li></ul> | Partially supported |
+| strategy | <ul><li>`jobs.<job_id>.strategy`</li></ul> | Partially supported |
+| triggers | <ul><li>`on`</li></ul> | Partially supported |
+| pullRequest | <ul><li>`on.<pull_request>.<tags>`</li></ul> | Unsupported |
+| schedules | <ul><li>`on.schedule`</li><li>`on.workflow_run`</li></ul> | Unsupported |
+| triggers | <ul><li>`on.<event_name>.types`</li></ul> | Unsupported |
 
 For more information about supported Azure DevOps tasks, see the [`github/gh-actions-importer` repository](https://github.com/github/gh-actions-importer/blob/main/docs/azure_devops/index.md).
 
@@ -464,7 +463,7 @@ For more information about supported Azure DevOps tasks, see the [`github/gh-act
 GitHub Actions Importer uses the mapping in the table below to convert default Azure DevOps environment variables to the closest equivalent in GitHub Actions.
 
 | Azure Pipelines                             | GitHub Actions                                      |
-| :------------------------------------------ | :-------------------------------------------------- |
+|:------------------------------------------|:--------------------------------------------------|
 | `$(Agent.BuildDirectory)`                   | `${{ runner.workspace }}`                           |
 | `$(Agent.HomeDirectory)`                    | `${{ env.HOME }}`                                   |
 | `$(Agent.JobName)`                          | `${{ github.job }}`                                 |
@@ -499,10 +498,10 @@ GitHub Actions Importer uses the mapping in the table below to convert default A
 | `$(Release.DefinitionName)`                 | `${{ github.workflow }}`                            |
 | `$(Release.Deployment.RequestedFor)`        | `${{ github.actor }}`                               |
 | `$(Release.DeploymentID)`                   | `${{ github.run_id }}`                              |
-| `$(Release.EnvironmentId)`                 | `${{ github.job }}`                                 |
+| `$(Release.EnvironmentId)`                  | `${{ github.job }}`                                 |
 | `$(Release.EnvironmentName)`                | `${{ github.job }}`                                 |
-| `$(Release.Reason)`                        | `${{ github.event_name }}`                          |
-| `$(Release.RequestedFor)`                  | `${{ github.actor }}`                               |
+| `$(Release.Reason)`                         | `${{ github.event_name }}`                          |
+| `$(Release.RequestedFor)`                   | `${{ github.actor }}`                               |
 | `$(System.ArtifactsDirectory)`              | `${{ github.workspace }}`                           |
 | `$(System.DefaultWorkingDirectory)`         | `${{ github.workspace }}`                           |
 | `$(System.HostType)`                        | `build`                                             |
@@ -541,19 +540,19 @@ GitHub Actions Importer is able to transform Azure DevOps templates with some li
 
 GitHub Actions Importer supports the templates listed in the table below.
 
-| Azure Pipelines               | GitHub Actions                        |              Status |
-| :---------------------------- | :------------------------------------ | ------------------: |
-| Extending from a template     | `Reusable workflow`                   |           Supported |
-| Job templates                 | `Reusable workflow`                   |           Supported |
-| Stage templates               | `Reusable workflow`                   |           Supported |
-| Step templates                | `Composite action`                    |           Supported |
-| Task groups in classic editor | Varies                                |           Supported |
-| Templates in a different Azure DevOps organization, project, or repository    | Varies                              |           Supported |
-| Templates in a GitHub repository | Varies                              |           Supported |
-| Variable templates            | `env`                                 |           Supported |
-| Conditional insertion         | `if` conditions on job/steps          | Partially supported |
-| Iterative insertion           | Not applicable                        | Partially supported |
-| Templates with parameters     | Varies                                | Partially supported |
+| Azure Pipelines | GitHub Actions | Status |
+| :-- | :-- | --: |
+| Extending from a template | `Reusable workflow` | Supported |
+| Job templates | `Reusable workflow` | Supported |
+| Stage templates | `Reusable workflow` | Supported |
+| Step templates | `Composite action` | Supported |
+| Task groups in classic editor | Varies | Supported |
+| Templates in a different Azure DevOps organization, project, or repository | Varies | Supported |
+| Templates in a GitHub repository | Varies | Supported |
+| Variable templates | `env` | Supported |
+| Conditional insertion | `if` conditions on job/steps | Partially supported |
+| Iterative insertion | Not applicable | Partially supported |
+| Templates with parameters | Varies | Partially supported |
 
 #### Template file path names
 
@@ -606,23 +605,23 @@ steps:
 
 GitHub Actions Importer supports the parameters listed in the table below.
 
-| Azure Pipelines       | GitHub Actions                              |              Status   |
-| :-------------------- | :-----------------------------------------  | :-------------------  |
-| string                | `inputs.string`                             |           Supported   |
-| number                | `inputs.number`                             |           Supported   |
-| boolean               | `inputs.boolean`                            |           Supported   |
-| object                | `inputs.string` with `fromJSON` expression  | Partially supported   |
-| step                  | `step`                                      | Partially supported  |
-| stepList              | `step`                                      | Partially supported  |
-| job                   | `job`                                       | Partially supported |
-| jobList               | `job`                                       | Partially supported |
-| deployment            | `job`                                       | Partially supported |
-| deploymentList        | `job`                                       | Partially supported |
-| stage                 | `job`                                       | Partially supported |
-| stageList             | `job`                                       | Partially supported |
+| Azure Pipelines       | GitHub Actions                             | Status               |
+|:--------------------|:-----------------------------------------|:-------------------|
+| string                | `inputs.string`                            | Supported            |
+| number                | `inputs.number`                            | Supported            |
+| boolean               | `inputs.boolean`                           | Supported            |
+| object                | `inputs.string` with `fromJSON` expression | Partially supported  |
+| step                  | `step`                                     | Partially supported  |
+| stepList              | `step`                                     | Partially supported  |
+| job                   | `job`                                      | Partially supported  |
+| jobList               | `job`                                      | Partially supported  |
+| deployment            | `job`                                      | Partially supported  |
+| deploymentList        | `job`                                      | Partially supported  |
+| stage                 | `job`                                      | Partially supported  |
+| stageList             | `job`                                      | Partially supported  |
 
-> [!NOTE]
-> A template used under the `step` key with this parameter type is only serialized as a composite action if the steps are used at the beginning or end of the template steps. A template used under the `stage`, `deployment`, and `job` keys with this parameter type are not transformed into a reusable workflow, and instead are serialized as a standalone workflow.
+!!! note
+    A template used under the `step` key with this parameter type is only serialized as a composite action if the steps are used at the beginning or end of the template steps. A template used under the `stage`, `deployment`, and `job` keys with this parameter type are not transformed into a reusable workflow, and instead are serialized as a standalone workflow.
 
 ## Legal notice
 

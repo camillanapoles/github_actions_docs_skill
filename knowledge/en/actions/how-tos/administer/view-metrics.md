@@ -14,7 +14,8 @@ _You can view metrics to monitor where your organization or repositories use Git
 
 ## Viewing GitHub Actions metrics for your organization
 
-> [!NOTE]
+!!! note
+
 There may be a discrepancy between the **Workflows** tab's job count and the **Jobs** tab's count due to differences in how unique jobs are identified. This does not affect the total minutes calculated.
 
 1. In the upper-right corner of GitHub, click your profile picture, then click ** Organizations**.
@@ -36,7 +37,8 @@ There may be a discrepancy between the **Workflows** tab's job count and the **J
 
 ## Viewing GitHub Actions metrics for your repository
 
-> [!NOTE]
+!!! note
+
 There may be a discrepancy between the **Workflows** tab's job count and the **Jobs** tab's count due to differences in how unique jobs are identified. This does not affect the total minutes calculated.
 
 1. On GitHub, navigate to the main page of the repository.
@@ -57,12 +59,12 @@ There may be a discrepancy between the **Workflows** tab's job count and the **J
 
 The time period selection feature allows you to view GitHub Actions metrics over predefined periods, as detailed in the following table. These metrics exclude skipped runs and those that use zero minutes. Data is presented using Coordinated Universal Time (UTC) days.
 
-| Period                 | Description                                                                  |
-|------------------------|------------------------------------------------------------------------------|
-| Current week (Mon-Sun) | Data from Monday through the current day when the page is viewed.            |
-| Current month          | Data from the first of the month to the current day when the page is viewed. |
-| Last month             | Data from the first day to the last day of the previous month.               |
-| Last 30 days           | Data from the last 30 days to when the page is viewed.                       |
-| Last 90 days           | Data from the last 90 days to when the page is viewed.                       |
-| Last year              | Data aggregated for the last 12 months.                                      |
-| Custom                 | Data from a custom date range. The range can be up to 100 days including the start and end dates and go back as far as one year. |
+| Period | Description |
+| --- | --- |
+| Current week (Mon-Sun) | Data from Monday through the current day when the page is viewed. |
+| Current month | Data from the first of the month to the current day when the page is viewed. |
+| Last month | Data from the first day to the last day of the previous month. |
+| Last 30 days | Data from the last 30 days to when the page is viewed. |
+| Last 90 days | Data from the last 90 days to when the page is viewed. |
+| Last year | Data aggregated for the last 12 months. |
+| Custom | Data from a custom date range. The range can be up to 100 days including the start and end dates and go back as far as one year. |

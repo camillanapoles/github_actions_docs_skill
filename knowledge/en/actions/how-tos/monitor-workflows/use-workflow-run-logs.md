@@ -12,8 +12,8 @@ section: How tos / Monitor workflows
 
 _You can view, search, and download the logs for each job in a workflow run._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 You can see whether a workflow run is in progress or complete from the workflow run page. You must be logged in to a GitHub account to view workflow run information, including for public repositories. For more information, see [Access permissions on github](https://docs.github.com/get-started/learning-about-github/access-permissions-on-github).
 
@@ -21,8 +21,8 @@ If the run is complete, you can see whether the result was a success, failure, c
 
 GitHub Actions use the Checks API to output statuses, results, and logs for a workflow. GitHub creates a new check suite for each workflow run. The check suite contains a check run for each job in the workflow, and each job includes steps. GitHub Actions are run as a step in a workflow. For more information about the Checks API, see [Checks](https://docs.github.com/rest/checks).
 
-> [!NOTE]
-> Ensure that you only commit valid workflow files to your repository. If `.github/workflows` contains an invalid workflow file, GitHub Actions generates a failed workflow run for every new commit.
+!!! note
+    Ensure that you only commit valid workflow files to your repository. If `.github/workflows` contains an invalid workflow file, GitHub Actions generates a failed workflow run for every new commit.
 
 ## Viewing logs to diagnose failures
 
@@ -78,7 +78,8 @@ You can download the log files from your workflow run. You can also download a w
 
    ![Screenshot of the log for a job. In the header, a gear icon is outlined in dark orange.](/assets/images/help/actions/download-logs-drop-down.png)
 
-  > [!NOTE]
+!!! note
+
   > When you download the log archive for a workflow that was partially re-run, the archive only includes the jobs that were re-run. To get a complete set of logs for jobs that were run from a workflow, you must download the log archives for the previous run attempts that ran the other jobs.
 
 ## Deleting logs
@@ -173,8 +174,8 @@ done
 
 ## Viewing logs with GitHub CLI
 
-> [!NOTE]
-> To learn more about GitHub CLI, see [About github cli](https://docs.github.com/github-cli/github-cli/about-github-cli).
+!!! note
+    To learn more about GitHub CLI, see [About github cli](https://docs.github.com/github-cli/github-cli/about-github-cli).
 
 To view the log for a specific job, use the `run view` subcommand. Replace `run-id` with the ID of run that you want to view logs for. GitHub CLI returns an interactive menu for you to choose a job from the run. If you don't specify `run-id`, GitHub CLI returns an interactive menu for you to choose a recent run, and then returns another interactive menu for you to choose a job from the run.
 

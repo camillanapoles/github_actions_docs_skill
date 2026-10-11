@@ -12,8 +12,8 @@ section: Tutorials / Migrate to github actions / Manual migrations
 
 _GitHub Actions and Azure Pipelines share several configuration similarities, which makes migrating to GitHub Actions relatively straightforward._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -252,4 +252,4 @@ jobs:
       - run: python script.py
 ```
 
-You can find actions that you can use in your workflow in [GitHub Marketplace](https://github.com/marketplace?type=actions), or you can create your own actions. For more information, see [Reuse automations](../../../how-tos/reuse-automations.md).
+You can find actions that you can use in your workflow in [GitHub Marketplace](https://github.com/marketplace?type=actions), or you can create your own actions. For more information, see [Reuse automations](https://docs.github.com/en/actions/how-tos/reuse-automations).

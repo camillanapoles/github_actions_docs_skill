@@ -14,8 +14,8 @@ _Authenticate Actions Runner Controller to the GitHub API._
 
 You can authenticate Actions Runner Controller (ARC) to the GitHub API by using a GitHub App or by using a personal access token (classic).
 
-> [!NOTE]
-> You cannot authenticate using a GitHub App for runners at the enterprise level. For more information, see [Managing access to self-hosted runners using groups](../self-hosted-runners/manage-access.md).
+!!! note
+    You cannot authenticate using a GitHub App for runners at the enterprise level. For more information, see [Managing access to self-hosted runners using groups](../self-hosted-runners/manage-access.md).
 
 ## Authenticating ARC with a GitHub App
 
@@ -26,7 +26,8 @@ You can authenticate Actions Runner Controller (ARC) to the GitHub API by using 
    1. Under "Permissions," click **Repository permissions**. Then use the dropdown menus to select the following access permissions.
       * **Administration:** Read and write
 
-        > [!NOTE]
+!!! note
+
         > `Administration: Read and write` is only required when configuring Actions Runner Controller to register at the repository scope. It is not required to register at the organization scope.
 
       * **Metadata:** Read-only
@@ -41,16 +42,14 @@ You can authenticate Actions Runner Controller (ARC) to the GitHub API by using 
 
 1. After confirming the installation permissions on your organization, note the app installation ID. You will use it later. You can find the app installation ID on the app installation page, which has the following URL format:
 
-   `https://github.com
-
-HOSTNAME/organizations/ORGANIZATION/settings/installations/INSTALLATION_ID`
+   `https://HOSTNAME/organizations/ORGANIZATION/settings/installations/INSTALLATION_ID`
 
 1. Register the app ID, installation ID, and the downloaded `.pem` private key file from the previous steps to Kubernetes as a secret.
 
    To create a Kubernetes secret with the values of your GitHub App, run the following command.
 
-     > [!NOTE]
-> Create the secret in the same namespace where the `gha-runner-scale-set` chart is installed. In this example, the namespace is `arc-runners` to match the quickstart documentation. For more information, see [Get started with Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set#configuring-a-runner-scale-set).
+!!! note
+    Create the secret in the same namespace where the `gha-runner-scale-set` chart is installed. In this example, the namespace is `arc-runners` to match the quickstart documentation. For more information, see [Get started with Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set#configuring-a-runner-scale-set).
 
             ```bash copy
    kubectl create secret generic pre-defined-secret \
@@ -72,21 +71,21 @@ HOSTNAME/organizations/ORGANIZATION/settings/installations/INSTALLATION_ID`
 
 ARC can use personal access tokens (classic) to register self-hosted runners.
 
-> [!NOTE]
-> Authenticating ARC with a personal access token (classic) is the only supported authentication method to register runners at the enterprise level.
+!!! note
+    Authenticating ARC with a personal access token (classic) is the only supported authentication method to register runners at the enterprise level.
 
-1. Create a personal access token (classic) with the required scopes. The required scopes are different depending on whether you are registering runners at the repository, organization, or enterprise
-
-or organization level. For more information on how to create a personal access token (classic), see [Managing your personal access tokens](https://docs.github.com/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic#creating-a-personal-access-token-classic).
+1. Create a personal access token (classic) with the required scopes. The required scopes are different depending on whether you are registering runners at the repository or organization level. For more information on how to create a personal access token (classic), see [Managing your personal access tokens](https://docs.github.com/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic#creating-a-personal-access-token-classic).
 
     The following is the list of required personal access token scopes for ARC runners.
     * Repository runners: `repo`
     * Organization runners: `admin:org`
+
     * Enterprise runners: `manage_runners:enterprise`
+
 1. To create a Kubernetes secret with the value of your personal access token (classic), use the following command.
 
-   > [!NOTE]
-> Create the secret in the same namespace where the `gha-runner-scale-set` chart is installed. In this example, the namespace is `arc-runners` to match the quickstart documentation. For more information, see [Get started with Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set#configuring-a-runner-scale-set).
+!!! note
+    Create the secret in the same namespace where the `gha-runner-scale-set` chart is installed. In this example, the namespace is `arc-runners` to match the quickstart documentation. For more information, see [Get started with Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set#configuring-a-runner-scale-set).
 
             ```bash copy
    kubectl create secret generic pre-defined-secret \
@@ -106,8 +105,8 @@ or organization level. For more information on how to create a personal access t
 
 ARC can use fine-grained personal access tokens to register self-hosted runners.
 
-> [!NOTE]
-> Authenticating ARC with a personal access token (classic) is the only supported authentication method to register runners at the enterprise level.
+!!! note
+    Authenticating ARC with a personal access token (classic) is the only supported authentication method to register runners at the enterprise level.
 
 1. Create a fine-grained personal access token with the required scopes. The required scopes are different depending on whether you are registering runners at the repository or organization level. For more information on how to create a fine-grained personal access token, see [Managing your personal access tokens](https://docs.github.com/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token#creating-a-fine-grained-personal-access-token).
 
@@ -122,8 +121,8 @@ ARC can use fine-grained personal access tokens to register self-hosted runners.
 
 1. To create a Kubernetes secret with the value of your fine-grained personal access token, use the following command.
 
-   > [!NOTE]
-> Create the secret in the same namespace where the `gha-runner-scale-set` chart is installed. In this example, the namespace is `arc-runners` to match the quickstart documentation. For more information, see [Get started with Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set#configuring-a-runner-scale-set).
+!!! note
+    Create the secret in the same namespace where the `gha-runner-scale-set` chart is installed. In this example, the namespace is `arc-runners` to match the quickstart documentation. For more information, see [Get started with Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set#configuring-a-runner-scale-set).
 
             ```bash copy
    kubectl create secret generic pre-defined-secret \
@@ -141,8 +140,8 @@ ARC can use fine-grained personal access tokens to register self-hosted runners.
 
 ## Authenticating ARC with vault secrets
 
-> [!NOTE]
-> Vault integration is currently available in public preview with support for Azure Key Vault.
+!!! note
+    Vault integration is currently available in public preview with support for Azure Key Vault.
 
 Starting with gha-runner-scale-set version 0.12.0, ARC supports retrieving GitHub credentials from an external vault. Vault integration is configured per runner scale set. This means you can run some scale sets using Kubernetes secrets while others use vault-based secrets, depending on your security and operational requirements.
 

@@ -12,8 +12,8 @@ section: Tutorials / Build and test code
 
 _Learn how to create a continuous integration (CI) workflow to build and test your PowerShell project._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -25,7 +25,7 @@ For a full list of up-to-date software and the pre-installed versions of PowerSh
 
 ## Prerequisites
 
-You should be familiar with YAML and the syntax for GitHub Actions. For more information, see [Write workflows](../../how-tos/write-workflows.md).
+You should be familiar with YAML and the syntax for GitHub Actions. For more information, see [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows).
 
 We recommend that you have a basic understanding of PowerShell and Pester. For more information, see:
 * [Getting started with PowerShell](https://docs.microsoft.com/powershell/scripting/learn/ps101/01-getting-started)
@@ -81,21 +81,21 @@ jobs:
 
 The table below describes the locations for various PowerShell modules in each GitHub-hosted runner.
 
-|| Ubuntu | macOS | Windows |
-|------|-------|------|----------|
-|**PowerShell system modules** |`/opt/microsoft/powershell/7/Modules/*`|`/usr/local/microsoft/powershell/7/Modules/*`|`C:\program files\powershell\7\Modules\*`|
-|**PowerShell add-on modules**|`/usr/local/share/powershell/Modules/*`|`/usr/local/share/powershell/Modules/*`|`C:\Modules\*`|
-|**User-installed modules**|`/home/runner/.local/share/powershell/Modules/*`|`/Users/runner/.local/share/powershell/Modules/*`|`C:\Users\runneradmin\Documents\PowerShell\Modules\*`|
+|                               | Ubuntu                                           | macOS                                             | Windows                                               |
+|-----------------------------|------------------------------------------------|-------------------------------------------------|-----------------------------------------------------|
+| **PowerShell system modules** | `/opt/microsoft/powershell/7/Modules/*`          | `/usr/local/microsoft/powershell/7/Modules/*`     | `C:\program files\powershell\7\Modules\*`             |
+| **PowerShell add-on modules** | `/usr/local/share/powershell/Modules/*`          | `/usr/local/share/powershell/Modules/*`           | `C:\Modules\*`                                        |
+| **User-installed modules**    | `/home/runner/.local/share/powershell/Modules/*` | `/Users/runner/.local/share/powershell/Modules/*` | `C:\Users\runneradmin\Documents\PowerShell\Modules\*` |
 
-> [!NOTE]
-> On Ubuntu runners, Azure PowerShell modules are stored in `/usr/share/` instead of the default location of PowerShell add-on modules (i.e. `/usr/local/share/powershell/Modules/`).
+!!! note
+    On Ubuntu runners, Azure PowerShell modules are stored in `/usr/share/` instead of the default location of PowerShell add-on modules (i.e. `/usr/local/share/powershell/Modules/`).
 
 ## Installing dependencies
 
 GitHub-hosted runners have PowerShell 7 and Pester installed. You can use `Install-Module` to install additional dependencies from the PowerShell Gallery before building and testing your code.
 
-> [!NOTE]
-> The pre-installed packages (such as Pester) used by GitHub-hosted runners are regularly updated, and can introduce significant changes. As a result, it is recommended that you always specify the required package versions by using `Install-Module` with `-MaximumVersion`.
+!!! note
+    The pre-installed packages (such as Pester) used by GitHub-hosted runners are regularly updated, and can introduce significant changes. As a result, it is recommended that you always specify the required package versions by using `Install-Module` with `-MaximumVersion`.
 
 You can also cache dependencies to speed up your workflow. For more information, see [Dependency caching reference](../../reference/workflows-and-actions/dependency-caching.md).
 
@@ -115,8 +115,8 @@ jobs:
           Install-Module SqlServer, PSScriptAnalyzer
 ```
 
-> [!NOTE]
-> By default, no repositories are trusted by PowerShell. When installing modules from the PowerShell Gallery, you must explicitly set the installation policy for `PSGallery` to `Trusted`.
+!!! note
+    By default, no repositories are trusted by PowerShell. When installing modules from the PowerShell Gallery, you must explicitly set the installation policy for `PSGallery` to `Trusted`.
 
 ### Caching dependencies
 
@@ -194,9 +194,7 @@ jobs:
         shell: pwsh
         run: Invoke-Pester Unit.Tests.ps1 -Passthru | Export-CliXml -Path Unit.Tests.xml
       - name: Upload test results
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
           name: ubuntu-Unit-Tests
           path: Unit.Tests.xml

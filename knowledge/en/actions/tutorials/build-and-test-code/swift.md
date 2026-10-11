@@ -12,8 +12,8 @@ section: Tutorials / Build and test code
 
 _Learn how to create a continuous integration (CI) workflow to build and test your Swift project._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -42,7 +42,7 @@ GitHub provides a workflow template for Swift that should work for most Swift pr
 1. Filter the selection of workflows by clicking **Continuous integration**.
 1. On the "Swift" workflow, click **Configure**.
 
-If you don't find the "Swift" workflow template, copy the following workflow code to a new file called `swift.yml` in the `.github/workflows` directory of your repository.
+   If you don't find the "Swift" workflow template, copy the following workflow code to a new file called `swift.yml` in the `.github/workflows` directory of your repository.
 
             ```yaml copy
    name: Swift
@@ -68,7 +68,7 @@ If you don't find the "Swift" workflow template, copy the following workflow cod
 1. Edit the workflow as required. For example, change the branch on which the workflow will run.
 1. Click **Commit changes**.
 
-The `swift.yml` workflow file is added to the `.github/workflows` directory of your repository.
+   The `swift.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
 ## Specifying a Swift version
 

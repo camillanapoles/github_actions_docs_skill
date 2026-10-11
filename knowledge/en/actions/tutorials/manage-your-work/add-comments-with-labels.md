@@ -12,8 +12,8 @@ section: Tutorials / Manage your work
 
 _You can use GitHub Actions to automatically comment on issues when a specific label is applied._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 

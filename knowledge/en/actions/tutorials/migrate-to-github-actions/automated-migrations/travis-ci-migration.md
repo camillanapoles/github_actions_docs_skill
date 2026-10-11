@@ -24,7 +24,8 @@ The instructions below will guide you through configuring your environment to us
   * Docker is [installed](https://docs.docker.com/get-docker/) and running.
   * [GitHub CLI](https://cli.github.com) is installed.
 
-  > [!NOTE]
+!!! note
+
   > The GitHub Actions Importer container and CLI do not need to be installed on the same server as your CI platform.
 
 ### Limitations
@@ -91,14 +92,12 @@ The `configure` CLI command is used to set required credentials and options for 
 
    The `configure` command will prompt you for the following information:
 
-   * For "Which CI providers are you configuring?", use the arrow keys to select `Travis CI`, press <kbd>Space</kbd> to select it, then press <kbd>Enter</kbd>.
-   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the GitHub instance", enter the URL for your GitHub Enterprise Server instance, and press <kbd>Enter</kbd>.
-
-press <kbd>Enter</kbd> to accept the default value (`https://github.com`).
-   * For "Personal access token for Travis CI", enter the value for the Travis CI API access token that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the Travis CI instance", enter the URL of your Travis CI instance, and press <kbd>Enter</kbd>.
-   * For "Travis CI organization name", enter the name of your Travis CI organization, and press <kbd>Enter</kbd>.
+   * For "Which CI providers are you configuring?", use the arrow keys to select `Travis CI`, press `Space` to select it, then press `Enter`.
+   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press `Enter`.
+   * For "Base url of the GitHub instance", press `Enter` to accept the default value (`https://github.com`).
+   * For "Personal access token for Travis CI", enter the value for the Travis CI API access token that you created earlier, and press `Enter`.
+   * For "Base url of the Travis CI instance", enter the URL of your Travis CI instance, and press `Enter`.
+   * For "Travis CI organization name", enter the name of your Travis CI organization, and press `Enter`.
 
    An example of the output of the `configure` command is shown below.
 
@@ -356,66 +355,64 @@ gh actions-importer dry-run travis-ci --travis-ci-repository travis-org-name/tra
 
 GitHub Actions Importer supports migrating Travis CI projects in the following languages.
 
-<ul style="-webkit-column-count: 3; -moz-column-count: 3; column-count: 3;">
-<li><code>android</code></li>
-<li><code>bash</code></li>
-<li><code>c</code></li>
-<li><code>clojure</code></li>
-<li><code>c++</code></li>
-<li><code>crystal</code></li>
-<li><code>c#</code></li>
-<li><code>d</code></li>
-<li><code>dart</code></li>
-<li><code>elixir</code></li>
-<li><code>erlang</code></li>
-<li><code>generic</code></li>
-<li><code>go</code></li>
-<li><code>groovy</code></li>
-<li><code>haskell</code></li>
-<li><code>haxe</code></li>
-<li><code>java</code></li>
-<li><code>julia</code></li>
-<li><code>matlab</code></li>
-<li><code>minimal</code></li>
-<li><code>nix</code></li>
-<li><code>node_js</code></li>
-<li><code>objective-c</code></li>
-<li><code>perl</code></li>
-<li><code>perl6</code></li>
-<li><code>php</code></li>
-<li><code>python</code></li>
-<li><code>r</code></li>
-<li><code>ruby</code></li>
-<li><code>rust</code></li>
-<li><code>scala</code></li>
-<li><code>sh</code></li>
-<li><code>shell</code></li>
-<li><code>smalltalk</code></li>
-<li><code>swift</code></li>
-</ul>
+- `android`
+- `bash`
+- `c`
+- `clojure`
+- `c++`
+- `crystal`
+- `c#`
+- `d`
+- `dart`
+- `elixir`
+- `erlang`
+- `generic`
+- `go`
+- `groovy`
+- `haskell`
+- `haxe`
+- `java`
+- `julia`
+- `matlab`
+- `minimal`
+- `nix`
+- `node_js`
+- `objective-c`
+- `perl`
+- `perl6`
+- `php`
+- `python`
+- `r`
+- `ruby`
+- `rust`
+- `scala`
+- `sh`
+- `shell`
+- `smalltalk`
+- `swift`
 
 ### Supported syntax for Travis CI pipelines
 
 The following table shows the type of properties GitHub Actions Importer is currently able to convert. For more details about how Travis CI pipeline syntax aligns with GitHub Actions, see [Migrating from Travis CI to GitHub Actions](../manual-migrations/migrate-from-travis-ci.md).
 
-| Travis CI    | GitHub Actions                     |              Status |
-| :------------------ | :--------------------------------- | ------------------: |
-| branches            | <ul><li>`on.<push>.<branches>`</li>|           Supported |
-| build_pull_requests | <ul><li>`on.<pull_request>`</li>   |           Supported |
-| env                 | <ul><li>`env`</li> <li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li>                                                               |           Supported |
-| if                  | <ul><li>`jobs.<job_id>.if`</li></ul>       |           Supported |
-| job                 | <ul><li>`jobs.<job_id>`</li><li>`jobs.<job_id>.name`</li></ul> |           Supported |
-| matrix              | <ul><li>`jobs.<job_id>.strategy`</li><li>`jobs.<job_id>.strategy.fail-fast`</li><li>`jobs.<job_id>.strategy.matrix`</li>                 |           Supported |
-| os & dist           | <ul><li>`runners`</li></ul>        |           Supported |
-| scripts             | <ul><li>`jobs.<job_id>.steps`</li></ul>    |           Supported |
-| stages              | <ul><li>`jobs`</li></ul>           |           Supported |
-| env                 | <ul><li>`on`</li>                               | Partially supported |
-| branches            | <ul><li>`on.<push>.<tags>`</li><li>`on.<push>.paths`</li>                                                                     |         Unsupported |
-| build_pull_requests | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.<tags>`</li><li>`on.<pull_request>.paths`</li>                          |         Unsupported |
-| cron triggers       | <ul><li>`on.schedule`</li><li>`on.workflow_run`</li></ul> |         Unsupported |
-| env                 | <ul><li>`jobs.<job_id>.timeout-minutes`</li><li>`on.<event_name>.types`</li>                                                                     |         Unsupported |
-| job                 | <ul><li>`jobs.<job_id>.container`</li>          |         Unsupported |
-| os & dist           | <ul><li>`self hosted runners`</li></ul>         |         Unsupported |
+| Travis CI | GitHub Actions | Status |
+| :-- | :-- | --: |
+| branches | <ul><li>`on.<push>.<branches>`</li> | Supported |
+| build_pull_requests | <ul><li>`on.<pull_request>`</li> | Supported |
+| env | <ul><li>`env`</li> <li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li> | Supported |
+| if | <ul><li>`jobs.<job_id>.if`</li></ul> | Supported |
+| job | <ul><li>`jobs.<job_id>`</li><li>`jobs.<job_id>.name`</li></ul> | Supported |
+| matrix | <ul><li>`jobs.<job_id>.strategy`</li><li>`jobs.<job_id>.strategy.fail-fast`</li><li>`jobs.<job_id>.strategy.matrix`</li> | Supported |
+| os & dist | <ul><li>`runners`</li></ul> | Supported |
+| scripts | <ul><li>`jobs.<job_id>.steps`</li></ul> | Supported |
+| stages | <ul><li>`jobs`</li></ul> | Supported |
+| env | <ul><li>`on`</li> | Partially supported |
+| branches | <ul><li>`on.<push>.<tags>`</li><li>`on.<push>.paths`</li> | Unsupported |
+| build_pull_requests | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.<tags>`</li><li>`on.<pull_request>.paths`</li> | Unsupported |
+| cron triggers | <ul><li>`on.schedule`</li><li>`on.workflow_run`</li></ul> | Unsupported |
+| env | <ul><li>`jobs.<job_id>.timeout-minutes`</li><li>`on.<event_name>.types`</li> | Unsupported |
+| job | <ul><li>`jobs.<job_id>.container`</li> | Unsupported |
+| os & dist | <ul><li>`self hosted runners`</li></ul> | Unsupported |
 
 For information about supported Travis CI constructs, see the [`github/gh-actions-importer` repository](https://github.com/github/gh-actions-importer/blob/main/docs/travis_ci/index.md).
 
@@ -423,26 +420,26 @@ For information about supported Travis CI constructs, see the [`github/gh-action
 
 GitHub Actions Importer uses the mapping in the table below to convert default Travis CI environment variables to the closest equivalent in GitHub Actions.
 
-| Travis CI                     | GitHub Actions                                                                        |
-| :---------------------------- | :------------------------------------------------------------------------------------ |
-| `$CONTINUOUS_INTEGRATION`     | `$CI`                                                                                 |
-| `$USER`                       | `${{ github.actor }}`                                                          |
-| `$HOME`                       | `${{ github.workspace }}`                                                             |
-| `$TRAVIS_BRANCH`             | `${{ github.ref }}`                                                                   |
-| `$TRAVIS_BUILD_DIR`           | `${{ github.workspace }}`                                                             |
-| `$TRAVIS_BUILD_ID`            | `${{ github.run_number }}`                                                            |
-| `$TRAVIS_BUILD_NUMBER`        | `${{ github.run_id }}`                                                                |
-| `$TRAVIS_COMMIT`              | `${{ github.sha }}`                                                                   |
-| `$TRAVIS_EVENT_TYPE`          | `${{ github.event_name }}`                                                            |
-| `$TRAVIS_PULL_REQUEST_BRANCH` | `${{ github.base_ref }}`                                                              |
-| `$TRAVIS_PULL_REQUEST`        | `${{ github.event.number }}`                                                          |
-| `$TRAVIS_PULL_REQUEST_SHA`    | `${{ github.head.sha }}`                                                              |
-| `$TRAVIS_PULL_REQUEST_SLUG`   | `${{ github.repository }}`                                                            |
-| `$TRAVIS_TAG`                 | `${{ github.ref }}`                                                                   |
-| `$TRAVIS_OS_NAME`             | `${{ runner.os }}`                                                                    |
-| `$TRAVIS_JOB_ID`              | `${{ github.job }}`                                                                   |
-| `$TRAVIS_REPO_SLUG`           | `${{ github.repository_owner/github.repository }}`                                    |
-| `$TRAVIS_BUILD_WEB_URL`       | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
+| Travis CI | GitHub Actions |
+| :-- | :-- |
+| `$CONTINUOUS_INTEGRATION` | `$CI` |
+| `$USER` | `${{ github.actor }}` |
+| `$HOME` | `${{ github.workspace }}` |
+| `$TRAVIS_BRANCH` | `${{ github.ref }}` |
+| `$TRAVIS_BUILD_DIR` | `${{ github.workspace }}` |
+| `$TRAVIS_BUILD_ID` | `${{ github.run_number }}` |
+| `$TRAVIS_BUILD_NUMBER` | `${{ github.run_id }}` |
+| `$TRAVIS_COMMIT` | `${{ github.sha }}` |
+| `$TRAVIS_EVENT_TYPE` | `${{ github.event_name }}` |
+| `$TRAVIS_PULL_REQUEST_BRANCH` | `${{ github.base_ref }}` |
+| `$TRAVIS_PULL_REQUEST` | `${{ github.event.number }}` |
+| `$TRAVIS_PULL_REQUEST_SHA` | `${{ github.head.sha }}` |
+| `$TRAVIS_PULL_REQUEST_SLUG` | `${{ github.repository }}` |
+| `$TRAVIS_TAG` | `${{ github.ref }}` |
+| `$TRAVIS_OS_NAME` | `${{ runner.os }}` |
+| `$TRAVIS_JOB_ID` | `${{ github.job }}` |
+| `$TRAVIS_REPO_SLUG` | `${{ github.repository_owner/github.repository }}` |
+| `$TRAVIS_BUILD_WEB_URL` | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
 
 ## Legal notice
 

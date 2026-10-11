@@ -12,8 +12,8 @@ section: Tutorials / Build and test code
 
 _Learn how to create a continuous integration (CI) workflow to build and test your Go project._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -44,7 +44,7 @@ GitHub provides a Go workflow template that should work for most Go projects. Th
 
    ![Screenshot of the "Choose a workflow" page. The "Configure" button on the "Go" workflow is highlighted with an orange outline.](/assets/images/help/actions/starter-workflow-go.png)
 
-If you don't find the "Go - by GitHub Actions" workflow template, copy the following workflow code to a new file called `go.yml` in the `.github/workflows` directory of your repository.
+   If you don't find the "Go - by GitHub Actions" workflow template, copy the following workflow code to a new file called `go.yml` in the `.github/workflows` directory of your repository.
 
             ```yaml copy
    name: Go
@@ -77,7 +77,7 @@ If you don't find the "Go - by GitHub Actions" workflow template, copy the follo
 1. Edit the workflow as required. For example, change the version of Go.
 1. Click **Commit changes**.
 
-The `go.yml` workflow file is added to the `.github/workflows` directory of your repository.
+   The `go.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
 ## Specifying a Go version
 
@@ -217,9 +217,7 @@ jobs:
       - name: Test with Go
         run: go test -json > TestResults-${{ matrix.go-version }}.json
       - name: Upload Go test results
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
           name: Go-results-${{ matrix.go-version }}
           path: TestResults-${{ matrix.go-version }}.json

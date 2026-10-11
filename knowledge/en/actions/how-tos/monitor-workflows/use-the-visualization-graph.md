@@ -12,8 +12,8 @@ section: How tos / Monitor workflows
 
 _Every workflow run generates a real-time graph that illustrates the run progress. You can use this graph to monitor and debug workflows._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.

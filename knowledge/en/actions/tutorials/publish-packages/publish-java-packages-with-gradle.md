@@ -20,7 +20,7 @@ This guide shows you how to create a workflow that publishes Java packages to Gi
 
 ## Prerequisites
 
-We recommend that you have a basic understanding of workflow files and configuration options. For more information, see [Write workflows](../../how-tos/write-workflows.md).
+We recommend that you have a basic understanding of workflow files and configuration options. For more information, see [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows).
 
 For more information about creating a CI workflow for your Java project with Gradle, see [Building and testing Java with Gradle](../build-and-test-code/java-with-gradle.md).
 

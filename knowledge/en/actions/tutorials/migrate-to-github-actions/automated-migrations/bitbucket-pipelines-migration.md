@@ -22,7 +22,8 @@ The instructions below will guide you through configuring your environment to us
   * Docker is [installed](https://docs.docker.com/get-docker/) and running.
   * [GitHub CLI](https://cli.github.com) is installed.
 
-  > [!NOTE]
+!!! note
+
   > The GitHub Actions Importer container and CLI do not need to be installed on the same server as your CI platform.
 
 ### Limitations
@@ -30,7 +31,7 @@ The instructions below will guide you through configuring your environment to us
 There are some limitations when migrating from Bitbucket Pipelines to GitHub Actions with GitHub Actions Importer.
 
 * Images in a private AWS ECR are not supported.
-* The Bitbucket Pipelines option `size` is not supported. If additional runner resources are required in GitHub Actions, consider using larger runners. For more information, see [Larger runners](../../../how-tos/manage-runners/larger-runners.md).
+* The Bitbucket Pipelines option `size` is not supported. If additional runner resources are required in GitHub Actions, consider using larger runners. For more information, see [Larger runners](https://docs.github.com/en/actions/how-tos/manage-runners/larger-runners).
 * Metrics detailing the queue time of jobs is not supported by the `forecast` command.
 * Bitbucket [after-scripts](https://support.atlassian.com/bitbucket-cloud/docs/step-options/#After-script) are supported using GitHub Actions `always()` in combination with checking the `steps.<step_id>.conclusion` of the previous step. For more information, see [Contexts reference](../../../reference/workflows-and-actions/contexts.md#steps-context#steps-context).
 
@@ -102,13 +103,11 @@ The `configure` CLI command is used to set required credentials and options for 
 
    The `configure` command will prompt you for the following information:
 
-   * For "Which CI providers are you configuring?", use the arrow keys to select `Bitbucket`, press <kbd>Space</kbd> to select it, then press <kbd>Enter</kbd>.
-   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the GitHub instance", enter the URL for your GitHub Enterprise Server instance, and press <kbd>Enter</kbd>.
-
-press <kbd>Enter</kbd> to accept the default value (`https://github.com`).
-   * For "Personal access token for Bitbucket", enter the Workspace Access Token that you created earlier, and press <kbd>Enter</kbd>.
-   * For "Base url of the Bitbucket instance", enter the URL for your Bitbucket instance, and press <kbd>Enter</kbd>.
+   * For "Which CI providers are you configuring?", use the arrow keys to select `Bitbucket`, press `Space` to select it, then press `Enter`.
+   * For "Personal access token for GitHub", enter the value of the personal access token (classic) that you created earlier, and press `Enter`.
+   * For "Base url of the GitHub instance", press `Enter` to accept the default value (`https://github.com`).
+   * For "Personal access token for Bitbucket", enter the Workspace Access Token that you created earlier, and press `Enter`.
+   * For "Base url of the Bitbucket instance", enter the URL for your Bitbucket instance, and press `Enter`.
 
    An example of the `configure` command is shown below:
 
@@ -363,68 +362,68 @@ source_files:
 
 The following table shows the type of properties that GitHub Actions Importer is currently able to convert.
 
-| Bitbucket                 | GitHub Actions                                  |  Status      |
-| :-------------------      | :-------------------------------------------    | -----------: |
-| `after-script`            | `jobs.<job_id>.steps[*]`                        | Supported    |
-| `artifacts`               | `actions/upload-artifact` & `download-artifact` | Supported    |
-| `caches`                  | `actions/cache`                                 | Supported    |
-| `clone`                   | `actions/checkout`                              | Supported    |
-| `condition`               | `job.<job_id>.steps[*].run`                     | Supported    |
-| `deployment`              | `jobs.<job_id>.environment`                     | Supported    |
-| `image`                   | `jobs.<job_id>.container`                       | Supported    |
-| `max-time`                | `jobs.<job_id>.steps[*].timeout-minutes`        | Supported    |
-| `options.docker`          | None                                            | Supported    |
-| `options.max-time`        | `jobs.<job_id>.steps[*].timeout-minutes`        | Supported    |
-| `parallel`                | `jobs.<job_id>`                                 | Supported    |
-| `pipelines.branches`      | `on.push`                                       | Supported    |
-| `pipelines.custom`        | `on.workflow_dispatch`                          | Supported    |
-| `pipelines.default`       | `on.push`                                       | Supported    |
-| `pipelines.pull-requests` | `on.pull_requests`                              | Supported    |
-| `pipelines.tags`          | `on.tags`                                       | Supported    |
-| `runs-on`                 | `jobs.<job_id>.runs-on`                         | Supported    |
-| `script`                  | `job.<job_id>.steps[*].run`                     | Supported    |
-| `services`                | `jobs.<job_id>.service`                         | Supported    |
-| `stage`                   | `jobs.<job_id>`                                 | Supported    |
-| `step`                    | `jobs.<job_id>.steps[*]`                        | Supported    |
-| `trigger`                 | `on.workflow_dispatch`                          | Supported    |
-| `fail-fast`               | None                                            | Unsupported  |
-| `oidc`                    | None                                            | Unsupported  |
-| `options.size`            | None                                            | Unsupported  |
-| `size`                    | None                                            | Unsupported  |
+| Bitbucket                 | GitHub Actions                                  |       Status |
+|:------------------------|:----------------------------------------------|-----------:|
+| `after-script`            | `jobs.<job_id>.steps[*]`                        |    Supported |
+| `artifacts`               | `actions/upload-artifact` & `download-artifact` |    Supported |
+| `caches`                  | `actions/cache`                                 |    Supported |
+| `clone`                   | `actions/checkout`                              |    Supported |
+| `condition`               | `job.<job_id>.steps[*].run`                     |    Supported |
+| `deployment`              | `jobs.<job_id>.environment`                     |    Supported |
+| `image`                   | `jobs.<job_id>.container`                       |    Supported |
+| `max-time`                | `jobs.<job_id>.steps[*].timeout-minutes`        |    Supported |
+| `options.docker`          | None                                            |    Supported |
+| `options.max-time`        | `jobs.<job_id>.steps[*].timeout-minutes`        |    Supported |
+| `parallel`                | `jobs.<job_id>`                                 |    Supported |
+| `pipelines.branches`      | `on.push`                                       |    Supported |
+| `pipelines.custom`        | `on.workflow_dispatch`                          |    Supported |
+| `pipelines.default`       | `on.push`                                       |    Supported |
+| `pipelines.pull-requests` | `on.pull_requests`                              |    Supported |
+| `pipelines.tags`          | `on.tags`                                       |    Supported |
+| `runs-on`                 | `jobs.<job_id>.runs-on`                         |    Supported |
+| `script`                  | `job.<job_id>.steps[*].run`                     |    Supported |
+| `services`                | `jobs.<job_id>.service`                         |    Supported |
+| `stage`                   | `jobs.<job_id>`                                 |    Supported |
+| `step`                    | `jobs.<job_id>.steps[*]`                        |    Supported |
+| `trigger`                 | `on.workflow_dispatch`                          |    Supported |
+| `fail-fast`               | None                                            |  Unsupported |
+| `oidc`                    | None                                            |  Unsupported |
+| `options.size`            | None                                            |  Unsupported |
+| `size`                    | None                                            |  Unsupported |
 
 ### Environment variable mapping
 
 GitHub Actions Importer uses the mapping in the table below to convert default Bitbucket environment variables to the closest equivalent in GitHub Actions.
 
-| Bitbucket                                | GitHub Actions                                                                 |
-| :-------------------------------------   | :------------------------------------------------------                        |
-|  `CI`                                    | `true`                                                    |
-|  `BITBUCKET_BUILD_NUMBER`                | `${{ github.run_number }}`                                |
-|  `BITBUCKET_CLONE_DIR`                   | `${{ github.workspace }}`                                 |
-|  `BITBUCKET_COMMIT`                      | `${{ github.sha }}`                                       |
-|  `BITBUCKET_WORKSPACE`                   | `${{ github.repository_owner }}`                          |
-|  `BITBUCKET_REPO_SLUG`                   | `${{ github.repository }}`                                |
-|  `BITBUCKET_REPO_UUID`                   | `${{ github.repository_id }}`                             |
-|  `BITBUCKET_REPO_FULL_NAME`              | `${{ github.repository_owner }}`/`${{ github.repository }}` |
-|  `BITBUCKET_BRANCH`                      | `${{ github.ref }}`                                       |
-|  `BITBUCKET_TAG`                         | `${{ github.ref }}`                                       |
-|  `BITBUCKET_PR_ID`                       | `${{ github.event.pull_request.number }}`                 |
-|  `BITBUCKET_PR_DESTINATION_BRANCH`       | `${{ github.event.pull_request.base.ref }}`               |
-|  `BITBUCKET_GIT_HTTP_ORIGIN`             | `${{ github.event.repository.clone_url }}`                |
-|  `BITBUCKET_GIT_SSH_ORIGIN`              | `${{ github.event.repository.ssh_url }}`                  |
-|  `BITBUCKET_EXIT_CODE`                   | `${{ job.status }}`                                       |
-|  `BITBUCKET_STEP_UUID`                   | `${{ job.github_job }}`                                   |
-|  `BITBUCKET_PIPELINE_UUID`               | `${{ github.workflow }}`                                  |
-|  `BITBUCKET_PROJECT_KEY`                 | `${{ github.repository_owner }}`                          |
-|  `BITBUCKET_PROJECT_UUID`                | `${{ github.repository_owner }}`                          |
-|  `BITBUCKET_STEP_TRIGGERER_UUID`         | `${{ github.actor_id }}`                                  |
-|  `BITBUCKET_SSH_KEY_FILE`                | `${{ github.workspace }}/.ssh/id_rsa`                     |
-|  `BITBUCKET_STEP_OIDC_TOKEN`             | No Mapping                                           |
-|  `BITBUCKET_DEPLOYMENT_ENVIRONMENT`      | No Mapping                                           |
-|  `BITBUCKET_DEPLOYMENT_ENVIRONMENT_UUID` | No Mapping                                           |
-|  `BITBUCKET_BOOKMARK`                    | No Mapping                                           |
-|  `BITBUCKET_PARALLEL_STEP`               | No Mapping                                           |
-|  `BITBUCKET_PARALLEL_STEP_COUNT`         | No Mapping                                           |
+| Bitbucket                               | GitHub Actions                                              |
+|:--------------------------------------|:----------------------------------------------------------|
+| `CI`                                    | `true`                                                      |
+| `BITBUCKET_BUILD_NUMBER`                | `${{ github.run_number }}`                                  |
+| `BITBUCKET_CLONE_DIR`                   | `${{ github.workspace }}`                                   |
+| `BITBUCKET_COMMIT`                      | `${{ github.sha }}`                                         |
+| `BITBUCKET_WORKSPACE`                   | `${{ github.repository_owner }}`                            |
+| `BITBUCKET_REPO_SLUG`                   | `${{ github.repository }}`                                  |
+| `BITBUCKET_REPO_UUID`                   | `${{ github.repository_id }}`                               |
+| `BITBUCKET_REPO_FULL_NAME`              | `${{ github.repository_owner }}`/`${{ github.repository }}` |
+| `BITBUCKET_BRANCH`                      | `${{ github.ref }}`                                         |
+| `BITBUCKET_TAG`                         | `${{ github.ref }}`                                         |
+| `BITBUCKET_PR_ID`                       | `${{ github.event.pull_request.number }}`                   |
+| `BITBUCKET_PR_DESTINATION_BRANCH`       | `${{ github.event.pull_request.base.ref }}`                 |
+| `BITBUCKET_GIT_HTTP_ORIGIN`             | `${{ github.event.repository.clone_url }}`                  |
+| `BITBUCKET_GIT_SSH_ORIGIN`              | `${{ github.event.repository.ssh_url }}`                    |
+| `BITBUCKET_EXIT_CODE`                   | `${{ job.status }}`                                         |
+| `BITBUCKET_STEP_UUID`                   | `${{ job.github_job }}`                                     |
+| `BITBUCKET_PIPELINE_UUID`               | `${{ github.workflow }}`                                    |
+| `BITBUCKET_PROJECT_KEY`                 | `${{ github.repository_owner }}`                            |
+| `BITBUCKET_PROJECT_UUID`                | `${{ github.repository_owner }}`                            |
+| `BITBUCKET_STEP_TRIGGERER_UUID`         | `${{ github.actor_id }}`                                    |
+| `BITBUCKET_SSH_KEY_FILE`                | `${{ github.workspace }}/.ssh/id_rsa`                       |
+| `BITBUCKET_STEP_OIDC_TOKEN`             | No Mapping                                                  |
+| `BITBUCKET_DEPLOYMENT_ENVIRONMENT`      | No Mapping                                                  |
+| `BITBUCKET_DEPLOYMENT_ENVIRONMENT_UUID` | No Mapping                                                  |
+| `BITBUCKET_BOOKMARK`                    | No Mapping                                                  |
+| `BITBUCKET_PARALLEL_STEP`               | No Mapping                                                  |
+| `BITBUCKET_PARALLEL_STEP_COUNT`         | No Mapping                                                  |
 
 ### System Variables
 

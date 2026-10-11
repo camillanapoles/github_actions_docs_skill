@@ -56,9 +56,7 @@ The following example OIDC token uses a subject (`sub`) that references a job en
   "jti": "example-id",
   "sub": "repo:octo-org/octo-repo:environment:prod",
   "environment": "prod",
-  "aud": "https://HOSTNAME
-
-https://github.com/octo-org",
+  "aud": "https://github.com/octo-org",
   "ref": "refs/heads/main",
   "sha": "example-sha",
   "repository": "octo-org/octo-repo",
@@ -75,20 +73,21 @@ https://github.com/octo-org",
   "workflow": "example-workflow",
   "head_ref": "",
   "base_ref": "",
-  "event_name": "workflow_dispatch","enterprise": "avocado-corp","enterprise_id": "2","repo_property_workspace_id": "ws-abc123",
+  "event_name": "workflow_dispatch",
+  "enterprise": "avocado-corp",
+  "enterprise_id": "2",
+  "repo_property_workspace_id": "ws-abc123",
   "ref_type": "branch",
   "job_workflow_ref": "octo-org/octo-automation/.github/workflows/oidc.yml@refs/heads/main",
-  "iss": "https://HOSTNAME/_services/token
-
-https://token.actions.githubusercontent.com",
+  "iss": "https://token.actions.githubusercontent.com",
   "nbf": 1632492967,
   "exp": 1632493867,
   "iat": 1632493567
 }
 ```
 
-> [!NOTE]
-> The `sub` claim in this example uses the previous format. Repositories created after July 15, 2026 use an immutable default subject format that includes owner and repository IDs (not available on GitHub Enterprise Server). For more information, see [OpenID Connect reference](../../reference/security/oidc.md#immutable-subject-claims#immutable-subject-claims).
+!!! note
+    The `sub` claim in this example uses the previous format. Repositories created after July 15, 2026 use an immutable default subject format that includes owner and repository IDs (not available on GitHub Enterprise Server). For more information, see [OpenID Connect reference](../../reference/security/oidc.md#immutable-subject-claims#immutable-subject-claims).
 
 ## Establishing OIDC trust with your cloud provider
 
@@ -104,7 +103,7 @@ For steps and syntax for configuring OIDC trust and setting conditions for cloud
 
 If you are part of an enterprise that uses GitHub Enterprise Cloud with data residency and you're setting up OIDC on GHE.com, you must **substitute certain values** while configuring OIDC.
 
-For more information, see [OpenID Connect reference](https://docs.github.com/enterprise-cloud@latest/actions/reference/security/oidc#substituted-values-on-ghecom#substituted-values-on-ghecom).
+For more information, see [OpenID Connect reference](../../reference/security/oidc.md#substituted-values-on-ghecom#substituted-values-on-ghecom).
 
 ## Authenticating custom actions using OIDC
 
@@ -114,7 +113,7 @@ For more information, see [OpenID Connect reference](../../reference/security/oi
 
 ## Updating your workflows for OIDC
 
-GitHub Actions workflows can use OIDC tokens instead of secrets to authenticate with cloud providers. Many popular cloud providers offer official login actions that simplify the process of using OIDC in your workflows. For more information about updating your workflows with specific cloud providers, see [Security harden deployments](../../how-tos/secure-your-work/security-harden-deployments.md).
+GitHub Actions workflows can use OIDC tokens instead of secrets to authenticate with cloud providers. Many popular cloud providers offer official login actions that simplify the process of using OIDC in your workflows. For more information about updating your workflows with specific cloud providers, see [Security harden deployments](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments).
 
 ## Using repository custom properties as OIDC claims
 
@@ -178,6 +177,6 @@ For more information, see [Configure access to private registries](https://docs.
 
 ## Next steps
 
-For more information about configuring OIDC, see [Security harden deployments](../../how-tos/secure-your-work/security-harden-deployments.md).
+For more information about configuring OIDC, see [Security harden deployments](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments).
 
 For reference information about OIDC, see [OpenID Connect reference](../../reference/security/oidc.md).

@@ -12,14 +12,15 @@ section: How tos / Manage runners / Self hosted runners
 
 _You can configure the self-hosted runner application as a service to automatically start the runner application when the machine starts._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 1. Stop the self-hosted runner application if it is currently running.
 On the runner machine, open a shell in the directory where you installed the self-hosted runner application. Use the commands below to install and manage the self-hosted runner service.
 
-> [!NOTE]
-> You must add a runner to GitHub before you can configure the self-hosted runner application as a service.
+!!! note
+    You must add a runner to GitHub before you can configure the self-hosted runner application as a service.
+
 For more information, see [Adding self-hosted runners](add-runners.md).
 
 actions.runner.*
@@ -34,10 +35,10 @@ For Linux systems that use `systemd`, you can use the `svc.sh` script that is cr
 
 **Windows**
 
-> [!NOTE]
-> Configuring the self-hosted runner application as a service on Windows is part of the application configuration process. If you have already configured the self-hosted runner application but did not choose to configure it as a service, you must remove the runner from GitHub and re-configure the application. When you re-configure the application, choose the option to configure the application as a service.
->
-> For more information, see [Removing self-hosted runners](remove-runners.md) and [Adding self-hosted runners](add-runners.md).
+!!! note
+    Configuring the self-hosted runner application as a service on Windows is part of the application configuration process. If you have already configured the self-hosted runner application but did not choose to configure it as a service, you must remove the runner from GitHub and re-configure the application. When you re-configure the application, choose the option to configure the application as a service.
+
+    For more information, see [Removing self-hosted runners](remove-runners.md) and [Adding self-hosted runners](add-runners.md).
 
 You can manage the runner service in the Windows **Services** application, or you can use PowerShell to run the commands below.
 
@@ -85,12 +86,12 @@ Start the service with the following command:
 sudo ./svc.sh start
 ```
 
-> [!NOTE]
-> On Debian-based Linux systems (such as Debian or Ubuntu) with `needrestart` enabled, you can prevent `needrestart` from restarting the runner service during a workflow job by configuring it to ignore the runner service. Run the following command:
->
-> ```bash
-> echo '$nrconf{override_rc}{qr(^actions\.runner\..+\.service$)} = 0;' | sudo tee /etc/needrestart/conf.d/actions_runner_services.conf
-> ```
+!!! note
+    On Debian-based Linux systems (such as Debian or Ubuntu) with `needrestart` enabled, you can prevent `needrestart` from restarting the runner service during a workflow job by configuring it to ignore the runner service. Run the following command:
+
+                ```bash
+    echo '$nrconf{override_rc}{qr(^actions.runner..+.service$)} = 0;' | sudo tee /etc/needrestart/conf.d/actions_runner_services.conf
+    ```
 
 **Windows**
 

@@ -12,11 +12,11 @@ section: How tos / Manage runners / Self hosted runners
 
 _You can customize how your self-hosted runner invokes a container for a job._
 
-> [!NOTE]
-> This feature is currently in public preview and is subject to change.
+!!! note
+    This feature is currently in public preview and is subject to change.
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## About container customization
 
@@ -479,8 +479,8 @@ No output is expected for `run_script_step`.
 
 GitHub has created an example repository that demonstrates how to generate customization scripts for Docker and Kubernetes.
 
-> [!NOTE]
-> The resulting scripts are available for testing purposes, and you will need to determine whether they are appropriate for your requirements.
+!!! note
+    The resulting scripts are available for testing purposes, and you will need to determine whether they are appropriate for your requirements.
 
 1. Clone the [actions/runner-container-hooks](https://github.com/actions/runner-container-hooks) repository to your self-hosted runner.
 
@@ -502,8 +502,8 @@ When the resulting `index.js` is triggered by GitHub Actions, it will run the cu
 
 The custom script must be located on the runner, but should not be stored in the self-hosted runner application directory (that is, the directory into which you downloaded and unpacked the runner software). The scripts are executed in the security context of the service account that's running the runner service.
 
-> [!NOTE]
-> The triggered script is processed synchronously, so it will block job execution while running.
+!!! note
+    The triggered script is processed synchronously, so it will block job execution while running.
 
 The script is automatically executed when the runner has the following environment variable containing an absolute path to the script:
 

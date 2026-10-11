@@ -12,14 +12,14 @@ section: How tos / Deploy / Deploy to third party platforms
 
 _Learn how to sign Xcode apps within a continuous integration (CI) workflow by installing an Apple code signing certificate on GitHub Actions runners._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Prerequisites
 
 You should be familiar with YAML and the syntax for GitHub Actions. For more information, see:
 
-* [Write workflows](../../write-workflows.md)
+* [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows)
 * [Workflow syntax for GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md)
 
 You should have an understanding of Xcode app building and signing. For more information, see the [Apple developer documentation](https://developer.apple.com/documentation/).
@@ -111,8 +111,8 @@ jobs:
           # ...
 ```
 
-> [!NOTE]
-> For iOS build targets, your provisioning profile should have the extension `.mobileprovision`. For macOS build targets, the extension should be `.provisionprofile`. The example workflow above should be updated to reflect your target platform.
+!!! note
+    For iOS build targets, your provisioning profile should have the extension `.mobileprovision`. For macOS build targets, the extension should be `.provisionprofile`. The example workflow above should be updated to reflect your target platform.
 
 ## Required clean-up on self-hosted runners
 

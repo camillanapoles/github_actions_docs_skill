@@ -12,16 +12,16 @@ section: How tos / Monitor workflows
 
 _If the workflow logs do not provide enough detail to diagnose why a workflow, job, or step is not working as expected, you can enable additional debug logging._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 These extra logs are enabled by setting secrets or variables in the repository containing the workflow, so the same permissions requirements will apply:
 
-* To create secrets or variables on GitHub for an organization repository, you must have `write` access.
-
-To create secrets or variables on GitHub for an organization repository, you must have `admin` access. For a personal account repository, you must be a repository collaborator.
+* To create secrets or variables on GitHub for an organization repository, you must have `admin` access. For a personal account repository, you must be a repository collaborator.
 * To create secrets or variables for an environment in a personal account repository, you must be the repository owner. To create secrets or variables for an environment in an organization repository, you must have `admin` access. For more information on environments, see [Managing environments for deployment](../deploy/configure-and-manage-deployments/manage-environments.md).
-* Organization ownersand users with the "Manage organization Actions variables" or "Manage organization Actions secrets" permissions can create secrets or variables at the organization level.For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
+* Organization owners and users with the "Manage organization Actions variables" or "Manage organization Actions secrets" permissions can create secrets or variables at the organization level.
+
+For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
 
 For more information on setting secrets and variables, see [Using secrets in GitHub Actions](../write-workflows/choose-what-workflows-do/use-secrets.md) and [Store information in variables](../write-workflows/choose-what-workflows-do/use-variables.md).
 

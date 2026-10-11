@@ -12,18 +12,15 @@ section: Concepts / Runners
 
 _Organize and govern your workflows with GitHub-hosted larger runners using runner groups, concurrency policies, and granular access controls._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
-
-To learn about larger runners, see [the GitHub Enterprise Cloud documentation](https://docs.github.com/enterprise-cloud@latest/actions/concepts/runners/larger-runners).
-
 ## About larger runners
 
 Larger runners are managed virtual machines with more resources than [standard GitHub-hosted runners](../../reference/runners/github-hosted-runners.md#supported-runners-and-hardware-resources). They offer the following advanced features:
 
 * More RAM, CPU, and disk space
 * Static IP addresses
+
 * Azure private networking
+
 * The ability to group runners
 * Autoscaling to support concurrent workflows
 * GPU-powered runners
@@ -56,8 +53,8 @@ For more information on configuring larger runners for code scanning default set
 
 ## Billing
 
-> [!NOTE]
-> Larger runners are not eligible for the use of included minutes on private repositories. For both private and public repositories, when larger runners are in use, they will always be billed at the per-minute rate.
+!!! note
+    Larger runners are not eligible for the use of included minutes on private repositories. For both private and public repositories, when larger runners are in use, they will always be billed at the per-minute rate.
 
 Compared to standard GitHub-hosted runners, larger runners are billed differently. Larger runners are only billed at the per-minute rate for the amount of time workflows are executed on them. There is no cost associated with creating a larger runner that is not being used by a workflow. For more information, see [Actions runner pricing](https://docs.github.com/billing/reference/actions-runner-pricing).
 

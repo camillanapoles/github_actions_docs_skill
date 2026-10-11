@@ -12,8 +12,8 @@ section: How tos / Monitor workflows
 
 _You can view the execution time of a job, including the billable minutes that a job accrued._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 Billable job execution minutes are only shown for jobs run on private repositories that use GitHub-hosted runners and are rounded up to the next minute. There are no billable minutes when using GitHub Actions in public repositories or for jobs run on self-hosted runners.
 
@@ -28,5 +28,6 @@ Billable job execution minutes are only shown for jobs run on private repositori
 1. Under the job summary, you can view the job's execution time.
 1. To view details about the billable job execution time, in the left sidebar under "Run details", click ** Usage**.
 
-   > [!NOTE]
+!!! note
+
    > The billable time shown does not include any minute multipliers. To view your total GitHub Actions usage, including minute multipliers, see [View productlicense use](https://docs.github.com/billing/how-tos/products/view-productlicense-use).

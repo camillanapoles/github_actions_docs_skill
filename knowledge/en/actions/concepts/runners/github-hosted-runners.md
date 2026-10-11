@@ -12,8 +12,8 @@ section: Concepts / Runners
 
 _GitHub offers hosted virtual machines to run workflows. The virtual machine contains an environment of tools, packages, and settings available for GitHub Actions to use._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Overview of GitHub-hosted runners
 
@@ -23,14 +23,14 @@ GitHub provides runners that you can use to run your jobs, or you can [host your
 
 Each runner comes with the runner application and other tools preinstalled. GitHub-hosted runners are available with Ubuntu Linux, Windows, or macOS operating systems. When you use a GitHub-hosted runner, machine maintenance and upgrades are taken care of for you.
 
-You can choose one of the standard GitHub-hosted runner options or, if you are on the GitHub Team or GitHub Enterprise Cloud plan, you can provision a runner with more cores, or a runner that's powered by a GPU processor. These machines are referred to as "larger runner." For more information, see [Larger runners](https://docs.github.com/enterprise-cloud@latest/actions/concepts/runners/larger-runners).
+You can choose one of the standard GitHub-hosted runner options or, if you are on the GitHub Team or GitHub Enterprise Cloud plan, you can provision a runner with more cores, or a runner that's powered by a GPU processor. These machines are referred to as "larger runner." For more information, see [Larger runners](larger-runners.md).
 
 Larger runners also support custom images, which let you create and manage your own preconfigured VM images. For more information, see [Custom images](#custom-images).
 
 Using GitHub-hosted runners requires network access with at least 70 kilobits per second upload and download speeds.
 
-> [!NOTE]
-> Entitlement minutes for GitHub-hosted runners are not available for managed user accounts. Enterprise Managed Users who would like to contribute to repositories in organizations they are not a member of can fork the organization repo, then open a pull request targeting the organization repository. This runs the workflows on the organization's GitHub-hosted runners. For more information, see [Enterprise managed users](https://docs.github.com/admin/concepts/identity-and-access-management/enterprise-managed-users).
+!!! note
+    Entitlement minutes for GitHub-hosted runners are not available for managed user accounts. Enterprise Managed Users who would like to contribute to repositories in organizations they are not a member of can fork the organization repo, then open a pull request targeting the organization repository. This runs the workflows on the organization's GitHub-hosted runners. For more information, see [Enterprise managed users](https://docs.github.com/admin/concepts/identity-and-access-management/enterprise-managed-users).
 
 ## Runner images
 
@@ -54,9 +54,9 @@ We recommend using actions to interact with the software installed on runners. T
 
 If there is a tool that you'd like to request, please open an issue at [actions/runner-images](https://github.com/actions/runner-images). This repository also contains announcements about all major software updates on runners.
 
-> [!NOTE]
-> * You can also install additional software on GitHub-hosted runners. See [Customizing GitHub-hosted runners](../../how-tos/manage-runners/github-hosted-runners/customize-runners.md).
-> * While nested virtualization is technically possible while using runners, it is not officially supported. Any use of nested VMs is experimental and done at your own risk, we offer no guarantees regarding stability, performance, or compatibility.
+!!! note
+    * You can also install additional software on GitHub-hosted runners. See [Customizing GitHub-hosted runners](../../how-tos/manage-runners/github-hosted-runners/customize-runners.md).
+    * While nested virtualization is technically possible while using runners, it is not officially supported. Any use of nested VMs is experimental and done at your own risk, we offer no guarantees regarding stability, performance, or compatibility.
 
 ### Custom images
 

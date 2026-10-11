@@ -54,12 +54,13 @@ In order to use ARC, ensure you have the following.
     * Update the `NAMESPACE` value to the location you want the runner pods to be created.
     * Set `GITHUB_CONFIG_URL` to the URL of your repository, organization, or enterprise. This is the entity that the runners will belong to.
     * This example uses a personal access token (classic) to keep the initial setup short. For repository or organization runner scale sets, use a GitHub App in production environments when possible.
-    * Set `GITHUB_PAT` to a GitHub personal access token (classic) with the `repo` and `admin:org` scopes for repository and organization runners.
 
-* Set `GITHUB_PAT` to a GitHub personal access token (classic) with the `repo` and `manage_runners:org` scopes for repository and organization runners, and the `manage_runners:enterprise` scope for enterprise runners.
+    * Set `GITHUB_PAT` to a GitHub personal access token (classic) with the `repo` and `manage_runners:org` scopes for repository and organization runners, and the `manage_runners:enterprise` scope for enterprise runners.
+
     * This example command installs the latest version of the Helm chart. To install a specific version, you can pass the `--version` argument with the version of the chart you wish to install. You can find the list of releases in the [GitHub Container Registry](https://github.com/actions/actions-runner-controller/pkgs/container/actions-runner-controller-charts%2Fgha-runner-scale-set).
 
-        > [!NOTE]
+!!! note
+
         > * As a security best practice, create your runner pods in a different namespace than the namespace containing your operator pods.
         > * As a security best practice, create Kubernetes secrets and pass the secret references. Passing your secrets in plain text via the CLI can pose a security risk. For more information, see [Deploying runner scale sets with Actions Runner Controller](../../how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets.md).
 

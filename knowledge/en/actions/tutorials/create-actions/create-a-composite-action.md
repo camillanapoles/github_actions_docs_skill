@@ -12,8 +12,8 @@ section: Tutorials / Create actions
 
 _In this tutorial, you'll learn how to build a composite action._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -21,8 +21,8 @@ In this guide, you'll learn about the basic components needed to create and use 
 
 Once you complete this project, you should understand how to build your own composite action and test it in a workflow.
 
-> [!WARNING]
-> When creating workflows and actions, you should always consider whether your code might execute untrusted input from possible attackers. Certain contexts should be treated as untrusted input, as an attacker could insert their own malicious content. For more information, see [Secure use reference](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks#good-practices-for-mitigating-script-injection-attacks).
+!!! warning
+    When creating workflows and actions, you should always consider whether your code might execute untrusted input from possible attackers. Certain contexts should be treated as untrusted input, as an attacker could insert their own malicious content. For more information, see [Secure use reference](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks#good-practices-for-mitigating-script-injection-attacks).
 
 ### Composite actions and reusable workflows
 
@@ -30,8 +30,8 @@ Composite actions allow you to collect a series of workflow job steps into a sin
 
 ## Prerequisites
 >
-> [!NOTE]
-> This example explains how to create a composite action within a separate repository. However, it is possible to create a composite action within the same repository. For more information, see [Creating a composite action](create-a-composite-action.md#creating-a-composite-action-within-the-same-repository#creating-a-composite-action-within-the-same-repository).
+!!! note
+    This example explains how to create a composite action within a separate repository. However, it is possible to create a composite action within the same repository. For more information, see [Creating a composite action](create-a-composite-action.md#creating-a-composite-action-within-the-same-repository#creating-a-composite-action-within-the-same-repository).
 
 Before you begin, you'll create a repository on GitHub.
 

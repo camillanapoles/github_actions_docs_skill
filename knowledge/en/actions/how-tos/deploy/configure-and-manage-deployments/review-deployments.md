@@ -21,16 +21,16 @@ _You can approve or reject jobs awaiting review._
    * To approve the job, click **Approve and deploy**. Once a job is approved (and any other deployment protection rules have passed), the job will proceed. At this point, the job can access any secrets stored in the environment.
    * To reject the job, click **Reject**. If a job is rejected, the workflow will fail.
 
-> [!NOTE]
-> If the targeted environment is configured to prevent self-approvals for deployments, you will not be able to approve a deployment from a workflow run you initiated. For more information, see [Managing environments for deployment](manage-environments.md).
+!!! note
+    If the targeted environment is configured to prevent self-approvals for deployments, you will not be able to approve a deployment from a workflow run you initiated. For more information, see [Managing environments for deployment](manage-environments.md).
 
 ## Bypassing deployment protection rules
 
 If you have configured deployment protection rules that control whether software can be deployed to an environment, you can bypass these rules and force all pending jobs referencing the environment to proceed.
 
-> [!NOTE]
-> * You cannot bypass deployment protection rules if the environment has been configured to prevent admins from bypassing configured protection rules. For more information, see [Managing environments for deployment](manage-environments.md#creating-an-environment#creating-an-environment).
-> * You can only bypass deployment protection rules during workflow execution when a job referencing the environment is in a "Pending" state.
+!!! note
+    * You cannot bypass deployment protection rules if the environment has been configured to prevent admins from bypassing configured protection rules. For more information, see [Managing environments for deployment](manage-environments.md#creating-an-environment#creating-an-environment).
+    * You can only bypass deployment protection rules during workflow execution when a job referencing the environment is in a "Pending" state.
 
 1. Navigate to the workflow run. For more information about navigating to a workflow run, see [Viewing workflow run history](../../monitor-workflows/view-workflow-run-history.md).
 1. To the right of **Deployment protection rules**, click **Start all waiting jobs**.

@@ -14,10 +14,10 @@ _You can create environments and secure those environments with deployment prote
 
 ## Prerequisites
 
-> [!NOTE]
-> Users with GitHub Free plans can only configure environments for public repositories. If you convert a repository from public to private, any configured protection rules or environment secrets will be ignored, and you will not be able to configure any environments. If you convert your repository back to public, you will have access to any previously configured protection rules and environment secrets.
->
-> Organizations with GitHub Team and users with GitHub Pro can configure environments for private repositories. For more information, see [Githubs plans](https://docs.github.com/get-started/learning-about-github/githubs-plans).
+!!! note
+    Users with GitHub Free plans can only configure environments for public repositories. If you convert a repository from public to private, any configured protection rules or environment secrets will be ignored, and you will not be able to configure any environments. If you convert your repository back to public, you will have access to any previously configured protection rules and environment secrets.
+
+    Organizations with GitHub Team and users with GitHub Pro can configure environments for private repositories. For more information, see [Githubs plans](https://docs.github.com/get-started/learning-about-github/githubs-plans).
 
 * For general information about environments, see [Deploying with GitHub Actions](control-deployments.md#using-environments#using-environments).
 * For information about available rules, see [Deployments and environments](../../../reference/workflows-and-actions/deployments-and-environments.md).
@@ -26,9 +26,9 @@ _You can create environments and secure those environments with deployment prote
 
 To configure an environment in a personal account repository, you must be the repository owner. To configure an environment in an organization repository, you must have `admin` access.
 
-> [!NOTE]
-> * Creation of an environment in a private repository is available to organizations with GitHub Team and users with GitHub Pro.
-> * Some features for environments have no or limited availability for private repositories. If you are unable to access a feature described in the instructions below, please see the documentation linked in the related step for availability information.
+!!! note
+    * Creation of an environment in a private repository is available to organizations with GitHub Team and users with GitHub Pro.
+    * Some features for environments have no or limited availability for private repositories. If you are unable to access a feature described in the instructions below, please see the documentation linked in the related step for availability information.
 
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
@@ -58,8 +58,8 @@ To configure an environment in a personal account repository, you must be the re
    1. In the "Ref type" dropdown menu, depending on what rule you want to apply, click ** Branch** or ** Tag**.
    1. Enter the name pattern for the branch or tag that you want to allow.
 
-      > [!NOTE]
-> Name patterns must be configured for branches or tags individually.
+!!! note
+    Name patterns must be configured for branches or tags individually.
 
    1. Click **Add rule**.
 1. Optionally, add environment secrets. These secrets are only available to workflow jobs that use the environment. Additionally, workflow jobs that use this environment can only access these secrets after any configured rules (for example, required reviewers) pass. For more information, see [Deployments and environments](../../../reference/workflows-and-actions/deployments-and-environments.md#environment-secrets#environment-secrets).

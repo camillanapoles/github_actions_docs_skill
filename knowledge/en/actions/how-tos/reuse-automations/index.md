@@ -12,5 +12,5 @@ section: How tos / Reuse automations
 
 _Create modular automations that you can share and reuse across GitHub Actions workflows._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.

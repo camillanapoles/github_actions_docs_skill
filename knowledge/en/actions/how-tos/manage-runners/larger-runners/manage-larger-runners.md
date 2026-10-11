@@ -20,9 +20,8 @@ You can choose an operating system and a hardware configuration from the list of
 
 New runners are automatically assigned to the default group, or you can choose which group the runners must join during the runner creation process. In addition, you can modify the runner's group membership after you've registered the runner. For more information, see [Controlling access to larger runners](control-access.md).
 
-1. In the top-right corner of GitHub Enterprise Server, click your profile picture, then click **Enterprise settings**.
-
 1. Navigate to your enterprise. For example, from the [Enterprises](https://github.com/settings/enterprises?ref_product=ghec&ref_type=engagement&ref_style=text) page on GitHub.com.
+
 1. At the top of the page, click ** Policies**.
 1. Under " Policies", click **Actions**.
 1. Click the **Runners** tab.
@@ -42,17 +41,18 @@ New runners are automatically assigned to the default group, or you can choose w
       * **Custom:** For images that are created by your organization or enterprise, select an image under this tab. Custom images are created by running a workflow on an image-building runner that you, your organization, or your enterprise have set up. For more information, see [Installing custom images](use-custom-images.md#installing-custom-images).
     * **Size:** Choose a hardware configuration from the list of available options. The available sizes depend on the image that you selected in a previous step. For GPU runners, select a size under the **GPU-powered** tab.
     * **Maximum concurrency:** Choose the maximum number of jobs that can be active at any time.
-    * **Runner group:** Choose the group that your runner will be a member of. This group will host multiple instances of your runner, as they scale up and down to suit demand. * **Networking:** Choose whether static IP address ranges will be assigned to instances of the larger runner. You can use up to 10 larger runners with static IP addresses in total.
+    * **Runner group:** Choose the group that your runner will be a member of. This group will host multiple instances of your runner, as they scale up and down to suit demand.
+    * **Networking:** Choose whether static IP address ranges will be assigned to instances of the larger runner. You can use up to 10 larger runners with static IP addresses in total.
 
-    > [!NOTE]
-> The names of larger runners can dictate their functionality. For example, to use a larger runner for code scanning default setup, the runner must be named `code-scanning`. For more information on code scanning with larger runners, see [Configure larger runners](https://docs.github.com/code-security/how-tos/find-and-fix-code-vulnerabilities/manage-your-configuration/configure-larger-runners).
+!!! note
+    The names of larger runners can dictate their functionality. For example, to use a larger runner for code scanning default setup, the runner must be named `code-scanning`. For more information on code scanning with larger runners, see [Configure larger runners](https://docs.github.com/code-security/how-tos/find-and-fix-code-vulnerabilities/manage-your-configuration/configure-larger-runners).
 
 1. Click **Create runner**.
 1. To allow organizations to access your larger runner, specify which organizations can use the runner group the runner is assigned to. For more information, see [Controlling access to larger runners](control-access.md#changing-which-organizations-can-access-a-runner-group#changing-which-organizations-can-access-a-runner-group).
 
 ## Adding a larger runner to an organization
 
-Organization ownersand users with the "Manage organization runners and runner groups" permission can add a larger runner to an organization and control which repositories can use it. When you create a new runner for an organization, by default, all repositories in the organization have access to the runner. To limit which repositories can use the runner, assign it to a runner group with access to specific repositories. For more information, see [Allowing repositories to access larger runners](#allowing-repositories-to-access-larger-runners).
+Organization owners and users with the "Manage organization runners and runner groups" permission can add a larger runner to an organization and control which repositories can use it. When you create a new runner for an organization, by default, all repositories in the organization have access to the runner. To limit which repositories can use the runner, assign it to a runner group with access to specific repositories. For more information, see [Allowing repositories to access larger runners](#allowing-repositories-to-access-larger-runners).
 
 You can choose an operating system and a hardware configuration from the list of available options. When new instances of this runner are deployed through autoscaling, they'll use the same operating system and hardware configuration you've defined here.
 
@@ -79,22 +79,23 @@ New runners are automatically assigned to the default group, or you can choose w
       * **Custom:** For images that are created by your organization or enterprise, select an image under this tab. Custom images are created by running a workflow on an image-building runner that you, your organization, or your enterprise have set up. For more information, see [Installing custom images](use-custom-images.md#installing-custom-images).
     * **Size:** Choose a hardware configuration from the list of available options. The available sizes depend on the image that you selected in a previous step. For GPU runners, select a size under the **GPU-powered** tab.
     * **Maximum concurrency:** Choose the maximum number of jobs that can be active at any time.
-    * **Runner group:** Choose the group that your runner will be a member of. This group will host multiple instances of your runner, as they scale up and down to suit demand. * **Networking:** Choose whether static IP address ranges will be assigned to instances of the larger runner. You can use up to 10 larger runners with static IP addresses in total.
+    * **Runner group:** Choose the group that your runner will be a member of. This group will host multiple instances of your runner, as they scale up and down to suit demand.
+    * **Networking:** Choose whether static IP address ranges will be assigned to instances of the larger runner. You can use up to 10 larger runners with static IP addresses in total.
 
-    > [!NOTE]
-> The names of larger runners can dictate their functionality. For example, to use a larger runner for code scanning default setup, the runner must be named `code-scanning`. For more information on code scanning with larger runners, see [Configure larger runners](https://docs.github.com/code-security/how-tos/find-and-fix-code-vulnerabilities/manage-your-configuration/configure-larger-runners).
+!!! note
+    The names of larger runners can dictate their functionality. For example, to use a larger runner for code scanning default setup, the runner must be named `code-scanning`. For more information on code scanning with larger runners, see [Configure larger runners](https://docs.github.com/code-security/how-tos/find-and-fix-code-vulnerabilities/manage-your-configuration/configure-larger-runners).
 
 1. Click **Create runner**.
 1. To allow repositories to access your larger runners, add them to the list of repositories that can use it. For more information, see [Allowing repositories to access larger runners](#allowing-repositories-to-access-larger-runners).
 
 ## Allowing repositories to access larger runners
 
-Repositories are granted access to larger runners through runner groups. Enterprise administrators can choose which organizations are granted access to enterprise-level runner groups, and organization ownersand users with the "Manage organization runners and runner groups" permission control repository-level access to all larger runners.
+Repositories are granted access to larger runners through runner groups. Enterprise administrators can choose which organizations are granted access to enterprise-level runner groups, and organization owners and users with the "Manage organization runners and runner groups" permission control repository-level access to all larger runners.
 
-Organization owners can use and configure enterprise-level runner groups for the repositories in their organization, or they can create organization-level runner groups to control access.Users with the "Manage organization runners and runner groups" can only manage organization-level runner groups. For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
+Organization owners can use and configure enterprise-level runner groups for the repositories in their organization, or they can create organization-level runner groups to control access. Users with the "Manage organization runners and runner groups" can only manage organization-level runner groups. For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
 
 * **For enterprise-level runner groups:** By default, repositories in an organization do not have access to enterprise-level runner groups. To give repositories access to enterprise runner groups, organization owners must configure each enterprise runner group and choose which repositories have access.
-* **For organization-level runner groups:** By default, all repositories in an organization are granted access to organization-level runner groups. To restrict which repositories have access, organization ownersand users with the "Manage organization runners and runner groups" permission must configure organization runner groups and choose which repositories have access.
+* **For organization-level runner groups:** By default, all repositories in an organization are granted access to organization-level runner groups. To restrict which repositories have access, organization owners and users with the "Manage organization runners and runner groups" permission must configure organization runner groups and choose which repositories have access.
 
 Once a repository has access to larger runners, the larger runners can be added to workflow files. For more information, see [Running jobs on larger runners](use-larger-runners.md).
 
@@ -104,16 +105,16 @@ Once a repository has access to larger runners, the larger runners can be added 
 1. Select a runner group from either list on the page. Organization-level runner groups are listed at the top of the page, and enterprise-level runner groups are listed under "Shared by the Enterprise."
 1. On the runner group page, under "Repository access," select **All repositories** or **Selected repositories**. If you choose to grant access to specific repositories, click , then select the repositories you would like to grant access to from the list.
 
-> [!WARNING]
-> If you are using a Fixed IP range, we recommend that you only use larger runners with private repositories. Forks of your repository can potentially run dangerous code on your larger runner by creating a pull request that executes the code in a workflow.
-> For more information, see [Controlling access to larger runners](control-access.md).
+!!! warning
+    If you are using a Fixed IP range, we recommend that you only use larger runners with private repositories. Forks of your repository can potentially run dangerous code on your larger runner by creating a pull request that executes the code in a workflow.
+    For more information, see [Controlling access to larger runners](control-access.md).
 
 If you want to require workflows to target runners only through runner groups, you can disable standard GitHub-hosted runners at the organization or enterprise level. See [Disabling or limiting github actions for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization) and [Enforcing policies for github actions in your enterprise](https://docs.github.com/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise).
 
 ## Changing the name of a larger runner
 
-> [!NOTE]
-> The names of larger runners can dictate their functionality. For example, to use a larger runner for code scanning default setup, the runner must be named `code-scanning`. For more information on code scanning with larger runners, see [Configure larger runners](https://docs.github.com/code-security/how-tos/find-and-fix-code-vulnerabilities/manage-your-configuration/configure-larger-runners).
+!!! note
+    The names of larger runners can dictate their functionality. For example, to use a larger runner for code scanning default setup, the runner must be named `code-scanning`. For more information on code scanning with larger runners, see [Configure larger runners](https://docs.github.com/code-security/how-tos/find-and-fix-code-vulnerabilities/manage-your-configuration/configure-larger-runners).
 
 You can edit the name of your larger runners.
 
@@ -133,9 +134,8 @@ You can edit the name of your larger runners.
 
 ### Changing the name of an enterprise runner
 
-1. In the top-right corner of GitHub Enterprise Server, click your profile picture, then click **Enterprise settings**.
-
 1. Navigate to your enterprise. For example, from the [Enterprises](https://github.com/settings/enterprises?ref_product=ghec&ref_type=engagement&ref_style=text) page on GitHub.com.
+
 1. At the top of the page, click ** Policies**.
 1. Under " Policies", click **Actions**.
 1. Click the **Runners** tab.
@@ -163,9 +163,8 @@ You can edit the size of your larger runners.
 
 ### Changing the size of an enterprise runner
 
-1. In the top-right corner of GitHub Enterprise Server, click your profile picture, then click **Enterprise settings**.
-
 1. Navigate to your enterprise. For example, from the [Enterprises](https://github.com/settings/enterprises?ref_product=ghec&ref_type=engagement&ref_style=text) page on GitHub.com.
+
 1. At the top of the page, click ** Policies**.
 1. Under " Policies", click **Actions**.
 1. Click the **Runners** tab.
@@ -193,9 +192,8 @@ You can edit the image of your larger runners if you are using a GitHub-owned im
 
 ### Changing the image of an enterprise runner
 
-1. In the top-right corner of GitHub Enterprise Server, click your profile picture, then click **Enterprise settings**.
-
 1. Navigate to your enterprise. For example, from the [Enterprises](https://github.com/settings/enterprises?ref_product=ghec&ref_type=engagement&ref_style=text) page on GitHub.com.
+
 1. At the top of the page, click ** Policies**.
 1. Under " Policies", click **Actions**.
 1. Click the **Runners** tab.
@@ -223,9 +221,8 @@ You can control the maximum number of jobs allowed to run concurrently for speci
 
 ### Configuring autoscaling for an enterprise runner
 
-1. In the top-right corner of GitHub Enterprise Server, click your profile picture, then click **Enterprise settings**.
-
 1. Navigate to your enterprise. For example, from the [Enterprises](https://github.com/settings/enterprises?ref_product=ghec&ref_type=engagement&ref_style=text) page on GitHub.com.
+
 1. At the top of the page, click ** Policies**.
 1. Under " Policies", click **Actions**.
 1. Click the **Runners** tab.
@@ -235,13 +232,11 @@ You can control the maximum number of jobs allowed to run concurrently for speci
 
 ## Creating static IP addresses for larger runners
 
-> [!NOTE]
-> * To use static IP addresses, your organization must use GitHub Enterprise Cloud. For more information about how you can try GitHub Enterprise Cloud for free, see [Setting up a trial of GitHub Enterprise Cloud](https://docs.github.com/admin/overview/setting-up-a-trial-of-github-enterprise-cloud).
-> * macOS larger runners do not support static IP addresses.
+!!! note
+    * To use static IP addresses, your organization must use GitHub Enterprise Cloud. For more information about how you can try GitHub Enterprise Cloud for free, see [Setting up a trial of GitHub Enterprise Cloud](https://docs.github.com/admin/overview/setting-up-a-trial-of-github-enterprise-cloud).
+    * macOS larger runners do not support static IP addresses.
 
-You can enable static IP addresses for larger runners. When you do this, the larger runners are assigned static IP address ranges. All IP addresses in the range assigned are usable. By default, you can configure up to 10 larger runner pools with static IP address ranges for your account. If you would like to use more than 10 larger runner pools with static IP address ranges, please contact us through the [GitHub Support portal](https://support.github.com)
-
-your site administrator.
+You can enable static IP addresses for larger runners. When you do this, the larger runners are assigned static IP address ranges. All IP addresses in the range assigned are usable. By default, you can configure up to 10 larger runner pools with static IP address ranges for your account. If you would like to use more than 10 larger runner pools with static IP address ranges, please contact us through the [GitHub Support portal](https://support.github.com).
 
 Each larger runner you create is not a single machine. It is a pool of runners that automatically scales out to handle concurrent jobs, up to the maximum concurrency you set when creating the runner. All jobs in the pool share the same static IP address range. This means a single larger runner with one static IP range can handle many jobs running at the same time without requiring additional runners.
 
@@ -263,9 +258,8 @@ The number of available IP addresses in the assigned ranges does not restrict th
 
 ### Creating static IP addresses for enterprise runners
 
-1. In the top-right corner of GitHub Enterprise Server, click your profile picture, then click **Enterprise settings**.
-
 1. Navigate to your enterprise. For example, from the [Enterprises](https://github.com/settings/enterprises?ref_product=ghec&ref_type=engagement&ref_style=text) page on GitHub.com.
+
 1. At the top of the page, click ** Policies**.
 1. Under " Policies", click **Actions**.
 1. Click the **Runners** tab.
@@ -288,10 +282,10 @@ The request may be blocked by network rules of storage account. Please check net
 
 For more information see the Microsoft documentation for [Guidelines and limitations for the Azure Storage firewall](https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security-limitations) and [Configure network routing preference for Azure Storage](https://learn.microsoft.com/en-us/azure/storage/common/configure-network-routing-preference?tabs=azure-portal&source=docs).
 
-> [!NOTE]
-> We don't recommend configuring Azure Storage firewall network rules for larger runners unless you use either `static public IP ranges` or an `Azure VNet`.
-> Public IP ranges can be dynamic, so allowlist-based rules may break and cause intermittent connectivity failures.
-> See [Larger runners reference](../../../reference/runners/larger-runners.md#networking-for-larger-runners#networking-for-larger-runners)
+!!! note
+    We don't recommend configuring Azure Storage firewall network rules for larger runners unless you use either `static public IP ranges` or an `Azure VNet`.
+    Public IP ranges can be dynamic, so allowlist-based rules may break and cause intermittent connectivity failures.
+    See [Larger runners reference](../../../reference/runners/larger-runners.md#networking-for-larger-runners#networking-for-larger-runners)
 
 ### Use Static IP Ranges and Service Endpoints
 
@@ -304,4 +298,5 @@ Contact GitHub Support to set up this configuration through the [GitHub Support 
 Another option to safely connect to Azure Storage accounts is to enable Azure VNET with GitHub-hosted runners.
 
 * [About azure private networking for github hosted runners in your organization](https://docs.github.com/organizations/managing-organization-settings/about-azure-private-networking-for-github-hosted-runners-in-your-organization)
+
 * [About azure private networking for github hosted runners in your enterprise](https://docs.github.com/admin/configuring-settings/configuring-private-networking-for-hosted-compute-products/about-azure-private-networking-for-github-hosted-runners-in-your-enterprise)

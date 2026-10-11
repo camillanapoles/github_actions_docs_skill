@@ -12,8 +12,8 @@ section: Tutorials / Manage your work
 
 _You can use GitHub Actions to create an issue on a regular basis for things like daily meetings or quarterly reviews._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -96,8 +96,8 @@ In the tutorial, you will first make a workflow file that uses the GitHub CLI. T
 
 Based on the `schedule` parameter (for example, every Monday at 7:20 UTC), your workflow will create a new issue with the assignees, labels, title, and body that you specified. If you set `PINNED` to `true`, the workflow will pin the issue to your repository. If you set `CLOSE_PREVIOUS` to true, the workflow will close the most recent issue with matching labels.
 
-> [!NOTE]
-> The `schedule` event can be delayed during periods of high loads of GitHub Actions workflow runs. High load times include the start of every hour. If the load is sufficiently high enough, some queued jobs may be dropped. To decrease the chance of delay, schedule your workflow to run at a different time of the hour.
+!!! note
+    The `schedule` event can be delayed during periods of high loads of GitHub Actions workflow runs. High load times include the start of every hour. If the load is sufficiently high enough, some queued jobs may be dropped. To decrease the chance of delay, schedule your workflow to run at a different time of the hour.
 
 You can view the history of your workflow runs to see this workflow run periodically. For more information, see [Viewing workflow run history](../../how-tos/monitor-workflows/view-workflow-run-history.md).
 

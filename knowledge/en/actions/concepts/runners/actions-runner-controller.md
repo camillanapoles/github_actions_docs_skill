@@ -20,8 +20,8 @@ With ARC, you can create runner scale sets that automatically scale based on the
 
 The following diagram illustrates the architecture of ARC's autoscaling runner scale set mode.
 
-> [!NOTE]
-> To view the following diagram in a larger size, see the [Autoscaling Runner Scale Sets mode](https://github.com/actions/actions-runner-controller/blob/master/docs/gha-runner-scale-set-controller/README.md#how-it-works) documentation in the Actions Runner Controller repository.
+!!! note
+    To view the following diagram in a larger size, see the [Autoscaling Runner Scale Sets mode](https://github.com/actions/actions-runner-controller/blob/master/docs/gha-runner-scale-set-controller/README.md#how-it-works) documentation in the Actions Runner Controller repository.
 
 ![Diagram showing ARC's autoscaling runner ScaleSet mode.](/assets/images/help/actions/arc-diagram.png)
 
@@ -48,14 +48,14 @@ Each resource that is deployed by ARC is given a name composed of:
 * An installation name, which is the installation name you specify when you install the Helm chart.
 * A resource identification suffix, which is a string that identifies the resource type. This value is not configurable.
 
-> [!NOTE]
-> Different versions of Kubernetes have different length limits for names of resources. The length limit for the resource name is calculated by adding the length of the installation name and the length of the resource identification suffix. If the resource name is longer than the reserved length, you will receive an error.
+!!! note
+    Different versions of Kubernetes have different length limits for names of resources. The length limit for the resource name is calculated by adding the length of the installation name and the length of the resource identification suffix. If the resource name is longer than the reserved length, you will receive an error.
 
 ### Resources deployed by `gha-runner-scale-set-controller`
 
 | Template | Resource Kind | Name | Reserved Length | Description | Notes |
-|-------|---------------|------|-----------------|-------------|-------|
-| `deployment.yaml` | Deployment | INSTALLATION_NAME-gha-rs-controller | 18  | The resource running controller-manager | The pods created by this resource have the ReplicaSet suffix and the Pod suffix. |
+| --- | --- | --- | --- | --- | --- |
+| `deployment.yaml` | Deployment | INSTALLATION_NAME-gha-rs-controller | 18 | The resource running controller-manager | The pods created by this resource have the ReplicaSet suffix and the Pod suffix. |
 | `serviceaccount.yaml` | ServiceAccount | INSTALLATION_NAME-gha-rs-controller | 18 | This is created if `serviceAccount.create` in `values.yaml` is set to true. | The name can be customized in `values.yaml` |
 | `manager_cluster_role.yaml` | ClusterRole | INSTALLATION_NAME-gha-rs-controller | 18 | ClusterRole for the controller manager | This is created if the value of `flags.watchSingleNamespace` is empty. |
 | `manager_cluster_role_binding.yaml` | ClusterRoleBinding | INSTALLATION_NAME-gha-rs-controller | 18 | ClusterRoleBinding for the controller manager | This is created if the value of `flags.watchSingleNamespace` is empty. |
@@ -64,19 +64,19 @@ Each resource that is deployed by ARC is given a name composed of:
 | `manager_single_namespace_watch_role.yaml` | Role | INSTALLATION_NAME-gha-rs-controller-single-namespace-watch | 41 | Role for the controller manager for the namespace configured | This is created if the value of `flags.watchSingleNamespace` is set. |
 | `manager_single_namespace_watch_role_binding.yaml` | RoleBinding | INSTALLATION_NAME-gha-rs-controller-single-namespace-watch | 41 | RoleBinding for the controller manager for the namespace configured | This is created if the value of `flags.watchSingleNamespace` is set. |
 | `manager_listener_role.yaml` | Role | INSTALLATION_NAME-gha-rs-controller-listener | 26 | Role for the listener | This is always created. |
-| `manager_listener_role_binding.yaml `| RoleBinding | INSTALLATION_NAME-gha-rs-controller-listener | 26 | RoleBinding for the listener  | This is always created and binds the listener role with the service account, which is either created by `serviceaccount.yaml` or configured with `values.yaml`. |
+| `manager_listener_role_binding.yaml ` | RoleBinding | INSTALLATION_NAME-gha-rs-controller-listener | 26 | RoleBinding for the listener | This is always created and binds the listener role with the service account, which is either created by `serviceaccount.yaml` or configured with `values.yaml`. |
 
 ### Resources deployed by `gha-runner-scale-set`
 
 | Template | Resource Kind | Name | Reserved Length | Description | Notes |
-|-------|---------------|------|-----------------|-------------|-------|
+| --- | --- | --- | --- | --- | --- |
 | `autoscalingrunnerset.yaml` | AutoscalingRunnerSet | INSTALLATION_NAME | 0 | Top level resource working with scale sets | The name is limited to 45 characters in length. |
 | `no_permission_service_account.yaml` | ServiceAccount | INSTALLATION_NAME-gha-rs-no-permission | 21 | Service account mounted to the runner container | This is created if the container mode is not "kubernetes" and `template.spec.serviceAccountName` is not specified. |
 | `githubsecret.yaml` | Secret | INSTALLATION_NAME-gha-rs-github-secret | 20 | Secret containing values needed to authenticate to the GitHub API | This is created if `githubConfigSecret` is an object. If a string is provided, this secret will not be created. |
-| `manager_role.yaml` | Role | INSTALLATION_NAME-gha-rs-manager | 15 | Role provided to the manager to be able to reconcile on resources in the autoscaling runner set's namespace  | This is always created. |
-| `manager_role_binding.yaml` | RoleBinding | INSTALLATION_NAME-gha-rs-manager | 15 | Binding manager_role to the manager service account.  | This is always created. |
-| `kube_mode_role.yaml` | Role | INSTALLATION_NAME-gha-rs-kube-mode | 17 | Role providing necessary permissions for the hook  | This is created when the container mode is set to "kubernetes" and `template.spec.serviceAccount` is not provided. |
-| `kube_mode_serviceaccount.yaml` | ServiceAccount | INSTALLATION_NAME-gha-rs-kube-mode | 17 | Service account bound to the runner pod.  | This is created when the container mode is set to "kubernetes" and `template.spec.serviceAccount` is not provided. |
+| `manager_role.yaml` | Role | INSTALLATION_NAME-gha-rs-manager | 15 | Role provided to the manager to be able to reconcile on resources in the autoscaling runner set's namespace | This is always created. |
+| `manager_role_binding.yaml` | RoleBinding | INSTALLATION_NAME-gha-rs-manager | 15 | Binding manager_role to the manager service account. | This is always created. |
+| `kube_mode_role.yaml` | Role | INSTALLATION_NAME-gha-rs-kube-mode | 17 | Role providing necessary permissions for the hook | This is created when the container mode is set to "kubernetes" and `template.spec.serviceAccount` is not provided. |
+| `kube_mode_serviceaccount.yaml` | ServiceAccount | INSTALLATION_NAME-gha-rs-kube-mode | 17 | Service account bound to the runner pod. | This is created when the container mode is set to "kubernetes" and `template.spec.serviceAccount` is not provided. |
 
 ### About custom resources
 
@@ -103,7 +103,7 @@ For example, if the `FROM` line in the runner image Dockerfile is `mcr.microsoft
 
 You can create your own runner image that meets your requirements. Your runner image must fulfill the following conditions.
 
-* Use a base image that can run the self-hosted runner application. See [Self hosted runners](../../how-tos/manage-runners/self-hosted-runners.md).
+* Use a base image that can run the self-hosted runner application. See [Self hosted runners](https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners).
 
 * The [runner binary](https://github.com/actions/runner/releases) must be placed under `/home/runner/` and launched using `/home/runner/run.sh`.
 * If you use Kubernetes mode, the [runner container hooks](https://github.com/actions/runner-container-hooks/releases) must be placed under `/home/runner/k8s`.

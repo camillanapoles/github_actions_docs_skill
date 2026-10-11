@@ -46,7 +46,8 @@ You can define inputs and secrets, which can be passed from the caller workflow 
    For details of the syntax for defining inputs and secrets, see [`on.workflow_call.inputs`](../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callinputs) and [`on.workflow_call.secrets`](../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callsecrets).
 1. In the reusable workflow, reference the input or secret that you defined in the `on` key in the previous step.
 
-   > [!NOTE]
+!!! note
+
    > If the secrets are inherited by using `secrets: inherit` in the calling workflow, you can reference them even if they are not explicitly defined in the `on` key. For more information, see [Workflow syntax for GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idsecretsinherit#jobsjob_idsecretsinherit).
 
             ```yaml
@@ -68,7 +69,8 @@ You can define inputs and secrets, which can be passed from the caller workflow 
 
    If an environment secret has the same name as a repository or organization secret, the environment secret takes precedence. This applies when the caller uses either `secrets: inherit` or `${{ secrets.MY_SECRET }}`. The job that sets `environment` receives the environment secret's value.
 
-   > [!WARNING]
+!!! warning
+
    > If the caller workflow doesn't pass an environment secret, the secret resolves to an empty string in the reusable workflow. The workflow run doesn't show an error. To make the workflow run fail instead, set `required: true` for the secret in [`on.workflow_call.secrets`](../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callsecrets). This setting only checks whether the caller workflow passes the secret. It doesn't check whether the secret has a value.
 
 1. Pass the input or secret from the caller workflow.
@@ -132,9 +134,7 @@ You call a reusable workflow by using the `uses` keyword. Unlike when you are us
 You reference reusable workflow files using one of the following syntaxes:
 
 * `$/.github/workflows/{filename}` for a reusable workflow in the same repository. This is the recommended syntax for referencing a reusable workflow in the same repository. This syntax is not available in GitHub Enterprise Server.
-* `{owner}/{repo}/.github/workflows/{filename}@{ref}` for reusable workflows in public and private
-
-public, internal and private repositories.
+* `{owner}/{repo}/.github/workflows/{filename}@{ref}` for reusable workflows in public and private repositories.
 * `./.github/workflows/{filename}` for reusable workflows in the same repository.
 
 When you reference a reusable workflow with `{owner}/{repo}` and `@{ref}`, the `{ref}` can be a SHA, a release tag, or a branch name. If a release tag and a branch have the same name, the release tag takes precedence over the branch name. Using the commit SHA is the safest option for stability and security. For more information, see [Secure use reference](../../reference/security/secure-use.md#reusing-third-party-workflows#reusing-third-party-workflows).
@@ -229,9 +229,7 @@ jobs:
 
 ## Nesting reusable workflows
 
-You can connect a maximum of ten levels of workflows - that is, the top-level caller workflow and up to nine levels of reusable workflows. For example: _caller-workflow.yml_ → _called-workflow-1.yml_ → _called-workflow-2.yml_ → _called-workflow-3.yml_ → ... → _called-workflow-9.yml_.
-
-four levels of workflows - that is, the top-level caller workflow and up to three levels of reusable workflows. For example: _caller-workflow.yml_ → _called-workflow-1.yml_ → _called-workflow-2.yml_ → _called-workflow-3.yml_.
+You can connect a maximum of four levels of workflows - that is, the top-level caller workflow and up to three levels of reusable workflows. For example: _caller-workflow.yml_ → _called-workflow-1.yml_ → _called-workflow-2.yml_ → _called-workflow-3.yml_.
 
 Loops in the workflow tree are not permitted.
 
@@ -348,8 +346,6 @@ For more information about cache access and the four modes, see [Dependency cach
 
 ## Monitoring which workflows are being used
 
-Organizations that use GitHub Enterprise Cloud can interact with the audit log via the GitHub REST API to monitor which workflows are being used. For more information, see [the GitHub Enterprise Cloud documentation](https://docs.github.com/enterprise-cloud@latest/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization#using-the-audit-log-api).
-
 You can use the GitHub REST API to monitor how reusable workflows are being used. The `prepared_workflow_job` audit log action is triggered when a workflow job is started. Included in the data recorded are:
 * `repo` - the organization/repository where the workflow job is located. For a job that calls another workflow, this is the organization/repository of the caller workflow.
 * `@timestamp` - the date and time that the job was started, in Unix epoch format.
@@ -360,8 +356,8 @@ You can use the GitHub REST API to monitor how reusable workflows are being used
 
 For more information, see [Reviewing the audit log for your organization](https://docs.github.com/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization#using-the-audit-log-api#using-the-audit-log-api).
 
-> [!NOTE]
-> Audit data for `prepared_workflow_job` can only be viewed using the REST API. It is not visible in the GitHub web interface, or included in JSON/CSV exported audit data.
+!!! note
+    Audit data for `prepared_workflow_job` can only be viewed using the REST API. It is not visible in the GitHub web interface, or included in JSON/CSV exported audit data.
 
 ## Next steps
 

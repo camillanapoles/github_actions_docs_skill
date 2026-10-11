@@ -12,8 +12,8 @@ section: Tutorials / Migrate to github actions / Manual migrations
 
 _GitHub Actions and Travis CI share multiple similarities, which helps make it relatively straightforward to migrate to GitHub Actions._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -169,7 +169,7 @@ GitHub Actions includes integrated support for artifact storage, allowing you to
 
 ### Hosting your own runners
 
-If your jobs require specific hardware or software, GitHub Actions allows you to host your own runners and send your jobs to them for processing. GitHub Actions also lets you use policies to control how these runners are accessed, granting access at the organization or repository level. For more information, see [Self hosted runners](../../../how-tos/manage-runners/self-hosted-runners.md).
+If your jobs require specific hardware or software, GitHub Actions allows you to host your own runners and send your jobs to them for processing. GitHub Actions also lets you use policies to control how these runners are accessed, granting access at the organization or repository level. For more information, see [Self hosted runners](https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners).
 
 ### Concurrent jobs and execution time
 
@@ -177,7 +177,7 @@ The concurrent jobs and workflow execution times in GitHub Actions can vary depe
 
 ### Using different languages in GitHub Actions
 
-When working with different languages in GitHub Actions, you can create a step in your job to set up your language dependencies. For more information about working with a particular language, see [Build and test code](../../build-and-test-code.md).
+When working with different languages in GitHub Actions, you can create a step in your job to set up your language dependencies. For more information about working with a particular language, see [Build and test code](https://docs.github.com/en/actions/tutorials/build-and-test-code).
 
 ## Executing scripts
 
@@ -221,7 +221,7 @@ jobs:
 
 ## Migrating phases to steps
 
-Where Travis CI uses _phases_ to run _steps_, GitHub Actions has _steps_ which execute _actions_. You can find prebuilt actions in the [GitHub Marketplace](https://github.com/marketplace?type=actions), or you can create your own actions. For more information, see [Reuse automations](../../../how-tos/reuse-automations.md).
+Where Travis CI uses _phases_ to run _steps_, GitHub Actions has _steps_ which execute _actions_. You can find prebuilt actions in the [GitHub Marketplace](https://github.com/marketplace?type=actions), or you can create your own actions. For more information, see [Reuse automations](https://docs.github.com/en/actions/how-tos/reuse-automations).
 
 Below is an example of the syntax for each system.
 
@@ -331,4 +331,4 @@ jobs:
 
 ## Next steps
 
-To continue learning about the main features of GitHub Actions, see [Write workflows](../../../how-tos/write-workflows.md).
+To continue learning about the main features of GitHub Actions, see [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows).

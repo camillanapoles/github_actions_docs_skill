@@ -16,18 +16,17 @@ _In this tutorial, you'll learn how to publish Docker images to a registry, such
 
 This guide shows you how to create a workflow that performs a Docker build, and then publishes Docker images to Docker Hub or GitHub Packages. With a single workflow, you can publish images to a single registry or to multiple registries.
 
-> [!NOTE]
-> If you want to push to another third-party Docker registry, the example in the [Publishing images to GitHub Packages](#publishing-images-to-github-packages) section can serve as a good template.
+!!! note
+    If you want to push to another third-party Docker registry, the example in the [Publishing images to GitHub Packages](#publishing-images-to-github-packages) section can serve as a good template.
 
 ## Prerequisites
 
-We recommend that you have a basic understanding of workflow configuration options and how to create a workflow file. For more information, see [Write workflows](../../how-tos/write-workflows.md).
+We recommend that you have a basic understanding of workflow configuration options and how to create a workflow file. For more information, see [Write workflows](https://docs.github.com/en/actions/how-tos/write-workflows).
 
 You might also find it helpful to have a basic understanding of the following:
 
 * [Using secrets in GitHub Actions](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md)
-* [Use GITHUB_TOKEN for authentication in workflows](../authenticate-with-github_token.md)* [Working with the container registry](https://docs.github.com/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-
+* [Use GITHUB_TOKEN for authentication in workflows](../authenticate-with-github_token.md)
 * [Working with the docker registry](https://docs.github.com/packages/working-with-a-github-packages-registry/working-with-the-docker-registry)
 
 ## About image configuration
@@ -38,13 +37,13 @@ You can use pre-defined annotation keys to add metadata including a description,
 
 In this guide, we will use the Docker `build-push-action` action to build the Docker image and push it to one or more Docker registries. For more information, see [`build-push-action`](https://github.com/marketplace/actions/build-and-push-docker-images).
 
-> [!NOTE]
-> GitHub Actions on GitHub Enterprise Server may have limited access to actions on GitHub.com or GitHub Marketplace. For more information, see [Managing access to actions from githubcom](https://docs.github.com/admin/managing-github-actions-for-your-enterprise/managing-access-to-actions-from-githubcom) and contact your GitHub Enterprise site administrator.
+!!! note
+    GitHub Actions on GitHub Enterprise Server may have limited access to actions on GitHub.com or GitHub Marketplace. For more information, see [Managing access to actions from githubcom](https://docs.github.com/admin/managing-github-actions-for-your-enterprise/managing-access-to-actions-from-githubcom) and contact your GitHub Enterprise site administrator.
 
 ## Publishing images to Docker Hub
 
-> [!NOTE]
-> Docker Hub normally imposes rate limits on both push and pull operations which will affect jobs on self-hosted runners. However, GitHub-hosted runners are not subject to these limits based on an agreement between GitHub and Docker.
+!!! note
+    Docker Hub normally imposes rate limits on both push and pull operations which will affect jobs on self-hosted runners. However, GitHub-hosted runners are not subject to these limits based on an agreement between GitHub and Docker.
 
 Each time you create a new release on GitHub, you can trigger a workflow to publish your image. The workflow in the example below runs when the `release` event triggers with the `published` activity type.
 
@@ -81,9 +80,7 @@ on:
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
-    runs-on: [self-hosted]
-
-ubuntu-latest
+    runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
@@ -115,12 +112,13 @@ ubuntu-latest
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-- name: Generate artifact attestation
+      - name: Generate artifact attestation
         uses: actions/attest@v4
         with:
           subject-name: index.docker.io/my-docker-hub-namespace/my-docker-hub-repository
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
 ```
 
 The above workflow checks out the GitHub repository, uses the `login-action` to log in to the registry, and then uses the `build-push-action` action to: build a Docker image based on your repository's `Dockerfile`; push the image to Docker Hub, and apply a tag to the image.
@@ -138,32 +136,25 @@ Each time you create a new release on GitHub, you can trigger a workflow to publ
 In the example workflow below, we use the Docker `login-action`, `metadata-action`, and `build-push-action` actions to build the Docker image, and if the build succeeds, push the built image to GitHub Packages.
 
 The `login-action` options required for GitHub Packages are:
-* `registry`: Must be set to `ghcr.io`
-
-`ghcr.io
-
-containers.HOSTNAME`.
+* `registry`: Must be set to `ghcr.io`.
 * `username`: You can use the `${{ github.actor }}` context to automatically use the username of the user that triggered the workflow run. For more information, see [Contexts reference](../../reference/workflows-and-actions/contexts.md#github-context#github-context).
 * `password`: You can use the automatically-generated `GITHUB_TOKEN` secret for the password. For more information, see [Use GITHUB_TOKEN for authentication in workflows](../authenticate-with-github_token.md).
 
 The `metadata-action` option required for GitHub Packages is:
 * `images`: The namespace and name for the Docker image you are building.
 
-The `build-push-action` options required for GitHub Packages are:* `context`: Defines the build's context as the set of files located in the specified path.
-* `push`: If set to `true`, the image will be pushed to the registry if it is built successfully.* `tags` and `labels`: These are populated by output from `metadata-action`.
+The `build-push-action` options required for GitHub Packages are:
 
-* `tags`: Must be set in the format `ghcr.io
+* `context`: Defines the build's context as the set of files located in the specified path.
+* `push`: If set to `true`, the image will be pushed to the registry if it is built successfully.
+* `tags`: Must be set in the format `ghcr.io/OWNER/REPOSITORY/IMAGE_NAME:VERSION`.
 
-containers.HOSTNAME/OWNER/REPOSITORY/IMAGE_NAME:VERSION`.
-
-   For example, for an image named `octo-image` stored on GitHub Enterprise Server at `https://HOSTNAME/octo-org/octo-repo`, the `tags` option should be set to `ghcr.io
-
-containers.HOSTNAME/octo-org/octo-repo/octo-image:latest`
+   For example, for an image named `octo-image` stored on GitHub Enterprise Server at `https://HOSTNAME/octo-org/octo-repo`, the `tags` option should be set to `ghcr.io/octo-org/octo-repo/octo-image:latest`
 . You can set a single tag as shown below, or specify multiple tags in a list.
 
-> [!NOTE]
-> * This workflow uses actions that are not certified by GitHub. They are provided by a third-party and are governed by separate terms of service, privacy policy, and support documentation.
-> * GitHub recommends pinning actions to a commit SHA. To get a newer version, you will need to update the SHA. You can also reference a tag or branch, but the action may change without warning.
+!!! note
+    * This workflow uses actions that are not certified by GitHub. They are provided by a third-party and are governed by separate terms of service, privacy policy, and support documentation.
+    * GitHub recommends pinning actions to a commit SHA. To get a newer version, you will need to update the SHA. You can also reference a tag or branch, but the action may change without warning.
 
 ```yaml annotate copy
 #
@@ -177,16 +168,12 @@ on:
 # Defines two custom environment variables for the workflow. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
 env:
   REGISTRY: ghcr.io
-
-containers.HOSTNAME
   IMAGE_NAME: ${{ github.repository }}
 
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
   build-and-push-image:
-    runs-on: [self-hosted]
-
-ubuntu-latest
+    runs-on: ubuntu-latest
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
       contents: read
@@ -221,13 +208,15 @@ ubuntu-latest
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-      # This step generates an artifact attestation for the image, which is an unforgeable statement about where and how it was built. It increases supply chain security for people who consume the image. For more information, see [Using artifact attestations to establish provenance for builds](../../security-guides/using-artifact-attestations-to-establish-provenance-for-builds.md).
+
+      # This step generates an artifact attestation for the image, which is an unforgeable statement about where and how it was built. It increases supply chain security for people who consume the image. For more information, see [Using artifact attestations to establish provenance for builds](https://docs.github.com/en/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
       - name: Generate artifact attestation
         uses: actions/attest@v4
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
 ```
 
 The above workflow is triggered by a push to the "release" branch. It checks out the GitHub repository, and uses the `login-action` to log in to the Container registry. It then extracts labels and tags for the Docker image. Finally, it uses the `build-push-action` action to build the image and publish it on the Container registry.
@@ -261,9 +250,7 @@ on:
 jobs:
   push_to_registries:
     name: Push Docker image to multiple registries
-    runs-on: [self-hosted]
-
-ubuntu-latest
+    runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
@@ -281,10 +268,6 @@ ubuntu-latest
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:
           registry: ghcr.io
-
-ghcr.io
-
-containers.HOSTNAME
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -294,9 +277,7 @@ containers.HOSTNAME
         with:
           images: |
             my-docker-hub-namespace/my-docker-hub-repository
-            ghcr.io
-
-containers.HOSTNAME/${{ github.repository }}
+            ghcr.io/${{ github.repository }}
 
       - name: Build and push Docker images
         id: push
@@ -311,12 +292,12 @@ containers.HOSTNAME/${{ github.repository }}
 The above workflow checks out the GitHub repository, uses the `login-action` twice to log in to both registries and generates tags and labels with the `metadata-action` action.
 Then the `build-push-action` action builds and pushes the Docker image to Docker Hub and the Container registry.
 
-> [!NOTE]
-> When pushing to multiple registries:
->
-> * Image digests may differ between registries, making attestation verification difficult.
-> * To maintain a consistent digest and allow a single attestation to verify all copies, push to one registry first and use a tool like [`crane copy`](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md) to replicate the image elsewhere.
-> * If you choose to build and push to each registry separately instead, you must generate a distinct attestation for each one to ensure your artifacts remain verifiable.
+!!! note
+    When pushing to multiple registries:
+
+    * Image digests may differ between registries, making attestation verification difficult.
+    * To maintain a consistent digest and allow a single attestation to verify all copies, push to one registry first and use a tool like [`crane copy`](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md) to replicate the image elsewhere.
+    * If you choose to build and push to each registry separately instead, you must generate a distinct attestation for each one to ensure your artifacts remain verifiable.
 
 ## Hands-on practice
 

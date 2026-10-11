@@ -12,8 +12,8 @@ section: Tutorials / Build and test code
 
 _Learn how to create a continuous integration (CI) workflow to build and test your Rust project._
 
-> [!NOTE]
-> GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
+!!! note
+    GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
 ## Introduction
 
@@ -44,7 +44,7 @@ GitHub provides a Rust workflow template that should work for most basic Rust pr
 
    ![Screenshot of the "Choose a workflow" page. The "Configure" button on the "Rust" workflow is highlighted with an orange outline.](/assets/images/help/actions/starter-workflow-rust.png)
 
-If you don't find the "Rust - by GitHub Actions" workflow template, copy the following workflow code to a new file called `rust.yml` in the `.github/workflows` directory of your repository.
+   If you don't find the "Rust - by GitHub Actions" workflow template, copy the following workflow code to a new file called `rust.yml` in the `.github/workflows` directory of your repository.
 
             ```yaml copy
    name: Rust
@@ -74,7 +74,7 @@ If you don't find the "Rust - by GitHub Actions" workflow template, copy the fol
 1. Edit the workflow as required. For example, change the version of Rust.
 1. Click **Commit changes**.
 
-The `rust.yml` workflow file is added to the `.github/workflows` directory of your repository.
+   The `rust.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
 ## Specifying a Rust version
 
@@ -152,9 +152,7 @@ After a workflow completes, you can upload the resulting artifacts for analysis 
 
 ```yaml copy
       - name: Upload release artifact
-        uses: actions/upload-artifact@v4
-
-v3
+        uses: actions/upload-artifact@v3
         with:
           name: <my-app>
           path: target/${{ matrix.BUILD_TARGET }}/<my-app>
@@ -165,9 +163,7 @@ To use the uploaded artifact in a different job, ensure your workflows have the 
 ```yaml copy
       - uses: actions/checkout@v6
       - name: Download release artifact
-        uses: actions/download-artifact@v5
-
-v3
+        uses: actions/download-artifact@v3
         with:
           name: <my-app>
           path: ./<my-app>

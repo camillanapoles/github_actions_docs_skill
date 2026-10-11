@@ -14,8 +14,8 @@ _Find technical information about secrets in GitHub Actions._
 
 ## Naming your secrets
 
->[!TIP]
-> To help ensure that GitHub redacts your secrets in logs correctly, avoid using structured data as the values of secrets.
+!!! tip
+    To help ensure that GitHub redacts your secrets in logs correctly, avoid using structured data as the values of secrets.
 
 The following rules apply to secret names:
 
