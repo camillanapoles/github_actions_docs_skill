@@ -237,7 +237,7 @@ Clique em **Etapa da ação Olá, mundo** e você verá "Olá, Mona, o Octocat" 
 
 Quando uma ação de contêiner é executada, ela mapeia automaticamente o diretório de trabalho padrão (`GITHUB_WORKSPACE`) no executor com o diretório `/github/workspace` no contêiner. Todos os arquivos adicionados a esse diretório no contêiner estarão disponíveis para todas as etapas subsequentes no mesmo trabalho. Por exemplo, se você tiver uma ação de contêiner que compila seu projeto e quiser carregar a saída da compilação como um artefato, poderá usar as etapas a seguir.
 
-**workflow.yml**
+**workflow\.yml**
 
 ```yaml copy
 jobs:

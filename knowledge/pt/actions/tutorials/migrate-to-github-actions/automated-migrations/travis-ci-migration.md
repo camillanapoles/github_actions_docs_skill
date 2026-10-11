@@ -432,26 +432,23 @@ GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáv
 | :------------------------ | :-------------------- |
 | `$CONTINUOUS_INTEGRATION` | `$CI`                 |
 | `$USER`                   | `${{ github.actor }}` |
-| `$HOME`                   |                       |
-
-`${{ github.workspace }}`
-
+| `$HOME`                   |                       `${{ github.workspace }}` |
 |
-\| `$TRAVIS_BRANCH`             | `${{ github.ref }}`                                                                   |
-\| `$TRAVIS_BUILD_DIR`           | `${{ github.workspace }}`                                                             |
-\| `$TRAVIS_BUILD_ID`            | `${{ github.run_number }}`                                                            |
-\| `$TRAVIS_BUILD_NUMBER`        | `${{ github.run_id }}`                                                                |
-\| `$TRAVIS_COMMIT`              | `${{ github.sha }}`                                                                   |
-\| `$TRAVIS_EVENT_TYPE`          | `${{ github.event_name }}`                                                            |
-\| `$TRAVIS_PULL_REQUEST_BRANCH` | `${{ github.base_ref }}`                                                              |
-\| `$TRAVIS_PULL_REQUEST`        | `${{ github.event.number }}`                                                          |
-\| `$TRAVIS_PULL_REQUEST_SHA`    | `${{ github.head.sha }}`                                                              |
-\| `$TRAVIS_PULL_REQUEST_SLUG`   | `${{ github.repository }}`                                                            |
-\| `$TRAVIS_TAG`                 | `${{ github.ref }}`                                                                   |
-\| `$TRAVIS_OS_NAME`             | `${{ runner.os }}`                                                                    |
-\| `$TRAVIS_JOB_ID`              | `${{ github.job }}`                                                                   |
-\| `$TRAVIS_REPO_SLUG`           | `${{ github.repository_owner/github.repository }}`                                    |
-\| `$TRAVIS_BUILD_WEB_URL`       | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
+| `$TRAVIS_BRANCH`             | `${{ github.ref }}`                                                                   |
+| `$TRAVIS_BUILD_DIR`           | `${{ github.workspace }}`                                                             |
+| `$TRAVIS_BUILD_ID`            | `${{ github.run_number }}`                                                            |
+| `$TRAVIS_BUILD_NUMBER`        | `${{ github.run_id }}`                                                                |
+| `$TRAVIS_COMMIT`              | `${{ github.sha }}`                                                                   |
+| `$TRAVIS_EVENT_TYPE`          | `${{ github.event_name }}`                                                            |
+| `$TRAVIS_PULL_REQUEST_BRANCH` | `${{ github.base_ref }}`                                                              |
+| `$TRAVIS_PULL_REQUEST`        | `${{ github.event.number }}`                                                          |
+| `$TRAVIS_PULL_REQUEST_SHA`    | `${{ github.head.sha }}`                                                              |
+| `$TRAVIS_PULL_REQUEST_SLUG`   | `${{ github.repository }}`                                                            |
+| `$TRAVIS_TAG`                 | `${{ github.ref }}`                                                                   |
+| `$TRAVIS_OS_NAME`             | `${{ runner.os }}`                                                                    |
+| `$TRAVIS_JOB_ID`              | `${{ github.job }}`                                                                   |
+| `$TRAVIS_REPO_SLUG`           | `${{ github.repository_owner/github.repository }}`                                    |
+| `$TRAVIS_BUILD_WEB_URL`       | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
 
 ## Aviso legal
 

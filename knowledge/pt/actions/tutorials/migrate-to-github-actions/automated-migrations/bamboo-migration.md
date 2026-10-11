@@ -95,7 +95,7 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
    Seu token deve ter as seguintes permissões, dependendo de quais recursos serão transformados.
 
 | Tipo de recurso | Visualizar | Exibir configuração | Editar |
-| :-- | :-- | :-- | :-- |
+| :-- | :-: | :-: | :-: |
 | Plano de build | (Required) | (Required) | (Required) |
 | Projeto de implantação | (Required) | (Required) | (Not required) |
 | Ambiente de implantação | (Required) | (Not required) | (Not required) |

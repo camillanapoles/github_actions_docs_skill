@@ -2,6 +2,7 @@
 [info] plano enterprise-cloud@latest: 245 caminhos (2 novos)
 [info] inventário: 247 páginas /pt/actions (version=free-pro-team@latest,enterprise-cloud@latest)
 [info] 247 páginas descobertas para /pt/actions
+[info] passada 1/3: 247 páginas, 4 workers
 [   1/247] ok  actions/index.md (50178 bytes)
 [   2/247] ok  actions/get-started.md (1325 bytes)
 [   3/247] ok  actions/get-started/quickstart.md (11679 bytes)
@@ -87,6 +88,19 @@
 [  83/247] ok  actions/how-tos/secure-your-work/security-harden-deployments/oidc-with-reusable-workflows.md (6653 bytes)
 [  84/247] ok  actions/how-tos/deploy.md (822 bytes)
 [  85/247] ok  actions/how-tos/deploy/configure-and-manage-deployments.md (1928 bytes)
+Traceback (most recent call last):
+  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 1304, in heal_with_html
+    fragment, selector, warnings = html_to_fragment(html_text, res.url)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 975, in html_to_fragment
+    clean_fragment(chosen, base_url)
+  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 868, in clean_fragment
+    classes = " ".join(el.get("class") or [])
+                       ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/bs4/element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
 [  86/247] ok  actions/how-tos/deploy/configure-and-manage-deployments/control-deployments.md (17577 bytes)
 [  87/247] ok  actions/how-tos/deploy/configure-and-manage-deployments/view-deployment-history.md (3514 bytes)
 [  88/247] ok  actions/how-tos/deploy/configure-and-manage-deployments/manage-environments.md (11236 bytes)
@@ -187,68 +201,94 @@
 [ 183/247] ok  actions/reference/security/securely-using-pull_request_target.md (15113 bytes)
 [ 184/247] ok  actions/reference/security/secrets.md (3604 bytes)
 [ 185/247] ok  actions/reference/security/oidc.md (43585 bytes)
+Traceback (most recent call last):
+  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 1304, in heal_with_html
+    fragment, selector, warnings = html_to_fragment(html_text, res.url)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 975, in html_to_fragment
+    clean_fragment(chosen, base_url)
+  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 868, in clean_fragment
+    classes = " ".join(el.get("class") or [])
+                       ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/bs4/element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
 [ 186/247] ok  actions/reference/limits.md (16251 bytes)
 [ 187/247] ok  actions/reference/github-actions-importer.md (1045 bytes)
 [ 188/247] ok  actions/reference/github-actions-importer/supplemental-arguments-and-settings.md (10289 bytes)
 [ 189/247] ok  actions/reference/github-actions-importer/custom-transformers.md (11703 bytes)
 [ 190/247] ok  actions/tutorials.md (2754 bytes)
-[ 191/247] ERR https://docs.github.com/pt/actions/tutorials/create-an-example-workflow (0 bytes)
-[ 192/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code (0 bytes)
-[ 193/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code/go (0 bytes)
-[ 194/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code/java-with-ant (0 bytes)
-[ 195/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code/java-with-gradle (0 bytes)
-[ 196/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code/java-with-maven (0 bytes)
-[ 197/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code/net (0 bytes)
-[ 198/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code/nodejs (0 bytes)
-[ 199/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code/powershell (0 bytes)
-[ 200/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code/python (0 bytes)
-[ 201/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code/ruby (0 bytes)
-[ 202/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code/rust (0 bytes)
-[ 203/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code/swift (0 bytes)
-[ 204/247] ERR https://docs.github.com/pt/actions/tutorials/build-and-test-code/xamarin-apps (0 bytes)
-[ 205/247] ERR https://docs.github.com/pt/actions/tutorials/authenticate-with-github_token (0 bytes)
-[ 206/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-runners (0 bytes)
-[ 207/247] ERR https://docs.github.com/pt/actions/tutorials/create-actions (0 bytes)
-[ 208/247] ERR https://docs.github.com/pt/actions/tutorials/create-actions/create-a-javascript-action (0 bytes)
-[ 209/247] ERR https://docs.github.com/pt/actions/tutorials/create-actions/create-a-composite-action (0 bytes)
-[ 210/247] ERR https://docs.github.com/pt/actions/tutorials/publish-packages (0 bytes)
-[ 211/247] ERR https://docs.github.com/pt/actions/tutorials/publish-packages/publish-docker-images (0 bytes)
-[ 212/247] ERR https://docs.github.com/pt/actions/tutorials/publish-packages/publish-java-packages-with-gradle (0 bytes)
-[ 213/247] ERR https://docs.github.com/pt/actions/tutorials/publish-packages/publish-java-packages-with-maven (0 bytes)
-[ 214/247] ERR https://docs.github.com/pt/actions/tutorials/publish-packages/publish-nodejs-packages (0 bytes)
-[ 215/247] ERR https://docs.github.com/pt/actions/tutorials/manage-your-work (0 bytes)
-[ 216/247] ERR https://docs.github.com/pt/actions/tutorials/manage-your-work/add-labels-to-issues (0 bytes)
-[ 217/247] ERR https://docs.github.com/pt/actions/tutorials/manage-your-work/close-inactive-issues (0 bytes)
-[ 218/247] ERR https://docs.github.com/pt/actions/tutorials/manage-your-work/add-comments-with-labels (0 bytes)
-[ 219/247] ERR https://docs.github.com/pt/actions/tutorials/manage-your-work/schedule-issue-creation (0 bytes)
-[ 220/247] ERR https://docs.github.com/pt/actions/tutorials/store-and-share-data (0 bytes)
-[ 221/247] ERR https://docs.github.com/pt/actions/tutorials/use-containerized-services (0 bytes)
-[ 222/247] ERR https://docs.github.com/pt/actions/tutorials/use-containerized-services/create-a-docker-container-action (0 bytes)
-[ 223/247] ERR https://docs.github.com/pt/actions/tutorials/use-containerized-services/use-docker-service-containers (0 bytes)
-[ 224/247] ERR https://docs.github.com/pt/actions/tutorials/use-containerized-services/create-postgresql-service-containers (0 bytes)
-[ 225/247] ERR https://docs.github.com/pt/actions/tutorials/use-containerized-services/create-redis-service-containers (0 bytes)
-[ 226/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions (0 bytes)
-[ 227/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations (0 bytes)
-[ 228/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/use-github-actions-importer (0 bytes)
-[ 229/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration (0 bytes)
-[ 230/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/bamboo-migration (0 bytes)
-[ 231/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/bitbucket-pipelines-migration (0 bytes)
-[ 232/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration (0 bytes)
-[ 233/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/gitlab-migration (0 bytes)
-[ 234/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/jenkins-migration (0 bytes)
-[ 235/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration (0 bytes)
-[ 236/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/manual-migrations (0 bytes)
-[ 237/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-azure-pipelines (0 bytes)
-[ 238/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-circleci (0 bytes)
-[ 239/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-gitlab-cicd (0 bytes)
-[ 240/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-jenkins (0 bytes)
-[ 241/247] ERR https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-travis-ci (0 bytes)
-[ 242/247] ERR https://docs.github.com/pt/actions/tutorials/use-actions-runner-controller (0 bytes)
-[ 243/247] ERR https://docs.github.com/pt/actions/tutorials/use-actions-runner-controller/get-started (0 bytes)
-[ 244/247] ERR https://docs.github.com/pt/actions/tutorials/use-actions-runner-controller/troubleshoot (0 bytes)
-[ 245/247] ERR https://docs.github.com/pt/actions/tutorials/develop-agentic-workflows-in-github-actions (0 bytes)
-[ 246/247] ERR https://docs.github.com/pt/enterprise-cloud@latest/actions/how-tos/reuse-automations/share-with-your-enterprise (0 bytes)
+[ 191/247] ok  actions/tutorials/create-an-example-workflow.md (7904 bytes)
+[ 192/247] ok  actions/tutorials/build-and-test-code.md (2735 bytes)
+[ 193/247] ok  actions/tutorials/build-and-test-code/go.md (8157 bytes)
+[ 194/247] ok  actions/tutorials/build-and-test-code/java-with-ant.md (6068 bytes)
+[ 195/247] ok  actions/tutorials/build-and-test-code/java-with-gradle.md (8839 bytes)
+[ 196/247] ok  actions/tutorials/build-and-test-code/java-with-maven.md (7664 bytes)
+[ 197/247] ok  actions/tutorials/build-and-test-code/net.md (9368 bytes)
+[ 198/247] ok  actions/tutorials/build-and-test-code/nodejs.md (12625 bytes)
+[ 199/247] ok  actions/tutorials/build-and-test-code/powershell.md (11266 bytes)
+[ 200/247] ok  actions/tutorials/build-and-test-code/python.md (19807 bytes)
+[ 201/247] ok  actions/tutorials/build-and-test-code/ruby.md (14185 bytes)
+[ 202/247] ok  actions/tutorials/build-and-test-code/rust.md (7736 bytes)
+[ 203/247] ok  actions/tutorials/build-and-test-code/swift.md (5874 bytes)
+[ 204/247] ok  actions/tutorials/build-and-test-code/xamarin-apps.md (4210 bytes)
+[ 205/247] ok  actions/tutorials/authenticate-with-github_token.md (5323 bytes)
+[ 206/247] ok  actions/tutorials/migrate-to-github-runners.md (14229 bytes)
+[ 207/247] ok  actions/tutorials/create-actions.md (796 bytes)
+[ 208/247] ok  actions/tutorials/create-actions/create-a-javascript-action.md (14052 bytes)
+[ 209/247] ok  actions/tutorials/create-actions/create-a-composite-action.md (9604 bytes)
+[ 210/247] ok  actions/tutorials/publish-packages.md (1408 bytes)
+[ 211/247] ok  actions/tutorials/publish-packages/publish-docker-images.md (17407 bytes)
+[ 212/247] ok  actions/tutorials/publish-packages/publish-java-packages-with-gradle.md (14465 bytes)
+[ 213/247] ok  actions/tutorials/publish-packages/publish-java-packages-with-maven.md (14372 bytes)
+[ 214/247] ok  actions/tutorials/publish-packages/publish-nodejs-packages.md (11644 bytes)
+[ 215/247] ok  actions/tutorials/manage-your-work.md (1360 bytes)
+[ 216/247] ok  actions/tutorials/manage-your-work/add-labels-to-issues.md (4722 bytes)
+[ 217/247] ok  actions/tutorials/manage-your-work/close-inactive-issues.md (6452 bytes)
+[ 218/247] ok  actions/tutorials/manage-your-work/add-comments-with-labels.md (5414 bytes)
+[ 219/247] ok  actions/tutorials/manage-your-work/schedule-issue-creation.md (7077 bytes)
+[ 220/247] ok  actions/tutorials/store-and-share-data.md (10596 bytes)
+[ 221/247] ok  actions/tutorials/use-containerized-services.md (1659 bytes)
+[ 222/247] ok  actions/tutorials/use-containerized-services/create-a-docker-container-action.md (13698 bytes)
+[ 223/247] ok  actions/tutorials/use-containerized-services/use-docker-service-containers.md (10270 bytes)
+[ 224/247] ok  actions/tutorials/use-containerized-services/create-postgresql-service-containers.md (16287 bytes)
+[ 225/247] ok  actions/tutorials/use-containerized-services/create-redis-service-containers.md (16109 bytes)
+[ 226/247] ok  actions/tutorials/migrate-to-github-actions.md (947 bytes)
+[ 227/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations.md (2446 bytes)
+[ 228/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations/use-github-actions-importer.md (10697 bytes)
+[ 229/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md (43392 bytes)
+[ 230/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations/bamboo-migration.md (33543 bytes)
+[ 231/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations/bitbucket-pipelines-migration.md (28551 bytes)
+[ 232/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md (29355 bytes)
+[ 233/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations/gitlab-migration.md (40020 bytes)
+[ 234/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations/jenkins-migration.md (26579 bytes)
+Traceback (most recent call last):
+  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 1304, in heal_with_html
+    fragment, selector, warnings = html_to_fragment(html_text, res.url)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 975, in html_to_fragment
+    clean_fragment(chosen, base_url)
+  File "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/scripts/extract.py", line 868, in clean_fragment
+    classes = " ".join(el.get("class") or [])
+                       ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/bs4/element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+[ 235/247] ok  actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration.md (30380 bytes)
+[ 236/247] ok  actions/tutorials/migrate-to-github-actions/manual-migrations.md (1816 bytes)
+[ 237/247] ok  actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-azure-pipelines.md (11809 bytes)
+[ 238/247] ok  actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-circleci.md (14733 bytes)
+[ 239/247] ok  actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-gitlab-cicd.md (11941 bytes)
+[ 240/247] ok  actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-jenkins.md (11732 bytes)
+[ 241/247] ok  actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-travis-ci.md (13576 bytes)
+[ 242/247] ok  actions/tutorials/use-actions-runner-controller.md (934 bytes)
+[ 243/247] ok  actions/tutorials/use-actions-runner-controller/get-started.md (11071 bytes)
+[ 244/247] ok  actions/tutorials/use-actions-runner-controller/troubleshoot.md (10439 bytes)
+[ 245/247] ok  actions/tutorials/develop-agentic-workflows-in-github-actions.md (7153 bytes)
+[ 246/247] ok  actions/how-tos/reuse-automations/share-with-your-enterprise.md (3640 bytes)
 [ 247/247] ok  actions/how-tos/administer/reuse-namespaces-on-ghecom.md (2693 bytes)
-[info] captura em 319.8s
-[info] integridade de links: {'files': 247, 'links': 1716, 'reverted': 3, 'ok': 1713}
-[done] 191 ok / 56 falhas / 15 avisos → /home/runner/work/github_actions_docs_skill/github_actions_docs_skill/knowledge/pt
+[info] captura em 54.9s (247 ok / 0 falhas)
+[info] integridade de links: {'files': 247, 'links': 1720, 'reverted': 7, 'ok': 1713}
+[done] 247 ok / 0 falhas / 16 avisos → /home/runner/work/github_actions_docs_skill/github_actions_docs_skill/knowledge/pt
