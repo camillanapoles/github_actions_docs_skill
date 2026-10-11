@@ -46,7 +46,7 @@ jobs:
       LANG_CODE: ${{ github.event.inputs.lang || 'pt' }}
       LIMIT: ${{ github.event_name == 'push' && '8' || (github.event.inputs.limit || '0') }}
       JOBS: ${{ github.event.inputs.jobs || '4' }}
-      DO_COMMIT: ${{ github.event.inputs.commit == false && 'no' || 'yes' }}
+      DO_COMMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.commit == 'false' && 'no' || 'yes' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
