@@ -438,17 +438,25 @@ def url_to_relpath(url: str, lang: str, scope: str = "actions") -> str:
     return normalize_docs_path(parsed.path, lang, scope) or "index.md"
 
 
+VERSION_SEGMENT_RE = re.compile(
+    r"^(free-pro-team@latest|enterprise-cloud@latest|enterprise-server@[\d.]+|enterprise@[\d.]+)/")
+
+
 def normalize_docs_path(path: str, lang: str, scope: str) -> str | None:
-    """`/pt/actions/a/b`, `/actions/a/b`, `actions/a/b.md` → `actions/a/b.md` (ou None se fora do escopo)."""
+    """`/pt/actions/a/b`, `/pt/enterprise-cloud@latest/actions/a/b`, `actions/a/b.md` → `actions/a/b.md`.
+
+    Retorna ``None`` quando o caminho está fora do escopo (ex.: /pt/rest/...).
+    """
     path = path.strip().split("#")[0].split("?")[0].strip("/")
-    if path.startswith(f"{lang}/"):
+    if lang and path.startswith(f"{lang}/"):
         path = path[len(lang) + 1:]
-    if path.startswith("en/") and lang != "en":
+    if path.startswith("en/") and lang not in ("", "en"):
         path = path[3:]
+    path = VERSION_SEGMENT_RE.sub("", path)
     if not (path == scope or path.startswith(f"{scope}/")):
         return None
     if path == scope:
-        return "index.md"
+        return f"{scope}/index.md"
     path = re.sub(r"\.md$", "", path)
     if path.endswith("/index"):
         path = path[: -len("/index")]
@@ -574,12 +582,55 @@ def extract_site_page(url: str, lang: str, out_dir: Path, results_root: Path) ->
     return res
 
 
+def strip_duplicate_title(body: str, title: str, intro: str) -> str:
+    """Remove H1/intro repetidos: o corpo da API já pode trazer o título renderizado."""
+    lines = body.split("\n")
+    i = 0
+    while i < len(lines) and not lines[i].strip():
+        i += 1
+    if i < len(lines) and re.match(r"^#\s+", lines[i]):
+        h1_text = re.sub(r"^#\s+", "", lines[i]).strip()
+        if not title or slugify(h1_text) == slugify(title) or h1_text.lower() == title.lower():
+            del lines[i]
+            i += 1
+            while i < len(lines) and not lines[i].strip():
+                del lines[i]
+            if intro and i < len(lines):
+                para = []
+                j = i
+                while j < len(lines) and lines[j].strip():
+                    para.append(lines[j].strip())
+                    j += 1
+                joined = re.sub(r"\s+", " ", " ".join(para)).strip()
+                plain_intro = re.sub(r"\s+", " ", re.sub(r"[*_`]", "", intro)).strip()
+                plain_para = re.sub(r"\s+", " ", re.sub(r"[*_`]", "", joined)).strip()
+                if plain_para and (plain_para == plain_intro or plain_intro.startswith(plain_para[:80])):
+                    del lines[i:j]
+    return "\n".join(lines)
+
+
 def yaml_front_matter(data: dict[str, Any]) -> str:
     if yaml is None:
         body = "\n".join(f'{k}: "{v}"' for k, v in data.items() if v not in (None, "", []))
         return f"---\n{body}\n---\n"
     text = yaml.safe_dump(data, allow_unicode=True, sort_keys=False, width=1000, default_flow_style=False).strip()
     return f"---\n{text}\n---\n"
+
+
+def discover_pagelist(lang: str, version: str, scope: str) -> list[str]:
+    """`GET /api/pagelist/<lang>/<version>` → caminhos canônicos do escopo."""
+    raw = http_get_text(f"{DOCS_HOST}/api/pagelist/{lang}/{version}", timeout=180)
+    if raw.lstrip().startswith(("<", "{")):
+        raise RuntimeError(f"resposta inesperada de /api/pagelist/{lang}/{version}")
+    out: list[str] = []
+    for line in raw.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        norm = normalize_docs_path(line, lang, scope)
+        if norm:
+            out.append(line)
+    return out
 
 
 def discover_site_urls(lang: str, scope: str = "actions", limit: int = 0,
@@ -593,21 +644,25 @@ def discover_site_urls(lang: str, scope: str = "actions", limit: int = 0,
     """
     paths: list[str] = []
     warnings: list[str] = []
+    plans = [v.strip() for v in str(version).split(",") if v.strip()]
 
-    # 1) API pagelist
-    try:
-        raw = http_get_text(f"{DOCS_HOST}/api/pagelist/{lang}/{version}", timeout=120)
-        if raw.strip().startswith("<") or raw.strip().startswith("{"):
-            raise RuntimeError("resposta inesperada do /api/pagelist")
-        for line in raw.splitlines():
-            line = line.strip()
-            if not line:
+    # 1) API pagelist (união dos planos solicitados; o primeiro plano tem precedência)
+    seen_norm: set[str] = set()
+    for plan in plans:
+        try:
+            plan_paths = discover_pagelist(lang, plan, scope)
+        except Exception as exc:
+            warnings.append(f"pagelist indisponível para {plan} ({exc})")
+            continue
+        added = 0
+        for pth in plan_paths:
+            norm = normalize_docs_path(pth, lang, scope)
+            if not norm or norm in seen_norm:
                 continue
-            if line == f"/{lang}/{scope}" or line.startswith(f"/{lang}/{scope}/"):
-                paths.append(line.rstrip("/"))
-        paths = sorted(dict.fromkeys(paths))
-    except Exception as exc:
-        warnings.append(f"pagelist indisponível ({exc})")
+            seen_norm.add(norm)
+            paths.append(pth)
+            added += 1
+        print(f"[info] plano {plan}: {len(plan_paths)} caminhos ({added} novos)", file=sys.stderr)
 
     # 2) sitemap
     if len(paths) < 5:
@@ -655,6 +710,17 @@ def discover_site_urls(lang: str, scope: str = "actions", limit: int = 0,
     return paths[:limit] if limit else paths
 
 
+def plan_from_pathname(pathname: str, lang: str, default: str) -> str:
+    """Extrai o plano/versão de um pathname (`/pt/enterprise-cloud@latest/actions/...`)."""
+    rest = pathname.strip("/")
+    if lang and rest.startswith(f"{lang}/"):
+        rest = rest[len(lang) + 1:]
+    m = VERSION_SEGMENT_RE.match(rest)
+    if m:
+        return m.group(1)
+    return default.split(",")[0] if default else "free-pro-team@latest"
+
+
 def extract_api_page(pathname: str, lang: str, scope: str, results_root: Path,
                      version: str = "free-pro-team@latest") -> PageResult:
     """Captura SOMENTE o conteúdo principal via Article API oficial do docs.github.com.
@@ -693,6 +759,7 @@ def extract_api_page(pathname: str, lang: str, scope: str, results_root: Path,
     body = collapse_escapes(body)
     body, adm = blockquotes_to_admonitions(body)
     body = rewrite_links(body, rel, lang, stats, scope)
+    body = strip_duplicate_title(body, res.title, intro)
     body = normalize_markdown(body)
     res.links_internal = stats["internal"]
     res.links_external = stats["external"]
@@ -704,7 +771,7 @@ def extract_api_page(pathname: str, lang: str, scope: str, results_root: Path,
         "product": str(meta.get("product") or ""),
         "documentType": str(meta.get("documentType") or "article"),
         "lang": {"pt": "pt-BR"}.get(lang, lang),
-        "plan": version,
+        "plan": plan_from_pathname(pathname, lang, version),
         "source": url,
         "captured": TODAY,
         "section": res.section,
@@ -1155,6 +1222,45 @@ def extract_repo_tree(repo_dir: Path, scope: str, out_root: Path, version_profil
 # --------------------------------------------------------------------------- #
 
 
+LINK_RE = re.compile(r"(?<!\!)\[([^\]]*)\]\(([^)\s]+)\)")
+
+
+def relink_tree(root: Path, lang: str, scope: str) -> dict[str, int]:
+    """Garante integridade referencial: link interno cujo alvo não existe volta a ser URL absoluta."""
+    stats = {"files": 0, "links": 0, "reverted": 0, "ok": 0}
+    for md in sorted(root.rglob("*.md")):
+        text = md.read_text(encoding="utf-8")
+        changed = False
+
+        def repl(m: re.Match) -> str:
+            nonlocal changed
+            label, target = m.group(1), m.group(2)
+            if target.startswith(("http://", "https://", "mailto:", "#", "<")):
+                return m.group(0)
+            path_part, _, frag = target.partition("#")
+            if not path_part.endswith(".md"):
+                return m.group(0)
+            stats["links"] += 1
+            dest = (md.parent / path_part).resolve()
+            if dest.exists():
+                stats["ok"] += 1
+                return m.group(0)
+            # alvo inexistente → URL absoluta do site (evita link quebrado no MkDocs)
+            rel = os.path.relpath(dest, root).replace(os.sep, "/")
+            site_path = re.sub(r"\.md$", "", rel)
+            site_path = re.sub(r"/index$", "", site_path)
+            changed = True
+            stats["reverted"] += 1
+            suffix = ("#" + frag) if frag else ""
+            return f"[{label}]({DOCS_HOST}/{lang}/{site_path}{suffix})"
+
+        new_text = LINK_RE.sub(repl, text)
+        if changed:
+            md.write_text(new_text, encoding="utf-8")
+        stats["files"] += 1
+    return stats
+
+
 def write_manifest(results: list[PageResult], dest: Path, meta: dict[str, Any]) -> None:
     payload = {
         "generated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
@@ -1182,6 +1288,8 @@ def write_report(results: list[PageResult], dest: Path, meta: dict[str, Any]) ->
         f"- **Páginas OK:** {len(ok)}  ",
         f"- **Falhas:** {len(bad)}  ",
         f"- **Com avisos:** {len(warn)}  ",
+        f"- **Links internos íntegros:** {meta.get('links', {}).get('ok', 0)} "
+        f"(revertidos para URL absoluta: {meta.get('links', {}).get('reverted', 0)})  ",
         f"- **Bytes totais:** {sum(r.bytes for r in results):,}  ",
         f"- **Headings totais:** {sum(r.headings for r in results):,}  ",
         f"- **Blocos de código:** {sum(r.code_blocks for r in results):,}  ",
@@ -1282,8 +1390,10 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"[{idx:>4}/{len(urls)}] {mark} {res.path or res.url} ({res.bytes} bytes)", file=sys.stderr)
         print(f"[info] captura em {time.time() - started:.1f}s", file=sys.stderr)
 
+    relink_stats = relink_tree(out_root, args.lang, args.scope)
+    print(f"[info] integridade de links: {relink_stats}", file=sys.stderr)
     meta = {"source": args.source, "lang": args.lang, "scope": args.scope, "out": str(out_root),
-            "plan": args.plan}
+            "plan": args.plan, "links": relink_stats}
     manifest_path = Path(args.manifest) if args.manifest else out_root / "manifest.json"
     write_manifest(results, manifest_path, meta)
     if args.report:

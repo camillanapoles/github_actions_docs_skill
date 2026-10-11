@@ -19,7 +19,7 @@ on:
         type: string
       plan:
         description: "Plano/versão do docs"
-        default: "free-pro-team@latest"
+        default: "free-pro-team@latest,enterprise-cloud@latest"
         type: string
       commit:
         description: "Commitar o resultado no branch"
@@ -48,9 +48,9 @@ jobs:
     timeout-minutes: 45
     env:
       LANG_CODE: ${{ github.event.inputs.lang || 'pt' }}
-      LIMIT: ${{ github.event_name == 'push' && '8' || (github.event.inputs.limit || '0') }}
+      LIMIT: ${{ github.event.inputs.limit || '0' }}
       JOBS: ${{ github.event.inputs.jobs || '4' }}
-      PLAN: ${{ github.event.inputs.plan || 'free-pro-team@latest' }}
+      PLAN: ${{ github.event.inputs.plan || 'free-pro-team@latest,enterprise-cloud@latest' }}
       DO_COMMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.commit == 'false' && 'no' || 'yes' }}
     steps:
       - name: Checkout
