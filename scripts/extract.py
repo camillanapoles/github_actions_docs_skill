@@ -120,6 +120,8 @@ class PageResult:
     links_external: int = 0
     images: int = 0
     children: list[str] = field(default_factory=list)
+    quality_score: int = 0
+    quality_issues: dict[str, int] = field(default_factory=dict)
     captured: str = TODAY
     status: str = "ok"        # ok | skipped | error
     selector: str = ""
@@ -288,6 +290,8 @@ INLINE_HTML_RULES: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"</?\s*(span|small|sub|sup|div|p|code|em|strong|b|i|a|kbd|font|u|mark|abbr|tt|var|pre)\b[^>]*>", re.I), ""),
 ]
 BR_TOKEN = "\x00MDBR\x00"
+ESCAPED_ALERT_RE = re.compile(r"\\\[!(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\]", re.I)
+LIQUID_RE = re.compile(r"\{%-?\s*[a-zA-Z_]")
 NEEDS_PANDOC_RE = re.compile(r"<\s*(table|ul|ol|dl|details|thead|tbody|tr|td|th|li)\b", re.I)
 STRIP_TAG_RE = re.compile(r"</?\s*[a-zA-Z][^>]*>")
 ALERT_RE = re.compile(r"^>\s*\\?\[!\s*(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\s*\]\\?\s*$", re.I)
@@ -497,17 +501,181 @@ def alerts_to_admonitions(md: str) -> tuple[str, int]:
 
 
 def unescape_noise(md: str) -> str:
-    """Desescapa ruído que prejudica a leitura: `GITHUB\_TOKEN`, `\[!NOTE]`, `\#`."""
-    md = re.sub(r"(?<=[\w])\\_(?=[\w])", "_", md)
-    md = re.sub(r"\\\[(!)", r"[\1", md)
-    md = re.sub(r"\\\.", ".", md)
-    md = re.sub(r"\\(?=[`])", "", md)
-    md = md.replace("\\|", "|") if False else md
+    """Desescapa apenas o que é inequivocamente ruído de renderização."""
+    md = re.sub(r"(?<=[\w])\\_(?=[\w])", "_", md)            # GITHUB\_TOKEN → GITHUB_TOKEN
+    md = re.sub(r"\\\[(!)", r"[\1", md)                      # \[!NOTE] → [!NOTE]
+    md = re.sub(r"(?m)^(\s*)\\\*(?=\s)", r"\1*", md)             # bullets escapados
+    md = re.sub(r"(?m)^(\s*)\\(?=\d+\.\s)", r"\1", md)          # listas numeradas escapadas
+    md = re.sub(r"(?m)^\\\|", "|", md)                        # linhas de tabela escapadas
     return md
 
 
+def repair_table_rows(md: str) -> str:
+    """Rejunta linhas de tabela interrompidas (células com conteúdo em bloco)."""
+    lines = md.split("\n")
+    out: list[str] = []
+    fence = False
+    fence_char = ""
+    i = 0
+    terminated = re.compile(r"(?<!\\)\|\s*$")
+    while i < len(lines):
+        line = lines[i]
+        m = FENCE_RE.match(line)
+        if m:
+            if not fence:
+                fence, fence_char = True, m.group(1)
+            elif m.group(1) == fence_char:
+                fence = False
+            out.append(line)
+            i += 1
+            continue
+        if fence or not line.lstrip().startswith("|"):
+            out.append(line)
+            i += 1
+            continue
+        buf = line.rstrip()
+        j = i
+        while not terminated.search(buf) and j + 1 < len(lines):
+            nxt = lines[j + 1]
+            if not nxt.strip() or FENCE_RE.match(nxt) or nxt.lstrip().startswith("#"):
+                break
+            buf = buf + "<br>" + nxt.strip()
+            j += 1
+        if not terminated.search(buf):
+            buf = buf + " |"
+        out.append(buf)
+        i = j + 1
+    return "\n".join(out)
+
+
+MALFORMED_ROW_HINT = re.compile(r"^\s*\|")
+
+
+def quality_score(text: str) -> tuple[int, dict[str, int]]:
+    """Score de qualidade do markdown (0 = impecável).
+
+    Pesos: tabela malformada 3 · cerca não fechada 5 · alerta escapado 2 ·
+    HTML em bloco 1 · bullet escapado 2 · Liquid residual 4.
+    """
+    counts = {"table": 0, "fence": 0, "alert": 0, "html": 0, "bullet": 0, "liquid": 0, "noise": 0}
+    fence = False
+    fence_char = ""
+    block: list[int] = []
+
+    def flush_block() -> None:
+        for k in range(1, len(block)):
+            if block[k] != block[k - 1]:
+                counts["table"] += 1
+                break
+        block.clear()
+
+    for line in text.split("\n"):
+        m = FENCE_RE.match(line)
+        if m:
+            if not fence:
+                fence, fence_char = True, m.group(1)
+            elif m.group(1) == fence_char:
+                fence = False
+            continue
+        if fence:
+            continue
+        if MALFORMED_ROW_HINT.match(line):
+            block.append(len(re.split(r"(?<!\\)\|", line.strip().strip("|"))))
+            continue
+        if block:
+            # continuação órfã de célula (linha que termina em "|" sem começar com "|")
+            if re.search(r"(?<!\\)\|\s*$", line) and line.strip():
+                counts["table"] += 1
+            flush_block()
+        if re.match(r"^\s*\\\|", line):
+            counts["table"] += 1
+        if UI_NOISE_LINE_RE.match(line.strip().lower()):
+            counts["noise"] += 1
+        if block:
+            flush_block()
+        if ESCAPED_ALERT_RE.search(line):
+            counts["alert"] += 1
+        if BLOCK_HTML_RE.search(line):
+            counts["html"] += 1
+        if re.match(r"^\s*\\\*\s", line):
+            counts["bullet"] += 1
+        if LIQUID_RE.search(line):
+            counts["liquid"] += 1
+    if block:
+        flush_block()
+    if fence:
+        counts["fence"] += 1
+    score = (counts["table"] * 3 + counts["fence"] * 5 + counts["alert"] * 2
+             + counts["html"] * 1 + counts["bullet"] * 2 + counts["liquid"] * 4
+             + counts["noise"] * 3)
+    return score, counts
+
+
+UI_NOISE_LINE_RE = re.compile(
+    r"^(neste artigo|in this article|copiar markdown|copy markdown|skip to (main )?content|"
+    r"pular para o conteú.*|barra lateral.*|expandir barra lateral|collapse sidebar|"
+    r"expand sidebar|nesta página|on this page)$")
+
+
+def merge_multiline_cells(md: str) -> str:
+    """Repara tabelas cujas células têm conteúdo em várias linhas (dano comum do
+    exportador de markdown do site): mescla a continuação na célula vazia anterior."""
+    lines = md.split("\n")
+    out: list[str] = []
+    fence = False
+    fence_char = ""
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        m = FENCE_RE.match(line)
+        if m:
+            if not fence:
+                fence, fence_char = True, m.group(1)
+            elif m.group(1) == fence_char:
+                fence = False
+            out.append(line)
+            i += 1
+            continue
+        if fence:
+            out.append(line)
+            i += 1
+            continue
+        if (line.lstrip().startswith("|") and re.search(r"\|\s*$", line)
+                and re.search(r"\|\s*\|\s*$", line)):
+            # linha de tabela com última célula vazia → procura continuação
+            j = i + 1
+            while j < len(lines) and not lines[j].strip():
+                j += 1
+            if (j < len(lines) and not lines[j].lstrip().startswith("|")
+                    and not lines[j].lstrip().startswith("#") and not FENCE_RE.match(lines[j])):
+                collected: list[str] = []
+                k = j
+                while k < len(lines):
+                    cur = lines[k]
+                    if not cur.strip():
+                        collected.append("")
+                        k += 1
+                        continue
+                    if cur.lstrip().startswith("|") or cur.lstrip().startswith("#") or FENCE_RE.match(cur):
+                        break
+                    collected.append(cur.strip())
+                    if re.search(r"(?<!\\)\|\s*$", cur):
+                        k += 1
+                        break
+                    k += 1
+                if collected and any(c for c in collected):
+                    merged = [c.rstrip("|").strip() if c.endswith("|") else c for c in collected]
+                    cell = "<br>".join(x for x in merged if x)
+                    out.append(re.sub(r"\|\s*$", f"{cell} |", line))
+                    i = k
+                    continue
+        out.append(line)
+        i += 1
+    return "\n".join(out)
+
 
 TABLE_ROW_RE = re.compile(r"^\s*\|.*\|\s*$")
+SEPARATOR_CELL_RE = re.compile(r"^:?-{1,}:?$")
 
 
 def _split_row(line: str) -> list[str]:
@@ -531,25 +699,25 @@ def _split_row(line: str) -> list[str]:
 
 
 def compact_tables(md: str, max_width: int = 72) -> str:
-    """Realinha tabelas pipe: padding consistente e largura controlada (markdown impecável)."""
+    """Realinha tabelas pipe: padding consistente e largura controlada."""
     lines = md.split("\n")
     out: list[str] = []
     i = 0
     in_fence = False
     while i < len(lines):
         line = lines[i]
-        if line.strip().startswith("```") or line.strip().startswith("~~~"):
+        if line.strip()[:3] in ("```", "~~~"):
             in_fence = not in_fence
             out.append(line)
             i += 1
             continue
-        if not in_fence and TABLE_ROW_RE.match(line) and i + 1 < len(lines) and re.match(r"^\s*\|[\s:|-]+\|\s*$", lines[i + 1]):
+        if (not in_fence and TABLE_ROW_RE.match(line) and i + 1 < len(lines)
+                and re.match(r"^\s*\|[\s:|-]+\|\s*$", lines[i + 1])):
             rows = [_split_row(line), _split_row(lines[i + 1])]
             j = i + 2
             while j < len(lines) and TABLE_ROW_RE.match(lines[j]):
                 candidate = _split_row(lines[j])
-                # linhas separadoras duplicadas (ex.: "| --- | --- |" extras) são descartadas
-                if candidate and all(re.fullmatch(r":?-{1,}:?", c or "-") for c in candidate):
+                if candidate and all(SEPARATOR_CELL_RE.fullmatch(c or "-") for c in candidate):
                     j += 1
                     continue
                 rows.append(candidate)
@@ -561,38 +729,35 @@ def compact_tables(md: str, max_width: int = 72) -> str:
             for c in range(width):
                 cell = rows[1][c]
                 left, right = cell.startswith(":"), cell.endswith(":")
-                aligns.append(("left" if left and right else "center") if left and right else
-                              ("right" if right else ("left" if left else "")))
+                aligns.append("center" if left and right else ("right" if right else ("left" if left else "")))
             wide = any(w > max_width for w in colw)
-            pad = 1 if wide else 0
             rendered = []
             for r_i, row in enumerate(rows):
                 if r_i == 1:
-                    continue  # linha separadora original: apenas fonte de alinhamento
+                    continue
                 cells = []
                 for c, cell in enumerate(row):
                     if wide:
                         cells.append(f" {cell} ")
+                    elif aligns[c] == "right":
+                        cells.append(" " + cell.rjust(colw[c]) + " ")
+                    elif aligns[c] == "center":
+                        total = colw[c] - len(cell)
+                        left = total // 2
+                        cells.append(" " * (left + 1) + cell + " " * (total - left + 1))
                     else:
-                        if aligns[c] == "right":
-                            cells.append(" " + cell.rjust(colw[c]) + " ")
-                        elif aligns[c] == "center":
-                            total = colw[c] - len(cell)
-                            left = total // 2
-                            cells.append(" " * (left + 1) + cell + " " * (total - left + 1))
-                        else:
-                            cells.append(" " + cell.ljust(colw[c]) + " ")
+                        cells.append(" " + cell.ljust(colw[c]) + " ")
                 rendered.append("|" + "|".join(cells) + "|")
                 if r_i == 0:
                     sep = []
                     for c in range(width):
-                        dashes = max(3, (colw[c] if not wide else 3))
+                        dashes = max(3, (3 if wide else colw[c]))
                         if aligns[c] == "center":
-                            sep.append(":" + "-" * (dashes - 2) + ":")
+                            sep.append(":" + "-" * max(1, dashes - 2) + ":")
                         elif aligns[c] == "right":
-                            sep.append("-" * (dashes - 1) + ":")
+                            sep.append("-" * max(2, dashes - 1) + ":")
                         elif aligns[c] == "left":
-                            sep.append(":" + "-" * (dashes - 1))
+                            sep.append(":" + "-" * max(2, dashes - 1))
                         else:
                             sep.append("-" * dashes)
                     rendered.append("|" + "|".join(f" {x} " if wide else x for x in sep) + "|")
@@ -611,6 +776,8 @@ def polish_markdown(md: str) -> tuple[str, int]:
     md, alerts = alerts_to_admonitions(md)
     md, quotes = blockquotes_to_admonitions(md)
     md = unescape_noise(md)
+    md = merge_multiline_cells(md)
+    md = repair_table_rows(md)
     md = compact_tables(md)
     return md, alerts + quotes
 
@@ -1078,8 +1245,47 @@ def plan_from_pathname(pathname: str, lang: str, default: str) -> str:
     return default.split(",")[0] if default else "free-pro-team@latest"
 
 
+def heal_with_html(res: PageResult, dest: Path, lang: str, scope: str) -> None:
+    """Se o markdown da API veio danificado, recaptura pelo HTML renderizado e mantém o melhor."""
+    try:
+        api_text = dest.read_text(encoding="utf-8")
+    except OSError:
+        return
+    api_score, api_counts = quality_score(api_text)
+    if api_score == 0:
+        return
+    try:
+        html_text = http_get_text(res.url, accept="text/html")
+        soup = BeautifulSoup(html_text, "lxml")
+        page_title = soup.title.get_text(strip=True) if soup.title else res.title
+        fragment, selector, warnings = html_to_fragment(html_text, res.url)
+        body = pandoc_html_to_gfm(str(fragment))
+        body = heading_from_link_lines(body)
+        body, _adm = polish_markdown(body)
+        stats = {"internal": 0, "external": 0}
+        body = rewrite_links(body, res.path, lang, stats, scope)
+        body = strip_duplicate_title(body, res.title, res.description)
+        body = normalize_markdown(body)
+        lines = [ln for ln in body.split("\n") if not re.match(r"^#\s+", ln)]
+        content = api_text.split("---", 2)[0] + "---\n" + api_text.split("---", 2)[1].strip() + "\n---\n\n"
+        content += f"# {res.title}\n\n"
+        if res.description:
+            content += f"_{res.description}_\n\n"
+        content += "\n".join(lines)
+        html_score, html_counts = quality_score(content)
+        if html_score < api_score:
+            dest.write_text(content, encoding="utf-8")
+            res.bytes = len(content.encode("utf-8"))
+            res.selector = f"api+html-heal({selector})"
+            res.warnings.append(f"curada via HTML: score api={api_score}{api_counts} → html={html_score}{html_counts}")
+        else:
+            res.warnings.append(f"markdown da API com imperfeições (score={api_score}{api_counts}); HTML não melhorou ({html_score})")
+    except Exception as exc:
+        res.warnings.append(f"cura via HTML falhou: {type(exc).__name__}: {exc}")
+
+
 def extract_api_page(pathname: str, lang: str, scope: str, results_root: Path,
-                     version: str = "free-pro-team@latest") -> PageResult:
+                     version: str = "free-pro-team@latest", heal: bool = True) -> PageResult:
     """Captura SOMENTE o conteúdo principal via Article API oficial do docs.github.com.
 
     ``GET /api/article?pathname=<path>`` → ``{"meta": {...}, "body": "<markdown>"}``
@@ -1155,6 +1361,14 @@ def extract_api_page(pathname: str, lang: str, scope: str, results_root: Path,
         res.warnings.append("poucos headings")
     if re.search(r"\{%-?\s*(data|ifversion|note|tip|warning)", body):
         res.warnings.append("liquid residual")
+    score, counts = quality_score(content)
+    res.quality_score = score
+    res.quality_issues = counts
+    if heal and score:
+        heal_with_html(res, dest, lang, scope)
+        score2, counts2 = quality_score(dest.read_text(encoding="utf-8"))
+        res.quality_score = score2
+        res.quality_issues = counts2
     return res
 
 
@@ -1646,6 +1860,8 @@ def write_report(results: list[PageResult], dest: Path, meta: dict[str, Any]) ->
         f"- **Páginas OK:** {len(ok)}  ",
         f"- **Falhas:** {len(bad)}  ",
         f"- **Com avisos:** {len(warn)}  ",
+        f"- **Score de qualidade (0 = impecável):** {sum(getattr(r, 'quality_score', 0) for r in results)} "
+        f"em {len([r for r in results if getattr(r, 'quality_score', 0)])} página(s)  ",
         f"- **Links internos íntegros:** {meta.get('links', {}).get('ok', 0)} "
         f"(revertidos para URL absoluta: {meta.get('links', {}).get('reverted', 0)})  ",
         f"- **Bytes totais:** {sum(r.bytes for r in results):,}  ",
@@ -1696,6 +1912,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--plan", default="free-pro-team@latest",
                     help="plano/versão do docs (free-pro-team@latest, enterprise-cloud@latest, enterprise-server@3.x)")
     ap.add_argument("--max-failures", type=int, default=5)
+    ap.add_argument("--no-heal", action="store_true",
+                    help="desativa a recaptura via HTML de páginas cujo markdown da API veio danificado")
     ap.add_argument("--fail-on-warning", action="store_true")
     args = ap.parse_args(argv)
 
@@ -1710,7 +1928,8 @@ def main(argv: list[str] | None = None) -> int:
 
         def work(pathname: str) -> PageResult:
             try:
-                return extract_api_page(pathname, args.lang, args.scope, results_root, args.plan)
+                return extract_api_page(pathname, args.lang, args.scope, results_root, args.plan,
+                                        heal=not args.no_heal)
             except Exception as exc:
                 res = PageResult(url=f"{DOCS_HOST}{pathname}", lang=args.lang, source="api", status="error")
                 res.error = f"{type(exc).__name__}: {exc}"
