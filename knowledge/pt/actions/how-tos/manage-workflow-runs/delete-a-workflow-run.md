@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: How tos / Manage workflow runs
 ---
 
-# Excluir a execução de um fluxo de trabalho
+# Excluir a execução de um fluxo de trabalho { #deleting-a-workflow-run }
 
 _Você pode excluir uma execução do fluxo de trabalho que foi concluída ou que tem mais de duas semanas._
 

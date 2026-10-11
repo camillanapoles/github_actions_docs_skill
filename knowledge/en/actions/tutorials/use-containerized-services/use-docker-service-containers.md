@@ -12,7 +12,7 @@ section: Tutorials / Use containerized services
 
 _Learn how to use Docker service containers to connect databases, web services, memory caches, and other tools to your workflow._
 
-## Communicating with Docker service containers
+## Communicating with Docker service containers { #communicating-with-docker-service-containers-1 }
 
 Service containers are Docker containers that provide a simple and portable way for you to host services that you might need to test or operate your application in a workflow. For example, your workflow might need to run integration tests that require access to a database and memory cache.
 

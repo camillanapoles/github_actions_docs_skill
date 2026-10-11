@@ -12,7 +12,7 @@ section: Concepts
 
 _Govern how GitHub Actions workflows run within your repository, organization, or enterprise._
 
-## About Actions policies
+## About Actions policies { #about-actions-policies-1 }
 
 Actions policies let you govern how GitHub Actions workflows run. You can configure them in the **Policies** section of your GitHub Actions settings (separate from the **General** settings).
 

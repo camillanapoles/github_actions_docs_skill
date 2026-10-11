@@ -20,7 +20,7 @@ To get started with preconfigured workflows, browse through the list of template
 
 > [!IMPORTANT] For more information about best practices for securing your workflows and secure use of GitHub Actions features, see [Secure use reference](../reference/security/secure-use.md#writing-workflows#writing-workflows).
 
-## Creating an example workflow
+## Creating an example workflow { #creating-an-example-workflow-1 }
 
 GitHub Actions uses YAML syntax to define the workflow. Each workflow is stored as a separate YAML file in your code repository, in a directory named `.github/workflows`.
 

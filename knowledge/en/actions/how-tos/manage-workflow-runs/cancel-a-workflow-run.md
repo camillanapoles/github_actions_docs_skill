@@ -12,7 +12,7 @@ section: How tos / Manage workflow runs
 
 _You can cancel a workflow run, including all jobs and steps, that is in progress._
 
-## Canceling a workflow run
+## Canceling a workflow run { #canceling-a-workflow-run-1 }
 
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.

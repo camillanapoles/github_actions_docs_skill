@@ -1,0 +1,479 @@
+{
+  "generated": "2026-10-11T23:47:53+00:00",
+  "summary": {
+    "pass": 27,
+    "warn": 3,
+    "fail": 9,
+    "pages": 496,
+    "bytes": 4827608,
+    "headings": 4633,
+    "code_blocks": 2592
+  },
+  "checks": [
+    {
+      "group": "inventory",
+      "name": "pt: manifest presente",
+      "status": "pass",
+      "message": "247 páginas declaradas, 247 ok, 248 arquivos .md em disco",
+      "details": []
+    },
+    {
+      "group": "inventory",
+      "name": "pt: manifest ↔ disco",
+      "status": "pass",
+      "message": "todas as páginas declaradas existem em disco",
+      "details": []
+    },
+    {
+      "group": "inventory",
+      "name": "pt: falhas de captura",
+      "status": "pass",
+      "message": "nenhuma falha de captura registrada",
+      "details": []
+    },
+    {
+      "group": "inventory",
+      "name": "en: manifest presente",
+      "status": "pass",
+      "message": "247 páginas declaradas, 247 ok, 248 arquivos .md em disco",
+      "details": []
+    },
+    {
+      "group": "inventory",
+      "name": "en: manifest ↔ disco",
+      "status": "pass",
+      "message": "todas as páginas declaradas existem em disco",
+      "details": []
+    },
+    {
+      "group": "inventory",
+      "name": "en: falhas de captura",
+      "status": "pass",
+      "message": "nenhuma falha de captura registrada",
+      "details": []
+    },
+    {
+      "group": "structure",
+      "name": "frontmatter completo",
+      "status": "pass",
+      "message": "ok",
+      "details": []
+    },
+    {
+      "group": "structure",
+      "name": "H1 único por página",
+      "status": "fail",
+      "message": "2 ocorrência(s) — páginas com H1 duplicado/ausente",
+      "details": [
+        "pt/actions/reference/workflows-and-actions/workflow-syntax.md: 6 H1 (esperado 1)",
+        "pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md: 3 H1 (esperado 1)"
+      ]
+    },
+    {
+      "group": "conversion",
+      "name": "zero Liquid residual",
+      "status": "pass",
+      "message": "ok",
+      "details": []
+    },
+    {
+      "group": "conversion",
+      "name": "zero HTML em bloco",
+      "status": "pass",
+      "message": "ok",
+      "details": []
+    },
+    {
+      "group": "conversion",
+      "name": "cercas balanceadas",
+      "status": "fail",
+      "message": "8 ocorrência(s) — arquivos com cerca não fechada",
+      "details": [
+        "pt/actions/reference/workflows-and-actions/workflow-syntax.md: cerca de código não fechada",
+        "pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md: cerca de código não fechada",
+        "pt/actions/tutorials/migrate-to-github-actions/automated-migrations/bamboo-migration.md: cerca de código não fechada",
+        "pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md: cerca de código não fechada",
+        "pt/actions/tutorials/migrate-to-github-actions/automated-migrations/gitlab-migration.md: cerca de código não fechada",
+        "pt/actions/tutorials/migrate-to-github-actions/automated-migrations/jenkins-migration.md: cerca de código não fechada",
+        "pt/actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration.md: cerca de código não fechada",
+        "en/actions/tutorials/build-and-test-code/rust.md: cerca de código não fechada"
+      ]
+    },
+    {
+      "group": "conversion",
+      "name": "tabelas bem formadas",
+      "status": "fail",
+      "message": "28 ocorrência(s) — linhas com nº de células inconsistente",
+      "details": [
+        "pt/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments.md: linha de tabela com 3 células (esperado 1)",
+        "pt/actions/reference/limits.md: linha de tabela com 1 células (esperado 5)",
+        "pt/actions/reference/runners/github-hosted-runners.md: linha de tabela com 3 células (esperado 6)",
+        "pt/actions/reference/runners/larger-runners.md: linha de tabela com 7 células (esperado 5)",
+        "pt/actions/reference/security/oidc.md: linha de tabela com 2 células (esperado 3)",
+        "pt/actions/reference/workflows-and-actions/dependency-caching.md: linha de tabela com 3 células (esperado 2)",
+        "pt/actions/reference/workflows-and-actions/events-that-trigger-workflows.md: linha de tabela com 3 células (esperado 4)",
+        "pt/actions/reference/workflows-and-actions/variables.md: linha de tabela com 3 células (esperado 2)",
+        "pt/actions/reference/workflows-and-actions/workflow-commands.md: linha de tabela com 4 células (esperado 2)",
+        "pt/actions/reference/workflows-and-actions/workflow-syntax.md: linha de tabela com 2 células (esperado 3)",
+        "pt/actions/tutorials/build-and-test-code/python.md: linha de tabela com 2 células (esperado 4)",
+        "pt/actions/tutorials/migrate-to-github-actions/automated-migrations/bitbucket-pipelines-migration.md: linha de tabela com 2 células (esperado 3)",
+        "en/actions/reference/runners/github-hosted-runners.md: linha de tabela com 3 células (esperado 6)",
+        "en/actions/reference/runners/larger-runners.md: linha de tabela com 7 células (esperado 5)",
+        "en/actions/reference/security/oidc.md: linha de tabela com 2 células (esperado 3)",
+        "en/actions/reference/workflows-and-actions/dependency-caching.md: linha de tabela com 3 células (esperado 2)",
+        "en/actions/reference/workflows-and-actions/events-that-trigger-workflows.md: linha de tabela com 3 células (esperado 4)",
+        "en/actions/reference/workflows-and-actions/variables.md: linha de tabela com 3 células (esperado 2)",
+        "en/actions/reference/workflows-and-actions/workflow-commands.md: linha de tabela com 4 células (esperado 2)",
+        "en/actions/reference/workflows-and-actions/workflow-syntax.md: linha de tabela com 2 células (esperado 3)",
+        "en/actions/tutorials/build-and-test-code/python.md: linha de tabela com 2 células (esperado 4)",
+        "en/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md: linha de tabela com 2 células (esperado 3)",
+        "en/actions/tutorials/migrate-to-github-actions/automated-migrations/bamboo-migration.md: linha de tabela com 2 células (esperado 3)",
+        "en/actions/tutorials/migrate-to-github-actions/automated-migrations/bitbucket-pipelines-migration.md: linha de tabela com 2 células (esperado 3)",
+        "en/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md: linha de tabela com 2 células (esperado 3)",
+        "en/actions/tutorials/migrate-to-github-actions/automated-migrations/gitlab-migration.md: linha de tabela com 2 células (esperado 3)",
+        "en/actions/tutorials/migrate-to-github-actions/automated-migrations/jenkins-migration.md: linha de tabela com 2 células (esperado 3)",
+        "en/actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration.md: linha de tabela com 2 células (esperado 3)"
+      ]
+    },
+    {
+      "group": "conversion",
+      "name": "sem ruído de UI",
+      "status": "pass",
+      "message": "ok",
+      "details": []
+    },
+    {
+      "group": "conversion",
+      "name": "alertas convertidos",
+      "status": "pass",
+      "message": "ok",
+      "details": []
+    },
+    {
+      "group": "conversion",
+      "name": "AUTOTITLE resolvido",
+      "status": "fail",
+      "message": "1 ocorrência(s) — placeholders `[AUTOTITLE]` restantes",
+      "details": [
+        "pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-jfrog.md:25"
+      ]
+    },
+    {
+      "group": "structure",
+      "name": "tamanho mínimo",
+      "status": "fail",
+      "message": "14 ocorrência(s) — páginas com menos de 400 bytes",
+      "details": [
+        "en/actions/concepts/index.md: 377 bytes",
+        "en/actions/concepts/runners/index.md: 351 bytes",
+        "en/actions/concepts/security/index.md: 359 bytes",
+        "en/actions/get-started/index.md: 321 bytes",
+        "en/actions/how-tos/administer/index.md: 395 bytes",
+        "en/actions/how-tos/deploy/index.md: 363 bytes",
+        "en/actions/how-tos/index.md: 351 bytes",
+        "en/actions/how-tos/manage-runners/index.md: 395 bytes",
+        "en/actions/reference/index.md: 359 bytes",
+        "en/actions/reference/runners/index.md: 375 bytes",
+        "en/actions/reference/security/index.md: 377 bytes",
+        "en/actions/tutorials/create-actions/index.md: 379 bytes",
+        "en/actions/tutorials/index.md: 393 bytes",
+        "en/actions/tutorials/publish-packages/index.md: 379 bytes"
+      ]
+    },
+    {
+      "group": "links",
+      "name": "links internos resolvem",
+      "status": "fail",
+      "message": "3230 links internos, 278 quebrados",
+      "details": [
+        "pt/actions/concepts/runners/actions-runner-controller.md:18: /assets/images/help/actions/arc-diagram.png",
+        "pt/actions/concepts/security/openid-connect.md:27: /assets/images/help/actions/oidc-architecture.png",
+        "pt/actions/concepts/security/script-injections.md:40: /assets/images/help/actions/example-script-injection-pr-title.png",
+        "pt/actions/concepts/workflows-and-actions/reusing-workflow-configurations.md:23: /assets/images/help/actions/reusable-workflows-ci-cd.png",
+        "pt/actions/concepts/workflows-and-actions/workflows.md:27: /assets/images/help/actions/overview-actions-simple.png",
+        "pt/actions/get-started/quickstart.md:82: /assets/images/help/repository/actions-quickstart-commit-new-file.png",
+        "pt/actions/get-started/quickstart.md:94: /assets/images/help/repository/actions-tab-global-nav-update.png",
+        "pt/actions/get-started/quickstart.md:98: /assets/images/help/repository/actions-quickstart-workflow-sidebar.png",
+        "pt/actions/get-started/quickstart.md:104: /assets/images/help/repository/actions-quickstart-job.png",
+        "pt/actions/get-started/quickstart.md:108: /assets/images/help/repository/actions-quickstart-logs.png",
+        "pt/actions/get-started/quickstart.md:112: /assets/images/help/repository/actions-quickstart-log-detail.png",
+        "pt/actions/get-started/understand-github-actions.md:19: /assets/images/help/actions/overview-actions-simple.png",
+        "pt/actions/how-tos/administer/view-metrics.md:16: /assets/images/help/organizations/org-nav-insights-tab.png",
+        "pt/actions/how-tos/create-and-publish-actions/publish-in-github-marketplace.md:63: /assets/images/help/releases/release-link.png",
+        "pt/actions/how-tos/create-and-publish-actions/publish-in-github-marketplace.md:66: /assets/images/help/releases/edit-release-pencil.png",
+        "pt/actions/how-tos/create-and-publish-actions/publish-in-github-marketplace.md:85: /assets/images/marketplace/verified-creator-badge-for-actions.png",
+        "pt/actions/how-tos/deploy/configure-and-manage-deployments/configure-custom-protection-rules.md:46: /assets/images/help/repository/repo-actions-settings.png",
+        "pt/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments.md:209: /assets/images/help/repository/actions-workflow-status-badge.png",
+        "pt/actions/how-tos/deploy/configure-and-manage-deployments/create-custom-protection-rules.md:21: /assets/images/help/actions/actions-repo-permissions-read-only.png",
+        "pt/actions/how-tos/deploy/configure-and-manage-deployments/create-custom-protection-rules.md:25: /assets/images/help/actions/actions-deployments-repo-permissions-read-and-write.png",
+        "pt/actions/how-tos/deploy/configure-and-manage-deployments/create-custom-protection-rules.md:29: /assets/images/help/actions/actions-subscribe-to-events-deployment-protection-rules.png",
+        "pt/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments.md:28: /assets/images/help/repository/repo-actions-settings.png",
+        "pt/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments.md:85: /assets/images/help/repository/repo-actions-settings.png",
+        "pt/actions/how-tos/deploy/configure-and-manage-deployments/review-deployments.md:30: /assets/images/actions-bypass-env-protection-rules.png",
+        "pt/actions/how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network/connect-with-oidc.md:13: /assets/images/help/actions/actions-oidc-gateway.png",
+        "pt/actions/how-tos/manage-runners/github-hosted-runners/use-github-hosted-runners.md:15: /assets/images/help/actions/overview-github-hosted-runner.png",
+        "pt/actions/how-tos/manage-runners/github-hosted-runners/use-github-hosted-runners.md:59: /assets/images/help/repository/actions-runner-output.png",
+        "pt/actions/how-tos/manage-runners/github-hosted-runners/use-github-hosted-runners.md:70: /assets/images/help/repository/actions-tab-global-nav-update.png",
+        "pt/actions/how-tos/manage-runners/larger-runners/control-access.md:19: /assets/images/help/actions/hosted-runner-mgmt.png",
+        "pt/actions/how-tos/manage-runners/larger-runners/control-access.md:40: /assets/images/help/discussions/org-settings-global-nav-update.png",
+        "pt/actions/how-tos/manage-runners/larger-runners/control-access.md:99: /assets/images/help/discussions/org-settings-global-nav-update.png",
+        "pt/actions/how-tos/manage-runners/larger-runners/manage-larger-runners.md:19: /assets/images/help/discussions/org-settings-global-nav-update.png",
+        "pt/actions/how-tos/manage-runners/larger-runners/manage-larger-runners.md:87: /assets/images/help/discussions/org-settings-global-nav-update.png",
+        "pt/actions/how-tos/manage-runners/larger-runners/manage-larger-runners.md:98: /assets/images/help/discussions/org-settings-global-nav-update.png",
+        "pt/actions/how-tos/manage-runners/larger-runners/manage-larger-runners.md:109: /assets/images/help/discussions/org-settings-global-nav-update.png",
+        "pt/actions/how-tos/manage-runners/larger-runners/manage-larger-runners.md:122: /assets/images/help/discussions/org-settings-global-nav-update.png",
+        "pt/actions/how-tos/manage-runners/larger-runners/manage-larger-runners.md:143: /assets/images/help/discussions/org-settings-global-nav-update.png",
+        "pt/actions/how-tos/manage-runners/larger-runners/use-custom-images.md:160: /assets/images/help/discussions/org-settings-global-nav-update.png",
+        "pt/actions/how-tos/manage-runners/larger-runners/use-larger-runners.md:14: /assets/images/help/repository/actions-tab-global-nav-update.png",
+        "pt/actions/how-tos/manage-runners/self-hosted-runners/add-runners.md:35: /assets/images/help/repository/repo-actions-settings.png"
+      ]
+    },
+    {
+      "group": "links",
+      "name": "âncoras existem",
+      "status": "warn",
+      "message": "920 âncoras sem heading correspondente",
+      "details": [
+        "pt/actions/concepts/about-actions-policies.md:31: ../reference/security/securely-using-pull_request_target.md#default-policy-for-pull_request_target (âncora inexistente)",
+        "pt/actions/concepts/billing-and-usage.md:9: ../how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job.md#standard-github-hosted-runners-for-public-repositories (âncora inexistente)",
+        "pt/actions/concepts/runners/github-hosted-runners.md:35: ../../reference/security/secure-use.md#reviewing-the-supply-chain-for-github-hosted-runners (âncora inexistente)",
+        "pt/actions/concepts/runners/runner-groups.md:30: ../../how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job.md#choosing-runners-in-a-group (âncora inexistente)",
+        "pt/actions/concepts/security/compromised-runners.md:42: ../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token (âncora inexistente)",
+        "pt/actions/concepts/security/openid-connect.md:80: ../../reference/security/oidc.md#immutable-subject-claims (âncora inexistente)",
+        "pt/actions/concepts/security/openid-connect.md:86: ../../reference/security/oidc.md#methods-for-requesting-the-oidc-token (âncora inexistente)",
+        "pt/actions/concepts/security/openid-connect.md:100: ../../reference/security/oidc.md#including-repository-custom-properties-in-oidc-tokens (âncora inexistente)",
+        "pt/actions/concepts/security/openid-connect.md:136: ../../reference/security/oidc.md#including-repository-custom-properties-in-oidc-tokens (âncora inexistente)",
+        "pt/actions/concepts/security/script-injections.md:51: ../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks (âncora inexistente)",
+        "pt/actions/concepts/security/secrets.md:25: ../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstepsenv (âncora inexistente)",
+        "pt/actions/concepts/security/secrets.md:41: ../../reference/security/secure-use.md#use-secrets-for-sensitive-information (âncora inexistente)",
+        "pt/actions/concepts/workflows-and-actions/contexts.md:11: ../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategymatrix (âncora inexistente)",
+        "pt/actions/concepts/workflows-and-actions/contexts.md:18: ../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks (âncora inexistente)",
+        "pt/actions/concepts/workflows-and-actions/expressions.md:18: ../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idif (âncora inexistente)",
+        "pt/actions/concepts/workflows-and-actions/expressions.md:21: ../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks (âncora inexistente)",
+        "pt/actions/concepts/workflows-and-actions/reusing-workflow-configurations.md:60: ../../reference/security/secure-use.md#reusing-third-party-workflows (âncora inexistente)",
+        "pt/actions/concepts/workflows-and-actions/reusing-workflow-configurations.md:84: ../../reference/workflows-and-actions/reusing-workflow-configurations.md#yaml-anchors-and-aliases (âncora inexistente)",
+        "pt/actions/concepts/workflows-and-actions/workflows.md:25: ../../get-started/understand-github-actions.md#the-components-of-github-actions (âncora inexistente)",
+        "pt/actions/get-started/understand-github-actions.md:45: ../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstepsbackground (âncora inexistente)",
+        "pt/actions/how-tos/administer/control-workflow-execution.md:11: ../../reference/security/securely-using-pull_request_target.md#default-policy-for-pull_request_target (âncora inexistente)",
+        "pt/actions/how-tos/create-and-publish-actions/release-and-maintain-actions.md:54: ../../reference/workflows-and-actions/events-that-trigger-workflows.md#workflow_dispatch (âncora inexistente)",
+        "pt/actions/how-tos/create-and-publish-actions/release-and-maintain-actions.md:54: ../../reference/workflows-and-actions/events-that-trigger-workflows.md#pull_request_target (âncora inexistente)",
+        "pt/actions/how-tos/create-and-publish-actions/release-and-maintain-actions.md:78: ../../reference/security/secure-use.md#protecting-actions-youve-created (âncora inexistente)",
+        "pt/actions/how-tos/get-support.md:23: manage-runners/self-hosted-runners/monitor-and-troubleshoot.md#reviewing-the-self-hosted-runner-application-log-files (âncora inexistente)",
+        "pt/actions/how-tos/get-support.md:38: manage-runners/self-hosted-runners/monitor-and-troubleshoot.md#reviewing-the-self-hosted-runner-application-log-files (âncora inexistente)",
+        "pt/actions/how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network/connect-with-oidc.md:15: ../../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles (âncora inexistente)",
+        "pt/actions/how-tos/manage-runners/larger-runners/control-access.md:27: ../self-hosted-runners/manage-access.md#changing-which-repositories-can-access-a-runner-group (âncora inexistente)",
+        "pt/actions/how-tos/manage-runners/larger-runners/manage-larger-runners.md:9: #allowing-repositories-to-access-larger-runners",
+        "pt/actions/how-tos/manage-runners/larger-runners/manage-larger-runners.md:54: #allowing-repositories-to-access-larger-runners",
+        "pt/actions/how-tos/manage-runners/larger-runners/use-custom-images.md:37: manage-larger-runners.md#adding-a-larger-runner-to-an-organization (âncora inexistente)",
+        "pt/actions/how-tos/manage-runners/larger-runners/use-custom-images.md:38: manage-larger-runners.md#adding-a-larger-runner-to-an-enterprise (âncora inexistente)",
+        "pt/actions/how-tos/manage-runners/larger-runners/use-custom-images.md:170: manage-larger-runners.md#adding-a-larger-runner-to-an-organization (âncora inexistente)",
+        "pt/actions/how-tos/manage-runners/larger-runners/use-custom-images.md:171: manage-larger-runners.md#adding-a-larger-runner-to-an-enterprise (âncora inexistente)",
+        "pt/actions/how-tos/manage-runners/larger-runners/use-larger-runners.md:213: ../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idruns-on (âncora inexistente)",
+        "pt/actions/how-tos/manage-runners/self-hosted-runners/add-runners.md:122: manage-access.md#changing-which-repositories-can-access-a-runner-group (âncora inexistente)",
+        "pt/actions/how-tos/manage-runners/self-hosted-runners/add-runners.md:127: add-runners.md#adding-a-self-hosted-runner-to-an-enterprise (âncora inexistente)",
+        "pt/actions/how-tos/manage-runners/self-hosted-runners/apply-labels.md:7: ../../write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job.md#choosing-runners-in-a-group (âncora inexistente)",
+        "pt/actions/how-tos/manage-runners/self-hosted-runners/apply-labels.md:19: #creating-a-custom-label-for-a-repository-runner",
+        "pt/actions/how-tos/manage-runners/self-hosted-runners/apply-labels.md:20: #creating-a-custom-label-for-an-organization-runner"
+      ]
+    },
+    {
+      "group": "links",
+      "name": "links externos bem formados",
+      "status": "fail",
+      "message": "2419 links externos, 2 malformados",
+      "details": [
+        "pt/actions/reference/workflows-and-actions/dockerfile-support.md:97: http://man7.org/linux/man-pages/man7/capabilities.7.html",
+        "en/actions/reference/workflows-and-actions/dockerfile-support.md:100: http://man7.org/linux/man-pages/man7/capabilities.7.html"
+      ]
+    },
+    {
+      "group": "navigation",
+      "name": "mkdocs.yml válido",
+      "status": "pass",
+      "message": "site_name='GitHub Actions — Base de Conhecimento & Skill'",
+      "details": []
+    },
+    {
+      "group": "navigation",
+      "name": "nav aponta para arquivos existentes",
+      "status": "pass",
+      "message": "548 entradas no nav, 0 quebradas",
+      "details": []
+    },
+    {
+      "group": "navigation",
+      "name": "sem páginas órfãs",
+      "status": "pass",
+      "message": "0 páginas fora do nav e sem link de entrada",
+      "details": []
+    },
+    {
+      "group": "navigation",
+      "name": "índice index.md",
+      "status": "pass",
+      "message": "presente",
+      "details": []
+    },
+    {
+      "group": "navigation",
+      "name": "índice pt/index.md",
+      "status": "pass",
+      "message": "presente",
+      "details": []
+    },
+    {
+      "group": "navigation",
+      "name": "índice en/index.md",
+      "status": "pass",
+      "message": "presente",
+      "details": []
+    },
+    {
+      "group": "navigation",
+      "name": "índice skill/index.md",
+      "status": "pass",
+      "message": "presente",
+      "details": []
+    },
+    {
+      "group": "skill",
+      "name": "SKILL.md com frontmatter",
+      "status": "pass",
+      "message": "name='github-actions' description=681 chars",
+      "details": []
+    },
+    {
+      "group": "skill",
+      "name": "name válido (≤64, [a-z0-9-])",
+      "status": "pass",
+      "message": "github-actions",
+      "details": []
+    },
+    {
+      "group": "skill",
+      "name": "description válida (≤1024, não vazia)",
+      "status": "pass",
+      "message": "681 caracteres",
+      "details": []
+    },
+    {
+      "group": "skill",
+      "name": "license declarado",
+      "status": "pass",
+      "message": "MIT",
+      "details": []
+    },
+    {
+      "group": "skill",
+      "name": "referências do SKILL.md existem",
+      "status": "fail",
+      "message": "21 caminhos citados, 14 ausentes",
+      "details": [
+        "references/checklists.md",
+        "references/gitops-patterns.md",
+        "references/knowledge-base-map.md",
+        "references/migration.md",
+        "references/runners.md",
+        "references/templates-catalog.md",
+        "references/troubleshooting.md",
+        "scripts/build_site.py",
+        "scripts/extract.py",
+        "scripts/install_tools.sh",
+        "scripts/lint_workflows.sh",
+        "scripts/new_workflow.py",
+        "scripts/validate.py",
+        "scripts/validate_skill.py"
+      ]
+    },
+    {
+      "group": "skill",
+      "name": "pasta references/",
+      "status": "pass",
+      "message": "7 documentos de referência",
+      "details": []
+    },
+    {
+      "group": "skill",
+      "name": "templates presentes",
+      "status": "fail",
+      "message": "0 arquivos (0 YAML)",
+      "details": []
+    },
+    {
+      "group": "skill",
+      "name": "templates YAML válidos",
+      "status": "pass",
+      "message": "0 inválidos de 0",
+      "details": []
+    },
+    {
+      "group": "skill",
+      "name": "estrutura de workflows/actions",
+      "status": "pass",
+      "message": "0 problemas estruturais",
+      "details": []
+    },
+    {
+      "group": "skill",
+      "name": "permissions explícito",
+      "status": "pass",
+      "message": "0 templates sem `permissions`",
+      "details": []
+    },
+    {
+      "group": "skill",
+      "name": "actions pinadas (tag/SHA)",
+      "status": "pass",
+      "message": "0 referências sem pin",
+      "details": []
+    },
+    {
+      "group": "tools",
+      "name": "actionlint",
+      "status": "warn",
+      "message": "binário não encontrado (instalado no CI via .github/workflows/validate.yml)",
+      "details": []
+    },
+    {
+      "group": "tools",
+      "name": "yamllint",
+      "status": "warn",
+      "message": "yamllint não instalado localmente (rodado no CI)",
+      "details": []
+    }
+  ],
+  "manifests": {
+    "pt": {
+      "generated": "2026-10-11T23:40:36+00:00",
+      "source": "api",
+      "lang": "pt",
+      "page_count": 247,
+      "total_bytes": 2505131,
+      "scope": "actions",
+      "out": "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/knowledge/pt",
+      "plan": "free-pro-team@latest,enterprise-cloud@latest",
+      "links": {
+        "files": 247,
+        "links": 1720,
+        "reverted": 7,
+        "ok": 1713
+      }
+    },
+    "en": {
+      "generated": "2026-10-11T19:13:15+00:00",
+      "source": "repo",
+      "lang": "en",
+      "page_count": 247,
+      "total_bytes": 2261082,
+      "scope": "actions",
+      "out": "/home/user/github_actions_docs_skill/knowledge/en",
+      "plan": "free-pro-team@latest",
+      "links": {
+        "files": 247,
+        "links": 1311,
+        "reverted": 59,
+        "ok": 1252
+      }
+    }
+  }
+}

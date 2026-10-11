@@ -12,7 +12,7 @@ section: How tos / Manage runners / Github hosted runners / Connect to a private
 
 _You can use OpenID Connect (OIDC) tokens to authenticate your workflow._
 
-## Using an API gateway with OIDC
+## Using an API gateway with OIDC { #using-an-api-gateway-with-oidc-1 }
 
 With GitHub Actions, you can use OpenID Connect (OIDC) tokens to authenticate your workflow outside of GitHub Actions. For example, you could run an API gateway on the edge of your private network that authenticates incoming requests with the OIDC token and then makes API requests on behalf of your workflow in your private network.
 

@@ -67,7 +67,7 @@ When configuring this during custom image generation, use `setting-scope=machine
 
 When setting these environment variables during custom image generation, ensure the configuration persists across reboots or image rebuilds.
 
-#### Linux and macOS
+#### Linux and macOS { #linux-and-macos-1 }
 
 Write the variables to `/etc/environment`.
 
@@ -75,7 +75,7 @@ Write the variables to `/etc/environment`.
  echo 'http_proxy=http://proxy.local' >> /etc/environment
 ```
 
-#### Windows
+#### Windows { #windows-1 }
 
 Set the system-wide environment variables.
 

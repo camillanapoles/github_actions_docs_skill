@@ -67,7 +67,7 @@ You can manage the runner service in the Windows **Services** application, or yo
 
 **macOS**
 
-## Installing the service
+## Installing the service { #installing-the-service-1 }
 
 {{ service_first_step }}
 1. Install the service with the following command:
@@ -182,6 +182,6 @@ If you don't want to use the above default `systemd` service configuration, you 
 
 **macOS**
 
-## Customizing the self-hosted runner service
+## Customizing the self-hosted runner service { #customizing-the-self-hosted-runner-service-1 }
 
 If you don't want to use the above default launchd service configuration, you can create a customized service or use whichever service mechanism you prefer. Consider using the `plist` template at `actions-runner/bin/actions.runner.plist.template` as a reference. If you use a customized service, the self-hosted runner service must always be invoked using the `runsvc.sh` entry point.

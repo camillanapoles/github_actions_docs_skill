@@ -10,17 +10,17 @@ captured: '2026-10-11'
 section: Reference / Github actions importer
 ---
 
-# Argumentos e configurações complementares
+# Argumentos e configurações complementares { #supplemental-arguments-and-settings }
 
 _GitHub Actions Importer tem vários argumentos e configurações complementares para adaptar o processo de migração às suas necessidades._
 
 Este artigo fornece informações gerais para configurar GitHub Actions Importerargumentos e configurações complementares, como parâmetros opcionais, argumentos de caminho e configurações de rede.
 
-## Parâmetros opcionais
+## Parâmetros opcionais { #optional-parameters }
 
 GitHub Actions Importer tem vários parâmetros opcionais que você pode usar para personalizar o processo de migração.
 
-### Como limitar ações permitidas
+### Como limitar ações permitidas { #limiting-allowed-actions }
 
 As opções a seguir podem ser usadas para limitar quais ações são permitidas em fluxos de trabalho convertidos. Quando usadas em combinação, essas opções expandem a lista de ações permitidas. Se nenhuma dessas opções for fornecida, todas as ações serão permitidas.
 
@@ -42,7 +42,7 @@ As opções a seguir podem ser usadas para limitar quais ações são permitidas
 
   Essa opção é equivalente a `--allowed-actions actions/* github/*`.
 
-### Usando um arquivo de credenciais de autenticação
+### Usando um arquivo de credenciais de autenticação { #using-a-credentials-file-for-authentication }
 
 O `--credentials-file` parâmetro especifica o caminho para um arquivo que contém credenciais para servidores diferentes que GitHub Actions Importer podem se autenticar. Isso é útil quando scripts de build (como `.travis.yml` ou `jenkinsfile`) são armazenados em várias GitHub Enterprise Server instâncias.
 
@@ -63,7 +63,7 @@ Por exemplo:
 
 Para o arquivo de credenciais acima, GitHub Actions Importer usa o token `ghp_mygeneraltoken` de acesso para autenticar todas as solicitações `https://github.com`de rede, _a menos que_ a solicitação de rede seja para um repositório na `specific_org` organização. Nesse caso, o token `ghp_myorgspecifictoken` é usado para autenticar.
 
-#### Provedores alternativos de código-fonte
+#### Provedores alternativos de código-fonte { #alternative-source-code-providers }
 
 GitHub Actions Importer pode buscar automaticamente o código-fonteGitHub de não repositórios. Um arquivo de credenciais pode especificar o `provider`, a URL do provedor e as credenciais necessárias para recuperar o código-fonte.
 
@@ -84,7 +84,7 @@ Os valores com suporte para `provider` são:
 * `bitbucket_server`
 * `azure_devops`
 
-### Como controlar recursos opcionais
+### Como controlar recursos opcionais { #controlling-optional-features }
 
 Você pode usar a opção `--features` para limitar os recursos usados em fluxos de trabalho que GitHub Actions Importer criam. Isso é útil para excluir a sintaxe mais GitHub Actions recente dos fluxos de trabalho ao migrar para uma instância mais antiga GitHub Enterprise Server . Ao usar a opção `--features` , você deve especificar a versão para GitHub Enterprise Server a qual está migrando.
 
@@ -158,7 +158,7 @@ $ gh actions-importer configure --features
   Disable
 ```
 
-### Como desabilitar o cache de resposta de rede
+### Como desabilitar o cache de resposta de rede { #disabling-network-response-caching }
 
 Por padrão, GitHub Actions Importer armazena em cache respostas de solicitações de rede para reduzir a carga de rede e reduzir o tempo de execução. Você pode usar a opção `--no-http-cache` para desabilitar o cache de rede. Por exemplo:
 
@@ -166,7 +166,7 @@ Por padrão, GitHub Actions Importer armazena em cache respostas de solicitaçõ
 gh actions-importer forecast ... --no-http-cache
 ```
 
-## Argumentos de caminho
+## Argumentos de caminho { #path-arguments }
 
 Ao executar GitHub Actions Importer, os argumentos de caminho são relativos ao disco do contêiner, portanto, não há suporte para caminhos absolutos relativos ao computador host do contêiner. Quando GitHub Actions Importer é executado, o diretório do `/data` contêiner é montado no diretório onde GitHub Actions Importer é executado.
 
@@ -176,7 +176,7 @@ Por exemplo, o seguinte comando, quando usado no `/Users/mona` diretório, gera 
 gh actions-importer audit --output-dir /data/out
 ```
 
-## Como usar um proxy
+## Como usar um proxy { #using-a-proxy }
 
 Para acessar servidores configurados com um proxy HTTP, você deve definir as seguintes variáveis de ambiente com a URL do proxy:
 
@@ -192,7 +192,7 @@ export HTTPS_PROXY=$OCTOKIT_PROXY
 
 Se o proxy exigir autenticação, nome de usuário e senha, estes deverão ser incluídos na URL do proxy. Por exemplo, `https://username:password@proxy.url:port`.
 
-## Como desabilitar a verificação de certificado TLS
+## Como desabilitar a verificação de certificado TLS { #disabling-ssl-certificate-verification }
 
 Por padrão, GitHub Actions Importer verifica os certificados SSL ao fazer solicitações de rede. Você pode desabilitar a verificação de certificado SSL com a opção `--no-ssl-verify`. Por exemplo:
 
@@ -200,7 +200,7 @@ Por padrão, GitHub Actions Importer verifica os certificados SSL ao fazer solic
 gh actions-importer audit --output-dir ./output --no-ssl-verify
 ```
 
-## Aviso legal
+## Aviso legal { #legal-notice }
 
 Partes foram adaptadas do https://github.com/github/gh-actions-importer/ de acordo com a licença MIT:
 

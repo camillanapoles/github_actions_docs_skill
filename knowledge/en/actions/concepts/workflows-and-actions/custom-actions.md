@@ -15,7 +15,7 @@ _Actions are individual tasks that you can combine to create jobs and customize 
 !!! note
     GitHub Enterprise Server users should use self-hosted runners. GitHub-hosted runners are **not** supported.
 
-## About custom actions
+## About custom actions { #about-custom-actions-1 }
 
 You can create actions by writing custom code that interacts with your repository in any way you'd like, including integrating with GitHub's APIs and any publicly available third-party API. For example, an action can publish npm modules, send SMS alerts when urgent issues are created, or deploy production-ready code.
 

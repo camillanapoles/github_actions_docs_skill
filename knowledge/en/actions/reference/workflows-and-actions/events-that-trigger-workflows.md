@@ -635,13 +635,13 @@ jobs:
       - run: echo "This PR was approved"
 ```
 
-#### Workflows in forked repositories
+#### Workflows in forked repositories { #workflows-in-forked-repositories-1 }
 
 Workflows don't run in forked repositories by default. You must enable GitHub Actions in the **Actions** tab of the forked repository.
 
 With the exception of `GITHUB_TOKEN`, secrets are not passed to the runner when a workflow is triggered from a forked repository. The `GITHUB_TOKEN` has read-only permissions in pull requests from forked repositories. For more information, see [Use GITHUB_TOKEN for authentication in workflows](../../tutorials/authenticate-with-github_token.md).
 
-#### Pull request events for forked repositories
+#### Pull request events for forked repositories { #pull-request-events-for-forked-repositories-1 }
 
 For pull requests from a forked repository to the base repository, GitHub sends the `pull_request`, `issue_comment`, `pull_request_review_comment`, `pull_request_review`, and `pull_request_target` events to the base repository. No pull request events occur on the forked repository.
 
@@ -671,13 +671,13 @@ on:
     types: [created, deleted]
 ```
 
-#### Workflows in forked repositories
+#### Workflows in forked repositories { #workflows-in-forked-repositories-2 }
 
 Workflows don't run in forked repositories by default. You must enable GitHub Actions in the **Actions** tab of the forked repository.
 
 With the exception of `GITHUB_TOKEN`, secrets are not passed to the runner when a workflow is triggered from a forked repository. The `GITHUB_TOKEN` has read-only permissions in pull requests from forked repositories. For more information, see [Use GITHUB_TOKEN for authentication in workflows](../../tutorials/authenticate-with-github_token.md).
 
-#### Pull request events for forked repositories
+#### Pull request events for forked repositories { #pull-request-events-for-forked-repositories-2 }
 
 For pull requests from a forked repository to the base repository, GitHub sends the `pull_request`, `issue_comment`, `pull_request_review_comment`, `pull_request_review`, and `pull_request_target` events to the base repository. No pull request events occur on the forked repository.
 

@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Deploy / Deploy to third party platforms
 ---
 
-# Fazendo a implantação nos Aplicativos Web Estáticos do Azure
+# Fazendo a implantação nos Aplicativos Web Estáticos do Azure { #deploying-to-azure-static-web-app }
 
 _Saiba como implantar um aplicativo web no Azure Static Web App como parte de seus fluxos de trabalho de implantação contínua (CD)._
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Antes de criar seu fluxo de trabalho de GitHub Actions, primeiro você precisa concluir as etapas de configuração a seguir:
 
@@ -22,7 +22,7 @@ Antes de criar seu fluxo de trabalho de GitHub Actions, primeiro você precisa c
 
 1. Crie um segredo chamado `AZURE_STATIC_WEB_APPS_API_TOKEN` com o valor do token de implantação do aplicativo Web estático. Para obter mais informações sobre como encontrar seu token de implantação, consulte [Redefinir tokens de implantação no Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/deployment-token-management) na documentação do Azure.
 
-## Criar o fluxo de trabalho
+## Criar o fluxo de trabalho { #creating-the-workflow }
 
 Depois de preencher os pré-requisitos, você pode prosseguir com a criação do fluxo de trabalho.
 
@@ -97,7 +97,7 @@ jobs:
           action: "close"
 ```
 
-## Leitura adicional
+## Leitura adicional { #further-reading }
 
 * Para o modelo de fluxo de trabalho original, confira [`azure-staticwebapp.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/azure-staticwebapp.yml) no repositório `starter-workflows` do GitHub Actions.
 * A ação usada para implantar o aplicativo Web é a ação oficial Azure [`Azure/static-web-apps-deploy`](https://github.com/Azure/static-web-apps-deploy).

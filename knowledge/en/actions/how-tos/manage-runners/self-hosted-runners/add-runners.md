@@ -113,7 +113,7 @@ For more information about custom organization roles, see [Permissions of custom
    * Running the `config` script to configure the self-hosted runner application and register it with GitHub Actions. The `config` script requires the destination URL and an automatically-generated time-limited token to authenticate the request. The token expires after one hour.
      * On Windows, the `config` script also asks if you would like to install the self-hosted runner application as a service. For Linux and macOS, you can install a service after you finish adding the runner. For more information, see [Configuring the self-hosted runner application as a service](configure-the-application.md).
    * Running the self-hosted runner application to connect the machine to GitHub Actions.
-### Checking that your self-hosted runner was successfully added
+### Checking that your self-hosted runner was successfully added { #checking-that-your-self-hosted-runner-was-successfully-added-1 }
 
 After completing the steps to add a self-hosted runner, the runner and its status are now listed under "Runners".
 
@@ -162,7 +162,7 @@ To add a self-hosted runner to an enterprise, you must be an enterprise owner. F
      * On Windows, the `config` script also asks if you would like to install the self-hosted runner application as a service. For Linux and macOS, you can install a service after you finish adding the runner. For more information, see [Configuring the self-hosted runner application as a service](configure-the-application.md).
    * Running the self-hosted runner application to connect the machine to GitHub Actions.
 
-### Checking that your self-hosted runner was successfully added
+### Checking that your self-hosted runner was successfully added { #checking-that-your-self-hosted-runner-was-successfully-added-2 }
 
 After completing the steps to add a self-hosted runner, the runner and its status are now listed under "Runners".
 

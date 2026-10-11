@@ -10,18 +10,18 @@ captured: '2026-10-11'
 section: Concepts
 ---
 
-# Sobre as políticas do Actions
+# Sobre as políticas do Actions { #about-actions-policies }
 
 _Governe como GitHub Actions os fluxos de trabalho são executados em seu repositório, organização ou empresa._
 
-## Sobre as políticas do Actions
+## Sobre as políticas do Actions { #about-actions-policies-1 }
 
 As políticas de ações permitem que você governe como GitHub Actions os fluxos de trabalho são executados. Você pode configurá-las na seção **Políticas** de suas GitHub Actions configurações (separadas das configurações **gerais** ).
 
 As políticas de ações estão disponíveis nos níveis corporativo, organizacional e repositório. Atualmente, eles contêm um tipo de política: proteções de execução de fluxo de trabalho.
 GitHub planeja adicionar mais políticas ao longo do tempo.
 
-## Sobre proteções de execução de fluxo de trabalho
+## Sobre proteções de execução de fluxo de trabalho { #about-workflow-execution-protections }
 
 Com as proteções de execução de fluxo de trabalho, você pode definir uma lista de permissões que controla quem pode disparar GitHub Actions fluxos de trabalho e quais eventos têm permissão para executá-los. Essas proteções podem interromper vários padrões de ataque do mundo real:
 
@@ -42,14 +42,14 @@ Event 'workflow_dispatch' is not allowed to trigger Actions workflows. Workflow 
 
 <!-- end expires 2026-11-02 -->
 
-### Regras disponíveis
+### Regras disponíveis { #available-rules }
 
 * **Regras de atores** controlam quem pode disparar fluxos de trabalho, incluindo usuários individuais, funções de repositório, GitHub Apps, Copilot e Dependabot. Por padrão, cada usuário com acesso de gravação a um repositório pode disparar fluxos de trabalho. As regras para atores permitem separar quem contribui com código de quem executa sua integração contínua (CI), para que você possa conceder a um colaborador permissão de escrita sem conceder a ele a permissão de executar fluxos de trabalho.
 * **As regras de** evento controlam quais eventos são permitidos, como`push`, , `pull_request`e `pull_request_target``workflow_dispatch`.
 
 GitHub planeja adicionar mais regras ao longo do tempo.
 
-## Próximas Etapas
+## Próximas Etapas { #next-steps }
 
 Para configurar proteções de execução de fluxo de trabalho, consulte [Controlando quem pode executar GitHub Actions fluxos de trabalho](../how-tos/administer/control-workflow-execution.md).
 

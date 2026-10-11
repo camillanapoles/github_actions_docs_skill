@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Reference / Workflows and actions
 ---
 
-# Referência do cache de dependência
+# Referência do cache de dependência { #dependency-caching-reference }
 
 _Encontre informações sobre a funcionalidade do cache de dependência em fluxos de trabalho._
 
-## Uso de ações do `cache`
+## Uso de ações do `cache` { #cache-action-usage }
 
 A [`cache` ação](https://github.com/actions/cache) tentará a seguinte sequência ao restaurar um cache:
 
@@ -26,7 +26,7 @@ Se houver uma correspondência exata com o `key` fornecido, isso será considera
 
 Não é possível alterar o conteúdo de um cache existente. Em vez disso, crie um cache com uma nova chave.
 
-### Os parâmetros de entrada da ação `cache`
+### Os parâmetros de entrada da ação `cache` { #input-parameters-for-the-cache-action }
 
 * `key`: **Obrigatório** A chave criada ao salvar um cache, e a chave usada para pesquisar um cache. Pode ser qualquer combinação de variáveis, valores de contexto, cadeias de caracteres estáticas e funções. As chaves têm um tamanho máximo de 512 caracteres e as chaves maiores que o tamanho máximo gerarão uma falha na ação.
 
@@ -60,11 +60,11 @@ Não é possível alterar o conteúdo de um cache existente. Em vez disso, crie 
 !!! note
     Recomendamos que você não armazene informações confidenciais, como tokens de acesso ou credenciais de logon, em arquivos no caminho do cache. Qualquer pessoa com acesso de leitura pode criar uma solicitação de pull em um repositório e acessar o conteúdo de um cache. Além disso, os forks de um repositório podem criar pull requests no branch-base e acessar as caches no branch-base.
 
-### Parâmetros de saída para a ação `cache`
+### Parâmetros de saída para a ação `cache` { #output-parameters-for-the-cache-action }
 
 * `cache-hit`: um valor booliano para indicar que uma correspondência exata foi encontrada para a chave.
 
-### Ocorrências e perdas no cache
+### Ocorrências e perdas no cache { #cache-hits-and-misses }
 
 Quando `key` corresponde exatamente a um cache existente, isso é chamado de *ocorrência no cache* e a ação restaura os arquivos em cache no diretório `path`.
 
@@ -80,7 +80,7 @@ Quando ocorre uma perda no cache, a ação também pesquisa o `restore-keys` esp
 
 Para obter uma explicação mais detalhada do processo de correspondência de cache, consulte [Correspondência de chave de cache](#cache-key-matching).
 
-### Exemplo que usa a ação `cache`
+### Exemplo que usa a ação `cache` { #example-using-the-cache-action }
 
 Este exemplo cria um cache quando os pacotes do arquivo `package-lock.json` são alterados ou quando o sistema operacional do executor é alterado. A chave de cache usa contextos e expressões para gerar uma chave que inclui o sistema operacional do executor e um hash SHA-256 do arquivo `package-lock.json`.
 
@@ -122,7 +122,7 @@ jobs:
         run: npm test
 ```
 
-### Usar contextos para criar chaves da cache
+### Usar contextos para criar chaves da cache { #using-contexts-to-create-cache-keys }
 
 Uma chave de cache pode incluir qualquer um entre os contextos, as funções, os literais e os operadores compatíveis com GitHub Actions. Para saber mais, confira [Referência de contextos](contexts.md) e [Avaliar expressões em fluxos de trabalho e ações](expressions.md).
 
@@ -140,7 +140,7 @@ GitHub avalia a expressão `hash "package-lock.json"` para derivar o final `key`
 npm-d5ea0750
 ```
 
-### Usando a saída da ação `cache`
+### Usando a saída da ação `cache` { #using-the-output-of-the-cache-action }
 
 Você pode usar a saída da ação `cache` para fazer algo com base na ocorrência ou na perda no cache. Quando uma correspondência exata é encontrada para um cache do `key` especificado, a saída `cache-hit` é definida como `true`.
 
@@ -153,7 +153,7 @@ No exemplo de fluxo de trabalho acima, há uma etapa que lista o estado dos mód
   run: npm list
 ```
 
-## Correspondência de chave de cache
+## Correspondência de chave de cache { #cache-key-matching }
 
 A ação `cache` primeiro pesquisa ocorrências de `key` no cache e a *versão* do cache no branch que contém a execução de fluxo de trabalho. Se não houver nenhum resultado, ela pesquisará por correspondências de prefixo para `key` e, se ainda não houver resultado, pesquisará por `restore-keys` e pela *versão*. Se ainda não houver resultados no branch atual, a ação `cache` repetirá as mesmas etapas no branch padrão. Observe que as restrições de escopo se aplicam durante a pesquisa. Para saber mais, confira [Restrições de acesso a um cache](#restrictions-for-accessing-a-cache).
 
@@ -161,7 +161,7 @@ A versão do cache é uma maneira de marcar um cache com metadados de `path` e a
 
 O `restore-keys` permite que você especifique uma lista de chaves de restauração alternativas a serem usadas quando houver uma perda no cache na `key`. Você pode criar múltiplas chaves de restauração ordenadas da mais específica para a menos específica. A ação `cache` procura o `restore-keys` em ordem sequencial. Quando uma chave não corresponde diretamente, a ação pesquisa as chaves prefixadas com a chave de restauração. Se houver múltiplas correspondências parciais para uma chave de restauração, a ação retornará a cache criada por último.
 
-### Exemplo do uso de múltiplas chaves de restauração
+### Exemplo do uso de múltiplas chaves de restauração { #example-using-multiple-restore-keys }
 
 ```yaml
 restore-keys: |
@@ -191,7 +191,7 @@ A chave de restauração `npm-feature-` corresponde a qualquer chave que comece 
    `npm-`
    \*\* corresponde a qualquer chave precedida com `npm-`.
 
-#### Exemplo de prioridade de pesquisa
+#### Exemplo de prioridade de pesquisa { #example-of-search-priority }
 
 ```yaml
 key:
@@ -210,7 +210,7 @@ Por exemplo, se uma solicitação de pull contiver um branch `feature` e for dir
 5. Chave `npm-feature-` no branch `main`
 6. Chave `npm-` no branch `main`
 
-## Ações de `setup-*` para gerenciadores de pacotes específicos
+## Ações de `setup-*` para gerenciadores de pacotes específicos { #setup--actions-for-specific-package-managers }
 
 Se você estiver armazenando em cache os gerenciadores de pacotes listados abaixo, o uso das respectivas ações setup-\* exigirá configuração mínima e criará e restaurará caches de dependência para você.
 
@@ -229,7 +229,7 @@ Se você estiver armazenando em cache os gerenciadores de pacotes listados abaix
 | NuGet para .NET |  |
 | [setup-dotnet](https://github.com/actions/setup-dotnet?tab=readme-ov-file#caching-nuget-packages) |  |
 
-## Restrições para acessar uma cache
+## Restrições para acessar uma cache { #restrictions-for-accessing-a-cache }
 
 As restrições de acesso fornecem o isolamento da cache e a segurança ao criar um limite lógico entre os diferentes branches ou marcas.
 As execuções de fluxo de trabalho podem restaurar caches criados no branch atual ou no branch padrão (geralmente `main`). Se uma execução de fluxo de trabalho for disparada para uma solicitação de pull, ela também poderá restaurar caches criados no branch base, incluindo branches base de repositórios com fork. Por exemplo, se o branch `feature-b` tiver o branch base `feature-a`, uma execução de fluxo de trabalho disparada em uma solicitação de pull terá acesso aos caches criados no branch `main` padrão, no branch `feature-a` base e no branch `feature-b` atual.
@@ -240,7 +240,7 @@ Quando um cache é criado por uma execução de fluxo de trabalho disparada em u
 
 Diversas execuções de fluxo de trabalho em um repositório podem compartilhar caches. Um cache criado para um branch em uma execução de fluxo de trabalho pode ser acessado e restaurado por meio de outra execução de fluxo de trabalho para o mesmo repositório e branch.
 
-## Acesso ao cache para gatilhos de fluxo de trabalho de baixa confiança
+## Acesso ao cache para gatilhos de fluxo de trabalho de baixa confiança { #cache-access-for-low-trust-workflow-triggers }
 
 Alguns fluxos de trabalho são executados em resposta a eventos que podem ser iniciados por pessoas que não têm acesso de gravação ao repositório, como uma solicitação de pull de bifurcação ou um comentário de problema. Quando esses eventos são executados no contexto do ramo padrão, eles podem ser usados para gravar um cache malicioso que um fluxo de trabalho posterior, com mais privilégios, restaura e considera confiável. Essa classe de ataque é conhecida como *envenenamento por cache*.
 
@@ -263,7 +263,7 @@ Quando uma execução com acesso somente leitura ao cache tenta salvar um cache,
 * Para manter os benefícios de desempenho do cache no escopo da branch padrão, verifique se há um fluxo de trabalho confiável para manter o cache atualizado, por exemplo, uma compilação de CI acionada por um `push` para a branch padrão. Essas entradas de cache podem ser restauradas por fluxos de trabalho disparados por eventos de baixa confiança, como `pull_request_target`.
 * Em fluxos de trabalho de baixa confiança, mude para uma operação de cache apenas para restauração, como `actions/cache/restore`, para deixar claro o uso pretendido do cache e evitar o aviso nos logs da execução do fluxo de trabalho.
 
-## Controlando o acesso ao cache com `cache-mode`
+## Controlando o acesso ao cache com `cache-mode` { #controlling-cache-access-with-cache-mode }
 
 Use a chave de fluxo de trabalho `cache-mode` para conceder aos jobs o nível mínimo de acesso ao cache de que precisam. Você pode definir `cache-mode` no nível do fluxo de trabalho, no nível do trabalho ou em ambos. Um valor no nível do trabalho substitui o valor no nível do fluxo de trabalho para esse trabalho. Para obter a sintaxe, consulte [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#cache-mode).
 
@@ -293,7 +293,7 @@ Para o detalhamento dos gatilhos confiáveis versus os de baixa confiança, cons
 
 O executor expõe o modo efetivo na variável de ambiente `ACTIONS_CACHE_MODE`, e a ação `actions/cache` e o kit de ferramentas `@actions/cache` o respeitam. A restauração é ignorada quando o modo não permite leituras (`none` ou `write-only`), e o salvamento é ignorado quando o modo não permite gravações (`none` ou `read`). Quando uma operação de cache é ignorada devido ao modo, a ação registra uma mensagem informativa, e a etapa e a execução continuam sem falhar. Uma restauração ignorada é tratada como uma falha de cache; uma salvação ignorada simplesmente não é executada.
 
-### Acesso ao cache em fluxos de trabalho reutilizáveis
+### Acesso ao cache em fluxos de trabalho reutilizáveis { #cache-access-in-reusable-workflows }
 
 `cache-mode` é propagado do fluxo de trabalho chamador para os fluxos de trabalho reutilizáveis que ele chama. Um explícito `cache-mode` no trabalho de chamada ou herdado do fluxo de trabalho do chamador limita o acesso ao cache que o fluxo de trabalho chamado pode solicitar.
 
@@ -301,7 +301,7 @@ Se o trabalho chamador não definir nem herdar um `cache-mode` explícito, o wor
 
 Se um fluxo de trabalho chamado declarar um `cache-mode` que solicita acesso além desse limite explícito, a execução não será iniciada e GitHub relatará um erro de validação. Por exemplo, um chamador que permite, no máximo, `read` não pode chamar um fluxo de trabalho que declare `write`. Como `read` e `write-only` conceder recursos diferentes e não sobrepostos, uma incompatibilidade entre eles também é uma solicitação excessiva. Por exemplo, um `write-only` chamador não pode chamar um fluxo de trabalho que declare `read`. Para obter mais informações sobre como chamar fluxos de trabalho reutilizáveis, consulte [Reutilizar fluxos de trabalho](../../how-tos/reuse-automations/reuse-workflows.md#controlling-cache-access-in-reusable-workflows).
 
-### Ignorando a restrição de cache de gatilho não confiável padrão
+### Ignorando a restrição de cache de gatilho não confiável padrão { #bypassing-the-default-untrusted-trigger-cache-restriction }
 
 Um trabalho ou fluxo de trabalho que declara `cache-mode: write` ou `cache-mode: write-only` substitui explicitamente o padrão de somente leitura seguro que, de outra forma, se aplicaria a uma execução disparada por um evento de baixa confiança. Consulte [o acesso ao Cache para gatilhos de fluxo de trabalho de baixa confiança](#cache-access-for-low-trust-workflow-triggers).
 
@@ -315,7 +315,7 @@ Antes de definir um `cache-mode` com permissão de gravação em um fluxo de tra
 * Se você substituir o padrão seguro, trate o cache resultante como não confiável em todo fluxo de trabalho em que ele for restaurado e evite restaurá-lo em uma execução que tenha acesso de gravação aos segredos ou permissões elevadas.
 * Siga as diretrizes sobre as [práticas recomendadas para usar caches com segurança](#best-practices-for-using-caches-securely).
 
-## Práticas recomendadas para usar caches com segurança
+## Práticas recomendadas para usar caches com segurança { #best-practices-for-using-caches-securely }
 
 O conteúdo do cache não está assinado ou verificado e qualquer execução de fluxo de trabalho que possa ler um cache pode extrair seu conteúdo. Os caches extraídos podem modificar arquivos que são executados posteriormente em uma execução de fluxo de trabalho, levando à execução de código mal-intencionado. Siga estas práticas para reduzir o risco de segurança de usar caches.
 
@@ -325,11 +325,11 @@ O conteúdo do cache não está assinado ou verificado e qualquer execução de 
 
 Para obter orientações mais amplas sobre como proteger seus fluxos de trabalho, consulte [Referência de uso seguro](../security/secure-use.md).
 
-## Limites de uso e política de eliminação
+## Limites de uso e política de eliminação { #usage-limits-and-eviction-policy }
 
 GitHub aplica limites ao armazenamento e à retenção em cache para gerenciar os custos de armazenamento e evitar abusos. Entender esses limites ajuda você a otimizar o uso do cache.
 
-### Limites padrão
+### Limites padrão { #default-limits }
 
 GitHub removerá as entradas de cache que não foram acessadas em mais de 7 dias. Não há limite para o número de caches que você pode armazenar, mas o tamanho total de todos os caches em um repositório é limitado. Por padrão, o limite é de 10 GB por repositório, mas esse limite pode ser aumentado por proprietários corporativos, proprietários da organização ou administradores de repositório.
 Qualquer uso além de 10 GB é cobrado em sua conta. Após um repositório atingir seu volume máximo de armazenamento em cache, a política de remoção de cache criará espaço excluindo os caches na ordem da última data de acesso, da mais antiga para a mais recente.
@@ -339,7 +339,7 @@ de cache. Consulte [Gerenciando caches](../../how-tos/manage-workflow-runs/manag
 
 Você pode criar entradas de cache a uma taxa de até 200 uploads por minuto por repositório e baixá-las a uma taxa de 1500 downloads por minuto por repositório. Se você exceder essa taxa, as tentativas subsequentes de upload ou download de cache falharão até que o limite de taxa relevante seja redefinido. O tempo até que o limite de taxa seja redefinido é retornado no `Retry-After` cabeçalho da resposta. Consulte [Limites do Actions](../limits.md) para obter mais informações sobre GitHub Actions limites de taxa.
 
-### Aumentando o tamanho do cache
+### Aumentando o tamanho do cache { #increasing-cache-size }
 
 Se você quiser reduzir a taxa na qual as entradas de cache são removidas, você pode aumentar os limites de armazenamento para o cache nas Configurações de Ações. Os repositórios de propriedade dos usuários podem configurar até 10 TB por repositório. Para repositórios de propriedade das organizações, o limite máximo configurável é determinado pelas configurações da organização. Para organizações pertencentes a uma empresa, o limite máximo configurável é determinado pelas configurações da empresa. Aumentar o limite além dos 10 GB padrão incorrerá em custos adicionais se esse armazenamento for usado.
 
@@ -361,6 +361,6 @@ Abaixo estão alguns custos mensais ilustrativos para informar os orçamentos qu
 | 200 GB           | $13.30                                 |
 | 1000 GB          | US$ 69,30                              |
 
-## Próximas etapas
+## Próximas etapas { #next-steps }
 
 Para gerenciar seus caches de dependência, consulte [Gerenciando caches](../../how-tos/manage-workflow-runs/manage-caches.md).

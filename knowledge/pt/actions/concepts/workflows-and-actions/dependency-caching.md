@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Concepts / Workflows and actions
 ---
 
-# Cache de dependência
+# Cache de dependência { #dependency-caching }
 
 _Saiba mais sobre o cache de dependência para velocidade e eficiência do fluxo de trabalho._
 
-## Sobre o cacheamento de dependências em fluxos de trabalho
+## Sobre o cacheamento de dependências em fluxos de trabalho { #about-workflow-dependency-caching }
 
 As execuções do fluxo de trabalho geralmente reutilizam as mesmas saídas ou dependências baixadas de uma execução para outra. Por exemplo, as ferramentas de gerenciamento de pacotes e de dependência, como, por exemplo, Maven, Gradle, npm e Yarn mantêm uma cache local de dependências baixadas.
 
@@ -24,7 +24,7 @@ Para ajudar a acelerar o tempo necessário para recriar arquivos como dependênc
 !!! note
     Ao usar executores auto-hospedados, os caches de execuções de fluxo de trabalho são armazenados no armazenamento em GitHubnuvem de propriedade. Uma solução de armazenamento de propriedade do cliente só está disponível com GitHub Enterprise Server.
 
-## Artefatos versus armazenamento em cache de dependência
+## Artefatos versus armazenamento em cache de dependência { #artifacts-versus-dependency-caching }
 
 Artefatos e caches são semelhantes porque permitem armazenar arquivos em GitHub, mas cada recurso oferece casos de uso distintos e eles não podem ser usados de maneira intercambiável.
 
@@ -33,7 +33,7 @@ Artefatos e caches são semelhantes porque permitem armazenar arquivos em GitHub
 
 Para obter mais informações sobre artefatos de execução de fluxo de trabalho, confira [Armazenar e compartilhar dados com artefatos de fluxo de trabalho](../../tutorials/store-and-share-data.md).
 
-## Segurança do cache
+## Segurança do cache { #cache-security }
 
 Os caches são compartilhados com base na branch ou na tag usada por uma execução de workflow, não na identidade do workflow ou do job. Consulte [Eventos que disparam fluxos de trabalho](../../reference/workflows-and-actions/events-that-trigger-workflows.md) e a ramificação `GITHUB_REF` usada para vários acionadores de fluxo de trabalho. Qualquer execução que possa ler um cache restaura seu conteúdo as-is, portanto, você deve tratar arquivos restaurados como entrada não confiável e nunca armazenar segredos ou outros dados confidenciais em um cache.
 
@@ -41,6 +41,6 @@ Fluxos de trabalho não confiáveis podem ler conteúdo sensível do cache, como
 
 Para ver o detalhamento dos gatilhos confiáveis versus os de baixa confiança e o comportamento padrão do cache, consulte [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md#cache-access-for-low-trust-workflow-triggers). Para obter diretrizes de segurança específicas do cache, consulte [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md#best-practices-for-using-caches-securely).
 
-## Próximas etapas
+## Próximas etapas { #next-steps }
 
 Para implementar o cache de dependência em seus fluxos de trabalho, consulte [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md).

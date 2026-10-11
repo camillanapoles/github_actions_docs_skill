@@ -176,7 +176,7 @@ Listed below are some key terms that can appear in the "Build steps" section:
   * If you use GitHub Enterprise Server, gathering the list of actions to sync to your instance.
   * Defining an organization-level allowlist of actions that are used. This list of actions is a comprehensive list of actions that your security or compliance teams may need to review.
 
-#### Manual tasks
+#### Manual tasks { #manual-tasks-1 }
 
 The "Manual tasks" section contains an overview of tasks that GitHub Actions Importer is not able to complete automatically, and that you must complete manually.
 

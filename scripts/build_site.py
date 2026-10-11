@@ -228,11 +228,18 @@ def prune_empty(node: Node) -> None:
 # Emissão do nav YAML
 # --------------------------------------------------------------------------- #
 
+def yaml_label(text: Any) -> str:
+    """Escalar YAML de linha única, sempre entre aspas (labels com ':' quebrariam o nav)."""
+    dumped = yaml.safe_dump(str(text), allow_unicode=True, default_style="'",
+                            width=10 ** 6).strip()
+    return dumped.removesuffix("\n...").strip()
+
+
 def nav_yaml(node: Node, lang_prefix: str, indent: int = 0) -> list[str]:
     lines: list[str] = []
     pad = "  " * indent
     for child in node.children:
-        label = yaml.safe_dump(str(child.name), allow_unicode=True, default_style=None).strip()
+        label = yaml_label(child.name)
         if child.children:
             lines.append(f"{pad}- {label}:")
             if child.rel:
@@ -527,7 +534,8 @@ def render_nav(knowledge: Path, langs: list[str]) -> str:
         lang_root = knowledge / lang
         if not lang_root.exists():
             continue
-        label = "Documentação oficial (pt-BR)" if lang == "pt" else "Espelho do source-of-truth (en)"
+        label = yaml_label("Documentação oficial (pt-BR)" if lang == "pt"
+                           else "Espelho do source-of-truth (en)")
         lines.append(f"  - {label}:")
         lines.append(f"      - Visão geral: {lang}/index.md")
         pages = load_tree(lang_root)
@@ -546,7 +554,7 @@ def render_nav(knowledge: Path, langs: list[str]) -> str:
                 rel = ref.relative_to(skill_root).as_posix()
                 fm = read_front_matter(ref)
                 title = str(fm.get("title") or ref.stem.replace("-", " ").capitalize())
-                lines.append(f"          - {yaml.safe_dump(title, allow_unicode=True).strip()}: skill/{rel}")
+                lines.append(f"          - {yaml_label(title)}: skill/{rel}")
         if (skill_root / "templates.md").exists():
             lines.append("      - Catálogo de templates: skill/templates.md")
     lines.append("  - Validação e conformidade: validation.md")

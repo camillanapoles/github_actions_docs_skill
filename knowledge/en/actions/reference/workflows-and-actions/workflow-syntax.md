@@ -213,7 +213,7 @@ Use the `branches` filter when you want to include branch name patterns or when 
 
 The `branches` and `branches-ignore` filters accept glob patterns that use characters like `*`, `**`, `+`, `?`, `!` and others to match more than one branch name. If a name contains any of these characters and you want a literal match, you need to escape each of these special characters with ``. For more information about glob patterns, see [Workflow syntax for github actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet#filter-pattern-cheat-sheet).
 
-### Example: Including branches
+### Example: Including branches { #example-including-branches-1 }
 
 The patterns defined in `branches` are evaluated against the target branch's name. For example, the following workflow will run whenever there is a `merge_group` event for a merge group that targets:
 
@@ -229,7 +229,7 @@ on:
       - 'releases/**'
 ```
 
-### Example: Excluding branches
+### Example: Excluding branches { #example-excluding-branches-1 }
 
 When a pattern matches the `branches-ignore` pattern, the workflow will not run. The patterns defined in `branches-ignore` are evaluated against the target branch's name. For example, the following workflow will run whenever there is a `merge_group` event unless the merge group targets:
 
@@ -245,7 +245,7 @@ on:
       - 'releases/**-alpha'
 ```
 
-### Example: Including and excluding branches
+### Example: Including and excluding branches { #example-including-and-excluding-branches-1 }
 
 You cannot use `branches` and `branches-ignore` to filter the same event in a single workflow. If you want to both include and exclude branch patterns for a single event, use the `branches` filter along with the `!` character to indicate which branches should be excluded.
 
@@ -1166,7 +1166,7 @@ Available permissions and details of what each allows an action to do:
 | `statuses` | Work with commit statuses. For example, `statuses:read` permits an action to list the commit statuses for a given reference. For more information, see [Permissions required for github apps](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses#repository-permissions-for-commit-statuses). |
 | `vulnerability-alerts` | Read Dependabot alerts. For example, `vulnerability-alerts: read` permits an action to list Dependabot alerts for the repository. Only `read` and `none` are supported; `write` is not valid. When `write-all` or `read-all` is used, `vulnerability-alerts` is automatically included as `read`. For more information, see [Repository permissions for "Dependabot alerts"](https://docs.github.com/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
 
-### Defining access for the `GITHUB_TOKEN` scopes
+### Defining access for the `GITHUB_TOKEN` scopes { #defining-access-for-the-githubtoken-scopes-1 }
 
 You can define the access that the `GITHUB_TOKEN` will permit by specifying `read`, `write`, or `none` as the value of the available permissions within the `permissions` key.
 
@@ -1209,7 +1209,7 @@ You can use the following syntax to disable permissions for all of the available
 permissions: {}
 ```
 
-#### Changing the permissions in a forked repository
+#### Changing the permissions in a forked repository { #changing-the-permissions-in-a-forked-repository-1 }
 
 You can use the `permissions` key to add and remove read permissions for forked repositories, but typically you can't grant write access. The exception to this behavior is where an admin user has selected the **Send write tokens to workflows from pull requests** option in the GitHub Actions settings. For more information, see [Managing github actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#enabling-workflows-for-forks-of-private-repositories#enabling-workflows-for-forks-of-private-repositories).
 
@@ -1711,7 +1711,7 @@ The combination of `queue: max` and `cancel-in-progress: true` is not allowed an
     * The concurrency group name is case insensitive. For example, `prod` and `Prod` will be treated as the same concurrency group.
     * Jobs or workflow runs in the same concurrency group are processed in first-in-first-out (FIFO) order according to the time each one started waiting on the concurrency group, not the time each workflow was dispatched. Since the actual start time of a job or run may vary, ordering is not guaranteed.
 
-### Example: Using concurrency and the default behavior
+### Example: Using concurrency and the default behavior { #example-using-concurrency-and-the-default-behavior-1 }
 
 The default behavior of GitHub Actions is to allow multiple jobs or workflow runs to run concurrently. The `concurrency` keyword allows you to control the concurrency of workflow runs.
 
@@ -1744,7 +1744,7 @@ jobs:
       cancel-in-progress: true
 ```
 
-### Example: Concurrency groups
+### Example: Concurrency groups { #example-concurrency-groups-1 }
 
 Concurrency groups provide a way to manage and limit the execution of workflow runs or jobs that share the same concurrency key.
 
@@ -1778,7 +1778,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Example: Queueing multiple pending runs
+### Example: Queueing multiple pending runs { #example-queueing-multiple-pending-runs-1 }
 
 By default, only one job or workflow run can be `pending` in a concurrency group at a time. To allow multiple runs to queue instead of being canceled, set `queue: max`. With `queue: max`, up to 100 jobs or workflow runs can wait in the concurrency group; once the queue is full, any additional runs are canceled.
 
@@ -1797,7 +1797,7 @@ concurrency:
 
 Note that `queue: max` cannot be combined with `cancel-in-progress: true`, because the two options describe conflicting behaviors for handling in-progress runs.
 
-### Example: Using concurrency to cancel any in-progress job or run
+### Example: Using concurrency to cancel any in-progress job or run { #example-using-concurrency-to-cancel-any-in-progress-job-or-run-1 }
 
 To use concurrency to cancel any in-progress job or run in GitHub Actions, you can use the `concurrency` key with the `cancel-in-progress` option set to `true`:
 
@@ -1809,7 +1809,7 @@ concurrency:
 
 Note that in this example, without defining a particular concurrency group, GitHub Actions will cancel _any_ in-progress run of the job or workflow.
 
-### Example: Using a fallback value
+### Example: Using a fallback value { #example-using-a-fallback-value-1 }
 
 If you build the group name with a property that is only defined for specific events, you can use a fallback value. For example, `github.head_ref` is only defined on `pull_request` events. If your workflow responds to other events in addition to `pull_request` events, you will need to provide a fallback to avoid a syntax error. The following concurrency group cancels in-progress jobs or runs on `pull_request` events only; if `github.head_ref` is undefined, the concurrency group will fallback to the run ID, which is guaranteed to be both unique and defined for the run.
 
@@ -1819,7 +1819,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Example: Only cancel in-progress jobs or runs for the current workflow
+### Example: Only cancel in-progress jobs or runs for the current workflow { #example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow-1 }
 
  If you have multiple workflows in the same repository, concurrency group names must be unique across workflows to avoid canceling in-progress jobs or runs from other workflows. Otherwise, any previously in-progress or pending job will be canceled, regardless of the workflow.
 
@@ -1831,7 +1831,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Example: Only cancel in-progress jobs on specific branches
+### Example: Only cancel in-progress jobs on specific branches { #example-only-cancel-in-progress-jobs-on-specific-branches-1 }
 
 If you would like to cancel in-progress jobs on certain branches but not on others, you can use conditional expressions with `cancel-in-progress`. For example, you can do this if you would like to cancel in-progress jobs on development branches but not on release branches.
 

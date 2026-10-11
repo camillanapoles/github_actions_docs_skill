@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
-# Automatizando a migração com o importador de GitHub Actions
+# Automatizando a migração com o importador de GitHub Actions { #automating-migration-with-github-actions-importer }
 
 _Use o GitHub Actions Importer para planejar e automatizar sua migração para o GitHub Actions._
 
-## Sobre o GitHub Actions Importer
+## Sobre o GitHub Actions Importer { #about-github-actions-importer }
 
 Você pode usar GitHub Actions Importer para planejar e migrar automaticamente seus pipelines compatíveis com CI/CD para GitHub Actions.
 
@@ -22,7 +22,7 @@ O GitHub Actions Importer é distribuído como um contêiner do Docker e usa uma
 
 Qualquer fluxo de trabalho convertido pelo GitHub Actions Importer deve ser inspecionado quanto à exatidão antes de ser usado como uma carga de trabalho de produção. A meta é alcançar uma taxa de conversão de 80% para cada fluxo de trabalho, no entanto, a taxa de conversão real dependerá da composição de cada pipeline individual convertido.
 
-## Plataformas de CI com suporte
+## Plataformas de CI com suporte { #supported-ci-platforms }
 
 É possível usar o GitHub Actions Importer para migrar das seguintes plataformas:
 
@@ -34,7 +34,7 @@ Qualquer fluxo de trabalho convertido pelo GitHub Actions Importer deve ser insp
 * Jenkins
 * Travis CI
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 O GitHub Actions Importer tem os seguintes requisitos:
 
@@ -46,7 +46,7 @@ O GitHub Actions Importer tem os seguintes requisitos:
 
   > A CLI e o contêiner do GitHub Actions Importer não precisam ser instalados no mesmo servidor que a plataforma de CI.
 
-### Instalação da extensão da CLI do GitHub Actions Importer
+### Instalação da extensão da CLI do GitHub Actions Importer { #installing-the-github-actions-importer-cli-extension }
 
 1. Instale a extensão da CLI do GitHub Actions Importer:
 
@@ -71,7 +71,7 @@ O GitHub Actions Importer tem os seguintes requisitos:
      migrate    Convert a pipeline to a GitHub Actions workflow and open a pull request with the changes.
    ```
 
-### Atualização da CLI do GitHub Actions Importer
+### Atualização da CLI do GitHub Actions Importer { #updating-the-github-actions-importer-cli }
 
 Execute regularmente o comando `update` para garantir que você esteja executando a versão mais recente do GitHub Actions Importer:
 
@@ -79,7 +79,7 @@ Execute regularmente o comando `update` para garantir que você esteja executand
 gh actions-importer update
 ```
 
-### Autenticação na linha de comando
+### Autenticação na linha de comando { #authenticating-at-the-command-line }
 
 Você deve configurar credenciais para permitir que o GitHub Actions Importer se comunique com o GitHub e com seu servidor de CI atual. É possível configurar essas credenciais usando variáveis de ambiente ou um arquivo `.env.local`. As variáveis de ambiente podem ser configuradas em um prompt interativo executando o seguinte comando:
 
@@ -87,11 +87,11 @@ Você deve configurar credenciais para permitir que o GitHub Actions Importer se
 gh actions-importer configure
 ```
 
-## Uso da CLI do GitHub Actions Importer
+## Uso da CLI do GitHub Actions Importer { #using-the-github-actions-importer-cli }
 
 Use os subcomandos de `gh actions-importer` para iniciar a migração para o GitHub Actions, incluindo `audit`, `forecast`, `dry-run` e `migrate`.
 
-### Auditoria de pipelines de CI existentes
+### Auditoria de pipelines de CI existentes { #auditing-your-existing-ci-pipelines }
 
 O subcomando `audit` pode ser usado para analisar seu volume de CI/CD atual, a fim de ajudar no planejamento da migração de CI/CD. Essa análise pode ser usada no planejamento de uma linha do tempo de migração para o GitHub Actions.
 
@@ -113,7 +113,7 @@ Commands:
   travis-ci     An audit will output a list of data used in a Travis CI instance.
 ```
 
-### Previsão de uso
+### Previsão de uso { #forecasting-usage }
 
 O subcomando `forecast` examina o uso histórico de pipelines para criar uma previsão de uso do GitHub Actions.
 
@@ -136,7 +136,7 @@ Commands:
   github        Forecasts GitHub Actions usage from historical GitHub pipeline utilization.
 ```
 
-### Teste do processo de migração
+### Teste do processo de migração { #testing-the-migration-process }
 
 O subcomando `dry-run` pode ser usado para converter um pipeline em seu equivalente do GitHub Actions e, em seguida, gravar o fluxo de trabalho no sistema de arquivos local.
 
@@ -158,7 +158,7 @@ Commands:
   travis-ci     Convert a Travis CI pipeline to a GitHub Actions workflow and output its yaml file.
 ```
 
-### Migrar um pipeline para o GitHub Actions
+### Migrar um pipeline para o GitHub Actions { #migrating-a-pipeline-to-github-actions }
 
 O subcomando `migrate` pode ser usado para converter um pipeline em seu GitHub Actions equivalente e, em seguida, criar uma solicitação de pull com o conteúdo.
 
@@ -180,19 +180,19 @@ Commands:
   travis-ci     Convert a Travis CI pipeline to a GitHub Actions workflow and open a pull request with the changes.
 ```
 
-## Como executar migrações de autoatendimento com IssueOps
+## Como executar migrações de autoatendimento com IssueOps { #performing-self-serve-migrations-using-issueops }
 
 Você pode usar GitHub Actions e GitHub Issues para executar comandos da CLI de GitHub Actions Importer. Isso permite que você migre seus fluxos de trabalho de CI/CD sem instalar software em seu computador local. Essa abordagem é especialmente útil para organizações que desejam habilitar migrações de autoatendimento para GitHub Actions. Após a configuração do IssueOps, os usuários poderão abrir um issue com o modelo relevante para migrar pipelines para GitHub Actions.
 
 Para obter mais informações sobre como configurar migrações de autoatendimento com IssueOps, confira o repositório de modelos [`actions/importer-issue-ops`](https://github.com/actions/importer-issue-ops).
 
-## Uso do repositório de laboratórios do GitHub Actions Importer
+## Uso do repositório de laboratórios do GitHub Actions Importer { #using-the-github-actions-importer-labs-repository }
 
 O repositório de laboratórios do GitHub Actions Importer contém roteiros de aprendizagem específicos da plataforma que ensinam como usar o GitHub Actions Importer e abordar migrações para GitHub Actions. Você pode usar esse repositório para saber como usar GitHub Actions Importer para planejar, prever e automatizar sua migração para GitHub Actions.
 
 Para saber mais, consulte o [repositório de labs GitHub Actions Importer](https://github.com/actions/importer-labs/tree/main#readme).
 
-## Aviso legal
+## Aviso legal { #legal-notice }
 
 Partes foram adaptadas do https://github.com/github/gh-actions-importer/ de acordo com a licença MIT:
 

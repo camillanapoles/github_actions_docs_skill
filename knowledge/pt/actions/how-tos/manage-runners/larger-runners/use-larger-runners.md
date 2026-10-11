@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Manage runners / Larger runners
 ---
 
-# Como executar trabalhos em executores maiores
+# Como executar trabalhos em executores maiores { #running-jobs-on-larger-runners }
 
 _Identifique os executor avançados disponíveis e, em seguida, direcione os trabalhos para os executores corretos usando grupos de executores e rótulos de fluxo de trabalho._
 
-## Identificando os executores disponíveis para um repositório
+## Identificando os executores disponíveis para um repositório { #identifying-available-runners-for-a-repository }
 
 Se você tiver `repo: write` acesso a um repositório, poderá exibir uma lista dos executores disponíveis para o repositório.
 
@@ -31,13 +31,13 @@ Se você tiver `repo: write` acesso a um repositório, poderá exibir uma lista 
 
     Para obter mais informações, consulte [Gerenciar executores maiores](manage-larger-runners.md) e [Adicionar executores auto-hospedados](../self-hosted-runners/add-runners.md).
 
-## Direcionando corredores maiores em um fluxo de trabalho
+## Direcionando corredores maiores em um fluxo de trabalho { #targeting-larger-runners-in-a-workflow }
 
 Depois de identificar os executor avançados que deseja usar, você pode direcioná-los em seu fluxo de trabalho com grupos de executores, rótulos de fluxo de trabalho ou ambos. Use grupos de executores para rotear trabalhos para um conjunto de executores, rótulos de fluxo de trabalho para executores de destino com um rótulo específico ou ambos quando um trabalho deve corresponder às duas condições.
 
 Se um administrador tiver desativado os executores padrão hospedados em GitHub, você poderá usar apenas grupos de executores.
 
-### Segmentação por grupo de runners
+### Segmentação por grupo de runners { #targeting-by-runner-group }
 
 Faça referência ao nome do grupo de runners no seu fluxo de trabalho. Use isto quando quiser encaminhar uma tarefa para qualquer executor disponível de um grupo específico.
 
@@ -94,7 +94,7 @@ jobs:
         run: swift test
 ```
 
-### Direcionamento por rótulo de fluxo de trabalho
+### Direcionamento por rótulo de fluxo de trabalho { #targeting-by-workflow-label }
 
 Faça referência a um rótulo de fluxo de trabalho em seu fluxo de trabalho quando quiser rotear um trabalho para os executores que compartilham um rótulo específico.
 
@@ -154,7 +154,7 @@ jobs:
         run: swift test
 ```
 
-### Usar rótulos e grupos para controlar onde os trabalhos são executados
+### Usar rótulos e grupos para controlar onde os trabalhos são executados { #using-labels-and-groups-to-control-where-jobs-are-run }
 
 Use tanto rótulos quanto grupos quando um trabalho precisar ser executado somente em runners de um grupo específico que também tenham um rótulo específico. O executor deve atender a ambos os requisitos para estar apto a executar a tarefa.
 
@@ -218,7 +218,7 @@ jobs:
         run: swift test
 ```
 
-## Leitura adicional
+## Leitura adicional { #further-reading }
 
 Para obter detalhes de sintaxe da `runs-on` chave, consulte [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idruns-on).
 

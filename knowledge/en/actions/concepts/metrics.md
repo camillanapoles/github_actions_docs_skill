@@ -12,7 +12,7 @@ section: Concepts
 
 _Learn about the GitHub Actions metrics available for your organizations and repositories._
 
-## About GitHub Actions metrics
+## About GitHub Actions metrics { #about-github-actions-metrics-1 }
 
 GitHub Actions metrics provide insights into how your workflows and jobs are performing at the organization and repository levels. There are two types of metrics to help you analyze different aspects of your workflows:
 * **GitHub Actions usage metrics:** Usage metrics help you track how many minutes your workflows and jobs consume. You can use this data to understand the cost of running Actions and ensure you're staying within your plan limits. This is especially useful for identifying high-usage workflows or repositories.

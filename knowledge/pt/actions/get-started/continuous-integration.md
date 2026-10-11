@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Get started
 ---
 
-# Integração contínua
+# Integração contínua { #continuous-integration }
 
 _Você pode criar fluxos de trabalho personalizados de integração contínua (CI) diretamente no seu repositório GitHub com GitHub Actions._
 
-## Sobre integração contínua
+## Sobre integração contínua { #about-continuous-integration }
 
 A integração contínua (CI, Continuous Integration) é uma prática de software que exige commits frequentes de códigos para um repositório compartilhado. Fazer commits de códigos com frequência detecta erros com mais antecedência e reduz a quantidade de código necessária para depuração quando os desenvolvedores chegam à origem de um erro. As atualizações frequentes de código também facilitam a fusão de alterações entre os integrantes de uma equipe de desenvolvimento de software. Esta é uma ótima notícia para os desenvolvedores, que podem passar mais tempo na escrita de código e se preocupar menos com erros de depuração ou conflitos de mesclagem.
 
@@ -22,7 +22,7 @@ Ao fazer commit do código no repositório, você pode compilar e testar o códi
 
 Para compilar e testar seu código, é necessário usar um servidor. Você pode criar e testar atualizações no local antes de fazer push do código para um repositório, ou pode usar um servidor de CI que verifica os novos commits de código em um repositório.
 
-## Sobre a integração contínua usando GitHub Actions
+## Sobre a integração contínua usando GitHub Actions { #about-continuous-integration-using-github-actions }
 
 A CI usando GitHub Actions oferece fluxos de trabalho que podem compilar o código no seu repositório e executar seus testes. Os fluxos de trabalho podem ser executados em GitHubmáquinas virtuais hospedadas ou em máquinas que você mesmo hospeda. Para saber mais, confira [Executores hospedados no GitHub](../concepts/runners/github-hosted-runners.md) e [Executores auto-hospedados](../concepts/runners/self-hosted-runners.md).
 
@@ -36,6 +36,6 @@ Além de ajudá-lo a configurar fluxos de trabalho de CI para seu projeto, você
 
 Para ver uma definição de termos comuns, confira [Noções básicas sobre GitHub Actions](understand-github-actions.md).
 
-## Próximas etapas
+## Próximas etapas { #next-steps }
 
 GitHub oferece modelos de fluxo de trabalho de CI para uma variedade de linguagens e estruturas. Para obter tutoriais sobre como configurar a integração contínua com esses modelos, consulte [Criar e testar seu código](../tutorials/build-and-test-code.md).

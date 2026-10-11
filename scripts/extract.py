@@ -317,11 +317,11 @@ INLINE_HTML_RULES: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"</?\s*(span|small|sub|sup|div|p|code|em|strong|b|i|a|kbd|font|u|mark|abbr|tt|var|pre)\b[^>]*>", re.I), ""),
 ]
 BR_TOKEN = "\x00MDBR\x00"
-ESCAPED_ALERT_RE = re.compile(r"\\\[!(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\]", re.I)
+ESCAPED_ALERT_RE = re.compile(r"\\\[!\s*(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\s*\\?\]", re.I)
 LIQUID_RE = re.compile(r"\{%-?\s*[a-zA-Z_]")
 NEEDS_PANDOC_RE = re.compile(r"<\s*(table|ul|ol|dl|details|thead|tbody|tr|td|th|li)\b", re.I)
 STRIP_TAG_RE = re.compile(r"</?\s*[a-zA-Z][^>]*>")
-ALERT_RE = re.compile(r"^>\s*\\?\[!\s*(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\s*\]\\?\s*$", re.I)
+ALERT_RE = re.compile(r"^>\s*\\?\[!\s*(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\s*\\?\]\\?\s*$", re.I)
 ALERT_KIND = {"note": "note", "tip": "tip", "important": "important",
               "warning": "warning", "caution": "warning"}
 
@@ -849,7 +849,20 @@ REMOVE_CLASS_RE = re.compile(
 )
 
 
+def _alive(el: Any) -> bool:
+    """False se o elemento (ou um ancestral) já foi decomposto.
+
+    O bs4 4.15 zera os atributos internos no decompose(); iterar uma lista
+    pré-coletada e acessar `.get()` de um elemento morto levanta
+    `AttributeError: 'NoneType' object has no attribute 'get'`.
+    """
+    return (el is not None and not getattr(el, "decomposed", False)
+            and getattr(el, "attrs", None) is not None)
+
+
 def absolutize_href(el: Any, base_url: str) -> None:
+    if not _alive(el):
+        return
     href = el.get("href")
     if isinstance(href, str) and href and not href.startswith(("mailto:", "tel:", "javascript:")):
         el["href"] = urllib.parse.urljoin(base_url, href)
@@ -862,9 +875,13 @@ def clean_fragment(root: Any, base_url: str = "") -> Any:
     """Remove navegação/ruído e normaliza blocos de código e notas."""
     for tag_name in REMOVE_TAGS:
         for el in root.find_all(tag_name):
+            if not _alive(el):  # ancestral já decomposto
+                continue
             el.decompose()
 
     for el in list(root.find_all(True)):
+        if not _alive(el):  # ancestral já decomposto
+            continue
         classes = " ".join(el.get("class") or [])
         el_id = el.get("id") or ""
         if REMOVE_CLASS_RE.search(classes) or REMOVE_CLASS_RE.search(el_id):
@@ -877,6 +894,8 @@ def clean_fragment(root: Any, base_url: str = "") -> Any:
 
     # "Neste artigo" que sobreviveu como heading + lista de links
     for h in root.find_all(re.compile(r"^h[2-6]$")):
+        if not _alive(h):  # ancestral já decomposto
+            continue
         if h.get_text(strip=True).lower().strip(":") in {"neste artigo", "in this article", "nesta página", "on this page"}:
             nxt = h.find_next_sibling()
             h.decompose()
@@ -885,6 +904,8 @@ def clean_fragment(root: Any, base_url: str = "") -> Any:
 
     # Âncoras de heading (<a class="heading-link"> / href="#...")
     for h in root.find_all(re.compile(r"^h[1-6]$")):
+        if not _alive(h):  # ancestral já decomposto
+            continue
         for a in h.find_all("a"):
             href = a.get("href") or ""
             if str(href).startswith("#") or not a.get_text(strip=True):
@@ -892,6 +913,8 @@ def clean_fragment(root: Any, base_url: str = "") -> Any:
 
     # Blocos de código: GitHub usa data-snippet-clipboard-copy (texto exato)
     for div in root.find_all("div", attrs={"data-snippet-clipboard-copy": True}):
+        if not _alive(div):  # ancestral já decomposto
+            continue
         code_text = div["data-snippet-clipboard-copy"]
         lang = ""
         inner = div.find("div", class_=re.compile(r"highlight-(\w+)"))
@@ -911,6 +934,8 @@ def clean_fragment(root: Any, base_url: str = "") -> Any:
 
     # Blocos highlight sem clipboard-copy
     for div in root.find_all("div", class_=re.compile(r"highlight-[\w+-]+")):
+        if not _alive(div):  # ancestral já decomposto
+            continue
         classes = " ".join(div.get("class") or [])
         m = re.search(r"highlight-([\w+-]+)", classes)
         lang = m.group(1) if m else ""
@@ -929,6 +954,8 @@ def clean_fragment(root: Any, base_url: str = "") -> Any:
 
     # Notas/dicas/avisos → blockquote rotulado (vira admonição no pós-processamento)
     for div in root.find_all("div", class_=re.compile(r"^(note|tip|warning|caution|important)$")):
+        if not _alive(div):  # ancestral já decomposto
+            continue
         kind = (div.get("class") or ["note"])[0]
         label = {"note": "Nota", "tip": "Dica", "warning": "Aviso", "caution": "Atenção", "important": "Importante"}.get(kind, "Nota")
         for t in div.find_all(class_=re.compile(r"title")):
@@ -940,14 +967,20 @@ def clean_fragment(root: Any, base_url: str = "") -> Any:
         p.append(strong)
         bq.append(p)
         for child in list(div.children):
+            if not _alive(child):  # ancestral já decomposto
+                continue
             bq.append(child.extract() if hasattr(child, "extract") else child)
         div.replace_with(bq)
 
     # Links absolutos
     if base_url:
         for a in root.find_all("a"):
+            if not _alive(a):  # ancestral já decomposto
+                continue
             absolutize_href(a, base_url)
         for img in root.find_all("img"):
+            if not _alive(img):  # ancestral já decomposto
+                continue
             absolutize_href(img, base_url)
 
     return root
@@ -1316,13 +1349,22 @@ def heal_with_html(res: PageResult, dest: Path, lang: str, scope: str) -> None:
             content += f"_{res.description}_\n\n"
         content += "\n".join(lines)
         html_score, html_counts = quality_score(content)
-        if html_score < api_score:
+        api_body = api_text.split("---", 2)[-1]
+        html_body = "\n".join(lines)
+        api_len, html_len = len(api_body.encode("utf-8")), len(html_body.encode("utf-8"))
+        api_h = len(re.findall(r"^#{1,6} ", api_body, re.M))
+        html_h = len(re.findall(r"^#{1,6} ", html_body, re.M))
+        preserva = html_len >= 0.6 * api_len and html_h >= max(1, int(0.6 * api_h))
+        if html_score < api_score and preserva:
             dest.write_text(content, encoding="utf-8")
             res.bytes = len(content.encode("utf-8"))
             res.selector = f"api+html-heal({selector})"
             res.warnings.append(f"curada via HTML: score api={api_score}{api_counts} → html={html_score}{html_counts}")
         else:
-            res.warnings.append(f"markdown da API com imperfeições (score={api_score}{api_counts}); HTML não melhorou ({html_score})")
+            motivo = "HTML não melhorou o score" if html_score >= api_score else \
+                f"HTML não preservou o conteúdo ({html_len}/{api_len} B, {html_h}/{api_h} headings)"
+            res.warnings.append(f"markdown da API com imperfeições (score={api_score}{api_counts}); "
+                                f"{motivo} (score html={html_score})")
     except Exception as exc:
         tb = [ln.strip() for ln in traceback.format_exc().splitlines() if "extract.py" in ln]
         frame = tb[-1] if tb else ""

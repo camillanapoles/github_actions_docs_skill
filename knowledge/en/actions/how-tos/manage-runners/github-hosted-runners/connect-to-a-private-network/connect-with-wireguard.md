@@ -12,7 +12,7 @@ section: How tos / Manage runners / Github hosted runners / Connect to a private
 
 _You can create an overlay network between your runner and a service in your private network._
 
-## Using WireGuard to create a network overlay
+## Using WireGuard to create a network overlay { #using-wireguard-to-create-a-network-overlay-1 }
 
 If you don't want to maintain separate infrastructure for an API Gateway, you can create an overlay network between your runner and a service in your private network, by running WireGuard in both places.
 

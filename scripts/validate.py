@@ -284,9 +284,10 @@ def check_pages(rep: Report, langs: list[str]) -> dict[str, int]:
             stats["pages"] += 1
             stats["bytes"] += len(text.encode("utf-8"))
 
-            # 2. frontmatter
+            # 2. frontmatter (páginas geradas pelo build_site não são capturas)
+            generated = bool(fm.get("generated"))
             missing = [k for k in REQUIRED_FRONTMATTER if not fm.get(k)]
-            if missing:
+            if missing and not generated:
                 problems["frontmatter"].append(f"{rel}: faltam {missing}")
 
             # 3. estrutura
@@ -324,13 +325,13 @@ def check_pages(rep: Report, langs: list[str]) -> dict[str, int]:
                 if "AUTOTITLE" in line:
                     problems["autotitle"].append(f"{rel}:{lineno}")
                 low = line.strip().lower()
-                if low and any(noise in low for noise in UI_NOISE_PATTERNS) and len(low) < 60:
+                if not generated and low and any(noise in low for noise in UI_NOISE_PATTERNS) and len(low) < 60:
                     problems["noise"].append(f"{rel}:{lineno}: {line.strip()[:70]}")
             if fence_open:
                 problems["fence"].append(f"{rel}: cerca de código não fechada")
             if h1_count != 1:
                 problems["h1"].append(f"{rel}: {h1_count} H1 (esperado 1)")
-            if len(text.encode("utf-8")) < 400:
+            if len(text.encode("utf-8")) < 400 and not generated:
                 problems["small"].append(f"{rel}: {len(text.encode('utf-8'))} bytes")
             stats["headings"] += headings
             stats["code_blocks"] += code_blocks
