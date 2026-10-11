@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/runners/larger-runners
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Runners
 ---
 
 # Referência de executores avançados
@@ -21,7 +21,7 @@ Você pode escolher entre várias especificações para executores avançados.
 ### Especificações para geral executores avançados
 
 | CPU | Memória (RAM) | Armazenamento (SSD) | Arquitetura | OS (sistema operacional) |
-| --- | ------------- | ------------------- | ----------- | ------------------------ |
+|---|-------------|-------------------|-----------|------------------------|
 | 5   | 14 GB         | 14 GB               | arm64 (M2)  | macOS                    |
 | 12  | 30 GB         | 14 GB               | x64 (Intel) | macOS                    |
 | 2   | 8 GB          | 75 GB               | X64, ARM64  | Ubuntu                   |
@@ -33,12 +33,12 @@ Você pode escolher entre várias especificações para executores avançados.
 | 64  | 256 GB        | 2.040 GB            | x64         | Ubuntu, Windows          |
 | 96  | 384 GB        | 2.040 GB            | x64         | Ubuntu, Windows          |
 
-> \[!NOTE] O executor de 4 vCPUs do Windows só funciona com a imagem base da área de trabalho do Windows 11 ou do Windows Server 2025.
+> [!NOTE] O executor de 4 vCPUs do Windows só funciona com a imagem base da área de trabalho do Windows 11 ou do Windows Server 2025.
 
 ### Especificações para GPU executores avançados
 
 | CPU | GPU | Placa de GPU | Memória (RAM) | Memória da GPU (VRAM) | Armazenamento (SSD) | OS (sistema operacional) |
-| --- | --- | ------------ | ------------- | --------------------- | ------------------- | ------------------------ |
+|---|---|------------|-------------|---------------------|-------------------|------------------------|
 | 4   | 1   | Tesla T4     | 28 GB         | 16 GB                 | 176 GB              | Ubuntu, Windows          |
 
 ## Imagens do executor
@@ -58,12 +58,12 @@ GitHubImagens próprias:\*\* essas imagens são mantidas por GitHub e estão dis
 
 Os computadores a seguir estão disponíveis para macOS executores avançados. Quando você cria um macOS executor avançado, o nome do executor também está disponível como um rótulo de fluxo de trabalho que você pode usar com `runs-on`.
 
-| Tamanho do executor                                                                                                                                                                                 | Arquitetura | Processador (CPU)                  | Memória (RAM) | Armazenamento (SSD) | Etiqueta de fluxo de trabalho |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------- | ------------- | ------------------- | ----------------------------- |
-| Grande                                                                                                                                                                                              | Intel       | 12                                 | 30 GB         | 14 GB               |                               |
-| <code>macos-latest-large</code>, <code>macos-14-large</code>( <code>macos-15-large</code> mais recente), <code>macos-26-large</code>                                                                |             |                                    |               |                     |                               |
-| XLarge                                                                                                                                                                                              | arm64 (M2)  | 5 (+ 8 aceleração de hardware GPU) | 14 GB         | 14 GB               |                               |
-| <code>macos-latest-xlarge</code>, <code>macos-14-xlarge</code>, <code>macos-15-xlarge</code> (mais recente), <code>macos-26-xlarge</code>, <code>xcode-27-xlarge</code> (Versão preliminar pública) |             |                                    |               |                     |                               |
+| Tamanho do executor | Arquitetura | Processador (CPU) | Memória (RAM) | Armazenamento (SSD) | Etiqueta de fluxo de trabalho |
+| --- | --- | --- | --- | --- | --- |
+| Grande | Intel | 12 | 30 GB | 14 GB |  |
+| `macos-latest-large`, `macos-14-large`( `macos-15-large` mais recente), `macos-26-large` |  |  |  |  |  |
+| XLarge | arm64 (M2) | 5 (+ 8 aceleração de hardware GPU) | 14 GB | 14 GB |  |
+| `macos-latest-xlarge`, `macos-14-xlarge`, `macos-15-xlarge` (mais recente), `macos-26-xlarge`, `xcode-27-xlarge` (Versão preliminar pública) |  |  |  |  |  |
 
 ## Limitações para macOS executores avançados
 
@@ -92,8 +92,8 @@ Você pode usar até 10 executor avançado pools com intervalos de endereços IP
 
 Se você quiser usar mais de 10 pools de executores maiores com intervalos de endereços IP estáticos, entre em contato com nos por meio do portal .
 
-> \[!NOTE]
-> Se os executores não forem usados por mais de 90 dias, os respectivos intervalos de endereços IP serão removidos automaticamente e não poderão ser recuperados.
+!!! note
+    Se os executores não forem usados por mais de 90 dias, os respectivos intervalos de endereços IP serão removidos automaticamente e não poderão ser recuperados.
 
 ## Requisitos de comunicação para executor avançados
 
@@ -101,8 +101,8 @@ Um(a) executor avançado deve estabelecer conexões com endpoints de propriedade
 
 Para garantir a comunicação adequada para executor avançados entre redes dentro de sua configuração, verifique se as comunicações a seguir são permitidas.
 
-> \[!NOTE]
-> Alguns dos domínios listados são configurados por meio de registros `CNAME`. Alguns firewalls podem exigir que você adicione regras de maneira recursiva para todos os registros `CNAME`. Observe que os registros `CNAME` poderão mudar no futuro e que apenas os domínios listados permanecerão constantes.
+!!! note
+    Alguns dos domínios listados são configurados por meio de registros `CNAME`. Alguns firewalls podem exigir que você adicione regras de maneira recursiva para todos os registros `CNAME`. Observe que os registros `CNAME` poderão mudar no futuro e que apenas os domínios listados permanecerão constantes.
 
 **Necessário para operações essenciais:**
 

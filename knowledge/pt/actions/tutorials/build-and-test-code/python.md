@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/build-and-test-code/python
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Build and test code
 ---
 
 # Compilar e testar Python
@@ -37,7 +37,7 @@ GitHub fornece um modelo de fluxo de trabalho para Python que deve funcionar se 
 
 1. Em GitHub, acesse a página principal do repositório.
 
-2. No nome do repositório, clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Actions**.
+2. No nome do repositório, clique em **(play) Actions**.
 
    ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
 
@@ -61,15 +61,11 @@ Usar a ação `setup-python` é a forma recomendada de usar Python com GitHub Ac
 
 A tabela abaixo descreve a localização do cache de ferramentas em cada runner hospedado em GitHub.
 
-<div class="ghd-tool rowheaders">
-
 |                                      | Ubuntu                          | Mac                                      | Windows                               |
-| ------------------------------------ | ------------------------------- | ---------------------------------------- | ------------------------------------- |
+|------------------------------------|-------------------------------|----------------------------------------|-------------------------------------|
 | **Diretório de cache da ferramenta** | `/opt/hostedtoolcache/*`        | `/Users/runner/hostedtoolcache/*`        | `C:\hostedtoolcache\windows\*`        |
 | **Cache de Ferramentas do Python**   | `/opt/hostedtoolcache/Python/*` | `/Users/runner/hostedtoolcache/Python/*` | `C:\hostedtoolcache\windows\Python\*` |
 | **Cache da ferramenta do PyPy**      | `/opt/hostedtoolcache/PyPy/*`   | `/Users/runner/hostedtoolcache/PyPy/*`   | `C:\hostedtoolcache\windows\PyPy\*`   |
-
-</div>
 
 Se você estiver usando um executor auto-hospedado, poderá configurar o executor para usar a ação `setup-python` a fim de gerenciar suas dependências. Para obter mais informações, confira [Como usar o setup-python com um executor auto-hospedado](https://github.com/actions/setup-python#using-setup-python-with-a-self-hosted-runner) no README de `setup-python`.
 
@@ -162,11 +158,11 @@ jobs:
 
 É recomendável usar `setup-python` para configurar a versão de Python usada em seus fluxos de trabalho, pois ajuda a tornar suas dependências explícitas. Se você não usar `setup-python`, a versão padrão de Python definida em `PATH` será usada em qualquer shell quando você chamar `python`. A versão padrão do Python varia entre os executores hospedados em GitHub, o que pode causar alterações inesperadas ou fazer com que seja usada uma versão mais antiga do que a esperada.
 
-| Executor hospedado emGitHub | Descrição                                                                                                                                                                                                                                                                                                                                           |
-| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Ubuntu                      | Os executores do Ubuntu têm várias versões do sistema Python instaladas em `/usr/bin/python` e `/usr/bin/python3`. As versões Python que vêm empacotadas com o Ubuntu são além das versões que GitHub instala no cache de ferramentas.                                                                                                              |
-| Windows                     | Excluindo as versões de Python que estão no cache das ferramentas, o Windows não vem com uma versão equivalente do Python do sistema. Para manter um comportamento consistente com outros executores e permitir que o Python seja usado imediatamente, sem a ação `setup-python`, GitHub adiciona algumas versões do cache de ferramentas a `PATH`. |
-| macOS                       | Os executores do macOS têm mais de uma versão do sistema Python instalada, além das versões que fazem parte do cache de ferramentas. As versões Python do sistema estão localizadas no diretório `/usr/local/Cellar/python/*`.                                                                                                                      |
+| Executor hospedado emGitHub | Descrição |
+| --- | --- |
+| Ubuntu | Os executores do Ubuntu têm várias versões do sistema Python instaladas em `/usr/bin/python` e `/usr/bin/python3`. As versões Python que vêm empacotadas com o Ubuntu são além das versões que GitHub instala no cache de ferramentas. |
+| Windows | Excluindo as versões de Python que estão no cache das ferramentas, o Windows não vem com uma versão equivalente do Python do sistema. Para manter um comportamento consistente com outros executores e permitir que o Python seja usado imediatamente, sem a ação `setup-python`, GitHub adiciona algumas versões do cache de ferramentas a `PATH`. |
+| macOS | Os executores do macOS têm mais de uma versão do sistema Python instalada, além das versões que fazem parte do cache de ferramentas. As versões Python do sistema estão localizadas no diretório `/usr/local/Cellar/python/*`. |
 
 ## Instalar dependências
 
@@ -248,8 +244,8 @@ steps:
     pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
 ```
 
-> \[!TIP]
-> Este exemplo já produz um relatório de cobertura XML de Cobertura (`--cov-report=xml`). Para exibir os resultados de cobertura diretamente nas pull requests, faça o upload do relatório usando a ação `actions/upload-code-coverage`. Consulte [Configurando a cobertura de código para seu repositório](https://docs.github.com/pt/code-security/how-tos/maintain-quality-code/set-up-code-coverage).
+!!! tip
+    Este exemplo já produz um relatório de cobertura XML de Cobertura (`--cov-report=xml`). Para exibir os resultados de cobertura diretamente nas pull requests, faça o upload do relatório usando a ação `actions/upload-code-coverage`. Consulte [Configurando a cobertura de código para seu repositório](https://docs.github.com/pt/code-security/how-tos/maintain-quality-code/set-up-code-coverage).
 
 ### Usando o Ruff para fazer lint e/ou formatar código
 

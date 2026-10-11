@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/security/script-injections
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Security
 ---
 
 # Injeções de script
@@ -47,7 +47,7 @@ Este exemplo é vulnerável à injeção do script porque o comando `run` é exe
 
 Para injetar comandos neste fluxo de trabalho, o invasor pode criar uma solicitação de pull com o título `a"; ls $GITHUB_WORKSPACE"`:
 
-![Captura de tela do título de uma solicitação de pull no modo de edição. Um novo título foi inserido no campo: a"; ls $GITHUB\_WORKSPACE".](/assets/images/help/actions/example-script-injection-pr-title.png)
+![Captura de tela do título de uma solicitação de pull no modo de edição. Um novo título foi inserido no campo: a"; ls $GITHUB_WORKSPACE".](/assets/images/help/actions/example-script-injection-pr-title.png)
 
 Neste exemplo, o caractere `"` é usado para interromper a instrução `title="${{ github.event.pull_request.title }}"`, permitindo que o comando `ls` seja executado no runner. Você poderá ver a saída do comando `ls` no log:
 

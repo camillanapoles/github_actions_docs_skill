@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/security/secure-use
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Security
 ---
 
 # Referência de uso seguro
@@ -24,7 +24,7 @@ Como há várias maneiras de transformar o valor de um segredo, a ocultação au
 
 * **Princípio de privilégios mínimos**
   * Qualquer usuário com permissão de escrita no seu repositório tem acesso de leitura a todos os segredos configurados no repositório. Portanto, você deve garantir que as credenciais que estão sendo usadas nos fluxos de trabalho tenham os privilégios mínimos necessários.
-  * Ações podem usar o `GITHUB_TOKEN` acessando-o a partir do contexto `github.token`. Para saber mais, confira [Referência de contextos](../workflows-and-actions/contexts.md#github-context). Portanto, você deve verificar se o `GITHUB_TOKEN` recebeu as permissões mínimas necessárias. É uma boa prática de segurança definir a permissão padrão para o `GITHUB_TOKEN` como somente acesso de leitura no conteúdo do repositório. As permissões podem ser aumentadas, conforme necessário, para tarefas individuais dentro do arquivo do fluxo de trabalho. Para saber mais, confira [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token).
+  * Ações podem usar o `GITHUB_TOKEN` acessando-o a partir do contexto `github.token`. Para saber mais, confira [Referência de contextos](../workflows-and-actions/contexts.md#github-context). Portanto, você deve verificar se o `GITHUB_TOKEN` recebeu as permissões mínimas necessárias. É uma boa prática de segurança definir a permissão padrão para o `GITHUB_TOKEN` como somente acesso de leitura no conteúdo do repositório. As permissões podem ser aumentadas, conforme necessário, para tarefas individuais dentro do arquivo do fluxo de trabalho. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token).
 * **Mascarar dados confidenciais**
   * Dados confidenciais **nunca** devem ser armazenados como texto sem formatação em arquivos de fluxo de trabalho. Mascarar todas as informações confidenciais que não são um GitHub segredo usando `::add-mask::VALUE`. Isso faz com que o valor seja tratado como um segredo e ocultado dos logs. Para obter mais informações sobre como colocar máscara em dados, confira [Comandos de fluxo de trabalho para o GitHub Actions](../workflows-and-actions/workflow-commands.md#masking-a-value-in-a-log).
 * **Excluir e girar segredos expostos**
@@ -94,7 +94,7 @@ Para saber mais, confira [Análise de código](https://docs.github.com/pt/code-s
 
 #### Restringir permissões para tokens
 
-Para ajudar a mitigar o risco de um token exposto, considere restringir as permissões atribuídas. Para saber mais, confira [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token).
+Para ajudar a mitigar o risco de um token exposto, considere restringir as permissões atribuídas. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token).
 
 ## Mitigando os riscos do check-out de código não confiável
 
@@ -104,7 +104,7 @@ Para saber mais sobre esses gatilhos, como usá-los e os riscos associados, conf
 
 Para obter mais exemplos e orientações sobre os riscos do checkout de código não confiável, consulte [Prevenção de solicitações pwn](https://securitylab.github.com/research/github-actions-preventing-pwn-requests/) a partir de GitHub Security Lab e a documentação [Dangerous-Workflow](https://github.com/ossf/scorecard/blob/main/docs/checks.md#dangerous-workflow) do OpenSSF Scorecard.
 
-Para obter orientações detalhadas sobre como decidir se deseja usar `pull_request_target`, proteger esses fluxos de trabalho e recusar a `actions/checkout` proteção, consulte [Uso seguro de pull\_request\_target](securely-using-pull_request_target.md).
+Para obter orientações detalhadas sobre como decidir se deseja usar `pull_request_target`, proteger esses fluxos de trabalho e recusar a `actions/checkout` proteção, consulte [Uso seguro de pull_request_target](securely-using-pull_request_target.md).
 
 ### Boas práticas
 
@@ -160,8 +160,8 @@ Para saber mais, confira [Sobre os proprietários de código](https://docs.githu
 
 Se seus GitHub Actions fluxos de trabalho precisarem acessar recursos de um provedor de nuvem que dê suporte ao OpenID Connect (OIDC), você poderá configurar seus fluxos de trabalho para autenticar diretamente no provedor de nuvem. Isso permitirá que você pare de armazenar essas credenciais como segredos de longa duração e proporcione outros benefícios de segurança. Para saber mais, confira [OpenID Connect](../../concepts/security/openid-connect.md).
 
-> \[!NOTE]
-> O suporte para declarações personalizadas de OIDC não está disponível na AWS.
+!!! note
+    O suporte para declarações personalizadas de OIDC não está disponível na AWS.
 
 ### Usar Dependabot version updates para manter as ações atualizadas
 
@@ -223,8 +223,8 @@ Alguns clientes podem tentar mitigar parcialmente esses riscos implementando sis
 
 Para melhorar a segurança de registro do executor, você pode usar a API REST para criar executores JIT (just-in-time) efêmeros. Esses executores auto-hospedados executam no máximo um trabalho antes de serem removidos automaticamente do repositório, da organização ou da empresa. Para obter mais informações sobre como configurar executores JIT, confira [Pontos de extremidade da API REST para executores auto-hospedados](https://docs.github.com/pt/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization).
 
-> \[!NOTE]
-> A reutilização de hardware para hospedar executores JIT pode gerar o risco de exposição das informações do ambiente. Use a automação para garantir que o executor JIT use um ambiente limpo. Para saber mais, confira [Referência de executores auto-hospedados](../runners/self-hosted-runners.md#ephemeral-runners-for-autoscaling).
+!!! note
+    A reutilização de hardware para hospedar executores JIT pode gerar o risco de exposição das informações do ambiente. Use a automação para garantir que o executor JIT use um ambiente limpo. Para saber mais, confira [Referência de executores auto-hospedados](../runners/self-hosted-runners.md#ephemeral-runners-for-autoscaling).
 
 Assim que tiver o arquivo de configuração da resposta da API REST, você poderá passá-lo para o executor na inicialização.
 
@@ -256,7 +256,7 @@ Você pode usar o log de segurança para monitorar a atividade de sua conta de u
 
 Por exemplo, você pode usar o log de auditoria para acompanhar o evento `org.update_actions_secret`, que acompanha as alterações nos segredos da organização.
 
-![Captura de tela mostrando uma busca por "action:org.update\_actions\_secret" no log de auditoria de uma organização. Dois resultados são mostrados.](/assets/images/help/repository/audit-log-entries.png)
+![Captura de tela mostrando uma busca por "action:org.update_actions_secret" no log de auditoria de uma organização. Dois resultados são mostrados.](/assets/images/help/repository/audit-log-entries.png)
 
 Para obter a lista completa de eventos que você pode encontrar no log de auditoria de cada tipo de conta, confira os seguintes artigos:
 
@@ -292,8 +292,8 @@ Você pode usar Dependabot para monitorar as ações em seus fluxos de trabalho 
 Dependabot realiza uma verificação do ramo padrão dos repositórios nos quais está habilitado para detectar dependências inseguras.
 Dependabot gera Dependabot alerts quando um novo aviso é adicionado ao GitHub Advisory Database ou quando uma ação que você utiliza é atualizada.
 
-> \[!NOTE]
-> Dependabot só cria alertas para ações vulneráveis que usam controle de versão semântico e não criarão alertas para ações fixadas em valores SHA.
+!!! note
+    Dependabot só cria alertas para ações vulneráveis que usam controle de versão semântico e não criarão alertas para ações fixadas em valores SHA.
 
 Você pode habilitar Dependabot alerts para sua conta pessoal, para um repositório ou para uma organização. Para obter mais informações, consulte [Configurando alertas do Dependabot](https://docs.github.com/pt/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/configure-dependabot-alerts).
 
@@ -323,14 +323,13 @@ Os recursos a seguir podem atualizar automaticamente as ações em seus fluxos d
 * **Dependabot version updates** abra solicitações de pull para atualizar as ações para a versão mais recente quando uma nova versão for lançada.
 * **Dependabot security updates** abra solicitações de pull para atualizar ações com vulnerabilidades relatadas para a versão mínima corrigida.
 
-> \[!NOTE]
->
-> * Dependabot suporta apenas atualizações de GitHub Actions usando a sintaxe de repositório GitHub, como `actions/checkout@v6` ou `actions/checkout@<commit>` .
->   Dependabot ignorará ações ou fluxos de trabalho reutilizáveis referenciados localmente (por exemplo, `./.github/actions/foo.yml`).
-> * Dependabot atualiza a documentação de versão de GitHub Actions quando o comentário está na mesma linha, como `actions/checkout@<commit> #<tag or link>` ou `actions/checkout@<tag> #<tag or link>`.
-> * Se o commit que você usa não estiver associado a nenhuma tag, Dependabot atualizará a GitHub Actions para o commit mais recente (que pode ser diferente da release mais recente).
-> * Docker Hub e URLs GitHub PackagesContainer registry não têm suporte no momento. Por exemplo, não há suporte para referências a ações de contêiner do Docker usando a sintaxe `docker://`.
-> * Dependabot dá suporte a repositórios públicos e privados para GitHub Actions. Para opções de configuração de registro privado, consulte `git` em [Configurando o acesso a registros privados para Dependabot](https://docs.github.com/pt/code-security/how-tos/secure-your-supply-chain/manage-your-dependency-security/configure-access-to-private-registries#git).
+!!! note
+    * Dependabot suporta apenas atualizações de GitHub Actions usando a sintaxe de repositório GitHub, como `actions/checkout@v6` ou `actions/checkout@<commit>` .
+      Dependabot ignorará ações ou fluxos de trabalho reutilizáveis referenciados localmente (por exemplo, `./.github/actions/foo.yml`).
+    * Dependabot atualiza a documentação de versão de GitHub Actions quando o comentário está na mesma linha, como `actions/checkout@<commit> #<tag or link>` ou `actions/checkout@<tag> #<tag or link>`.
+    * Se o commit que você usa não estiver associado a nenhuma tag, Dependabot atualizará a GitHub Actions para o commit mais recente (que pode ser diferente da release mais recente).
+    * Docker Hub e URLs GitHub PackagesContainer registry não têm suporte no momento. Por exemplo, não há suporte para referências a ações de contêiner do Docker usando a sintaxe `docker://`.
+    * Dependabot dá suporte a repositórios públicos e privados para GitHub Actions. Para opções de configuração de registro privado, consulte `git` em [Configurando o acesso a registros privados para Dependabot](https://docs.github.com/pt/code-security/how-tos/secure-your-supply-chain/manage-your-dependency-security/configure-access-to-private-registries#git).
 
 Para obter informações sobre como configurar Dependabot version updates, consulte [Configuração de atualizações de versão do Dependabot](https://docs.github.com/pt/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/configure-version-updates).
 

@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage runners / Github hosted runners
 ---
 
 # Conectando-se a uma rede privada com executores hospedados pelo GitHub

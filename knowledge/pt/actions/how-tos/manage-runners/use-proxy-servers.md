@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/use-proxy-servers
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage runners
 ---
 
 # Utilizando servidores proxy com um executor
@@ -18,11 +18,11 @@ _Você pode configurar executores em ambientes isolados para usar um servidor pr
 
 Se o executor precisar se comunicar por meio de um servidor proxy, você poderá definir configurações de proxy usando variáveis de ambiente ou configurações no nível do sistema.
 
-| Variable      | Description                                                                                           | Example                                                                                     |
-| ------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `https_proxy` | URL de proxy para tráfego HTTPS. Você pode incluir a autenticação básica, se necessário.                        | `http://proxy.local`<br>`http://192.168.1.1:8080`<br>`http://username:password@proxy.local` |
-| `http_proxy`  | URL de proxy para tráfego HTTP. Você pode incluir a autenticação básica, se necessário.                         | `http://proxy.local`<br>`http://192.168.1.1:8080`<br>`http://username:password@proxy.local` |
-| `no_proxy`    | Uma lista separada por vírgulas de hosts ou endereços IP que devem ignorar o proxy. Alguns clientes só respeitam endereços IP quando as conexões são feitas diretamente com o IP em vez de um nome de host. | `example.com`<br>`example.com,myserver.local:443,example.org`                               |
+| Variable | Description | Example |
+| --- | --- | --- |
+| `https_proxy` | URL de proxy para tráfego HTTPS. Você pode incluir a autenticação básica, se necessário. | `http://proxy.local` `http://192.168.1.1:8080` `http://username:password@proxy.local` |
+| `http_proxy` | URL de proxy para tráfego HTTP. Você pode incluir a autenticação básica, se necessário. | `http://proxy.local` `http://192.168.1.1:8080` `http://username:password@proxy.local` |
+| `no_proxy` | Uma lista separada por vírgulas de hosts ou endereços IP que devem ignorar o proxy. Alguns clientes só respeitam endereços IP quando as conexões são feitas diretamente com o IP em vez de um nome de host. | `example.com` `example.com,myserver.local:443,example.org` |
 
 As variáveis de ambiente de proxy são lidas quando o aplicativo executor é iniciado, portanto, você deve definir as variáveis de ambiente antes de configurar ou iniciar o aplicativo executor. Se a configuração do proxy for alterada, você deverá reiniciar o aplicativo executor.
 
@@ -30,14 +30,14 @@ Em computadores Windows, os nomes das variáveis de ambiente proxy não diferenc
 
 A conexão entre executores auto-hospedados e GitHub ocorre em HTTPS (porta 443).
 
-> [!WARNING]
-> Os executores auto-hospedados não oferecem suporte ao uso de endereços IP e intervalos CIDR na variável de ambiente `no_proxy`. Se sua instância de GitHub Enterprise Server usar um endereço IP e você configurar o `no_proxy` para contornar o proxy desse endereço, o runner ainda assim falhará ao tentar se conectar.
-> Se sua instância GitHub Enterprise Server for acessada usando um endereço IP, e a conexão precisar ignorar o proxy, o executor não conseguirá se conectar, mesmo que esse endereço IP esteja listado em `no_proxy`.
+!!! warning
+    Os executores auto-hospedados não oferecem suporte ao uso de endereços IP e intervalos CIDR na variável de ambiente `no_proxy`. Se sua instância de GitHub Enterprise Server usar um endereço IP e você configurar o `no_proxy` para contornar o proxy desse endereço, o runner ainda assim falhará ao tentar se conectar.
+    Se sua instância GitHub Enterprise Server for acessada usando um endereço IP, e a conexão precisar ignorar o proxy, o executor não conseguirá se conectar, mesmo que esse endereço IP esteja listado em `no_proxy`.
 
 ### Configurações de exemplo
 
-> [!NOTE]
-> Para evitar problemas, é uma boa prática tratar as variáveis de ambiente como com diferenciação de maiúsculas e minúsculas, independentemente do comportamento do sistema operacional e do shell que você está usando.
+!!! note
+    Para evitar problemas, é uma boa prática tratar as variáveis de ambiente como com diferenciação de maiúsculas e minúsculas, independentemente do comportamento do sistema operacional e do shell que você está usando.
 
 #### Linux e macOS
 
@@ -94,8 +94,8 @@ Os dois IPs do Azure são:
 
 ## Usar um arquivo .env para definir a configuração de proxy
 
-> [!NOTE]
-> O uso de um `.env` arquivo para definir a configuração de proxy não pode ser feito em um executor hospedado pelo GitHub.
+!!! note
+    O uso de um `.env` arquivo para definir a configuração de proxy não pode ser feito em um executor hospedado pelo GitHub.
 
 Em executores auto-hospedados, você pode definir as configurações de proxy adicionando as variáveis a um `.env` arquivo no diretório do aplicativo executor auto-hospedado (o diretório em que você baixou e desempacotou o software executor). Essa abordagem é útil quando o executor está configurado para ser executado como um serviço em uma conta do sistema. Quando o runner inicia, ele lê as variáveis definidas em `.env` para a configuração do proxy.
 

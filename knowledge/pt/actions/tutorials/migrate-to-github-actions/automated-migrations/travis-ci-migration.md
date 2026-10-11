@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
 # Migrando do Travis CI com GitHub Actions Importer
@@ -26,7 +26,8 @@ As instruções a seguir orientarão você na configuração do ambiente a ser u
   * O Docker está [instalado](https://docs.docker.com/get-docker/) e em execução.
 
   * A [CLI do GitHub](https://cli.github.com) está instalada.
-  > \[!NOTE]
+!!! note
+
   > A CLI e o contêiner do GitHub Actions Importer não precisam ser instalados no mesmo servidor que a plataforma de CI.
 
 ### Limitações
@@ -95,12 +96,12 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
 
    O comando `configure` solicitará que você insira as seguintes informações:
 
-   * Em "Quais provedores de CI você está configurando?", use as teclas de direção para selecionar `Travis CI`, pressione <kbd>Espaço</kbd> para fazer a seleção e pressione <kbd>Enter</kbd>.
-   * Para "Personal access token para GitHub", insira o valor do personal access token (classic) que você criou anteriormente e pressione <kbd>Enter</kbd>.
-   * Para "URL base da instância do GitHub", insira pressione <kbd>Enter</kbd> para aceitar o valor padrão (`https://github.com`).
-   * Para "Personal access token para Travis CI", insira o valor do token de acesso da API de CI travis que você criou anteriormente e pressione <kbd>Enter</kbd>.
-   * Em "URL base da instância do Travis CI", insira a URL da instância do Travis CI e pressione <kbd>ENTER</kbd>.
-   * Em "Nome da organização do Travis CI", insira o nome da sua organização do Travis CI e pressione <kbd>ENTER</kbd>.
+   * Em "Quais provedores de CI você está configurando?", use as teclas de direção para selecionar `Travis CI`, pressione `Espaço` para fazer a seleção e pressione `Enter`.
+   * Para "Personal access token para GitHub", insira o valor do personal access token (classic) que você criou anteriormente e pressione `Enter`.
+   * Para "URL base da instância do GitHub", insira pressione `Enter` para aceitar o valor padrão (`https://github.com`).
+   * Para "Personal access token para Travis CI", insira o valor do token de acesso da API de CI travis que você criou anteriormente e pressione `Enter`.
+   * Em "URL base da instância do Travis CI", insira a URL da instância do Travis CI e pressione `ENTER`.
+   * Em "Nome da organização do Travis CI", insira o nome da sua organização do Travis CI e pressione `ENTER`.
 
    Um exemplo da saída do comando `configure` é mostrado abaixo.
 
@@ -405,7 +406,7 @@ A tabela a seguir mostra os tipos de propriedades que GitHub Actions Importer po
 | Travis CI                                              | GitHub Actions                                                                                                           |          Status |
 | :----------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- | --------------: |
 | ramificações                                           | <ul><li>`on.<push>.<branches>`</li>                                                                                      |     Com suporte |
-| build\_pull\_requests (construir solicitações de pull) | <ul><li>`on.<pull_request>`</li>                                                                                         |     Com suporte |
+| build_pull_requests (construir solicitações de pull) | <ul><li>`on.<pull_request>`</li>                                                                                         |     Com suporte |
 | env                                                    | <ul><li>`env`</li> <li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li>                                        |     Com suporte |
 | if                                                     | <ul><li>`jobs.<job_id>.if`</li></ul>                                                                                     |     Com suporte |
 | cargo                                                  | <ul><li>`jobs.<job_id>`</li><li>`jobs.<job_id>.name`</li></ul>                                                           |     Com suporte |
@@ -415,7 +416,7 @@ A tabela a seguir mostra os tipos de propriedades que GitHub Actions Importer po
 | fases                                                  | <ul><li>`jobs`</li></ul>                                                                                                 |     Com suporte |
 | env                                                    | <ul><li>`on`</li>                                                                                                        | Suporte parcial |
 | ramificações                                           | <ul><li>`on.<push>.<tags>`</li><li>`on.<push>.paths`</li>                                                                |     Sem suporte |
-| build\_pull\_requests (construir solicitações de pull) | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.<tags>`</li><li>`on.<pull_request>.paths`</li>         |     Sem suporte |
+| build_pull_requests (construir solicitações de pull) | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.<tags>`</li><li>`on.<pull_request>.paths`</li>         |     Sem suporte |
 | gatilhos cron                                          | <ul><li>`on.schedule`</li><li>`on.workflow_run`</li></ul>                                                                |     Sem suporte |
 | env                                                    | <ul><li>`jobs.<job_id>.timeout-minutes`</li><li>`on.<event_name>.types`</li>                                             |     Sem suporte |
 | cargo                                                  | <ul><li>`jobs.<job_id>.container`</li>                                                                                   |     Sem suporte |

@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/workflows-and-actions/dependency-caching
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Workflows and actions
 ---
 
 # Cache de dependência
@@ -21,8 +21,8 @@ As execuções do fluxo de trabalho geralmente reutilizam as mesmas saídas ou d
 Os trabalhos em GitHubexecutores hospedados começam em uma imagem de executor limpo e devem baixar dependências sempre, causando maior utilização de rede, tempo de execução mais longo e aumento do custo.
 Para ajudar a acelerar o tempo necessário para recriar arquivos como dependências, GitHub você pode armazenar em cache arquivos usados com frequência em fluxos de trabalho.
 
-> \[!NOTE]
-> Ao usar executores auto-hospedados, os caches de execuções de fluxo de trabalho são armazenados no armazenamento em GitHubnuvem de propriedade. Uma solução de armazenamento de propriedade do cliente só está disponível com GitHub Enterprise Server.
+!!! note
+    Ao usar executores auto-hospedados, os caches de execuções de fluxo de trabalho são armazenados no armazenamento em GitHubnuvem de propriedade. Uma solução de armazenamento de propriedade do cliente só está disponível com GitHub Enterprise Server.
 
 ## Artefatos versus armazenamento em cache de dependência
 

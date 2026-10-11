@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference
 ---
 
 # Referência de fluxos de trabalho e ações

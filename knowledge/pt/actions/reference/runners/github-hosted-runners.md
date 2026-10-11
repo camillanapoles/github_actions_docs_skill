@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/runners/github-hosted-runners
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Runners
 ---
 
 # Referência de executores hospedados pelo GitHub
@@ -25,52 +25,48 @@ Veja as listas de agentes disponíveis:
 
 GitHubOs executores do Linux hospedados dão suporte à aceleração de hardware para ferramentas do SDK do Android, o que torna a execução de testes do Android muito mais rápida e consome menos minutos. Para obter mais informações sobre a aceleração de hardware do Android, confira [Configurar a aceleração de hardware para o Android Emulator](https://developer.android.com/studio/run/emulator-acceleration) na documentação Desenvolvedores do Android.
 
-> \[!NOTE]
-> As imagens do executor `-latest` são as imagens estáveis mais recentes fornecidas pelo GitHub, e podem não ser a versão mais recente do sistema operacional disponível junto ao fornecedor do sistema operacional.
+!!! note
+    As imagens do executor `-latest` são as imagens estáveis mais recentes fornecidas pelo GitHub, e podem não ser a versão mais recente do sistema operacional disponível junto ao fornecedor do sistema operacional.
 
-> \[!WARNING]
-> As imagens beta e preteridas são fornecidas “no estado em que se encontram”, “com todas as falhas” e “conforme disponível” e são excluídas do contrato de nível de serviço e da garantia. As imagens beta podem não ser cobertas pelo atendimento ao cliente.
+    [!WARNING]
+    As imagens beta e preteridas são fornecidas “no estado em que se encontram”, “com todas as falhas” e “conforme disponível” e são excluídas do contrato de nível de serviço e da garantia. As imagens beta podem não ser cobertas pelo atendimento ao cliente.
 
 ### Executores padrão hospedados GitHubpara repositórios públicos
 
 Para repositórios públicos, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados com as especificações associadas.
 Com exceção dos executores de CPU única, cada executor hospedado por GitHub é uma nova máquina virtual (VM) hospedada por GitHub. Processos de CPU única são hospedados em um contêiner em uma VM compartilhada—consulte [Referência de executores hospedados pelo GitHub](github-hosted-runners.md#single-cpu-runners). O uso dos executores hospedados padrão GitHubé gratuito e ilimitado em repositórios públicos.
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th scope="col">
-<b>Máquina virtual/contêiner</b></th>
-      <th scope="col">
-<b>Processador (CPU)</b></th>
-      <th scope="col">
-<b>Memória (RAM)</b></th>
-      <th scope="col">
-<b>Armazenamento (SSD)</b></th>
-      <th scope="col">
-<b>Arquitetura</b></th>
-      <th scope="col">
-<b>Rótulo do fluxo de trabalho</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-          <td>Linux</td>
-          <td>1</td>
-          <td>5 GB</td>
-          <td>14 GB</td>
-          <td> x64 </td>
-          <td>
-            <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md">ubuntu-slim</a></code>
-          </td>
-        </tr>
-    <tr>
-      <td>Linux</td>
-      <td>4</td>
-      <td>16 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
+**Máquina virtual/contêiner**
+
+**Processador (CPU)**
+
+**Memória (RAM)**
+
+**Armazenamento (SSD)**
+
+**Arquitetura**
+
+**Rótulo do fluxo de trabalho**
+
+Linux
+
+1
+
+5 GB
+
+14 GB
+
+x64
+            `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
+Linux
+
+4
+
+16 GB
+
+14 GB
+
+x64
 
 ```
     <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
@@ -127,49 +123,41 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
 </tr>
 ```
 
-  </tbody>
-
-</table>
-
 ### Executores hospedados padrão GitHubpara  privados
 
 Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a alocação de minutos gratuitos da sua GitHub conta e, posteriormente, são cobrados a taxas por minuto de uso. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th scope="col">
-<b>Máquina virtual</b></th>
-      <th scope="col">
-<b>Processador (CPU)</b></th>
-      <th scope="col">
-<b>Memória (RAM)</b></th>
-      <th scope="col">
-<b>Armazenamento (SSD)</b></th>
-      <th scope="col">
-<b>Arquitetura</b></th>
-      <th scope="col">
-<b>Rótulo do fluxo de trabalho</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-          <td>Linux</td>
-          <td>1</td>
-          <td>5 GB</td>
-          <td>14 GB</td>
-          <td> x64 </td>
-          <td>
-            <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md">ubuntu-slim</a></code>
-          </td>
-        </tr>
-    <tr>
-      <td>Linux</td>
-      <td>2</td>
-      <td>8 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
+**Máquina virtual**
+
+**Processador (CPU)**
+
+**Memória (RAM)**
+
+**Armazenamento (SSD)**
+
+**Arquitetura**
+
+**Rótulo do fluxo de trabalho**
+
+Linux
+
+1
+
+5 GB
+
+14 GB
+
+x64
+            `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
+Linux
+
+2
+
+8 GB
+
+14 GB
+
+x64
 
 ```
     <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
@@ -226,9 +214,6 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
 </tr>
 ```
 
-  </tbody>
-</table>
-
 Os registros do fluxo de trabalho listam o executor usado para rodar uma tarefa. Para saber mais, confira [Visualizar o histórico de execução do fluxo de trabalho](../../how-tos/monitor-workflows/view-workflow-run-history.md).
 
 ### Limitações dos executores macOS arm64
@@ -244,8 +229,8 @@ Executores de CPU única hospedados em GitHub estão disponíveis em ambos os re
 
 `ubuntu-slim` os executores executam fluxos de trabalho do Actions no Ubuntu Linux, dentro de um contêiner, em vez de uma instância de VM completa. Quando o trabalho começa, GitHub provisiona automaticamente um novo contêiner para esse trabalho. Todas as etapas no trabalho são executadas no contêiner, permitindo que as etapas nesse trabalho compartilhem informações usando o sistema de arquivos do runner. Quando o trabalho for concluído, o contêiner será desativado automaticamente. Cada contêiner fornece isolamento de nível 2 do hipervisor.
 
-> \[!NOTE]
-> O contêiner para agentes `ubuntu-slim` funciona no modo sem privilégios. Isso significa que não há suporte para algumas operações que exigem privilégios elevados, como montar sistemas de arquivos, usar o Docker-in-Docker ou acessar recursos de kernel de baixo nível.
+!!! note
+    O contêiner para agentes `ubuntu-slim` funciona no modo sem privilégios. Isso significa que não há suporte para algumas operações que exigem privilégios elevados, como montar sistemas de arquivos, usar o Docker-in-Docker ou acessar recursos de kernel de baixo nível.
 
 Um conjunto mínimo de ferramentas é instalado na imagem do agente `ubuntu-slim`, apropriado para tarefas leves. Para obter detalhes sobre qual software está instalado na `ubuntu-slim` imagem, consulte o [arquivo README](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md) no `actions/runner-images` repositório.
 
@@ -294,8 +279,8 @@ Um executor hospedado em GitHub deve estabelecer conexões com pontos de extremi
 
 Para garantir a comunicação adequada dos executores hospedados GitHub entre as redes na sua configuração, certifique-se de que as comunicações a seguir sejam permitidas.
 
-> \[!NOTE]
-> Alguns dos domínios listados são configurados por meio de registros `CNAME`. Alguns firewalls podem exigir que você adicione regras de maneira recursiva para todos os registros `CNAME`. Observe que os registros `CNAME` poderão mudar no futuro e que apenas os domínios listados permanecerão constantes.
+!!! note
+    Alguns dos domínios listados são configurados por meio de registros `CNAME`. Alguns firewalls podem exigir que você adicione regras de maneira recursiva para todos os registros `CNAME`. Observe que os registros `CNAME` poderão mudar no futuro e que apenas os domínios listados permanecerão constantes.
 
 **Necessário para operações essenciais:**
 
@@ -371,12 +356,12 @@ api.snapcraft.io
 
 GitHub executa ações e comandos de shell em diretórios específicos na máquina virtual. Os caminhos dos arquivos nas máquinas virtuais não são estáticos. Use as variáveis de ambiente fornecidas GitHub para construir caminhos de arquivo para os `home`diretórios e `workspace` os `workflow`diretórios.
 
-| Diretório                                                                                            | Variável de ambiente | Descrição                                                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `home`                                                                                               | `HOME`               | Contém dados relacionados ao usuário. Por exemplo, esse diretório pode conter credenciais de uma tentativa de login.                                             |
-| `workspace`                                                                                          | `GITHUB_WORKSPACE`   | A execução de ações e comandos do shell acontece neste diretório. Uma ação pode modificar o conteúdo desse diretório, que fica acessível nas ações subsequentes. |
-| `workflow/event.json`                                                                                | `GITHUB_EVENT_PATH`  | A carga `POST` do evento de webhook que disparou o fluxo de trabalho.                                                                                            |
-| GitHub reescreve isso sempre que uma ação é executada para isolar o conteúdo do arquivo entre ações. |                      |                                                                                                                                                                  |
+| Diretório | Variável de ambiente | Descrição |
+| --- | --- | --- |
+| `home` | `HOME` | Contém dados relacionados ao usuário. Por exemplo, esse diretório pode conter credenciais de uma tentativa de login. |
+| `workspace` | `GITHUB_WORKSPACE` | A execução de ações e comandos do shell acontece neste diretório. Uma ação pode modificar o conteúdo desse diretório, que fica acessível nas ações subsequentes. |
+| `workflow/event.json` | `GITHUB_EVENT_PATH` | A carga `POST` do evento de webhook que disparou o fluxo de trabalho. |
+| GitHub reescreve isso sempre que uma ação é executada para isolar o conteúdo do arquivo entre ações. |  |  |
 
 Para obter uma lista das variáveis de ambiente criadas GitHub para cada fluxo de trabalho, consulte [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md).
 

@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Write workflows / Choose what workflows do
 ---
 
 # Usando blocos de construção pré-gravados no seu fluxo de trabalho
@@ -19,11 +19,11 @@ _Você pode usar e personalizar ações escritas previamente para alimentar o fl
 Você pode pesquisar e navegar por ações diretamente no editor do fluxo de trabalho do seu repositório. Na barra lateral, você pode pesquisar uma ação específica, visualizar ações em destaque e pesquisar categorias em destaque. Você também pode exibir o número de estrelas que uma ação recebeu da GitHub comunidade.
 
 1. No seu repositório, pesquise o arquivo do fluxo de trabalho que você deseja editar.
-2. No canto superior direito da visualização do arquivo, para abrir o editor de fluxo de trabalho, clique em <svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-pencil" aria-label="Edit file" role="img"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z"></path></svg>.
+2. No canto superior direito da visualização do arquivo, para abrir o editor de fluxo de trabalho, clique em (Edit file).
 
 ![Captura de tela de um arquivo de fluxo de trabalho mostrando a seção de cabeçalho. O ícone de lápis para editar arquivos é destacado com um contorno laranja escuro.](/assets/images/help/repository/actions-edit-workflow-file.png)
 
-1. À direita do editor, use a barra lateral GitHub Marketplace para navegar pelas ações. As ações com o selo <svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-verified" aria-label="Creator verified by GitHub" role="img"><path d="m9.585.52.929.68c.153.112.331.186.518.215l1.138.175a2.678 2.678 0 0 1 2.24 2.24l.174 1.139c.029.187.103.365.215.518l.68.928a2.677 2.677 0 0 1 0 3.17l-.68.928a1.174 1.174 0 0 0-.215.518l-.175 1.138a2.678 2.678 0 0 1-2.241 2.241l-1.138.175a1.17 1.17 0 0 0-.518.215l-.928.68a2.677 2.677 0 0 1-3.17 0l-.928-.68a1.174 1.174 0 0 0-.518-.215L3.83 14.41a2.678 2.678 0 0 1-2.24-2.24l-.175-1.138a1.17 1.17 0 0 0-.215-.518l-.68-.928a2.677 2.677 0 0 1 0-3.17l.68-.928c.112-.153.186-.331.215-.518l.175-1.14a2.678 2.678 0 0 1 2.24-2.24l1.139-.175c.187-.029.365-.103.518-.215l.928-.68a2.677 2.677 0 0 1 3.17 0ZM7.303 1.728l-.927.68a2.67 2.67 0 0 1-1.18.489l-1.137.174a1.179 1.179 0 0 0-.987.987l-.174 1.136a2.677 2.677 0 0 1-.489 1.18l-.68.928a1.18 1.18 0 0 0 0 1.394l.68.927c.256.348.424.753.489 1.18l.174 1.137c.078.509.478.909.987.987l1.136.174a2.67 2.67 0 0 1 1.18.489l.928.68c.414.305.979.305 1.394 0l.927-.68a2.67 2.67 0 0 1 1.18-.489l1.137-.174a1.18 1.18 0 0 0 .987-.987l.174-1.136a2.67 2.67 0 0 1 .489-1.18l.68-.928a1.176 1.176 0 0 0 0-1.394l-.68-.927a2.686 2.686 0 0 1-.489-1.18l-.174-1.137a1.179 1.179 0 0 0-.987-.987l-1.136-.174a2.677 2.677 0 0 1-1.18-.489l-.928-.68a1.176 1.176 0 0 0-1.394 0ZM11.28 6.78l-3.75 3.75a.75.75 0 0 1-1.06 0L4.72 8.78a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L7 8.94l3.22-3.22a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg> indicam que GitHub verificou o criador da ação como uma organização parceira.
+1. À direita do editor, use a barra lateral GitHub Marketplace para navegar pelas ações. As ações com o selo (Creator verified by GitHub) indicam que GitHub verificou o criador da ação como uma organização parceira.
 
 ![Captura de tela de um fluxo de trabalho no editor de arquivos. A barra lateral mostra ações do Marketplace. Um selo "Criador verificado por GitHub" é destacado em laranja.](/assets/images/help/repository/actions-marketplace-sidebar.png)
 
@@ -37,8 +37,8 @@ Você pode adicionar uma ação ao seu fluxo de trabalho fazendo referência à 
 
 Você pode exibir as ações referenciadas em seus GitHub Actions fluxos de trabalho como dependências no grafo de dependência do repositório que contém seus fluxos de trabalho. Para obter mais informações, confira "[Grafo de dependência](https://docs.github.com/pt/code-security/concepts/supply-chain-security/dependency-graph)".
 
-> \[!NOTE]
-> Para aprimorar a segurança, o GitHub Actions não dá suporte a redirecionamentos de ações nem a fluxos de trabalho reutilizáveis. Isso significa que quando o proprietário, o nome do repositório de uma ação ou o nome da ação é alterado, todos os fluxos de trabalho que usarem essa ação com o nome anterior falharão.
+!!! note
+    Para aprimorar a segurança, o GitHub Actions não dá suporte a redirecionamentos de ações nem a fluxos de trabalho reutilizáveis. Isso significa que quando o proprietário, o nome do repositório de uma ação ou o nome da ação é alterado, todos os fluxos de trabalho que usarem essa ação com o nome anterior falharão.
 
 ### Adicionando uma ação a partir de GitHub Marketplace
 
@@ -46,7 +46,7 @@ Uma página de listagem de ação inclui a versão da ação e a sintaxe do flux
 
 1. Navegue para a ação que você deseja usar no seu fluxo de trabalho.
 2. Clique para exibir a listagem completa do marketplace relacionada à ação.
-3. Em "Instalação", clique <svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-copy" aria-label="Copy to clipboard" role="img"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path></svg> para copiar a sintaxe do fluxo de trabalho.
+3. Em "Instalação", clique (Copy to clipboard) para copiar a sintaxe do fluxo de trabalho.
 
 ![Captura de tela da listagem de uma ação no marketplace. O ícone "Copiar para área de transferência" da ação está realçado com um contorno laranja escuro.](/assets/images/help/repository/actions-sidebar-detailed-view.png)
 
@@ -143,8 +143,8 @@ Os criadores de uma ação da comunidade têm a opção de usar tags, branches o
 
 Você irá designar a versão da ação no seu arquivo de fluxo de trabalho. Verifique a documentação da ação para obter informações sobre suas abordagens de gerenciamento de release e para saber qual tag, branch ou valor de SHA usar.
 
-> \[!NOTE]
-> Recomendamos que você use um valor SHA ao usar ações de terceiros. No entanto, é importante observar que Dependabot só criará Dependabot alerts para GitHub Actions vulneráveis que usam versionamento semântico. Para saber mais, confira [Referência de uso seguro](../../../reference/security/secure-use.md#using-third-party-actions) e [Alertas do Dependabot](https://docs.github.com/pt/code-security/concepts/supply-chain-security/dependabot-alerts).
+!!! note
+    Recomendamos que você use um valor SHA ao usar ações de terceiros. No entanto, é importante observar que Dependabot só criará Dependabot alerts para GitHub Actions vulneráveis que usam versionamento semântico. Para saber mais, confira [Referência de uso seguro](../../../reference/security/secure-use.md#using-third-party-actions) e [Alertas do Dependabot](https://docs.github.com/pt/code-security/concepts/supply-chain-security/dependabot-alerts).
 
 ### Usar etiquetas
 

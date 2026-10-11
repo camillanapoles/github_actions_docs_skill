@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/workflow-commands
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Workflows and actions
 ---
 
 # Comandos de fluxo de trabalho para o GitHub Actions
@@ -22,27 +22,19 @@ A maioria dos comandos do fluxo de trabalho usa o comando `echo` em um formato e
 
 ### Exemplo de um comando de fluxo de trabalho
 
-<div class="ghd-tool bash">
-
 ```bash copy
 echo "::workflow-command parameter1={data},parameter2={data}::{command value}"
 ```
-
-</div>
-
-<div class="ghd-tool powershell">
 
 ```powershell copy
 Write-Output "::workflow-command parameter1={data},parameter2={data}::{command value}"
 ```
 
-</div>
+!!! note
+    Os nomes de comandos de fluxo de trabalho e de parâmetros não diferenciam maiúsculas e minúsculas.
 
-> \[!NOTE]
-> Os nomes de comandos de fluxo de trabalho e de parâmetros não diferenciam maiúsculas e minúsculas.
-
-> \[!WARNING]
-> Se estiver usando um prompt de comando, omita os caracteres de aspas duplas (`"`) ao usar comandos do fluxo de trabalho.
+    [!WARNING]
+    Se estiver usando um prompt de comando, omita os caracteres de aspas duplas (`"`) ao usar comandos do fluxo de trabalho.
 
 ## Usar comandos do fluxo de trabalho para acessar funções do kit de ferramentas
 
@@ -58,28 +50,20 @@ core.error('Missing semicolon', {file: 'app.js', startLine: 1})
 
 Use o comando `error` no fluxo de trabalho para criar a mesma anotação de erro:
 
-<div class="ghd-tool bash">
-
 ```yaml copy
       - name: Create annotation for build error
         run: echo "::error file=app.js,line=1::Missing semicolon"
 ```
-
-</div>
-
-<div class="ghd-tool powershell">
 
 ```yaml copy
       - name: Create annotation for build error
         run: Write-Output "::error file=app.js,line=1::Missing semicolon"
 ```
 
-</div>
-
 A tabela a seguir mostra quais funções do conjunto de ferramentas estão disponíveis dentro de um fluxo de trabalho:
 
 | Função do kit de ferramentas | Comando equivalente do fluxo de trabalho                        |
-| ---------------------------- | --------------------------------------------------------------- |
+|----------------------------|---------------------------------------------------------------|
 | `core.addPath`               | Acessível por meio do arquivo de ambiente `GITHUB_PATH`         |
 | `core.debug`                 | `debug`                                                         |
 | `core.notice`                | `notice`                                                        |
@@ -108,21 +92,13 @@ Imprime uma mensagem de erro no log. Você precisa criar um segredo chamado `ACT
 
 ### Exemplo: definição de uma mensagem de depuração
 
-<div class="ghd-tool bash">
-
 ```bash copy
 echo "::debug::Set the Octocat variable"
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```powershell copy
 Write-Output "::debug::Set the Octocat variable"
 ```
-
-</div>
 
 ## Configurando uma mensagem de aviso
 
@@ -133,7 +109,7 @@ Cria uma mensagem de aviso e a imprime no registro. Esta mensagem criará uma an
 ```
 
 | Parâmetro   | Valor                            | Obrigatório | Padrão    |
-| :---------- | :------------------------------- | :---------- | :-------- |
+|:----------|:-------------------------------|:----------|:--------|
 | `title`     | Título personalizado             | Não         | Nenhum    |
 | `file`      | Nome de arquivo                  | Não         | `.github` |
 | `col`       | Número da coluna, começando em 1 | Não         | Nenhum    |
@@ -143,21 +119,13 @@ Cria uma mensagem de aviso e a imprime no registro. Esta mensagem criará uma an
 
 ### Exemplo: definição de uma mensagem de aviso
 
-<div class="ghd-tool bash">
-
 ```bash copy
 echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```powershell copy
 Write-Output "::notice file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
 ```
-
-</div>
 
 ## Configurar uma mensagem de aviso
 
@@ -168,7 +136,7 @@ Cria uma mensagem de aviso e a imprime no log. Esta mensagem criará uma anotaç
 ```
 
 | Parâmetro   | Valor                            | Obrigatório | Padrão    |
-| :---------- | :------------------------------- | :---------- | :-------- |
+|:----------|:-------------------------------|:----------|:--------|
 | `title`     | Título personalizado             | Não         | Nenhum    |
 | `file`      | Nome de arquivo                  | Não         | `.github` |
 | `col`       | Número da coluna, começando em 1 | Não         | Nenhum    |
@@ -178,21 +146,13 @@ Cria uma mensagem de aviso e a imprime no log. Esta mensagem criará uma anotaç
 
 ### Exemplo: definição de uma mensagem de aviso
 
-<div class="ghd-tool bash">
-
 ```bash copy
 echo "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```powershell copy
 Write-Output "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
 ```
-
-</div>
 
 ## Configurar uma mensagem de erro
 
@@ -203,7 +163,7 @@ Cria uma mensagem de erro e a imprime no log. Esta mensagem criará uma anotaç�
 ```
 
 | Parâmetro   | Valor                            | Obrigatório | Padrão    |
-| :---------- | :------------------------------- | :---------- | :-------- |
+|:----------|:-------------------------------|:----------|:--------|
 | `title`     | Título personalizado             | Não         | Nenhum    |
 | `file`      | Nome de arquivo                  | Não         | `.github` |
 | `col`       | Número da coluna, começando em 1 | Não         | Nenhum    |
@@ -213,21 +173,13 @@ Cria uma mensagem de erro e a imprime no log. Esta mensagem criará uma anotaç�
 
 ### Exemplo: definição de uma mensagem de erro
 
-<div class="ghd-tool bash">
-
 ```bash copy
 echo "::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```powershell copy
 Write-Output "::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
 ```
-
-</div>
 
 ## Agrupar linhas de log
 
@@ -239,8 +191,6 @@ Cria um grupo expansível no registro. Para criar um grupo, use o comando `group
 ```
 
 ### Exemplo: agrupamento de linhas de log
-
-<div class="ghd-tool bash">
 
 ```yaml copy
 jobs:
@@ -254,10 +204,6 @@ jobs:
             echo "::endgroup::"
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```yaml copy
 jobs:
   powershell-example:
@@ -269,8 +215,6 @@ jobs:
             Write-Output "Inside group"
             Write-Output "::endgroup::"
 ```
-
-</div>
 
 ![Captura de tela do log da etapa de fluxo de trabalho. A segunda linha, "Meu título", é um grupo expandido. A próxima linha, "Dentro do grupo", está indentada abaixo.](/assets/images/help/actions/actions-log-group.png)
 
@@ -286,30 +230,20 @@ Mascarar um valor evita que uma string ou variável seja impressa no log. Cada p
 
 Ao imprimir `"Mona The Octocat"` no log, você verá `"***"`.
 
-<div class="ghd-tool bash">
-
 ```bash copy
 echo "::add-mask::Mona The Octocat"
 ```
-
-</div>
-
-<div class="ghd-tool powershell">
 
 ```powershell copy
 Write-Output "::add-mask::Mona The Octocat"
 ```
 
-</div>
-
-> \[!WARNING]
-> Registre o segredo com ‘add-mask’ antes de enviá-lo aos logs de build ou usá-lo em comandos de outro fluxo de trabalho.
+!!! warning
+    Registre o segredo com ‘add-mask’ antes de enviá-lo aos logs de build ou usá-lo em comandos de outro fluxo de trabalho.
 
 ### Exemplo: mascaramento de uma variável de ambiente
 
 Ao imprimir a variável `MY_NAME` ou o valor `"Mona The Octocat"` no log, você verá `"***"` em vez de `"Mona The Octocat"`.
-
-<div class="ghd-tool bash">
 
 ```yaml copy
 jobs:
@@ -322,10 +256,6 @@ jobs:
         run: echo "::add-mask::$MY_NAME"
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```yaml copy
 jobs:
   powershell-example:
@@ -337,8 +267,6 @@ jobs:
         run: Write-Output "::add-mask::$env:MY_NAME"
 ```
 
-</div>
-
 ### Exemplo: mascarar uma saída gerada em um único trabalho
 
 Se você não precisar passar seu segredo de um trabalho para outro, poderá:
@@ -346,8 +274,6 @@ Se você não precisar passar seu segredo de um trabalho para outro, poderá:
 1. Gerar o segredo (sem transmiti-lo).
 2. Mascarar com `add-mask`.
 3. Usar `GITHUB_OUTPUT` para disponibilizar o segredo para outras etapas dentro do trabalho.
-
-<div class="ghd-tool bash">
 
 ```yaml copy
 on: push
@@ -365,10 +291,6 @@ jobs:
         run: |
           echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"
 ```
-
-</div>
-
-<div class="ghd-tool powershell">
 
 ```yaml copy
 on: push
@@ -389,8 +311,6 @@ jobs:
           Write-Output "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"
 ```
 
-</div>
-
 ### Exemplo: mascarar e passar um segredo entre trabalhos ou fluxos de trabalho
 
 Se você quiser passar um segredo mascarado entre trabalhos ou fluxos de trabalho, deverá armazená-lo em um repositório e recuperá-lo no trabalho ou fluxo de trabalho subsequente.
@@ -402,11 +322,9 @@ Se você quiser passar um segredo mascarado entre trabalhos ou fluxos de trabalh
 
 #### Workflow
 
-> \[!NOTE]
-> Esse fluxo de trabalho usa um repositório de segredos imaginário, `secret-store`, que tem os comandos imaginários `store-secret` e `retrieve-secret`.
-> `some/secret-store@ 27b31702a0e7fc50959f5ad993c78deac1bdfc29` é uma ação imaginária que instala o aplicativo `secret-store` e o configura para se conectar a um `instance` com `credentials`.
-
-<div class="ghd-tool bash">
+!!! note
+    Esse fluxo de trabalho usa um repositório de segredos imaginário, `secret-store`, que tem os comandos imaginários `store-secret` e `retrieve-secret`.
+    `some/secret-store@ 27b31702a0e7fc50959f5ad993c78deac1bdfc29` é uma ação imaginária que instala o aplicativo `secret-store` e o configura para se conectar a um `instance` com `credentials`.
 
 ```yaml copy
 on: push
@@ -446,10 +364,6 @@ jobs:
         echo "We retrieved our masked secret: $RETRIEVED_SECRET"
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```yaml copy
 on: push
 
@@ -485,8 +399,6 @@ jobs:
         echo "We retrieved our masked secret: $Retrieved_Secret"
 ```
 
-</div>
-
 ## Parar e iniciar os comandos no fluxo de trabalho
 
 Para de processar quaisquer comandos de fluxo de trabalho. Esse comando especial permite fazer o registro do que você desejar sem executar um comando do fluxo de trabalho acidentalmente. Por exemplo, é possível interromper o registro para exibir um script completo com comentários.
@@ -497,16 +409,14 @@ Para de processar quaisquer comandos de fluxo de trabalho. Esse comando especial
 
 Para interromper o processamento de comandos do fluxo de trabalho, transmita um token único para `stop-commands`. Para retomar os comandos do fluxo de trabalho, passe o mesmo token que você usou para parar os comandos do fluxo de trabalho.
 
-> \[!WARNING]
-> Verifique se o token que você está usando é gerado aleatoriamente e exclusivo para cada execução.
+!!! warning
+    Verifique se o token que você está usando é gerado aleatoriamente e exclusivo para cada execução.
 
 ```text copy
 ::{endtoken}::
 ```
 
 ### Exemplo: interrupção e inicialização de comandos do fluxo de trabalho
-
-<div class="ghd-tool bash">
 
 ```yaml copy
 jobs:
@@ -523,10 +433,6 @@ jobs:
           echo '::warning:: This is a warning again, because stop-commands has been turned off.'
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```yaml copy
 jobs:
   workflow-command-job:
@@ -541,8 +447,6 @@ jobs:
           Write-Output "::$stopMarker::"
           Write-Output '::warning:: This is a warning again, because stop-commands has been turned off.'
 ```
-
-</div>
 
 ## Enviar valores para as ações anterior e posterior
 
@@ -605,49 +509,39 @@ steps:
     run: echo "Deploying at $BUILD_TIME"
 ```
 
-<div class="ghd-tool powershell">
+!!! note
+    As versões 5.1 e inferior do PowerShell (`shell: powershell`) não usam o UTF-8 por padrão, ou seja, você precisa especificar a codificação UTF-8. Por exemplo:
 
-> \[!NOTE]
-> As versões 5.1 e inferior do PowerShell (`shell: powershell`) não usam o UTF-8 por padrão, ou seja, você precisa especificar a codificação UTF-8. Por exemplo:
->
-> ```yaml copy
-> jobs:
->   legacy-powershell-example:
->     runs-on: windows-latest
->     steps:
->       - shell: powershell
->         run: |
->           "mypath" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-> ```
->
-> As versões 6 e superior do PowerShell Core (`shell: pwsh`) usam UTF-8 por padrão. Por exemplo:
->
-> ```yaml copy
-> jobs:
->   powershell-core-example:
->     runs-on: windows-latest
->     steps:
->       - shell: pwsh
->         run: |
->           "mypath" >> $env:GITHUB_PATH
-> ```
+                ```yaml copy
+    jobs:
+      legacy-powershell-example:
+        runs-on: windows-latest
+        steps:
+          - shell: powershell
+            run: |
+              "mypath" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+    ```
 
-</div>
+    As versões 6 e superior do PowerShell Core (`shell: pwsh`) usam UTF-8 por padrão. Por exemplo:
+
+                ```yaml copy
+    jobs:
+      powershell-core-example:
+        runs-on: windows-latest
+        steps:
+          - shell: pwsh
+            run: |
+              "mypath" >> $env:GITHUB_PATH
+    ```
 
 ## Configurar uma variável de ambiente
 
-> \[!NOTE]
-> Para evitar problemas, é uma boa prática tratar as variáveis de ambiente como com diferenciação de maiúsculas e minúsculas, independentemente do comportamento do sistema operacional e do shell que você está usando.
-
-<div class="ghd-tool bash">
+!!! note
+    Para evitar problemas, é uma boa prática tratar as variáveis de ambiente como com diferenciação de maiúsculas e minúsculas, independentemente do comportamento do sistema operacional e do shell que você está usando.
 
 ```bash copy
 echo "{environment_variable_name}={value}" >> "$GITHUB_ENV"
 ```
-
-</div>
-
-<div class="ghd-tool powershell">
 
 * Como usar o PowerShell versão 6 e superior:
 
@@ -661,18 +555,14 @@ echo "{environment_variable_name}={value}" >> "$GITHUB_ENV"
   "{environment_variable_name}={value}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
   ```
 
-</div>
-
 Disponibilize uma variável de ambiente para todas as etapas posteriores em um trabalho de fluxo de trabalho definindo ou atualizando a variável de ambiente e gravando isso no arquivo de ambiente `GITHUB_ENV`. A etapa que cria ou atualiza a variável de ambiente não tem acesso ao novo valor, mas todos os passos subsequentes em um trabalho terão acesso.
 
 Não é possível substituir o valor das variáveis de ambiente padrão chamadas `GITHUB_*` e `RUNNER_*`. Atualmente, você pode substituir o valor da variável `CI`. No entanto, não é garantido que isso sempre será possível. Para obter mais informações sobre as variáveis de ambiente padrão, consulte [Referência de variáveis](variables.md#default-environment-variables).
 
-> \[!NOTE]
-> Devido a restrições de segurança, `GITHUB_ENV` não pode ser usado para definir a variável de ambiente `NODE_OPTIONS`.
+!!! note
+    Devido a restrições de segurança, `GITHUB_ENV` não pode ser usado para definir a variável de ambiente `NODE_OPTIONS`.
 
 ### Exemplo de gravação de uma variável de ambiente em `GITHUB_ENV`
-
-<div class="ghd-tool bash">
 
 ```yaml copy
 steps:
@@ -686,10 +576,6 @@ steps:
       printf '%s\n' "$action_state" # This will output 'yellow'
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```yaml copy
 steps:
   - name: Set the value
@@ -702,8 +588,6 @@ steps:
       Write-Output "$env:action_state" # This will output 'yellow'
 ```
 
-</div>
-
 ### Strings de linha múltipla
 
 Para strings multilinha, você pode usar um delimitador com a seguinte sintaxe.
@@ -714,14 +598,12 @@ Para strings multilinha, você pode usar um delimitador com a seguinte sintaxe.
 {delimiter}
 ```
 
-> \[!WARNING]
-> Confira se o delimitador que você está usando não ocorre em uma linha separada dentro do valor. Se o valor for completamente arbitrário, você não deverá usar esse formato. Em vez disso, grave o valor em um arquivo.
+!!! warning
+    Confira se o delimitador que você está usando não ocorre em uma linha separada dentro do valor. Se o valor for completamente arbitrário, você não deverá usar esse formato. Em vez disso, grave o valor em um arquivo.
 
 #### Exemplo de uma cadeia de caracteres de várias linhas
 
 Este exemplo usa `EOF` como delimitador e define a variável de ambiente `JSON_RESPONSE` como o valor da resposta `curl`.
-
-<div class="ghd-tool bash">
 
 ```yaml copy
 steps:
@@ -735,10 +617,6 @@ steps:
       } >> "$GITHUB_ENV"
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```yaml copy
 steps:
   - name: Set the value in pwsh
@@ -751,31 +629,19 @@ steps:
     shell: pwsh
 ```
 
-</div>
-
 ## Definir um parâmetro de saída
 
 Define o parâmetro de saída de uma etapa. Observe que a etapa precisará de um `id` a ser definido para recuperar o valor de saída mais tarde. Você pode definir valores de saída de várias linhas com a mesma técnica usada na seção [Cadeias de caracteres de várias linhas](workflow-commands.md#multiline-strings) para definir variáveis de ambiente de várias linhas.
-
-<div class="ghd-tool bash">
 
 ```bash copy
 echo "{name}={value}" >> "$GITHUB_OUTPUT"
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```powershell copy
 "{name}=value" >> $env:GITHUB_OUTPUT
 ```
 
-</div>
-
 ### Exemplo de definição de um parâmetro de saída
-
-<div class="ghd-tool bash">
 
 Este exemplo demonstra como definir o parâmetro de saída `SELECTED_COLOR` e recuperá-lo mais tarde:
 
@@ -788,10 +654,6 @@ Este exemplo demonstra como definir o parâmetro de saída `SELECTED_COLOR` e re
           SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
         run: echo "The selected color is $SELECTED_COLOR"
 ```
-
-</div>
-
-<div class="ghd-tool powershell">
 
 Este exemplo demonstra como definir o parâmetro de saída `SELECTED_COLOR` e recuperá-lo mais tarde:
 
@@ -806,25 +668,15 @@ Este exemplo demonstra como definir o parâmetro de saída `SELECTED_COLOR` e re
         run: Write-Output "The selected color is $env:SELECTED_COLOR"
 ```
 
-</div>
-
 ## Adicionando um resumo de trabalho
-
-<div class="ghd-tool bash">
 
 ```bash copy
 echo "{markdown content}" >> $GITHUB_STEP_SUMMARY
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```powershell copy
 "{markdown content}" >> $env:GITHUB_STEP_SUMMARY
 ```
-
-</div>
 
 Você pode definir um Markdown personalizado para cada trabalho para que ele seja exibido na página de resumo de uma execução de fluxo de trabalho. Você pode usar resumos de trabalho para exibir e agrupar conteúdo exclusivo, como resumos de resultados de teste, para que alguém que exiba o resultado de uma execução de fluxo de trabalho não precise entrar nos logs para ver informações importantes relacionadas à execução, como falhas.
 
@@ -834,21 +686,13 @@ Quando um trabalho é concluído, os resumos de todas as etapas de um trabalho s
 
 ### Exemplo de adição de um resumo de trabalho
 
-<div class="ghd-tool bash">
-
 ```bash copy
 echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```powershell copy
 "### Hello world! :rocket:" >> $env:GITHUB_STEP_SUMMARY
 ```
-
-</div>
 
 ![Captura de tela da página de resumo de uma execução de fluxo de trabalho. Em "resumo de exemplo", está "Olá, mundo!" e um emoji de foguete.](/assets/images/help/actions/actions-job-summary-simple-example.png)
 
@@ -857,8 +701,6 @@ echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
 Para conteúdo de Markdown de várias linhas, você pode usar `>>` para acrescentar continuamente o conteúdo para a etapa atual. A cada operação de acréscimo, um caractere de nova linha é adicionado automaticamente.
 
 #### Exemplo de conteúdo Markdown de várias linhas
-
-<div class="ghd-tool bash">
 
 ```yaml
 - name: Generate list using Markdown
@@ -870,10 +712,6 @@ Para conteúdo de Markdown de várias linhas, você pode usar `>>` para acrescen
     echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```yaml
 - name: Generate list using Markdown
   run: |
@@ -884,15 +722,11 @@ Para conteúdo de Markdown de várias linhas, você pode usar `>>` para acrescen
     "- How about a third one?" >> $env:GITHUB_STEP_SUMMARY
 ```
 
-</div>
-
 ### Substituir resumos de trabalho
 
 Para limpar todo o conteúdo da etapa atual, você pode usar `>` para substituir qualquer conteúdo adicionado anteriormente no Bash ou remover `-Append` no PowerShell
 
 #### Exemplo de substituição de resumos de trabalho
-
-<div class="ghd-tool bash">
 
 ```yaml
 - name: Overwrite Markdown
@@ -901,10 +735,6 @@ Para limpar todo o conteúdo da etapa atual, você pode usar `>` para substituir
     echo "There was an error, we need to clear the previous Markdown with some new content." > $GITHUB_STEP_SUMMARY
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```yaml
 - name: Overwrite Markdown
   run: |
@@ -912,15 +742,11 @@ Para limpar todo o conteúdo da etapa atual, você pode usar `>` para substituir
     "There was an error, we need to clear the previous Markdown with some new content." >> $env:GITHUB_STEP_SUMMARY
 ```
 
-</div>
-
 ### Removendo resumos de trabalho
 
 Para remover completamente um resumo da etapa atual, o arquivo que `GITHUB_STEP_SUMMARY` faz referência pode ser excluído.
 
 #### Exemplo de remoção de resumos de trabalho
-
-<div class="ghd-tool bash">
 
 ```yaml
 - name: Delete all summary content
@@ -929,18 +755,12 @@ Para remover completamente um resumo da etapa atual, o arquivo que `GITHUB_STEP_
     rm $GITHUB_STEP_SUMMARY
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```yaml
 - name: Delete all summary content
   run: |
     "Adding Markdown content that we want to remove before the step ends" >> $env:GITHUB_STEP_SUMMARY
     Remove-Item $env:GITHUB_STEP_SUMMARY
 ```
-
-</div>
 
 Depois que uma etapa for concluída, os resumos de trabalho serão carregados e as etapas subsequentes não poderão modificar o conteúdo do Markdown carregado anteriormente. Os resumos mascaram automaticamente todos os segredos que podem ter sido adicionados acidentalmente. Se um resumo de trabalho contiver informações confidenciais que devem ser excluídas, você poderá excluir toda a execução do fluxo de trabalho para remover todos os resumos de trabalho. Para saber mais, confira [Excluir a execução de um fluxo de trabalho](../../how-tos/manage-workflow-runs/delete-a-workflow-run.md).
 
@@ -954,25 +774,17 @@ Insere um diretório antes da variável `PATH` do sistema e o disponibiliza auto
 
 ### Exemplo de adição de um caminho do sistema
 
-<div class="ghd-tool bash">
-
 Este exemplo demonstra como adicionar o diretório `$HOME/.local/bin` do usuário a `PATH`:
 
 ```bash copy
 echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 Este exemplo demonstra como adicionar o diretório `$env:HOMEPATH/.local/bin` do usuário a `PATH`:
 
 ```powershell copy
 "$env:HOMEPATH/.local/bin" | Out-File -FilePath "$env:GITHUB_PATH" -Append
 ```
-
-</div>
 
 ## Declarando artefatos de fluxo de trabalho
 
@@ -993,8 +805,6 @@ Limites:
 * Um trabalho pode acumular até 500 artefatos de fluxo de trabalho em todas as etapas.
 * Se o mesmo artefato for declarado mais de uma vez com nome e resumo idênticos, ele será duplicado. Declarações conflitantes (mesmo nome, resumo diferente) produzem um erro.
 
-<div class="ghd-tool bash">
-
 ```bash copy
 echo "dist/my-binary" >> "$GITHUB_ARTIFACTS"
 ```
@@ -1005,10 +815,6 @@ Para declarar uma referência de OCI:
 echo "oci://ghcr.io/octocat/myapp:1.0.0@sha256:914b38d45a65e4263a179d9c2b09cc04dcbcaa8257fa85100cf42f9a3b408cfb" >> "$GITHUB_ARTIFACTS"
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```powershell copy
 "dist/my-binary" >> $env:GITHUB_ARTIFACTS
 ```
@@ -1018,8 +824,6 @@ Para declarar uma referência de OCI:
 ```powershell copy
 "oci://ghcr.io/octocat/myapp:1.0.0@sha256:914b38d45a65e4263a179d9c2b09cc04dcbcaa8257fa85100cf42f9a3b408cfb" >> $env:GITHUB_ARTIFACTS
 ```
-
-</div>
 
 ## Lendo artefatos de fluxo de trabalho
 
@@ -1051,18 +855,10 @@ Cada entrada na `subjects` matriz contém:
 
 Artefatos são classificados em ordem alfabética por `name`.
 
-<div class="ghd-tool bash">
-
 ```bash copy
 cat "$GITHUB_ARTIFACTS_LIST"
 ```
 
-</div>
-
-<div class="ghd-tool powershell">
-
 ```powershell copy
 Get-Content $env:GITHUB_ARTIFACTS_LIST
 ```
-
-</div>

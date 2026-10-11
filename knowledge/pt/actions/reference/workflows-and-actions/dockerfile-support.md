@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/dockerfile-support
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Workflows and actions
 ---
 
 # Suporte do Dockerfile para GitHub Actions

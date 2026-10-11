@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/configure-and-manage-deployments/create-custom-protection-rules
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Deploy / Configure and manage deployments
 ---
 
 # Criar regras de proteção de implantação personalizadas
@@ -16,8 +16,8 @@ _Use GitHub Apps para automatizar a proteção de implantações com sistemas de
 
 ## Pré-requisitos
 
-> \[!NOTE]
-> Regras de proteção de implementação personalizada estão em prévia pública e estão sujeitas a alterações.
+!!! note
+    Regras de proteção de implementação personalizada estão em prévia pública e estão sujeitas a alterações.
 
 Para obter informações gerais sobre as regras de proteção à implantação, confira [Implantando com GitHub Actions](control-deployments.md#using-custom-deployment-protection-rules).
 

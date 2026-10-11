@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/security/github_token
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Security
 ---
 
 # GITHUB_TOKEN
@@ -42,12 +42,12 @@ Quando você usa o `GITHUB_TOKEN` do repositório para executar tarefas, os even
 
 Para todos os outros eventos, esse comportamento impede que você crie acidentalmente execuções de fluxo de trabalho recursivo. Por exemplo, se uma execução de fluxo de trabalho efetuar push do código usando o `GITHUB_TOKEN` do repositório, um novo fluxo de trabalho não será executado mesmo quando o repositório contiver um fluxo de trabalho configurado para ser executado quando os eventos do `push` ocorrerem.
 
-> \[!NOTE]
-> Se você precisar de execuções do fluxo de trabalho a partir de pull requests criadas pelo fluxo de trabalho a serem executadas sem exigir aprovação, use um GitHub App token de acesso de instalação ou um personal access token em vez de `GITHUB_TOKEN` durante a criação ou a atualização da pull request.
+!!! note
+    Se você precisar de execuções do fluxo de trabalho a partir de pull requests criadas pelo fluxo de trabalho a serem executadas sem exigir aprovação, use um GitHub App token de acesso de instalação ou um personal access token em vez de `GITHUB_TOKEN` durante a criação ou a atualização da pull request.
 
 Commits enviados por push por um fluxo de trabalho de GitHub Actions que usa o `GITHUB_TOKEN` não disparam um build de GitHub Pages.
 
 ## Próximas etapas
 
-* [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md)
+* [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md)
 * [Sintaxe de fluxo de trabalho para o GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md#permissions)

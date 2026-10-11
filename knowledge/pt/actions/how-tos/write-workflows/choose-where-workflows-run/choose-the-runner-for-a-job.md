@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Write workflows / Choose where workflows run
 ---
 
 # Escolhendo o executor para um trabalho
@@ -58,8 +58,8 @@ Use `jobs.<job_id>.runs-on` para definir o tipo de computador no qual o trabalho
 
 * Se você quiser executar seu fluxo de trabalho em vários computadores, use [`jobs.<job_id>.strategy`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategy).
 
-> \[!NOTE]
-> Aspas não são necessárias em torno de cadeias de caracteres simples como`self-hosted`, mas são necessárias para expressões como`"${{ inputs.chosen-os }}"` .
+!!! note
+    Aspas não são necessárias em torno de cadeias de caracteres simples como`self-hosted`, mas são necessárias para expressões como`"${{ inputs.chosen-os }}"` .
 
 ## Escolhendo executores hospedados em GitHub
 
@@ -74,41 +74,37 @@ Para saber mais, confira [Executores hospedados no GitHub](../../../concepts/run
 Para repositórios públicos, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados com as especificações associadas.
 Com exceção dos executores de CPU única, cada executor hospedado por GitHub é uma nova máquina virtual (VM) hospedada por GitHub. Processos de CPU única são hospedados em um contêiner em uma VM compartilhada—consulte [Referência de executores hospedados pelo GitHub](../../../reference/runners/github-hosted-runners.md#single-cpu-runners). O uso dos executores hospedados padrão GitHubé gratuito e ilimitado em repositórios públicos.
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th scope="col">
-<b>Máquina virtual/contêiner</b></th>
-      <th scope="col">
-<b>Processador (CPU)</b></th>
-      <th scope="col">
-<b>Memória (RAM)</b></th>
-      <th scope="col">
-<b>Armazenamento (SSD)</b></th>
-      <th scope="col">
-<b>Arquitetura</b></th>
-      <th scope="col">
-<b>Rótulo do fluxo de trabalho</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-          <td>Linux</td>
-          <td>1</td>
-          <td>5 GB</td>
-          <td>14 GB</td>
-          <td> x64 </td>
-          <td>
-            <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md">ubuntu-slim</a></code>
-          </td>
-        </tr>
-    <tr>
-      <td>Linux</td>
-      <td>4</td>
-      <td>16 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
+**Máquina virtual/contêiner**
+
+**Processador (CPU)**
+
+**Memória (RAM)**
+
+**Armazenamento (SSD)**
+
+**Arquitetura**
+
+**Rótulo do fluxo de trabalho**
+
+Linux
+
+1
+
+5 GB
+
+14 GB
+
+x64
+            `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
+Linux
+
+4
+
+16 GB
+
+14 GB
+
+x64
 
 ```
     <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
@@ -165,49 +161,41 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
 </tr>
 ```
 
-  </tbody>
-
-</table>
-
 ### Executores hospedados padrão GitHubpara  privados
 
 Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a alocação de minutos gratuitos da sua GitHub conta e, posteriormente, são cobrados a taxas por minuto de uso. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th scope="col">
-<b>Máquina virtual</b></th>
-      <th scope="col">
-<b>Processador (CPU)</b></th>
-      <th scope="col">
-<b>Memória (RAM)</b></th>
-      <th scope="col">
-<b>Armazenamento (SSD)</b></th>
-      <th scope="col">
-<b>Arquitetura</b></th>
-      <th scope="col">
-<b>Rótulo do fluxo de trabalho</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-          <td>Linux</td>
-          <td>1</td>
-          <td>5 GB</td>
-          <td>14 GB</td>
-          <td> x64 </td>
-          <td>
-            <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md">ubuntu-slim</a></code>
-          </td>
-        </tr>
-    <tr>
-      <td>Linux</td>
-      <td>2</td>
-      <td>8 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
+**Máquina virtual**
+
+**Processador (CPU)**
+
+**Memória (RAM)**
+
+**Armazenamento (SSD)**
+
+**Arquitetura**
+
+**Rótulo do fluxo de trabalho**
+
+Linux
+
+1
+
+5 GB
+
+14 GB
+
+x64
+            `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
+Linux
+
+2
+
+8 GB
+
+14 GB
+
+x64
 
 ```
     <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
@@ -264,16 +252,13 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
 </tr>
 ```
 
-  </tbody>
-</table>
-
 Além dos executores padrão hospedados em GitHub, GitHub oferece aos clientes dos planos GitHub Team e GitHub Enterprise Cloud uma variedade de máquinas virtuais gerenciadas com recursos avançados, como, por exemplo, mais núcleos e espaço em disco, máquinas com GPU e máquinas com arquitetura ARM. Para saber mais, confira [Executores avançados](../../../concepts/runners/larger-runners.md).
 
-> \[!NOTE]
-> As imagens do executor `-latest` são as imagens estáveis mais recentes fornecidas pelo GitHub, e podem não ser a versão mais recente do sistema operacional disponível junto ao fornecedor do sistema operacional.
+!!! note
+    As imagens do executor `-latest` são as imagens estáveis mais recentes fornecidas pelo GitHub, e podem não ser a versão mais recente do sistema operacional disponível junto ao fornecedor do sistema operacional.
 
-> \[!WARNING]
-> As imagens beta e preteridas são fornecidas “no estado em que se encontram”, “com todas as falhas” e “conforme disponível” e são excluídas do contrato de nível de serviço e da garantia. As imagens beta podem não estar cobertas pelo suporte ao cliente.
+    [!WARNING]
+    As imagens beta e preteridas são fornecidas “no estado em que se encontram”, “com todas as falhas” e “conforme disponível” e são excluídas do contrato de nível de serviço e da garantia. As imagens beta podem não estar cobertas pelo suporte ao cliente.
 
 #### Exemplo: Especificar um sistema operacional
 
@@ -289,7 +274,7 @@ Para especificar um executor auto-hospedado para uma tarefa, configure `runs-on`
 
 Os executores auto-hospedados podem ter o rótulo `self-hosted`. Ao configurar um corredor auto-hospedado, por padrão, incluiremos o rótulo `self-hosted`. Você pode passar o sinalizador `--no-default-labels` para impedir que o rótulo auto-hospedado seja aplicado. Rótulos podem ser usados para criar opções de segmentação para os executores, como sistema operacional ou arquitetura. Recomendamos fornecer uma matriz de rótulos que comece com `self-hosted` (isso deve ser listado primeiro) e depois inclua rótulos adicionais, conforme necessário. Quando você especifica um array de rótulos, os trabalhos serão enfileirados em executores que possuem todos os rótulos que você especificou.
 
-> \[!NOTE] Actions Runner Controller não dá suporte ao `self-hosted` rótulo.
+> [!NOTE] Actions Runner Controller não dá suporte ao `self-hosted` rótulo.
 
 #### Exemplo: Usando etiquetas para seleção do executor
 

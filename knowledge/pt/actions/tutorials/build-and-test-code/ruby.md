@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/build-and-test-code/ruby
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Build and test code
 ---
 
 # Criar e testar o Ruby
@@ -33,7 +33,7 @@ GitHub fornece um modelo de fluxo de trabalho para Ruby que deve funcionar para 
 
 1. Em GitHub, acesse a página principal do repositório.
 
-2. No nome do repositório, clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Actions**.
+2. No nome do repositório, clique em **(play) Actions**.
 
    ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
 
@@ -47,7 +47,8 @@ GitHub fornece um modelo de fluxo de trabalho para Ruby que deve funcionar para 
 
 7. Edite o fluxo de trabalho conforme necessário. Por exemplo, altere as versões do Ruby que você deseja usar.
 
-   > \[!NOTE]
+!!! note
+
    >
    > * Este modelo de fluxo de trabalho contém uma ação que não é certificada por GitHub. Elas são fornecidas por terceiros e regidas por termos de serviço, política de privacidade e documentação de suporte separados.
    > * Caso use ações de terceiros, você deverá usar uma versão especificada por um SHA de commit. Se a ação for revisada e você quiser usar a versão mais recente, será necessário atualizar o SHA. Você pode especificar uma versão fazendo referência a uma tag ou branch, mas a ação pode ser alterada sem aviso. Para saber mais, confira [Referência de uso seguro](../../reference/security/secure-use.md#using-third-party-actions).

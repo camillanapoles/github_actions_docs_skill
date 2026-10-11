@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-travis-ci
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Migrate to github actions / Manual migrations
 ---
 
 # Migrando de Travis CI para GitHub Actions
@@ -27,7 +27,7 @@ Antes de iniciar sua migração para GitHub Actions, seria útil se familiarizar
 
 ## Comparar a execução do trabalho
 
-Para fornecer controle sobre quando as tarefas de CI são executadas, um GitHub Actions\_fluxo de trabalho\_ usa *trabalhos* executados em paralelo por padrão. Cada trabalho contém *etapas* que são executadas em uma sequência definida por você. Se você precisa executar ações de configuração e limpeza para um trabalho, pode definir etapas em cada trabalho para realizar essas ações.
+Para fornecer controle sobre quando as tarefas de CI são executadas, um GitHub Actions_fluxo de trabalho\_ usa *trabalhos* executados em paralelo por padrão. Cada trabalho contém *etapas* que são executadas em uma sequência definida por você. Se você precisa executar ações de configuração e limpeza para um trabalho, pode definir etapas em cada trabalho para realizar essas ações.
 
 ## Principais semelhanças
 

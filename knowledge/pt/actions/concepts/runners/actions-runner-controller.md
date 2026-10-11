@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/runners/actions-runner-controller
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Runners
 ---
 
 # Controlador de Ações Runner
@@ -22,8 +22,8 @@ Com o ARC, você pode criar conjuntos de dimensionamento de executores que são 
 
 O diagrama a seguir ilustra a arquitetura do modo de conjunto de escalonamento automático do runner do ARC.
 
-> \[!NOTE]
-> Para visualizar o diagrama a seguir em um tamanho maior, confira a documentação do [Modo de conjuntos de escalonamento do executor de escala automática](https://github.com/actions/actions-runner-controller/blob/master/docs/gha-runner-scale-set-controller/README.md#how-it-works) no repositório Actions Runner Controller.
+!!! note
+    Para visualizar o diagrama a seguir em um tamanho maior, confira a documentação do [Modo de conjuntos de escalonamento do executor de escala automática](https://github.com/actions/actions-runner-controller/blob/master/docs/gha-runner-scale-set-controller/README.md#how-it-works) no repositório Actions Runner Controller.
 
 ![Diagrama mostrando o modo ScaleSet do Executor de Dimensionamento Automático do ARC.](/assets/images/help/actions/arc-diagram.png)
 
@@ -50,35 +50,35 @@ Cada recurso implantado pelo ARC recebe um nome formado por estes elementos:
 * Um nome da instalação, que é o nome que você especifica ao instalar o Helm chart.
 * Um sufixo de identificação do recurso, que é uma cadeia de caracteres que identifica o tipo de recurso. Este valor não é configurável.
 
-> \[!NOTE]
-> Cada versão do Kubernetes têm limites de comprimento diferentes para os nomes dos recursos. O limite do comprimento do nome do recurso é calculado adicionando o comprimento do nome da instalação ao comprimento do sufixo de identificação do recurso. Se o nome do recurso for maior que o comprimento reservado, você receberá uma mensagem de erro.
+!!! note
+    Cada versão do Kubernetes têm limites de comprimento diferentes para os nomes dos recursos. O limite do comprimento do nome do recurso é calculado adicionando o comprimento do nome da instalação ao comprimento do sufixo de identificação do recurso. Se o nome do recurso for maior que o comprimento reservado, você receberá uma mensagem de erro.
 
 ### Recursos implementados por `gha-runner-scale-set-controller`
 
-| Modelo                                                  | Tipo de recurso    | Nome                                                        | Comprimento reservado | Descrição                                                                                              | Observações                                                                                                                                             |
-| ------------------------------------------------------- | ------------------ | ----------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `deployment.yaml`                                       | Implantação        | INSTALLATION\_NAME-gha-rs-controller                        | 18                    | O recurso que executa o gerenciador de controladores                                                   | Os pods criados por esse recurso têm os sufixos ReplicaSet e Pod.                                                                                       |
-| `serviceaccount.yaml`                                   | ServiceAccount     | INSTALLATION\_NAME-gha-rs-controller                        | 18                    | Esse recurso será criado se `serviceAccount.create` em `values.yaml` estiver definido como verdadeiro. | O nome pode ser personalizado em `values.yaml`                                                                                                          |
-| `manager_cluster_role.yaml`                             | ClusterRole        | INSTALLATION\_NAME-gha-rs-controller                        | 18                    | ClusterRole para o Controller Manager                                                                  | Esse recurso será criado se o valor de `flags.watchSingleNamespace` estiver vazio.                                                                      |
-| `manager_cluster_role_binding.yaml`                     | ClusterRoleBinding | INSTALLATION\_NAME-gha-rs-controller                        | 18                    | ClusterRoleBinding do gerenciador do controlador                                                       | Esse recurso será criado se o valor de `flags.watchSingleNamespace` estiver vazio.                                                                      |
-| `manager_single_namespace_controller_role.yaml`         | Função             | INSTALLATION\_NAME-gha-rs-controller-single-namespace       | 35                    | Função do gerenciador do controlador                                                                   | Esse recurso será criado se for definido um valor para `flags.watchSingleNamespace`.                                                                    |
-| `manager_single_namespace_controller_role_binding.yaml` | RoleBinding        | INSTALLATION\_NAME-gha-rs-controller-single-namespace       | 35                    | RoleBinding do gerenciador do controlador                                                              | Esse recurso será criado se for definido um valor para `flags.watchSingleNamespace`.                                                                    |
-| `manager_single_namespace_watch_role.yaml`              | Função             | INSTALLATION\_NAME-gha-rs-controller-single-namespace-watch | 41                    | Função do gerenciador de controladores no namespace configurado                                        | Esse recurso será criado se for definido um valor para `flags.watchSingleNamespace`.                                                                    |
-| `manager_single_namespace_watch_role_binding.yaml`      | RoleBinding        | INSTALLATION\_NAME-gha-rs-controller-single-namespace-watch | 41                    | RoleBinding do gerenciador do controlador no namespace configurado                                     | Esse recurso será criado se for definido um valor para `flags.watchSingleNamespace`.                                                                    |
-| `manager_listener_role.yaml`                            | Função             | INSTALLATION\_NAME-gha-rs-controller-listener               | 26                    | Função do ouvinte                                                                                      | Esse recurso é sempre criado.                                                                                                                           |
-| `manager_listener_role_binding.yaml `                   | RoleBinding        | INSTALLATION\_NAME-gha-rs-controller-listener               | 26                    | RoleBinding para o ouvinte                                                                             | Esse recurso é sempre criado e associa a função de ouvinte à conta de serviço, que é criada por `serviceaccount.yaml` ou configurada com `values.yaml`. |
+| Modelo | Tipo de recurso | Nome | Comprimento reservado | Descrição | Observações |
+| --- | --- | --- | --- | --- | --- |
+| `deployment.yaml` | Implantação | INSTALLATION_NAME-gha-rs-controller | 18 | O recurso que executa o gerenciador de controladores | Os pods criados por esse recurso têm os sufixos ReplicaSet e Pod. |
+| `serviceaccount.yaml` | ServiceAccount | INSTALLATION_NAME-gha-rs-controller | 18 | Esse recurso será criado se `serviceAccount.create` em `values.yaml` estiver definido como verdadeiro. | O nome pode ser personalizado em `values.yaml` |
+| `manager_cluster_role.yaml` | ClusterRole | INSTALLATION_NAME-gha-rs-controller | 18 | ClusterRole para o Controller Manager | Esse recurso será criado se o valor de `flags.watchSingleNamespace` estiver vazio. |
+| `manager_cluster_role_binding.yaml` | ClusterRoleBinding | INSTALLATION_NAME-gha-rs-controller | 18 | ClusterRoleBinding do gerenciador do controlador | Esse recurso será criado se o valor de `flags.watchSingleNamespace` estiver vazio. |
+| `manager_single_namespace_controller_role.yaml` | Função | INSTALLATION_NAME-gha-rs-controller-single-namespace | 35 | Função do gerenciador do controlador | Esse recurso será criado se for definido um valor para `flags.watchSingleNamespace`. |
+| `manager_single_namespace_controller_role_binding.yaml` | RoleBinding | INSTALLATION_NAME-gha-rs-controller-single-namespace | 35 | RoleBinding do gerenciador do controlador | Esse recurso será criado se for definido um valor para `flags.watchSingleNamespace`. |
+| `manager_single_namespace_watch_role.yaml` | Função | INSTALLATION_NAME-gha-rs-controller-single-namespace-watch | 41 | Função do gerenciador de controladores no namespace configurado | Esse recurso será criado se for definido um valor para `flags.watchSingleNamespace`. |
+| `manager_single_namespace_watch_role_binding.yaml` | RoleBinding | INSTALLATION_NAME-gha-rs-controller-single-namespace-watch | 41 | RoleBinding do gerenciador do controlador no namespace configurado | Esse recurso será criado se for definido um valor para `flags.watchSingleNamespace`. |
+| `manager_listener_role.yaml` | Função | INSTALLATION_NAME-gha-rs-controller-listener | 26 | Função do ouvinte | Esse recurso é sempre criado. |
+| `manager_listener_role_binding.yaml ` | RoleBinding | INSTALLATION_NAME-gha-rs-controller-listener | 26 | RoleBinding para o ouvinte | Esse recurso é sempre criado e associa a função de ouvinte à conta de serviço, que é criada por `serviceaccount.yaml` ou configurada com `values.yaml`. |
 
 ### Recursos implementados por `gha-runner-scale-set`
 
-| Modelo                               | Tipo de recurso      | Nome                                    | Comprimento reservado | Descrição                                                                                                                                      | Observações                                                                                                                           |
-| ------------------------------------ | -------------------- | --------------------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `autoscalingrunnerset.yaml`          | AutoscalingRunnerSet | INSTALLATION\_NAME                      | 0                     | Recurso de nível superior ao se trabalhar com conjuntos de dimensionamento                                                                     | O comprimento do nome está limitado a 45 caracteres.                                                                                  |
-| `no_permission_service_account.yaml` | ServiceAccount       | INSTALLATION\_NAME-gha-rs-sem-permissão | 21                    | Conta de serviço criada no contêiner do executor                                                                                               | Esse recurso será criado se o modo do contêiner não for "kubernetes" e `template.spec.serviceAccountName` não for especificado.       |
-| `githubsecret.yaml`                  | Segredo              | INSTALLATION\_NAME-gha-rs-github-secret | 20                    | Segredo que contém valores necessários para autenticar na GitHub API                                                                           | Esse recurso será criado se `githubConfigSecret` for um objeto. Se for fornecida uma cadeia de caracteres, o segredo não será criado. |
-| `manager_role.yaml`                  | Função               | INSTALLATION\_NAME-gha-rs-manager       | 15                    | Função fornecida ao gerenciador para permitir a reconciliação de recursos no namespace do conjunto de executores de dimensionamento automático | Esse recurso é sempre criado.                                                                                                         |
-| `manager_role_binding.yaml`          | RoleBinding          | INSTALLATION\_NAME-gha-rs-manager       | 15                    | Associa manager\_role à conta de serviço do gerenciador.                                                                                       | Esse recurso é sempre criado.                                                                                                         |
-| `kube_mode_role.yaml`                | Função               | INSTALLATION\_NAME-gha-rs-kube-modo     | 17                    | Função que fornece as permissões necessárias para o gancho                                                                                     | Esse recurso é criado quando o modo do contêiner é definido como "kubernetes" e `template.spec.serviceAccount` não é fornecido.       |
-| `kube_mode_serviceaccount.yaml`      | ServiceAccount       | INSTALLATION\_NAME-gha-rs-kube-modo     | 17                    | Conta de serviço associada ao pod do executor.                                                                                                 | Esse recurso é criado quando o modo do contêiner é definido como "kubernetes" e `template.spec.serviceAccount` não é fornecido.       |
+| Modelo | Tipo de recurso | Nome | Comprimento reservado | Descrição | Observações |
+| --- | --- | --- | --- | --- | --- |
+| `autoscalingrunnerset.yaml` | AutoscalingRunnerSet | INSTALLATION_NAME | 0 | Recurso de nível superior ao se trabalhar com conjuntos de dimensionamento | O comprimento do nome está limitado a 45 caracteres. |
+| `no_permission_service_account.yaml` | ServiceAccount | INSTALLATION_NAME-gha-rs-sem-permissão | 21 | Conta de serviço criada no contêiner do executor | Esse recurso será criado se o modo do contêiner não for "kubernetes" e `template.spec.serviceAccountName` não for especificado. |
+| `githubsecret.yaml` | Segredo | INSTALLATION_NAME-gha-rs-github-secret | 20 | Segredo que contém valores necessários para autenticar na GitHub API | Esse recurso será criado se `githubConfigSecret` for um objeto. Se for fornecida uma cadeia de caracteres, o segredo não será criado. |
+| `manager_role.yaml` | Função | INSTALLATION_NAME-gha-rs-manager | 15 | Função fornecida ao gerenciador para permitir a reconciliação de recursos no namespace do conjunto de executores de dimensionamento automático | Esse recurso é sempre criado. |
+| `manager_role_binding.yaml` | RoleBinding | INSTALLATION_NAME-gha-rs-manager | 15 | Associa manager_role à conta de serviço do gerenciador. | Esse recurso é sempre criado. |
+| `kube_mode_role.yaml` | Função | INSTALLATION_NAME-gha-rs-kube-modo | 17 | Função que fornece as permissões necessárias para o gancho | Esse recurso é criado quando o modo do contêiner é definido como "kubernetes" e `template.spec.serviceAccount` não é fornecido. |
+| `kube_mode_serviceaccount.yaml` | ServiceAccount | INSTALLATION_NAME-gha-rs-kube-modo | 17 | Conta de serviço associada ao pod do executor. | Esse recurso é criado quando o modo do contêiner é definido como "kubernetes" e `template.spec.serviceAccount` não é fornecido. |
 
 ### Sobre recursos personalizados
 

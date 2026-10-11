@@ -7,7 +7,7 @@ lang: pt-BR
 plan: enterprise-cloud@latest
 source: https://docs.github.com/pt/enterprise-cloud@latest/actions/how-tos/reuse-automations/share-with-your-enterprise
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Reuse automations
 ---
 
 # Compartilhando ações e fluxos de trabalho com sua empresa
@@ -20,10 +20,9 @@ Se sua organização pertencer a uma conta corporativa, você poderá compartilh
 
 Quaisquer ações ou fluxos de trabalho reutilizáveis armazenados no repositório privado ou interno podem ser usados em fluxos de trabalho definidos em outros repositórios internos ou privados pertencentes à mesma organização ou por qualquer organização pertencente à empresa. Ações e fluxos de trabalho reutilizáveis armazenados em repositórios internos não podem ser usados em repositórios públicos e ações e fluxos de trabalho reutilizáveis armazenados em repositórios privados não podem ser usados em repositórios públicos ou internos.
 
-> \[!WARNING]
->
-> * Para tornar um repositório privado acessível aos fluxos de trabalho do GitHub Actions em outros repositórios, os colaboradores externos nos outros repositórios podem acessar indiretamente o repositório privado, mesmo que não tenham acesso direto a esses repositórios. Os colaboradores externos podem exibir os logs das execuções do fluxo de trabalho quando ações ou fluxos de trabalho do repositório privado são usados.
-> * Para permitir que os executores baixem essas ações, o GitHub transmite um token de instalação com escopo para o executor. Esse token tem acesso de leitura no repositório e expira automaticamente após uma hora.
+!!! warning
+    * Para tornar um repositório privado acessível aos fluxos de trabalho do GitHub Actions em outros repositórios, os colaboradores externos nos outros repositórios podem acessar indiretamente o repositório privado, mesmo que não tenham acesso direto a esses repositórios. Os colaboradores externos podem exibir os logs das execuções do fluxo de trabalho quando ações ou fluxos de trabalho do repositório privado são usados.
+    * Para permitir que os executores baixem essas ações, o GitHub transmite um token de instalação com escopo para o executor. Esse token tem acesso de leitura no repositório e expira automaticamente após uma hora.
 
 ## Compartilhando ações e fluxos de trabalho com sua empresa
 

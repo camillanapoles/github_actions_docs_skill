@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/runners/self-hosted-runners
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Runners
 ---
 
 # Referência de executores auto-hospedados
@@ -96,7 +96,7 @@ O GitHub recomenda a implementação do escalonamento automático com executores
 
 Esta abordagem permite que você gerencie os seus executores como sistemas efêmeros, já que você pode usar automação para fornecer um ambiente limpo para cada trabalho. Isso ajuda a limitar a exposição de quaisquer recursos sensíveis de trabalhos anteriores e também ajuda a mitigar o risco de um runner comprometido receber novos trabalhos.
 
-> \[!WARNING]Os arquivos de log do aplicativo do executor para executores efêmeros devem ser encaminhados para uma solução de armazenamento de logs externo para fins de solução de problemas e diagnóstico. Embora não seja necessário implantar executores efêmeros, o GitHub recomenda que os logs dos executores sejam encaminhados e preservados externamente antes da implantação de uma solução de dimensionamento automático de executores efêmeros em um ambiente de produção. Para saber mais, confira [Monitorar e solucionar problemas de executores auto-hospedados](../../how-tos/manage-runners/self-hosted-runners/monitor-and-troubleshoot.md#reviewing-the-self-hosted-runner-application-log-files).
+> [!WARNING]Os arquivos de log do aplicativo do executor para executores efêmeros devem ser encaminhados para uma solução de armazenamento de logs externo para fins de solução de problemas e diagnóstico. Embora não seja necessário implantar executores efêmeros, o GitHub recomenda que os logs dos executores sejam encaminhados e preservados externamente antes da implantação de uma solução de dimensionamento automático de executores efêmeros em um ambiente de produção. Para saber mais, confira [Monitorar e solucionar problemas de executores auto-hospedados](../../how-tos/manage-runners/self-hosted-runners/monitor-and-troubleshoot.md#reviewing-the-self-hosted-runner-application-log-files).
 
 Para adicionar um executor efêmero ao seu ambiente, inclua o parâmetro `--ephemeral` ao registrar o executor usando `config.sh`. Por exemplo:
 
@@ -106,8 +106,8 @@ Para adicionar um executor efêmero ao seu ambiente, inclua o parâmetro `--ephe
 
 O serviço GitHub Actions cancelará automaticamente o registro do executor depois que ele processar um trabalho. Em seguida, você poderá criar a sua própria automação que limpa o executor depois que ele tiver seu registro cancelado.
 
-> \[!NOTE]
-> Se um trabalho estiver rotulado para certo tipo de executor, mas nenhuma correspondência desse tipo estiver disponível, o trabalho não falhará imediatamente no momento da colocação na fila. Em vez disso, o trabalho permanecerá na fila até que o período de tempo limite de 24 horas expire.
+!!! note
+    Se um trabalho estiver rotulado para certo tipo de executor, mas nenhuma correspondência desse tipo estiver disponível, o trabalho não falhará imediatamente no momento da colocação na fila. Em vez disso, o trabalho permanecerá na fila até que o período de tempo limite de 24 horas expire.
 
 Como alternativa, você pode criar executores just-in-time efêmeros usando a API REST. Para saber mais, confira [Pontos de extremidade da API REST para executores auto-hospedados](https://docs.github.com/pt/rest/actions/self-hosted-runners).
 
@@ -121,13 +121,13 @@ Para desativar as atualizações automáticas de software e instalar atualizaç�
 ./config.sh --url https://github.com/YOUR-ORGANIZATION --token EXAMPLE-TOKEN --disableupdate
 ```
 
-Se você desabilitar as atualizações automáticas, ainda deverá atualizar a versão do seu executor regularmente. Novas funcionalidades no GitHub Actions exigem alterações no serviço GitHub Actions\_e\_ no software do executor. O executor pode não ser capaz de processar corretamente trabalhos que aproveitam os novos recursos GitHub Actions sem uma atualização de software.
+Se você desabilitar as atualizações automáticas, ainda deverá atualizar a versão do seu executor regularmente. Novas funcionalidades no GitHub Actions exigem alterações no serviço GitHub Actions_e\_ no software do executor. O executor pode não ser capaz de processar corretamente trabalhos que aproveitam os novos recursos GitHub Actions sem uma atualização de software.
 
 Se você desabilitar as atualizações automáticas, será necessário atualizar a versão do seu executor no prazo de 30 dias a contar da nova versão disponível. Você pode querer se inscrever para receber notificações de lançamentos no [repositório `actions/runner`](https://github.com/actions/runner/releases). Para saber mais, confira [Configurar notificações](https://docs.github.com/pt/subscriptions-and-notifications/get-started/configuring-notifications#about-custom-notifications).
 
 Para obter instruções sobre como instalar a última versão do executor, confira as instruções de instalação da [última versão](https://github.com/actions/runner/releases).
 
-> \[!WARNING] Todas as atualizações lançadas para o software, incluindo versões principais, secundárias ou de patch, são consideradas como uma atualização disponível. Se você não executar uma atualização de software em 30 dias, o serviço do GitHub Actions não colocará trabalhos na fila para o seu executor. Além disso, se uma atualização crítica de segurança for necessária, o serviço de GitHub Actions não colocará os trabalhos na fila do seu executor até que ele seja atualizado.
+> [!WARNING] Todas as atualizações lançadas para o software, incluindo versões principais, secundárias ou de patch, são consideradas como uma atualização disponível. Se você não executar uma atualização de software em 30 dias, o serviço do GitHub Actions não colocará trabalhos na fila para o seu executor. Além disso, se uma atualização crítica de segurança for necessária, o serviço de GitHub Actions não colocará os trabalhos na fila do seu executor até que ele seja atualizado.
 
 ### Webhooks para dimensionamento automático
 
@@ -173,8 +173,8 @@ Quando uma nova versão é lançada, o aplicativo executor se atualiza automatic
 
 ### Domínios acessíveis por função
 
-> \[!NOTE]
-> Alguns dos domínios listados são configurados por meio de registros `CNAME`. Alguns firewalls podem exigir que você adicione regras de maneira recursiva para todos os registros `CNAME`. Observe que os registros `CNAME` poderão mudar no futuro e que apenas os domínios listados permanecerão constantes.
+!!! note
+    Alguns dos domínios listados são configurados por meio de registros `CNAME`. Alguns firewalls podem exigir que você adicione regras de maneira recursiva para todos os registros `CNAME`. Observe que os registros `CNAME` poderão mudar no futuro e que apenas os domínios listados permanecerão constantes.
 
 **Necessário para operações essenciais:**
 

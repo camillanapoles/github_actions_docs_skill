@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos
 captured: '2026-10-11'
-section: GitHub Actions
+section: Actions
 ---
 
 # Instruções para o GitHub Actions

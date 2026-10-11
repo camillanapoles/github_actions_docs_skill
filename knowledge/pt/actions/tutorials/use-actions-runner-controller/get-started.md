@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/use-actions-runner-controller/get-started
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Use actions runner controller
 ---
 
 # Comece a usar o Actions Runner Controller
@@ -66,7 +66,8 @@ Para usar o ARC, verifique se você tem os itens a seguir.
 
    * Este exemplo de comando instala a última versão do gráfico do Helm. Para instalar uma versão específica, transmita o argumento `--version` com a versão do gráfico que deseja instalar. Você pode encontrar a lista de versões no Registro de Contêiner [GitHub](https://github.com/actions/actions-runner-controller/pkgs/container/actions-runner-controller-charts%2Fgha-runner-scale-set).
 
-     > \[!NOTE]
+!!! note
+
      >
      > * Como uma melhor prática de segurança, crie os pods do executor em um namespace diferente do namespace que contém os pods do operador.
      > *

@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/reuse-automations/reuse-workflows
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Reuse automations
 ---
 
 # Reutilizar fluxos de trabalho
@@ -47,7 +47,8 @@ Você pode definir entradas e segredos, que podem ser passados do fluxo de traba
 
 2. No fluxo de trabalho reutilizável, faça referência à entrada ou ao segredo que você definiu na chave `on` na etapa anterior.
 
-   > \[!NOTE]
+!!! note
+
    > Se os segredos forem herdados usando `secrets: inherit` no fluxo de trabalho de chamada, você poderá referenciá-los mesmo que não estejam explicitamente definidos na chave `on`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idsecretsinherit).
 
             ```yaml
@@ -69,7 +70,8 @@ Você pode definir entradas e segredos, que podem ser passados do fluxo de traba
 
    Se um segredo de ambiente tiver o mesmo nome de um repositório ou segredo da organização, o segredo do ambiente terá precedência. Isso se aplica quando o chamador usa `secrets: inherit` ou `${{ secrets.MY_SECRET }}`. O trabalho que define `environment` recebe o valor do segredo do ambiente.
 
-   > \[!WARNING]
+!!! warning
+
    > Se o fluxo de trabalho do chamador não passar um segredo de ambiente, o segredo será resolvido para uma cadeia de caracteres vazia no fluxo de trabalho reutilizável. A execução do workflow não exibe nenhum erro. Em vez disso, para fazer a execução do fluxo de trabalho falhar, defina `required: true` no segredo em [`on.workflow_call.secrets`](../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callsecrets). Essa configuração verifica apenas se o workflow chamador fornece o segredo. Ele não verifica se o segredo tem um valor.
 
 3. Passe a entrada ou o segredo do fluxo de trabalho da chamada.
@@ -228,11 +230,11 @@ jobs:
 
 ## Como aninhar fluxos de trabalho reutilizáveis
 
-Você pode conectar no máximo dez níveis de fluxos de trabalho, ou seja, o fluxo de trabalho de chamadas de nível superior e até nove níveis de fluxos de trabalho reutilizáveis. Por exemplo: *caller-workflow\.yml\_\_→ called-workflow-1.yml\_\_→ called-workflow-2.yml* → *called-workflow-3.yml* →... → *called-workflow-9.yml*.
+Você pode conectar no máximo dez níveis de fluxos de trabalho, ou seja, o fluxo de trabalho de chamadas de nível superior e até nove níveis de fluxos de trabalho reutilizáveis. Por exemplo: *caller-workflow.yml\_\_→ called-workflow-1.yml\_\_→ called-workflow-2.yml* → *called-workflow-3.yml* →... → *called-workflow-9.yml*.
 
 Loops na árvore de fluxo de trabalho não são permitidos.
 
-> \[!NOTE] Fluxos de trabalho reutilizáveis aninhados exigem que todos os fluxos de trabalho na cadeia sejam acessíveis ao chamador, e as permissões só podem ser mantidas ou reduzidas, e não elevadas, em toda a cadeia. Para saber mais, confira [Reutilizando configurações de fluxo de trabalho](../../reference/workflows-and-actions/reusing-workflow-configurations.md).
+> [!NOTE] Fluxos de trabalho reutilizáveis aninhados exigem que todos os fluxos de trabalho na cadeia sejam acessíveis ao chamador, e as permissões só podem ser mantidas ou reduzidas, e não elevadas, em toda a cadeia. Para saber mais, confira [Reutilizando configurações de fluxo de trabalho](../../reference/workflows-and-actions/reusing-workflow-configurations.md).
 
 De dentro de um fluxo de trabalho reutilizável, você pode chamar outro fluxo de trabalho reutilizável.
 

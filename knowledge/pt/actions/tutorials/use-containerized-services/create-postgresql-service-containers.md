@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/use-containerized-services/create-postgresql-service-containers
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Use containerized services
 ---
 
 # Criar contêineres de serviço PostgreSQL
@@ -18,11 +18,11 @@ _Você pode criar um contêiner de serviço PostgreSQL para usar no seu fluxo de
 
 Este guia mostra exemplos de fluxo de trabalho que configuram um contêiner de serviço usando a imagem Docker Hub `postgres`. O fluxo de trabalho executa um script que se conecta ao serviço do PostgreSQL, cria uma tabela e, em seguida, preenche-a com dados. Para testar se o fluxo de trabalho cria e preenche a tabela do PostgreSQL, o script imprime os dados da tabela para o console.
 
-> \[!NOTE]
-> Se os fluxos de trabalho usarem ações de contêiner do Docker, contêineres de trabalho ou contêineres de serviço, você precisará usar um executor do Linux:
->
-> * Se você estiver usando executores hospedados em GitHub, você deverá usar um executor do Ubuntu.
-> * Se você estiver usando executores auto-hospedados, você deve usar uma máquina Linux, pois seu executor e o Docker precisam ser instalados.
+!!! note
+    Se os fluxos de trabalho usarem ações de contêiner do Docker, contêineres de trabalho ou contêineres de serviço, você precisará usar um executor do Linux:
+
+    * Se você estiver usando executores hospedados em GitHub, você deverá usar um executor do Ubuntu.
+    * Se você estiver usando executores auto-hospedados, você deve usar uma máquina Linux, pois seu executor e o Docker precisam ser instalados.
 
 ## Pré-requisitos
 

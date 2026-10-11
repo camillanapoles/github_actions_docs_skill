@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/use-actions-runner-controller/troubleshoot
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Use actions runner controller
 ---
 
 # Solução de problemas dos erros do Actions Runner Controller
@@ -158,7 +158,7 @@ Você pode ter no máximo 10.000 executores auto-hospedados em um grupo de execu
 
 ## Atualizações do executor
 
-> \[!WARNING] Todas as atualizações lançadas para o software, incluindo versões principais, secundárias ou de patch, são consideradas como uma atualização disponível. Se você não executar uma atualização de software em 30 dias, o serviço do GitHub Actions não colocará trabalhos na fila para o seu executor. Além disso, se uma atualização crítica de segurança for necessária, o serviço de GitHub Actions não colocará os trabalhos na fila do seu executor até que ele seja atualizado.
+> [!WARNING] Todas as atualizações lançadas para o software, incluindo versões principais, secundárias ou de patch, são consideradas como uma atualização disponível. Se você não executar uma atualização de software em 30 dias, o serviço do GitHub Actions não colocará trabalhos na fila para o seu executor. Além disso, se uma atualização crítica de segurança for necessária, o serviço de GitHub Actions não colocará os trabalhos na fila do seu executor até que ele seja atualizado.
 
 Valide se a versão do software executor e/ou as imagens de executores personalizados em uso estão rodando a versão mais recente.
 

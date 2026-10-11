@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs/manually-run-a-workflow
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage workflow runs
 ---
 
 # Executar um fluxo de trabalho manualmente
@@ -24,11 +24,9 @@ Para disparar o evento `workflow_dispatch`, seu fluxo de trabalho precisa estar 
 
 ## Executando um fluxo de trabalho
 
-<div class="ghd-tool webui">
-
 1. Em GitHub, acesse a página principal do repositório.
 
-2. No nome do repositório, clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Actions**.
+2. No nome do repositório, clique em **(play) Actions**.
 
    ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
 
@@ -38,7 +36,8 @@ Para disparar o evento `workflow_dispatch`, seu fluxo de trabalho precisa estar 
 
 4. Clique no botão **Executar fluxo de trabalho**, que fica acima da lista de execuções de fluxo de trabalho.
 
-   > \[!NOTE]
+!!! note
+
    > Para você ver o botão **Run workflow**, o arquivo de fluxo de trabalho precisa usar o gatilho de evento `workflow_dispatch`. Somente os arquivos de fluxo de trabalho que usam o gatilho do evento `workflow_dispatch` têm a opção de executar o fluxo de trabalho manualmente usando o botão **Executar fluxo de trabalho**. Para saber mais sobre a configuração do evento `workflow_dispatch`, confira [Eventos que disparam fluxos de trabalho](../../reference/workflows-and-actions/events-that-trigger-workflows.md#workflow_dispatch).
 
    ![Captura de tela da página de fluxo de trabalho. Acima da lista de execuções de fluxo de trabalho, o botão rotulado como "Executar fluxo de trabalho" está delineado em laranja escuro.](/assets/images/help/actions/actions-workflow-dispatch.png)
@@ -49,12 +48,8 @@ Para disparar o evento `workflow_dispatch`, seu fluxo de trabalho precisa estar 
 
 7. Clique em **Executar fluxo de trabalho**.
 
-</div>
-
-<div class="ghd-tool cli">
-
-> \[!NOTE]
-> Para saber mais sobre GitHub CLI, confira [Sobre GitHub CLI](https://docs.github.com/pt/github-cli/github-cli/about-github-cli).
+!!! note
+    Para saber mais sobre GitHub CLI, confira [Sobre GitHub CLI](https://docs.github.com/pt/github-cli/github-cli/about-github-cli).
 
 Para executar um fluxo de trabalho, use o subcomando `workflow run`. Substitua o parâmetro `workflow` pelo nome, pela ID ou pelo nome do arquivo de fluxo de trabalho que deseja executar. Por exemplo, `"Link Checker"`, `1234567` ou `"link-check-test.yml"`. Se você não especificar um fluxo de trabalho, GitHub CLI retornará um menu interativo para escolher um fluxo de trabalho.
 
@@ -86,13 +81,11 @@ Para ver o progresso da execução do fluxo de trabalho, use o subcomando `run w
 gh run watch
 ```
 
-</div>
-
 ## Executar um fluxo de trabalho usando a API REST
 
 Ao usar a API REST, você configura os parâmetros do corpo da solicitação `inputs` e `ref`. Se as entradas forem omitidas, serão usados os valores-padrão definidos no arquivo de fluxo de trabalho.
 
-> \[!NOTE]
-> Você pode definir até 25 `inputs`para um `workflow_dispatch` evento.
+!!! note
+    Você pode definir até 25 `inputs`para um `workflow_dispatch` evento.
 
 Para saber mais sobre o uso da API REST, confira [Endpoints da API REST para fluxos de trabalho](https://docs.github.com/pt/rest/actions/workflows#create-a-workflow-dispatch-event).

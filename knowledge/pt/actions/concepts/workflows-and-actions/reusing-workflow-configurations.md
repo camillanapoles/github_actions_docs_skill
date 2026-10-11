@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/workflows-and-actions/reusing-workflow-configurations
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Workflows and actions
 ---
 
 # Reutilizando configurações de fluxo de trabalho
@@ -51,17 +51,17 @@ Vamos comparar alguns aspectos de cada solução:
 
 ### Principais diferenças entre fluxos de trabalho reutilizáveis e ações compostas
 
-| Fluxos de trabalho reutilizáveis                                                                          | Ações compostas                                                                                                                   |
-| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Um arquivo YAML, muito semelhante a qualquer arquivo de fluxo de trabalho padrão                          | Uma ação que contém um pacote de etapas do fluxo de trabalho                                                                      |
+| Fluxos de trabalho reutilizáveis | Ações compostas |
+| --- | --- |
+| Um arquivo YAML, muito semelhante a qualquer arquivo de fluxo de trabalho padrão | Uma ação que contém um pacote de etapas do fluxo de trabalho |
 | Cada fluxo de trabalho reutilizável é um único arquivo no diretório `.github/workflows` de um repositório | Cada ação composta é um repositório, ou um diretório, separado contendo um arquivo `action.yml` e, opcionalmente, outros arquivos |
-| Chamada feita referenciando um arquivo YAML específico                                                    | Chamada feita referenciando um repositório ou diretório no qual a ação está definida                                              |
-| Chamada feita diretamente em uma tarefa, não em uma etapa                                                 | Execução feita como uma etapa dentro de uma tarefa                                                                                |
-| Pode conter várias tarefas                                                                                | Não contém tarefas                                                                                                                |
-| Cada etapa é registrada em tempo real                                                                     | Logado como uma única etapa, mesmo que contenha várias etapas                                                                     |
-| Pode conectar no máximo dez níveis de fluxos de trabalho                                                  | O aninhamento pode ser feito para ter até 10 ações compostas em um único fluxo de trabalho                                        |
-| Pode usar segredos                                                                                        | Não pode usar segredos                                                                                                            |
-| Não é possível publicar no [marketplace](https://github.com/marketplace?type=actions)                     | Pode ser publicado no [marketplace](https://github.com/marketplace?type=actions)                                                  |
+| Chamada feita referenciando um arquivo YAML específico | Chamada feita referenciando um repositório ou diretório no qual a ação está definida |
+| Chamada feita diretamente em uma tarefa, não em uma etapa | Execução feita como uma etapa dentro de uma tarefa |
+| Pode conter várias tarefas | Não contém tarefas |
+| Cada etapa é registrada em tempo real | Logado como uma única etapa, mesmo que contenha várias etapas |
+| Pode conectar no máximo dez níveis de fluxos de trabalho | O aninhamento pode ser feito para ter até 10 ações compostas em um único fluxo de trabalho |
+| Pode usar segredos | Não pode usar segredos |
+| Não é possível publicar no [marketplace](https://github.com/marketplace?type=actions) | Pode ser publicado no [marketplace](https://github.com/marketplace?type=actions) |
 
 ## Modelos de fluxo de trabalho
 

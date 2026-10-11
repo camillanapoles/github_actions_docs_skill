@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/runners/private-networking
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Runners
 ---
 
 # Rede privada com executores hospedados pelo GitHub

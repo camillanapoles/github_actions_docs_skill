@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/build-and-test-code
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials
 ---
 
 # Criar e testar seu código

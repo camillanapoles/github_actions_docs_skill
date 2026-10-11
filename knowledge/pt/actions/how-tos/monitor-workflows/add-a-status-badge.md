@@ -7,15 +7,15 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/monitor-workflows/add-a-status-badge
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Monitor workflows
 ---
 
 # Adicionar um selo de status de fluxo de trabalho
 
 _Você pode exibir um selo de status no seu repositório para indicar o status dos seus fluxos de trabalho._
 
-> \[!NOTE]
-> As notificações de fluxo de trabalho em um repositório privado não podem ser acessadas ​​externamente, portanto, você não poderá inseri-los ou vinculá-los por meio de um site externo.
+!!! note
+    As notificações de fluxo de trabalho em um repositório privado não podem ser acessadas ​​externamente, portanto, você não poderá inseri-los ou vinculá-los por meio de um site externo.
 
 Um selo de status mostra se um fluxo de trabalho está falhando ou passando. Um local comum para adicionar uma notificação de status é no arquivo `README.md` do repositório, mas você pode adicioná-lo a qualquer página da Web desejada. Por padrão, os selos exibem o status do seu branch-padrão. Se não houver execuções de fluxo de trabalho em seu branch padrão, ele exibirá o status da execução mais recente em todos os branches. Você pode exibir o status de uma execução de fluxo de trabalho para um branch ou um evento específico usando os parâmetros de consulta `branch` e `event` na URL.
 
@@ -28,16 +28,16 @@ Para adicionar uma notificação de status de fluxo de trabalho ao arquivo `READ
 Você pode criar um emblema de status do fluxo de trabalho diretamente na interface usando o nome do arquivo de fluxo de trabalho, o parâmetro de branch e o parâmetro de evento.
 
 1. Em GitHub, acesse a página principal do repositório.
-2. No nome do repositório, clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Actions**.
+2. No nome do repositório, clique em **(play) Actions**.
 
    ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
    ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
-4. No lado direito da página, ao lado do campo "Filter workflow runs", clique em <svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-kebab-horizontal" aria-label="Show workflow options" role="img"><path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path></svg> para exibir um menu suspenso e clique em **Create status badge**.
+4. No lado direito da página, ao lado do campo "Filter workflow runs", clique em (Show workflow options) para exibir um menu suspenso e clique em **Create status badge**.
 5. Opcionalmente, selecione um branch se quiser exibir a notificação de status de um branch diferente do branch padrão.
 6. Como alternativa, selecione o evento que acionará o fluxo de trabalho.
-7. Clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-copy" aria-label="copy" role="img"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path></svg> Copy status badge Markdown**.
+7. Clique em **(copy) Copy status badge Markdown**.
 8. Copie o Markdown para o arquivo `README.md`.
 
 ## Usar o nome do arquivo do fluxo de trabalho

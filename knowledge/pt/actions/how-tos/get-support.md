@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/get-support
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos
 ---
 
 # Obtendo ajuda do suporte GitHub sobre GitHub Actions
@@ -34,13 +34,13 @@ Algumas informações que Suporte do GitHub serão solicitadas podem incluir, ma
 
   Os nomes de arquivo de log do executor auto-hospedado são formatados: `Runner_YYYY####-xxxxxx-utc.log` e `Worker_YYYY####-xxxxxx-utc.log`.
 
-> \[!NOTE]
-> Anexe arquivos ao seu tíquete de suporte alterando a extensão do arquivo para `.txt` ou `.zip`. Se você incluir dados textuais, como trechos de arquivo de log ou de fluxo de trabalho, embutidos no seu tíquete, verifique se eles estão formatados corretamente como blocos de código de Markdown. Para obter mais informações sobre a formatação correta do Markdown, consulte [Sintaxe básica de escrita e formatação](https://docs.github.com/pt/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#quoting-code).
->
-> Se as informações fornecidas não forem ilegíveis devido à perda de formatação por sintaxe Markdown inadequada, Suporte do GitHub poderá solicitar que as informações sejam reenviadas como um anexo ou com a formatação markdown correta.
+!!! note
+    Anexe arquivos ao seu tíquete de suporte alterando a extensão do arquivo para `.txt` ou `.zip`. Se você incluir dados textuais, como trechos de arquivo de log ou de fluxo de trabalho, embutidos no seu tíquete, verifique se eles estão formatados corretamente como blocos de código de Markdown. Para obter mais informações sobre a formatação correta do Markdown, consulte [Sintaxe básica de escrita e formatação](https://docs.github.com/pt/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#quoting-code).
 
-> \[!WARNING]
-> Verifique se todos os arquivos e textos fornecidos Suporte do GitHub foram redigidos corretamente para remover informações confidenciais, como tokens e outros segredos.
+    Se as informações fornecidas não forem ilegíveis devido à perda de formatação por sintaxe Markdown inadequada, Suporte do GitHub poderá solicitar que as informações sejam reenviadas como um anexo ou com a formatação markdown correta.
+
+    [!WARNING]
+    Verifique se todos os arquivos e textos fornecidos Suporte do GitHub foram redigidos corretamente para remover informações confidenciais, como tokens e outros segredos.
 
 ### Arquivos de log do aplicativo do executor efêmero
 

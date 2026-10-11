@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/deploy-to-third-party-platforms/sign-xcode-applications
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Deploy / Deploy to third party platforms
 ---
 
 # Instalar um certificado da Apple em executores do macOS para desenvolvimento do Xcode
@@ -110,8 +110,8 @@ jobs:
           # ...
 ```
 
-> \[!NOTE]
-> Para destinos de build do iOS, seu perfil de provisionamento deve ter a extensão `.mobileprovision`. Para destinos de build do macOS, a extensão deve ser `.provisionprofile`. O fluxo de trabalho de exemplo acima deve ser atualizado para refletir sua plataforma de destino.
+!!! note
+    Para destinos de build do iOS, seu perfil de provisionamento deve ter a extensão `.mobileprovision`. Para destinos de build do macOS, a extensão deve ser `.provisionprofile`. O fluxo de trabalho de exemplo acima deve ser atualizado para refletir sua plataforma de destino.
 
 ## Limpeza necessária nos executores auto-hospedados
 

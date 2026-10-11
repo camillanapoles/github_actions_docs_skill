@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/publish-packages/publish-nodejs-packages
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Publish packages
 ---
 
 # Publicar pacotes do Node.js
@@ -29,7 +29,7 @@ Você também pode achar útil ter um entendimento básico do seguinte:
 * [Trabalhando com o repositório npm](https://docs.github.com/pt/packages/working-with-a-github-packages-registry/working-with-the-npm-registry)
 * [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md)
 * [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md)
-* [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md)
+* [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md)
 
 ## Sobre a configuração do pacote
 
@@ -111,7 +111,7 @@ Se você fornecer a chave `repository` em seu arquivo `package.json`, o reposit�
 
 ### Efetuar a autenticação no repositório de destino
 
-Para executar operações autenticadas no GitHub Packages registro em seu fluxo de trabalho, você pode usar o `GITHUB_TOKEN`. O segredo `GITHUB_TOKEN` é definido como um token de acesso para o repositório sempre que um trabalho em um fluxo de trabalho é iniciado. Você deve definir as permissões desse token de acesso no arquivo de fluxo de trabalho para permitir acesso de leitura à permissão `contents` e acesso de gravação à permissão `packages`. Para saber mais, confira [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md).
+Para executar operações autenticadas no GitHub Packages registro em seu fluxo de trabalho, você pode usar o `GITHUB_TOKEN`. O segredo `GITHUB_TOKEN` é definido como um token de acesso para o repositório sempre que um trabalho em um fluxo de trabalho é iniciado. Você deve definir as permissões desse token de acesso no arquivo de fluxo de trabalho para permitir acesso de leitura à permissão `contents` e acesso de gravação à permissão `packages`. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md).
 
 Se você quiser publicar seu pacote em um repositório diferente, deve usar um personal access token (classic) que tenha permissão de gravação nos pacotes do repositório de destino. Para saber mais, confira [Gerenciar seus tokens de acesso pessoal](https://docs.github.com/pt/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) e [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 

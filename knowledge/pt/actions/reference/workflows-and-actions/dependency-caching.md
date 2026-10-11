@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/dependency-caching
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Workflows and actions
 ---
 
 # Referência do cache de dependência
@@ -57,8 +57,8 @@ Não é possível alterar o conteúdo de um cache existente. Em vez disso, crie 
 
 * `enableCrossOsArchive`: **Optional** Um valor booliano que, quando habilitado, permite que Windows executores salvem ou restaurem caches independentemente do sistema operacional em que o cache foi criado. Se esse parâmetro não estiver definido, ele usará como padrão `false`. Para obter mais informações, confira [Cache entre sistemas operacionais](https://github.com/actions/cache/blob/main/tips-and-workarounds.md#cross-os-cache) na documentação do Actions Cache.
 
-> \[!NOTE]
-> Recomendamos que você não armazene informações confidenciais, como tokens de acesso ou credenciais de logon, em arquivos no caminho do cache. Qualquer pessoa com acesso de leitura pode criar uma solicitação de pull em um repositório e acessar o conteúdo de um cache. Além disso, os forks de um repositório podem criar pull requests no branch-base e acessar as caches no branch-base.
+!!! note
+    Recomendamos que você não armazene informações confidenciais, como tokens de acesso ou credenciais de logon, em arquivos no caminho do cache. Qualquer pessoa com acesso de leitura pode criar uma solicitação de pull em um repositório e acessar o conteúdo de um cache. Além disso, os forks de um repositório podem criar pull requests no branch-base e acessar as caches no branch-base.
 
 ### Parâmetros de saída para a ação `cache`
 
@@ -214,20 +214,20 @@ Por exemplo, se uma solicitação de pull contiver um branch `feature` e for dir
 
 Se você estiver armazenando em cache os gerenciadores de pacotes listados abaixo, o uso das respectivas ações setup-\* exigirá configuração mínima e criará e restaurará caches de dependência para você.
 
-| Gerenciadores de pacotes                                                                          | ação setup-\* para cache |
-| ------------------------------------------------------------------------------------------------- | ------------------------ |
-| npm, YARN, pnpm                                                                                   |                          |
-| [setup-node](https://github.com/actions/setup-node#caching-global-packages-data)                  |                          |
-| pip, pipenv, Poesia                                                                               |                          |
-| [setup-python](https://github.com/actions/setup-python#caching-packages-dependencies)             |                          |
-| Gradle, Maven                                                                                     |                          |
-| [setup-java](https://github.com/actions/setup-java#caching-packages-dependencies)                 |                          |
-| RubyGems                                                                                          |                          |
-| [setup-ruby](https://github.com/ruby/setup-ruby#caching-bundle-install-automatically)             |                          |
-| Ir `go.sum`                                                                                       |                          |
-| [setup-go](https://github.com/actions/setup-go#caching-dependency-files-and-build-outputs)        |                          |
-| NuGet para .NET                                                                                   |                          |
-| [setup-dotnet](https://github.com/actions/setup-dotnet?tab=readme-ov-file#caching-nuget-packages) |                          |
+| Gerenciadores de pacotes | ação setup-\* para cache |
+| --- | --- |
+| npm, YARN, pnpm |  |
+| [setup-node](https://github.com/actions/setup-node#caching-global-packages-data) |  |
+| pip, pipenv, Poesia |  |
+| [setup-python](https://github.com/actions/setup-python#caching-packages-dependencies) |  |
+| Gradle, Maven |  |
+| [setup-java](https://github.com/actions/setup-java#caching-packages-dependencies) |  |
+| RubyGems |  |
+| [setup-ruby](https://github.com/ruby/setup-ruby#caching-bundle-install-automatically) |  |
+| Ir `go.sum` |  |
+| [setup-go](https://github.com/actions/setup-go#caching-dependency-files-and-build-outputs) |  |
+| NuGet para .NET |  |
+| [setup-dotnet](https://github.com/actions/setup-dotnet?tab=readme-ov-file#caching-nuget-packages) |  |
 
 ## Restrições para acessar uma cache
 
@@ -270,7 +270,7 @@ Use a chave de fluxo de trabalho `cache-mode` para conceder aos jobs o nível m�
 `cache-mode` controla o acesso ao cache concedido ao token da tarefa e é aplicado por meio de tokens de cache com escopo. A chave aceita os valores a seguir.
 
 | Value        | Restaurar caches | Salvar caches |
-| ------------ | ---------------- | ------------- |
+|------------|----------------|-------------|
 | `read`       | Sim              | No            |
 | `write`      | Sim              | Sim           |
 | `write-only` | No               | Sim           |
@@ -281,7 +281,7 @@ Se você omitir `cache-mode`, um `read` ou `write` padrão será usado com base 
 ### Defaults
 
 | Configuration            | Tipo de acionador               | Acesso efetivo |
-| ------------------------ | ------------------------------- | -------------- |
+|------------------------|-------------------------------|--------------|
 | `cache-mode` omitido     | Confiável                       | `write`        |
 | `cache-mode` omitido     | Baixa confiança                 | `read`         |
 | `cache-mode: write`      | Confiável ou de baixa confiança | `write`        |
@@ -305,8 +305,8 @@ Se um fluxo de trabalho chamado declarar um `cache-mode` que solicita acesso al�
 
 Um trabalho ou fluxo de trabalho que declara `cache-mode: write` ou `cache-mode: write-only` substitui explicitamente o padrão de somente leitura seguro que, de outra forma, se aplicaria a uma execução disparada por um evento de baixa confiança. Consulte [o acesso ao Cache para gatilhos de fluxo de trabalho de baixa confiança](#cache-access-for-low-trust-workflow-triggers).
 
-> \[!WARNING]
-> Declarar explicitamente `cache-mode: write-only` ou `cache-mode: write` reintroduz o risco de envenenamento de cache que as permissões padrão de somente leitura para gatilhos não confiáveis foram projetadas para evitar. Se um fluxo de trabalho executado por um gatilho não confiável, como `pull_request_target`, `issue_comment` ou `workflow_run`, declarar um `cache-mode` com permissão de gravação, vulnerabilidades ou a execução de código não confiável no fluxo de trabalho poderão então ser usadas para salvar um cache. Um fluxo de trabalho mais privilegiado que restaura posteriormente esse cache pode executar conteúdo controlado pelo invasor.
+!!! warning
+    Declarar explicitamente `cache-mode: write-only` ou `cache-mode: write` reintroduz o risco de envenenamento de cache que as permissões padrão de somente leitura para gatilhos não confiáveis foram projetadas para evitar. Se um fluxo de trabalho executado por um gatilho não confiável, como `pull_request_target`, `issue_comment` ou `workflow_run`, declarar um `cache-mode` com permissão de gravação, vulnerabilidades ou a execução de código não confiável no fluxo de trabalho poderão então ser usadas para salvar um cache. Um fluxo de trabalho mais privilegiado que restaura posteriormente esse cache pode executar conteúdo controlado pelo invasor.
 
 Antes de definir um `cache-mode` com permissão de gravação em um fluxo de trabalho com um gatilho não confiável, considere se uma mitigação mais restrita atende às suas necessidades:
 
@@ -356,7 +356,7 @@ Definir seus orçamentos de SKU do Armazenamento em Cache do Actions inferiores 
 Abaixo estão alguns custos mensais ilustrativos para informar os orçamentos que talvez você deseje definir para o SKU de Armazenamento de Cache de Ações.
 
 | Tamanho do cache | Custo mensal (se totalmente utilizado) |
-| ---------------- | -------------------------------------- |
+|----------------|--------------------------------------|
 | 50GB             | US$ 2,80                               |
 | 200 GB           | $13.30                                 |
 | 1000 GB          | US$ 69,30                              |

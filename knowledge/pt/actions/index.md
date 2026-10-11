@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions
 captured: '2026-10-11'
-section: GitHub Actions
+section: Actions
 ---
 
 # Documentação do GitHub Actions
@@ -166,7 +166,7 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
   Saiba mais sobre segredos e como são usados em fluxos de trabalho GitHub Actions.
 
-* [GITHUB\_TOKEN](concepts/security/github_token.md)
+* [GITHUB_TOKEN](concepts/security/github_token.md)
 
   Saiba o que `GITHUB_TOKEN` é, como funciona e por que ele é importante para a automação segura em GitHub Actions fluxos de trabalho.
 
@@ -675,7 +675,7 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
   Práticas de segurança para escrever fluxos de trabalho e usar GitHub Actions recursos.
 
-* [Uso seguro de pull\_request\_target](reference/security/securely-using-pull_request_target.md)
+* [Uso seguro de pull_request_target](reference/security/securely-using-pull_request_target.md)
 
   Saiba mais sobre os riscos de segurança do `pull_request_target` evento.
 
@@ -751,7 +751,7 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
   Saiba como criar um fluxo de trabalho de CI (integração contínua) em GitHub Actions para criar e testar seu aplicativo Xamarin.
 
-* [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](tutorials/authenticate-with-github_token.md)
+* [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](tutorials/authenticate-with-github_token.md)
 
   Saiba como usar a autenticação `GITHUB_TOKEN` em nome de GitHub Actions.
 

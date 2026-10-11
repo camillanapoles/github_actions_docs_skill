@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/use-actions-runner-controller/use-arc-in-a-workflow
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage runners / Use actions runner controller
 ---
 
 # Usar executores do Controlador do Executor de Ações em um fluxo de trabalho

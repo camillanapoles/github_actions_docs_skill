@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/manage-your-work/add-labels-to-issues
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Manage your work
 ---
 
 # Adicionando etiquetas a problemas

@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-what-workflows-do
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Write workflows
 ---
 
 # Escolhendo o que seu fluxo de trabalho faz

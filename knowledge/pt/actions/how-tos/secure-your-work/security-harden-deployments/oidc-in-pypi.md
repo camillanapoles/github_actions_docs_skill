@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-pypi
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Secure your work / Security harden deployments
 ---
 
 # Configurando o OpenID Connect no PyPI
@@ -36,7 +36,8 @@ Para usar o OIDC com o PyPI, adicione uma configuração de confiança que vincu
 
 2. Configure uma relação de confiança entre o projeto PyPI e um repositório do GitHub (e o fluxo de trabalho dentro desse repositório). Por exemplo, se o seu repositório do GitHub estiver em `myorg/myproject` e o seu fluxo de trabalho de lançamento estiver definido em `release.yml` com um ambiente de `release`, você deverá usar as seguintes configurações para o seu editor confiável no PyPI.
 
-   > \[!NOTE]
+!!! note
+
    > Insira esses valores com cuidado. Dar ao usuário, repositório ou fluxo de trabalho incorreto a capacidade de publicar no seu projeto PyPI é equivalente a compartilhar um token de API.
 
    * Proprietário: `myorg`
@@ -48,8 +49,8 @@ Para usar o OIDC com o PyPI, adicione uma configuração de confiança que vincu
 
 Depois que seu editor confiável estiver registrado no PyPI, você poderá atualizar seu fluxo de trabalho de lançamento para usar a publicação confiável.
 
-> \[!NOTE]
-> Quando os ambientes são usados em fluxos de trabalho ou em políticas OIDC, recomendamos adicionar regras de proteção ao ambiente para segurança adicional. Por exemplo, você pode configurar regras de implantação em um ambiente para restringir quais ramificações e tags podem ser implantadas no ambiente ou acessar segredos de ambiente. Para saber mais, confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md).
+!!! note
+    Quando os ambientes são usados em fluxos de trabalho ou em políticas OIDC, recomendamos adicionar regras de proteção ao ambiente para segurança adicional. Por exemplo, você pode configurar regras de implantação em um ambiente para restringir quais ramificações e tags podem ser implantadas no ambiente ou acessar segredos de ambiente. Para saber mais, confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md).
 
 A ação [`pypa/gh-action-pypi-publish`](https://github.com/marketplace/actions/pypi-publish) tem suporte integrado para publicação confiável, que pode ser ativada dando à sua tarefa contida a permissão `id-token: write` e omitindo `username` e `password`.
 

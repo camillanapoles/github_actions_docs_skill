@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage runners / Use actions runner controller
 ---
 
 # Como implantar conjuntos de dimensionamento de executores com o Actions Runner Controller
@@ -20,13 +20,12 @@ Para implantar um conjunto de dimensionamento de executores, você precisa ter o
 
 Você pode implantar conjuntos de dimensionamento de executores com os gráficos do Helm do ARC ou implantando os manifestos necessários. O uso de gráficos do Helm do ARC é o método preferencial, especialmente se você não tem experiência anterior no uso do ARC.
 
-> \[!NOTE]
->
-> * Como uma melhor prática de segurança, crie os pods do executor em um namespace diferente do namespace que contém os pods do operador.
-> * Como uma melhor prática de segurança, crie segredos do Kubernetes e passe as referências secretas. Passar seus segredos em texto sem formatação por meio da CLI pode representar um risco à segurança.
-> * Recomendamos executar cargas de trabalho de produção isoladamente.
->   GitHub Actions os fluxos de trabalho são projetados para executar código arbitrário e o uso de um cluster compartilhado do Kubernetes para cargas de trabalho de produção pode representar um risco à segurança.
-> * Certifique-se de que implementou uma maneira de coletar e reter logs do controlador, dos ouvintes e dos executores efêmeros.
+!!! note
+    * Como uma melhor prática de segurança, crie os pods do executor em um namespace diferente do namespace que contém os pods do operador.
+    * Como uma melhor prática de segurança, crie segredos do Kubernetes e passe as referências secretas. Passar seus segredos em texto sem formatação por meio da CLI pode representar um risco à segurança.
+    * Recomendamos executar cargas de trabalho de produção isoladamente.
+      GitHub Actions os fluxos de trabalho são projetados para executar código arbitrário e o uso de um cluster compartilhado do Kubernetes para cargas de trabalho de produção pode representar um risco à segurança.
+    * Certifique-se de que implementou uma maneira de coletar e reter logs do controlador, dos ouvintes e dos executores efêmeros.
 
 1. Para configurar o conjunto de dimensionamento de executores, execute o comando a seguir no terminal usando valores da configuração do ARC.
 
@@ -40,7 +39,8 @@ Você pode implantar conjuntos de dimensionamento de executores com os gráficos
 
    * Este exemplo de comando instala a última versão do gráfico do Helm. Para instalar uma versão específica, transmita o argumento `--version` com a versão do gráfico que deseja instalar. Encontre a lista de versões no repositório [`actions-runner-controller`](https://github.com/actions/actions-runner-controller/pkgs/container/actions-runner-controller-charts%2Fgha-runner-scale-set).
 
-   > \[!NOTE]
+!!! note
+
    > Este exemplo usa um personal access token para manter a configuração inicial curta. Se você estiver registrando corredores no repositório ou no nível da organização, recomendamos autenticar com um GitHub App em vez disso. Para obter mais informações, consulte [Autenticando o ARC na API de GitHub](authenticate-to-the-api.md). Os executores de nível empresarial exigem autenticação personal access token (classic).
 
             ```bash copy
@@ -94,8 +94,8 @@ O ARC oferece várias opções de configuração avançada.
 
 ### Como configurar o nome do conjunto de dimensionamento de executores
 
-> \[!NOTE]
-> Os nomes do conjunto de dimensionamento do executor são exclusivos dentro do grupo de executores ao qual pertencem. Caso deseje implantar vários conjuntos de dimensionamento de executores com o mesmo nome, eles precisam pertencer a diferentes grupos de executores.
+!!! note
+    Os nomes do conjunto de dimensionamento do executor são exclusivos dentro do grupo de executores ao qual pertencem. Caso deseje implantar vários conjuntos de dimensionamento de executores com o mesmo nome, eles precisam pertencer a diferentes grupos de executores.
 
 Para configurar o nome do conjunto de dimensionamento do executor, você pode definir um `INSTALLATION_NAME` ou definir o valor do `runnerScaleSetName` na sua cópia do arquivo [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml).
 
@@ -124,8 +124,8 @@ Para obter opções adicionais de configuração do Helm, confira [`values.yaml`
 
 Se você não estiver usando executores de nível empresarial, poderá usar GitHub Apps para autenticar com a GitHub API. Para obter mais informações, consulte [Autenticando o ARC na API de GitHub](authenticate-to-the-api.md).
 
-> \[!NOTE]
-> Considerando o risco de segurança associado à exposição da sua chave privada em texto sem formatação em um arquivo em disco, recomendamos criar um segredo do Kubernetes e transmitir a referência.
+!!! note
+    Considerando o risco de segurança associado à exposição da sua chave privada em texto sem formatação em um arquivo em disco, recomendamos criar um segredo do Kubernetes e transmitir a referência.
 
 Você pode criar um segredo do Kubernetes ou especificar valores no arquivo [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml).
 
@@ -133,8 +133,8 @@ Você pode criar um segredo do Kubernetes ou especificar valores no arquivo [`va
 
 Depois de criar seu GitHub App, crie um segredo do Kubernetes e passe a referência para esse segredo na cópia do arquivo [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml).
 
-> \[!NOTE]
-> Crie o segredo no mesmo namespace onde o gráfico `gha-runner-scale-set` está instalado. Neste exemplo, o namespace é `arc-runners` para corresponder à documentação de início rápido. Para saber mais, confira [Comece a usar o Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set).
+!!! note
+    Crie o segredo no mesmo namespace onde o gráfico `gha-runner-scale-set` está instalado. Neste exemplo, o namespace é `arc-runners` para corresponder à documentação de início rápido. Para saber mais, confira [Comece a usar o Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set).
 
 ```bash
 kubectl create secret generic pre-defined-secret \
@@ -203,8 +203,8 @@ proxy:
 
 O ARC dá suporte ao uso de proxies anônimos ou autenticados. Se você usar proxies autenticados, precisará definir o valor `credentialSecretRef` para referenciar um segredo do Kubernetes. Você pode criar um segredo com suas credenciais de proxy com o comando a seguir.
 
-> \[!NOTE]
-> Crie o segredo no mesmo namespace onde o gráfico `gha-runner-scale-set` está instalado. Neste exemplo, o namespace é `arc-runners` para corresponder à documentação de início rápido. Para saber mais, confira [Comece a usar o Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set).
+!!! note
+    Crie o segredo no mesmo namespace onde o gráfico `gha-runner-scale-set` está instalado. Neste exemplo, o namespace é `arc-runners` para corresponder à documentação de início rápido. Para saber mais, confira [Comece a usar o Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set).
 
 ```bash copy
   kubectl create secret generic proxy-auth \
@@ -219,8 +219,8 @@ Para obter opções adicionais de configuração do Helm, confira [`values.yaml`
 
 As propriedades `maxRunners` e `minRunners` fornecem uma variedade de opções para personalizar a configuração do ARC.
 
-> \[!NOTE]
-> O ARC não dá suporte a configurações máxima e mínima agendadas. Use um cron job ou qualquer outra solução de agendamento para atualizar a configuração em um agendamento.
+!!! note
+    O ARC não dá suporte a configurações máxima e mínima agendadas. Use um cron job ou qualquer outra solução de agendamento para atualizar a configuração em um agendamento.
 
 #### Exemplo: número ilimitado de corredores
 
@@ -252,8 +252,8 @@ minRunners: 20
 
 Nessa configuração, o Actions Runner Controller será dimensionado até um máximo de `30` executores e será reduzido para `20` executores quando os trabalhos terminarem.
 
-> \[!NOTE]
-> O valor de `minRunners` nunca pode exceder o de `maxRunners`, a menos que `maxRunners` esteja comentado.
+!!! note
+    O valor de `minRunners` nunca pode exceder o de `maxRunners`, a menos que `maxRunners` esteja comentado.
 
 ```yaml
 ## maxRunners is the max number of runners the auto scaling runner set will scale up to.
@@ -279,8 +279,8 @@ minRunners: 0
 
 ### Certificados TLS personalizados
 
-> \[!NOTE]
-> Se você estiver usando uma imagem de executor personalizada que não se baseie na distribuição do `Debian`, as instruções a seguir não funcionarão.
+!!! note
+    Se você estiver usando uma imagem de executor personalizada que não se baseie na distribuição do `Debian`, as instruções a seguir não funcionarão.
 
 Alguns ambientes exigem certificados TLS assinados por uma AC (autoridade de certificação) personalizada. Como os certificados de autoridade de certificação personalizados não são agrupados com os contêineres do controlador ou do executor, você precisa injetá-los nos respectivos repositórios confiáveis.
 
@@ -308,10 +308,10 @@ Para obter opções adicionais de configuração do Helm, confira [`values.yaml`
 
 ### Como usar um registro de contêiner privado
 
-> \[!WARNING]
-> Essa Actions Runner Controller opção de personalização pode estar fora do escopo do que Suporte do GitHub pode ajudar e pode causar um comportamento inesperado quando configurada incorretamente.
->
-> Para obter mais informações sobre o que Suporte do GitHub pode ajudar, consulte [Suporte para o Controlador do Executor de Ações](../../../concepts/runners/support-for-arc.md).
+!!! warning
+    Essa Actions Runner Controller opção de personalização pode estar fora do escopo do que Suporte do GitHub pode ajudar e pode causar um comportamento inesperado quando configurada incorretamente.
+
+    Para obter mais informações sobre o que Suporte do GitHub pode ajudar, consulte [Suporte para o Controlador do Executor de Ações](../../../concepts/runners/support-for-arc.md).
 
 Para usar um registro de contêiner privado, você pode copiar a imagem do controlador e a imagem do executor para o registro de contêiner privado. Em seguida, configure os links para essas imagens e defina os valores `imagePullPolicy` e `imagePullSecrets`.
 
@@ -336,8 +336,8 @@ O contêiner do ouvinte herda a `imagePullPolicy` definida para o controlador.
 
 Você pode atualizar sua cópia do arquivo [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) e definir as propriedades de `template.spec` para configurar o pod do executor para seu caso de uso específico.
 
-> \[!NOTE]
-> O contêiner do executor deve ser nomeado `runner`. Caso contrário, ele não será configurado corretamente para se conectar a GitHub.
+!!! note
+    O contêiner do executor deve ser nomeado `runner`. Caso contrário, ele não será configurado corretamente para se conectar a GitHub.
 
 Veja a seguir um exemplo de configuração:
 
@@ -357,10 +357,10 @@ Para obter opções adicionais de configuração do Helm, confira [`values.yaml`
 
 ### Como atualizar a especificação de pod para o pod do executor
 
-> \[!WARNING]
-> Essa Actions Runner Controller opção de personalização pode estar fora do escopo do que Suporte do GitHub pode ajudar e pode causar um comportamento inesperado quando configurada incorretamente.
->
-> Para obter mais informações sobre o que Suporte do GitHub pode ajudar, consulte [Suporte para o Controlador do Executor de Ações](../../../concepts/runners/support-for-arc.md).
+!!! warning
+    Essa Actions Runner Controller opção de personalização pode estar fora do escopo do que Suporte do GitHub pode ajudar e pode causar um comportamento inesperado quando configurada incorretamente.
+
+    Para obter mais informações sobre o que Suporte do GitHub pode ajudar, consulte [Suporte para o Controlador do Executor de Ações](../../../concepts/runners/support-for-arc.md).
 
 Você pode personalizar totalmente a PodSpec do pod do executor e o controlador aplicará a configuração especificada. A seguir, um exemplo de especificação de um pod.
 
@@ -387,15 +387,15 @@ Para obter opções adicionais de configuração do Helm, confira [`values.yaml`
 
 ### Como atualizar a especificação de pod para o pod do ouvinte
 
-> \[!WARNING]
-> Essa Actions Runner Controller opção de personalização pode estar fora do escopo do que Suporte do GitHub pode ajudar e pode causar um comportamento inesperado quando configurada incorretamente.
->
-> Para obter mais informações sobre o que Suporte do GitHub pode ajudar, consulte [Suporte para o Controlador do Executor de Ações](../../../concepts/runners/support-for-arc.md).
+!!! warning
+    Essa Actions Runner Controller opção de personalização pode estar fora do escopo do que Suporte do GitHub pode ajudar e pode causar um comportamento inesperado quando configurada incorretamente.
+
+    Para obter mais informações sobre o que Suporte do GitHub pode ajudar, consulte [Suporte para o Controlador do Executor de Ações](../../../concepts/runners/support-for-arc.md).
 
 Você pode personalizar o PodSpec do pod do ouvinte e o controlador aplicará a configuração especificada. A seguir, um exemplo de especificação de um pod.
 
-> \[!NOTE]
-> É importante não alterar o valor `listenerTemplate.spec.containers.name` do contêiner listener. Caso contrário, a configuração especificada será aplicada a um novo contêiner sidecar.
+!!! note
+    É importante não alterar o valor `listenerTemplate.spec.containers.name` do contêiner listener. Caso contrário, a configuração especificada será aplicada a um novo contêiner sidecar.
 
 ```yaml
 listenerTemplate:
@@ -419,10 +419,10 @@ Para obter opções adicionais de configuração do Helm, confira [`values.yaml`
 
 ## Como usar o modo Docker-in-Docker ou Kubernetes para contêineres
 
-> \[!WARNING]
-> Essa Actions Runner Controller opção de personalização pode estar fora do escopo do que Suporte do GitHub pode ajudar e pode causar um comportamento inesperado quando configurada incorretamente.
->
-> Para obter mais informações sobre o que Suporte do GitHub pode ajudar, consulte [Suporte para o Controlador do Executor de Ações](../../../concepts/runners/support-for-arc.md).
+!!! warning
+    Essa Actions Runner Controller opção de personalização pode estar fora do escopo do que Suporte do GitHub pode ajudar e pode causar um comportamento inesperado quando configurada incorretamente.
+
+    Para obter mais informações sobre o que Suporte do GitHub pode ajudar, consulte [Suporte para o Controlador do Executor de Ações](../../../concepts/runners/support-for-arc.md).
 
 Se você estiver usando trabalhos de contêiner e serviços ou ações de contêiner, você precisará definir o valor `containerMode` como `dind` ou `kubernetes`. Para usar um modo de contêiner personalizado, comente ou remova `containerMode` e adicione a configuração desejada à seção `template`. Confira [Como personalizar modos de contêiner](deploy-runner-scale-sets.md#customizing-container-modes).
 
@@ -431,10 +431,10 @@ Se você estiver usando trabalhos de contêiner e serviços ou ações de contê
 
 ### Como usar o modo Docker-in-Docker
 
-> \[!NOTE]
-> O contêiner Docker-in-Docker exige o modo privilegiado. Para obter mais informações, confira [Configurar um contexto de segurança para um pod ou um contêiner](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) na documentação do Kubernetes.
->
-> Por padrão, o contêiner `dind` usa a imagem `docker:dind`, que executa o daemon do Docker como raiz. Você pode substituir essa imagem por `docker:dind-rootless` desde que esteja ciente das [limitações conhecidas](https://docs.docker.com/engine/security/rootless/#known-limitations) e executar os pods com o modo `--privileged`. Para saber como personalizar a configuração do Docker-in-Docker, consulte [Personalizando modos de contêiner](deploy-runner-scale-sets.md#customizing-container-modes).
+!!! note
+    O contêiner Docker-in-Docker exige o modo privilegiado. Para obter mais informações, confira [Configurar um contexto de segurança para um pod ou um contêiner](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) na documentação do Kubernetes.
+
+    Por padrão, o contêiner `dind` usa a imagem `docker:dind`, que executa o daemon do Docker como raiz. Você pode substituir essa imagem por `docker:dind-rootless` desde que esteja ciente das [limitações conhecidas](https://docs.docker.com/engine/security/rootless/#known-limitations) e executar os pods com o modo `--privileged`. Para saber como personalizar a configuração do Docker-in-Docker, consulte [Personalizando modos de contêiner](deploy-runner-scale-sets.md#customizing-container-modes).
 
 O modo Docker-in-Docker é uma configuração que permite executar o Docker dentro de um contêiner do Docker. Nessa configuração, para cada pod de runner criado, o ARC cria os contêineres a seguir.
 
@@ -615,8 +615,8 @@ Jobs without a job container are forbidden on this runner, please add a 'contain
 
 Para permitir que trabalhos sem um contêiner de trabalho sejam executados, configure `ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER` para `false` no contêiner runner. Isso instrui o corredor a desabilitar essa verificação.
 
-> \[!WARNING]
-> Permitir que trabalhos sejam executados sem um contêiner no modo `kubernetes` ou `kubernetes-novolume` pode fornecer privilégios elevados ao pod do executor com o servidor de API do Kubernetes, incluindo a capacidade de criar pods e acessar segredos. Antes de alterar esse padrão, recomendamos examinar cuidadosamente as possíveis implicações de segurança.
+!!! warning
+    Permitir que trabalhos sejam executados sem um contêiner no modo `kubernetes` ou `kubernetes-novolume` pode fornecer privilégios elevados ao pod do executor com o servidor de API do Kubernetes, incluindo a capacidade de criar pods e acessar segredos. Antes de alterar esse padrão, recomendamos examinar cuidadosamente as possíveis implicações de segurança.
 
 ```yaml
   template:
@@ -880,8 +880,8 @@ Há duas opções para configurar extensões de gancho.
 * Armazene em sua **imagem de executor personalizada**. Você pode armazenar o PodSpec em um arquivo YAML em qualquer lugar da sua imagem de executor personalizada. Para obter mais informações, consulte [Controlador de Ações Runner](../../../concepts/runners/actions-runner-controller.md#creating-your-own-runner-image).
 * Armazene em um **ConfigMap**. Você pode criar um mapa de configurações com o PodSpec e montar esse mapa de configurações no contêiner do executor. Para obter mais informações, consulte [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) na documentação do Kubernetes.
 
-> \[!NOTE]
-> Com as duas opções, é preciso definir a variável de ambiente `ACTIONS_RUNNER_CONTAINER_HOOK_TEMPLATE` na especificação do contêiner do executor para apontá-la para o caminho do arquivo YAML montado no contêiner do executor.
+!!! note
+    Com as duas opções, é preciso definir a variável de ambiente `ACTIONS_RUNNER_CONTAINER_HOOK_TEMPLATE` na especificação do contêiner do executor para apontá-la para o caminho do arquivo YAML montado no contêiner do executor.
 
 ##### Exemplo: o uso do mapa de configurações para definir securityContext
 
@@ -917,8 +917,8 @@ data:
 
 ## Habilitar métricas
 
-> \[!NOTE]
-> As métricas do ARC estão disponíveis a partir da versão gha-runner-scale-set-0.5.0.
+!!! note
+    As métricas do ARC estão disponíveis a partir da versão gha-runner-scale-set-0.5.0.
 
 O ARC pode emitir métricas para os executores, os trabalhos e o tempo gasto na execução dos fluxos de trabalho. As métricas podem ser usadas para identificar congestionamentos, monitorar a integridade da implantação do ARC, visualizar tendências de uso, otimizar o consumo de recursos, além de muitos outros casos de uso. As métricas são emitidas pelos pods controller-manager e listener no formato Prometheus. Para obter mais informações, consulte [Formatos de exposição](https://prometheus.io/docs/instrumenting/exposition_formats/) na documentação do Prometheus.
 
@@ -933,8 +933,8 @@ metrics:
   listenerEndpoint: "/metrics"
 ```
 
-> \[!NOTE]
-> Se o objeto `metrics:` não for fornecido ou for comentado, estes sinalizadores serão aplicados aos pods do gerenciador do controlador e do ouvinte com valores vazios: `--metrics-addr`, `--listener-metrics-addr` e `--listener-metrics-endpoint`. Quando isso acontece, as métricas são desabilitadas no ARC.
+!!! note
+    Se o objeto `metrics:` não for fornecido ou for comentado, estes sinalizadores serão aplicados aos pods do gerenciador do controlador e do ouvinte com valores vazios: `--metrics-addr`, `--listener-metrics-addr` e `--listener-metrics-endpoint`. Quando isso acontece, as métricas são desabilitadas no ARC.
 
 Depois que essas propriedades são configuradas, os pods controller-manager e listener emitem métricas por meio do listenerEndpoint associado às portas especificadas no arquivo [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set-controller/values.yaml). No exemplo acima, o ponto de extremidade é `/metrics` e a porta é `:8080`. Você pode usar esse ponto de extremidade para extrair métricas dos pods controller-manager e listener.
 
@@ -944,27 +944,27 @@ Para desligar as métricas, atualize o arquivo [`values.yaml`](https://github.co
 
 As métricas emitidas pelos pods controlador-gerente e ouvinte são exibidas na tabela a seguir.
 
-> \[!NOTE]
-> As métricas que o gerenciador de controladores emite pertencem ao runtime do controlador e não pertencem a GitHub.
+!!! note
+    As métricas que o gerenciador de controladores emite pertencem ao runtime do controlador e não pertencem a GitHub.
 
-| Proprietário            | Métrica                                      | Tipo       | Descrição                                                                                                                                             |
-| ----------------------- | -------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| gerenciador-controlador | gha\_controller\_pending\_ephemeral\_runners | medidor    | Número de executores efêmeros em estado pendente                                                                                                      |
-| gerenciador-controlador | gha\_controller\_running\_ephemeral\_runners | medidor    | Número de executores efêmeros em estado de execução                                                                                                   |
-| gerenciador-controlador | gha\_controller\_failed\_ephemeral\_runners  | medidor    | Número de executores efêmeros em estado de falha                                                                                                      |
-| gerenciador-controlador | gha\_controller\_running\_listeners          | medidor    | Número de ouvintes em um estado de execução                                                                                                           |
-| ouvinte                 | gha\_assigned\_jobs                          | medidor    | Número de trabalhos atribuídos ao conjunto de dimensionamento de executores                                                                           |
-| ouvinte                 | gha\_running\_jobs                           | medidor    | Número de trabalhos em execução ou na fila para execução                                                                                              |
-| ouvinte                 | gha\_registered\_runners                     | medidor    | Número de executores registrados pelo conjunto de dimensionamento de executores                                                                       |
-| ouvinte                 | gha\_busy\_runners                           | medidor    | Número de corredores registrados atualmente executando um trabalho                                                                                    |
-| ouvinte                 | gha\_min\_runners                            | medidor    | Número mínimo de executores configurados para o conjunto de dimensionamento de executores                                                             |
-| ouvinte                 | gha\_max\_runners                            | medidor    | Número máximo de executores configurados para o conjunto de dimensionamento de executores                                                             |
-| ouvinte                 | gha\_desired\_runners                        | medidor    | Número de executores desejados (meta de escala/redução vertical) pelo conjunto de dimensionamento de executores                                       |
-| ouvinte                 | gha\_idle\_runners                           | medidor    | Número de executores registrados que não estão executando um trabalho                                                                                 |
-| ouvinte                 | gha\_started\_jobs\_total                    | contador   | Número total de trabalhos iniciados desde que o listener ficou pronto \[1]                                                                            |
-| ouvinte                 | gha\_completed\_jobs\_total                  | contador   | Número total de trabalhos concluídos desde que o listener ficou pronto \[1]                                                                           |
-| ouvinte                 | gha\_job\_startup\_duration\_seconds         | histograma | Número de segundos gastos aguardando a tarefa do fluxo de trabalho para iniciar no executor de propriedade do conjunto de dimensionamento do executor |
-| ouvinte                 | gha\_job\_execution\_duration\_seconds       | histograma | Número de segundos gastos executando tarefas do fluxo de trabalho pelo conjunto de dimensionamento do executor                                        |
+| Proprietário | Métrica | Tipo | Descrição |
+| --- | --- | --- | --- |
+| gerenciador-controlador | gha_controller_pending_ephemeral_runners | medidor | Número de executores efêmeros em estado pendente |
+| gerenciador-controlador | gha_controller_running_ephemeral_runners | medidor | Número de executores efêmeros em estado de execução |
+| gerenciador-controlador | gha_controller_failed_ephemeral_runners | medidor | Número de executores efêmeros em estado de falha |
+| gerenciador-controlador | gha_controller_running_listeners | medidor | Número de ouvintes em um estado de execução |
+| ouvinte | gha_assigned_jobs | medidor | Número de trabalhos atribuídos ao conjunto de dimensionamento de executores |
+| ouvinte | gha_running_jobs | medidor | Número de trabalhos em execução ou na fila para execução |
+| ouvinte | gha_registered_runners | medidor | Número de executores registrados pelo conjunto de dimensionamento de executores |
+| ouvinte | gha_busy_runners | medidor | Número de corredores registrados atualmente executando um trabalho |
+| ouvinte | gha_min_runners | medidor | Número mínimo de executores configurados para o conjunto de dimensionamento de executores |
+| ouvinte | gha_max_runners | medidor | Número máximo de executores configurados para o conjunto de dimensionamento de executores |
+| ouvinte | gha_desired_runners | medidor | Número de executores desejados (meta de escala/redução vertical) pelo conjunto de dimensionamento de executores |
+| ouvinte | gha_idle_runners | medidor | Número de executores registrados que não estão executando um trabalho |
+| ouvinte | gha_started_jobs_total | contador | Número total de trabalhos iniciados desde que o listener ficou pronto \[1] |
+| ouvinte | gha_completed_jobs_total | contador | Número total de trabalhos concluídos desde que o listener ficou pronto \[1] |
+| ouvinte | gha_job_startup_duration_seconds | histograma | Número de segundos gastos aguardando a tarefa do fluxo de trabalho para iniciar no executor de propriedade do conjunto de dimensionamento do executor |
+| ouvinte | gha_job_execution_duration_seconds | histograma | Número de segundos gastos executando tarefas do fluxo de trabalho pelo conjunto de dimensionamento do executor |
 
 \[1]: Listener metrics that have the counter type are reset when the listener pod restarts.
 
@@ -982,17 +982,16 @@ Para obter mais informações, consulte [Como implantar um conjunto de dimension
 
 Se você quiser atualizar o ARC, mas estiver preocupado com o tempo de inatividade, poderá implantar o ARC em uma configuração de alta disponibilidade para garantir que os executores estejam sempre disponíveis. Para obter mais informações, consulte [Alta disponibilidade e failover automático](deploy-runner-scale-sets.md#high-availability-and-automatic-failover).
 
-> \[!NOTE]
-> A transição da versão do ARC compatível com a comunidade para a versão com suporte do GitHub é uma alteração arquitetônica substancial. A versão GitHub com suporte envolve uma reformulação de muitos componentes do ARC. Não é um pequeno upgrade de software. Por esses motivos, recomendamos testar as novas versões em um ambiente de preparo que corresponda primeiro ao seu ambiente de produção. Isso garantirá a estabilidade e a confiabilidade da configuração antes da implantação em produção.
+!!! note
+    A transição da versão do ARC compatível com a comunidade para a versão com suporte do GitHub é uma alteração arquitetônica substancial. A versão GitHub com suporte envolve uma reformulação de muitos componentes do ARC. Não é um pequeno upgrade de software. Por esses motivos, recomendamos testar as novas versões em um ambiente de preparo que corresponda primeiro ao seu ambiente de produção. Isso garantirá a estabilidade e a confiabilidade da configuração antes da implantação em produção.
 
 ### Como implantar uma imagem canário
 
 Você pode testar os recursos antes que eles sejam liberados usando versões canário da imagem de contêiner controller-manager. As imagens canário são publicadas no formato de tag `canary-SHORT_SHA`. Para obter mais informações, consulte [`gha-runner-scale-set-controller`](https://github.com/actions/actions-runner-controller/pkgs/container/gha-runner-scale-set-controller) no Container registry.
 
-> \[!NOTE]
->
-> * Você deve usar gráficos Helm em seu sistema de arquivos local.
-> * Você não pode usar os gráficos Helm liberados.
+!!! note
+    * Você deve usar gráficos Helm em seu sistema de arquivos local.
+    * Você não pode usar os gráficos Helm liberados.
 
 1. Atualize o `tag` no arquivo [gha-runner-scale-set-controller `values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set-controller/values.yaml) para: `canary-SHORT_SHA`
 2. Atualize o campo `appVersion` no arquivo [`Chart.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/Chart.yaml) de `gha-runner-scale-set` para: `canary-SHORT_SHA`

@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/create-an-example-workflow
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials
 ---
 
 # Criando um exemplo de fluxo de trabalho
@@ -20,7 +20,7 @@ Este guia mostra como criar um fluxo de trabalho básico que é disparado quando
 
 Para começar a usar fluxos de trabalho pré-configurados, navegue pela lista de modelos no repositório [actions/starter-workflows](https://github.com/actions/starter-workflows). Para saber mais, confira [Usando modelos de fluxo de trabalho](../how-tos/write-workflows/use-workflow-templates.md).
 
-> \[!IMPORTANT] Para obter mais informações sobre as práticas recomendadas para proteger seus fluxos de trabalho e o uso seguro de GitHub Actions recursos, consulte [Referência de uso seguro](../reference/security/secure-use.md#writing-workflows).
+> [!IMPORTANT] Para obter mais informações sobre as práticas recomendadas para proteger seus fluxos de trabalho e o uso seguro de GitHub Actions recursos, consulte [Referência de uso seguro](../reference/security/secure-use.md#writing-workflows).
 
 ## Criando um exemplo de fluxo de trabalho
 
@@ -104,7 +104,7 @@ Neste diagrama, você pode ver o arquivo de fluxo de trabalho que acabou de cria
 Quando seu fluxo de trabalho é acionado, é criada uma *execução de fluxo de trabalho* que executa o fluxo de trabalho. Depois que uma execução de fluxo de trabalho for iniciada, você poderá visualizar um gráfico do progresso da execução e acompanhar a atividade de cada etapa em GitHub.
 
 1. Em GitHub, acesse a página principal do repositório.
-2. No nome do repositório, clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Actions**.
+2. No nome do repositório, clique em **(play) Actions**.
 
    ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.

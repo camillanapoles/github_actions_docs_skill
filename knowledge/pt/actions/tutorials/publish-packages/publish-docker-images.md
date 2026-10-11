@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/publish-packages/publish-docker-images
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Publish packages
 ---
 
 # Publicando imagens do Docker
@@ -18,8 +18,8 @@ _Neste tutorial, você aprenderá a publicar imagens do Docker em um registro, c
 
 Este guia mostra como criar um fluxo de trabalho que executa um build do Docker e, em seguida, publica imagens do Docker para Docker Hub ou GitHub Packages. Com um único fluxo de trabalho, você pode publicar imagens em um único registro ou em vários registros.
 
-> \[!NOTE]
-> Se você quiser fazer push para outro registro Docker de terceiros, o exemplo na seção [Publicando imagens no GitHub Packages](#publishing-images-to-github-packages) poderá servir como um bom modelo.
+!!! note
+    Se você quiser fazer push para outro registro Docker de terceiros, o exemplo na seção [Publicando imagens no GitHub Packages](#publishing-images-to-github-packages) poderá servir como um bom modelo.
 
 ## Pré-requisitos
 
@@ -28,7 +28,7 @@ Recomendamos que você tenha um entendimento básico das opções de configuraç
 Você também pode achar útil ter um entendimento básico do seguinte:
 
 * [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md)
-* [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md)
+* [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md)
 * [Trabalhando com o registro de contêiner](https://docs.github.com/pt/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 
 ## Sobre a configuração da imagem
@@ -41,8 +41,8 @@ Neste guia, usaremos a ação `build-push-action` do Docker para compilar a imag
 
 ## Publicando imagens no Docker Hub
 
-> \[!NOTE]
-> O Docker Hub normalmente impõe limites de taxa em operações de push e pull, o que afetará os trabalhos em executores auto-hospedados. No entanto, executores hospedados pelo GitHub não estão sujeitos a esses limites com base em um contrato entre o GitHub e o Docker.
+!!! note
+    O Docker Hub normalmente impõe limites de taxa em operações de push e pull, o que afetará os trabalhos em executores auto-hospedados. No entanto, executores hospedados pelo GitHub não estão sujeitos a esses limites com base em um contrato entre o GitHub e o Docker.
 
 Você pode acionar um fluxo de trabalho para publicar sua imagem sempre que criar uma nova versão no GitHub. O fluxo de trabalho no exemplo abaixo é executado quando o evento `release` é disparado com o tipo de atividade `published`.
 
@@ -136,7 +136,7 @@ As opções `login-action` necessárias para GitHub Packages são:
 
 * `registry`: deve ser definido como `ghcr.io`.
 * `username`: você pode usar o `${{ github.actor }}` contexto para usar automaticamente o nome de usuário do usuário que disparou a execução do fluxo de trabalho. Para saber mais, confira [Referência de contextos](../../reference/workflows-and-actions/contexts.md#github-context).
-* `password`: use o segredo `GITHUB_TOKEN` gerado automaticamente para a senha. Para saber mais, confira [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md).
+* `password`: use o segredo `GITHUB_TOKEN` gerado automaticamente para a senha. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md).
 
 A `metadata-action` opção necessária para GitHub Packages é:
 
@@ -148,10 +148,9 @@ As opções necessárias para `build-push-action` são GitHub Packages:
 * `push`: se definido como `true`, a imagem será enviada por push para o Registro se for criada com êxito.
 * `tags` e `labels`: eles são preenchidos pela saída de `metadata-action`.
 
-> \[!NOTE]
->
-> * Esse fluxo de trabalho usa ações que não são certificadas por GitHub. Elas são fornecidas por terceiros e regidar por termos de serviço, política de privacidade e documentação de suporte separados.
-> * GitHub recomenda fixar ações em um SHA de confirmação. Para obter uma versão mais recente, você precisará atualizar o SHA. Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
+!!! note
+    * Esse fluxo de trabalho usa ações que não são certificadas por GitHub. Elas são fornecidas por terceiros e regidar por termos de serviço, política de privacidade e documentação de suporte separados.
+    * GitHub recomenda fixar ações em um SHA de confirmação. Para obter uma versão mais recente, você precisará atualizar o SHA. Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
 
 ```yaml annotate copy
 #
@@ -285,12 +284,12 @@ jobs:
 O fluxo de trabalho acima faz check-out do repositório do GitHub repository, usa `login-action` duas vezes para fazer logon nos dois registros e gera marcas e rótulos com a ação `metadata-action`.
 Em seguida, a ação `build-push-action` cria e envia por push a imagem do Docker para o Docker Hub e o Container registry.
 
-> \[!NOTE]
-> Ao realizar o push para múltiplos registries:
->
-> * Os resumos de imagem podem ser diferentes entre os registros, dificultando a verificação de atestado.
-> * Para manter um resumo consistente e permitir que um único atestado verifique todas as cópias, envie por push para um registro primeiro e use uma ferramenta como [`crane copy`](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md) para replicar a imagem em outros locais.
-> * Se você optar por compilar e enviar para cada repositório separadamente, deverá gerar um atestado distinto para cada um, para garantir que seus artefatos permaneçam verificáveis.
+!!! note
+    Ao realizar o push para múltiplos registries:
+
+    * Os resumos de imagem podem ser diferentes entre os registros, dificultando a verificação de atestado.
+    * Para manter um resumo consistente e permitir que um único atestado verifique todas as cópias, envie por push para um registro primeiro e use uma ferramenta como [`crane copy`](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md) para replicar a imagem em outros locais.
+    * Se você optar por compilar e enviar para cada repositório separadamente, deverá gerar um atestado distinto para cada um, para garantir que seus artefatos permaneçam verificáveis.
 
 ## Atividade prática
 

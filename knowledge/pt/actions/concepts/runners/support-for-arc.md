@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/runners/support-for-arc
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Runners
 ---
 
 # Suporte para o Controlador do Executor de Ações
@@ -42,9 +42,8 @@ Embora o ARC possa ser implantado com êxito com diferentes ferramentas e config
 
 Para mais informações sobre como entrar em contato com Suporte do GitHub, consulte [Entrando em contato com o suporte do GitHub](https://docs.github.com/pt/support/contacting-github-support).
 
-> \[!NOTE]
->
-> * O ARC só tem suporte nas versões 3.9 e superiores do GitHub Enterprise Server.
+!!! note
+    * O ARC só tem suporte nas versões 3.9 e superiores do GitHub Enterprise Server.
 
 ## Trabalhando com Suporte do GitHub no Actions Runner Controller
 

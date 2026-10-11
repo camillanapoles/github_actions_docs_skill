@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/administer
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos
 ---
 
 # Administrando GitHub Actions

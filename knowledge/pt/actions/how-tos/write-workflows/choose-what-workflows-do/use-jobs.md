@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-what-workflows-do/use-jobs
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Write workflows / Choose what workflows do
 ---
 
 # Usando tarefas em um fluxo de trabalho

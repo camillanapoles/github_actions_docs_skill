@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/security
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference
 ---
 
 # Referência de segurança
@@ -20,9 +20,9 @@ _Veja informações sobre como manter seu trabalho no GitHub Actions em seguran�
 
   Práticas de segurança para escrever fluxos de trabalho e usar GitHub Actions recursos.
 
-* [Uso seguro de pull\_request\_target](security/securely-using-pull_request_target.md)
+* [Uso seguro de pull_request_target](security/securely-using-pull_request_target.md)
 
-  Saiba mais sobre os riscos de segurança do pull\_request\_target evento.
+  Saiba mais sobre os riscos de segurança do pull_request_target evento.
 
 * [Referência de segredos](security/secrets.md)
 

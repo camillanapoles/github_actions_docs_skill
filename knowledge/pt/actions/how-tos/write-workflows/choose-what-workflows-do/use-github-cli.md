@@ -7,15 +7,15 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-what-workflows-do/use-github-cli
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Write workflows / Choose what workflows do
 ---
 
 # Usando GitHub CLI em fluxos de trabalho
 
 _Você pode fazer o script com GitHub CLI em fluxos de trabalho GitHub Actions._
 
-> \[!NOTE]
-> Para saber mais sobre GitHub CLI, confira [Sobre GitHub CLI](https://docs.github.com/pt/github-cli/github-cli/about-github-cli).
+!!! note
+    Para saber mais sobre GitHub CLI, confira [Sobre GitHub CLI](https://docs.github.com/pt/github-cli/github-cli/about-github-cli).
 
 GitHub CLI está pré-instalado em todos os executores hospedados em GitHub. Para cada etapa que usa a GitHub CLI, você deve definir uma variável de ambiente denominada `GH_TOKEN` como um token com os escopos necessários.
 

@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/monitor-workflows
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos
 ---
 
 # Monitorar fluxos de trabalho

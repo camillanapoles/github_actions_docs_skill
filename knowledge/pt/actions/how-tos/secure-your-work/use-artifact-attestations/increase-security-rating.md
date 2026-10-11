@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/use-artifact-attestations/increase-security-rating
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Secure your work / Use artifact attestations
 ---
 
 # Usando atestados de artefatos e fluxos de trabalho reutilizáveis para alcançar o SLSA v1 Build Level 3

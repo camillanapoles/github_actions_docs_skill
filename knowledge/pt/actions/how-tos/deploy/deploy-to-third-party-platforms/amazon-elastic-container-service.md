@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/deploy-to-third-party-platforms/amazon-elastic-container-service
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Deploy / Deploy to third party platforms
 ---
 
 # Implantar no Amazon Elastic Container Service

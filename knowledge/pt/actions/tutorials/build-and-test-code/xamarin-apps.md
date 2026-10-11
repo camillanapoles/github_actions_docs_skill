@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/build-and-test-code/xamarin-apps
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Build and test code
 ---
 
 # Compilar e testar aplicativos Xamarin

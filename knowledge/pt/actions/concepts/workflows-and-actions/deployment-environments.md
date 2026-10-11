@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/workflows-and-actions/deployment-environments
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Workflows and actions
 ---
 
 # Ambientes de implantação

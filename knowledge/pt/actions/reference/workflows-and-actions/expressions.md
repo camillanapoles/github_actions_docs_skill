@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/expressions
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Workflows and actions
 ---
 
 # Avaliar expressões em fluxos de trabalho e ações
@@ -18,13 +18,13 @@ _Encontre informações sobre expressões em GitHub Actions._
 
 Como parte de uma expressão, você pode usar os tipos de dados `boolean`, `null`, `number` ou `string`.
 
-| Tipo de dados     | Valor literal                                                                                                                                                                                                                                                                                                                     |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `boolean`         |                                                                                                                                                                                                                                                                                                                                   |
-| `true` ou `false` |                                                                                                                                                                                                                                                                                                                                   |
-| `null`            | `null`                                                                                                                                                                                                                                                                                                                            |
-| `number`          | Qualquer formato de número aceito por JSON.                                                                                                                                                                                                                                                                                       |
-| `string`          | Você não precisa colocar cadeias de caracteres em `${` e `}`. No entanto, se você fizer isso, deverá usar aspas simples (`'`) ao redor da cadeia de caracteres. Para usar uma aspa simples literal, não use as aspas simples literais e use as aspas simples adicionais (`''`). Encapsular com aspas duplas (`"`) gerará um erro. |
+| Tipo de dados | Valor literal |
+| --- | --- |
+| `boolean` |  |
+| `true` ou `false` |  |
+| `null` | `null` |
+| `number` | Qualquer formato de número aceito por JSON. |
+| `string` | Você não precisa colocar cadeias de caracteres em `${` e `}`. No entanto, se você fizer isso, deverá usar aspas simples (`'`) ao redor da cadeia de caracteres. Para usar uma aspa simples literal, não use as aspas simples literais e use as aspas simples adicionais (`''`). Encapsular com aspas duplas (`"`) gerará um erro. |
 
 Note que em condicionais, valores falsos (`false`, `0`, `-0`, `""`, `''`, `null`) são coagidos para `false` e valores verdadeiros (`true` e outros valores não falsos) são coagidos para `true`.
 
@@ -45,7 +45,7 @@ env:
 ## Operadores
 
 | Operador          | Descrição             |
-| ----------------- | --------------------- |
+|-----------------|---------------------|
 | `( )`             | Agrupamento lógico    |
 | `[ ]`             | Índice                |
 | `.`               | Property de-reference |
@@ -57,30 +57,30 @@ env:
 | `==`              | Igual                 |
 | `!=`              | Diferente             |
 | `&&`              | E                     |
-| <code>\|\|</code> | Ou                    |
+| `\|\|`            | Ou                    |
 
-> \[!NOTE]
-> \*
-> GitHub ignora maiúsculas e minúsculas ao comparar cadeias de caracteres.
-> \*
-> `steps.<step_id>.outputs.<output_name>` é avaliada como cadeia de caracteres.
-> É necessário usar uma sintaxe específica para avisar o GitHub para avaliar a expressão e não tratá-la como uma string. Para obter mais informações, consulte [Referência de contextos](contexts.md#steps-context).
->
-> * Para comparação numérica, a função `fromJSON()` pode ser usada para converter uma cadeia de caracteres em um número. Para obter mais informações sobre a função `fromJSON()` confira [fromJSON](#fromjson).
+!!! note
+    \*
+    GitHub ignora maiúsculas e minúsculas ao comparar cadeias de caracteres.
+    \*
+    `steps.<step_id>.outputs.<output_name>` é avaliada como cadeia de caracteres.
+    É necessário usar uma sintaxe específica para avisar o GitHub para avaliar a expressão e não tratá-la como uma string. Para obter mais informações, consulte [Referência de contextos](contexts.md#steps-context).
+
+    * Para comparação numérica, a função `fromJSON()` pode ser usada para converter uma cadeia de caracteres em um número. Para obter mais informações sobre a função `fromJSON()` confira [fromJSON](#fromjson).
 
 GitHub executa comparações de igualdade soltas.
 
 * Se os tipos não corresponderem, GitHub coagi o tipo a um número.
   GitHub converte tipos de dados em um número usando estas conversões:
 
-  | Tipo     | Result |
-  | -------- | ------ |
-  | Nulo     | `0`    |
-  | booleano |        |
+| Tipo     | Result |
+|--------|------|
+| Nulo     | `0`    |
+| booleano |        |
 
-`true` retorna `1` <br />
+`true` retorna `1`
 `false` retorna `0` |
-\| String  | Analisado de qualquer formato de número JSON legal, caso contrário, `NaN`. <br /> Observação: a cadeia de caracteres vazia retorna `0`. |
+\| String  | Analisado de qualquer formato de número JSON legal, caso contrário, `NaN`.   Observação: a cadeia de caracteres vazia retorna `0`. |
 \| Array   | `NaN` |
 \| Objeto  | `NaN` |
 
@@ -94,7 +94,7 @@ GitHub oferece um conjunto de funções internas que você pode usar em express�
 GitHub converte tipos de dados em uma cadeia de caracteres usando estas conversões:
 
 | Tipo                  | Result                                          |
-| --------------------- | ----------------------------------------------- |
+|---------------------|-----------------------------------------------|
 | Nulo                  | `''`                                            |
 | booleano              |                                                 |
 | `'true'` ou `'false'` |                                                 |
@@ -122,7 +122,7 @@ Para obter mais informações, confira [Filtros de objeto](#object-filters).
 
 Em vez de escrever `github.event_name == "push" || github.event_name == "pull_request"`, você pode usar `contains()` com `fromJSON()` para verificar se uma matriz de cadeias de caracteres contém um `item`.
 
-Por exemplo, `contains(fromJSON('["push", "pull_request"]'), github.event_name)` retornará `true` se `github.event_name` for "push" ou "pull\_request".
+Por exemplo, `contains(fromJSON('["push", "pull_request"]'), github.event_name)` retornará `true` se `github.event_name` for "push" ou "pull_request".
 
 ### startsWith
 
@@ -322,8 +322,8 @@ steps:
 
 Faz com que a etapa sempre seja executada e retorna `true`, mesmo quando cancelada. A expressão `always` é melhor usada no nível da etapa ou em tarefas que você espera executar mesmo quando um trabalho é cancelado. Por exemplo, você pode usar `always` para enviar logs mesmo quando um trabalho é cancelado.
 
-> \[!WARNING]
-> Evite usar `always` para qualquer tarefa que possa sofrer uma falha crítica, por exemplo, obtenção de fontes. Caso contrário, o fluxo de trabalho pode travar até atingir o tempo limite. Se você quiser executar um trabalho ou uma etapa independentemente de seu êxito ou falha, use a alternativa recomendada: `if: ${{ !cancelled() }}`
+!!! warning
+    Evite usar `always` para qualquer tarefa que possa sofrer uma falha crítica, por exemplo, obtenção de fontes. Caso contrário, o fluxo de trabalho pode travar até atingir o tempo limite. Se você quiser executar um trabalho ou uma etapa independentemente de seu êxito ou falha, use a alternativa recomendada: `if: ${{ !cancelled() }}`
 
 #### Exemplo de `always`
 

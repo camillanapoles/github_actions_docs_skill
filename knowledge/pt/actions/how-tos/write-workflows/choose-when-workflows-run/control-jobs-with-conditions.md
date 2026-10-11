@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-when-workflows-run/control-jobs-with-conditions
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Write workflows / Choose when workflows run
 ---
 
 # Usando condições para controlar a execução do trabalho
@@ -37,7 +37,7 @@ jobs:
 
 Tarefas ignoradas exibem a mensagem "Essa verificação foi ignorada".
 
-> \[!NOTE]
-> Um trabalho ignorado relatará o respectivo status como "Success". Ele não impedirá a mesclagem de uma solicitação de pull, mesmo que seja uma verificação necessária.
+!!! note
+    Um trabalho ignorado relatará o respectivo status como "Success". Ele não impedirá a mesclagem de uma solicitação de pull, mesmo que seja uma verificação necessária.
 
 Para depurar por que uma tarefa foi ignorada ou executada inesperadamente, você pode visualizar os registros de expressão de condição da tarefa. Para saber mais, confira [Exibindo logs de expressão de condição de tarefa](../../monitor-workflows/view-job-condition-logs.md).

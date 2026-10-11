@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/build-and-test-code/powershell
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Build and test code
 ---
 
 # Criar e testar PowerShell
@@ -79,25 +79,21 @@ jobs:
 
 A tabela abaixo descreve os locais de vários módulos do PowerShell em cada runner hospedado em GitHub.
 
-<div class="ghd-tool rowheaders">
-
 |                                           | Ubuntu                                           | macOS                                             | Windows                                               |
-| ----------------------------------------- | ------------------------------------------------ | ------------------------------------------------- | ----------------------------------------------------- |
+|-----------------------------------------|------------------------------------------------|-------------------------------------------------|-----------------------------------------------------|
 | **Módulos do sistema do PowerShell**      | `/opt/microsoft/powershell/7/Modules/*`          | `/usr/local/microsoft/powershell/7/Modules/*`     | `C:\program files\powershell\7\Modules\*`             |
 | **Módulos de complementos do PowerShell** | `/usr/local/share/powershell/Modules/*`          | `/usr/local/share/powershell/Modules/*`           | `C:\Modules\*`                                        |
 | **Módulos instalados pelo usuário**       | `/home/runner/.local/share/powershell/Modules/*` | `/Users/runner/.local/share/powershell/Modules/*` | `C:\Users\runneradmin\Documents\PowerShell\Modules\*` |
 
-</div>
-
-> \[!NOTE]
-> Nos runners do Ubuntu, os módulos Azure PowerShell são armazenados em `/usr/share/` em vez do local padrão dos módulos complementares do PowerShell (ou seja, `/usr/local/share/powershell/Modules/`).
+!!! note
+    Nos runners do Ubuntu, os módulos Azure PowerShell são armazenados em `/usr/share/` em vez do local padrão dos módulos complementares do PowerShell (ou seja, `/usr/local/share/powershell/Modules/`).
 
 ## Instalar dependências
 
 GitHubOs executores hospedados têm o PowerShell 7 e o Pester instalados. Você pode usar `Install-Module` para instalar dependências adicionais do Galeria do PowerShell antes de compilar e testar seu código.
 
-> \[!NOTE]
-> Os pacotes pré-instalados (como o Pester) usados pelos runners hospedados por GitHub são atualizados regularmente e podem introduzir alterações significativas. Como resultado, recomendamos que você sempre especifique as versões de pacote necessárias usando `Install-Module` com `-MaximumVersion`.
+!!! note
+    Os pacotes pré-instalados (como o Pester) usados pelos runners hospedados por GitHub são atualizados regularmente e podem introduzir alterações significativas. Como resultado, recomendamos que você sempre especifique as versões de pacote necessárias usando `Install-Module` com `-MaximumVersion`.
 
 Você também pode armazenar dependências em cache para acelerar seu fluxo de trabalho. Para saber mais, confira [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md).
 
@@ -117,8 +113,8 @@ jobs:
           Install-Module SqlServer, PSScriptAnalyzer
 ```
 
-> \[!NOTE]
-> Por padrão, nenhum repositório é confiável pelo PowerShell. Ao instalar módulos do Galeria do PowerShell, você deve definir explicitamente a política de instalação para `PSGallery` para `Trusted`.
+!!! note
+    Por padrão, nenhum repositório é confiável pelo PowerShell. Ao instalar módulos do Galeria do PowerShell, você deve definir explicitamente a política de instalação para `PSGallery` para `Trusted`.
 
 ### Memorizar dependências
 

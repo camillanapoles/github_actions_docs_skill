@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/workflow-syntax
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Workflows and actions
 ---
 
 # Sintaxe de fluxo de trabalho para o GitHub Actions
@@ -20,8 +20,8 @@ Os arquivos de fluxo de trabalho usam a sintaxe YAML e precisam ter uma extensã
 
 Você precisa armazenar os arquivos de fluxo de trabalho no diretório `.github/workflows` do repositório.
 
-> \[!TIP]
-> Ao contrário dos fluxos de trabalho tradicionais GitHub Actions, que exigem que você codifique cada decisão como etapas de tarefa no YAML, GitHub Agentic Workflows usam front matter em YAML para acionadores e configuração, mas permitem que você descreva o que deseja em Markdown com linguagem natural — para que não precise prever e codificar todos os cenários com antecedência. Para saber mais, confira [Criando fluxos de trabalho agênticos do GitHub](https://docs.github.com/pt/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
+!!! tip
+    Ao contrário dos fluxos de trabalho tradicionais GitHub Actions, que exigem que você codifique cada decisão como etapas de tarefa no YAML, GitHub Agentic Workflows usam front matter em YAML para acionadores e configuração, mas permitem que você descreva o que deseja em Markdown com linguagem natural — para que não precise prever e codificar todos os cenários com antecedência. Para saber mais, confira [Criando fluxos de trabalho agênticos do GitHub](https://docs.github.com/pt/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
 
 ## `name`
 
@@ -350,11 +350,11 @@ Ao usar os eventos `push` e `pull_request`, você pode configurar um fluxo de tr
 
 Use o filtro `paths` quando quiser incluir padrões de caminho de arquivo ou quando quiser incluir e excluir padrões de caminho de arquivo. Use o filtro `paths-ignore` quando quiser apenas excluir padrões de caminho de arquivo. Não é possível usar os filtros `paths` e `paths-ignore` para o mesmo evento em um fluxo de trabalho. Caso deseje incluir e excluir padrões de caminho para um evento individual, use o filtro `paths` prefixado o caractere `!` para indicar os caminhos que devem ser excluídos.
 
-> \[!NOTE]
-> A ordem de definição dos padrões `paths` é importante:
->
-> * Um padrão negativo correspondente (prefixado com `!`) após uma correspondência positiva excluirá o caminho.
-> * Um padrão positivo correspondente após uma correspondência negativa incluirá o caminho novamente.
+!!! note
+    A ordem de definição dos padrões `paths` é importante:
+
+    * Um padrão negativo correspondente (prefixado com `!`) após uma correspondência positiva excluirá o caminho.
+    * Um padrão positivo correspondente após uma correspondência negativa incluirá o caminho novamente.
 
 Se você definir `branches`/`branches-ignore` e `paths`/`paths-ignore`, o fluxo de trabalho só será executado quando ambos os filtros forem atendidos.
 
@@ -434,8 +434,8 @@ Use `on.schedule` para definir um agendamento de tempo para seus fluxos de traba
 Use a [sintaxe cron POSIX](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07) para agendar fluxos de trabalho para serem executados em horários específicos.
 Por padrão, fluxos de trabalho agendados são executados em UTC. Opcionalmente, você pode especificar um fuso horário usando uma cadeia de [caracteres de fuso horário IANA](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) para agendamento. Fluxos de trabalho agendados são executados sobre o último commit no branch padrão. O intervalo mais curto que você pode executar fluxos de trabalho agendados é a cada 5 minutos.
 
-> \[!NOTE]
-> Para agendamentos que definem `timezone` em um fuso horário que observa o horário de verão, durante as transições de adiantamento do horário de verão, fluxos de trabalho agendados durante as horas não contabilizadas avançam para o próximo horário válido. Por exemplo, um horário agendado para as 2h30 avança para as 3h00.
+!!! note
+    Para agendamentos que definem `timezone` em um fuso horário que observa o horário de verão, durante as transições de adiantamento do horário de verão, fluxos de trabalho agendados durante as horas não contabilizadas avançam para o próximo horário válido. Por exemplo, um horário agendado para as 2h30 avança para as 3h00.
 
 A sintaxe cron tem cinco campos separados por um espaço, e cada campo representa uma unidade de tempo.
 
@@ -451,18 +451,18 @@ A sintaxe cron tem cinco campos separados por um espaço, e cada campo represent
 
 Você pode usar estes operadores em qualquer um dos cinco campos:
 
-| Operador                                                                                           | Descrição                     | Exemplo |
-| -------------------------------------------------------------------------------------------------- | ----------------------------- | ------- |
-| \*                                                                                                 | Qualquer valor                |         |
-| `15 * * * *` é executado no minuto 15 de cada hora todos os dias.                                  |                               |         |
-| ,                                                                                                  | Separador de valores em lista |         |
-| `2,10 4,5 * * *` é executado nos minutos 2 e 10 da quarta e da quinta hora todos os dias.          |                               |         |
-| -                                                                                                  | Intervalo de valores          |         |
-| `30 4-6 * * *` é executado no minuto 30 da 4ª, 5ª e 6ª hora.                                       |                               |         |
-| /                                                                                                  | Valores de etapa              |         |
-| `20/15 * * * *` é executado a cada 15 minutos, começando do minuto 20 ao 59 (minutos 20, 35 e 50). |                               |         |
+| Operador | Descrição | Exemplo |
+| --- | --- | --- |
+| \* | Qualquer valor |  |
+| `15 * * * *` é executado no minuto 15 de cada hora todos os dias. |  |  |
+| , | Separador de valores em lista |  |
+| `2,10 4,5 * * *` é executado nos minutos 2 e 10 da quarta e da quinta hora todos os dias. |  |  |
+| - | Intervalo de valores |  |
+| `30 4-6 * * *` é executado no minuto 30 da 4ª, 5ª e 6ª hora. |  |  |
+| / | Valores de etapa |  |
+| `20/15 * * * *` é executado a cada 15 minutos, começando do minuto 20 ao 59 (minutos 20, 35 e 50). |  |  |
 
-Este exemplo inicia o fluxo de trabalho para ser executado às 5h30, no fuso horário América/New\_York, de segunda a sexta-feira.
+Este exemplo inicia o fluxo de trabalho para ser executado às 5h30, no fuso horário América/New_York, de segunda a sexta-feira.
 
 ```yaml
 on:
@@ -564,8 +564,8 @@ Um mapa dos segredos que pode ser usado no fluxo de trabalho de chamada.
 
 No fluxo de trabalho chamado, você pode usar o contexto `secrets` para se referir a um segredo.
 
-> \[!NOTE]
-> Nota: se você estiver passando o segredo para um fluxo de trabalho aninhado reutilizável, deverá usar [`jobs.<job_id>.secrets`](#jobsjob_idsecrets) novamente para passar o segredo. Para saber mais, confira [Reutilizar fluxos de trabalho](../../how-tos/reuse-automations/reuse-workflows.md#passing-secrets-to-nested-workflows).
+!!! note
+    Nota: se você estiver passando o segredo para um fluxo de trabalho aninhado reutilizável, deverá usar [`jobs.<job_id>.secrets`](#jobsjob_idsecrets) novamente para passar o segredo. Para saber mais, confira [Reutilizar fluxos de trabalho](../../how-tos/reuse-automations/reuse-workflows.md#passing-secrets-to-nested-workflows).
 
 Se um fluxo de trabalho de chamada passar um segredo que não é especificado no fluxo de trabalho chamado, isso irá gerar um erro.
 
@@ -695,11 +695,10 @@ Esse gatilho só recebe eventos quando o arquivo de fluxo de trabalho está na r
 
 O fluxo de trabalho disparado recebe os dados de entrada no contexto `inputs`. Para obter mais informações, confira [Contextos](contexts.md#inputs-context).
 
-> \[!NOTE]
->
-> * O fluxo de trabalho também receberá as entradas no contexto de `github.event.inputs`. As informações no contexto `inputs` e no contexto `github.event.inputs` são idênticas, exceto que o contexto `inputs` preserva valores boolianos como boolianos em vez de convertê-los em cadeias de caracteres. O tipo `choice` é resolvido para uma cadeia de caracteres e é uma única opção selecionável.
-> * O número máximo de propriedades de nível superior é `inputs` 25 .
-> * O conteúdo máximo para `inputs` é de 65.535 caracteres.
+!!! note
+    * O fluxo de trabalho também receberá as entradas no contexto de `github.event.inputs`. As informações no contexto `inputs` e no contexto `github.event.inputs` são idênticas, exceto que o contexto `inputs` preserva valores boolianos como boolianos em vez de convertê-los em cadeias de caracteres. O tipo `choice` é resolvido para uma cadeia de caracteres e é uma única opção selecionável.
+    * O número máximo de propriedades de nível superior é `inputs` 25 .
+    * O conteúdo máximo para `inputs` é de 65.535 caracteres.
 
 ### Exemplo de `on.workflow_dispatch.inputs`
 
@@ -748,7 +747,7 @@ O valor deste parâmetro é uma string que especifica o tipo de dados da entrada
 
 ## `permissions`
 
-Use `permissions` para modificar as permissões padrão concedidas ao `GITHUB_TOKEN`, adicionando ou removendo o acesso conforme necessário, de modo que você só permita o acesso mínimo necessário. Para saber mais, confira [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token).
+Use `permissions` para modificar as permissões padrão concedidas ao `GITHUB_TOKEN`, adicionando ou removendo o acesso conforme necessário, de modo que você só permita o acesso mínimo necessário. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token).
 
 Use `permissions` como uma chave de nível superior a ser aplicada a todos os trabalhos no fluxo de trabalho ou em trabalhos específicos. Quando você adiciona a chave `permissions` a um trabalho específico, todas as ações e os comandos de execução nesse trabalho que usam o `GITHUB_TOKEN` obtêm os direitos de acesso especificados. Para obter mais informações, consulte [`jobs.<job_id>.permissions`](workflow-syntax.md#jobsjob_idpermissions).
 
@@ -761,35 +760,25 @@ Para cada uma das permissões disponíveis mostradas na tabela abaixo, você pod
 
 Permissões disponíveis e detalhes do que cada uma permite que uma ação faça:
 
-| Permissão                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Permite uma ação que usa `GITHUB_TOKEN` para                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `actions`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Trabalhar com GitHub Actions. Por exemplo, `actions: write` permite que uma ação cancele uma execução de fluxo de trabalho. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-actions).                                                                                                                                                                                                                |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `artifact-metadata`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Trabalhe com metadados de artefatos. Por exemplo, `artifact-metadata: write` permite que uma ação crie registros de armazenamento em nome de um artefato de build. Para obter mais informações, confira [Pontos de extremidade de API REST para metadados de artefato](https://docs.github.com/pt/rest/orgs/artifact-metadata).                                                                                                                                                                                                                           |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `attestations`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Trabalhar com atestados de artefatos. Por exemplo, `attestations: write` permite que uma ação gere um atestado de artefato para uma criação. Para obter mais informações, confira [Usar atestados de artefatos para estabelecer a procedência de compilações](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md)                                                                                                                                                                                                  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `checks`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Trabalhar com verificação de execuções e verificação de conjuntos. Por exemplo, `checks: write` permite que uma ação crie uma verificação de execução. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-checks).                                                                                                                                                                                      |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `code-quality`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Trabalhe com qualidade de código. Por exemplo, `code-quality: write` permite que uma ação carregue relatórios de cobertura de código. Para obter mais informações, confira [Qualidade do Código do GitHub](https://docs.github.com/pt/code-security/concepts/code-quality/code-quality).                                                                                                                                                                                                                                                                                        |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `contents`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Trabalhar com o conteúdo do repositório. Por exemplo, `contents: read` permite que uma ação liste os commits e `contents: write` permite que a ação crie uma versão. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-contents).                                                                                                                                                                      |
-| `deployments`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Trabalhar com implantações. Por exemplo, `deployments: write` permite que uma ação crie uma implantação. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-deployments).                                                                                                                                                                                                                               |
-| `discussions`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Trabalhar com discussões do GitHub. Por exemplo, `discussions: write` permite que uma ação feche ou exclua uma discussão. Para obter mais informações, confira [Usar a API do GraphQL para discussões](https://docs.github.com/pt/graphql/guides/using-the-graphql-api-for-discussions).                                                                                                                                                                                                                                                                                        |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `id-token`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Recuperar um token OpenID Connect (OIDC). Isso exige usar `id-token: write`. Para obter mais informações, confira [OpenID Connect](../../concepts/security/openid-connect.md#updating-your-workflows-for-oidc)                                                                                                                                                                                                                                                                                                                                        |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `issues`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Trabalhar com problemas. Por exemplo, `issues: write` permite que uma ação adicione um comentário a um problema. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-issues).                                                                                                                                                                                                                            |
-| `packages`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Trabalhar com GitHub Packages. Por exemplo, `packages: write` permite que uma ação carregue e publique pacotes no GitHub Packages. Para obter mais informações, confira [Sobre permissões para o GitHub Packages](https://docs.github.com/pt/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries).                                                                                                                                                                                                         |
-| `pages`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Trabalhar com páginas do GitHub. Por exemplo, `pages: write` permite que uma ação solicite um build de GitHub Pages. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pages).                                                                                                                                                                                                                         |
-| `pull-requests`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Trabalhar com solicitações de pull. Por exemplo, `pull-requests: write` permite que uma ação adicione um rótulo a uma PR. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pull-requests).                                                                                                                                                                                                            |
-| `security-events`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Trabalhar com alertas de verificação de código do GitHub. Por exemplo, `security-events: read` permite que uma ação liste os alertas da digitalização de código para o repositório e `security-events: write` permite que uma ação atualize o status de um alerta de digitalização de código. Para obter mais informações, consulte [as permissões do Repositório para "Alertas de verificação de código"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts). <br><br> |
-| Para alertas do Dependabot, use a permissão `vulnerability-alerts`. Os alertas de verificação secreta não podem ser lidos com essa permissão e exigem um aplicativo GitHub ou um personal access token. Para obter mais informações, consulte [Permissões de Repositório para "Alertas de verificação de segredos"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) em "Permissões necessárias para aplicativos GitHub". |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `statuses`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Trabalhar com status de commits. Por exemplo, `statuses:read` permite que uma ação liste os status de commit de uma determinada referência. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses).                                                                                                                                                                                        |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `vulnerability-alerts`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Leia os alertas do Dependabot. Por exemplo, `vulnerability-alerts: read` permite que uma ação liste os alertas do Dependabot para o repositório. Somente `read` e `none` há suporte; `write` não é válido. Quando `write-all` ou `read-all` é usado, `vulnerability-alerts` é incluído automaticamente como `read`. Para obter mais informações, consulte [as permissões do Repositório para "Alertas do Dependabot"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts).  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Permissão | Permite uma ação que usa `GITHUB_TOKEN` para |
+| --- | --- |
+| `actions` | Trabalhar com GitHub Actions. Por exemplo, `actions: write` permite que uma ação cancele uma execução de fluxo de trabalho. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-actions). |
+| `artifact-metadata` | Trabalhe com metadados de artefatos. Por exemplo, `artifact-metadata: write` permite que uma ação crie registros de armazenamento em nome de um artefato de build. Para obter mais informações, confira [Pontos de extremidade de API REST para metadados de artefato](https://docs.github.com/pt/rest/orgs/artifact-metadata). |
+| `attestations` | Trabalhar com atestados de artefatos. Por exemplo, `attestations: write` permite que uma ação gere um atestado de artefato para uma criação. Para obter mais informações, confira [Usar atestados de artefatos para estabelecer a procedência de compilações](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md) |
+| `checks` | Trabalhar com verificação de execuções e verificação de conjuntos. Por exemplo, `checks: write` permite que uma ação crie uma verificação de execução. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-checks). |
+| `code-quality` | Trabalhe com qualidade de código. Por exemplo, `code-quality: write` permite que uma ação carregue relatórios de cobertura de código. Para obter mais informações, confira [Qualidade do Código do GitHub](https://docs.github.com/pt/code-security/concepts/code-quality/code-quality). |
+| `contents` | Trabalhar com o conteúdo do repositório. Por exemplo, `contents: read` permite que uma ação liste os commits e `contents: write` permite que a ação crie uma versão. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-contents). |
+| `deployments` | Trabalhar com implantações. Por exemplo, `deployments: write` permite que uma ação crie uma implantação. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-deployments). |
+| `discussions` | Trabalhar com discussões do GitHub. Por exemplo, `discussions: write` permite que uma ação feche ou exclua uma discussão. Para obter mais informações, confira [Usar a API do GraphQL para discussões](https://docs.github.com/pt/graphql/guides/using-the-graphql-api-for-discussions). |
+| `id-token` | Recuperar um token OpenID Connect (OIDC). Isso exige usar `id-token: write`. Para obter mais informações, confira [OpenID Connect](../../concepts/security/openid-connect.md#updating-your-workflows-for-oidc) |
+| `issues` | Trabalhar com problemas. Por exemplo, `issues: write` permite que uma ação adicione um comentário a um problema. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-issues). |
+| `packages` | Trabalhar com GitHub Packages. Por exemplo, `packages: write` permite que uma ação carregue e publique pacotes no GitHub Packages. Para obter mais informações, confira [Sobre permissões para o GitHub Packages](https://docs.github.com/pt/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries). |
+| `pages` | Trabalhar com páginas do GitHub. Por exemplo, `pages: write` permite que uma ação solicite um build de GitHub Pages. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pages). |
+| `pull-requests` | Trabalhar com solicitações de pull. Por exemplo, `pull-requests: write` permite que uma ação adicione um rótulo a uma PR. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pull-requests). |
+| `security-events` | Trabalhar com alertas de verificação de código do GitHub. Por exemplo, `security-events: read` permite que uma ação liste os alertas da digitalização de código para o repositório e `security-events: write` permite que uma ação atualize o status de um alerta de digitalização de código. Para obter mais informações, consulte [as permissões do Repositório para "Alertas de verificação de código"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts). |
+| Para alertas do Dependabot, use a permissão `vulnerability-alerts`. Os alertas de verificação secreta não podem ser lidos com essa permissão e exigem um aplicativo GitHub ou um personal access token. Para obter mais informações, consulte [Permissões de Repositório para "Alertas de verificação de segredos"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) em "Permissões necessárias para aplicativos GitHub". |  |
+| `statuses` | Trabalhar com status de commits. Por exemplo, `statuses:read` permite que uma ação liste os status de commit de uma determinada referência. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses). |
+| `vulnerability-alerts` | Leia os alertas do Dependabot. Por exemplo, `vulnerability-alerts: read` permite que uma ação liste os alertas do Dependabot para o repositório. Somente `read` e `none` há suporte; `write` não é válido. Quando `write-all` ou `read-all` é usado, `vulnerability-alerts` é incluído automaticamente como `read`. Para obter mais informações, consulte [as permissões do Repositório para "Alertas do Dependabot"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
 
 ### Definindo o acesso para os escopos do `GITHUB_TOKEN`
 
@@ -909,16 +898,16 @@ defaults:
 
 Use `shell` para definir o `shell` para uma etapa. Essa palavra-chave pode fazer referência a vários contextos. Para obter mais informações, confira [Contextos](contexts.md#context-availability).
 
-| Plataforma compatível | Parâmetro `shell` | Descrição                                                                                                                                                                                                                             | Comando executado internamente                  |
-| --------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| Linux / macOS         | não especificado  | O shell padrão em plataformas não Windows. Isso executa um comando diferente para quando `bash` é especificado explicitamente. Se `bash` não for encontrado no caminho, isso será tratado como `sh`.                                  | `bash -e {0}`                                   |
-| Tudo                  | `bash`            | O shell padrão em plataformas não Windows com um fallback para `sh`. Ao especificar um shell bash no Windows, é utilizado o shell bash incluído no Git para Windows.                                                                  | `bash --noprofile --norc -eo pipefail {0}`      |
-| Tudo                  | `pwsh`            | Powershell Core. O GitHub acrescenta a extensão `.ps1` ao nome do script.                                                                                                                                                             | `pwsh -command ". '{0}'"`                       |
-| Tudo                  | `python`          | Executa o comando python.                                                                                                                                                                                                             | `python {0}`                                    |
-| Linux / macOS         | `sh`              | O comportamento de fallback para plataformas não Windows se nenhum shell for fornecido e o `bash` não for encontrado no caminho.                                                                                                      | `sh -e {0}`                                     |
-| Windows               | `cmd`             | O GitHub acrescenta a extensão `.cmd` ao nome do script e a substitui por `{0}`.                                                                                                                                                      | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
-| Windows               | `pwsh`            | Essa é a shell padrão usada no Windows. Powershell Core. O GitHub acrescenta a extensão `.ps1` ao nome do script. Se o executor auto-hospedado do Windows não tiver o *PowerShell Core* instalado, o *PowerShell Desktop* será usado. | `pwsh -command ". '{0}'"`.                      |
-| Windows               | `powershell`      | O PowerShell Desktop. O GitHub acrescenta a extensão `.ps1` ao nome do script.                                                                                                                                                        | `powershell -command ". '{0}'"`.                |
+| Plataforma compatível | Parâmetro `shell` | Descrição | Comando executado internamente |
+| --- | --- | --- | --- |
+| Linux / macOS | não especificado | O shell padrão em plataformas não Windows. Isso executa um comando diferente para quando `bash` é especificado explicitamente. Se `bash` não for encontrado no caminho, isso será tratado como `sh`. | `bash -e {0}` |
+| Tudo | `bash` | O shell padrão em plataformas não Windows com um fallback para `sh`. Ao especificar um shell bash no Windows, é utilizado o shell bash incluído no Git para Windows. | `bash --noprofile --norc -eo pipefail {0}` |
+| Tudo | `pwsh` | Powershell Core. O GitHub acrescenta a extensão `.ps1` ao nome do script. | `pwsh -command ". '{0}'"` |
+| Tudo | `python` | Executa o comando python. | `python {0}` |
+| Linux / macOS | `sh` | O comportamento de fallback para plataformas não Windows se nenhum shell for fornecido e o `bash` não for encontrado no caminho. | `sh -e {0}` |
+| Windows | `cmd` | O GitHub acrescenta a extensão `.cmd` ao nome do script e a substitui por `{0}`. | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
+| Windows | `pwsh` | Essa é a shell padrão usada no Windows. Powershell Core. O GitHub acrescenta a extensão `.ps1` ao nome do script. Se o executor auto-hospedado do Windows não tiver o *PowerShell Core* instalado, o *PowerShell Desktop* será usado. | `pwsh -command ". '{0}'"`. |
+| Windows | `powershell` | O PowerShell Desktop. O GitHub acrescenta a extensão `.ps1` ao nome do script. | `powershell -command ". '{0}'"`. |
 
 Quando mais de uma configuração padrão é definida com o mesmo nome, GitHub usa a configuração padrão mais específica. Por exemplo, uma configuração padrão definida em uma tarefa irá substituir uma configuração padrão que tem o mesmo nome definido em um fluxo de trabalho.
 
@@ -926,9 +915,9 @@ Quando mais de uma configuração padrão é definida com o mesmo nome, GitHub u
 
 Use `working-directory` para definir o diretório de trabalho do `shell` de uma etapa. Essa palavra-chave pode fazer referência a vários contextos. Para obter mais informações, confira [Contextos](contexts.md#context-availability).
 
-> \[!TIP]
-> Verifique se o `working-directory` existe no executor antes de executar seu shell nele.
-> Quando mais de uma configuração padrão é definida com o mesmo nome, GitHub usa a configuração padrão mais específica. Por exemplo, uma configuração padrão definida em uma tarefa irá substituir uma configuração padrão que tem o mesmo nome definido em um fluxo de trabalho.
+!!! tip
+    Verifique se o `working-directory` existe no executor antes de executar seu shell nele.
+    Quando mais de uma configuração padrão é definida com o mesmo nome, GitHub usa a configuração padrão mais específica. Por exemplo, uma configuração padrão definida em uma tarefa irá substituir uma configuração padrão que tem o mesmo nome definido em um fluxo de trabalho.
 
 ## `concurrency`
 
@@ -947,10 +936,9 @@ Para permitir que mais de uma tarefa ou execução de fluxo de trabalho aguardem
 
 A combinação de `queue: max` e `cancel-in-progress: true` não é permitida e resultará em um erro de validação de fluxo de trabalho.
 
-> \[!NOTE]
->
-> * O nome do grupo de simultaneidade não diferencia maiúsculas de minúsculas. Por exemplo, `prod` e `Prod` serão tratados como o mesmo grupo de simultaneidade.
-> * Trabalhos ou execuções de fluxo de trabalho no mesmo grupo de simultaneidade são processados na ordem de primeiro a entrar em primeiro lugar (FIFO), de acordo com o momento em que cada um começou a esperar no grupo de simultaneidade, não o tempo em que cada fluxo de trabalho foi expedido. Como o horário de início efetivo de um trabalho ou execução pode variar, a ordenação não é garantida.
+!!! note
+    * O nome do grupo de simultaneidade não diferencia maiúsculas de minúsculas. Por exemplo, `prod` e `Prod` serão tratados como o mesmo grupo de simultaneidade.
+    * Trabalhos ou execuções de fluxo de trabalho no mesmo grupo de simultaneidade são processados na ordem de primeiro a entrar em primeiro lugar (FIFO), de acordo com o momento em que cada um começou a esperar no grupo de simultaneidade, não o tempo em que cada fluxo de trabalho foi expedido. Como o horário de início efetivo de um trabalho ou execução pode variar, a ordenação não é garantida.
 
 ### Exemplos: Usar a simultaneidade e o comportamento padrão
 
@@ -1094,7 +1082,7 @@ O acesso é controlado por tokens de cache com escopo definido, portanto um job 
 `cache-mode` aceita os valores a seguir.
 
 | Value        | Restaurar caches | Salvar caches |
-| ------------ | ---------------- | ------------- |
+|------------|----------------|-------------|
 | `read`       | Sim              | No            |
 | `write`      | Sim              | Sim           |
 | `write-only` | No               | Sim           |
@@ -1102,8 +1090,8 @@ O acesso é controlado por tokens de cache com escopo definido, portanto um job 
 
 Se você omitir `cache-mode`, um `read` ou `write` padrão será usado com base no tipo de gatilho. Para valores padrão efetivos dependentes do acionador, consulte [Referência do cache de dependência](dependency-caching.md#defaults).
 
-> \[!WARNING]
-> Declarar explicitamente `cache-mode: write` ou `cache-mode: write-only` em gatilhos não confiáveis pode contornar a restrição segura padrão de cache somente de leitura e reintroduzir o risco de envenenamento por cache. Para obter diretrizes e mitigações, consulte [Referência do cache de dependência](dependency-caching.md#bypassing-the-default-untrusted-trigger-cache-restriction).
+!!! warning
+    Declarar explicitamente `cache-mode: write` ou `cache-mode: write-only` em gatilhos não confiáveis pode contornar a restrição segura padrão de cache somente de leitura e reintroduzir o risco de envenenamento por cache. Para obter diretrizes e mitigações, consulte [Referência do cache de dependência](dependency-caching.md#bypassing-the-default-untrusted-trigger-cache-restriction).
 
 Quando uma operação de cache não é permitida pelo modo efetivo, a etapa de cache registra uma mensagem informativa e continua. A tarefa e o fluxo de trabalho não falham. Uma restauração ignorada é tratada como uma falha de cache; um salvamento ignorado simplesmente não é realizado. Para saber mais, confira [Referência do cache de dependência](dependency-caching.md#controlling-cache-access-with-cache-mode).
 
@@ -1155,7 +1143,7 @@ Use `jobs.<job_id>.name` para definir um nome para o trabalho, que é exibido na
 
 ## `jobs.<job_id>.permissions`
 
-Para um trabalho específico, você pode usar `jobs.<job_id>.permissions` para modificar as permissões padrão concedidas ao `GITHUB_TOKEN`, adicionando ou removendo o acesso conforme necessário, para que você permita apenas o acesso mínimo necessário. Para saber mais, confira [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token).
+Para um trabalho específico, você pode usar `jobs.<job_id>.permissions` para modificar as permissões padrão concedidas ao `GITHUB_TOKEN`, adicionando ou removendo o acesso conforme necessário, para que você permita apenas o acesso mínimo necessário. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token).
 
 Ao especificar a permissão em uma definição de trabalho, você pode configurar um conjunto diferente de permissões para o `GITHUB_TOKEN` em cada trabalho, se necessário. Como alternativa, você pode especificar as permissões para todas as tarefas do fluxo de trabalho. Para obter informações sobre como definir permissões no nível do fluxo de trabalho, confira [`permissions`](workflow-syntax.md#permissions).
 
@@ -1164,35 +1152,25 @@ Para cada uma das permissões disponíveis mostradas na tabela abaixo, você pod
 
 Permissões disponíveis e detalhes do que cada uma permite que uma ação faça:
 
-| Permissão                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Permite uma ação que usa `GITHUB_TOKEN` para                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `actions`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Trabalhar com GitHub Actions. Por exemplo, `actions: write` permite que uma ação cancele uma execução de fluxo de trabalho. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-actions).                                                                                                                                                                                                                |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `artifact-metadata`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Trabalhe com metadados de artefatos. Por exemplo, `artifact-metadata: write` permite que uma ação crie registros de armazenamento em nome de um artefato de build. Para obter mais informações, confira [Pontos de extremidade de API REST para metadados de artefato](https://docs.github.com/pt/rest/orgs/artifact-metadata).                                                                                                                                                                                                                           |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `attestations`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Trabalhar com atestados de artefatos. Por exemplo, `attestations: write` permite que uma ação gere um atestado de artefato para uma criação. Para obter mais informações, confira [Usar atestados de artefatos para estabelecer a procedência de compilações](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md)                                                                                                                                                                                                  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `checks`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Trabalhar com verificação de execuções e verificação de conjuntos. Por exemplo, `checks: write` permite que uma ação crie uma verificação de execução. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-checks).                                                                                                                                                                                      |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `code-quality`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Trabalhe com qualidade de código. Por exemplo, `code-quality: write` permite que uma ação carregue relatórios de cobertura de código. Para obter mais informações, confira [Qualidade do Código do GitHub](https://docs.github.com/pt/code-security/concepts/code-quality/code-quality).                                                                                                                                                                                                                                                                                        |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `contents`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Trabalhar com o conteúdo do repositório. Por exemplo, `contents: read` permite que uma ação liste os commits e `contents: write` permite que a ação crie uma versão. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-contents).                                                                                                                                                                      |
-| `deployments`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Trabalhar com implantações. Por exemplo, `deployments: write` permite que uma ação crie uma implantação. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-deployments).                                                                                                                                                                                                                               |
-| `discussions`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Trabalhar com discussões do GitHub. Por exemplo, `discussions: write` permite que uma ação feche ou exclua uma discussão. Para obter mais informações, confira [Usar a API do GraphQL para discussões](https://docs.github.com/pt/graphql/guides/using-the-graphql-api-for-discussions).                                                                                                                                                                                                                                                                                        |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `id-token`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Recuperar um token OpenID Connect (OIDC). Isso exige usar `id-token: write`. Para obter mais informações, confira [OpenID Connect](../../concepts/security/openid-connect.md#updating-your-workflows-for-oidc)                                                                                                                                                                                                                                                                                                                                        |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `issues`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Trabalhar com problemas. Por exemplo, `issues: write` permite que uma ação adicione um comentário a um problema. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-issues).                                                                                                                                                                                                                            |
-| `packages`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Trabalhar com GitHub Packages. Por exemplo, `packages: write` permite que uma ação carregue e publique pacotes no GitHub Packages. Para obter mais informações, confira [Sobre permissões para o GitHub Packages](https://docs.github.com/pt/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries).                                                                                                                                                                                                         |
-| `pages`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Trabalhar com páginas do GitHub. Por exemplo, `pages: write` permite que uma ação solicite um build de GitHub Pages. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pages).                                                                                                                                                                                                                         |
-| `pull-requests`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Trabalhar com solicitações de pull. Por exemplo, `pull-requests: write` permite que uma ação adicione um rótulo a uma PR. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pull-requests).                                                                                                                                                                                                            |
-| `security-events`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Trabalhar com alertas de verificação de código do GitHub. Por exemplo, `security-events: read` permite que uma ação liste os alertas da digitalização de código para o repositório e `security-events: write` permite que uma ação atualize o status de um alerta de digitalização de código. Para obter mais informações, consulte [as permissões do Repositório para "Alertas de verificação de código"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts). <br><br> |
-| Para alertas do Dependabot, use a permissão `vulnerability-alerts`. Os alertas de verificação secreta não podem ser lidos com essa permissão e exigem um aplicativo GitHub ou um personal access token. Para obter mais informações, consulte [Permissões de Repositório para "Alertas de verificação de segredos"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) em "Permissões necessárias para aplicativos GitHub". |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `statuses`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Trabalhar com status de commits. Por exemplo, `statuses:read` permite que uma ação liste os status de commit de uma determinada referência. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses).                                                                                                                                                                                        |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `vulnerability-alerts`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Leia os alertas do Dependabot. Por exemplo, `vulnerability-alerts: read` permite que uma ação liste os alertas do Dependabot para o repositório. Somente `read` e `none` há suporte; `write` não é válido. Quando `write-all` ou `read-all` é usado, `vulnerability-alerts` é incluído automaticamente como `read`. Para obter mais informações, consulte [as permissões do Repositório para "Alertas do Dependabot"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts).  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Permissão | Permite uma ação que usa `GITHUB_TOKEN` para |
+| --- | --- |
+| `actions` | Trabalhar com GitHub Actions. Por exemplo, `actions: write` permite que uma ação cancele uma execução de fluxo de trabalho. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-actions). |
+| `artifact-metadata` | Trabalhe com metadados de artefatos. Por exemplo, `artifact-metadata: write` permite que uma ação crie registros de armazenamento em nome de um artefato de build. Para obter mais informações, confira [Pontos de extremidade de API REST para metadados de artefato](https://docs.github.com/pt/rest/orgs/artifact-metadata). |
+| `attestations` | Trabalhar com atestados de artefatos. Por exemplo, `attestations: write` permite que uma ação gere um atestado de artefato para uma criação. Para obter mais informações, confira [Usar atestados de artefatos para estabelecer a procedência de compilações](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md) |
+| `checks` | Trabalhar com verificação de execuções e verificação de conjuntos. Por exemplo, `checks: write` permite que uma ação crie uma verificação de execução. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-checks). |
+| `code-quality` | Trabalhe com qualidade de código. Por exemplo, `code-quality: write` permite que uma ação carregue relatórios de cobertura de código. Para obter mais informações, confira [Qualidade do Código do GitHub](https://docs.github.com/pt/code-security/concepts/code-quality/code-quality). |
+| `contents` | Trabalhar com o conteúdo do repositório. Por exemplo, `contents: read` permite que uma ação liste os commits e `contents: write` permite que a ação crie uma versão. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-contents). |
+| `deployments` | Trabalhar com implantações. Por exemplo, `deployments: write` permite que uma ação crie uma implantação. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-deployments). |
+| `discussions` | Trabalhar com discussões do GitHub. Por exemplo, `discussions: write` permite que uma ação feche ou exclua uma discussão. Para obter mais informações, confira [Usar a API do GraphQL para discussões](https://docs.github.com/pt/graphql/guides/using-the-graphql-api-for-discussions). |
+| `id-token` | Recuperar um token OpenID Connect (OIDC). Isso exige usar `id-token: write`. Para obter mais informações, confira [OpenID Connect](../../concepts/security/openid-connect.md#updating-your-workflows-for-oidc) |
+| `issues` | Trabalhar com problemas. Por exemplo, `issues: write` permite que uma ação adicione um comentário a um problema. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-issues). |
+| `packages` | Trabalhar com GitHub Packages. Por exemplo, `packages: write` permite que uma ação carregue e publique pacotes no GitHub Packages. Para obter mais informações, confira [Sobre permissões para o GitHub Packages](https://docs.github.com/pt/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries). |
+| `pages` | Trabalhar com páginas do GitHub. Por exemplo, `pages: write` permite que uma ação solicite um build de GitHub Pages. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pages). |
+| `pull-requests` | Trabalhar com solicitações de pull. Por exemplo, `pull-requests: write` permite que uma ação adicione um rótulo a uma PR. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-pull-requests). |
+| `security-events` | Trabalhar com alertas de verificação de código do GitHub. Por exemplo, `security-events: read` permite que uma ação liste os alertas da digitalização de código para o repositório e `security-events: write` permite que uma ação atualize o status de um alerta de digitalização de código. Para obter mais informações, consulte [as permissões do Repositório para "Alertas de verificação de código"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-code-scanning-alerts). |
+| Para alertas do Dependabot, use a permissão `vulnerability-alerts`. Os alertas de verificação secreta não podem ser lidos com essa permissão e exigem um aplicativo GitHub ou um personal access token. Para obter mais informações, consulte [Permissões de Repositório para "Alertas de verificação de segredos"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-secret-scanning-alerts) em "Permissões necessárias para aplicativos GitHub". |  |
+| `statuses` | Trabalhar com status de commits. Por exemplo, `statuses:read` permite que uma ação liste os status de commit de uma determinada referência. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses). |
+| `vulnerability-alerts` | Leia os alertas do Dependabot. Por exemplo, `vulnerability-alerts: read` permite que uma ação liste os alertas do Dependabot para o repositório. Somente `read` e `none` há suporte; `write` não é válido. Quando `write-all` ou `read-all` é usado, `vulnerability-alerts` é incluído automaticamente como `read`. Para obter mais informações, consulte [as permissões do Repositório para "Alertas do Dependabot"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
 
 ### Definindo o acesso para os escopos do `GITHUB_TOKEN`
 
@@ -1299,8 +1277,8 @@ Neste exemplo, `job3` usa a expressão condicional `always()` para que ela sempr
 
 Use o condicional `jobs.<job_id>.if` para impedir que um trabalho seja executado, a não ser que uma condição seja atendida. Você pode usar qualquer contexto e expressão compatível para criar uma condicional. Para obter mais informações sobre quais contextos têm suporte nessa chave, confira [Referência de contextos](contexts.md#context-availability).
 
-> \[!NOTE]
-> A condição `jobs.<job_id>.if` é avaliada antes de [`jobs.<job_id>.strategy.matrix`](workflow-syntax.md#jobsjob_idstrategymatrix) ser aplicado.
+!!! note
+    A condição `jobs.<job_id>.if` é avaliada antes de [`jobs.<job_id>.strategy.matrix`](workflow-syntax.md#jobsjob_idstrategymatrix) ser aplicado.
 
 Ao usar expressões em um condicional `if`, opcionalmente, você poderá omitir a sintaxe de expressão `${{ }}`, pois o GitHub Actions avalia automaticamente o condicional `if` como uma expressão. No entanto, essa exceção não se aplica a todos os lugares.
 
@@ -1375,8 +1353,8 @@ Use `jobs.<job_id>.runs-on` para definir o tipo de computador no qual o trabalho
 
 * Se você quiser executar seu fluxo de trabalho em vários computadores, use [`jobs.<job_id>.strategy`](workflow-syntax.md#jobsjob_idstrategy).
 
-> \[!NOTE]
-> Aspas não são necessárias em torno de cadeias de caracteres simples como`self-hosted`, mas são necessárias para expressões como`"${{ inputs.chosen-os }}"` .
+!!! note
+    Aspas não são necessárias em torno de cadeias de caracteres simples como`self-hosted`, mas são necessárias para expressões como`"${{ inputs.chosen-os }}"` .
 
 ### Escolher executores hospedados em GitHub
 
@@ -1391,41 +1369,37 @@ Para saber mais, confira [Executores hospedados no GitHub](../../concepts/runner
 Para repositórios públicos, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados com as especificações associadas.
 Com exceção dos executores de CPU única, cada executor hospedado por GitHub é uma nova máquina virtual (VM) hospedada por GitHub. Processos de CPU única são hospedados em um contêiner em uma VM compartilhada—consulte [Referência de executores hospedados pelo GitHub](../runners/github-hosted-runners.md#single-cpu-runners). O uso dos executores hospedados padrão GitHubé gratuito e ilimitado em repositórios públicos.
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th scope="col">
-<b>Máquina virtual/contêiner</b></th>
-      <th scope="col">
-<b>Processador (CPU)</b></th>
-      <th scope="col">
-<b>Memória (RAM)</b></th>
-      <th scope="col">
-<b>Armazenamento (SSD)</b></th>
-      <th scope="col">
-<b>Arquitetura</b></th>
-      <th scope="col">
-<b>Rótulo do fluxo de trabalho</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-          <td>Linux</td>
-          <td>1</td>
-          <td>5 GB</td>
-          <td>14 GB</td>
-          <td> x64 </td>
-          <td>
-            <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md">ubuntu-slim</a></code>
-          </td>
-        </tr>
-    <tr>
-      <td>Linux</td>
-      <td>4</td>
-      <td>16 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
+**Máquina virtual/contêiner**
+
+**Processador (CPU)**
+
+**Memória (RAM)**
+
+**Armazenamento (SSD)**
+
+**Arquitetura**
+
+**Rótulo do fluxo de trabalho**
+
+Linux
+
+1
+
+5 GB
+
+14 GB
+
+x64
+            `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
+Linux
+
+4
+
+16 GB
+
+14 GB
+
+x64
 
 ```
     <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
@@ -1482,49 +1456,41 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
 </tr>
 ```
 
-  </tbody>
-
-</table>
-
 ### Executores hospedados padrão GitHubpara  privados
 
 Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a alocação de minutos gratuitos da sua GitHub conta e, posteriormente, são cobrados a taxas por minuto de uso. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th scope="col">
-<b>Máquina virtual</b></th>
-      <th scope="col">
-<b>Processador (CPU)</b></th>
-      <th scope="col">
-<b>Memória (RAM)</b></th>
-      <th scope="col">
-<b>Armazenamento (SSD)</b></th>
-      <th scope="col">
-<b>Arquitetura</b></th>
-      <th scope="col">
-<b>Rótulo do fluxo de trabalho</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-          <td>Linux</td>
-          <td>1</td>
-          <td>5 GB</td>
-          <td>14 GB</td>
-          <td> x64 </td>
-          <td>
-            <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md">ubuntu-slim</a></code>
-          </td>
-        </tr>
-    <tr>
-      <td>Linux</td>
-      <td>2</td>
-      <td>8 GB</td>
-      <td>14 GB</td>
-      <td> x64 </td>
-      <td>
+**Máquina virtual**
+
+**Processador (CPU)**
+
+**Memória (RAM)**
+
+**Armazenamento (SSD)**
+
+**Arquitetura**
+
+**Rótulo do fluxo de trabalho**
+
+Linux
+
+1
+
+5 GB
+
+14 GB
+
+x64
+            `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`
+Linux
+
+2
+
+8 GB
+
+14 GB
+
+x64
 
 ```
     <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
@@ -1581,16 +1547,13 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
 </tr>
 ```
 
-  </tbody>
-</table>
-
 Além dos executores padrão hospedados em GitHub, GitHub oferece aos clientes dos planos GitHub Team e GitHub Enterprise Cloud uma variedade de máquinas virtuais gerenciadas com recursos avançados, como, por exemplo, mais núcleos e espaço em disco, máquinas com GPU e máquinas com arquitetura ARM. Para saber mais, confira [Executores avançados](../../concepts/runners/larger-runners.md).
 
-> \[!NOTE]
-> As imagens do executor `-latest` são as imagens estáveis mais recentes fornecidas pelo GitHub, e podem não ser a versão mais recente do sistema operacional disponível junto ao fornecedor do sistema operacional.
+!!! note
+    As imagens do executor `-latest` são as imagens estáveis mais recentes fornecidas pelo GitHub, e podem não ser a versão mais recente do sistema operacional disponível junto ao fornecedor do sistema operacional.
 
-> \[!WARNING]
-> As imagens beta e preteridas são fornecidas “no estado em que se encontram”, “com todas as falhas” e “conforme disponível” e são excluídas do contrato de nível de serviço e da garantia. As imagens beta podem não estar cobertas pelo suporte ao cliente.
+    [!WARNING]
+    As imagens beta e preteridas são fornecidas “no estado em que se encontram”, “com todas as falhas” e “conforme disponível” e são excluídas do contrato de nível de serviço e da garantia. As imagens beta podem não estar cobertas pelo suporte ao cliente.
 
 #### Exemplo: Especificar um sistema operacional
 
@@ -1606,7 +1569,7 @@ Para especificar um executor auto-hospedado para uma tarefa, configure `runs-on`
 
 Os executores auto-hospedados podem ter o rótulo `self-hosted`. Ao configurar um corredor auto-hospedado, por padrão, incluiremos o rótulo `self-hosted`. Você pode passar o sinalizador `--no-default-labels` para impedir que o rótulo auto-hospedado seja aplicado. Rótulos podem ser usados para criar opções de segmentação para os executores, como sistema operacional ou arquitetura. Recomendamos fornecer uma matriz de rótulos que comece com `self-hosted` (isso deve ser listado primeiro) e depois inclua rótulos adicionais, conforme necessário. Quando você especifica um array de rótulos, os trabalhos serão enfileirados em executores que possuem todos os rótulos que você especificou.
 
-> \[!NOTE] Actions Runner Controller não dá suporte ao `self-hosted` rótulo.
+> [!NOTE] Actions Runner Controller não dá suporte ao `self-hosted` rótulo.
 
 #### Exemplo: Usando etiquetas para seleção do executor
 
@@ -1681,8 +1644,8 @@ Use `jobs.<job_id>.environment` para definir o ambiente que o trabalho referenci
 
 Você pode fornecer o ambiente como apenas o ambiente `name` ou como um objeto de ambiente com o `name` e a `url`. A URL é mapeada para `environment_url` na a API de implantações. Para obter mais informações sobre a API de implantações, confira [Pontos de extremidade da API REST para repositórios](https://docs.github.com/pt/rest/repos#deployments).
 
-> \[!NOTE]
-> Todas as regras de proteção para implantação têm de ser aprovadas para que um trabalho que faça referência ao ambiente seja enviado a um executor. Para saber mais, confira [Gerenciar ambientes para implantação](../../how-tos/deploy/configure-and-manage-deployments/manage-environments.md).
+!!! note
+    Todas as regras de proteção para implantação têm de ser aprovadas para que um trabalho que faça referência ao ambiente seja enviado a um executor. Para saber mais, confira [Gerenciar ambientes para implantação](../../how-tos/deploy/configure-and-manage-deployments/manage-environments.md).
 
 ### Exemplo: Usando um único nome de ambiente
 
@@ -1747,10 +1710,9 @@ Para permitir que mais de uma tarefa ou execução de fluxo de trabalho aguardem
 
 A combinação de `queue: max` e `cancel-in-progress: true` não é permitida e resultará em um erro de validação de fluxo de trabalho.
 
-> \[!NOTE]
->
-> * O nome do grupo de simultaneidade não diferencia maiúsculas de minúsculas. Por exemplo, `prod` e `Prod` serão tratados como o mesmo grupo de simultaneidade.
-> * Trabalhos ou execuções de fluxo de trabalho no mesmo grupo de simultaneidade são processados na ordem de primeiro a entrar em primeiro lugar (FIFO), de acordo com o momento em que cada um começou a esperar no grupo de simultaneidade, não o tempo em que cada fluxo de trabalho foi expedido. Como o horário de início efetivo de um trabalho ou execução pode variar, a ordenação não é garantida.
+!!! note
+    * O nome do grupo de simultaneidade não diferencia maiúsculas de minúsculas. Por exemplo, `prod` e `Prod` serão tratados como o mesmo grupo de simultaneidade.
+    * Trabalhos ou execuções de fluxo de trabalho no mesmo grupo de simultaneidade são processados na ordem de primeiro a entrar em primeiro lugar (FIFO), de acordo com o momento em que cada um começou a esperar no grupo de simultaneidade, não o tempo em que cada fluxo de trabalho foi expedido. Como o horário de início efetivo de um trabalho ou execução pode variar, a ordenação não é garantida.
 
 ### Exemplos: Usar a simultaneidade e o comportamento padrão
 
@@ -1892,8 +1854,8 @@ Use `jobs.<job_id>.cache-mode` para definir o nível de acesso ao GitHub Actions
 
 Os valores aceitos são`read`, , `write``write-only`e `none`, com os mesmos significados que a chave de nível superior. Se nem o job nem o fluxo de trabalho definirem `cache-mode`, aplica-se um padrão baseado em gatilho. Para obter mais informações sobre cada valor, consulte [`cache-mode`](#cache-mode) e [Referência do cache de dependência](dependency-caching.md#defaults).
 
-> \[!WARNING]
-> Declarar explicitamente `cache-mode: write` ou `cache-mode: write-only` em gatilhos não confiáveis pode contornar a restrição segura padrão de cache somente de leitura e reintroduzir o risco de envenenamento por cache. Para obter diretrizes e mitigações, consulte [Referência do cache de dependência](dependency-caching.md#bypassing-the-default-untrusted-trigger-cache-restriction).
+!!! warning
+    Declarar explicitamente `cache-mode: write` ou `cache-mode: write-only` em gatilhos não confiáveis pode contornar a restrição segura padrão de cache somente de leitura e reintroduzir o risco de envenenamento por cache. Para obter diretrizes e mitigações, consulte [Referência do cache de dependência](dependency-caching.md#bypassing-the-default-untrusted-trigger-cache-restriction).
 
 Você também pode definir `cache-mode` em um trabalho que chama um fluxo de trabalho reutilizável para limitar o acesso de cache concedido ao fluxo de trabalho chamado. Para saber mais, confira [Reutilizando configurações de fluxo de trabalho](reusing-workflow-configurations.md#supported-keywords-for-jobs-that-call-a-reusable-workflow) e [Reutilizar fluxos de trabalho](../../how-tos/reuse-automations/reuse-workflows.md#controlling-cache-access-in-reusable-workflows).
 
@@ -1980,8 +1942,8 @@ jobs:
       - run: echo '${{ toJSON(needs.job1.outputs) }}'
 ```
 
-> \[!WARNING]
-> O Actions não garante a ordem em que os trabalhos da matriz serão executados. Verifique se o nome de saída é exclusivo; caso contrário, o último trabalho de matriz executado substituirá o valor de saída.
+!!! warning
+    O Actions não garante a ordem em que os trabalhos da matriz serão executados. Verifique se o nome de saída é exclusivo; caso contrário, o último trabalho de matriz executado substituirá o valor de saída.
 
 ## `jobs.<job_id>.env`
 
@@ -2018,16 +1980,16 @@ Quando mais de uma configuração padrão é definida com o mesmo nome, GitHub u
 
 Use `shell` para definir o `shell` para uma etapa. Essa palavra-chave pode fazer referência a vários contextos. Para obter mais informações, confira [Contextos](contexts.md#context-availability).
 
-| Plataforma compatível | Parâmetro `shell` | Descrição                                                                                                                                                                                                                             | Comando executado internamente                  |
-| --------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| Linux / macOS         | não especificado  | O shell padrão em plataformas não Windows. Isso executa um comando diferente para quando `bash` é especificado explicitamente. Se `bash` não for encontrado no caminho, isso será tratado como `sh`.                                  | `bash -e {0}`                                   |
-| Tudo                  | `bash`            | O shell padrão em plataformas não Windows com um fallback para `sh`. Ao especificar um shell bash no Windows, é utilizado o shell bash incluído no Git para Windows.                                                                  | `bash --noprofile --norc -eo pipefail {0}`      |
-| Tudo                  | `pwsh`            | Powershell Core. O GitHub acrescenta a extensão `.ps1` ao nome do script.                                                                                                                                                             | `pwsh -command ". '{0}'"`                       |
-| Tudo                  | `python`          | Executa o comando python.                                                                                                                                                                                                             | `python {0}`                                    |
-| Linux / macOS         | `sh`              | O comportamento de fallback para plataformas não Windows se nenhum shell for fornecido e o `bash` não for encontrado no caminho.                                                                                                      | `sh -e {0}`                                     |
-| Windows               | `cmd`             | O GitHub acrescenta a extensão `.cmd` ao nome do script e a substitui por `{0}`.                                                                                                                                                      | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
-| Windows               | `pwsh`            | Essa é a shell padrão usada no Windows. Powershell Core. O GitHub acrescenta a extensão `.ps1` ao nome do script. Se o executor auto-hospedado do Windows não tiver o *PowerShell Core* instalado, o *PowerShell Desktop* será usado. | `pwsh -command ". '{0}'"`.                      |
-| Windows               | `powershell`      | O PowerShell Desktop. O GitHub acrescenta a extensão `.ps1` ao nome do script.                                                                                                                                                        | `powershell -command ". '{0}'"`.                |
+| Plataforma compatível | Parâmetro `shell` | Descrição | Comando executado internamente |
+| --- | --- | --- | --- |
+| Linux / macOS | não especificado | O shell padrão em plataformas não Windows. Isso executa um comando diferente para quando `bash` é especificado explicitamente. Se `bash` não for encontrado no caminho, isso será tratado como `sh`. | `bash -e {0}` |
+| Tudo | `bash` | O shell padrão em plataformas não Windows com um fallback para `sh`. Ao especificar um shell bash no Windows, é utilizado o shell bash incluído no Git para Windows. | `bash --noprofile --norc -eo pipefail {0}` |
+| Tudo | `pwsh` | Powershell Core. O GitHub acrescenta a extensão `.ps1` ao nome do script. | `pwsh -command ". '{0}'"` |
+| Tudo | `python` | Executa o comando python. | `python {0}` |
+| Linux / macOS | `sh` | O comportamento de fallback para plataformas não Windows se nenhum shell for fornecido e o `bash` não for encontrado no caminho. | `sh -e {0}` |
+| Windows | `cmd` | O GitHub acrescenta a extensão `.cmd` ao nome do script e a substitui por `{0}`. | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
+| Windows | `pwsh` | Essa é a shell padrão usada no Windows. Powershell Core. O GitHub acrescenta a extensão `.ps1` ao nome do script. Se o executor auto-hospedado do Windows não tiver o *PowerShell Core* instalado, o *PowerShell Desktop* será usado. | `pwsh -command ". '{0}'"`. |
+| Windows | `powershell` | O PowerShell Desktop. O GitHub acrescenta a extensão `.ps1` ao nome do script. | `powershell -command ". '{0}'"`. |
 
 Quando mais de uma configuração padrão é definida com o mesmo nome, GitHub usa a configuração padrão mais específica. Por exemplo, uma configuração padrão definida em uma tarefa irá substituir uma configuração padrão que tem o mesmo nome definido em um fluxo de trabalho.
 
@@ -2035,9 +1997,9 @@ Quando mais de uma configuração padrão é definida com o mesmo nome, GitHub u
 
 Use `working-directory` para definir o diretório de trabalho do `shell` de uma etapa. Essa palavra-chave pode fazer referência a vários contextos. Para obter mais informações, confira [Contextos](contexts.md#context-availability).
 
-> \[!TIP]
-> Verifique se o `working-directory` existe no executor antes de executar seu shell nele.
-> Quando mais de uma configuração padrão é definida com o mesmo nome, GitHub usa a configuração padrão mais específica. Por exemplo, uma configuração padrão definida em uma tarefa irá substituir uma configuração padrão que tem o mesmo nome definido em um fluxo de trabalho.
+!!! tip
+    Verifique se o `working-directory` existe no executor antes de executar seu shell nele.
+    Quando mais de uma configuração padrão é definida com o mesmo nome, GitHub usa a configuração padrão mais específica. Por exemplo, uma configuração padrão definida em uma tarefa irá substituir uma configuração padrão que tem o mesmo nome definido em um fluxo de trabalho.
 
 ### Exemplo: definição das opções da etapa `run` padrão para um trabalho
 
@@ -2223,11 +2185,11 @@ Uma `$/` referência não deve incluir um `@{ref}` sufixo. A ref é sempre o com
 
 A tabela a seguir compara as maneiras de referenciar uma ação.
 
-| Sintaxe                | É resolvido desta forma                                                                                 | Recomendado para           |
-| ---------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------- |
-| `$/path/to/action`     | O mesmo repositório do workflow ou da action em execução, no commit em execução                         | Ações no mesmo repositório |
-| `{owner}/{repo}@{ref}` | O repositório especificado na ref especificada                                                          | Ações em outro repositório |
-| `./path/to/action`     | Um caminho no workspace do runner, relativo ao diretório de trabalho padrão (`${{ github.workspace }}`) | Somente casos extremos     |
+| Sintaxe | É resolvido desta forma | Recomendado para |
+| --- | --- | --- |
+| `$/path/to/action` | O mesmo repositório do workflow ou da action em execução, no commit em execução | Ações no mesmo repositório |
+| `{owner}/{repo}@{ref}` | O repositório especificado na ref especificada | Ações em outro repositório |
+| `./path/to/action` | Um caminho no workspace do runner, relativo ao diretório de trabalho padrão (`${{ github.workspace }}`) | Somente casos extremos |
 
 ```yaml
 on: [push]
@@ -2384,16 +2346,16 @@ Você também pode usar uma etapa `run` para executar um script. Para saber mais
 
 Substitua as configurações padrão do shell no sistema operacional do executor e o padrão do trabalho usando a palavra-chave `shell`. É possível usar palavras-chave `shell` internas ou definir um conjunto personalizado de opções de shell. O comando do shell que é executado internamente executa um arquivo temporário que contém os comandos especificados na palavra-chave `run`.
 
-| Plataforma compatível | Parâmetro `shell` | Descrição                                                                                                                                                                                                                             | Comando executado internamente                  |
-| --------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| Linux / macOS         | não especificado  | O shell padrão em plataformas não Windows. Isso executa um comando diferente para quando `bash` é especificado explicitamente. Se `bash` não for encontrado no caminho, isso será tratado como `sh`.                                  | `bash -e {0}`                                   |
-| Tudo                  | `bash`            | O shell padrão em plataformas não Windows com um fallback para `sh`. Ao especificar um shell bash no Windows, é utilizado o shell bash incluído no Git para Windows.                                                                  | `bash --noprofile --norc -eo pipefail {0}`      |
-| Tudo                  | `pwsh`            | Powershell Core. O GitHub acrescenta a extensão `.ps1` ao nome do script.                                                                                                                                                             | `pwsh -command ". '{0}'"`                       |
-| Tudo                  | `python`          | Executa o comando python.                                                                                                                                                                                                             | `python {0}`                                    |
-| Linux / macOS         | `sh`              | O comportamento de fallback para plataformas não Windows se nenhum shell for fornecido e o `bash` não for encontrado no caminho.                                                                                                      | `sh -e {0}`                                     |
-| Windows               | `cmd`             | O GitHub acrescenta a extensão `.cmd` ao nome do script e a substitui por `{0}`.                                                                                                                                                      | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
-| Windows               | `pwsh`            | Essa é a shell padrão usada no Windows. Powershell Core. O GitHub acrescenta a extensão `.ps1` ao nome do script. Se o executor auto-hospedado do Windows não tiver o *PowerShell Core* instalado, o *PowerShell Desktop* será usado. | `pwsh -command ". '{0}'"`.                      |
-| Windows               | `powershell`      | O PowerShell Desktop. O GitHub acrescenta a extensão `.ps1` ao nome do script.                                                                                                                                                        | `powershell -command ". '{0}'"`.                |
+| Plataforma compatível | Parâmetro `shell` | Descrição | Comando executado internamente |
+| --- | --- | --- | --- |
+| Linux / macOS | não especificado | O shell padrão em plataformas não Windows. Isso executa um comando diferente para quando `bash` é especificado explicitamente. Se `bash` não for encontrado no caminho, isso será tratado como `sh`. | `bash -e {0}` |
+| Tudo | `bash` | O shell padrão em plataformas não Windows com um fallback para `sh`. Ao especificar um shell bash no Windows, é utilizado o shell bash incluído no Git para Windows. | `bash --noprofile --norc -eo pipefail {0}` |
+| Tudo | `pwsh` | Powershell Core. O GitHub acrescenta a extensão `.ps1` ao nome do script. | `pwsh -command ". '{0}'"` |
+| Tudo | `python` | Executa o comando python. | `python {0}` |
+| Linux / macOS | `sh` | O comportamento de fallback para plataformas não Windows se nenhum shell for fornecido e o `bash` não for encontrado no caminho. | `sh -e {0}` |
+| Windows | `cmd` | O GitHub acrescenta a extensão `.cmd` ao nome do script e a substitui por `{0}`. | `%ComSpec% /D /E:ON /V:OFF /S /C "CALL "{0}""`. |
+| Windows | `pwsh` | Essa é a shell padrão usada no Windows. Powershell Core. O GitHub acrescenta a extensão `.ps1` ao nome do script. Se o executor auto-hospedado do Windows não tiver o *PowerShell Core* instalado, o *PowerShell Desktop* será usado. | `pwsh -command ". '{0}'"`. |
+| Windows | `powershell` | O PowerShell Desktop. O GitHub acrescenta a extensão `.ps1` ao nome do script. | `powershell -command ". '{0}'"`. |
 
 Como alternativa, você pode especificar um shell padrão para todas as etapas `run` em um trabalho ou para todas as etapas `run` em todo o fluxo de trabalho. Para obter mais informações, consulte [`defaults.run.shell`](workflow-syntax.md#defaultsrunshell) e [`jobs.<job_id>.defaults.run.shell`](workflow-syntax.md#jobsjob_iddefaultsrunshell).
 
@@ -2584,8 +2546,8 @@ As saídas e as alterações de ambiente de uma etapa em segundo plano somente f
 
 Use `background` quando precisar de um controle refinado: iniciar um processo de execução longa (como um servidor ou banco de dados) que permaneça ativo enquanto as etapas posteriores são executadas, fazendo referência a uma etapa específica com [`wait`](#jobsjob_idstepswait) ou [`cancel`](#jobsjob_idstepscancel)ou intercalando o trabalho em segundo plano com outras etapas. Se, em vez disso, você tiver um grupo independente de etapas que devam ser concluídas antes que o trabalho continue, [`parallel`](#jobsjob_idstepsparallel) é uma forma abreviada mais conveniente.
 
-> \[!NOTE]
-> Você não pode usar `background` em etapas dentro de uma ação composta. Uma ação composta pode ser executada como uma etapa em segundo plano, mas não pode declarar etapas em segundo plano internamente.
+!!! note
+    Você não pode usar `background` em etapas dentro de uma ação composta. Uma ação composta pode ser executada como uma etapa em segundo plano, mas não pode declarar etapas em segundo plano internamente.
 
 ### Exemplo: executando uma etapa em segundo plano
 
@@ -2609,8 +2571,8 @@ Pausa o trabalho até que uma ou mais etapas em segundo plano sejam concluídas.
 
 Após a conclusão de uma etapa `wait`, as saídas das etapas em segundo plano referenciadas tornam-se disponíveis para as etapas subsequentes. Se uma etapa em segundo plano referenciada falhar, a `wait` etapa também falhará.
 
-> \[!NOTE]
-> Uma `wait` etapa sempre é executada e não oferece suporte à condicional [`if`](#jobsjob_idstepsif).
+!!! note
+    Uma `wait` etapa sempre é executada e não oferece suporte à condicional [`if`](#jobsjob_idstepsif).
 
 ### Exemplo: aguardando etapas específicas em segundo plano
 
@@ -2642,8 +2604,8 @@ Pausa o trabalho até que todas as etapas em segundo plano ativas sejam concluí
 
 A `wait-all` palavra-chave não usa argumentos.
 
-> \[!NOTE]
-> Uma `wait-all` etapa sempre é executada e não oferece suporte à condicional [`if`](#jobsjob_idstepsif).
+!!! note
+    Uma `wait-all` etapa sempre é executada e não oferece suporte à condicional [`if`](#jobsjob_idstepsif).
 
 ### Exemplo: aguardando todas as etapas em segundo plano
 
@@ -2670,8 +2632,8 @@ steps:
 
 Encerra de forma controlada uma etapa em segundo plano em execução. O executor envia ao processo da etapa um sinal de terminação (`SIGTERM`) para que ele possa limpar e o interrompe à força (`SIGKILL`) se ele não sair em um curto período de carência. A palavra-chave `cancel` tem como alvo uma única etapa de segundo plano pelo seu `id`.
 
-> \[!NOTE]
-> Uma `cancel` etapa sempre é executada e não oferece suporte à condicional [`if`](#jobsjob_idstepsif).
+!!! note
+    Uma `cancel` etapa sempre é executada e não oferece suporte à condicional [`if`](#jobsjob_idstepsif).
 
 ### Exemplo: Cancelando uma etapa em segundo plano
 
@@ -2697,8 +2659,8 @@ Use `parallel` quando houver um grupo independente de etapas em que todas devem 
 
 Cada etapa do grupo está sujeita ao mesmo limite de simultaneidade de 10 etapas aplicado às outras etapas em segundo plano.
 
-> \[!NOTE]
-> Você não pode usar `parallel` dentro de uma ação composta.
+!!! note
+    Você não pode usar `parallel` dentro de uma ação composta.
 
 ### Exemplo: executando etapas em paralelo
 
@@ -2728,8 +2690,8 @@ O número máximo de minutos para permitir que o trabalho seja executado antes q
 
 Se o tempo-limite exceder o tempo limite de execução do trabalho para o executor, o trabalho será cancelado quando o tempo limite de execução for atingido. Para obter mais informações sobre os limites de tempo de execução de trabalho, consulte [Cobrança e uso](../../concepts/billing-and-usage.md#usage-limits-and-policy) para executores hospedados em GitHub e, para limites de uso de executores auto-hospedados, consulte [Limites do Actions](../limits.md).
 
-> \[!NOTE]
-> O `GITHUB_TOKEN` expira quando um trabalho é concluído ou após, no máximo, 24 horas. Para executores auto-hospedados, o token pode ser o fator limitante se o tempo limite do trabalho for maior que 24 horas. Para obter mais informações sobre `GITHUB_TOKEN`, consulte [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md).
+!!! note
+    O `GITHUB_TOKEN` expira quando um trabalho é concluído ou após, no máximo, 24 horas. Para executores auto-hospedados, o token pode ser o fator limitante se o tempo limite do trabalho for maior que 24 horas. Para obter mais informações sobre `GITHUB_TOKEN`, consulte [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md).
 
 ## `jobs.<job_id>.strategy`
 
@@ -2744,8 +2706,8 @@ Uma matriz pode gerar 256 tarefas no máximo por execução do fluxo de trabalho
 
 As variáveis que você define se tornam propriedades no contexto `matrix`, e você pode referenciar a propriedade em outras áreas do arquivo de fluxo de trabalho. Neste exemplo, você pode usar `matrix.version` e `matrix.os` para acessar o valor atual de `version` e `os` que o trabalho está usando. Para saber mais, confira [Referência de contextos](contexts.md).
 
-> \[!NOTE]
-> Os nomes das variáveis não fazem distinção entre maiúsculas e minúsculas. Por exemplo, `OS` e `os` será tratado como a mesma variável.
+!!! note
+    Os nomes das variáveis não fazem distinção entre maiúsculas e minúsculas. Por exemplo, `OS` e `os` será tratado como a mesma variável.
 
 Por padrão, GitHub maximizará o número de trabalhos executados em paralelo, dependendo da disponibilidade do executor. A ordem das variáveis na matriz determina a ordem na qual os trabalhos são criados. A primeira variável definida será o primeiro trabalho criado na execução do fluxo de trabalho.
 
@@ -2940,18 +2902,18 @@ strategy:
 
 ## `jobs.<job_id>.container`
 
-> \[!NOTE]
-> Se os fluxos de trabalho usarem ações de contêiner do Docker, contêineres de trabalho ou contêineres de serviço, você precisará usar um executor do Linux:
->
-> * Se você estiver usando executores hospedados em GitHub, você deverá usar um executor do Ubuntu.
-> * Se você estiver usando executores auto-hospedados, você deve usar uma máquina Linux, pois seu executor e o Docker precisam ser instalados.
+!!! note
+    Se os fluxos de trabalho usarem ações de contêiner do Docker, contêineres de trabalho ou contêineres de serviço, você precisará usar um executor do Linux:
+
+    * Se você estiver usando executores hospedados em GitHub, você deverá usar um executor do Ubuntu.
+    * Se você estiver usando executores auto-hospedados, você deve usar uma máquina Linux, pois seu executor e o Docker precisam ser instalados.
 
 Use `jobs.<job_id>.container` para criar um contêiner e executar as etapas de um trabalho que ainda não especificam um contêiner. Se você tiver etapas que usam ações de script e de contêiner, as ações de contêiner serão executadas como contêineres irmãos na mesma rede e com as mesmas montagens de volume.
 
 Se você não definir um `container`, todas as etapas serão executadas diretamente no host especificado por `runs-on`, a menos que uma etapa se refira a uma ação configurada para ser executada em um contêiner.
 
-> \[!NOTE]
-> O shell padrão para etapas `run` dentro de um contêiner é `sh` em vez de `bash`. Isso pode ser substituído por [`jobs.<job_id>.defaults.run`](workflow-syntax.md#jobsjob_iddefaultsrun) ou por [`jobs.<job_id>.steps[*].shell`](/pt/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell).
+!!! note
+    O shell padrão para etapas `run` dentro de um contêiner é `sh` em vez de `bash`. Isso pode ser substituído por [`jobs.<job_id>.defaults.run`](workflow-syntax.md#jobsjob_iddefaultsrun) ou por [`jobs.<job_id>.steps[*].shell`](/pt/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell).
 
 ### Exemplo: Executar um trabalho dentro de um contêiner
 
@@ -2990,8 +2952,8 @@ jobs:
 
 Use `jobs.<job_id>.container.image` para definir a imagem do Docker a ser usada como o contêiner para executar a ação. O valor pode ser o nome da imagem do Docker Hub ou um nome de registro.
 
-> \[!NOTE]
-> O Docker Hub normalmente impõe limites de taxa em operações de push e pull, o que afetará os trabalhos em executores auto-hospedados. No entanto, executores hospedados pelo GitHub não estão sujeitos a esses limites com base em um contrato entre o GitHub e o Docker.
+!!! note
+    O Docker Hub normalmente impõe limites de taxa em operações de push e pull, o que afetará os trabalhos em executores auto-hospedados. No entanto, executores hospedados pelo GitHub não estão sujeitos a esses limites com base em um contrato entre o GitHub e o Docker.
 
 ## `jobs.<job_id>.container.credentials`
 
@@ -3038,16 +3000,16 @@ volumes:
 
 Use `jobs.<job_id>.container.options` para configurar opções adicionais de recurso de contêiner do Docker. Para ver uma lista de opções, confira [Opções de `docker create`](https://docs.docker.com/engine/reference/commandline/create/#options).
 
-> \[!WARNING]
-> As opções `--network` e `--entrypoint` não têm suporte.
+!!! warning
+    As opções `--network` e `--entrypoint` não têm suporte.
 
 ## `jobs.<job_id>.services`
 
-> \[!NOTE]
-> Se os fluxos de trabalho usarem ações de contêiner do Docker, contêineres de trabalho ou contêineres de serviço, você precisará usar um executor do Linux:
->
-> * Se você estiver usando executores hospedados em GitHub, você deverá usar um executor do Ubuntu.
-> * Se você estiver usando executores auto-hospedados, você deve usar uma máquina Linux, pois seu executor e o Docker precisam ser instalados.
+!!! note
+    Se os fluxos de trabalho usarem ações de contêiner do Docker, contêineres de trabalho ou contêineres de serviço, você precisará usar um executor do Linux:
+
+    * Se você estiver usando executores hospedados em GitHub, você deverá usar um executor do Ubuntu.
+    * Se você estiver usando executores auto-hospedados, você deve usar uma máquina Linux, pois seu executor e o Docker precisam ser instalados.
 
 Usado para hospedar contêineres de serviço para um trabalho em um fluxo de trabalho. Contêineres de serviço são úteis para a criação de bancos de dados ou serviços armazenamento em cache como o Redis. O executor cria automaticamente uma rede do Docker e gerencia o ciclo de vida dos contêineres do serviço.
 
@@ -3143,8 +3105,8 @@ volumes:
 
 Opções adicionais de recursos do contêiner Docker. Para obter uma lista de opções, consulte [`docker create` opções](https://docs.docker.com/engine/reference/commandline/create/#options).
 
-> \[!WARNING]
-> Não há suporte para a opção `--network`.
+!!! warning
+    Não há suporte para a opção `--network`.
 
 ## `jobs.<job_id>.services.<service_id>.command`
 

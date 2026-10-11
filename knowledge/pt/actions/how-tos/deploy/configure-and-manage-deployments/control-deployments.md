@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Deploy / Configure and manage deployments
 ---
 
 # Implantando com GitHub Actions
@@ -184,8 +184,8 @@ Para obter mais informações sobre ambientes e aprovações necessárias, confi
 
 ## Usando regras de proteção de implantação personalizadas
 
-> \[!NOTE]
-> Regras de proteção de implementação personalizada estão em prévia pública e estão sujeitas a alterações.
+!!! note
+    Regras de proteção de implementação personalizada estão em prévia pública e estão sujeitas a alterações.
 
 Você pode habilitar suas próprias regras de proteção personalizadas para bloquear implantações com serviços de terceiros. Por exemplo, você pode usar serviços como Datadog, Honeycomb e ServiceNow para fornecer aprovações automatizadas para implantações no GitHub.
 

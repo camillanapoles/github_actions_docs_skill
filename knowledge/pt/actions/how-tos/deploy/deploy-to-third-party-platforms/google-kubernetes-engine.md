@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/deploy-to-third-party-platforms/google-kubernetes-engine
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Deploy / Deploy to third party platforms
 ---
 
 # Implantar no Google Kubernetes Engine
@@ -64,7 +64,8 @@ Este procedimento demonstra como criar a conta de serviço para sua integração
 
 3. Adicionar funções à conta de serviço.
 
-   > \[!NOTE]
+!!! note
+
    > Aplique funções mais restritivas de acordo com seus requisitos.
 
             ```shell copy

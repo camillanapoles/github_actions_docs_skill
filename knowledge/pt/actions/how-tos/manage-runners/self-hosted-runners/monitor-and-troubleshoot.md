@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/self-hosted-runners/monitor-and-troubleshoot
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage runners / Self hosted runners
 ---
 
 # Monitorar e solucionar problemas de executores auto-hospedados
@@ -30,9 +30,9 @@ Um executor auto-hospedado pode estar localizado no repositório, na organizaç�
 * **Organização**: você precisa ser um proprietário da organização.
 * **Repositório da organização**: você precisa ser um proprietário da organização ou ter acesso de administrador no repositório.
 
-1. Na organização ou no repositório, navegue até a página principal e clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-gear" aria-label="gear" role="img"><path d="M8 0a8.2 8.2 0 0 1 .701.031C9.444.095 9.99.645 10.16 1.29l.288 1.107c.018.066.079.158.212.224.231.114.454.243.668.386.123.082.233.09.299.071l1.103-.303c.644-.176 1.392.021 1.82.63.27.385.506.792.704 1.218.315.675.111 1.422-.364 1.891l-.814.806c-.049.048-.098.147-.088.294.016.257.016.515 0 .772-.01.147.038.246.088.294l.814.806c.475.469.679 1.216.364 1.891a7.977 7.977 0 0 1-.704 1.217c-.428.61-1.176.807-1.82.63l-1.102-.302c-.067-.019-.177-.011-.3.071a5.909 5.909 0 0 1-.668.386c-.133.066-.194.158-.211.224l-.29 1.106c-.168.646-.715 1.196-1.458 1.26a8.006 8.006 0 0 1-1.402 0c-.743-.064-1.289-.614-1.458-1.26l-.289-1.106c-.018-.066-.079-.158-.212-.224a5.738 5.738 0 0 1-.668-.386c-.123-.082-.233-.09-.299-.071l-1.103.303c-.644.176-1.392-.021-1.82-.63a8.12 8.12 0 0 1-.704-1.218c-.315-.675-.111-1.422.363-1.891l.815-.806c.05-.048.098-.147.088-.294a6.214 6.214 0 0 1 0-.772c.01-.147-.038-.246-.088-.294l-.815-.806C.635 6.045.431 5.298.746 4.623a7.92 7.92 0 0 1 .704-1.217c.428-.61 1.176-.807 1.82-.63l1.102.302c.067.019.177.011.3-.071.214-.143.437-.272.668-.386.133-.066.194-.158.211-.224l.29-1.106C6.009.645 6.556.095 7.299.03 7.53.01 7.764 0 8 0Zm-.571 1.525c-.036.003-.108.036-.137.146l-.289 1.105c-.147.561-.549.967-.998 1.189-.173.086-.34.183-.5.29-.417.278-.97.423-1.529.27l-1.103-.303c-.109-.03-.175.016-.195.045-.22.312-.412.644-.573.99-.014.031-.021.11.059.19l.815.806c.411.406.562.957.53 1.456a4.709 4.709 0 0 0 0 .582c.032.499-.119 1.05-.53 1.456l-.815.806c-.081.08-.073.159-.059.19.162.346.353.677.573.989.02.03.085.076.195.046l1.102-.303c.56-.153 1.113-.008 1.53.27.161.107.328.204.501.29.447.222.85.629.997 1.189l.289 1.105c.029.109.101.143.137.146a6.6 6.6 0 0 0 1.142 0c.036-.003.108-.036.137-.146l.289-1.105c.147-.561.549-.967.998-1.189.173-.086.34-.183.5-.29.417-.278.97-.423 1.529-.27l1.103.303c.109.029.175-.016.195-.045.22-.313.411-.644.573-.99.014-.031.021-.11-.059-.19l-.815-.806c-.411-.406-.562-.957-.53-1.456a4.709 4.709 0 0 0 0-.582c-.032-.499.119-1.05.53-1.456l.815-.806c.081-.08.073-.159.059-.19a6.464 6.464 0 0 0-.573-.989c-.02-.03-.085-.076-.195-.046l-1.102.303c-.56.153-1.113.008-1.53-.27a4.44 4.44 0 0 0-.501-.29c-.447-.222-.85-.629-.997-1.189l-.289-1.105c-.029-.11-.101-.143-.137-.146a6.6 6.6 0 0 0-1.142 0ZM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM9.5 8a1.5 1.5 0 1 0-3.001.001A1.5 1.5 0 0 0 9.5 8Z"></path></svg> Settings**.
+1. Na organização ou no repositório, navegue até a página principal e clique em **(gear) Settings**.
 
-2. Na barra lateral esquerda, clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Actions** e clique em **Runners**.
+2. Na barra lateral esquerda, clique em **(play) Actions** e clique em **Runners**.
 
 3. Em "Executores", você pode ver uma lista de executores registrados, incluindo o nome, etiqueta e status do executor.
 
@@ -55,29 +55,17 @@ Além de `--check`, você precisa fornecer dois argumentos para o script:
 
 Por exemplo:
 
-<div class="ghd-tool mac">
-
 ```shell
 ./config.sh --check --url URL --pat ghp_abcd1234
 ```
 
-</div>
-
-<div class="ghd-tool linux">
-
 ```shell
 ./config.sh --check --url URL --pat ghp_abcd1234
 ```
-
-</div>
-
-<div class="ghd-tool windows">
 
 ```powershell
 config.cmd --check --url https://github.com/YOUR-ORG/YOUR-REPO --pat GHP_ABCD1234
 ```
-
-</div>
 
 O script testa cada serviço e gera um `PASS` ou um `FAIL` para cada um. Se você tiver alguma verificação com falha, pode ver mais detalhes sobre o problema no arquivo de log da verificação. Os arquivos de log estão localizados no diretório `_diag` em que você instalou o aplicativo do executor, e o caminho do arquivo de log para cada verificação é mostrado na saída do console do script.
 
@@ -89,27 +77,17 @@ Por padrão, o aplicativo executor auto-hospedado verifica o certificado TLS par
 
 Para desabilitar a verificação de certificação TLS no aplicativo do executor auto-hospedado, defina a variável de ambiente `GITHUB_ACTIONS_RUNNER_TLS_NO_VERIFY` como `1` antes de configurar e executar o aplicativo do executor auto-hospedado.
 
-<div class="ghd-tool linux">
-
 ```shell
 export GITHUB_ACTIONS_RUNNER_TLS_NO_VERIFY=1
 ./config.sh --url https://github.com/YOUR-ORG/YOUR-REPO --token
 ./run.sh
 ```
 
-</div>
-
-<div class="ghd-tool mac">
-
 ```shell
 export GITHUB_ACTIONS_RUNNER_TLS_NO_VERIFY=1
 ./config.sh --url https://github.com/YOUR-ORG/YOUR-REPO --token
 ./run.sh
 ```
-
-</div>
-
-<div class="ghd-tool windows">
 
 ```powershell
 [Environment]::SetEnvironmentVariable('GITHUB_ACTIONS_RUNNER_TLS_NO_VERIFY', '1')
@@ -117,28 +95,24 @@ export GITHUB_ACTIONS_RUNNER_TLS_NO_VERIFY=1
 ./run.cmd
 ```
 
-</div>
+!!! warning
+    Não é recomendável desabilitar a verificação do TLS, pois o TLS fornece privacidade e integridade de dados entre o aplicativo executor auto-hospedado e GitHub. Recomendamos que você instale o certificado GitHub no armazenamento de certificados do sistema operacional do seu executor auto-hospedado. Para obter diretrizes sobre como instalar o certificado, verifique com o GitHub fornecedor do sistema operacional.
 
-> \[!WARNING]
-> Não é recomendável desabilitar a verificação do TLS, pois o TLS fornece privacidade e integridade de dados entre o aplicativo executor auto-hospedado e GitHub. Recomendamos que você instale o certificado GitHub no armazenamento de certificados do sistema operacional do seu executor auto-hospedado. Para obter diretrizes sobre como instalar o certificado, verifique com o GitHub fornecedor do sistema operacional.
-
-> \[!NOTE]
-> Para Executores maiores hospedados no GitHub usar Azure rede privada, consulte os requisitos de interceptação do TLS no [Configurando rede privada para executores hospedados no GitHub na sua organização](https://docs.github.com/pt/organizations/managing-organization-settings/configuring-private-networking-for-github-hosted-runners-in-your-organization#prerequisites).
+    [!NOTE]
+    Para Executores maiores hospedados no GitHub usar Azure rede privada, consulte os requisitos de interceptação do TLS no [Configurando rede privada para executores hospedados no GitHub na sua organização](https://docs.github.com/pt/organizations/managing-organization-settings/configuring-private-networking-for-github-hosted-runners-in-your-organization#prerequisites).
 
 ## Revisar os arquivos de registro do aplicativo do executor auto-hospedado
 
 Você pode monitorar o status do aplicativo do executor auto-hospedado e suas atividades. Os arquivos de log são mantidos no diretório `_diag` em que você instalou o aplicativo do executor, e um novo log é gerado sempre que o aplicativo é iniciado. O nome do arquivo começa com `Runner_` e é seguido de um carimbo de data/hora UTC de quando o aplicativo é iniciado.
 
-> \[!WARNING]
-> Os arquivos de log do aplicativo do executor para executores efêmeros devem ser encaminhados e preservados externamente para fins de solução de problemas e diagnóstico. Para obter mais informações sobre executores efêmeros e dimensionamento automático de executores auto-hospedados, consulte [Referência de executores auto-hospedados](../../../reference/runners/self-hosted-runners.md#ephemeral-runners-for-autoscaling).
+!!! warning
+    Os arquivos de log do aplicativo do executor para executores efêmeros devem ser encaminhados e preservados externamente para fins de solução de problemas e diagnóstico. Para obter mais informações sobre executores efêmeros e dimensionamento automático de executores auto-hospedados, consulte [Referência de executores auto-hospedados](../../../reference/runners/self-hosted-runners.md#ephemeral-runners-for-autoscaling).
 
 Para obter logs detalhados sobre as execuções de tarefa de fluxo de trabalho, confira a próxima seção que descreve os arquivos `Worker_`.
 
 ## Revisar o arquivo de registro de um trabalho
 
 O aplicativo do executor auto-hospedado cria um arquivo de registro detalhado para cada trabalho que processa. Esses arquivos são armazenados no diretório `_diag` em que você instalou o aplicativo do executor, e o nome do arquivo começa com `Worker_`.
-
-<div class="ghd-tool linux">
 
 ## Usar journalctl para verificar o serviço do aplicativo do executor auto-hospedado
 
@@ -177,10 +151,6 @@ Feb 11 16:07:10 runner01 runsvc.sh[962]: 2020-02-11 16:07:10Z: Job testAction co
 Para ver a configuração `systemd`, localize o arquivo de serviço aqui: `/etc/systemd/system/actions.runner.<org>-<repo>.<runnerName>.service`.
 Se você desejar personalizar o serviço de aplicação do executor auto-hospedado, não modifique esse arquivo diretamente. Siga as instruções descritas em [Configurar o aplicativo do executor auto-hospedado como um serviço](configure-the-application.md#customizing-the-self-hosted-runner-service).
 
-</div>
-
-<div class="ghd-tool mac">
-
 ## Como usar `launchd` para verificar o serviço de aplicativo do executor auto-hospedado
 
 Para executores auto-hospedados baseados em macOS que executam o aplicativo como um serviço, use `launchctl` para monitorar sua atividade em tempo real. O serviço padrão baseado em launchd utiliza a seguinte convenção de nomenclatura: `actions.runner.<org>-<repo>.<runnerName>`. Esse nome será truncado se exceder 80 caracteres, ou seja, a maneira preferencial de localizar o nome do serviço é verificando o arquivo *.service* no diretório do executor:
@@ -204,10 +174,6 @@ A saída resultante inclui a ID do processo e o nome do serviço `launchd` do ap
 
 Para ver a configuração `launchd`, localize o arquivo de serviço aqui: `/Users/exampleUsername/Library/LaunchAgents/actions.runner.<repoName>.<runnerName>.service`.
 Se você desejar personalizar o serviço de aplicação do executor auto-hospedado, não modifique esse arquivo diretamente. Siga as instruções descritas em [Configurar o aplicativo do executor auto-hospedado como um serviço](configure-the-application.md#customizing-the-self-hosted-runner-service).
-
-</div>
-
-<div class="ghd-tool windows">
 
 ## Usar PowerShell para verificar o serviço do aplicativo do executor auto-hospedado
 
@@ -244,8 +210,6 @@ PS C:\actions-runner> Get-EventLog -LogName Application -Source ActionsRunnerSer
      129 Mar 17 13:41  Information ActionsRunnerService          100 create event log trace source for actions-runner service
 ```
 
-</div>
-
 ## Monitorar o processo de atualização automática
 
 Recomendamos que você verifique regularmente o processo de atualização automática, uma vez que o executor auto-hospedado não será capaz de processar os trabalhos se estiver abaixo de um determinado limite de versão. O aplicativo do executor auto-hospedado atualiza-se automaticamente, mas observe que este processo não inclui atualizações do sistema operacional ou de outro software; você precisará gerenciar essas atualizações separadamente.
@@ -257,8 +221,6 @@ Você pode ver as atividades de atualização nos arquivos de log `Runner_`. Por
 ```
 
 Além disso, você pode encontrar mais informações nos arquivos de log *SelfUpdate* localizados no diretório `_diag` em que você instalou o aplicativo runner.
-
-<div class="ghd-tool linux">
 
 ## Resolução de problemas de contêineres em executores auto-hospedados
 
@@ -295,8 +257,6 @@ Verifique se a conta de serviço do executor auto-hospedado tem permissão para 
 $ sudo systemctl show -p User actions.runner.octo-org-octo-repo.runner01.service
 User=runner-user
 ```
-
-</div>
 
 ### Verificando qual motor do Docker está instalado no executor
 

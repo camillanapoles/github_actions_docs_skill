@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/workflows-and-actions/workflows
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Workflows and actions
 ---
 
 # Fluxos de trabalho

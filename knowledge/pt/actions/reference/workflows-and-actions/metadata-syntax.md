@@ -7,15 +7,15 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/metadata-syntax
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Workflows and actions
 ---
 
 # Referência de sintaxe de metadados
 
 _É possível criar ações para realizar tarefas no repositório. Se você estiver fazendo uma ação personalizada, ela exigirá um arquivo de metadados que use a sintaxe YAML._
 
-> \[!NOTE]
-> Você pode criar um contêiner do Docker, JavaScript e ações compostas. As ações exigem um arquivo de metadados para definir a configuração de entradas, saídas e execuções para sua ação. Os arquivos de metadados de ação usam a sintaxe YAML e o nome do arquivo de metadados deve ser `action.yml` ou `action.yaml`. O formato preferencial é `action.yml`.
+!!! note
+    Você pode criar um contêiner do Docker, JavaScript e ações compostas. As ações exigem um arquivo de metadados para definir a configuração de entradas, saídas e execuções para sua ação. Os arquivos de metadados de ação usam a sintaxe YAML e o nome do arquivo de metadados deve ser `action.yml` ou `action.yaml`. O formato preferencial é `action.yml`.
 
 ## `name`
 
@@ -40,8 +40,8 @@ GitHub armazena parâmetros de entrada como variáveis de ambiente. Recomenda-se
 Este exemplo configura duas entradas: `num-octocats` e `octocat-eye-color`. A entrada `num-octocats` não é obrigatória e usará o valor `1` como padrão.
 `octocat-eye-color` é obrigatório e não tem valor padrão.
 
-> \[!NOTE]
-> As ações que usam `required: true` não retornarão automaticamente um erro se a entrada não for especificada.
+!!! note
+    As ações que usam `required: true` não retornarão automaticamente um erro se a entrada não for especificada.
 
 Os arquivos de fluxo de trabalho que usam essa ação podem usar a palavra-chave `with` a fim de definir um valor de entrada para `octocat-eye-color`. Para obter mais informações sobre a sintaxe `with`, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#jobsjob_idstepswith).
 
@@ -166,8 +166,8 @@ runs:
 
 **Opcional** Permite que você execute um script no início de um trabalho, antes do início da ação `main:`. Por exemplo, você pode usar `pre:` para executar um script de configuração de pré-requisito. O runtime especificado com a sintaxe [`using`](#runsusing-for-javascript-actions) executará esse arquivo. A ação `pre:` sempre é executada por padrão, mas você pode substituir isso usando [`runs.pre-if`](#runspre-if).
 
-> \[!NOTE]
-> `runs.pre` não tem suporte para ações locais.
+!!! note
+    `runs.pre` não tem suporte para ações locais.
 
 Neste exemplo, a ação `pre:` executa um script chamado `setup.js`:
 
@@ -508,21 +508,19 @@ O nome do ícone de [Pena](https://feathericons.com/) v4.28.0 a ser usado.
 
 Os ícones de marca, e todos os ícones a seguir, são omitidos.
 
-<ul style="-webkit-column-count: 4; -moz-column-count: 4; column-count: 4;">
-<li>café</li>
-<li>colunas</li>
-<li>divide-circle</li>
-<li>divide-square</li>
-<li>dividir</li>
-<li>frown</li>
-<li>hexágono</li>
-<li>chave</li>
-<li>meh</li>
-<li>ponteiro do mouse</li>
-<li>sorriso</li>
-<li>ferramenta</li>
-<li>x-octagon</li>
-</ul>
+- café
+- colunas
+- divide-circle
+- divide-square
+- dividir
+- frown
+- hexágono
+- chave
+- meh
+- ponteiro do mouse
+- sorriso
+- ferramenta
+- x-octagon
 
 #### Lista completa de todos os ícones com suporte no momento
 
@@ -531,265 +529,263 @@ Os ícones de marca, e todos os ícones a seguir, são omitidos.
   To support a new icon, update `app/models/repository_actions/icons.rb` and add the svg to `/static/images/icons/feather` in the internal github repo.
 -->
 
-<ul style="-webkit-column-count: 4; -moz-column-count: 4; column-count: 4;">
-<li>atividade</li>
-<li>frequência de execução</li>
-<li>alerta-círculo</li>
-<li>alerta-octagon</li>
-<li>triângulo de alerta</li>
-<li>alinhar-centro</li>
-<li>alinhar-justificar</li>
-<li>alinhar-esquerda</li>
-<li>alinhar-direita</li>
-<li>âncora</li>
-<li>abertura</li>
-<li>arquivar</li>
-<li>círculo com flecha para baixo</li>
-<li>flecha-abaixo-esquerda</li>
-<li>flecha-abaixo-direita</li>
-<li>flecha-abaixo</li>
-<li>flecha-esquerda-círculo</li>
-<li>flecha-esquerda</li>
-<li>flecha-direita-círculo</li>
-<li>flecha-direita</li>
-<li>flecha-acima-círculo</li>
-<li>flecha-acima-esquerda</li>
-<li>flecha-acima-direita</li>
-<li>arrow-up</li>
-<li>arroba</li>
-<li>prêmio</li>
-<li>barra-quadro-2</li>
-<li>gráfico de barras</li>
-<li>carregamento da bateria</li>
-<li>bateria</li>
-<li>sino-desativado</li>
-<li>campainha</li>
-<li>bluetooth</li>
-<li>negrito</li>
-<li>livro-aberto</li>
-<li>livro</li>
-<li>indicador</li>
-<li>box</li>
-<li>pasta</li>
-<li>calendário</li>
-<li>câmera-desligada</li>
-<li>câmera</li>
-<li>conversão</li>
-<li>círculo de verificação</li>
-<li>marcar-quadrado</li>
-<li>verificação</li>
-<li>chevron-abaixo</li>
-<li>Chevron à esquerda</li>
-<li>chevron-direita</li>
-<li>chevron-acima</li>
-<li>chevrons-abaixo</li>
-<li>chevrons-esquerda</li>
-<li>chevrons-direita</li>
-<li>chevrons-acima</li>
-<li>círculo</li>
-<li>área de transferência</li>
-<li>relógio</li>
-<li>nuvem-chuvisco</li>
-<li>nuvem-relâmpago</li>
-<li>nuvem-desativada</li>
-<li>nuvem-chuva</li>
-<li>nuvem-neve</li>
-<li>nuvem</li>
-<li>codificar</li>
-<li>comando</li>
-<li>compass</li>
-<li>copiar</li>
-<li>canto-abaixo-esquerda</li>
-<li>canto-abaixo-direita</li>
-<li>canto-esquerda-abaixo</li>
-<li>canto-esquerda-acima</li>
-<li>canto-direita-abaixo</li>
-<li>canto-direita-acima</li>
-<li>canto-acima-esquerda</li>
-<li>canto-acima-direita</li>
-<li>cpu</li>
-<li>cartão-de-crédito</li>
-<li>cortar</li>
-<li>mira</li>
-<li>banco de dados</li>
-<li>excluir</li>
-<li>disco</li>
-<li>sinal de dólar</li>
-<li>download-nuvem</li>
-<li>baixar</li>
-<li>droplet</li>
-<li>editar-2</li>
-<li>editar-3</li>
-<li>edição</li>
-<li>link-externo</li>
-<li>olho-fechado</li>
-<li>olho</li>
-<li>avançar rapidamente</li>
-<li>pena</li>
-<li>arquivo-menos</li>
-<li>arquivo-plus</li>
-<li>arquivo-texto</li>
-<li>arquivo</li>
-<li>filme</li>
-<li>filtro</li>
-<li>sinalizador</li>
-<li>pasta-menos</li>
-<li>pasta-mais</li>
-<li>pasta</li>
-<li>presente</li>
-<li>git-branch</li>
-<li>git-commit</li>
-<li>git-merge</li>
-<li>git-pull-request (solicitação de pull do Git)</li>
-<li>globo</li>
-<li>grade</li>
-<li>disco-rígido</li>
-<li>hash</li>
-<li>fones-de-ouvido</li>
-<li>coração</li>
-<li>círculo de ajuda</li>
-<li>página inicial</li>
-<li>imagem</li>
-<li>caixa de entrada</li>
-<li>informações</li>
-<li>itálico</li>
-<li>camadas</li>
-<li>layout</li>
-<li>boia salva-vidas</li>
-<li>link-2</li>
-<li>link</li>
-<li>lista</li>
-<li>carregador</li>
-<li>bloquear</li>
-<li>log-in</li>
-<li>log-out</li>
-<li>email</li>
-<li>fixar-mapa</li>
-<li>mapa</li>
-<li>maximizar-2</li>
-<li>maximizar</li>
-<li>menu</li>
-<li>círculo de mensagens</li>
-<li>mensagem-quadrado</li>
-<li>microfone-desligado</li>
-<li>Microfone</li>
-<li>minimizar-2</li>
-<li>minimizar</li>
-<li>menos-círculo</li>
-<li>menos-quadrado</li>
-<li>negativo</li>
-<li>monitor</li>
-<li>lua</li>
-<li>mais horizontal</li>
-<li>mais-vertical</li>
-<li>move</li>
-<li>música</li>
-<li>navegação-2</li>
-<li>navegação</li>
-<li>octágono</li>
-<li>pacote</li>
-<li>clipe de papel</li>
-<li>ícone de pausa</li>
-<li>pausar</li>
-<li>por cento</li>
-<li>chamada-telefônica</li>
-<li>telefone-transferência</li>
-<li>telefone-entrada</li>
-<li>telefone-perdido</li>
-<li>telefone-desligado</li>
-<li>telefone-fora</li>
-<li>telefone</li>
-<li>gráfico-pizza</li>
-<li>reproduzir-círculo</li>
-<li>executar</li>
-<li>mais-círculo</li>
-<li>mais-quadrado</li>
-<li>mais</li>
-<li>bolso</li>
-<li>potência</li>
-<li>impressora</li>
-<li>rádio</li>
-<li>atualizar-ccw</li>
-<li>atualizar cw</li>
-<li>repetir</li>
-<li>retroceder</li>
-<li>girar-ccw</li>
-<li>girar-cw</li>
-<li>rss</li>
-<li>Salvar</li>
-<li>tesoura</li>
-<li>busca</li>
-<li>enviar</li>
-<li>servidor</li>
-<li>configurações</li>
-<li>compartilhar-2</li>
-<li>compartilhamento</li>
-<li>escudo-desabilitado</li>
-<li>escudo</li>
-<li>sacola-de-compras</li>
-<li>carrinho-de-compras</li>
-<li>shuffle</li>
-<li>barra lateral</li>
-<li>pular-atrás</li>
-<li>pular-frente</li>
-<li>slash</li>
-<li>controles deslizantes</li>
-<li>smartphone</li>
-<li>alto-falante</li>
-<li>square</li>
-<li>estrela</li>
-<li>círculo de parada</li>
-<li>sol</li>
-<li>nascer-do-sol</li>
-<li>pôr do sol</li>
-<li>tabela</li>
-<li>tablet</li>
-<li>marca</li>
-<li>destino</li>
-<li>terminal</li>
-<li>termômetro</li>
-<li>polegar-para-baixo</li>
-<li>polegar-para-cima</li>
-<li>alternar-esquerda</li>
-<li>alternar-direita</li>
-<li>lixeira-2</li>
-<li>jogar no lixo</li>
-<li>tendência de queda</li>
-<li>tendência de alta</li>
-<li>triângulo</li>
-<li>caminhão</li>
-<li>tv</li>
-<li>tipo</li>
-<li>guarda-chuva</li>
-<li>sublinhado</li>
-<li>desbloquear</li>
-<li>enviar para a nuvem</li>
-<li>carregamento</li>
-<li>usuário-marcar</li>
-<li>usuário-menos</li>
-<li>usuário premium</li>
-<li>usuário-x</li>
-<li>usuário</li>
-<li>usuários</li>
-<li>vídeo-desligado</li>
-<li>vídeo</li>
-<li>correio de voz</li>
-<li>volume-1</li>
-<li>volume-2</li>
-<li>volume-x</li>
-<li>volume</li>
-<li>inspeção</li>
-<li>wifi-desligado</li>
-<li>wifi</li>
-<li>vento</li>
-<li>x-círculo</li>
-<li>x-quadrado</li>
-<li>x</li>
-<li>zapear-desligado</li>
-<li>zap</li>
-<li>ampliar</li>
-<li>afastar</li>
-</ul>
+- atividade
+- frequência de execução
+- alerta-círculo
+- alerta-octagon
+- triângulo de alerta
+- alinhar-centro
+- alinhar-justificar
+- alinhar-esquerda
+- alinhar-direita
+- âncora
+- abertura
+- arquivar
+- círculo com flecha para baixo
+- flecha-abaixo-esquerda
+- flecha-abaixo-direita
+- flecha-abaixo
+- flecha-esquerda-círculo
+- flecha-esquerda
+- flecha-direita-círculo
+- flecha-direita
+- flecha-acima-círculo
+- flecha-acima-esquerda
+- flecha-acima-direita
+- arrow-up
+- arroba
+- prêmio
+- barra-quadro-2
+- gráfico de barras
+- carregamento da bateria
+- bateria
+- sino-desativado
+- campainha
+- bluetooth
+- negrito
+- livro-aberto
+- livro
+- indicador
+- box
+- pasta
+- calendário
+- câmera-desligada
+- câmera
+- conversão
+- círculo de verificação
+- marcar-quadrado
+- verificação
+- chevron-abaixo
+- Chevron à esquerda
+- chevron-direita
+- chevron-acima
+- chevrons-abaixo
+- chevrons-esquerda
+- chevrons-direita
+- chevrons-acima
+- círculo
+- área de transferência
+- relógio
+- nuvem-chuvisco
+- nuvem-relâmpago
+- nuvem-desativada
+- nuvem-chuva
+- nuvem-neve
+- nuvem
+- codificar
+- comando
+- compass
+- copiar
+- canto-abaixo-esquerda
+- canto-abaixo-direita
+- canto-esquerda-abaixo
+- canto-esquerda-acima
+- canto-direita-abaixo
+- canto-direita-acima
+- canto-acima-esquerda
+- canto-acima-direita
+- cpu
+- cartão-de-crédito
+- cortar
+- mira
+- banco de dados
+- excluir
+- disco
+- sinal de dólar
+- download-nuvem
+- baixar
+- droplet
+- editar-2
+- editar-3
+- edição
+- link-externo
+- olho-fechado
+- olho
+- avançar rapidamente
+- pena
+- arquivo-menos
+- arquivo-plus
+- arquivo-texto
+- arquivo
+- filme
+- filtro
+- sinalizador
+- pasta-menos
+- pasta-mais
+- pasta
+- presente
+- git-branch
+- git-commit
+- git-merge
+- git-pull-request (solicitação de pull do Git)
+- globo
+- grade
+- disco-rígido
+- hash
+- fones-de-ouvido
+- coração
+- círculo de ajuda
+- página inicial
+- imagem
+- caixa de entrada
+- informações
+- itálico
+- camadas
+- layout
+- boia salva-vidas
+- link-2
+- link
+- lista
+- carregador
+- bloquear
+- log-in
+- log-out
+- email
+- fixar-mapa
+- mapa
+- maximizar-2
+- maximizar
+- menu
+- círculo de mensagens
+- mensagem-quadrado
+- microfone-desligado
+- Microfone
+- minimizar-2
+- minimizar
+- menos-círculo
+- menos-quadrado
+- negativo
+- monitor
+- lua
+- mais horizontal
+- mais-vertical
+- move
+- música
+- navegação-2
+- navegação
+- octágono
+- pacote
+- clipe de papel
+- ícone de pausa
+- pausar
+- por cento
+- chamada-telefônica
+- telefone-transferência
+- telefone-entrada
+- telefone-perdido
+- telefone-desligado
+- telefone-fora
+- telefone
+- gráfico-pizza
+- reproduzir-círculo
+- executar
+- mais-círculo
+- mais-quadrado
+- mais
+- bolso
+- potência
+- impressora
+- rádio
+- atualizar-ccw
+- atualizar cw
+- repetir
+- retroceder
+- girar-ccw
+- girar-cw
+- rss
+- Salvar
+- tesoura
+- busca
+- enviar
+- servidor
+- configurações
+- compartilhar-2
+- compartilhamento
+- escudo-desabilitado
+- escudo
+- sacola-de-compras
+- carrinho-de-compras
+- shuffle
+- barra lateral
+- pular-atrás
+- pular-frente
+- slash
+- controles deslizantes
+- smartphone
+- alto-falante
+- square
+- estrela
+- círculo de parada
+- sol
+- nascer-do-sol
+- pôr do sol
+- tabela
+- tablet
+- marca
+- destino
+- terminal
+- termômetro
+- polegar-para-baixo
+- polegar-para-cima
+- alternar-esquerda
+- alternar-direita
+- lixeira-2
+- jogar no lixo
+- tendência de queda
+- tendência de alta
+- triângulo
+- caminhão
+- tv
+- tipo
+- guarda-chuva
+- sublinhado
+- desbloquear
+- enviar para a nuvem
+- carregamento
+- usuário-marcar
+- usuário-menos
+- usuário premium
+- usuário-x
+- usuário
+- usuários
+- vídeo-desligado
+- vídeo
+- correio de voz
+- volume-1
+- volume-2
+- volume-x
+- volume
+- inspeção
+- wifi-desligado
+- wifi
+- vento
+- x-círculo
+- x-quadrado
+- x
+- zapear-desligado
+- zap
+- ampliar
+- afastar
 
 ## Alterando o nome do arquivo de metadados
 

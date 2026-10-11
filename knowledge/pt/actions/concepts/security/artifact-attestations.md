@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/security/artifact-attestations
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Security
 ---
 
 # Atestados de artefatos
@@ -60,7 +60,7 @@ Você não **deveria** assinar:
 
 Se você consumir software que publica atestados de artefato, poderá usar o GitHub CLI para verificar esses atestados. Como os atestados fornecem informações sobre onde e como o software foi desenvolvido, você pode usar essas informações para criar e aplicar políticas de segurança que elevem a segurança de sua cadeia de fornecedores.
 
-> \[!WARNING] É importante lembrar que os atestados de artefatos *não* são uma garantia de que um artefato seja seguro. Em vez disso, os atestados de artefatos vinculam você a itens como o código-fonte e as instruções de compilação que os produziram. Cabe a você definir os critérios de sua política, avaliá-la avaliando o conteúdo e tomar uma decisão embasada sobre riscos ao consumir software.
+> [!WARNING] É importante lembrar que os atestados de artefatos *não* são uma garantia de que um artefato seja seguro. Em vez disso, os atestados de artefatos vinculam você a itens como o código-fonte e as instruções de compilação que os produziram. Cabe a você definir os critérios de sua política, avaliá-la avaliando o conteúdo e tomar uma decisão embasada sobre riscos ao consumir software.
 
 ## Próximas etapas
 

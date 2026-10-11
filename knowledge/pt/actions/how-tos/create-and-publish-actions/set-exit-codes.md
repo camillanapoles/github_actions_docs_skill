@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/create-and-publish-actions/set-exit-codes
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Create and publish actions
 ---
 
 # Definindo códigos de saída para ações
@@ -18,10 +18,10 @@ _Você pode usar códigos de saída para definir o status de uma ação. GitHub 
 
 GitHub usa o código de saída para definir o status de execução de verificação da ação, que pode ser `success` ou `failure`.
 
-| Status da saída                                                  | Verificar status de execução | Descrição                                                                                                                                                                                                                                |
-| ---------------------------------------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `0`                                                              | `success`                    | A ação foi concluída com êxito e outras tarefas que dependem dela podem começar.                                                                                                                                                         |
-| Valor diferente de zero (qualquer número inteiro que não seja 0) | `failure`                    | Qualquer outro código de saída indica falha na ação. Quando uma ação falha, todas as ações simultâneas são canceladas e as ações futuras são ignoradas. O conjunto de verificação e a execução de verificação obtém um status `failure`. |
+| Status da saída | Verificar status de execução | Descrição |
+| --- | --- | --- |
+| `0` | `success` | A ação foi concluída com êxito e outras tarefas que dependem dela podem começar. |
+| Valor diferente de zero (qualquer número inteiro que não seja 0) | `failure` | Qualquer outro código de saída indica falha na ação. Quando uma ação falha, todas as ações simultâneas são canceladas e as ações futuras são ignoradas. O conjunto de verificação e a execução de verificação obtém um status `failure`. |
 
 ## Definir um código de saída de falha em uma ação JavaScript
 

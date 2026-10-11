@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/workflows-and-actions/expressions
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Workflows and actions
 ---
 
 # Expressões
@@ -24,11 +24,11 @@ As expressões são normalmente usadas com a palavra-chave `if` condicional em u
 
 `${{ <expression> }}`
 
-> \[!NOTE]
-> A exceção a essa regra é quando você estiver usando expressões em uma cláusula `if`, na qual, opcionalmente, geralmente é possível omitir `${{` e `}}`. Para obter mais informações sobre condicionais `if`, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idif).
+!!! note
+    A exceção a essa regra é quando você estiver usando expressões em uma cláusula `if`, na qual, opcionalmente, geralmente é possível omitir `${{` e `}}`. Para obter mais informações sobre condicionais `if`, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idif).
 
-> \[!WARNING]
-> Ao criar fluxos de trabalho e ações, sempre considere se o código poderá executar entradas não confiáveis de possíveis invasores. Certos contextos devem ser tratados como entradas não confiáveis, uma vez que um invasor pode inserir seu próprio conteúdo malicioso. Para saber mais, confira [Referência de uso seguro](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks).
+    [!WARNING]
+    Ao criar fluxos de trabalho e ações, sempre considere se o código poderá executar entradas não confiáveis de possíveis invasores. Certos contextos devem ser tratados como entradas não confiáveis, uma vez que um invasor pode inserir seu próprio conteúdo malicioso. Para saber mais, confira [Referência de uso seguro](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks).
 
 ### Exemplo de configuração de variável de ambiente
 

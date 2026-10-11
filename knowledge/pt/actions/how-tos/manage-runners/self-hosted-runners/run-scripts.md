@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/self-hosted-runners/run-scripts
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage runners / Self hosted runners
 ---
 
 # Como executar scripts antes ou depois de um trabalho
@@ -34,8 +34,8 @@ Seus scripts personalizados podem usar os seguintes recursos:
 
 Seus arquivos de script precisam usar uma extensão de arquivo para a linguagem relevante, como `.sh` ou `.ps1`, para serem executados com êxito.
 
-> \[!NOTE]
-> Evite usar seus scripts para exibir informações confidenciais no console, pois qualquer pessoa com acesso de leitura ao repositório poderá ver a saída nos logs da interface do usuário.
+!!! note
+    Evite usar seus scripts para exibir informações confidenciais no console, pois qualquer pessoa com acesso de leitura ao repositório poderá ver a saída nos logs da interface do usuário.
 
 ### Como tratar os códigos de saída
 
@@ -47,8 +47,8 @@ Não há suporte para a configuração [`continue-on-error`](../../../reference/
 
 Os scripts personalizados precisam estar localizados no executor, mas não precisam ser armazenados no diretório do aplicativo `actions-runner`. Os scripts são executados no contexto de segurança da conta de serviço que executa o serviço de executor.
 
-> \[!NOTE]
-> Os scripts disparados são processados de maneira síncrona, ou seja, bloquearão a execução do trabalho enquanto estiverem em execução.
+!!! note
+    Os scripts disparados são processados de maneira síncrona, ou seja, bloquearão a execução do trabalho enquanto estiverem em execução.
 
 Os scripts são executados automaticamente quando o executor tem as seguintes variáveis de ambiente que contêm um caminho absoluto para o script:
 
@@ -62,8 +62,8 @@ Por exemplo, a seguinte entrada `.env` fará com que o executor execute automati
 ACTIONS_RUNNER_HOOK_JOB_STARTED=/opt/runner/cleanup_script.sh
 ```
 
-> \[!NOTE]
-> O script definido em `ACTIONS_RUNNER_HOOK_JOB_COMPLETED` é executado no final do trabalho, antes da conclusão do trabalho. Isso o torna inadequado para casos de uso que podem interromper um executor, como excluir o computador executor como parte de uma implementação de dimensionamento automático.
+!!! note
+    O script definido em `ACTIONS_RUNNER_HOOK_JOB_COMPLETED` é executado no final do trabalho, antes da conclusão do trabalho. Isso o torna inadequado para casos de uso que podem interromper um executor, como excluir o computador executor como parte de uma implementação de dimensionamento automático.
 
 ## Solução de problemas
 

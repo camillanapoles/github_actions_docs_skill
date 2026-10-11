@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/security/compromised-runners
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Security
 ---
 
 # Executores comprometidos
@@ -18,8 +18,8 @@ _Entenda os riscos de segurança associados a runners comprometidosGitHub Action
 
 Estas seções abordam algumas das etapas que um invasor pode seguir caso consiga executar comandos maliciosos em um GitHub Actions runner.
 
-> \[!NOTE]
-> GitHubOs executores hospedados não verificam o código mal-intencionado baixado por um usuário durante o trabalho, como uma biblioteca de terceiros comprometida.
+!!! note
+    GitHubOs executores hospedados não verificam o código mal-intencionado baixado por um usuário durante o trabalho, como uma biblioteca de terceiros comprometida.
 
 ### Acessando segredos
 
@@ -62,7 +62,7 @@ Você pode executar outras interações privilegiadas entre repositórios fazend
 Esta lista descreve as abordagens recomendadas para acessar os dados do repositório dentro de um fluxo de trabalho, em ordem decrescente de preferência:
 
 1. **O `GITHUB_TOKEN`**
-   * Esse token tem o escopo intencionalmente definido para o repositório único que acionou o fluxo de trabalho e pode ter o mesmo nível de acesso que um usuário com permissão de gravação no repositório. O token é criado antes de cada trabalho começar e expira quando o trabalho é finalizado. Para saber mais, confira [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md).
+   * Esse token tem o escopo intencionalmente definido para o repositório único que acionou o fluxo de trabalho e pode ter o mesmo nível de acesso que um usuário com permissão de gravação no repositório. O token é criado antes de cada trabalho começar e expira quando o trabalho é finalizado. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md).
    * O `GITHUB_TOKEN` deve ser usado sempre que possível.
 2. **Chave de implantação do repositório**
    * Chaves de implantação são um dos únicos tipos de credenciais que concedem acesso de leitura ou gravação a um único repositório, e podem ser usadas para interagir com outro repositório dentro de um fluxo de trabalho. Para saber mais, confira [Gerenciar chaves de implantação](https://docs.github.com/pt/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys).

@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/manual-migrations
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Migrate to github actions
 ---
 
 # Como migrar para o GitHub Actions manualmente

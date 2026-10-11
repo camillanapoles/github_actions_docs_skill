@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/github-hosted-runners/customize-runners
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage runners / Github hosted runners
 ---
 
 # Personalizando executores hospedados no GitHub
@@ -40,8 +40,8 @@ jobs:
           sudo apt-get install jq
 ```
 
-> \[!NOTE]
-> Sempre execute `sudo apt-get update` antes de instalar um pacote. Caso o índice `apt` esteja obsoleto, esse comando busca e indexa novamente todos os pacotes disponíveis, o que ajuda a evitar falhas de instalação do pacote.
+!!! note
+    Sempre execute `sudo apt-get update` antes de instalar um pacote. Caso o índice `apt` esteja obsoleto, esse comando busca e indexa novamente todos os pacotes disponíveis, o que ajuda a evitar falhas de instalação do pacote.
 
 ## Instalando o software nos executores do macOS
 

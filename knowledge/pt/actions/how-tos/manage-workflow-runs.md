@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos
 ---
 
 # Gerenciar fluxos de trabalho
@@ -18,7 +18,7 @@ _Você pode interagir manualmente com execuções de fluxos de trabalho para gar
 
 * [Executar um fluxo de trabalho manualmente](manage-workflow-runs/manually-run-a-workflow.md)
 
-  Quando um fluxo de trabalho é configurado para ser executado no workflow\_dispatch evento, você pode executar o fluxo de trabalho usando a guia GitHubGitHub CLIAções, ou a API REST.
+  Quando um fluxo de trabalho é configurado para ser executado no workflow_dispatch evento, você pode executar o fluxo de trabalho usando a guia GitHubGitHub CLIAções, ou a API REST.
 
 * [Reexecutando fluxos de trabalho e tarefas](manage-workflow-runs/re-run-workflows-and-jobs.md)
 
@@ -34,7 +34,7 @@ _Você pode interagir manualmente com execuções de fluxos de trabalho para gar
 
 * [Ignorar execuções de fluxo de trabalho](manage-workflow-runs/skip-workflow-runs.md)
 
-  Você pode ignorar as execuções de fluxo de trabalho disparadas pelos eventos push e pull\_request incluindo um comando na mensagem de commit.
+  Você pode ignorar as execuções de fluxo de trabalho disparadas pelos eventos push e pull_request incluindo um comando na mensagem de commit.
 
 * [Excluir a execução de um fluxo de trabalho](manage-workflow-runs/delete-a-workflow-run.md)
 

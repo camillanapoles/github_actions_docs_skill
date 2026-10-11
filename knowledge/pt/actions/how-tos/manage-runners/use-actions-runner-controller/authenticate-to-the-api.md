@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/use-actions-runner-controller/authenticate-to-the-api
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage runners / Use actions runner controller
 ---
 
 # Autenticando o ARC na API de GitHub
@@ -16,8 +16,8 @@ _Autenticar Actions Runner Controller na API GitHub._
 
 Você pode autenticar Actions Runner Controller (ARC) na GitHub API usando um GitHub App ou usando um personal access token (classic).
 
-> \[!NOTE]
-> Você não pode autenticar usando um GitHub App para executores no nível corporativo. Para obter mais informações, consulte [Gerenciar o acesso a executores auto-hospedados usando grupos](../self-hosted-runners/manage-access.md).
+!!! note
+    Você não pode autenticar usando um GitHub App para executores no nível corporativo. Para obter mais informações, consulte [Gerenciar o acesso a executores auto-hospedados usando grupos](../self-hosted-runners/manage-access.md).
 
 ## Autenticando ARC com um GitHub App
 
@@ -28,7 +28,7 @@ Você pode autenticar Actions Runner Controller (ARC) na GitHub API usando um Gi
    2. Em "Permissões", clique em **Permissões do repositório**. Em seguida, use os menus suspensos para selecionar as permissões de acesso a seguir.
       * **Administração**: leitura e gravação
 
-        > \[!NOTE]
+!!! note
 
 `Administration: Read and write` só é necessário ao configurar Actions Runner Controller para registrar no escopo do repositório. Não é necessário fazer registro no escopo da organização.
 
@@ -53,7 +53,8 @@ Você pode autenticar Actions Runner Controller (ARC) na GitHub API usando um Gi
 
    Para criar um segredo do Kubernetes com os valores de seus dados do GitHub App, execute o comando a seguir.
 
-   > \[!NOTE]
+!!! note
+
    > Crie o segredo no mesmo namespace onde o gráfico `gha-runner-scale-set` está instalado. Neste exemplo, o namespace é `arc-runners` para corresponder à documentação de início rápido. Para saber mais, confira [Comece a usar o Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set).
 
             ```bash copy
@@ -85,7 +86,8 @@ O ARC pode usar personal access tokens (classic) para registrar executores auto-
 
 2. Para criar um segredo do Kubernetes com o valor do seu personal access token (classic), use o comando a seguir.
 
-   > \[!NOTE]
+!!! note
+
    > Crie o segredo no mesmo namespace onde o gráfico `gha-runner-scale-set` está instalado. Neste exemplo, o namespace é `arc-runners` para corresponder à documentação de início rápido. Para saber mais, confira [Comece a usar o Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set).
 
             ```bash copy
@@ -119,7 +121,8 @@ O ARC pode usar fine-grained personal access tokens para registrar executores au
 
 2. Para criar um segredo do Kubernetes com o valor do seu fine-grained personal access token, use o comando a seguir.
 
-   > \[!NOTE]
+!!! note
+
    > Crie o segredo no mesmo namespace onde o gráfico `gha-runner-scale-set` está instalado. Neste exemplo, o namespace é `arc-runners` para corresponder à documentação de início rápido. Para saber mais, confira [Comece a usar o Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md#configuring-a-runner-scale-set).
 
             ```bash copy
@@ -138,8 +141,8 @@ O ARC pode usar fine-grained personal access tokens para registrar executores au
 
 ## Autenticar ARC com segredos do cofre
 
-> \[!NOTE]
-> No momento, a integração com o Vault está disponível em versão prévia pública com suporte para o Azure Key Vault.
+!!! note
+    No momento, a integração com o Vault está disponível em versão prévia pública com suporte para o Azure Key Vault.
 
 A partir da versão 0.12.0 do gha-runner-scale-set, o ARC dá suporte à recuperação de credenciais do GitHub de um cofre externo. A integração do cofre é configurada por conjunto de dimensionamento de executores. Isso significa que você pode executar alguns conjuntos de escalonamento usando segredos do Kubernetes, enquanto outros utilizam segredos armazenados em cofres, dependendo de seus requisitos de segurança e operacionais.
 

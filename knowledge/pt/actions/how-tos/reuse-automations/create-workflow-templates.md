@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/reuse-automations/create-workflow-templates
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Reuse automations
 ---
 
 # Criar modelos de fluxo de trabalho para sua organização
@@ -61,7 +61,7 @@ Esse procedimento demonstra como criar um modelo de fluxo de trabalho e um arqui
        "filePatterns": [
            "package.json$",
            "^Dockerfile",
-           ".*\\.md$"
+           ".*\.md$"
        ]
    }
    ```

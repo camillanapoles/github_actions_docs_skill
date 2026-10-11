@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Write workflows / Choose when workflows run
 ---
 
 # Controlar a simultaneidade de fluxos de trabalho e tarefas
@@ -31,10 +31,9 @@ Para permitir que mais de uma tarefa ou execução de fluxo de trabalho aguardem
 
 A combinação de `queue: max` e `cancel-in-progress: true` não é permitida e resultará em um erro de validação de fluxo de trabalho.
 
-> \[!NOTE]
->
-> * O nome do grupo de simultaneidade não diferencia maiúsculas de minúsculas. Por exemplo, `prod` e `Prod` serão tratados como o mesmo grupo de simultaneidade.
-> * Trabalhos ou execuções de fluxo de trabalho no mesmo grupo de simultaneidade são processados na ordem de primeiro a entrar em primeiro lugar (FIFO), de acordo com o momento em que cada um começou a esperar no grupo de simultaneidade, não o tempo em que cada fluxo de trabalho foi expedido. Como o horário de início efetivo de um trabalho ou execução pode variar, a ordenação não é garantida.
+!!! note
+    * O nome do grupo de simultaneidade não diferencia maiúsculas de minúsculas. Por exemplo, `prod` e `Prod` serão tratados como o mesmo grupo de simultaneidade.
+    * Trabalhos ou execuções de fluxo de trabalho no mesmo grupo de simultaneidade são processados na ordem de primeiro a entrar em primeiro lugar (FIFO), de acordo com o momento em que cada um começou a esperar no grupo de simultaneidade, não o tempo em que cada fluxo de trabalho foi expedido. Como o horário de início efetivo de um trabalho ou execução pode variar, a ordenação não é garantida.
 
 ### Exemplos: Usar a simultaneidade e o comportamento padrão
 

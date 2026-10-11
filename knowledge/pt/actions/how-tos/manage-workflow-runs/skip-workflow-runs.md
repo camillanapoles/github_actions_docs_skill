@@ -7,15 +7,15 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs/skip-workflow-runs
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage workflow runs
 ---
 
 # Ignorar execuções de fluxo de trabalho
 
 _Você pode ignorar as execuções de fluxo de trabalho disparadas pelos eventos push e pull_request incluindo um comando na mensagem de commit._
 
-> \[!NOTE]
-> Se um fluxo de trabalho for ignorado devido à [filtragem de caminho](../../reference/workflows-and-actions/workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore), à [filtragem de branch](../../reference/workflows-and-actions/workflow-syntax.md#onpull_requestpull_request_targetbranchesbranches-ignore) ou a uma mensagem do commit (veja abaixo), as verificações associadas a esse fluxo de trabalho permanecerão no estado “Pendente”. Uma solicitação de pull que exige que essas verificações sejam bem-sucedidas não poderá ser mesclada.
+!!! note
+    Se um fluxo de trabalho for ignorado devido à [filtragem de caminho](../../reference/workflows-and-actions/workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore), à [filtragem de branch](../../reference/workflows-and-actions/workflow-syntax.md#onpull_requestpull_request_targetbranchesbranches-ignore) ou a uma mensagem do commit (veja abaixo), as verificações associadas a esse fluxo de trabalho permanecerão no estado “Pendente”. Uma solicitação de pull que exige que essas verificações sejam bem-sucedidas não poderá ser mesclada.
 
 Os fluxos de trabalho que, de outra forma, seriam disparados por meio de `on: push` ou `on: pull_request` não serão disparados se você adicionar uma das seguintes cadeias de caracteres à mensagem de commit em um push ou ao commit HEAD de uma solicitação de pull:
 
@@ -34,7 +34,7 @@ Por padrão, o Git remove automaticamente novas linhas consecutivas. Para deixar
 
 Você não conseguirá mesclar o pull request se o repositório estiver configurado para exigir que verificações específicas sejam aprovadas primeiro. Para permitir que o merge do pull request, você pode fazer o push de um novo commit no pull request sem que a instrução seja ignorada na mensagem do commit.
 
-> \[!NOTE]
-> As instruções para pular só se aplicam aos eventos `push` e `pull_request`. Por exemplo, a adição de `[skip ci]` a uma mensagem de commit não impedirá a execução de um fluxo de trabalho disparado com `on: pull_request_target`.
+!!! note
+    As instruções para pular só se aplicam aos eventos `push` e `pull_request`. Por exemplo, a adição de `[skip ci]` a uma mensagem de commit não impedirá a execução de um fluxo de trabalho disparado com `on: pull_request_target`.
 
 Ignorar as instruções só se aplica às execuções do(s) fluxo(s) de trabalho que serão acionadas pelo commit que contém as instruções de para ignorar. Você também pode desativar um fluxo de trabalho de execução. Para saber mais, confira [Desabilitar e habilitar um fluxo de trabalho](disable-and-enable-workflows.md).

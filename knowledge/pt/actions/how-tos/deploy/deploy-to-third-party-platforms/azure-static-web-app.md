@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/deploy-to-third-party-platforms/azure-static-web-app
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Deploy / Deploy to third party platforms
 ---
 
 # Fazendo a implantação nos Aplicativos Web Estáticos do Azure

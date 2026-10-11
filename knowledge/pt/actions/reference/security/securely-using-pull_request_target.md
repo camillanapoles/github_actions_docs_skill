@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/security/securely-using-pull_request_target
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Security
 ---
 
 # Uso seguro de pull_request_target
@@ -86,8 +86,8 @@ Para cada fluxo de trabalho afetado, decida se `pull_request_target` ainda é ne
 * Se o fluxo de trabalho precisar continuar a usar `pull_request_target`, crie ou atualize uma política de evento de Ações aplicável que permita `pull_request_target`explicitamente.
 * Se você não quiser permitir `pull_request_target`, deixe a política padrão em vigor. Após a imposição, GitHub bloqueará os fluxos de trabalho disparados por esse evento.
 
-> \[!WARNING]
-> `pull_request_target` Permitir somente quando for necessário. Os fluxos de trabalho acionados por este evento não devem obter, compilar nem executar código de um pull request não confiável com acesso aos segredos do repositório ou a um `GITHUB_TOKEN` privilegiado.
+!!! warning
+    `pull_request_target` Permitir somente quando for necessário. Os fluxos de trabalho acionados por este evento não devem obter, compilar nem executar código de um pull request não confiável com acesso aos segredos do repositório ou a um `GITHUB_TOKEN` privilegiado.
 
 Para obter mais informações sobre como configurar políticas de eventos e exibir insights, consulte [Controlando quem pode executar GitHub Actions fluxos de trabalho](../../how-tos/administer/control-workflow-execution.md). Para gerenciar políticas programaticamente, consulte [Pontos de extremidade da API REST para políticas de GitHub Actions](https://docs.github.com/pt/rest/actions/policies).
 
@@ -105,7 +105,7 @@ Alguns fluxos de trabalho precisam obter o código da solicitação pull de uma 
 
 Se você tiver confirmado que precisa `pull_request_target`, aplique esses controles para limitar o impacto desse evento de alto risco. Elas se aplicam se o fluxo de trabalho verifica ou não o código da solicitação pull.
 
-* **Restringir segredos.** Confirme se as permissões definidas em `GITHUB_TOKEN` têm os privilégios mínimos e se somente os segredos necessários do repositório e da organização são usados para o fluxo de trabalho. Para obter mais informações, consulte [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token).
+* **Restringir segredos.** Confirme se as permissões definidas em `GITHUB_TOKEN` têm os privilégios mínimos e se somente os segredos necessários do repositório e da organização são usados para o fluxo de trabalho. Para obter mais informações, consulte [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token).
 
 * **Entenda o impacto no cache.** Para reduzir o risco de envenenamento por cache, os fluxos de trabalho disparados por `pull_request_target` têm acesso somente leitura ao cache no escopo do branch padrão. Esses fluxos de trabalho podem restaurar entradas de cache existentes, mas não podem criá-las ou substituí-las, portanto, não podem afetar a execução de outros fluxos de trabalho não relacionados por meio do cache compartilhado. Se esse fluxo de trabalho tentar salvar um cache, o salvamento falhará, mas a etapa e o trabalho continuarão, e a falha será relatada como um aviso no log de fluxo de trabalho. Se o fluxo de trabalho precisar preencher o cache, salve-o de um fluxo de trabalho executado em um gatilho confiável, como `push`. Um fluxo de trabalho ou tarefa pode ficar isento desta restrição de somente leitura ao declarar explicitamente um `cache-mode` com permissão de gravação, mas fazer isso em um fluxo de trabalho `pull_request_target` reintroduz o risco de envenenamento de cache que esta restrição foi criada para evitar. Para obter mais informações, consulte [Referência do cache de dependência](../workflows-and-actions/dependency-caching.md#cache-access-for-low-trust-workflow-triggers).
 

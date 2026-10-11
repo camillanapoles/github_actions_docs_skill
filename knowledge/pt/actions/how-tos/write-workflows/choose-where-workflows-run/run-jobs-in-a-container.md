@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-where-workflows-run/run-jobs-in-a-container
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Write workflows / Choose where workflows run
 ---
 
 # Executar trabalhos em um contêiner
@@ -20,8 +20,8 @@ Use `jobs.<job_id>.container` para criar um contêiner e executar as etapas de u
 
 Se você não definir um `container`, todas as etapas serão executadas diretamente no host especificado por `runs-on`, a menos que uma etapa se refira a uma ação configurada para ser executada em um contêiner.
 
-> \[!NOTE]
-> O shell padrão para etapas `run` dentro de um contêiner é `sh` em vez de `bash`. Isso pode ser substituído por [`jobs.<job_id>.defaults.run`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_iddefaultsrun) ou por [`jobs.<job_id>.steps[*].shell`](/pt/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell).
+!!! note
+    O shell padrão para etapas `run` dentro de um contêiner é `sh` em vez de `bash`. Isso pode ser substituído por [`jobs.<job_id>.defaults.run`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_iddefaultsrun) ou por [`jobs.<job_id>.steps[*].shell`](/pt/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell).
 
 ### Exemplo: Executar um trabalho dentro de um contêiner
 
@@ -68,8 +68,8 @@ Para obter informações de referência, confira [Suporte do Dockerfile para Git
 
 Use `jobs.<job_id>.container.image` para definir a imagem do Docker a ser usada como o contêiner para executar a ação. O valor pode ser o nome da imagem do Docker Hub ou um nome de registro.
 
-> \[!NOTE]
-> O Docker Hub normalmente impõe limites de taxa em operações de push e pull, o que afetará os trabalhos em executores auto-hospedados. No entanto, executores hospedados pelo GitHub não estão sujeitos a esses limites com base em um contrato entre o GitHub e o Docker.
+!!! note
+    O Docker Hub normalmente impõe limites de taxa em operações de push e pull, o que afetará os trabalhos em executores auto-hospedados. No entanto, executores hospedados pelo GitHub não estão sujeitos a esses limites com base em um contrato entre o GitHub e o Docker.
 
 ## Definindo credenciais para o registro de um contêiner
 
@@ -116,5 +116,5 @@ volumes:
 
 Use `jobs.<job_id>.container.options` para configurar opções adicionais de recurso de contêiner do Docker. Para ver uma lista de opções, confira [Opções de `docker create`](https://docs.docker.com/engine/reference/commandline/create/#options).
 
-> \[!WARNING]
-> As opções `--network` e `--entrypoint` não têm suporte.
+!!! warning
+    As opções `--network` e `--entrypoint` não têm suporte.

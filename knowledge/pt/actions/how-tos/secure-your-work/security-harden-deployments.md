@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/security-harden-deployments
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Secure your work
 ---
 
 # Reforço de segurança em suas implementações

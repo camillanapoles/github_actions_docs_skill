@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-with-reusable-workflows
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Secure your work / Security harden deployments
 ---
 
 # Usando o OpenID Connect com fluxos de trabalho reutilizáveis

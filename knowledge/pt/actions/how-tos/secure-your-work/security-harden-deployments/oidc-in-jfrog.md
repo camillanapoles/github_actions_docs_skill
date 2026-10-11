@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-jfrog
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Secure your work / Security harden deployments
 ---
 
 # Configurando o OpenID Connect no JFrog
@@ -86,10 +86,10 @@ jobs:
 
 ```
 
-> \[!TIP]
-> Quando a autenticação OIDC é usada, a ação `setup-jfrog-cli` fornece automaticamente `oidc-user` e `oidc-token` como saídas da etapa.
-> Essas opções podem ser usadas para outras integrações que exigem autenticação com o JFrog.
-> Para referenciar essas saídas, certifique-se de que a etapa tenha `id` explícito definido (por exemplo, `id: setup-jfrog-cli`).
+!!! tip
+    Quando a autenticação OIDC é usada, a ação `setup-jfrog-cli` fornece automaticamente `oidc-user` e `oidc-token` como saídas da etapa.
+    Essas opções podem ser usadas para outras integrações que exigem autenticação com o JFrog.
+    Para referenciar essas saídas, certifique-se de que a etapa tenha `id` explícito definido (por exemplo, `id: setup-jfrog-cli`).
 
 ### Usando credenciais do OIDC em outras etapas
 

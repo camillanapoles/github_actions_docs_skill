@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/use-containerized-services/create-redis-service-containers
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Use containerized services
 ---
 
 # Criando contêineres de serviço Redis
@@ -18,11 +18,11 @@ _Você pode usar os contêineres de serviço para criar um cliente Redis no seu 
 
 Este guia mostra exemplos de fluxo de trabalho que configuram um contêiner de serviço usando a imagem Docker Hub `redis`. O fluxo de trabalho executa um script para criar um cliente Redis e preencher os dados do cliente. Para testar se o fluxo de trabalho cria e preenche o cliente Redis, o script imprime os dados do cliente no console.
 
-> \[!NOTE]
-> Se os fluxos de trabalho usarem ações de contêiner do Docker, contêineres de trabalho ou contêineres de serviço, você precisará usar um executor do Linux:
->
-> * Se você estiver usando executores hospedados em GitHub, você deverá usar um executor do Ubuntu.
-> * Se você estiver usando executores auto-hospedados, você deve usar uma máquina Linux, pois seu executor e o Docker precisam ser instalados.
+!!! note
+    Se os fluxos de trabalho usarem ações de contêiner do Docker, contêineres de trabalho ou contêineres de serviço, você precisará usar um executor do Linux:
+
+    * Se você estiver usando executores hospedados em GitHub, você deverá usar um executor do Ubuntu.
+    * Se você estiver usando executores auto-hospedados, você deve usar uma máquina Linux, pois seu executor e o Docker precisam ser instalados.
 
 ## Pré-requisitos
 

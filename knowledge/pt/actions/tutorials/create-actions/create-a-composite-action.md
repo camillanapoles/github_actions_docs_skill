@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/create-actions/create-a-composite-action
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Create actions
 ---
 
 # Criar uma ação composta
@@ -20,8 +20,8 @@ Neste guia, você aprenderá os componentes básicos necessários para criar e u
 
 Ao concluir este projeto, você entenderá como criar a sua própria ação composta e testá-la em um fluxo de trabalho.
 
-> \[!WARNING]
-> Ao criar fluxos de trabalho e ações, sempre considere se o código poderá executar entradas não confiáveis de possíveis invasores. Certos contextos devem ser tratados como entradas não confiáveis, uma vez que um invasor pode inserir seu próprio conteúdo malicioso. Para saber mais, confira [Referência de uso seguro](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks).
+!!! warning
+    Ao criar fluxos de trabalho e ações, sempre considere se o código poderá executar entradas não confiáveis de possíveis invasores. Certos contextos devem ser tratados como entradas não confiáveis, uma vez que um invasor pode inserir seu próprio conteúdo malicioso. Para saber mais, confira [Referência de uso seguro](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks).
 
 ### Ações compostas e fluxos de trabalho reutilizáveis
 
@@ -29,8 +29,8 @@ As ações compostas permitem coletar uma série de etapas de tarefas de fluxo d
 
 ## Pré-requisitos
 
-> \[!NOTE]
-> Este exemplo explica como criar uma ação composta em um repositório separado. No entanto, é possível criar uma ação composta no mesmo repositório. Para saber mais, confira [Criar uma ação composta](create-a-composite-action.md#creating-a-composite-action-within-the-same-repository).
+!!! note
+    Este exemplo explica como criar uma ação composta em um repositório separado. No entanto, é possível criar uma ação composta no mesmo repositório. Para saber mais, confira [Criar uma ação composta](create-a-composite-action.md#creating-a-composite-action-within-the-same-repository).
 
 Antes de começar, você criará um repositório em GitHub.
 
@@ -52,33 +52,25 @@ Antes de começar, você criará um repositório em GitHub.
 
 5. A partir do terminal, torne o comando `goodbye.sh` executável.
 
-   <div class="ghd-tool linux">
-
             ```shell copy
    chmod +x goodbye.sh
    ```
 
-   </div>
-
-   <div class="ghd-tool mac">
-
             ```shell copy
    chmod +x goodbye.sh
    ```
-
-   </div>
-
-   <div class="ghd-tool windows">
 
             ```shell copy
    git add --chmod=+x -- goodbye.sh
    ```
 
-   </div>
-
 6. Ainda no terminal, faça check-in do arquivo `goodbye.sh`.
 
-   <div class="ghd-tool linux">
+            ```shell copy
+   git add goodbye.sh
+   git commit -m "Add goodbye script"
+   git push
+   ```
 
             ```shell copy
    git add goodbye.sh
@@ -86,26 +78,10 @@ Antes de começar, você criará um repositório em GitHub.
    git push
    ```
 
-   </div>
-
-   <div class="ghd-tool mac">
-
-            ```shell copy
-   git add goodbye.sh
-   git commit -m "Add goodbye script"
-   git push
-   ```
-
-   </div>
-
-   <div class="ghd-tool windows">
-
             ```shell copy
    git commit -m "Add goodbye script"
    git push
    ```
-
-   </div>
 
 ## Criar um arquivo de metadados de ação
 
@@ -207,31 +183,23 @@ No repositório, clique na guia **Ações** e selecione a execução mais recent
    echo "echo Goodbye" > goodbye.sh
    ```
 
-   <div class="ghd-tool linux">
-
             ```shell copy
    chmod +x goodbye.sh
    ```
 
-   </div>
-
-   <div class="ghd-tool mac">
-
             ```shell copy
    chmod +x goodbye.sh
    ```
-
-   </div>
-
-   <div class="ghd-tool windows">
 
             ```shell copy
    git add --chmod=+x -- goodbye.sh
    ```
 
-   </div>
-
-   <div class="ghd-tool linux">
+            ```shell copy
+   git add goodbye.sh
+   git commit -m "Add goodbye script"
+   git push
+   ```
 
             ```shell copy
    git add goodbye.sh
@@ -239,26 +207,10 @@ No repositório, clique na guia **Ações** e selecione a execução mais recent
    git push
    ```
 
-   </div>
-
-   <div class="ghd-tool mac">
-
-            ```shell copy
-   git add goodbye.sh
-   git commit -m "Add goodbye script"
-   git push
-   ```
-
-   </div>
-
-   <div class="ghd-tool windows">
-
             ```shell copy
    git commit -m "Add goodbye script"
    git push
    ```
-
-   </div>
 
 3. Na pasta `hello-world-composite-action`, crie o arquivo `action.yml` com base nas etapas em [Criar uma ação composta](create-a-composite-action.md#creating-an-action-metadata-file).
 

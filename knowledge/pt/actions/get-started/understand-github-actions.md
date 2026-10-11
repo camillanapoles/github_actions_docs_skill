@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/get-started/understand-github-actions
 captured: '2026-10-11'
-section: GitHub Actions
+section: Get started
 ---
 
 # Noções básicas sobre GitHub Actions
@@ -98,5 +98,5 @@ GitHub Actions pode ajudá-lo a automatizar quase todos os aspectos dos processo
 * Para ver exemplos que demonstram recursos mais complexos de GitHub Actions, consulte [Escolhendo o que seu fluxo de trabalho faz](../how-tos/write-workflows/choose-what-workflows-do.md). Estes exemplos detalhados explicam como testar seu código em um executor, acessar a GitHub CLI e usar recursos avançados, como simultaneidade e matrizes de teste.
 * Para certificar sua proficiência em automatizar fluxos de trabalho e acelerar o desenvolvimento com GitHub Actions, obtenha um certificado GitHub Actions com GitHub Certifications. Para obter mais informações, consulte [Sobre GitHub Certifications](https://docs.github.com/pt/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications).
 
-> \[!NOTE]
-> Para automações que exigem julgamento contextual sobre o conteúdo do repositório, você também pode criar agentic workflows em linguagem natural em vez de um fluxo de trabalho tradicional GitHub Actions . Para obter mais informações, consulte [Seu primeiro fluxo de trabalho agente](https://docs.github.com/pt/copilot/how-tos/github-agentic-workflows/quickstart) e [Criando fluxos de trabalho agênticos do GitHub](https://docs.github.com/pt/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
+!!! note
+    Para automações que exigem julgamento contextual sobre o conteúdo do repositório, você também pode criar agentic workflows em linguagem natural em vez de um fluxo de trabalho tradicional GitHub Actions . Para obter mais informações, consulte [Seu primeiro fluxo de trabalho agente](https://docs.github.com/pt/copilot/how-tos/github-agentic-workflows/quickstart) e [Criando fluxos de trabalho agênticos do GitHub](https://docs.github.com/pt/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).

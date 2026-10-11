@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/security/oidc
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Security
 ---
 
 # Referência do OpenID Connect
@@ -22,22 +22,22 @@ O token OIDC inclui as declarações a seguir.
 
 ### Declarações de audiência, emissor e entidade padrão
 
-| Declaração | Tipo de declaração | Descrição                                                                                                                                                                                                                                                                                                                                                                     |
-| ---------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aud`      | Público            | Por padrão, esta é a URL do proprietário do repositório, como a organização proprietária do repositório. Defina um público-alvo personalizado com um comando de kit de ferramentas: [`core.getIDToken(audience)`](https://www.npmjs.com/package/@actions/core/v/1.6.0)                                                                                                        |
-| `iss`      | Emissor            | O emissor do token OIDC: `https://token.actions.githubusercontent.com`                                                                                                                                                                                                                                                                                                        |
-| `sub`      | Assunto            | Define a declaração do sujeito que deve ser validada pelo provedor de nuvem. Esta configuração é essencial para garantir que os tokens de acesso sejam apenas alocados de forma previsível. Para repositórios que usam declarações de assunto imutáveis, o formato `sub` inclui IDs de proprietário e de repositório imutáveis (não disponíveis no GitHub Enterprise Server). |
+| Declaração | Tipo de declaração | Descrição |
+| --- | --- | --- |
+| `aud` | Público | Por padrão, esta é a URL do proprietário do repositório, como a organização proprietária do repositório. Defina um público-alvo personalizado com um comando de kit de ferramentas: [`core.getIDToken(audience)`](https://www.npmjs.com/package/@actions/core/v/1.6.0) |
+| `iss` | Emissor | O emissor do token OIDC: `https://token.actions.githubusercontent.com` |
+| `sub` | Assunto | Define a declaração do sujeito que deve ser validada pelo provedor de nuvem. Esta configuração é essencial para garantir que os tokens de acesso sejam apenas alocados de forma previsível. Para repositórios que usam declarações de assunto imutáveis, o formato `sub` inclui IDs de proprietário e de repositório imutáveis (não disponíveis no GitHub Enterprise Server). |
 
 ### Parâmetros e declarações de cabeçalho JOSE padrão adicionais
 
 | Parâmetro de cabeçalho | Tipo de parâmetro      | Descrição                                                    |
-| ---------------------- | ---------------------- | ------------------------------------------------------------ |
+|----------------------|----------------------|------------------------------------------------------------|
 | `alg`                  | Algoritmo              | O algoritmo usado pelo provedor OIDC.                        |
 | `kid`                  | Identificador da chave | Chave exclusiva do token OIDC.                               |
 | `typ`                  | Tipo                   | Descreve o tipo de token. Este é um token web do JSON (JWT). |
 
 | Declaração | Tipo de declaração         | Descrição                                        |
-| ---------- | -------------------------- | ------------------------------------------------ |
+|----------|--------------------------|------------------------------------------------|
 | `exp`      | Expira em                  | Identifica o tempo de validade do JWT.           |
 | `iat`      | Emitido em                 | A hora em que o JWT foi emitido.                 |
 | `jti`      | Identificador do token JWT | Identificador exclusivo do token OIDC.           |
@@ -45,39 +45,33 @@ O token OIDC inclui as declarações a seguir.
 
 ### Declarações personalizadas fornecidas por GitHub
 
-| Declaração                                                                       | Descrição                                                                                                                                                                                                                                                                                                                 |
-| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `actor`                                                                          | A conta pessoal que iniciou a execução do fluxo de trabalho.                                                                                                                                                                                                                                                              |
-| `actor_id`                                                                       | A ID da conta pessoal que iniciou a execução do fluxo de trabalho.                                                                                                                                                                                                                                                        |
-| `base_ref`                                                                       | O branch de destino do pull request na execução de um fluxo de trabalho.                                                                                                                                                                                                                                                  |
-|                                                                                  |                                                                                                                                                                                                                                                                                                                           |
-| `check_run_id`                                                                   | A ID de verificação de execução do trabalho atual.                                                                                                                                                                                                                                                                        |
-|                                                                                  |                                                                                                                                                                                                                                                                                                                           |
-|                                                                                  |                                                                                                                                                                                                                                                                                                                           |
-|                                                                                  |                                                                                                                                                                                                                                                                                                                           |
-| `environment`                                                                    | O nome do ambiente usado pelo trabalho. Se a declaração `environment` for incluída (também via `include_claim_keys`), um ambiente será necessário e deverá ser fornecido.                                                                                                                                                 |
-| `event_name`                                                                     | O nome do evento que disparou a execução do fluxo de trabalho. Os tokens OIDC solicitados para Dependabot trabalhos de atualização usam `dynamic` como o valor.                                                                                                                                                           |
-| `head_ref`                                                                       | O branch de origem do pull request na execução de um fluxo de trabalho.                                                                                                                                                                                                                                                   |
-| `job_workflow_ref`                                                               | Para trabalhos que usam um fluxo de trabalho reutilizável, o caminho de ref para o fluxo de trabalho reutilizável. Para saber mais, confira [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](../../how-tos/secure-your-work/security-harden-deployments/oidc-with-reusable-workflows.md).                |
-| `job_workflow_sha`                                                               | Para trabalhos que usam um fluxo de trabalho reutilizável, o SHA de commit do arquivo de fluxo de trabalho reutilizável.                                                                                                                                                                                                  |
-| `ref`                                                                            |                                                                                                                                                                                                                                                                                                                           |
-| *(Referência)* A referência do Git que disparou a execução de fluxo de trabalho. |                                                                                                                                                                                                                                                                                                                           |
-| `ref_type`                                                                       | O tipo de `ref`, por exemplo: "branch".                                                                                                                                                                                                                                                                                   |
-| `repository_visibility`                                                          | A visibilidade do repositório em que o fluxo de trabalho está sendo executado. Aceita os seguintes valores: `internal`, `private`, ou `public`.                                                                                                                                                                           |
-| `repository`                                                                     | O repositório de onde o fluxo de trabalho está sendo executado.                                                                                                                                                                                                                                                           |
-| `repository_id`                                                                  | A ID do repositório do qual o fluxo de trabalho está sendo executado.                                                                                                                                                                                                                                                     |
-| `repository_owner`                                                               | O nome da organização na qual o `repository` é armazenado.                                                                                                                                                                                                                                                                |
-| `repository_owner_id`                                                            | A ID da organização na qual o `repository` é armazenado.                                                                                                                                                                                                                                                                  |
-|                                                                                  |                                                                                                                                                                                                                                                                                                                           |
-| `repo_property_*`                                                                | Propriedades personalizadas definidas no nível da organização ou da empresa incluídas como declarações no token OIDC, prefixadas com `repo_property_`. Para obter mais informações, consulte [Incluir propriedades personalizadas do repositório em tokens OIDC](#including-repository-custom-properties-in-oidc-tokens). |
-|                                                                                  |                                                                                                                                                                                                                                                                                                                           |
-| `run_id`                                                                         | O ID da execução que acionou o fluxo de trabalho.                                                                                                                                                                                                                                                                         |
-| `run_number`                                                                     | O número de vezes que este fluxo de trabalho foi executado.                                                                                                                                                                                                                                                               |
-| `run_attempt`                                                                    | O número de vezes que este fluxo de trabalho foi reexecutado.                                                                                                                                                                                                                                                             |
-| `runner_environment`                                                             | O tipo de executor usado pelo trabalho. Aceita os seguintes valores: `github-hosted` ou `self-hosted`.                                                                                                                                                                                                                    |
-| `workflow`                                                                       | Nome do fluxo de trabalho.                                                                                                                                                                                                                                                                                                |
-| `workflow_ref`                                                                   | O caminho de referência para o fluxo de trabalho. Por exemplo, `octocat/hello-world/.github/workflows/my-workflow.yml@refs/heads/my_branch`.                                                                                                                                                                              |
-| `workflow_sha`                                                                   | O SHA de commit para o arquivo de fluxo de trabalho.                                                                                                                                                                                                                                                                      |
+| Declaração | Descrição |
+| --- | --- |
+| `actor` | A conta pessoal que iniciou a execução do fluxo de trabalho. |
+| `actor_id` | A ID da conta pessoal que iniciou a execução do fluxo de trabalho. |
+| `base_ref` | O branch de destino do pull request na execução de um fluxo de trabalho. |
+| `check_run_id` | A ID de verificação de execução do trabalho atual. |
+| `environment` | O nome do ambiente usado pelo trabalho. Se a declaração `environment` for incluída (também via `include_claim_keys`), um ambiente será necessário e deverá ser fornecido. |
+| `event_name` | O nome do evento que disparou a execução do fluxo de trabalho. Os tokens OIDC solicitados para Dependabot trabalhos de atualização usam `dynamic` como o valor. |
+| `head_ref` | O branch de origem do pull request na execução de um fluxo de trabalho. |
+| `job_workflow_ref` | Para trabalhos que usam um fluxo de trabalho reutilizável, o caminho de ref para o fluxo de trabalho reutilizável. Para saber mais, confira [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](../../how-tos/secure-your-work/security-harden-deployments/oidc-with-reusable-workflows.md). |
+| `job_workflow_sha` | Para trabalhos que usam um fluxo de trabalho reutilizável, o SHA de commit do arquivo de fluxo de trabalho reutilizável. |
+| `ref` |  |
+| *(Referência)* A referência do Git que disparou a execução de fluxo de trabalho. |  |
+| `ref_type` | O tipo de `ref`, por exemplo: "branch". |
+| `repository_visibility` | A visibilidade do repositório em que o fluxo de trabalho está sendo executado. Aceita os seguintes valores: `internal`, `private`, ou `public`. |
+| `repository` | O repositório de onde o fluxo de trabalho está sendo executado. |
+| `repository_id` | A ID do repositório do qual o fluxo de trabalho está sendo executado. |
+| `repository_owner` | O nome da organização na qual o `repository` é armazenado. |
+| `repository_owner_id` | A ID da organização na qual o `repository` é armazenado. |
+| `repo_property_*` | Propriedades personalizadas definidas no nível da organização ou da empresa incluídas como declarações no token OIDC, prefixadas com `repo_property_`. Para obter mais informações, consulte [Incluir propriedades personalizadas do repositório em tokens OIDC](#including-repository-custom-properties-in-oidc-tokens). |
+| `run_id` | O ID da execução que acionou o fluxo de trabalho. |
+| `run_number` | O número de vezes que este fluxo de trabalho foi executado. |
+| `run_attempt` | O número de vezes que este fluxo de trabalho foi reexecutado. |
+| `runner_environment` | O tipo de executor usado pelo trabalho. Aceita os seguintes valores: `github-hosted` ou `self-hosted`. |
+| `workflow` | Nome do fluxo de trabalho. |
+| `workflow_ref` | O caminho de referência para o fluxo de trabalho. Por exemplo, `octocat/hello-world/.github/workflows/my-workflow.yml@refs/heads/my_branch`. |
+| `workflow_sha` | O SHA de commit para o arquivo de fluxo de trabalho. |
 
 ## Declarações OIDC usadas para definir condições de confiança em funções de nuvem
 
@@ -92,8 +86,8 @@ Há também muitas reivindicações adicionais compatíveis com o token do OIDC 
 
 Os tokens OIDC solicitados para Dependabot trabalhos de atualização têm uma declaração `event_name` de `dynamic`. Se sua política de confiança se destina a autorizar apenas GitHub Actions fluxos de trabalho e seu provedor de nuvem dá suporte a condições `event_name`, permita apenas os nomes de eventos esperados por seus fluxos de trabalho.
 
-> \[!NOTE]
-> Para controlar como o provedor de nuvem emite os tokens de acesso, você **precisa** definir, pelo menos, uma condição, para que os repositórios não confiáveis não possam solicitar tokens de acesso aos seus recursos de nuvem.
+!!! note
+    Para controlar como o provedor de nuvem emite os tokens de acesso, você **precisa** definir, pelo menos, uma condição, para que os repositórios não confiáveis não possam solicitar tokens de acesso aos seus recursos de nuvem.
 
 ## Exemplos de reivindicações
 
@@ -164,21 +158,21 @@ Renomeações e transferências de repositórios após 15 de julho de 2026 tamb�
 
 Para configurar o assunto no relacionamento de confiança do seu provedor de nuvem, você deve adicionar a cadeia de caracteres do assunto à sua configuração de confiança. Os seguintes exemplos demonstram como vários provedores de nuvem podem aceitar a mesma entidade `repo:octo-org/octo-repo:ref:refs/heads/demo-branch` de diferentes maneiras:
 
-| Provedor de nuvem     | Exemplo                                                                                           |
-| --------------------- | ------------------------------------------------------------------------------------------------- |
-| Amazon Web Services   | `"token.actions.githubusercontent.com:sub": "repo:octo-org/octo-repo:ref:refs/heads/demo-branch"` |
-| Azure                 | `repo:octo-org/octo-repo:ref:refs/heads/demo-branch`                                              |
-| Google Cloud Platform | `(assertion.sub=='repo:octo-org/octo-repo:ref:refs/heads/demo-branch')`                           |
-| HashiCorp Vault       | `bound_subject="repo:octo-org/octo-repo:ref:refs/heads/demo-branch"`                              |
+| Provedor de nuvem | Exemplo |
+| --- | --- |
+| Amazon Web Services | `"token.actions.githubusercontent.com:sub": "repo:octo-org/octo-repo:ref:refs/heads/demo-branch"` |
+| Azure | `repo:octo-org/octo-repo:ref:refs/heads/demo-branch` |
+| Google Cloud Platform | `(assertion.sub=='repo:octo-org/octo-repo:ref:refs/heads/demo-branch')` |
+| HashiCorp Vault | `bound_subject="repo:octo-org/octo-repo:ref:refs/heads/demo-branch"` |
 
 Para repositórios criados após 15 de julho de 2026 ou que optaram por declarações de entidade imutáveis, a `sub` declaração inclui `owner_id` e `repo_id` conforme mostrado nos exemplos imutáveis. Atualize suas políticas de confiança para corresponder ao formato usado pelo repositório. As declarações de assunto imutáveis não estão disponíveis em GitHub Enterprise Server.
 
-| Provedor de nuvem     | Exemplo de formato imutável                                                                                     |
-| --------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Amazon Web Services   | `"token.actions.githubusercontent.com:sub": "repo:octo-org@123456/octo-repo@456789:ref:refs/heads/demo-branch"` |
-| Azure                 | `repo:octo-org@123456/octo-repo@456789:ref:refs/heads/demo-branch`                                              |
-| Google Cloud Platform | `(assertion.sub=='repo:octo-org@123456/octo-repo@456789:ref:refs/heads/demo-branch')`                           |
-| HashiCorp Vault       | `bound_subject="repo:octo-org@123456/octo-repo@456789:ref:refs/heads/demo-branch"`                              |
+| Provedor de nuvem | Exemplo de formato imutável |
+| --- | --- |
+| Amazon Web Services | `"token.actions.githubusercontent.com:sub": "repo:octo-org@123456/octo-repo@456789:ref:refs/heads/demo-branch"` |
+| Azure | `repo:octo-org@123456/octo-repo@456789:ref:refs/heads/demo-branch` |
+| Google Cloud Platform | `(assertion.sub=='repo:octo-org@123456/octo-repo@456789:ref:refs/heads/demo-branch')` |
+| HashiCorp Vault | `bound_subject="repo:octo-org@123456/octo-repo@456789:ref:refs/heads/demo-branch"` |
 
 Para obter mais informações sobre como configurar provedores de nuvem específicos, confira os guias listados em [Reforço de segurança em suas implementações](../../how-tos/secure-your-work/security-harden-deployments.md).
 
@@ -211,7 +205,7 @@ Isso permite que você crie políticas de ABAC (controle de acesso baseado em at
 Cada propriedade personalizada habilitada aparece como uma declaração separada no token OIDC. O nome da declaração é o nome da propriedade prefixado com `repo_property_`.
 
 | Nome da propriedade personalizada | Nome da declaração no token OIDC    |
-| --------------------------------- | ----------------------------------- |
+|---------------------------------|-----------------------------------|
 | `business_unit`                   | `repo_property_business_unit`       |
 | `workspace_id`                    | `repo_property_workspace_id`        |
 | `data_classification`             | `repo_property_data_classification` |
@@ -220,12 +214,12 @@ Cada propriedade personalizada habilitada aparece como uma declaração separada
 
 Os seguintes tipos de propriedade personalizada têm suporte como declarações OIDC. A representação de valor no token depende do tipo de propriedade.
 
-| Tipo de propriedade | Valor de exemplo no token OIDC                   | Observações                                                                                     |
-| ------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| String              | `"repo_property_team": "platform-eng"`           | O valor aparece como uma cadeia de caracteres sem formatação.                                   |
-| Seleção única       | `"repo_property_env_tier": "production"`         | A opção selecionada aparece como uma cadeia de caracteres sem formatação.                       |
-| Seleção múltipla    | `"repo_property_regions": "us-east-1,eu-west-1"` | Vários valores selecionados são unidos em uma única cadeia de caracteres separada por vírgulas. |
-| Verdadeiro/Falso    | `"repo_property_pci_compliant": "true"`          | Os valores boolianos aparecem como a cadeia de caracteres `"true"` ou `"false"`.                |
+| Tipo de propriedade | Valor de exemplo no token OIDC | Observações |
+| --- | --- | --- |
+| String | `"repo_property_team": "platform-eng"` | O valor aparece como uma cadeia de caracteres sem formatação. |
+| Seleção única | `"repo_property_env_tier": "production"` | A opção selecionada aparece como uma cadeia de caracteres sem formatação. |
+| Seleção múltipla | `"repo_property_regions": "us-east-1,eu-west-1"` | Vários valores selecionados são unidos em uma única cadeia de caracteres separada por vírgulas. |
+| Verdadeiro/Falso | `"repo_property_pci_compliant": "true"` | Os valores boolianos aparecem como a cadeia de caracteres `"true"` ou `"false"`. |
 
 #### Representação de valor de seleção múltipla
 
@@ -280,14 +274,14 @@ Você pode usar essas `repo_property_*` declarações como condições na polít
 
 Para ajudar a melhorar a segurança, a conformidade e a padronização, você pode personalizar as declarações padrão para atender às condições de acesso necessárias. Se o provedor de nuvem der suporte a condições em declarações de assunto, você poderá criar uma condição que verifique se o valor `sub` corresponde ao caminho do fluxo de trabalho reutilizável, como `"job_workflow_ref:octo-org/octo-automation/.github/workflows/oidc.yml@refs/heads/main"`. O formato exato variará dependendo da configuração do OIDC do provedor de nuvem. Para configurar a condição GitHubcorrespondente, você pode usar a API REST para exigir que a `sub` declaração sempre inclua uma declaração personalizada específica, como `job_workflow_ref`. Você pode usar a API REST para aplicar um modelo de personalização à declaração de entidade do OIDC; por exemplo, você pode exigir que a declaração `sub` dentro do token do OIDC sempre inclua uma declaração personalizada específica, como `job_workflow_ref`. Para saber mais, confira [Pontos de extremidade da API REST para OIDC do GitHub Actions](https://docs.github.com/pt/rest/actions/oidc).
 
-> \[!NOTE]
-> Quando o modelo da organização é aplicado, ele não afeta nenhum fluxo de trabalho que já esteja usando o OIDC, a menos que o repositório tenha aceito os modelos personalizados da organização. Para todos os repositórios, existentes e novos, o proprietário do repositório precisará usar a API REST no nível do repositório para aceitar o recebimento dessa configuração, definindo `use_default` como `false`. Como alternativa, o proprietário do repositório pode usar a API REST para aplicar uma configuração diferente específica ao repositório. Para saber mais, confira [Pontos de extremidade da API REST para OIDC do GitHub Actions](https://docs.github.com/pt/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository).
+!!! note
+    Quando o modelo da organização é aplicado, ele não afeta nenhum fluxo de trabalho que já esteja usando o OIDC, a menos que o repositório tenha aceito os modelos personalizados da organização. Para todos os repositórios, existentes e novos, o proprietário do repositório precisará usar a API REST no nível do repositório para aceitar o recebimento dessa configuração, definindo `use_default` como `false`. Como alternativa, o proprietário do repositório pode usar a API REST para aplicar uma configuração diferente específica ao repositório. Para saber mais, confira [Pontos de extremidade da API REST para OIDC do GitHub Actions](https://docs.github.com/pt/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository).
 
 Personalizar as declarações resulta em um novo formato para toda a declaração `sub`, que substitui o formato predefinido padrão `sub` no token descrito em "[Declarações de entidade de exemplo](#example-subject-claims)".
 
-> \[!NOTE]
-> A declaração `sub` usa a forma abreviada `repo` (por exemplo, `repo:ORG-NAME/REPO-NAME`) em vez de `repository` para referenciar o repositório. Qualquer um `:` dentro do valor de contexto será substituído por `%3A`.
-> Para repositórios que usam declarações de assunto imutáveis (não disponíveis em GitHub Enterprise Server), `owner_id` e `repo_id` sempre são incluídos no segmento `repo` da declaração `sub`, mesmo quando você personaliza declarações com `include_claim_keys`. Não é possível remover essas IDs do formato imutável.
+!!! note
+    A declaração `sub` usa a forma abreviada `repo` (por exemplo, `repo:ORG-NAME/REPO-NAME`) em vez de `repository` para referenciar o repositório. Qualquer um `:` dentro do valor de contexto será substituído por `%3A`.
+    Para repositórios que usam declarações de assunto imutáveis (não disponíveis em GitHub Enterprise Server), `owner_id` e `repo_id` sempre são incluídos no segmento `repo` da declaração `sub`, mesmo quando você personaliza declarações com `include_claim_keys`. Não é possível remover essas IDs do formato imutável.
 
 Os modelos de exemplo a seguir demonstram várias maneiras de personalizar a declaração de assunto. Para definir essas configurações no GitHub, os administradores usam a API REST para especificar uma lista de declarações que devem ser incluídas na declaração de assunto (`sub`).
 
@@ -534,10 +528,10 @@ Ações personalizadas podem solicitar o token OIDC usando:
 * O método `getIDToken()` do kit de ferramentas do Actions. Para obter mais informações, confira [OIDC Token](https://www.npmjs.com/package/@actions/core/v/1.6.0#oidc-token) na documentação do pacote npm.
 * As variáveis de ambiente a seguir no executor.
 
-  | Variável                         | Descrição                                                  |
-  | -------------------------------- | ---------------------------------------------------------- |
-  | `ACTIONS_ID_TOKEN_REQUEST_URL`   | A URL do provedor OIDC do GitHub.                          |
-  | `ACTIONS_ID_TOKEN_REQUEST_TOKEN` | Token portador para a solicitação para o provedor do OIDC. |
+| Variável                         | Descrição                                                  |
+|--------------------------------|----------------------------------------------------------|
+| `ACTIONS_ID_TOKEN_REQUEST_URL`   | A URL do provedor OIDC do GitHub.                          |
+| `ACTIONS_ID_TOKEN_REQUEST_TOKEN` | Token portador para a solicitação para o provedor do OIDC. |
 
   Por exemplo:
 

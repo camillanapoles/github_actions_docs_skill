@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/bitbucket-pipelines-migration
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
 # Migrando do Bitbucket Pipelines com o importador de GitHub Actions
@@ -24,7 +24,8 @@ As instruções a seguir orientarão você na configuração do seu ambiente par
   * O Docker está [instalado](https://docs.docker.com/get-docker/) e em execução.
 
   * A [CLI do GitHub](https://cli.github.com) está instalada.
-  > \[!NOTE]
+!!! note
+
   > A CLI e o contêiner do GitHub Actions Importer não precisam ser instalados no mesmo servidor que a plataforma de CI.
 
 ### Limitações
@@ -106,11 +107,11 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
 
    O comando `configure` solicitará que você insira as seguintes informações:
 
-   * Em "Quais provedores de CI você está configurando?", use as teclas de direção para selecionar `Bitbucket`, pressione <kbd>Espaço</kbd> para fazer a seleção e pressione <kbd>Enter</kbd>.
-   * Para "Personal access token para GitHub", insira o valor do personal access token (classic) que você criou anteriormente e pressione <kbd>Enter</kbd>.
-   * Para "URL base da instância do GitHub", insira pressione <kbd>Enter</kbd> para aceitar o valor padrão (`https://github.com`).
-   * Para "Personal access token for Bitbucket", insira o Token de Acesso do Workspace que você criou anteriormente e pressione <kbd>Enter</kbd>.
-   * Em "URL base da instância do Bitbucket", digite o URL da sua instância do Bitbucket e pressione <kbd>Enter</kbd>.
+   * Em "Quais provedores de CI você está configurando?", use as teclas de direção para selecionar `Bitbucket`, pressione `Espaço` para fazer a seleção e pressione `Enter`.
+   * Para "Personal access token para GitHub", insira o valor do personal access token (classic) que você criou anteriormente e pressione `Enter`.
+   * Para "URL base da instância do GitHub", insira pressione `Enter` para aceitar o valor padrão (`https://github.com`).
+   * Para "Personal access token for Bitbucket", insira o Token de Acesso do Workspace que você criou anteriormente e pressione `Enter`.
+   * Em "URL base da instância do Bitbucket", digite o URL da sua instância do Bitbucket e pressione `Enter`.
 
    Um exemplo do comando `configure` é mostrado abaixo:
 
@@ -367,7 +368,7 @@ source_files:
 A tabela a seguir mostra o tipo de propriedades que GitHub Actions Importer atualmente é capaz de converter.
 
 | Bitbucket                 | GitHub Actions                                  |      Status |
-| :------------------------ | :---------------------------------------------- | ----------: |
+|:------------------------|:----------------------------------------------|----------:|
 | `after-script`            | `jobs.<job_id>.steps[*]`                        | Com suporte |
 | `artifacts`               | `actions/upload-artifact` & `download-artifact` | Com suporte |
 | `caches`                  | `actions/cache`                                 | Com suporte |
@@ -400,7 +401,7 @@ A tabela a seguir mostra o tipo de propriedades que GitHub Actions Importer atua
 GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáveis de ambiente do Bitbucket padrão para o equivalente mais próximo em GitHub Actions.
 
 | Bitbucket                               | GitHub Actions                                              |
-| :-------------------------------------- | :---------------------------------------------------------- |
+|:--------------------------------------|:----------------------------------------------------------|
 | `CI`                                    | `true`                                                      |
 | `BITBUCKET_BUILD_NUMBER`                | `${{ github.run_number }}`                                  |
 | `BITBUCKET_CLONE_DIR`                   | `${{ github.workspace }}`                                   |

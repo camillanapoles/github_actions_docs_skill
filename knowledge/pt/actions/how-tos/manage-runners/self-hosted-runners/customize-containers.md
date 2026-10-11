@@ -7,15 +7,15 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/self-hosted-runners/customize-containers
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage runners / Self hosted runners
 ---
 
 # Como personalizar os contêineres usados por trabalhos
 
 _Você pode personalizar como o executor auto-hospedado invoca um contêiner para um trabalho._
 
-> \[!NOTE]
-> Esse recurso está atualmente dentro prévia pública e está sujeito a alterações.
+!!! note
+    Esse recurso está atualmente dentro prévia pública e está sujeito a alterações.
 
 ## Sobre a personalização de contêiner
 
@@ -492,8 +492,8 @@ Nenhuma saída é esperada para `run_script_step`.
 
 GitHub criou um repositório de exemplo que demonstra como gerar scripts de personalização para Docker e Kubernetes.
 
-> \[!NOTE]
-> Os scripts resultantes estão disponíveis para fins de teste e você precisará determinar se eles são apropriados para seus requisitos.
+!!! note
+    Os scripts resultantes estão disponíveis para fins de teste e você precisará determinar se eles são apropriados para seus requisitos.
 
 1. Clone o repositório [actions/runner-container-hooks](https://github.com/actions/runner-container-hooks) para seu executor auto-hospedado.
 
@@ -515,8 +515,8 @@ Quando o(a) `index.js` resultante for acionado(a) por GitHub Actions, ele execut
 
 Os scripts personalizados precisam estar localizados no executor, mas não precisam ser armazenados no diretório do aplicativo executor auto-hospedado (ou seja, o diretório no qual você baixou e descompactou o software executor). Os scripts são executados no contexto de segurança da conta de serviço que executa o serviço de executor.
 
-> \[!NOTE]
-> O script disparado é processado de maneira síncrona, ou seja, ele bloqueará a execução do trabalho enquanto estiver em execução.
+!!! note
+    O script disparado é processado de maneira síncrona, ou seja, ele bloqueará a execução do trabalho enquanto estiver em execução.
 
 Os scripts são executados automaticamente quando o executor tem a seguinte variável de ambiente que contêm um caminho absoluto para o script:
 

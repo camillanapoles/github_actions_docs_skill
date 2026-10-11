@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/get-started/continuous-deployment
 captured: '2026-10-11'
-section: GitHub Actions
+section: Get started
 ---
 
 # Implantação contínua
@@ -28,8 +28,8 @@ Você pode configurar seu fluxo de trabalho do CD para ser executado quando ocor
 
 GitHub Actions fornece recursos que oferecem mais controle sobre implantações. Por exemplo, você pode usar ambientes para exigir aprovação para um trabalho prosseguir, restringir quais branches podem acionar um fluxo de trabalho, ou limitar o acesso a segredos. Você pode usar concorrência para limitar o pipeline do CD até uma implantação em andamento. Para saber mais sobre esses recursos, confira [Implantando com GitHub Actions](../how-tos/deploy/configure-and-manage-deployments/control-deployments.md) e [Gerenciar ambientes para implantação](../how-tos/deploy/configure-and-manage-deployments/manage-environments.md).
 
-> \[!TIP]
-> Você pode usar agentic workflows para a preparação da implantação, como notas de versão, análise de alterações e resumos de distribuição, mantendo as implantações de produção em fluxos de trabalho determinísticos GitHub Actions . Para saber mais, confira [Criando fluxos de trabalho agênticos do GitHub](https://docs.github.com/pt/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
+!!! tip
+    Você pode usar agentic workflows para a preparação da implantação, como notas de versão, análise de alterações e resumos de distribuição, mantendo as implantações de produção em fluxos de trabalho determinísticos GitHub Actions . Para saber mais, confira [Criando fluxos de trabalho agênticos do GitHub](https://docs.github.com/pt/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
 
 ## Modelos de fluxo de trabalho e ações de terceiros
 

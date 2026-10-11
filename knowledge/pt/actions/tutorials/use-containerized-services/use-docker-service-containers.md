@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/use-containerized-services/use-docker-service-containers
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Use containerized services
 ---
 
 # Comunicar-se com os contêineres de serviço do Docker
@@ -21,11 +21,11 @@ Os contêineres de serviço são contêineres Docker que oferecem uma maneira si
 Você pode configurar os contêineres de serviço para cada trabalho em um fluxo de trabalho.
 GitHub cria um novo contêiner do Docker para cada serviço configurado no fluxo de trabalho e destrói o contêiner de serviço quando o trabalho é concluído. As etapas em um trabalho podem comunicar-se com todos os contêineres de serviço que fazem parte do mesmo trabalho. No entanto, não é possível criar nem usar contêineres de serviço em uma ação composta.
 
-> \[!NOTE]
-> Se os fluxos de trabalho usarem ações de contêiner do Docker, contêineres de trabalho ou contêineres de serviço, você precisará usar um executor do Linux:
->
-> * Se você estiver usando executores hospedados em GitHub, você deverá usar um executor do Ubuntu.
-> * Se você estiver usando executores auto-hospedados, você deve usar uma máquina Linux, pois seu executor e o Docker precisam ser instalados.
+!!! note
+    Se os fluxos de trabalho usarem ações de contêiner do Docker, contêineres de trabalho ou contêineres de serviço, você precisará usar um executor do Linux:
+
+    * Se você estiver usando executores hospedados em GitHub, você deverá usar um executor do Ubuntu.
+    * Se você estiver usando executores auto-hospedados, você deve usar uma máquina Linux, pois seu executor e o Docker precisam ser instalados.
 
 Você pode configurar trabalhos em um fluxo de trabalho para ser executados diretamente em uma máquina executora ou em um contêiner Docker. A comunicação entre o trabalho e seus contêineres de serviço é diferente, dependendo se um trabalho é executado diretamente na máquina executora ou em um contêiner.
 
@@ -76,11 +76,11 @@ Se o seu trabalho for executado em um contêiner do Docker, você não precisar�
 
 Você pode mapear portas de contêineres de serviço para o host do Docker usando a palavra-chave `ports`. Para obter mais informações, confira [`jobs.<job_id>.services`](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idservices).
 
-| Valor de `ports` | Descrição                                                                        |
-| ---------------- | -------------------------------------------------------------------------------- |
-| `8080:80`        | Mapeia a porta 80 TCP no contêiner com a porta 8080 no host do Docker.           |
-| `8080:80/udp`    | Mapeia a porta 80 UDP no contêiner com a porta 8080 no host do Docker.           |
-| `8080/udp`       | Mapeia uma porta aleatória no host do Docker para a porta UDP 8080 no contêiner. |
+| Valor de `ports` | Descrição |
+| --- | --- |
+| `8080:80` | Mapeia a porta 80 TCP no contêiner com a porta 8080 no host do Docker. |
+| `8080:80/udp` | Mapeia a porta 80 UDP no contêiner com a porta 8080 no host do Docker. |
+| `8080/udp` | Mapeia uma porta aleatória no host do Docker para a porta UDP 8080 no contêiner. |
 
 Quando você mapeia portas usando a `ports` palavra-chave, GitHub usa o `--publish` comando para publicar as portas do contêiner no host do Docker. Para obter mais informações, confira [Rede de contêineres do Docker](https://docs.docker.com/config/containers/container-networking/) na documentação do Docker.
 

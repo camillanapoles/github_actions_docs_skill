@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs/re-run-workflows-and-jobs
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage workflow runs
 ---
 
 # Reexecutando fluxos de trabalho e tarefas
@@ -20,11 +20,9 @@ Uma execução de fluxo de trabalho pode ser executada novamente no máximo 50 v
 
 ## Reexecutar todos os trabalhos em um fluxo de trabalho
 
-<div class="ghd-tool webui">
-
 1. Em GitHub, acesse a página principal do repositório.
 
-2. No nome do repositório, clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Actions**.
+2. No nome do repositório, clique em **(play) Actions**.
 
    ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
 
@@ -36,16 +34,12 @@ Uma execução de fluxo de trabalho pode ser executada novamente no máximo 50 v
 
 5. No canto superior direito do fluxo de trabalho, execute novamente os trabalhos.
 
-   * Se algum trabalho falhar, selecione o **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-sync" aria-label="sync" role="img"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z"></path></svg> menu suspenso Executar trabalhos novamente** e clique **Executar novamente todos os trabalhos**.
+   * Se algum trabalho falhar, selecione o **(sync) menu suspenso Executar trabalhos novamente** e clique **Executar novamente todos os trabalhos**.
    * Se nenhum trabalho falhar, clique em **Executar novamente todos os trabalhos**.
 
 6. Opcionalmente, para habilitar o log de diagnóstico do executor e o log de depuração de etapas para a nova execução, selecione **Habilitar o log de depuração**. Para saber mais, confira [Habilitando o log de depuração](../monitor-workflows/enable-debug-logging.md).
 
 7. Clique em **Executar trabalhos novamente**.
-
-</div>
-
-<div class="ghd-tool cli">
 
 1. Para executar novamente uma execução de fluxo de trabalho com falha, use o subcomando `run rerun`, substituindo `RUN_ID` pela ID da execução com falha que você deseja executar novamente. Se você não especificar um `run-id`, GitHub CLI retornará um menu interativo para escolher uma execução com falha recente.
 
@@ -65,27 +59,19 @@ Uma execução de fluxo de trabalho pode ser executada novamente no máximo 50 v
    gh run watch
    ```
 
-</div>
-
 ## Reexecutar trabalhos que falharam em um fluxo de trabalho
 
-<div class="ghd-tool webui">
-
 1. Em GitHub, acesse a página principal do repositório.
-2. No nome do repositório, clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Actions**.
+2. No nome do repositório, clique em **(play) Actions**.
 
    ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
    ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
-5. No canto superior direito do fluxo de trabalho, selecione o menu suspenso <svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-sync" aria-label="sync" role="img"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z"></path></svg> e clique em **Reexecutar trabalhos com falha**.
+5. No canto superior direito do fluxo de trabalho, selecione o menu suspenso (sync) e clique em **Reexecutar trabalhos com falha**.
 6. Opcionalmente, para habilitar o log de diagnóstico do executor e o log de depuração de etapas para a nova execução, selecione **Habilitar o log de depuração**. Para saber mais, confira [Habilitando o log de depuração](../monitor-workflows/enable-debug-logging.md).
 7. Clique em **Executar trabalhos novamente**.
-
-</div>
-
-<div class="ghd-tool cli">
 
 Para executar os trabalhos com falha novamente em uma execução de fluxo de trabalho, use o subcomando `run rerun` com o sinalizador `--failed`. Substitua `RUN_ID` pelo ID da execução para a qual você deseja reiniciar os trabalhos que falharam. Se você não especificar um `run-id`, GitHub CLI retornará um menu interativo para escolher uma execução com falha recente.
 
@@ -99,15 +85,11 @@ Para habilitar o log de diagnóstico do executor e o log de depuração de etapa
 gh run rerun RUN_ID --failed --debug
 ```
 
-</div>
-
 ## Reexecutando um trabalho específico em um fluxo de trabalho
-
-<div class="ghd-tool webui">
 
 1. Em GitHub, acesse a página principal do repositório.
 
-2. No nome do repositório, clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Actions**.
+2. No nome do repositório, clique em **(play) Actions**.
 
    ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
 
@@ -117,15 +99,11 @@ gh run rerun RUN_ID --failed --debug
 
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
 
-5. Na seção "Trabalhos" da barra lateral esquerda, ao lado do trabalho que você deseja executar novamente, clique em <svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-sync" aria-label="The re-run icon" role="img"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z"></path></svg>.
+5. Na seção "Trabalhos" da barra lateral esquerda, ao lado do trabalho que você deseja executar novamente, clique em (The re-run icon).
 
 6. Opcionalmente, para habilitar o log de diagnóstico do executor e o log de depuração de etapas para a nova execução, selecione **Habilitar o log de depuração**. Para saber mais, confira [Habilitando o log de depuração](../monitor-workflows/enable-debug-logging.md).
 
 7. Clique em **Executar trabalhos novamente**.
-
-</div>
-
-<div class="ghd-tool cli">
 
 Para executar novamente um trabalho específico em uma execução de fluxo de trabalho, use o subcomando `run rerun` com o sinalizador `--job`. Substitua `JOB_ID` pela ID do trabalho que deseja executar novamente.
 
@@ -139,12 +117,10 @@ Para habilitar o log de diagnóstico do executor e o log de depuração de etapa
 gh run rerun --job JOB_ID --debug
 ```
 
-</div>
-
 ## Revisando execuções de workflows anteriores
 
 1. Em GitHub, acesse a página principal do repositório.
-2. No nome do repositório, clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Actions**.
+2. No nome do repositório, clique em **(play) Actions**.
 
    ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.

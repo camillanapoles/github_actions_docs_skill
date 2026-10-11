@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/security/openid-connect
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Security
 ---
 
 # OpenID Connect
@@ -86,8 +86,8 @@ O exemplo de token OIDC a seguir usa uma entidade (`sub`) que referencia um ambi
 }
 ```
 
-> \[!NOTE]
-> A `sub` declaração neste exemplo usa o formato anterior. Os repositórios criados após 15 de julho de 2026 usam um formato de assunto padrão imutável que inclui IDs do proprietário e do repositório (não disponível em GitHub Enterprise Server). Para saber mais, confira [Referência do OpenID Connect](../../reference/security/oidc.md#immutable-subject-claims).
+!!! note
+    A `sub` declaração neste exemplo usa o formato anterior. Os repositórios criados após 15 de julho de 2026 usam um formato de assunto padrão imutável que inclui IDs do proprietário e do repositório (não disponível em GitHub Enterprise Server). Para saber mais, confira [Referência do OpenID Connect](../../reference/security/oidc.md#immutable-subject-claims).
 
 ## Autenticar ações personalizadas usando o OIDC
 

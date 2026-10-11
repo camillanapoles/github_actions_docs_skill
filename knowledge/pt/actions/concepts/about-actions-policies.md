@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/about-actions-policies
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts
 ---
 
 # Sobre as políticas do Actions
@@ -38,7 +38,7 @@ Event 'workflow_dispatch' is not allowed to trigger Actions workflows. Workflow 
 
 <!-- expires 2026-11-02 -->
 
-> \[!NOTE] GitHub adicionou uma política padrão que bloqueará o `pull_request_target` evento em repositórios públicos. Essa política será imposta em 2 de novembro de 2026. Consulte [Uso seguro de pull\_request\_target](../reference/security/securely-using-pull_request_target.md#default-policy-for-pull_request_target).
+> [!NOTE] GitHub adicionou uma política padrão que bloqueará o `pull_request_target` evento em repositórios públicos. Essa política será imposta em 2 de novembro de 2026. Consulte [Uso seguro de pull_request_target](../reference/security/securely-using-pull_request_target.md#default-policy-for-pull_request_target).
 
 <!-- end expires 2026-11-02 -->
 

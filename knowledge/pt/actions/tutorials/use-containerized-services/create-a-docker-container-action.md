@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/use-containerized-services/create-a-docker-container-action
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Use containerized services
 ---
 
 # Criando uma ação de contêiner do Docker
@@ -22,8 +22,8 @@ Ao terminar esse projeto, você entenderá como criar sua própria ação de con
 
 Executores auto-hospedados devem usar um sistema operacional Linux e ter o Docker instalado para executar as ações do contêiner Docker. Para obter mais informações sobre os requisitos dos executores autohospedados, consulte [Referência de executores auto-hospedados](../../reference/runners/self-hosted-runners.md#requirements-for-self-hosted-runner-machines).
 
-> \[!WARNING]
-> Ao criar fluxos de trabalho e ações, sempre considere se o código poderá executar entradas não confiáveis de possíveis invasores. Certos contextos devem ser tratados como entradas não confiáveis, uma vez que um invasor pode inserir seu próprio conteúdo malicioso. Para saber mais, confira [Referência de uso seguro](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks).
+!!! warning
+    Ao criar fluxos de trabalho e ações, sempre considere se o código poderá executar entradas não confiáveis de possíveis invasores. Certos contextos devem ser tratados como entradas não confiáveis, uma vez que um invasor pode inserir seu próprio conteúdo malicioso. Para saber mais, confira [Referência de uso seguro](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks).
 
 ## Pré-requisitos
 
@@ -237,7 +237,7 @@ Clique em **Etapa da ação Olá, mundo** e você verá "Olá, Mona, o Octocat" 
 
 Quando uma ação de contêiner é executada, ela mapeia automaticamente o diretório de trabalho padrão (`GITHUB_WORKSPACE`) no executor com o diretório `/github/workspace` no contêiner. Todos os arquivos adicionados a esse diretório no contêiner estarão disponíveis para todas as etapas subsequentes no mesmo trabalho. Por exemplo, se você tiver uma ação de contêiner que compila seu projeto e quiser carregar a saída da compilação como um artefato, poderá usar as etapas a seguir.
 
-**workflow\.yml**
+**workflow.yml**
 
 ```yaml copy
 jobs:

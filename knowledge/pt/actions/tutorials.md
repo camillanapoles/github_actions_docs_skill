@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials
 captured: '2026-10-11'
-section: GitHub Actions
+section: Actions
 ---
 
 # Tutoriais do GitHub Actions
@@ -24,9 +24,9 @@ _Crie habilidades e conhecimento sobre o GitHub Actions por meio de atividades p
 
   Você pode compilar e testar automaticamente seus projetos com GitHub Actions.
 
-* [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](tutorials/authenticate-with-github_token.md)
+* [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](tutorials/authenticate-with-github_token.md)
 
-  Saiba como usar a autenticação GITHUB\_TOKEN em nome de GitHub Actions.
+  Saiba como usar a autenticação GITHUB_TOKEN em nome de GitHub Actions.
 
 * [Migrando de executores auto-hospedados para executores hospedados no GitHub](tutorials/migrate-to-github-runners.md)
 

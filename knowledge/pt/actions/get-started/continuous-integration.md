@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/get-started/continuous-integration
 captured: '2026-10-11'
-section: GitHub Actions
+section: Get started
 ---
 
 # Integração contínua
@@ -26,7 +26,7 @@ Para compilar e testar seu código, é necessário usar um servidor. Você pode 
 
 A CI usando GitHub Actions oferece fluxos de trabalho que podem compilar o código no seu repositório e executar seus testes. Os fluxos de trabalho podem ser executados em GitHubmáquinas virtuais hospedadas ou em máquinas que você mesmo hospeda. Para saber mais, confira [Executores hospedados no GitHub](../concepts/runners/github-hosted-runners.md) e [Executores auto-hospedados](../concepts/runners/self-hosted-runners.md).
 
-Você pode configurar seu fluxo de trabalho de CI para ser executado quando ocorrer um evento GitHub (por exemplo, quando um novo código é enviado ao seu repositório), em uma programação definida ou quando ocorrer um evento externo usando o webhook repository\_dispatch.
+Você pode configurar seu fluxo de trabalho de CI para ser executado quando ocorrer um evento GitHub (por exemplo, quando um novo código é enviado ao seu repositório), em uma programação definida ou quando ocorrer um evento externo usando o webhook repository_dispatch.
 
 GitHub executa seus testes de CI e fornece os resultados de cada teste no pull request, para que você veja se a alteração na sua ramificação introduz um erro. Quando todos os testes de CI em um fluxo de trabalho forem aprovados, as alterações que passaram por push estarão prontas para a revisão de um integrante da equipe ou para o merge. Se algum teste falhar, uma de suas alterações pode ter causado a falha.
 

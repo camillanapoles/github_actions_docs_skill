@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/gitlab-migration
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
 # Migrando do GitLab com o Importador de GitHub Actions
@@ -26,7 +26,8 @@ As instruções abaixo orientarão você na configuração do seu ambiente para 
   * O Docker está [instalado](https://docs.docker.com/get-docker/) e em execução.
 
   * A [CLI do GitHub](https://cli.github.com) está instalada.
-  > \[!NOTE]
+!!! note
+
   > A CLI e o contêiner do GitHub Actions Importer não precisam ser instalados no mesmo servidor que a plataforma de CI.
 
 ### Limitações
@@ -94,11 +95,11 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
 
    O comando `configure` solicitará que você insira as seguintes informações:
 
-   * Em "Quais provedores de CI você está configurando?", use as teclas de direção para selecionar `GitLab`, pressione <kbd>Espaço</kbd> para fazer a seleção e pressione <kbd>Enter</kbd>.
-   * Para "Personal access token para GitHub", insira o valor do personal access token (classic) que você criou anteriormente e pressione <kbd>Enter</kbd>.
-   * Para "URL base da instância do GitHub", insira pressione <kbd>Enter</kbd> para aceitar o valor padrão (`https://github.com`).
-   * Para "Token privado para GitLab", insira o valor do GitLab personal access token que você criou anteriormente e pressione <kbd>Enter</kbd>.
-   * Em "URL base da instância do GitLab", digite a URL da instância do GitLab e pressione <kbd>Enter</kbd>.
+   * Em "Quais provedores de CI você está configurando?", use as teclas de direção para selecionar `GitLab`, pressione `Espaço` para fazer a seleção e pressione `Enter`.
+   * Para "Personal access token para GitHub", insira o valor do personal access token (classic) que você criou anteriormente e pressione `Enter`.
+   * Para "URL base da instância do GitHub", insira pressione `Enter` para aceitar o valor padrão (`https://github.com`).
+   * Para "Token privado para GitLab", insira o valor do GitLab personal access token que você criou anteriormente e pressione `Enter`.
+   * Em "URL base da instância do GitLab", digite a URL da instância do GitLab e pressione `Enter`.
 
    Um exemplo da saída do comando `configure` é mostrado abaixo.
 

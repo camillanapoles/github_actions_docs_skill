@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
 # Migrando de Azure DevOps com o Importador de GitHub Actions
@@ -26,7 +26,8 @@ As instruções a seguir orientarão você na configuração do seu ambiente par
   * O Docker está [instalado](https://docs.docker.com/get-docker/) e em execução.
 
   * A [CLI do GitHub](https://cli.github.com) está instalada.
-  > \[!NOTE]
+!!! note
+
   > A CLI e o contêiner do GitHub Actions Importer não precisam ser instalados no mesmo servidor que a plataforma de CI.
 
 ### Limitações
@@ -113,13 +114,13 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
 
    O comando `configure` solicitará que você insira as seguintes informações:
 
-   * Em "Quais provedores de CI você está configurando?", use as teclas de direção para selecionar `Azure DevOps`, pressione <kbd>Space</kbd> para selecioná-lo e pressione <kbd>Enter</kbd>.
-   * Para "Personal access token para GitHub", insira o valor do personal access token (classic) que você criou anteriormente e pressione <kbd>Enter</kbd>.
-   * Para "URL base da instância do GitHub", insira pressione <kbd>Enter</kbd> para aceitar o valor padrão (`https://github.com`).
-   * Para "Personal access token para Azure DevOps", insira o valor do Azure DevOps personal access token que você criou anteriormente e pressione <kbd>Enter</kbd>.
-   * Para "URL base da instância Azure DevOps", pressione <kbd>Enter</kbd> para aceitar o valor padrão (`https://dev.azure.com`).
-   * Para "Azure DevOps nome da organização", insira o nome da sua organização Azure DevOps e pressione <kbd>Enter</kbd>.
-   * Para "Azure DevOps nome do projeto", insira o nome do projeto Azure DevOps e pressione <kbd>Enter</kbd>.
+   * Em "Quais provedores de CI você está configurando?", use as teclas de direção para selecionar `Azure DevOps`, pressione `Space` para selecioná-lo e pressione `Enter`.
+   * Para "Personal access token para GitHub", insira o valor do personal access token (classic) que você criou anteriormente e pressione `Enter`.
+   * Para "URL base da instância do GitHub", insira pressione `Enter` para aceitar o valor padrão (`https://github.com`).
+   * Para "Personal access token para Azure DevOps", insira o valor do Azure DevOps personal access token que você criou anteriormente e pressione `Enter`.
+   * Para "URL base da instância Azure DevOps", pressione `Enter` para aceitar o valor padrão (`https://dev.azure.com`).
+   * Para "Azure DevOps nome da organização", insira o nome da sua organização Azure DevOps e pressione `Enter`.
+   * Para "Azure DevOps nome do projeto", insira o nome do projeto Azure DevOps e pressione `Enter`.
 
    Um exemplo do comando `configure` é mostrado abaixo:
 
@@ -627,8 +628,8 @@ GitHub Actions Importer dá suporte aos parâmetros listados na tabela abaixo.
 | fase                                       | `job`            | Suporte parcial |
 | listaDeEtapas                              | `job`            | Suporte parcial |
 
-> \[!NOTE]
-> Um modelo usado na chave `step` com esse tipo de parâmetro só será serializado como uma ação composta se as etapas forem usadas no início ou no final das etapas do modelo. Um modelo usado nas chaves `stage`, `deployment` e `job` com esse tipo de parâmetro não é transformado em um fluxo de trabalho reutilizável e é serializado como um fluxo de trabalho independente.
+!!! note
+    Um modelo usado na chave `step` com esse tipo de parâmetro só será serializado como uma ação composta se as etapas forem usadas no início ou no final das etapas do modelo. Um modelo usado nas chaves `stage`, `deployment` e `job` com esse tipo de parâmetro não é transformado em um fluxo de trabalho reutilizável e é serializado como um fluxo de trabalho independente.
 
 ## Aviso legal
 

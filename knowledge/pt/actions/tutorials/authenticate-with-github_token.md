@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/authenticate-with-github_token
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials
 ---
 
 # Usar GITHUB_TOKEN para autenticação em fluxos de trabalho
@@ -22,8 +22,8 @@ Para obter informações de referência, confira [Sintaxe de fluxo de trabalho p
 
 Você pode usar o `GITHUB_TOKEN` ao usar a sintaxe padrão para referenciar segredos: `${{ secrets.GITHUB_TOKEN }}`. Exemplos de como usar o `GITHUB_TOKEN` token incluem passar o token como uma entrada para uma ação ou usá-lo para fazer uma solicitação de API autenticada GitHub .
 
-> \[!IMPORTANT]
-> Uma ação pode acessar o `GITHUB_TOKEN` por meio do contexto `github.token`, mesmo que o fluxo de trabalho não transmita `GITHUB_TOKEN` explicitamente para a ação. Como uma boa prática de segurança, você deve sempre garantir que as ações tenham apenas o acesso mínimo necessário limitando as permissões concedidas ao `GITHUB_TOKEN`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../reference/workflows-and-actions/workflow-syntax.md#permissions).
+!!! important
+    Uma ação pode acessar o `GITHUB_TOKEN` por meio do contexto `github.token`, mesmo que o fluxo de trabalho não transmita `GITHUB_TOKEN` explicitamente para a ação. Como uma boa prática de segurança, você deve sempre garantir que as ações tenham apenas o acesso mínimo necessário limitando as permissões concedidas ao `GITHUB_TOKEN`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../reference/workflows-and-actions/workflow-syntax.md#permissions).
 
 ### Exemplo 1: passagem do `GITHUB_TOKEN` como entrada
 
@@ -89,5 +89,5 @@ Se você precisar de um token que exija permissões que não estejam disponívei
 
 ## Próximas etapas
 
-* [GITHUB\_TOKEN](../concepts/security/github_token.md)
+* [GITHUB_TOKEN](../concepts/security/github_token.md)
 * [Sintaxe de fluxo de trabalho para o GitHub Actions](../reference/workflows-and-actions/workflow-syntax.md#permissions)

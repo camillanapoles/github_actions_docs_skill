@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/billing-and-usage
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts
 ---
 
 # Cobrança e uso

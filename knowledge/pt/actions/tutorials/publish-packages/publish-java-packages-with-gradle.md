@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/publish-packages/publish-java-packages-with-gradle
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Publish packages
 ---
 
 # Publicando pacotes Java com o Gradle
@@ -18,7 +18,7 @@ _Neste tutorial, você aprenderá a usar o Gradle para publicar pacotes Java em 
 
 Este guia mostra como criar um fluxo de trabalho que publica pacotes Java no GitHub Packages e no Maven Central Repository. Com um único fluxo de trabalho, você pode publicar pacotes em um único repositório ou em vários repositórios.
 
-> \[!WARNING] Os exemplos usados neste guia referem-se ao serviço OSSRH herdado. Consulte [Publicação](https://central.sonatype.org/faq/what-is-different-between-central-portal-and-legacy-ossrh/#publishing) na documentação do Repositório Central do Maven.
+> [!WARNING] Os exemplos usados neste guia referem-se ao serviço OSSRH herdado. Consulte [Publicação](https://central.sonatype.org/faq/what-is-different-between-central-portal-and-legacy-ossrh/#publishing) na documentação do Repositório Central do Maven.
 
 ## Pré-requisitos
 
@@ -31,7 +31,7 @@ Você também pode achar útil ter um entendimento básico do seguinte:
 * [Trabalhando com o repositório do Apache Maven](https://docs.github.com/pt/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry)
 * [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md)
 * [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md)
-* [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md)
+* [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md)
 
 ## Sobre a configuração do pacote
 
@@ -120,7 +120,7 @@ Cada vez que você criar uma nova versão, você poderá acionar um fluxo de tra
 
 Você pode definir um novo repositório Maven no bloco de publicação do *build.gradle* que aponta para GitHub Packages. Nessa configuração do repositório, também é possível aproveitar as variáveis de ambiente definidas na execução do fluxo de trabalho de CI. Use a variável de ambiente `GITHUB_ACTOR` como um nome de usuário e defina a variável de ambiente `GITHUB_TOKEN` com o segredo `GITHUB_TOKEN`.
 
-O segredo `GITHUB_TOKEN` é definido como um token de acesso para o repositório sempre que um trabalho em um fluxo de trabalho é iniciado. Você deve definir as permissões desse token de acesso no arquivo de fluxo de trabalho para permitir acesso de leitura à permissão `contents` e acesso de gravação à permissão `packages`. Para saber mais, confira [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md).
+O segredo `GITHUB_TOKEN` é definido como um token de acesso para o repositório sempre que um trabalho em um fluxo de trabalho é iniciado. Você deve definir as permissões desse token de acesso no arquivo de fluxo de trabalho para permitir acesso de leitura à permissão `contents` e acesso de gravação à permissão `packages`. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md).
 
 Por exemplo, se sua organização for chamada de "octocat" e seu repositório for denominado "hello-world", a GitHub Packages configuração em *build.gradle* será semelhante ao exemplo abaixo.
 

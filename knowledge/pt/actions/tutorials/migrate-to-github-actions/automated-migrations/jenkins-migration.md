@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/jenkins-migration
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
 # Migrando do Jenkins com o Importador de GitHub Actions
@@ -26,7 +26,8 @@ As instruções a seguir orientarão você na configuração do ambiente a ser u
   * O Docker está [instalado](https://docs.docker.com/get-docker/) e em execução.
 
   * A [CLI do GitHub](https://cli.github.com) está instalada.
-  > \[!NOTE]
+!!! note
+
   > A CLI e o contêiner do GitHub Actions Importer não precisam ser instalados no mesmo servidor que a plataforma de CI.
 
 ### Limitações
@@ -88,12 +89,12 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
 
    O comando `configure` solicitará que você insira as seguintes informações:
 
-   * Em "Quais provedores de CI você está configurando?", use as teclas de direção para selecionar `Jenkins`, pressione <kbd>Espaço</kbd> para fazer a seleção e pressione <kbd>Enter</kbd>.
-   * Para "Personal access token para GitHub", insira o valor do personal access token (classic) que você criou anteriormente e pressione <kbd>Enter</kbd>.
-   * Para "URL base da instância do GitHub", insira pressione <kbd>Enter</kbd> para aceitar o valor padrão (`https://github.com`).
-   * Para "Personal access token for Jenkins", insira o valor do token de API pessoal do Jenkins criado anteriormente e pressione <kbd>Enter</kbd>.
-   * Em "Nome de usuário do Jenkins", insira seu nome de usuário do Jenkins e pressione <kbd>ENTER</kbd>.
-   * Em "URL base da instância do Jenkins", insira a URL da instância do Jenkins e pressione <kbd>ENTER</kbd>.
+   * Em "Quais provedores de CI você está configurando?", use as teclas de direção para selecionar `Jenkins`, pressione `Espaço` para fazer a seleção e pressione `Enter`.
+   * Para "Personal access token para GitHub", insira o valor do personal access token (classic) que você criou anteriormente e pressione `Enter`.
+   * Para "URL base da instância do GitHub", insira pressione `Enter` para aceitar o valor padrão (`https://github.com`).
+   * Para "Personal access token for Jenkins", insira o valor do token de API pessoal do Jenkins criado anteriormente e pressione `Enter`.
+   * Em "Nome de usuário do Jenkins", insira seu nome de usuário do Jenkins e pressione `ENTER`.
+   * Em "URL base da instância do Jenkins", insira a URL da instância do Jenkins e pressione `ENTER`.
 
    Um exemplo do comando `configure` é mostrado abaixo:
 
@@ -303,7 +304,8 @@ GitHub Actions Importer usa as seguintes variáveis de ambiente para se conectar
 
 * `JENKINS_ACCESS_TOKEN`: o token de API do Jenkins usado para exibir recursos do Jenkins.
 
-  > \[!NOTE]
+!!! note
+
   > Esse token exige acesso a todos os trabalhos que você deseja migrar ou auditar. Nos casos em que uma pasta ou um trabalho não herda as listas de controle de acesso dos pais, você precisa conceder permissões explícitas ou privilégios de administrador completos.
 
 * `JENKINS_USERNAME`: o nome de usuário da conta de usuário que criou o token de API do Jenkins.

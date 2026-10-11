@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/manage-your-work/close-inactive-issues
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Manage your work
 ---
 
 # Fechar questões inativas
@@ -67,8 +67,8 @@ No tutorial, primeiro, você criará um arquivo de fluxo de trabalho que usa a [
 
 Com base no parâmetro `schedule` (por exemplo, todos os dias à 1h30 UTC), o fluxo de trabalho encontrará os problemas inativos durante o período de tempo especificado e adicionará o comentário e o rótulo especificados. Além disso, o seu fluxo de trabalho fechará quaisquer problemas etiquetados anteriormente se nenhuma atividade adicional tiver ocorrido pelo período de tempo especificado.
 
-> \[!NOTE]
-> O evento `schedule` pode ser atrasado durante períodos de cargas altas de execuções de fluxo de trabalho do GitHub Actions. Os tempos de carregamento altos incluem o início de cada hora. Se a carga for suficientemente alta o suficiente, alguns trabalhos enfileirados talvez sejam descartados. Para diminuir a probabilidade de atraso, agende o fluxo de trabalho para ser executado em uma parte diferente da hora.
+!!! note
+    O evento `schedule` pode ser atrasado durante períodos de cargas altas de execuções de fluxo de trabalho do GitHub Actions. Os tempos de carregamento altos incluem o início de cada hora. Se a carga for suficientemente alta o suficiente, alguns trabalhos enfileirados talvez sejam descartados. Para diminuir a probabilidade de atraso, agende o fluxo de trabalho para ser executado em uma parte diferente da hora.
 
 Você pode visualizar o histórico de execução do fluxo de trabalho para revisar a execução periódica deste fluxo. Para saber mais, confira [Visualizar o histórico de execução do fluxo de trabalho](../../how-tos/monitor-workflows/view-workflow-run-history.md).
 

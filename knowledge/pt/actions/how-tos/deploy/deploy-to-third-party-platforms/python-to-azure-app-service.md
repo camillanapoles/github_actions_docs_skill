@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/deploy-to-third-party-platforms/python-to-azure-app-service
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Deploy / Deploy to third party platforms
 ---
 
 # Implantando Python em Azure App Service

@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/runners/github-hosted-runners
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Runners
 ---
 
 # Executores hospedados no GitHub
@@ -51,10 +51,9 @@ Recomendamos usar ações para interagir com o software instalado nos executores
 
 Se houver uma ferramenta que você deseja solicitar, abra um problema em [actions/runner-images](https://github.com/actions/runner-images). Este repositório também contém anúncios sobre todas as principais atualizações de software nos executores.
 
-> \[!NOTE]
->
-> * Você também pode instalar software adicional em executores hospedados em GitHub. Confira [Personalizando executores hospedados no GitHub](../../how-tos/manage-runners/github-hosted-runners/customize-runners.md).
-> * Embora a virtualização aninhada seja tecnicamente possível ao usar runners, ela não é oficialmente compatível. Qualquer uso de VMs aninhadas é experimental e feito por sua conta e risco, não oferecemos garantias sobre estabilidade, desempenho ou compatibilidade.
+!!! note
+    * Você também pode instalar software adicional em executores hospedados em GitHub. Confira [Personalizando executores hospedados no GitHub](../../how-tos/manage-runners/github-hosted-runners/customize-runners.md).
+    * Embora a virtualização aninhada seja tecnicamente possível ao usar runners, ela não é oficialmente compatível. Qualquer uso de VMs aninhadas é experimental e feito por sua conta e risco, não oferecemos garantias sobre estabilidade, desempenho ou compatibilidade.
 
 ### Imagens personalizadas
 

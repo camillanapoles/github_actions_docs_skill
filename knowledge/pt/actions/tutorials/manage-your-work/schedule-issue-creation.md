@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/manage-your-work/schedule-issue-creation
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Manage your work
 ---
 
 # Agendar a criação de problemas
@@ -98,8 +98,8 @@ No tutorial, primeiro você criará um arquivo de fluxo de trabalho que usa o Gi
 
 Com base no parâmetro `schedule` (por exemplo, todas as segundas-feiras às 7h20 UTC), o fluxo de trabalho criará um problema com os destinatários, os rótulos, o título e o corpo especificados. Se você definir `PINNED` como `true`, o fluxo de trabalho fixará o problema no seu repositório. Se você definir `CLOSE_PREVIOUS` como true, o fluxo de trabalho fechará o problema mais recente com os rótulos correspondentes.
 
-> \[!NOTE]
-> O evento `schedule` pode ser atrasado durante períodos de cargas altas de execuções de fluxo de trabalho do GitHub Actions. Os tempos de carregamento altos incluem o início de cada hora. Se a carga for suficientemente alta o suficiente, alguns trabalhos enfileirados talvez sejam descartados. Para diminuir a probabilidade de atraso, agende o fluxo de trabalho para ser executado em uma parte diferente da hora.
+!!! note
+    O evento `schedule` pode ser atrasado durante períodos de cargas altas de execuções de fluxo de trabalho do GitHub Actions. Os tempos de carregamento altos incluem o início de cada hora. Se a carga for suficientemente alta o suficiente, alguns trabalhos enfileirados talvez sejam descartados. Para diminuir a probabilidade de atraso, agende o fluxo de trabalho para ser executado em uma parte diferente da hora.
 
 Você pode visualizar o histórico de execução do fluxo de trabalho para revisar a execução periódica deste fluxo. Para saber mais, confira [Visualizar o histórico de execução do fluxo de trabalho](../../how-tos/monitor-workflows/view-workflow-run-history.md).
 

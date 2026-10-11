@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-hashicorp-vault
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Secure your work / Security harden deployments
 ---
 
 # Configurando o OpenID Connect no HashiCorp Vault
@@ -89,8 +89,8 @@ Para atualizar seus fluxos de trabalho para o OIDC, você deverá fazer duas alt
 1. Adicionar configurações de permissões para o token.
 2. Use a ação [`hashicorp/vault-action`](https://github.com/hashicorp/vault-action) para trocar o token OIDC (JWT) por um token de acesso à nuvem.
 
-> \[!NOTE]
-> Quando os ambientes são usados em fluxos de trabalho ou em políticas OIDC, recomendamos adicionar regras de proteção ao ambiente para segurança adicional. Por exemplo, você pode configurar regras de implantação em um ambiente para restringir quais ramificações e tags podem ser implantadas no ambiente ou acessar segredos de ambiente. Para saber mais, confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md).
+!!! note
+    Quando os ambientes são usados em fluxos de trabalho ou em políticas OIDC, recomendamos adicionar regras de proteção ao ambiente para segurança adicional. Por exemplo, você pode configurar regras de implantação em um ambiente para restringir quais ramificações e tags podem ser implantadas no ambiente ou acessar segredos de ambiente. Para saber mais, confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md).
 
 Para adicionar a integração do OIDC a seus fluxos de trabalho que lhes permitem acessar os segredos no Vault, você deverá adicionar as seguintes alterações de código:
 
@@ -105,12 +105,12 @@ Este exemplo demonstra como usar o OIDC com a ação oficial para solicitar um s
 
 A execução do trabalho ou do fluxo de trabalho requer uma configuração `permissions` com [`id-token: write`](../../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token) para permitir que o provedor OIDC de GitHub crie um token JWT para cada execução.
 
-> \[!NOTE] A configuração de `id-token: write` nas permissões do fluxo de trabalho não concede ao fluxo de trabalho permissão para modificar ou gravar em qualquer recurso. Em vez disso, só permite que o fluxo de trabalho solicite (busque) e use (defina) um token OIDC para uma ação ou etapa. Esse token é então utilizado para autenticar com serviços externos, utilizando um token de acesso de curta duração.
+> [!NOTE] A configuração de `id-token: write` nas permissões do fluxo de trabalho não concede ao fluxo de trabalho permissão para modificar ou gravar em qualquer recurso. Em vez disso, só permite que o fluxo de trabalho solicite (busque) e use (defina) um token OIDC para uma ação ou etapa. Esse token é então utilizado para autenticar com serviços externos, utilizando um token de acesso de curta duração.
 
 Para obter informações detalhadas sobre permissões necessárias, exemplos de configuração e cenários avançados, confira [Referência do OpenID Connect](../../../reference/security/oidc.md#workflow-permissions-for-the-requesting-the-oidc-token).
 
-> \[!NOTE]
-> Quando a chave `permissions` é usada, todas as permissões não especificadas são definidas como *sem acesso*, com exceção do escopo de metadados, que sempre obtém acesso de *leitura*. Como resultado, talvez seja necessário adicionar outras permissões, como `contents: read`. Para obter mais informações, confira "[Autenticação automática de token](../../../tutorials/authenticate-with-github_token.md)".
+!!! note
+    Quando a chave `permissions` é usada, todas as permissões não especificadas são definidas como *sem acesso*, com exceção do escopo de metadados, que sempre obtém acesso de *leitura*. Como resultado, talvez seja necessário adicionar outras permissões, como `contents: read`. Para obter mais informações, confira "[Autenticação automática de token](../../../tutorials/authenticate-with-github_token.md)".
 
 ### Solicitando o token de acesso
 
@@ -149,10 +149,9 @@ jobs:
           # This step has access to the secret retrieved above; see hashicorp/vault-action for more details.
 ```
 
-> \[!NOTE]
->
-> * Se o servidor do Cofre não estiver acessível na rede pública, considere usar um executor auto-hospedado com outros [métodos de autenticação](https://www.vaultproject.io/docs/auth) do Cofre disponíveis. Para saber mais, confira [Executores auto-hospedados](../../../concepts/runners/self-hosted-runners.md).
-> *
+!!! note
+    * Se o servidor do Cofre não estiver acessível na rede pública, considere usar um executor auto-hospedado com outros [métodos de autenticação](https://www.vaultproject.io/docs/auth) do Cofre disponíveis. Para saber mais, confira [Executores auto-hospedados](../../../concepts/runners/self-hosted-runners.md).
+    *
 
 `VAULT-NAMESPACE` deve ser definido para uma implantação do Vault Enterprise (incluindo o HCP Vault). Para mais informações, confira [Namespace do Cofre](https://www.vaultproject.io/docs/enterprise/namespaces).
 

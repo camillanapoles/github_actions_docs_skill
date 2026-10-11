@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/use-containerized-services
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials
 ---
 
 # Usando serviços de contêineres

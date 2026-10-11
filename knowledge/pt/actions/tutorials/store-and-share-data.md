@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/store-and-share-data
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials
 ---
 
 # Armazenar e compartilhar dados com artefatos de fluxo de trabalho
@@ -74,8 +74,8 @@ jobs:
           path: output/test/code-coverage.html
 ```
 
-> \[!TIP]
-> Para exibir os resultados da cobertura de código diretamente em pull requests, em vez de baixar artefatos, você pode enviar um relatório Cobertura XML para Code Quality. Confira [Configurando a cobertura de código para seu repositório](https://docs.github.com/pt/code-security/how-tos/maintain-quality-code/set-up-code-coverage).
+!!! tip
+    Para exibir os resultados da cobertura de código diretamente em pull requests, em vez de baixar artefatos, você pode enviar um relatório Cobertura XML para Code Quality. Confira [Configurando a cobertura de código para seu repositório](https://docs.github.com/pt/code-security/how-tos/maintain-quality-code/set-up-code-coverage).
 
 ## Configurar um período de retenção do artefato personalizado
 
@@ -96,8 +96,8 @@ O valor `retention-days` não pode exceder o limite de retenção definido pelo 
 
 Use a ação [`actions/download-artifact`](https://github.com/actions/download-artifact) para baixar artefatos já carregados durante uma execução de fluxo de trabalho.
 
-> \[!NOTE]
-> Se você quiser baixar artefatos de um fluxo de trabalho ou uma execução de fluxo de trabalho diferente, será necessário fornecer um token e executar o identificador. Confira [Baixar artefatos de outras execuções de fluxo de trabalho ou repositórios](https://github.com/actions/download-artifact?tab=readme-ov-file#download-artifacts-from-other-workflow-runs-or-repositories) na documentação da ação `download-artifact`.
+!!! note
+    Se você quiser baixar artefatos de um fluxo de trabalho ou uma execução de fluxo de trabalho diferente, será necessário fornecer um token e executar o identificador. Confira [Baixar artefatos de outras execuções de fluxo de trabalho ou repositórios](https://github.com/actions/download-artifact?tab=readme-ov-file#download-artifacts-from-other-workflow-runs-or-repositories) na documentação da ação `download-artifact`.
 
 Especifique o nome de um artefato para fazer o download de um artefato individual. Se você carregar um artefato sem especificar um nome, o nome padrão será `artifact`.
 

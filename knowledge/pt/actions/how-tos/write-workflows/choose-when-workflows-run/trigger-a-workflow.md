@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Write workflows / Choose when workflows run
 ---
 
 # Acionando um fluxo de trabalho
@@ -29,7 +29,7 @@ Quando você usa o `GITHUB_TOKEN` do repositório para executar tarefas, os even
             Eventos `pull_request` com os tipos de atividade `opened`, `synchronize` ou `reopened`: quando um fluxo de trabalho que usa `GITHUB_TOKEN` cria ou atualiza uma pull request, o evento `pull_request` resultante cria execuções do fluxo de trabalho em um estado **aprovação-obrigatória**. O pull request exibe um banner na caixa de merge, e um usuário com acesso de escrita ao repositório pode iniciar as execuções selecionando **Aprovar fluxos de trabalho para execução**. Outros `pull_request` tipos de atividade (como `labeled`, `edited`ou `closed`) não criam execuções de fluxo de trabalho. Isso impede que o fluxo de trabalho recursivo seja executado enquanto ainda permite que os fluxos de trabalho de CI sejam executados em solicitações de pull criadas pela automação. Para obter mais informações sobre como aprovar execuções de fluxo de trabalho, consulte [AUTOTITLE](../../manage-workflow-runs/approve-runs-from-forks.md).
   ```
 
-Para todos os outros eventos, esse comportamento impede que você crie acidentalmente execuções de fluxo de trabalho recursivo. Por exemplo, se uma execução de fluxo de trabalho efetuar push do código usando o `GITHUB_TOKEN` do repositório, um novo fluxo de trabalho não será executado mesmo quando o repositório contiver um fluxo de trabalho configurado para ser executado quando os eventos do `push` ocorrerem. Para obter mais informações, consulte [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../../../tutorials/authenticate-with-github_token.md).
+Para todos os outros eventos, esse comportamento impede que você crie acidentalmente execuções de fluxo de trabalho recursivo. Por exemplo, se uma execução de fluxo de trabalho efetuar push do código usando o `GITHUB_TOKEN` do repositório, um novo fluxo de trabalho não será executado mesmo quando o repositório contiver um fluxo de trabalho configurado para ser executado quando os eventos do `push` ocorrerem. Para obter mais informações, consulte [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../../tutorials/authenticate-with-github_token.md).
 
 Se você quiser disparar um fluxo de trabalho de dentro de uma execução de fluxo de trabalho, poderá usar um GitHub App token de acesso de instalação ou um personal access token em vez de `GITHUB_TOKEN` para disparar eventos que exigem um token. Usar uma dessas alternativas também permite que os fluxos de trabalho sejam executados `pull_request` automaticamente (sem o prompt de aprovação descrito acima) quando a solicitação de pull é criada ou atualizada pela automação.
 
@@ -309,11 +309,11 @@ Ao usar os eventos `push` e `pull_request`, você pode configurar um fluxo de tr
 
 Use o filtro `paths` quando quiser incluir padrões de caminho de arquivo ou quando quiser incluir e excluir padrões de caminho de arquivo. Use o filtro `paths-ignore` quando quiser apenas excluir padrões de caminho de arquivo. Não é possível usar os filtros `paths` e `paths-ignore` para o mesmo evento em um fluxo de trabalho. Caso deseje incluir e excluir padrões de caminho para um evento individual, use o filtro `paths` prefixado o caractere `!` para indicar os caminhos que devem ser excluídos.
 
-> \[!NOTE]
-> A ordem de definição dos padrões `paths` é importante:
->
-> * Um padrão negativo correspondente (prefixado com `!`) após uma correspondência positiva excluirá o caminho.
-> * Um padrão positivo correspondente após uma correspondência negativa incluirá o caminho novamente.
+!!! note
+    A ordem de definição dos padrões `paths` é importante:
+
+    * Um padrão negativo correspondente (prefixado com `!`) após uma correspondência positiva excluirá o caminho.
+    * Um padrão positivo correspondente após uma correspondência negativa incluirá o caminho novamente.
 
 Se você definir `branches`/`branches-ignore` e `paths`/`paths-ignore`, o fluxo de trabalho só será executado quando ambos os filtros forem atendidos.
 
@@ -440,11 +440,10 @@ Ao usar o evento `workflow_dispatch`, opcionalmente, você pode especificar as e
 Esse gatilho só recebe eventos quando o arquivo de fluxo de trabalho está na ramificação padrão.
 O fluxo de trabalho disparado recebe os dados de entrada no contexto `inputs`. Para obter mais informações, confira [Contextos](../../../reference/workflows-and-actions/contexts.md#inputs-context).
 
-> \[!NOTE]
->
-> * O fluxo de trabalho também receberá as entradas no contexto de `github.event.inputs`. As informações no contexto `inputs` e no contexto `github.event.inputs` são idênticas, exceto que o contexto `inputs` preserva valores boolianos como boolianos em vez de convertê-los em cadeias de caracteres. O tipo `choice` é resolvido para uma cadeia de caracteres e é uma única opção selecionável.
-> * O número máximo de propriedades de nível superior é `inputs` 25 .
-> * O conteúdo máximo para `inputs` é de 65.535 caracteres.
+!!! note
+    * O fluxo de trabalho também receberá as entradas no contexto de `github.event.inputs`. As informações no contexto `inputs` e no contexto `github.event.inputs` são idênticas, exceto que o contexto `inputs` preserva valores boolianos como boolianos em vez de convertê-los em cadeias de caracteres. O tipo `choice` é resolvido para uma cadeia de caracteres e é uma única opção selecionável.
+    * O número máximo de propriedades de nível superior é `inputs` 25 .
+    * O conteúdo máximo para `inputs` é de 65.535 caracteres.
 
 ```yaml
 on:
@@ -623,9 +622,9 @@ jobs:
           echo 'publishing'
 ```
 
-> \[!NOTE]
-> Ambientes, segredos de ambiente e regras de proteção para implantações estão disponíveis em repositórios públicos para todos os planos atuais GitHub . Eles não estão disponíveis em planos antigos, como Bronze, Prata ou Ouro. Para acesso a ambientes, segredos de ambiente e ramificações de implantação em repositórios privados ou internos, você deve usar GitHub Pro, GitHub Team, ou GitHub Enterprise.
-> Se você estiver em um GitHub Free, GitHub Proou GitHub Team plano, outras regras de proteção de implantação, como um temporizador de espera ou revisores necessários, só estarão disponíveis para repositórios públicos.
+!!! note
+    Ambientes, segredos de ambiente e regras de proteção para implantações estão disponíveis em repositórios públicos para todos os planos atuais GitHub . Eles não estão disponíveis em planos antigos, como Bronze, Prata ou Ouro. Para acesso a ambientes, segredos de ambiente e ramificações de implantação em repositórios privados ou internos, você deve usar GitHub Pro, GitHub Team, ou GitHub Enterprise.
+    Se você estiver em um GitHub Free, GitHub Proou GitHub Team plano, outras regras de proteção de implantação, como um temporizador de espera ou revisores necessários, só estarão disponíveis para repositórios públicos.
 
 ## Eventos disponíveis
 

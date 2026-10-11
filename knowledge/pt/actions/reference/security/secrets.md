@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/security/secrets
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Security
 ---
 
 # Referência de segredos
@@ -16,8 +16,8 @@ _Encontre informações técnicas sobre segredos em GitHub Actions._
 
 ## Nomear os seus segredos
 
-> \[!TIP]
-> Para ajudar a garantir que GitHub os segredos sejam redigidos nos logs corretamente, evite usar dados estruturados como os valores dos segredos.
+!!! tip
+    Para ajudar a garantir que GitHub os segredos sejam redigidos nos logs corretamente, evite usar dados estruturados como os valores dos segredos.
 
 As regras a seguir aplicam-se aos nomes dos segredos:
 
@@ -49,7 +49,7 @@ Os segredos da organização e do repositório são lidos quando uma execução 
 
 GitHub oculta automaticamente as seguintes informações confidenciais dos logs do fluxo de trabalho.
 
-> \[!NOTE] Caso deseje que outros tipos de informações confidenciais sejam ocultados automaticamente, entre em contato conosco em nossas [discussões da comunidade](https://github.com/orgs/community/discussions?discussions_q=is%3Aopen+label%3AActions).
+> [!NOTE] Caso deseje que outros tipos de informações confidenciais sejam ocultados automaticamente, entre em contato conosco em nossas [discussões da comunidade](https://github.com/orgs/community/discussions?discussions_q=is%3Aopen+label%3AActions).
 
 * Chaves do Azure de 32 e 64 bytes
 * Senhas de aplicativos cliente do Azure AD

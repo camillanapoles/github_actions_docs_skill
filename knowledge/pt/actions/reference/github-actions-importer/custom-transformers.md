@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/github-actions-importer/custom-transformers
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Github actions importer
 ---
 
 # Estendendo o Importador do GitHub Actions com transformadores personalizados
@@ -40,8 +40,8 @@ Como alternativa, você pode usar a sintaxe de padrão glob para especificar vá
 gh actions-importer ... --custom-transformers transformers/*.rb
 ```
 
-> \[!NOTE]
-> Quando você usa transformadores personalizados, os arquivos de transformador personalizados precisam residir no mesmo diretório ou em subdiretórios, no local em que o comando `gh actions-importer` é executado.
+!!! note
+    Quando você usa transformadores personalizados, os arquivos de transformador personalizados precisam residir no mesmo diretório ou em subdiretórios, no local em que o comando `gh actions-importer` é executado.
 
 ## Criar transformadores personalizados para itens
 
@@ -85,8 +85,8 @@ O exemplo acima resulta na seguinte etapa do fluxo de trabalho GitHub Actions. E
 
 O método `transform` usa o identificador da etapa de compilação da instância de CI/CD de origem em um argumento. Neste exemplo, o identificador é `buildJavaScriptLibrary`. Você também pode usar valores separados por vírgulas para passar vários identificadores para o método `transform`. Por exemplo, `transform "buildJavaScriptApp", "buildTypeScriptApp" { |item| ... }`.
 
-> \[!NOTE]
-> A estrutura de dados de `item` será diferente dependendo da plataforma de CI/CD e do tipo de item que está sendo convertido.
+!!! note
+    A estrutura de dados de `item` será diferente dependendo da plataforma de CI/CD e do tipo de item que está sendo convertido.
 
 ## Criando transformadores customizados para runners
 
@@ -162,7 +162,8 @@ Há várias maneiras de configurar os transformadores personalizados para mapear
   env /^(.+)_SSH_KEY/, secret("%s_SSH_KEY)
   ```
 
-  > \[!NOTE]
+!!! note
+
   > A ordem na qual os métodos `env` são definidos importa ao usar expressões regulares. O primeiro transformador `env` que corresponde a um nome de variável de ambiente tem precedência sobre métodos `env` subsequentes. Você deve definir primeiro os transformadores de variáveis de ambiente mais específicos.
 
 ## Aviso legal

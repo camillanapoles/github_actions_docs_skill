@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/get-started/quickstart
 captured: '2026-10-11'
-section: GitHub Actions
+section: Get started
 ---
 
 # Guia Rápido do GitHub Actions
@@ -46,7 +46,7 @@ Este guia supõe que:
 * Você tem um repositório no GitHub qual pode adicionar arquivos.
 * Você tem acesso a GitHub Actions.
 
-  > \[!NOTE] Se a guia **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Ações** não for exibida com o nome do repositório ativado GitHub, pode ser porque As ações estão desabilitadas para o repositório. Para saber mais, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository).
+  > [!NOTE] Se a guia **(play) Ações** não for exibida com o nome do repositório ativado GitHub, pode ser porque As ações estão desabilitadas para o repositório. Para saber mais, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository).
 
 ## Criar o seu primeiro fluxo de trabalho
 
@@ -54,7 +54,8 @@ Este guia supõe que:
    * Se o `.github/workflows` diretório já existir, navegue até esse diretório, clique em GitHub**Adicionar arquivo** e, em seguida, clique em **Criar novo arquivo** e nomeie o arquivo`github-actions-demo.yml`.
 
    * Se o repositório não tiver um `.github/workflows` diretório, vá para a página principal do repositório, clique em GitHub e, em seguida, clique em \*\*\*\***Criar novo arquivo** e nomeie o arquivo`.github/workflows/github-actions-demo.yml`. Isso criará os diretórios `.github` e `workflows` e o arquivo `github-actions-demo.yml` em uma única etapa.
-   > \[!NOTE]
+!!! note
+
    > Para GitHub descobrir todos os GitHub Actions fluxos de trabalho em seu repositório, você deve salvar os arquivos de fluxo de trabalho em um diretório chamado `.github/workflows`.
    >
    > É possível dar ao arquivo de fluxo de trabalho qualquer nome que desejar, mas você deverá usar `.yml` ou `.yaml` como a extensão de nome de arquivo. YAML é uma linguagem de marcação comumente usada para arquivos de configuração.
@@ -98,7 +99,7 @@ Se você optar por iniciar uma solicitação de pull, poderá continuar e criar 
 
 1. Em GitHub, acesse a página principal do repositório.
 
-2. No nome do repositório, clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Actions**.
+2. No nome do repositório, clique em **(play) Actions**.
 
    ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
 

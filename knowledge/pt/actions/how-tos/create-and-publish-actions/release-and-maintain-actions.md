@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/create-and-publish-actions/release-and-maintain-actions
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Create and publish actions
 ---
 
 # Aprovando e mantendo ações
@@ -46,7 +46,8 @@ Para dar suporte ao processo de desenvolvedor na próxima seção, adicione dois
 1. Adicione um fluxo de trabalho que é disparado quando um commit é enviado por push para um branch de recursos ou para `main` ou quando uma solicitação de pull é criada. Configure o fluxo de trabalho para executar seus testes de unidade e integração. Para ver um exemplo, confira [este fluxo de trabalho](https://github.com/actions/javascript-action/blob/main/.github/workflows/ci.yml).
 2. Adicione um fluxo de trabalho que é acionado quando uma versão é publicada ou editada. Configure o fluxo de trabalho para garantir que as tags semânticas estejam prontas. Use uma ação como [JasonEtco/build-and-tag-action](https://github.com/JasonEtco/build-and-tag-action) para compilar e empacotar o arquivo JavaScript e de metadados e forçar o push das tags semânticas principal, secundário e de patch. Para obter mais informações sobre tags semânticas, confira [Sobre o controle de versão semântico](https://docs.npmjs.com/about-semantic-versioning).
 
-   > \[!NOTE]
+!!! note
+
    > Se você habilitar versões imutáveis para o seu repositório, não poderá usar esta ação para forçar o envio de tags associadas a versões em GitHub. Para saber como gerenciar suas versões com versões imutáveis, confira [Como usar versões e marcas imutáveis para gerenciar as versões da sua ação](using-immutable-releases-and-tags-to-manage-your-actions-releases.md).
 
 ### Exemplo do processo de desenvolvedor

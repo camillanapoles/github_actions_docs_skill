@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs/remove-workflow-artifacts
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Manage workflow runs
 ---
 
 # Remover artefatos de fluxo de trabalho
@@ -16,22 +16,22 @@ _Você pode recuperar o armazenamento usado GitHub Actions excluindo artefatos a
 
 ## Excluir um artefato
 
-> \[!WARNING]
-> Depois que você excluir um artefato, ele não poderá ser restaurado.
+!!! warning
+    Depois que você excluir um artefato, ele não poderá ser restaurado.
 
 É necessário o acesso de gravação ao repositório é para executar essas etapas.
 
 Por padrão, GitHub armazena logs de build e artefatos por 90 dias e esse período de retenção pode ser personalizado. Para saber mais, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#configuring-the-retention-period-for-github-actions-artifacts-and-logs-in-your-repository).
 
 1. Em GitHub, acesse a página principal do repositório.
-2. No nome do repositório, clique em **<svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-play" aria-label="play" role="img"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Actions**.
+2. No nome do repositório, clique em **(play) Actions**.
 
    ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
    ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
-5. Em **Artefatos**, clique <svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-trash" aria-label="Remove artifact ARTIFACT-NAME" role="img"><path d="M11 1.75V3h2.25a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75ZM4.496 6.675l.66 6.6a.25.25 0 0 0 .249.225h5.19a.25.25 0 0 0 .249-.225l.66-6.6a.75.75 0 0 1 1.492.149l-.66 6.6A1.748 1.748 0 0 1 10.595 15h-5.19a1.75 1.75 0 0 1-1.741-1.575l-.66-6.6a.75.75 0 1 1 1.492-.15ZM6.5 1.75V3h3V1.75a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25Z"></path></svg> ao lado do artefato que você deseja remover.
+5. Em **Artefatos**, clique (Remove artifact ARTIFACT-NAME) ao lado do artefato que você deseja remover.
 
    ![Captura de tela mostrando artefatos criados durante uma execução de fluxo de trabalho. Um ícone de lixeira, usado para remover um artefato, está contornado em laranja escuro.](/assets/images/help/repository/actions-delete-artifact-updated.png)
 

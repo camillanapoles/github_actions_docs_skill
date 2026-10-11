@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-where-workflows-run
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Write workflows
 ---
 
 # Escolhendo onde seu fluxo de trabalho é executado

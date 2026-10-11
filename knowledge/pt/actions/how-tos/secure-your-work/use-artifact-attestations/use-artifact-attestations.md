@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Secure your work / Use artifact attestations
 ---
 
 # Usar atestados de artefatos para estabelecer a procedência de compilações
@@ -159,7 +159,7 @@ Para obter um exemplo de fluxo de trabalho, confira [Carregando dados de armazen
 
 Você pode validar atestados de artefato para binários e imagens de contêiner e validar atestados SBOM usando o GitHub CLI. Para obter mais informações, consulte a [`attestation`](https://cli.github.com/manual/gh_attestation) seção do GitHub CLI manual.
 
-> \[!NOTE] Esses comandos presumem que você esteja em um ambiente online. Se você estiver em um ambiente offline ou desconectado, confira [Verificação de atestados offline](verify-attestations-offline.md).
+> [!NOTE] Esses comandos presumem que você esteja em um ambiente online. Se você estiver em um ambiente offline ou desconectado, confira [Verificação de atestados offline](verify-attestations-offline.md).
 
 ### Verificando um atestado de artefato para binários
 

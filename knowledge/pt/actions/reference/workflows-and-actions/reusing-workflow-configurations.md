@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/reusing-workflow-configurations
 captured: '2026-10-11'
-section: GitHub Actions
+section: Reference / Workflows and actions
 ---
 
 # Reutilizando configurações de fluxo de trabalho
@@ -31,19 +31,18 @@ Um fluxo de trabalho reutilizável pode ser usado por outro fluxo de trabalho se
 A tabela a seguir mostra a acessibilidade de fluxos de trabalho reutilizáveis a um fluxo de trabalho do chamador, dependendo da visibilidade do repositório do host.
 
 | Repositório do chamador | Repositórios de fluxos de trabalho acessíveis |
-| ----------------------- | --------------------------------------------- |
+|-----------------------|---------------------------------------------|
 | `private`               |                                               |
 | `private`               |                                               |
 | e`public`               |                                               |
-|                         |                                               |
 | `public`                | `public`                                      |
 
 As **permissões de ações** na página de configurações de ações do repositório do chamador devem ser configuradas para permitir o uso de ações e fluxos de trabalho reutilizáveis; consulte [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-select-actions-and-reusable-workflows-to-run).
 
 Para privados, é necessário configurar explicitamente a política de **Acesso** na página de configurações de Ações do repositório do fluxo de trabalho chamado, permitindo o acesso por repositórios que contenham fluxos de trabalho de origem — consulte [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository).
 
-> \[!NOTE]
-> Para aprimorar a segurança, o GitHub Actions não dá suporte a redirecionamentos de ações nem a fluxos de trabalho reutilizáveis. Isso significa que quando o proprietário, o nome do repositório de uma ação ou o nome da ação é alterado, todos os fluxos de trabalho que usarem essa ação com o nome anterior falharão.
+!!! note
+    Para aprimorar a segurança, o GitHub Actions não dá suporte a redirecionamentos de ações nem a fluxos de trabalho reutilizáveis. Isso significa que quando o proprietário, o nome do repositório de uma ação ou o nome da ação é alterado, todos os fluxos de trabalho que usarem essa ação com o nome anterior falharão.
 
 ### Limitações de fluxos de trabalho reutilizáveis
 
@@ -51,7 +50,7 @@ Para privados, é necessário configurar explicitamente a política de **Acesso*
 
 * Você pode chamar até 50 fluxos de trabalho reutilizáveis exclusivos por meio de um só arquivo de fluxo de trabalho. Esse limite inclui árvores de fluxos de trabalho aninhados reutilizáveis que podem ser chamados começando do arquivo de fluxo de trabalho do chamador de nível superior.
 
-  Por exemplo, *top-level-caller-workflow\.yml* → *called-workflow-1.yml* → *called-workflow-2.yml* conta como 2 fluxos de trabalho reutilizáveis.
+  Por exemplo, *top-level-caller-workflow.yml* → *called-workflow-1.yml* → *called-workflow-2.yml* conta como 2 fluxos de trabalho reutilizáveis.
 
 * As variáveis de ambiente definidas em um contexto `env` definido no nível do fluxo de trabalho do chamador não são propagadas para o fluxo de trabalho chamado. Para saber mais, confira [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md) e [Referência de contextos](contexts.md#env-context).
 
@@ -79,7 +78,8 @@ Ao chamar um fluxo de trabalho reutilizável, você só poderá usar as palavras
 * [`jobs.<job_id>.permissions`](workflow-syntax.md#jobsjob_idpermissions)
 * [`jobs.<job_id>.cache-mode`](workflow-syntax.md#jobsjob_idcache-mode)
 
-  > \[!NOTE]
+!!! note
+
   >
   > * Se `jobs.<job_id>.permissions` não for especificado no trabalho de chamada, o fluxo de trabalho chamado terá as permissões padrão para o `GITHUB_TOKEN`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#permissions).
   > * As permissões `GITHUB_TOKEN` transmitidas do fluxo de trabalho do chamador só podem ser rebaixadas (não elevadas) pelo fluxo de trabalho chamado.
@@ -102,7 +102,7 @@ Fluxos de trabalho chamados que pertencem ao mesmo usuário, organização que o
 
 Um fluxo de trabalho que contém fluxos de trabalho aninhados reutilizáveis falhará se qualquer um dos fluxos de trabalho aninhados estiver inacessível ao fluxo de trabalho inicial do chamador. Para obter mais informações, confira "[Como acessar a fluxos de trabalho reutilizáveis](#access-to-reusable-workflows)".
 
-As permissões `GITHUB_TOKEN` só podem ser as mesmas ou mais restritivas nos fluxos de trabalho aninhados. Por exemplo, na cadeia de fluxo de trabalho A > B > C, se o fluxo de trabalho A tiver permissão do token `package: read`, B e C não poderão ter a permissão `package: write`. Para saber mais, confira [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md).
+As permissões `GITHUB_TOKEN` só podem ser as mesmas ou mais restritivas nos fluxos de trabalho aninhados. Por exemplo, na cadeia de fluxo de trabalho A > B > C, se o fluxo de trabalho A tiver permissão do token `package: read`, B e C não poderão ter a permissão `package: write`. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md).
 
 Para obter informações sobre como usar a API para determinar quais arquivos de fluxo de trabalho estavam envolvidos em uma execução de fluxo de trabalho específica, confira [Reutilizar fluxos de trabalho](../../how-tos/reuse-automations/reuse-workflows.md#monitoring-which-workflows-are-being-used).
 
@@ -174,7 +174,7 @@ O arquivo de metadados precisa ter o mesmo nome do arquivo de fluxo de trabalho,
     "filePatterns": [
         "package.json$",
         "^Dockerfile",
-        ".*\\.md$"
+        ".*\.md$"
     ]
 }
 ```

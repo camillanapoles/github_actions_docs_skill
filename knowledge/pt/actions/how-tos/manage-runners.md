@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos
 ---
 
 # Gerenciar corredores

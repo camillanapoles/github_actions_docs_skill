@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/use-github-actions-importer
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
 # Automatizando a migração com o importador de GitHub Actions
@@ -42,7 +42,8 @@ O GitHub Actions Importer tem os seguintes requisitos:
   * O Docker está [instalado](https://docs.docker.com/get-docker/) e em execução.
   * A [CLI do GitHub](https://cli.github.com) está instalada.
 
-  > [!NOTE]
+!!! note
+
   > A CLI e o contêiner do GitHub Actions Importer não precisam ser instalados no mesmo servidor que a plataforma de CI.
 
 ### Instalação da extensão da CLI do GitHub Actions Importer

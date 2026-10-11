@@ -7,14 +7,14 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/use-artifact-attestations/enforce-artifact-attestations
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Secure your work / Use artifact attestations
 ---
 
 # Impondo atestados de artefatos com um controlador de admissão do Kubernetes
 
 _Use um controlador de admissão para impor atestados de artefato em seu cluster Kubernetes._
 
-> \[!NOTE] Antes de continuar, verifique se você habilitou a procedência do build para imagens de contêiner, incluindo a definição do atributo `push-to-registry` na [ação `attest`](https://github.com/actions/attest), conforme documentado em [Gerando a procedência do build para imagens de contêiner](use-artifact-attestations.md#generating-build-provenance-for-container-images). Isso é necessário para que o Controlador de Política verifique o atestado.
+> [!NOTE] Antes de continuar, verifique se você habilitou a procedência do build para imagens de contêiner, incluindo a definição do atributo `push-to-registry` na [ação `attest`](https://github.com/actions/attest), conforme documentado em [Gerando a procedência do build para imagens de contêiner](use-artifact-attestations.md#generating-build-provenance-for-container-images). Isso é necessário para que o Controlador de Política verifique o atestado.
 
 ## Introdução ao controlador de admissão do Kubernetes
 
@@ -60,8 +60,8 @@ Agora você instalou a raiz de confiança do GitHub e uma política de atestado 
 
 ### Habilitar a política em seu namespace
 
-> \[!WARNING]
-> Essa política não será aplicada até que você especifique a quais namespaces ela deve se aplicar.
+!!! warning
+    Essa política não será aplicada até que você especifique a quais namespaces ela deve se aplicar.
 
 Cada namespace em seu cluster pode impor políticas de forma independente. Para habilitar a imposição em um namespace, você pode adicionar o seguinte rótulo ao namespace:
 

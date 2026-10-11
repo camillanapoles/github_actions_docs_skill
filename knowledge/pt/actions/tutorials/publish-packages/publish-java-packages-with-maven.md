@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/publish-packages/publish-java-packages-with-maven
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Publish packages
 ---
 
 # Publicando pacotes de Java com o Maven
@@ -18,7 +18,7 @@ _Neste tutorial, você aprenderá a usar o Maven para publicar pacotes Java em u
 
 Este guia mostra como criar um fluxo de trabalho que publica pacotes Java no GitHub Packages e no Maven Central Repository. Com um único fluxo de trabalho, você pode publicar pacotes em um único repositório ou em vários repositórios.
 
-> \[!WARNING] Os exemplos usados neste guia referem-se ao serviço OSSRH herdado. Consulte [Publicação](https://central.sonatype.org/faq/what-is-different-between-central-portal-and-legacy-ossrh/#publishing) na documentação do Repositório Central do Maven.
+> [!WARNING] Os exemplos usados neste guia referem-se ao serviço OSSRH herdado. Consulte [Publicação](https://central.sonatype.org/faq/what-is-different-between-central-portal-and-legacy-ossrh/#publishing) na documentação do Repositório Central do Maven.
 
 ## Pré-requisitos
 
@@ -31,13 +31,13 @@ Você também pode achar útil ter um entendimento básico do seguinte:
 * [Trabalhando com o repositório do Apache Maven](https://docs.github.com/pt/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry)
 * [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md)
 * [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md)
-* [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md)
+* [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md)
 
 ## Sobre a configuração do pacote
 
 Os campos `groupId` e `artifactId` do arquivo *pom.xml* criam um identificador exclusivo para o pacote que os registros usam para vincular seu pacote a um registro. Para obter mais informações, confira [Guia para upload de artefatos no Central Repository](https://maven.apache.org/repository/guide-central-repository-upload.html) na documentação do Apache Maven.
 
-> \[!WARNING] Seu pacote Apache Maven deve seguir a convenção de nomenclatura, portanto, o campo `artifactId` deve conter apenas letras minúsculas, dígitos ou hifens. Para obter mais informações, confira [Convenção de nomenclatura das coordenadas Maven](https://maven.apache.org/guides/mini/guide-naming-conventions.html) na documentação do maven.apache.org. Se você usar letras maiúsculas no nome do artefato, obterá uma resposta *422 Unprocessable Entity*.
+> [!WARNING] Seu pacote Apache Maven deve seguir a convenção de nomenclatura, portanto, o campo `artifactId` deve conter apenas letras minúsculas, dígitos ou hifens. Para obter mais informações, confira [Convenção de nomenclatura das coordenadas Maven](https://maven.apache.org/guides/mini/guide-naming-conventions.html) na documentação do maven.apache.org. Se você usar letras maiúsculas no nome do artefato, obterá uma resposta *422 Unprocessable Entity*.
 
 O arquivo *pom.xml* também contém a configuração dos repositórios de gerenciamento de distribuição nos quais o Maven implantará os pacotes. Cada repositório deve ter um nome e uma URL de implementação. A autenticação para esses repositórios pode ser configurada no arquivo *.m2/settings.xml* no diretório inicial do usuário que executa o Maven.
 
@@ -107,7 +107,7 @@ Cada vez que você criar uma nova versão, você poderá acionar um fluxo de tra
 
 Neste fluxo de trabalho, você pode usar a ação `setup-java`. Esta ação instala a versão especificada do JDK em `PATH` e também configura um *settings.xml* do Maven para publicar o pacote em GitHub Packages. O *settings.xml* gerado define a autenticação para um servidor com a `id``github`, usando a variável de ambiente `GITHUB_ACTOR` como nome de usuário e a variável de ambiente `GITHUB_TOKEN` como senha. A variável de ambiente `GITHUB_TOKEN` recebe o valor do segredo especial `GITHUB_TOKEN`.
 
-O segredo `GITHUB_TOKEN` é definido como um token de acesso para o repositório sempre que um trabalho em um fluxo de trabalho é iniciado. Você deve definir as permissões desse token de acesso no arquivo de fluxo de trabalho para permitir acesso de leitura à permissão `contents` e acesso de gravação à permissão `packages`. Para saber mais, confira [Usar GITHUB\_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md).
+O segredo `GITHUB_TOKEN` é definido como um token de acesso para o repositório sempre que um trabalho em um fluxo de trabalho é iniciado. Você deve definir as permissões desse token de acesso no arquivo de fluxo de trabalho para permitir acesso de leitura à permissão `contents` e acesso de gravação à permissão `packages`. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md).
 
 Para um projeto baseado em Maven, você pode usar essas configurações criando um repositório de distribuição no arquivo *pom.xml* com um `id` de `github` que aponta para seu endpoint GitHub Packages.
 

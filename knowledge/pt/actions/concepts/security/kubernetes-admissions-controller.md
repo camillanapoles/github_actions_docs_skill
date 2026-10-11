@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/security/kubernetes-admissions-controller
 captured: '2026-10-11'
-section: GitHub Actions
+section: Concepts / Security
 ---
 
 # Controlador de admissão do Kubernetes

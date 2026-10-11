@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/create-actions/create-a-javascript-action
 captured: '2026-10-11'
-section: GitHub Actions
+section: Tutorials / Create actions
 ---
 
 # Criando uma ação de JavaScript
@@ -24,8 +24,8 @@ Ao terminar esse projeto, você entenderá como criar sua própria ação JavaSc
 
 Para garantir que suas ações de JavaScript sejam compatíveis com todos os executores hospedados no GitHub (Ubuntu, Windows e macOS), o código JavaScript empacotado que você escreve deve ser JavaScript puro e não depender de outros binários. As ações JavaScript são executadas diretamente no executor e usam binários que já existem na imagem do executor.
 
-> \[!WARNING]
-> Ao criar fluxos de trabalho e ações, sempre considere se o código poderá executar entradas não confiáveis de possíveis invasores. Certos contextos devem ser tratados como entradas não confiáveis, uma vez que um invasor pode inserir seu próprio conteúdo malicioso. Para saber mais, confira [Referência de uso seguro](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks).
+!!! warning
+    Ao criar fluxos de trabalho e ações, sempre considere se o código poderá executar entradas não confiáveis de possíveis invasores. Certos contextos devem ser tratados como entradas não confiáveis, uma vez que um invasor pode inserir seu próprio conteúdo malicioso. Para saber mais, confira [Referência de uso seguro](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks).
 
 ## Pré-requisitos
 

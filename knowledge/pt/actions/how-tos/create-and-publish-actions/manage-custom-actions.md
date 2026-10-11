@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/create-and-publish-actions/manage-custom-actions
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Create and publish actions
 ---
 
 # Como gerenciar ações personalizadas
@@ -45,7 +45,7 @@ Para usar uma versão de ação específica, os usuários podem configurar seu G
 
 ### Usar tags para o gerenciamento de versão
 
-> \[!NOTE] Se você habilitou versões imutáveis para ajudar a evitar ataques de cadeia de fornecedores e alterações acidentais em suas versões, consulte [Como usar versões e marcas imutáveis para gerenciar as versões da sua ação](using-immutable-releases-and-tags-to-manage-your-actions-releases.md).
+> [!NOTE] Se você habilitou versões imutáveis para ajudar a evitar ataques de cadeia de fornecedores e alterações acidentais em suas versões, consulte [Como usar versões e marcas imutáveis para gerenciar as versões da sua ação](using-immutable-releases-and-tags-to-manage-your-actions-releases.md).
 
 Recomendamos o uso de tags para gerenciamento da versão de ações. Ao usar essa abordagem, os seus usuários poderão distinguir facilmente as versões principais e não principais:
 

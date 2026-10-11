@@ -7,7 +7,7 @@ lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/use-artifact-attestations
 captured: '2026-10-11'
-section: GitHub Actions
+section: How tos / Secure your work
 ---
 
 # Usar atestados de artefatos
