@@ -7,7 +7,7 @@
   "direction": "retry",
   "message": "5/7 gates aprovados",
   "next_issue": {
-    "key": "site:retry:8f4f2b17",
+    "key": "site:retry:f8f70a9d",
     "title": "[gate:site] Site MkDocs buildável em modo estrito",
     "gate": "site",
     "direction": "retry",
@@ -25,8 +25,9 @@
   },
   "envelopes": [
     {
-      "id": "tests:c8ac99b643",
+      "id": "tests:cde74010b3",
       "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
       "gate": "tests",
       "action": "python3 -m pytest tests/ -q",
       "status": 0,
@@ -35,7 +36,7 @@
       "direction": "continue",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:8f4f2b17",
+        "key": "site:retry:f8f70a9d",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -54,13 +55,14 @@
       "metrics": {
         "gate": "tests"
       },
-      "started_at": "2026-10-13T21:25:53+00:00",
-      "finished_at": "2026-10-13T21:25:53+00:00",
+      "started_at": "2026-10-13T22:11:00+00:00",
+      "finished_at": "2026-10-13T22:11:00+00:00",
       "duration_s": 0.0
     },
     {
-      "id": "capture:34f2268f2a",
+      "id": "capture:34db947cc9",
       "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
       "gate": "capture",
       "action": "scripts/extract.py (relatório em .ci/extract-report.md)",
       "status": 0,
@@ -69,7 +71,7 @@
       "direction": "continue",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:8f4f2b17",
+        "key": "site:retry:f8f70a9d",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -88,13 +90,14 @@
       "metrics": {
         "gate": "capture"
       },
-      "started_at": "2026-10-13T21:25:53+00:00",
-      "finished_at": "2026-10-13T21:25:53+00:00",
+      "started_at": "2026-10-13T22:11:00+00:00",
+      "finished_at": "2026-10-13T22:11:00+00:00",
       "duration_s": 0.0
     },
     {
-      "id": "conformity:be4052fec5",
+      "id": "conformity:426ba4d506",
       "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
       "gate": "conformity",
       "action": "python3 scripts/validate.py --langs pt,en --report knowledge/validation.md --json .ci/validation.json",
       "status": 0,
@@ -103,7 +106,7 @@
       "direction": "continue",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:8f4f2b17",
+        "key": "site:retry:f8f70a9d",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -122,13 +125,14 @@
       "metrics": {
         "gate": "conformity"
       },
-      "started_at": "2026-10-13T21:25:53+00:00",
-      "finished_at": "2026-10-13T21:25:53+00:00",
+      "started_at": "2026-10-13T22:11:00+00:00",
+      "finished_at": "2026-10-13T22:11:00+00:00",
       "duration_s": 0.0
     },
     {
-      "id": "site:b2f0b6a508",
+      "id": "site:2501c730ca",
       "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
       "gate": "site",
       "action": "python3 -m mkdocs build --strict --site-dir site",
       "status": 2,
@@ -137,7 +141,7 @@
       "direction": "retry",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:8f4f2b17",
+        "key": "site:retry:f8f70a9d",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -156,13 +160,14 @@
       "metrics": {
         "gate": "site"
       },
-      "started_at": "2026-10-13T21:25:53+00:00",
-      "finished_at": "2026-10-13T21:25:53+00:00",
+      "started_at": "2026-10-13T22:11:00+00:00",
+      "finished_at": "2026-10-13T22:11:00+00:00",
       "duration_s": 0.0
     },
     {
-      "id": "skill:963a171e31",
+      "id": "skill:61150ddf6b",
       "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
       "gate": "skill",
       "action": "pipeline.engine.SkillAction (inventário do SKILL.md × disco)",
       "status": 0,
@@ -171,7 +176,7 @@
       "direction": "continue",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:8f4f2b17",
+        "key": "site:retry:f8f70a9d",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -190,13 +195,14 @@
       "metrics": {
         "gate": "skill"
       },
-      "started_at": "2026-10-13T21:25:53+00:00",
-      "finished_at": "2026-10-13T21:25:53+00:00",
+      "started_at": "2026-10-13T22:11:00+00:00",
+      "finished_at": "2026-10-13T22:11:00+00:00",
       "duration_s": 0.0
     },
     {
-      "id": "ci-issues:ae01e23970",
+      "id": "ci-issues:8e540122d5",
       "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
       "gate": "ci-issues",
       "action": "gh run list / gh issue list (verificação de continuidade)",
       "status": 0,
@@ -205,7 +211,7 @@
       "direction": "continue",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:8f4f2b17",
+        "key": "site:retry:f8f70a9d",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -224,13 +230,14 @@
       "metrics": {
         "gate": "ci-issues"
       },
-      "started_at": "2026-10-13T21:25:53+00:00",
-      "finished_at": "2026-10-13T21:25:53+00:00",
+      "started_at": "2026-10-13T22:11:00+00:00",
+      "finished_at": "2026-10-13T22:11:00+00:00",
       "duration_s": 0.0
     },
     {
-      "id": "release:9112c0bb88",
+      "id": "release:64a0629c23",
       "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
       "gate": "release",
       "action": "pipeline.engine.ReleaseGateway",
       "status": 2,
@@ -239,7 +246,7 @@
       "direction": "retry",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:8f4f2b17",
+        "key": "site:retry:f8f70a9d",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -262,14 +269,14 @@
           "site"
         ]
       },
-      "started_at": "2026-10-13T21:25:53+00:00",
-      "finished_at": "2026-10-13T21:25:53+00:00",
+      "started_at": "2026-10-13T22:11:00+00:00",
+      "finished_at": "2026-10-13T22:11:00+00:00",
       "duration_s": 0.0
     }
   ],
   "store": {
     "runs": 1,
-    "last_run": "2026-10-13T21:25:53+00:00",
+    "last_run": "2026-10-13T22:11:00+00:00",
     "envelopes_by_status": {
       "success": 5,
       "error_infra": 2
@@ -278,5 +285,5 @@
       "proposed": 1
     }
   },
-  "generated_at": "2026-10-13T21:25:53+00:00"
+  "generated_at": "2026-10-13T22:11:00+00:00"
 }

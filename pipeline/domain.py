@@ -105,11 +105,12 @@ class Envelope:
     finished_at: str = ""
     duration_s: float = 0.0
     blueprint: str = "gate-driven-bpmn/1"
+    checkpoint_ref: str = ""   # IGC v2.1 E3: mínimo status+message+checkpoint_ref
 
     @classmethod
     def of(cls, gate: str, action: str, status: Status | int, message: str,
            *, addenda: Iterable[Addendum] = (), metrics: dict[str, Any] | None = None,
-           started_at: str | None = None) -> "Envelope":
+           started_at: str | None = None, checkpoint_ref: str = "") -> "Envelope":
         st = Status(int(status))
         return cls(
             id=f"{gate}:{uuid.uuid4().hex[:10]}",
@@ -120,6 +121,7 @@ class Envelope:
             direction=DIRECTION[st],
             addenda=list(addenda),
             metrics=metrics or {},
+            checkpoint_ref=checkpoint_ref,
             started_at=started_at or utcnow(),
             finished_at=utcnow(),
         )
@@ -135,6 +137,7 @@ class Envelope:
         return {
             "id": self.id,
             "blueprint": self.blueprint,
+            "checkpoint_ref": self.checkpoint_ref,   # E3
             "gate": self.gate,
             "action": self.action,
             "status": self.status,
