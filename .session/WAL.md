@@ -42,3 +42,4 @@ Nunca editar/apagar entrada — correção é entrada nova.
 | 2026-10-13T22:11:20+00:00 | CLOSE-GATE | FIX | auto-checagem Art. 12 (nota 7.78) | closing_gate | volta a EXEC: ['checkpoint_gravado', 'emit_contratado_E5'] | - |
 | 2026-10-13T22:11:20+00:00 | transição ilegal EXEC->EXEC | FIX | nota 7.78 < 9.5 | corrigir pendências | rejeitada | - |
 | 2026-10-13T22:11:20+00:00 | EMIT | IMPLEMENT | efeito contratado | verificar commit 574e0b9fee15 → push origin arena/c91bd6a1-github-actions-docs-skill | ref=commit 574e0b9fee15 → push origin arena/c91bd6a1-github-actions-docs-skill | commit 574e0 |
+| 2026-10-13T22:12:15+00:00 | CI run 38476052687 (pipeline) | FIX | execução do gate 'pipeline' no CI | pipeline gate-driven + testes determinísticos | status 1 · 2/7 gates aprovados | 4ce4a8e7e55e |

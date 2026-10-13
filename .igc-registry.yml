@@ -1,23 +1,22 @@
-# IGC v2.1 — Artigo 7 (DESCOBERTA): registry de linhagens.
-# Deve viver no default branch (D1). DEV-1: versionado na linhagem até o merge (runtime
-# proíbe push em main). Toda emissão EMIT atualiza este arquivo no MESMO commit do
-# CHECKPOINT (D2). Divergência registry × CHECKPOINT ⇒ RECON + DEBT (D3).
-igc_registry: "1"
-contrato: "IGC v2.1"
-default_branch: "main"
-atualizado_em: "2026-10-13"
-
+# IGC v2.1 — Artigo 7: registry de linhagens (D1/D2/D3)
+igc_registry: '1'
+contrato: IGC v2.1
+default_branch: main
+atualizado_em: '2026-10-13'
 linhagens:
   github-actions-docs-skill:
-    branch: "arena/c91bd6a1-github-actions-docs-skill"
-    base_sha: "0ddafab815385d69ea8f70d93c3479daa7f50175"
-    checkpoint_ref: "70942fbe18aff9eb21ea82241d28ca4d4a8f4194"
+    branch: arena/c91bd6a1-github-actions-docs-skill
+    base_sha: 0ddafab815385d69ea8f70d93c3479daa7f50175
+    checkpoint_ref: 4ce4a8e7e55e7d4a4e7f97884db54fa6caf20e89
     ativa: true
-    modo: "continuidade"          # não é HANDOFF ⇒ T8 não obrigatório (Art. 12)
-    estado_fsm: "EXEC"
-    territorio: "worktree único do runtime"
-    profile: ".igc-profile.yml"
-    memoria: ".session/"
-    desvios: ["DEV-1", "DEV-2"]
-    ultima_verificacao: "56 passed, 3 skipped (pandoc — M6 justificado, D11)"
-    next_issue: "capture:fix:11ecbf57"
+    modo: continuidade
+    estado_fsm: EXEC
+    territorio: worktree único do runtime
+    profile: .igc-profile.yml
+    memoria: .session/
+    desvios:
+    - DEV-1
+    - DEV-2
+    ultima_verificacao: status 1 · 2/7 gates aprovados
+    next_issue: capture:fix:11ecbf57
+    atualizado_em: '2026-10-13'
