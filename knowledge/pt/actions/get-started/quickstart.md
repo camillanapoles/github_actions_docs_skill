@@ -81,7 +81,7 @@ Este guia supõe que:
            run: |
              ls ${{ github.workspace }}
          - run: echo "🍏 This job's status is ${{ job.status }}."
-   ```
+            ```
 
    Neste estágio, você não precisa entender os detalhes desse fluxo de trabalho. Por enquanto, só é possível copiar e colar o conteúdo no arquivo. Depois de concluir este guia de início rápido, você pode aprender sobre a sintaxe de arquivos de fluxo de trabalho em [Fluxos de trabalho](../concepts/workflows-and-actions/workflows.md) e para obter uma explicação de GitHub Actions contextos, como `${{ github.actor }}` e `${{ github.event_name }}`, consulte [Referência de contextos](../reference/workflows-and-actions/contexts.md).
 
@@ -89,7 +89,7 @@ Este guia supõe que:
 
 4. Na caixa de diálogo "Propor alterações", selecione a opção para confirmar o branch padrão ou a opção para criar um novo branch e iniciar uma solicitação de pull. Em seguida, clique em **Confirmar alterações** ou em **Propor alterações**.
 
-   ![Captura de tela da caixa de diálogo "Propor alterações" com as áreas mencionadas destacadas com um contorno laranja.](/assets/images/help/repository/actions-quickstart-commit-new-file.png)
+   ![Captura de tela da caixa de diálogo "Propor alterações" com as áreas mencionadas destacadas com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-quickstart-commit-new-file.png)
 
 O commit do arquivo de fluxo de trabalho em um branch no repositório dispara o evento `push` e executa o fluxo de trabalho.
 
@@ -101,25 +101,25 @@ Se você optar por iniciar uma solicitação de pull, poderá continuar e criar 
 
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 
 3. Na barra lateral esquerda, clique no fluxo de trabalho que você deseja exibir, neste exemplo "Demonstração GitHub Actions".
 
-   ![Captura de tela da página "Ações". O nome do fluxo de trabalho de exemplo, "GitHub Actions Demo", é realçado por um contorno laranja escuro.](/assets/images/help/repository/actions-quickstart-workflow-sidebar.png)
+   ![Captura de tela da página "Ações". O nome do fluxo de trabalho de exemplo, "GitHub Actions Demo", é realçado por um contorno laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-quickstart-workflow-sidebar.png)
 
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução que você deseja ver, neste exemplo "USERNAME está testando GitHub Actions".
 
 5. Na barra lateral esquerda da página de execução do fluxo de trabalho, em **Jobs**, clique no trabalho **Explore-GitHub-Actions**.
 
-   ![Captura de tela da página "Execução do fluxo de trabalho". Na barra lateral esquerda, a tarefa "Explore-GitHub-Actions" é realçada com um contorno laranja escuro.](/assets/images/help/repository/actions-quickstart-job.png)
+   ![Captura de tela da página "Execução do fluxo de trabalho". Na barra lateral esquerda, a tarefa "Explore-GitHub-Actions" é realçada com um contorno laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-quickstart-job.png)
 
 6. O registro mostra como cada uma das etapas foi processada. Expanda qualquer um dos passos para ver seus detalhes.
 
-   ![Captura de tela das etapas executadas pelo fluxo de trabalho.](/assets/images/help/repository/actions-quickstart-logs.png)
+   ![Captura de tela das etapas executadas pelo fluxo de trabalho.](https://docs.github.com/assets/images/help/repository/actions-quickstart-logs.png)
 
    Por exemplo, é possível ver a lista de arquivos no repositório:
 
-   ![Captura de tela da etapa "Listar arquivos no repositório" expandida para mostrar a saída do log. A saída da etapa é realçada com um contorno laranja.](/assets/images/help/repository/actions-quickstart-log-detail.png)
+   ![Captura de tela da etapa "Listar arquivos no repositório" expandida para mostrar a saída do log. A saída da etapa é realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png)
 
 O fluxo de trabalho de exemplo que você acabou de adicionar é disparado sempre que o código é enviado por push para o branch e mostra como GitHub Actions você pode trabalhar com o conteúdo do repositório. Para obter um tutorial detalhado, confira [Noções básicas sobre GitHub Actions](understand-github-actions.md).
 

@@ -39,6 +39,7 @@ In your new `hello-world-docker-action` directory, create a new `Dockerfile` fil
 **Dockerfile**
 
 ```dockerfile copy
+```
 # Container image that runs your code
 FROM alpine:3.10
 
@@ -49,6 +50,7 @@ COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 ```
 
+```
 ## Creating an action metadata file
 
 Create a new `action.yml` file in the `hello-world-docker-action` directory you created above. For more information, see [Metadata syntax reference](../../reference/workflows-and-actions/metadata-syntax.md).
@@ -56,6 +58,7 @@ Create a new `action.yml` file in the `hello-world-docker-action` directory you 
 **action.yml**
 
 ```yaml copy
+```
 # action.yml
 name: 'Hello World'
 description: 'Greet someone and record the time'
@@ -78,6 +81,7 @@ This metadata defines one `who-to-greet` input and one `time` output parameter. 
 
 GitHub will build an image from your `Dockerfile`, and run commands in a new container using this image.
 
+```
 ## Writing the action code
 
 You can choose any base Docker image and, therefore, any language for your action. The following shell script example uses the `who-to-greet` input variable to print "Hello [who-to-greet]" in the log file.
@@ -97,7 +101,7 @@ Next, the script gets the current time and sets it as an output variable that ac
    time=$(date)
    echo "time=$time" >> $GITHUB_OUTPUT
 
-   ```
+            ```
 
    If `entrypoint.sh` executes without any errors, the action's status is set to `success`. You can also explicitly set exit codes in your action's code to provide an action's status. For more information, see [Setting exit codes for actions](../../how-tos/create-and-publish-actions/set-exit-codes.md).
 
@@ -106,13 +110,13 @@ Next, the script gets the current time and sets it as an output variable that ac
             ```shell copy
    git add entrypoint.sh
    git update-index --chmod=+x entrypoint.sh
-   ```
+            ```
 
 1. Optionally, to check the permission mode of the file in the git index, run the following command.
 
             ```shell copy
    git ls-files --stage entrypoint.sh
-   ```
+            ```
 
    An output like `100755 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       entrypoint.sh` means the file has the executable permission. In this example, `755` denotes the executable permission.
 
@@ -132,6 +136,7 @@ In your `hello-world-docker-action` directory, create a `README.md` file that sp
 **README.md**
 
 ```markdown copy
+```
 # Hello world docker action
 
 This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
@@ -155,6 +160,7 @@ with:
   who-to-greet: 'Mona the Octocat'
 ```
 
+```
 ## Commit, tag, and push your action
 
 From your terminal, commit your `action.yml`, `entrypoint.sh`, `Dockerfile`, and `README.md` files.

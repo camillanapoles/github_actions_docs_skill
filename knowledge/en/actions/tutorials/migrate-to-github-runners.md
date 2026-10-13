@@ -42,7 +42,7 @@ Before you provision GitHub-hosted runners, estimate how much compute capacity y
 1. Click the name of your organization.
 1. Under your organization name, click ** Insights**.
 
-   ![Screenshot of the horizontal navigation bar for an organization. A tab, labeled with a graph icon and "Insights," is outlined in dark orange.](/assets/images/help/organizations/org-nav-insights-tab.png)
+   ![Screenshot of the horizontal navigation bar for an organization. A tab, labeled with a graph icon and "Insights," is outlined in dark orange.](https://docs.github.com/assets/images/help/organizations/org-nav-insights-tab.png)
 1. In the "Insights" navigation menu, click **Actions Usage Metrics**.
 1. Click on the tab that contains the metrics you would like to view. See [About GitHub Actions metrics](../concepts/metrics.md).
 1. Review the following data points to estimate hosted runner capacity:
@@ -138,7 +138,7 @@ After your GitHub-hosted runners are configured, update your workflow files to t
            uses: actions/checkout@v6
          - name: Build project
            run: make build
-   ```
+            ```
 
 1. Check for hard-coded references to self-hosted labels (such as `self-hosted`, `linux-x64`, or custom labels) and replace them with the appropriate GitHub-hosted runner labels.
 1. Test each updated workflow to ensure it runs correctly on the new runners. Monitor for any issues related to environment differences or missing dependencies.

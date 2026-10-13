@@ -162,7 +162,7 @@ You can view detailed information about each image, delete unused images or spec
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the left sidebar, click ** Actions**, then click **Custom images**.
 1. On the "Custom images" page, you can view all custom images that have been created in your organization or enterprise.
 1. To view details about a specific image, click the image name.
@@ -190,7 +190,7 @@ Once your custom image is ready, you can install it on a new GitHub-hosted large
         runs-on: my-custom-runner
         steps:
         # Add any steps for your workflow here
-    ```
+                ```
 
 1. Run your workflow to verify that it completes successfully. The job logs will show the image name and version in the "Set up job" section.
 

@@ -43,13 +43,13 @@ No computador executor, abra um shell no diretório em que você instalou o apli
 
             ```shell
    sudo ./svc.sh install
-   ```
+            ```
 
 3. Como alternativa, o comando usa um argumento `user` opcional para instalar o serviço como outro usuário.
 
             ```shell
    ./svc.sh install USERNAME
-   ```
+            ```
 
 ## Instalar o serviço { #installing-the-service-1 }
 
@@ -58,7 +58,7 @@ No computador executor, abra um shell no diretório em que você instalou o apli
 
             ```shell
    ./svc.sh install
-   ```
+            ```
 
 ## Iniciar o serviço { #starting-the-service }
 
@@ -73,7 +73,7 @@ sudo ./svc.sh start
 
                 ```bash
     echo '$nrconf{override_rc}{qr(^actions\.runner\..+\.service$)} = 0;' | sudo tee /etc/needrestart/conf.d/actions_runner_services.conf
-    ```
+                ```
 
 ```shell
 Start-Service "actions.runner.*"
@@ -124,15 +124,15 @@ Stop-Service "actions.runner.*"
 
             ```shell
    sudo ./svc.sh uninstall
-   ```
+            ```
 
             ```shell
    Remove-Service "actions.runner.*"
-   ```
+            ```
 
             ```shell
    ./svc.sh uninstall
-   ```
+            ```
 
 ## Personalizar o serviço do executor auto-hospedado { #customizing-the-self-hosted-runner-service }
 

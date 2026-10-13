@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Manage runners / Larger runners
 ---
 
-# Como controlar o acesso a executores maiores
+# Como controlar o acesso a executores maiores { #controlling-access-to-larger-runners }
 
 _Você pode usar políticas para limitar o acesso a executor avançados que foram adicionados a uma organização ou empresa._
 
-## Controlar o acesso a executores avançados
+## Controlar o acesso a executores avançados { #managing-access-to-larger-runners }
 
 !!! note
     Antes que seus fluxos de trabalho possam enviar trabalhos para executor avançados, primeiro você deve configurar permissões para o grupo de executores. Confira as seções a seguir para obter mais informações.
@@ -26,9 +26,9 @@ Os grupos de executores são usados para controlar quais repositórios podem exe
 
 Por exemplo, o diagrama a seguir tem um grupo de executores chamado `grp-ubuntu-24.04-16core` no nível da empresa. Para que o repositório chamado `octo-repo` possa usar os executores do grupo, você deve primeiro configurar o grupo no nível da empresa para permitir o acesso à organização `octo-org`. Em seguida, você precisará configurar o grupo no nível da organização para permitir o acesso ao `octo-repo`.
 
-![Diagrama mostrando um grupo de executores definido no nível corporativo com uma configuração de organização que permite acesso a dois repositórios.](/assets/images/help/actions/hosted-runner-mgmt.png)
+![Diagrama mostrando um grupo de executores definido no nível corporativo com uma configuração de organização que permite acesso a dois repositórios.](https://docs.github.com/assets/images/help/actions/hosted-runner-mgmt.png)
 
-## Como criar um grupo de executores para uma organização
+## Como criar um grupo de executores para uma organização { #creating-a-runner-group-for-an-organization }
 
 !!! warning
     Se você estiver usando um intervalo de IP fixo, a recomendação será usar apenas executor avançado com repositórios particulares. Bifurcações do seu repositório podem executar códigos perigosos em seu executor avançado criando uma solicitação de pull que executa o código em um fluxo de trabalho.
@@ -47,7 +47,7 @@ Para obter informações sobre como criar um grupo de executores com a API REST,
 
 2. No nome da organização, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 
 3. Na barra lateral esquerda, clique em **(play) Actions** e escolha **Runner groups**.
 
@@ -61,7 +61,7 @@ Para obter informações sobre como criar um grupo de executores com a API REST,
 
 7. Clique em **Criar grupo** para criar o grupo e aplicar a política.
 
-## Como alterar quais repositórios podem acessar um grupo de executores
+## Como alterar quais repositórios podem acessar um grupo de executores { #creating-a-runner-group-for-an-enterprise }
 
 !!! warning
     Se você estiver usando um intervalo de IP fixo, a recomendação será usar apenas executor avançado com repositórios particulares. Bifurcações do seu repositório podem executar códigos perigosos em seu executor avançado criando uma solicitação de pull que executa o código em um fluxo de trabalho.
@@ -82,7 +82,7 @@ Para grupos de executores em uma organização, você pode alterar quais reposit
 
 6. Clique em **Salvar grupo**.
 
-## Configurar o acesso à rede privada para executores maiores
+## Configurar o acesso à rede privada para executores maiores { #using-unique-names-for-runner-groups }
 
 Você pode usar executores hospedados no GitHub em uma VNET do Azure. Isso permite usar a infraestrutura gerenciada pela GitHub para CI/CD e, ao mesmo tempo, fornece controle total sobre as políticas de rede dos seus executores. Para obter mais informações sobre VNETs do Azure, consulte [O que é uma Rede Virtual do Azure?](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview), na documentação do Azure.
 
@@ -90,7 +90,7 @@ Se você configurou sua organização para se conectar a uma VNET Azure, poderá
 
 Não é possível atribuir macOS executor avançadoa um grupo de executores que tenha uma configuração de rede. Da mesma forma, você não pode adicionar uma configuração de rede a um grupo de executores que contenha macOS executor avançados.
 
-## Alterando o nome de um grupo de runners
+## Alterando o nome de um grupo de runners { #changing-which-organizations-can-access-a-runner-group }
 
 1. Acesse a página principal da organização em que os grupos de executores estão localizados.
 2. Clique em **(gear) Settings**.
@@ -99,20 +99,20 @@ Não é possível atribuir macOS executor avançadoa um grupo de executores que 
 5. Insira o novo nome do grupo de executores no campo de texto em "Nome do grupo".
 6. Clique em **Save** (Salvar).
 
-## Como mover um executor para um grupo
+## Como mover um executor para um grupo { #changing-which-repositories-can-access-a-runner-group }
 
 Se você não especificar o grupo de um executor durante o processo de registro, seus novos executores são automaticamente atribuídos ao grupo padrão e poderão ser transferidos para outro grupo.
 
 1. Em GitHub, acesse a página principal da organização.
 2. No nome da organização, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 3. Na barra lateral esquerda, clique em **(play) Actions** e clique em **Runners**.
 4. Na lista de "Executores", clique no executor que você deseja configurar.
 5. Selecione o menu suspenso **Grupo de executores**.
 6. Em "Transferir executor para o grupo", escolha um grupo de destino para o executor.
 
-## Como remover um grupo de executores
+## Como remover um grupo de executores { #changing-which-workflows-can-access-a-runner-group }
 
 Para remover um grupo de executores, primeiro você deve mover ou remover todos os executores do grupo.
 

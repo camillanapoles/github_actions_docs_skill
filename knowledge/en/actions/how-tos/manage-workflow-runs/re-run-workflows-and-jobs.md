@@ -23,10 +23,10 @@ A workflow run can be re-run a maximum of 50 times. This limit includes both ful
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, click the workflow you want to see.
 
-   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 1. From the list of workflow runs, click the name of the run to see the workflow run summary.
 1. In the upper-right corner of the workflow, re-run jobs.
 
@@ -42,19 +42,19 @@ A workflow run can be re-run a maximum of 50 times. This limit includes both ful
 
                 ```shell copy
     gh run rerun RUN_ID
-    ```
+                ```
 
     To enable runner diagnostic logging and step debug logging for the re-run, use the `--debug` flag.
 
                 ```shell copy
     gh run rerun RUN_ID --debug
-    ```
+                ```
 
 1. To view the progress of the workflow run, use the `run watch` subcommand and select the run from the interactive list.
 
                 ```shell copy
     gh run watch
-    ```
+                ```
 
 ## Re-running failed jobs in a workflow
 
@@ -63,10 +63,10 @@ A workflow run can be re-run a maximum of 50 times. This limit includes both ful
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, click the workflow you want to see.
 
-   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 1. From the list of workflow runs, click the name of the run to see the workflow run summary.
 1. In the upper-right corner of the workflow, select the ** Re-run jobs** dropdown menu, and click **Re-run failed jobs**.
 1. Optionally, to enable runner diagnostic logging and step debug logging for the re-run, select **Enable debug logging**. For more information, see [Enabling debug logging](../monitor-workflows/enable-debug-logging.md).
@@ -93,10 +93,10 @@ gh run rerun RUN_ID --failed --debug
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, click the workflow you want to see.
 
-   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 1. From the list of workflow runs, click the name of the run to see the workflow run summary.
 1. Under the "Jobs" section of the left sidebar, next to the job that you want to re-run, click .
 
@@ -122,9 +122,9 @@ gh run rerun --job JOB_ID --debug
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, click the workflow you want to see.
 
-   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 1. From the list of workflow runs, click the name of the run to see the workflow run summary.
 1. To the right of the run name, select the **Latest** dropdown menu and click a previous run attempt.

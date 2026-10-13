@@ -20,14 +20,14 @@ _Você pode excluir uma execução do fluxo de trabalho que foi concluída ou qu
 
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
-   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 
 4. Para excluir uma execução de fluxo de trabalho, selecione (Show options) e clique em **Excluir execução de fluxo de trabalho**.
 
-   ![Captura de tela de uma lista de execuções do fluxo de trabalho. À direita de uma execução, um ícone de três pontos horizontais está realçado com um contorno laranja.](/assets/images/help/settings/workflow-delete-run.png)
+   ![Captura de tela de uma lista de execuções do fluxo de trabalho. À direita de uma execução, um ícone de três pontos horizontais está realçado com um contorno laranja.](https://docs.github.com/assets/images/help/settings/workflow-delete-run.png)
 
 5. Revise a solicitação de confirmação e clique em **Sim, excluir esta execução de fluxo de trabalho permanentemente**.

@@ -24,7 +24,7 @@ Maintainers with write access to a repository can use the following procedure to
 1. In the list of pull requests, click the pull request you'd like to review.
 1. On the pull request, click ** Files changed**.
 
-   ![Screenshot of the tabs for a pull request. The "Files changed" tab is outlined in dark orange.](/assets/images/help/pull_requests/pull-request-tabs-changed-files.png)
+   ![Screenshot of the tabs for a pull request. The "Files changed" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/pull_requests/pull-request-tabs-changed-files.png)
 1. Inspect the proposed changes in the pull request and ensure that you are comfortable running your workflows on the pull request branch. You should be especially alert to any proposed changes in the `.github/workflows/` directory that affect workflow files.
 1. If you are comfortable with running workflows on the pull request branch, click the button in the upper right corner labeled **Awaiting approval**, which will open the **Merge status** panel.
 1. Find and click **Approve workflows to run**.

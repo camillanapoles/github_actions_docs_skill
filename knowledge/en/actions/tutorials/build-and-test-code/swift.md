@@ -36,7 +36,7 @@ GitHub provides a workflow template for Swift that should work for most Swift pr
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. If you already have a workflow in your repository, click **New workflow**.
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "swift".
 1. Filter the selection of workflows by clicking **Continuous integration**.
@@ -63,7 +63,7 @@ GitHub provides a workflow template for Swift that should work for most Swift pr
          run: swift build -v
        - name: Run tests
          run: swift test -v
-   ```
+            ```
 
 1. Edit the workflow as required. For example, change the branch on which the workflow will run.
 1. Click **Commit changes**.
@@ -84,6 +84,7 @@ You can configure your job to use multiple versions of Swift in a matrix.
 
 ```yaml copy
 
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -116,15 +117,17 @@ jobs:
         run: swift test
 ```
 
+```
 ### Using a single specific Swift version
 
 You can configure your job to use a single specific version of Swift, such as `5.3.3`.
 
 ```yaml copy
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+```
+# This workflow uses actions that are not certified by GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-1 }
+# They are provided by a third-party and are governed by { #they-are-provided-by-a-third-party-and-are-governed-by-1 }
+# separate terms of service, privacy policy, and support { #separate-terms-of-service-privacy-policy-and-support-1 }
+# documentation. { #documentation-1 }
 steps:
   - uses: swift-actions/setup-swift@65540b95f51493d65f5e59e97dcef9629ddf11bf
     with:
@@ -133,15 +136,17 @@ steps:
     run: swift --version # Swift 5.3.3
 ```
 
+```
 ## Building and testing your code
 
 You can use the same commands that you use locally to build and test your code using Swift. This example demonstrates how to use `swift build` and `swift test` in a job:
 
 ```yaml copy
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+```
+# This workflow uses actions that are not certified by GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-2 }
+# They are provided by a third-party and are governed by { #they-are-provided-by-a-third-party-and-are-governed-by-2 }
+# separate terms of service, privacy policy, and support { #separate-terms-of-service-privacy-policy-and-support-2 }
+# documentation. { #documentation-2 }
 steps:
   - uses: actions/checkout@v6
   - uses: swift-actions/setup-swift@65540b95f51493d65f5e59e97dcef9629ddf11bf
@@ -151,4 +156,6 @@ steps:
     run: swift build
   - name: Run tests
     run: swift test
+```
+
 ```

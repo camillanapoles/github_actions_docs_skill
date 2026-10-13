@@ -30,7 +30,7 @@ As opções a seguir podem ser usadas para limitar quais ações são permitidas
 
         ```shell
   --allowed-actions actions/checkout@v6 actions/upload-artifact@* my-org/*
-  ```
+        ```
 
   Você pode fornecer uma lista vazia a fim de bloquear qualquer ação. Por exemplo, `--allowed-actions=`.
 

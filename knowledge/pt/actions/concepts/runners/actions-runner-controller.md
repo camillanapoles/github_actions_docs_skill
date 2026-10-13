@@ -25,7 +25,7 @@ O diagrama a seguir ilustra a arquitetura do modo de conjunto de escalonamento a
 !!! note
     Para visualizar o diagrama a seguir em um tamanho maior, confira a documentação do [Modo de conjuntos de escalonamento do executor de escala automática](https://github.com/actions/actions-runner-controller/blob/master/docs/gha-runner-scale-set-controller/README.md#how-it-works) no repositório Actions Runner Controller.
 
-![Diagrama mostrando o modo ScaleSet do Executor de Dimensionamento Automático do ARC.](/assets/images/help/actions/arc-diagram.png)
+![Diagrama mostrando o modo ScaleSet do Executor de Dimensionamento Automático do ARC.](https://docs.github.com/assets/images/help/actions/arc-diagram.png)
 
 <!-- The numbers in the ordered list below correspond to numbers in the above diagram, which is why we use explicit numbering here. -->
 
@@ -116,6 +116,7 @@ Você pode usar o seguinte Dockerfile de exemplo para começar a criar sua próp
 ```dockerfile copy
 FROM mcr.microsoft.com/dotnet/runtime-deps:6.0 as build
 
+```
 # Replace value with the latest runner release version
 # source: https://github.com/actions/runner/releases
 # ex: 2.303.0
@@ -152,6 +153,7 @@ RUN curl -f -L -o runner-container-hooks.zip https://github.com/actions/runner-c
 USER runner
 ```
 
+```
 ## Software instalado na imagem do ARC runner { #software-installed-in-the-arc-runner-image }
 
 A [imagem do executor](https://github.com/actions/runner/pkgs/container/actions-runner) ARC é agrupada com o seguinte software:

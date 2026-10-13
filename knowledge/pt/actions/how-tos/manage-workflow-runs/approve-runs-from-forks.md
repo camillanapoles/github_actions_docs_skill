@@ -26,7 +26,7 @@ Os mantenedores com permissão de gravação a um repositório podem usar o segu
 2. Na lista de solicitações pull, clique na solicitação pull que você quer revisar.
 3. Na pull request, clique em **(file-diff) Files changed**.
 
-   ![Captura de tela das guias de uma solicitação de pull. A guia "Arquivos alterados" está contornada em laranja escuro.](/assets/images/help/pull_requests/pull-request-tabs-changed-files.png)
+   ![Captura de tela das guias de uma solicitação de pull. A guia "Arquivos alterados" está contornada em laranja escuro.](https://docs.github.com/assets/images/help/pull_requests/pull-request-tabs-changed-files.png)
 4. Inspecione as alterações propostas no pull request e certifique-se de que você esteja confortável em executar seus fluxos de trabalho no branch do pull request. Você deve ficar especialmente atento para todas as alterações propostas no diretório `.github/workflows/` que afetem arquivos de fluxo de trabalho.
 5. Se você se sentir à vontade com a execução de fluxos de trabalho no branch do pull request, clique no botão no canto superior direito rotulado Aguardando aprovação, o que abrirá o painel de status de mesclagem .
 6. Localize e clique **em Aprovar fluxos de trabalho para serem executados**.

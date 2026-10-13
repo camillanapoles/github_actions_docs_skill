@@ -80,7 +80,7 @@ In the tutorial, you will first make a workflow file that uses the GitHub CLI. T
                 - [Work this week](https://github.com/orgs/github/projects/3)
               PINNED: false
               CLOSE_PREVIOUS: false
-    ```
+                ```
 
 1. Customize the parameters in your workflow file:
    * Change the value for `on.schedule` to dictate when you want this workflow to run. In the example above, the workflow will run every Monday at 7:20 UTC. For more information about scheduled workflows, see [Events that trigger workflows](../../reference/workflows-and-actions/events-that-trigger-workflows.md#schedule#schedule).

@@ -36,14 +36,15 @@ Abaixo da chave `env` de fluxo de trabalho, altere os seguintes valores:
 Para obter mais informações sobre esses valores, consulte [Configuração do build para Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/build-configuration?tabs=github-actions) na documentação do Azure.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 
-# O GitHub recomenda fixar ações em um SHA de commit.
-# Para obter uma versão mais recente, você precisará atualizar o SHA.
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
+# O GitHub recomenda fixar ações em um SHA de commit. { #github-recommends-pinning-actions-to-a-commit-sha }
+# Para obter uma versão mais recente, você precisará atualizar o SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha }
+# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning }
 
 name: Deploy web app to Azure Static Web Apps
 
@@ -97,6 +98,7 @@ jobs:
           action: "close"
 ```
 
+```
 ## Leitura adicional { #further-reading }
 
 * Para o modelo de fluxo de trabalho original, confira [`azure-staticwebapp.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/azure-staticwebapp.yml) no repositório `starter-workflows` do GitHub Actions.

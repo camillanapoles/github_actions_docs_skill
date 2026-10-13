@@ -507,7 +507,7 @@ GitHub criou um repositório de exemplo que demonstra como gerar scripts de pers
 
             ```shell
    npm install && npm run bootstrap && npm run build-all
-   ```
+            ```
 
 Quando o(a) `index.js` resultante for acionado(a) por GitHub Actions, ele executará os comandos de personalização definidos nos arquivos JSON. Para disparar o `index.js`, você precisa adicioná-la à variável de ambiente `ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER`, como está descrito na próxima seção.
 

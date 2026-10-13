@@ -42,7 +42,7 @@ Para usar o ARC, verifique se você tem os itens a seguir.
        --namespace "${NAMESPACE}" \
        --create-namespace \
        oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
-   ```
+            ```
 
    Para ver mais opções de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set-controller/values.yaml) na documentação do ARC.
 
@@ -95,7 +95,7 @@ Como uma melhor prática de segurança, crie segredos do Kubernetes e passe as r
 
             ```bash copy
    helm list -A
-   ```
+            ```
 
    Você deverá ver um resultado semelhante ao seguinte.
 
@@ -103,13 +103,13 @@ Como uma melhor prática de segurança, crie segredos do Kubernetes e passe as r
    NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                       APP VERSION
    arc             arc-systems     1               2023-04-12 11:45:59.152090536 +0000 UTC deployed        gha-runner-scale-set-controller-0.4.0       0.4.0
    arc-runner-set  arc-runners     1               2023-04-12 11:46:13.451041354 +0000 UTC deployed        gha-runner-scale-set-0.4.0                  0.4.0
-   ```
+            ```
 
 2. Para verificar o pod do gerenciador, execute o comando a seguir no terminal.
 
             ```bash copy
    kubectl get pods -n arc-systems
-   ```
+            ```
 
    Se tudo tiver sido instalado com sucesso, a status dos pods será exibido como **Em execução**.
 
@@ -117,7 +117,7 @@ Como uma melhor prática de segurança, crie segredos do Kubernetes e passe as r
    NAME                                                   READY   STATUS    RESTARTS   AGE
    arc-gha-runner-scale-set-controller-594cdc976f-m7cjs   1/1     Running   0          64s
    arc-runner-set-754b578d-listener                       1/1     Running   0          12s
-   ```
+            ```
 
 Se a instalação não tiver sido bem-sucedida, confira [Solução de problemas dos erros do Actions Runner Controller](troubleshoot.md) para obter informações sobre solução de problemas.
 
@@ -140,7 +140,7 @@ Agora você criará e executará um fluxo de trabalho de teste simples que usa o
        runs-on: arc-runner-set
        steps:
        - run: echo "🎉 This job uses runner scale set runners!"
-   ```
+            ```
 
 2. Depois de adicionar o fluxo de trabalho ao repositório, dispare manualmente o fluxo de trabalho. Para obter mais informações, consulte [Executar um fluxo de trabalho manualmente](../../how-tos/manage-workflow-runs/manually-run-a-workflow.md).
 
@@ -148,14 +148,14 @@ Agora você criará e executará um fluxo de trabalho de teste simples que usa o
 
             ```bash copy
    kubectl get pods -n arc-runners -w
-   ```
+            ```
 
    Um resultado bem-sucedido será semelhante ao seguinte.
 
             ```bash
    NAMESPACE     NAME                                                  READY   STATUS    RESTARTS      AGE
    arc-runners   arc-runner-set-rmrgw-runner-p9p5n                     1/1     Running   0             21s
-   ```
+            ```
 
 ## Próximas Etapas { #next-steps }
 

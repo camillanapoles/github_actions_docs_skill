@@ -53,7 +53,7 @@ Há algumas limitações ao migrar do Bitbucket Pipelines para GitHub Actions co
         echo "goodbye, for now!"
       id: after-script-2
       if: "${{ steps.after-script-1.conclusion == 'success' && always() }}"
-  ```
+        ```
 
 ### Tarefas manuais { #manual-tasks }
 
@@ -68,7 +68,7 @@ Certos constructos do Bitbucket Pipelines devem ser migrados manualmente. Estão
 
             ```bash copy
    gh extension install github/gh-actions-importer
-   ```
+            ```
 
 2. Verifique se a extensão foi instalada:
 
@@ -85,7 +85,7 @@ Certos constructos do Bitbucket Pipelines devem ser migrados manualmente. Estão
      forecast   Forecast GitHub Actions usage from historical pipeline utilization.
      dry-run    Convert a pipeline to a GitHub Actions workflow and output its yaml file.
      migrate    Convert a pipeline to a GitHub Actions workflow and open a pull request with the changes.
-   ```
+            ```
 
 ## Como configurar credenciais { #configuring-credentials }
 
@@ -103,7 +103,7 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
 
             ```shell
    gh actions-importer configure
-   ```
+            ```
 
    O comando `configure` solicitará que você insira as seguintes informações:
 
@@ -124,20 +124,20 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
    ✔ Personal access token for Bitbucket: ********************
    ✔ Base url of the Bitbucket instance: https://bitbucket.example.com
    Environment variables successfully updated.
-   ```
+            ```
 
 4. No terminal, execute o comando CLI GitHub Actions Importer`update` para se conectar a GitHub PackagesContainer registry e garantir que a imagem do contêiner esteja atualizada para a versão mais recente:
 
             ```shell
    gh actions-importer update
-   ```
+            ```
 
    A saída do comando será parecida com a mostrada abaixo:
 
             ```shell
    Updating ghcr.io/actions-importer/cli:latest...
    ghcr.io/actions-importer/cli:latest up-to-date
-   ```
+            ```
 
 ## Realizar uma auditoria da instância do Bitbucket { #perform-an-audit-of-the-bitbucket-instance }
 

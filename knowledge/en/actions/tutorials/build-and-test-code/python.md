@@ -43,7 +43,7 @@ GitHub provides a workflow template for Python that should work if your reposito
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. If you already have a workflow in your repository, click **New workflow**.
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "Python application".
 1. On the "Python application" workflow, click **Configure**.
@@ -86,7 +86,7 @@ GitHub provides a workflow template for Python that should work if your reposito
        - name: Test with pytest
          run: |
            pytest
-   ```
+            ```
 
 1. Edit the workflow as required. For example, change the Python version.
 1. Click **Commit changes**.
@@ -387,6 +387,7 @@ You can configure your workflow to publish your Python package to PyPI once your
 The example workflow below uses [Trusted Publishing](https://docs.pypi.org/trusted-publishers/) to authenticate with PyPI, eliminating the need for a manually configured API token.
 
 ```yaml copy
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -457,3 +458,5 @@ jobs:
 
 For more information about this workflow, including the PyPI settings
 needed, see [Configuring OpenID Connect in PyPI](../../how-tos/secure-your-work/security-harden-deployments/oidc-in-pypi.md).
+
+```

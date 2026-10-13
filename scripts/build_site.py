@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import difflib
 import json
 import os
 import re
@@ -469,13 +470,29 @@ def headings_of(path: Path) -> list[tuple[int, int, str, str]]:
     return out
 
 
+def align_headings(headings: list, ref_headings: list) -> dict[int, int]:
+    """Casa headings pt com os do espelho en pela sequência de níveis (difflib).
+
+    A paridade 1:1 exata falhava em páginas com 1 heading a mais/menos (ex.:
+    workflow-syntax pt=225 vs en=226) e a página inteira ficava sem âncoras.
+    """
+    a = "".join(str(min(h[1], 9)) for h in headings)
+    bseq = "".join(str(min(h[1], 9)) for h in ref_headings)
+    pairs: dict[int, int] = {}
+    sm = difflib.SequenceMatcher(None, a, bseq, autojunk=False)
+    for tag, i1, i2, j1, _j2 in sm.get_opcodes():
+        if tag == "equal":
+            for k in range(i2 - i1):
+                pairs[i1 + k] = j1 + k
+    return pairs
+
+
 def align_anchors(knowledge: Path, langs: list[str]) -> dict[str, int]:
     """Ancora headings pt-BR nos slugs oficiais (inglês) usados pelos links do docs.
 
     O docs.github.com preserva os IDs de heading do source inglês mesmo na versão
-    traduzida (ex.: `#secrets-context`). Sem IDs explícitos, o MkDocs geraria
-    `#contexto-secrets` e todos os links capturados quebrariam. Como pt e en
-    derivam do MESMO documento, a sequência de headings é alinhável 1:1.
+    traduzida (ex.: `#secrets-context`). Sem IDs explícitos o MkDocs geraria
+    `#contexto-secrets` e os links capturados quebrariam.
     """
     stats = {"pages": 0, "aligned_pages": 0, "headings": 0, "skipped": 0}
     en_root = knowledge / "en"
@@ -485,26 +502,23 @@ def align_anchors(knowledge: Path, langs: list[str]) -> dict[str, int]:
             continue
         for md in sorted(root.rglob("*.md")):
             rel = md.relative_to(root).as_posix()
-            if lang == "en":
-                reference = None
-            else:
-                candidate = en_root / rel
-                reference = candidate if candidate.exists() else None
             headings = headings_of(md)
             if not headings:
                 continue
             stats["pages"] += 1
+            reference = None if lang == "en" else (en_root / rel if (en_root / rel).exists() else None)
             ref_headings = headings_of(reference) if reference else []
-            use_reference = bool(ref_headings) and len(ref_headings) == len(headings) and \
-                [h[1] for h in ref_headings] == [h[1] for h in headings]
-            if reference and not use_reference:
+            pairs = align_headings(headings, ref_headings) if ref_headings else {}
+            if reference and not pairs:
                 stats["skipped"] += 1
-            source_headings = ref_headings if use_reference else headings
-            counts: dict[str, int] = {}
+
             lines = md.read_text(encoding="utf-8").split("\n")
+            counts: dict[str, int] = {}
             changed = False
-            for (lineno, _level, text, explicit), (_rl, _rlvl, rtext, rid) in zip(headings, source_headings):
-                slug = rid or github_slug(rtext or text)
+            for idx, (lineno, _level, text, explicit) in enumerate(headings):
+                ref_text = ref_headings[pairs[idx]][2] if idx in pairs else ""
+                base = ref_text or text
+                slug = github_slug(base)
                 if not slug:
                     continue
                 counts[slug] = counts.get(slug, 0) + 1
@@ -524,9 +538,47 @@ def align_anchors(knowledge: Path, langs: list[str]) -> dict[str, int]:
     return stats
 
 
-# --------------------------------------------------------------------------- #
-# mkdocs.yml
-# --------------------------------------------------------------------------- #
+AUTOTITLE_RE = re.compile(r"\[AUTOTITLE\]\(([^)\s]+)\)")
+
+
+def resolve_autotitle(root: Path, titles: dict[str, str]) -> int:
+    """`[AUTOTITLE](/pt/actions/x)` → título real da página destino (ou slug humanizado)."""
+    fixed = 0
+    for md in root.rglob("*.md"):
+        text = md.read_text(encoding="utf-8")
+        if "AUTOTITLE" not in text:
+            continue
+
+        def _sub(m: re.Match) -> str:
+            target = m.group(1)
+            path = target.split("#", 1)[0]
+            key = re.sub(r"^/(pt|en)/", "", path).strip("/")
+            key = key if key.endswith(".md") else f"{key}.md"
+            title = titles.get(key)
+            if not title:
+                title = key.rsplit("/", 1)[-1][:-3].replace("-", " ").strip().capitalize()
+            return f"[{title}]({target})"
+
+        new, n = AUTOTITLE_RE.subn(_sub, text)
+        if n:
+            md.write_text(new, encoding="utf-8")
+            fixed += n
+    return fixed
+
+
+def collect_titles(knowledge: Path, langs: list[str]) -> dict[str, str]:
+    titles: dict[str, str] = {}
+    for lang in langs:
+        root = knowledge / lang
+        if not root.exists():
+            continue
+        for md in root.rglob("*.md"):
+            fm = read_front_matter(md)
+            rel = md.relative_to(root).as_posix()
+            titles[rel] = str(fm.get("title") or "")
+            titles[f"{lang}/{rel}"] = str(fm.get("title") or "")
+    return titles
+
 
 def render_nav(knowledge: Path, langs: list[str]) -> str:
     lines = ["nav:", "  - Início: index.md"]
@@ -558,6 +610,8 @@ def render_nav(knowledge: Path, langs: list[str]) -> str:
         if (skill_root / "templates.md").exists():
             lines.append("      - Catálogo de templates: skill/templates.md")
     lines.append("  - Validação e conformidade: validation.md")
+    if (KNOWLEDGE / "tags.md").exists():
+        lines.append("  - Tags: tags.md")
     return "\n".join(lines) + "\n"
 
 
@@ -644,6 +698,44 @@ def render_root_index(knowledge: Path, langs: list[str], manifests: dict[str, di
     (knowledge / "index.md").write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 
 
+SITE_ASSET_RE = re.compile(r"(!?\[[^\]]*\]\()(/(?:assets|site|images)/[^)\s]+)(\))")
+
+
+try:  # reparo de cercas herdado do extrator (idempotente)
+    import extract as _extract
+except Exception:  # pragma: no cover
+    _extract = None
+
+
+def repair_fences_tree(root: Path) -> int:
+    """Aplica repair_fences() à árvore já capturada (idempotente)."""
+    if _extract is None:
+        return 0
+    total = 0
+    for md in root.rglob("*.md"):
+        text = md.read_text(encoding="utf-8")
+        new, n = _extract.repair_fences(text)
+        if n:
+            md.write_text(new, encoding="utf-8")
+            total += n
+    return total
+
+
+def normalize_assets(root: Path) -> int:
+    """Reescreve imagens `/assets/**` já capturadas para a URL absoluta do docs."""
+    fixed = 0
+    for md in root.rglob("*.md"):
+        text = md.read_text(encoding="utf-8")
+        new, n = SITE_ASSET_RE.subn(lambda m: f"{m.group(1)}https://docs.github.com{m.group(2)}{m.group(3)}", text)
+        if n:
+            md.write_text(new, encoding="utf-8")
+            fixed += n
+    return fixed
+
+
+TITLES_CACHE: list[dict[str, str]] = [{}]
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Gera nav/índices do MkDocs para a base de conhecimento")
     ap.add_argument("--knowledge", default=str(KNOWLEDGE))
@@ -657,6 +749,20 @@ def main(argv: list[str] | None = None) -> int:
     manifests: dict[str, dict[str, Any]] = {}
 
     anchor_stats = align_anchors(knowledge, langs)
+    TITLES_CACHE[0] = collect_titles(KNOWLEDGE, langs)
+
+    for lang_root in (KNOWLEDGE / "pt", KNOWLEDGE / "en"):
+        if lang_root.exists():
+            n_fences = repair_fences_tree(lang_root)
+            n_auto = resolve_autotitle(lang_root, TITLES_CACHE[0])
+            if n_auto:
+                print(f"[info] AUTOTITLE resolvidos: {n_auto} em {lang_root.name}/")
+            if n_fences:
+                print(f"[info] cercas reparadas: {n_fences} em {lang_root.name}/")
+            n_assets = normalize_assets(lang_root)
+            if n_assets:
+                print(f"[info] assets absolutizados: {n_assets} em {lang_root.name}/")
+
     print(f"[info] âncoras: {anchor_stats['aligned_pages']}/{anchor_stats['pages']} páginas alinhadas, "
           f"{anchor_stats['headings']} headings com ID explícito, {anchor_stats['skipped']} sem par 1:1")
 

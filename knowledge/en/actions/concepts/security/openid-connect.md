@@ -32,7 +32,7 @@ By updating your workflows to use OIDC tokens, you can adopt the following good 
 
 The following diagram gives an overview of how GitHub's OIDC provider integrates with your workflows and cloud provider:
 
-![Diagram of how a cloud provider integrates with GitHub Actions through access tokens and JSON web token cloud role IDs.](/assets/images/help/actions/oidc-architecture.png)
+![Diagram of how a cloud provider integrates with GitHub Actions through access tokens and JSON web token cloud role IDs.](https://docs.github.com/assets/images/help/actions/oidc-architecture.png)
 
 1. You establish an OIDC trust relationship in the cloud provider, allowing specific GitHub workflows to request cloud access tokens on behalf of a defined cloud role.
 1. Every time your job runs, GitHub's OIDC provider auto-generates an OIDC token. This token contains multiple claims to establish a security-hardened and verifiable identity about the specific workflow that is trying to authenticate.

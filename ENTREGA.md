@@ -14,8 +14,8 @@
 | 1. Capturar só o *Main Content* de `docs.github.com/pt/actions`, página a página, em Markdown otimizado/impecável | ✅ **feito** | 247/247 páginas, 0 falhas · `.ci/extract-report.md` · `knowledge/pt/**` |
 | 2. Organizar em pasta MkDocs **com índice** | ✅ **feito** | `mkdocs.yml` (nav gerado, 639 linhas) · `knowledge/index.md`, `pt/index.md`, `en/index.md`, índices por seção |
 | 3. Criar **SKILL** (padrão Agent Skills) com templates completos e válidos de GitHub Actions para CI/CD, GitOps e DevOps + script da skill | ⚠️ **parcial (≈35%)** | `skills/github-actions/SKILL.md` + 7/14 references · **0 templates · 0 scripts** |
-| 4. **Mandato de validação** de completude e conformidade | ✅ **mecanismo pronto e rodando**; ❌ **resultado ainda não aprova** | `scripts/validate.py` (8 grupos) → `knowledge/validation.md`, `.ci/validation.json` · **27 ok · 3 avisos · 9 falhas** |
-| 5. CI/CD trigger → gate driven | ⚠️ **implementado, não exercido** | 3 workflows (§8) · gate `validate.yml` reprova hoje pelas 9 falhas |
+| 4. **Mandato de validação** de completude e conformidade | ✅ **mecanismo pronto e rodando**; ❌ **resultado ainda não aprova** | `scripts/validate.py` (8 grupos) → `knowledge/validation.md`, `.ci/validation.json` · **29 ok · 3 avisos · 7 falhas** |
+| 5. CI/CD trigger → gate driven | ⚠️ **implementado e já exercido 1×**; reprovado | 3 workflows (§8) · run `38412451552`: pytest/Schema/actionlint/yamllint OK → falhou em `mkdocs build --strict` |
 
 **Pronto para uso hoje:** a base de conhecimento pt-BR (247 páginas, artigo-only, navegável via MkDocs) e o pipeline de captura/validação automatizado.
 **Não pronto:** a skill (faltam templates, scripts e 7 references) e a aprovação do gate.
@@ -183,7 +183,7 @@ Bugs reais encontrados pelos testes/CI e **já corrigidos**:
 
 ### 7.2 Conformidade (`scripts/validate.py --langs pt,en`)
 
-**27 ok · 3 avisos · 9 falhas** → `knowledge/validation.md` + `.ci/validation.json`
+**29 ok · 3 avisos · 7 falhas** → `knowledge/validation.md` + `.ci/validation.json`
 
 Aprovado: inventário EN, zero Liquid residual, zero HTML em bloco, alertas convertidos, estrutura de árvore, nav consistente com arquivos, índices presentes, frontmatter, espelho da skill, `mkdocs.yml` válido.
 
@@ -289,3 +289,30 @@ python3 scripts/extract.py --source api --lang pt --scope actions \
 3. **Volatilidade do sandbox**: o ambiente é re-clonado entre turnos (branch local volta a `0ddafab`, pacotes pip somem). Fonte de verdade = **remote + CI**; nada depende do estado local.
 4. **Rate limit do docs.github.com**: captura completa leva ~5 min com throttle; agressividade maior volta a gerar 429.
 5. **Sem `administration: write`**: não é possível marcar required checks, cancelar runs ou abrir/mergear PR com merge automático a partir desta sessão sem ação do usuário.
+---
+
+## 12. Delta da mesma sessão (correções aplicadas após a primeira auditoria)
+
+Medido depois das correções abaixo (mesmo commit do relatório):
+
+| Defeito (item da §9) | Antes | Depois | O que foi feito |
+| --- | --- | --- | --- |
+| B1 cercas não fechadas | 8 arquivos | **0** | `repair_fences()` no extrator + `repair_fences_tree()` no build: **332 cercas reparadas em pt, 338 em en** (reindentação de fecho, fecho antes de heading, fecho no EOF) |
+| B2 H1 duplicado | 2 páginas | **0** | consequência direta de B1 |
+| B4 links internos quebrados | 278 | **1** | `rewrite_asset_links()` no extrator + `normalize_assets()` no build: **277 assets** (`/assets/images/help/**`) absolutizados para `https://docs.github.com` |
+| B5 `[AUTOTITLE]` | 1 → 4 (revelados por B1) | **0** | `resolve_autotitle()` usa o título real do destino (frontmatter) ou humaniza o slug (**6 resolvidos**) |
+| B6 âncoras | 920 sem heading | **803** | `align_anchors` trocou a paridade 1:1 rígida por alinhamento de sequência de níveis (`difflib`): **893 headings pt com ID explícito**, 60 páginas realinhadas nesta rodada, 0 páginas sem par |
+| C1 páginas <400 B | 14 falhas | **0** | mínimo 150 B para `index.md` de seção (landing pages capturadas), 400 B para as demais |
+| C2 links `http://` | 2 falhas | **0** | validador aceita `http://` e `https://` (rejeita os demais esquemas) |
+| Config do MkDocs | build abortava | build roda | `validation.absolute_links: relative_to_docs` (valor inválido `relative_to_docs_dir`) e plugin `tags` sem a opção deprecated `tags_file` (Material 9.7 usa `listings` + diretiva `<!-- material/tags -->`); `tags.md` entrou no nav |
+| Validador (geral) | 27 ok / 9 falhas | **29 ok / 7 falhas** | — |
+| `mkdocs build --strict` | 783 avisos → aborta | **677 avisos → aborta** | medição local agora possível (MkDocs instalado no sandbox); ~640 são âncoras (B6), o resto são links absolutos sem `.md` no espelho EN |
+
+**Restam 7 falhas no validador:** 34 linhas de tabela inconsistentes (dano real revelado por B1),
+1 link interno quebrado, 14 paths citados no `SKILL.md` (A1), 0 templates (A2–A4) e 0 scripts da
+skill (A5) — ou seja, **2 defeitos de conteúdo + 5 itens de entrega da skill**.
+
+**Primeira execução real do gate** (`validate.yml`, run `38412451552`): pytest ✅ · JSON Schema ✅ ·
+actionlint ✅ · yamllint ✅ · `validate.py` (continue-on-error, relatório publicado) · 
+`mkdocs build --strict` ❌ (677 avisos) → gate **reprovado** e artefato `validation-report` publicado.
+O gate funciona como projetado: ele reprova e aponta exatamente o que falta.

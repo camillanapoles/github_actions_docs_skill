@@ -25,7 +25,7 @@ Before creating your GitHub Actions workflow, you will first need to complete th
        --repository-name MY_ECR_REPOSITORY \
        --region MY_AWS_REGION
 
-   ```
+            ```
 
    Ensure that you use the same Amazon ECR repository name (represented here by `MY_ECR_REPOSITORY`) for the `ECR_REPOSITORY` variable in the workflow below.
 
@@ -45,7 +45,7 @@ Before creating your GitHub Actions workflow, you will first need to complete th
 
    aws ecs register-task-definition --generate-cli-skeleton
 
-   ```
+            ```
 
    Ensure that you set the `ECS_TASK_DEFINITION` variable in the workflow below as the path to the JSON file.
 
@@ -70,6 +70,7 @@ Ensure that you provide your own values for all the variables in the `env` key o
 If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environment or if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
 
 ```yaml copy
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -147,6 +148,7 @@ jobs:
           wait-for-service-stability: true
 ```
 
+```
 ## Further reading
 
 For the original workflow template, see [`aws.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/aws.yml) in the GitHub Actions `starter-workflows` repository.

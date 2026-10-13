@@ -43,7 +43,7 @@ For information about how to create a runner group with the REST API, see [Actio
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the left sidebar, click ** Actions**, then click **Runner groups**.
 1. In the "Runner groups" section, click **New runner group**.
 1. Enter a name for your runner group.
@@ -276,7 +276,7 @@ If you don't specify a runner group during the registration process, your new ru
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the left sidebar, click ** Actions**, then click **Runners**.
 1. In the "Runners" list, click the runner that you want to configure.
 1. Select the **Runner group** drop-down.

@@ -28,7 +28,7 @@ The following options can be used to limit which actions are allowed in converte
 
         ```shell
   --allowed-actions actions/checkout@v6 actions/upload-artifact@* my-org/*
-  ```
+        ```
 
   You can provide an empty list to disallow all actions. For example, `--allowed-actions=`.
 

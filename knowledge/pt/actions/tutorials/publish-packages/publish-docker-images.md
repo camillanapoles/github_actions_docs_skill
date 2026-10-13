@@ -64,14 +64,15 @@ As opções de `build-push-action` necessárias para Docker Hub são:
 * `push`: se isso for definido como `true`, a imagem será enviada por push para o registro se for compilada com sucesso.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 
-# O GitHub recomenda fixar ações em um SHA de commit.
-# Para obter uma versão mais recente, você precisará atualizar o SHA.
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
+# O GitHub recomenda fixar ações em um SHA de commit. { #github-recommends-pinning-actions-to-a-commit-sha }
+# Para obter uma versão mais recente, você precisará atualizar o SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha }
+# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning }
 
 name: Publish Docker image
 
@@ -126,6 +127,7 @@ O fluxo de trabalho acima verifica o repositório do GitHub usa o `login-action`
 
 Na última etapa, gera um atestado de artefato para a imagem, o que aumenta a segurança da cadeia de fornecedores. Para saber mais, confira [Usar atestados de artefatos para estabelecer a procedência de compilações](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md).
 
+```
 ## Publicando imagens para GitHub Packages { #publishing-images-to-github-packages }
 
 Você pode acionar um fluxo de trabalho para publicar sua imagem sempre que criar uma nova versão no GitHub. O fluxo de trabalho no exemplo abaixo é executado quando uma alteração é enviada por push para o branch `release`.
@@ -156,6 +158,7 @@ As opções necessárias para `build-push-action` são GitHub Packages:
 #
 name: Create and publish a Docker image
 
+```
 # Configures this workflow to run every time a change is pushed to the branch called `release`.
 on:
   push:
@@ -217,6 +220,7 @@ jobs:
 
 O fluxo de trabalho acima é acionado por um push para o branch da "versão". Ele verifica o repositório GitHub e usa o `login-action` para fazer logon no Container registry. Em seguida, extrai etiquetas e tags para a imagem do Docker. Por fim, ele usa a ação `build-push-action` para criar a imagem e publicá-la no Container registry.
 
+```
 ## Publicando imagens em Docker Hub e GitHub Packages { #publishing-images-to-docker-hub-and-github-packages }
 
 Em um fluxo de trabalho individual, você pode publicar sua imagem do Docker em vários registros usando as ações `login-action` e `build-push-action` para cada registro.
@@ -224,14 +228,15 @@ Em um fluxo de trabalho individual, você pode publicar sua imagem do Docker em 
 O fluxo de trabalho de exemplo a seguir usa as etapas das seções anteriores (Publicando imagens no [Docker Hub](#publishing-images-to-docker-hub) e Publicando imagens em [GitHub Packages](#publishing-images-to-github-packages)) para criar um único fluxo de trabalho que faz push para ambos os registros.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-1 }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by-1 }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support-1 }
+# online. { #documentation-1 }
 
-# O GitHub recomenda fixar ações em um SHA de commit.
-# Para obter uma versão mais recente, você precisará atualizar o SHA.
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
+# O GitHub recomenda fixar ações em um SHA de commit. { #github-recommends-pinning-actions-to-a-commit-sha-1 }
+# Para obter uma versão mais recente, você precisará atualizar o SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha-1 }
+# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning-1 }
 
 name: Publish Docker image
 
@@ -291,6 +296,7 @@ Em seguida, a ação `build-push-action` cria e envia por push a imagem do Docke
     * Para manter um resumo consistente e permitir que um único atestado verifique todas as cópias, envie por push para um registro primeiro e use uma ferramenta como [`crane copy`](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md) para replicar a imagem em outros locais.
     * Se você optar por compilar e enviar para cada repositório separadamente, deverá gerar um atestado distinto para cada um, para garantir que seus artefatos permaneçam verificáveis.
 
+```
 ## Atividade prática { #hands-on-practice }
 
 Pratique a publicação de imagens Docker com o exercício [Publicação de Imagens Docker](https://github.com/skills/publish-docker-images)GitHub Skills.

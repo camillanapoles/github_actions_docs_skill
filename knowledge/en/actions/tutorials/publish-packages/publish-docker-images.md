@@ -62,6 +62,7 @@ The `build-push-action` options required for Docker Hub are:
 * `push`: If set to `true`, the image will be pushed to the registry if it is built successfully.
 
 ```yaml copy
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -125,6 +126,7 @@ The above workflow checks out the GitHub repository, uses the `login-action` to 
 
 In the last step, it generates an artifact attestation for the image, which increases supply chain security. For more information, see [Using artifact attestations to establish provenance for builds](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md).
 
+```
 ## Publishing images to GitHub Packages
 
 >[!NOTE] Container registry is currently in public preview for GitHub Enterprise Server and subject to change.
@@ -160,6 +162,7 @@ The `build-push-action` options required for GitHub Packages are:
 #
 name: Create and publish a Docker image
 
+```
 # Configures this workflow to run every time a change is pushed to the branch called `release`.
 on:
   push:
@@ -221,6 +224,7 @@ jobs:
 
 The above workflow is triggered by a push to the "release" branch. It checks out the GitHub repository, and uses the `login-action` to log in to the Container registry. It then extracts labels and tags for the Docker image. Finally, it uses the `build-push-action` action to build the image and publish it on the Container registry.
 
+```
 ## Publishing images to Docker Hub and GitHub Packages
 
 >[!NOTE] Container registry is currently in public preview for GitHub Enterprise Server and subject to change.
@@ -232,14 +236,15 @@ In a single workflow, you can publish your Docker image to multiple registries b
 The following example workflow uses the steps from the previous sections ([Publishing images to Docker Hub](#publishing-images-to-docker-hub) and [Publishing images to GitHub Packages](#publishing-images-to-github-packages)) to create a single workflow that pushes to both registries.
 
 ```yaml copy
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+```
+# This workflow uses actions that are not certified by GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-1 }
+# They are provided by a third-party and are governed by { #they-are-provided-by-a-third-party-and-are-governed-by-1 }
+# separate terms of service, privacy policy, and support { #separate-terms-of-service-privacy-policy-and-support-1 }
+# documentation. { #documentation-1 }
 
-# GitHub recommends pinning actions to a commit SHA.
-# To get a newer version, you will need to update the SHA.
-# You can also reference a tag or branch, but the action may change without warning.
+# GitHub recommends pinning actions to a commit SHA. { #github-recommends-pinning-actions-to-a-commit-sha-1 }
+# To get a newer version, you will need to update the SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha-1 }
+# You can also reference a tag or branch, but the action may change without warning. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning-1 }
 
 name: Publish Docker image
 
@@ -299,6 +304,7 @@ Then the `build-push-action` action builds and pushes the Docker image to Docker
     * To maintain a consistent digest and allow a single attestation to verify all copies, push to one registry first and use a tool like [`crane copy`](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md) to replicate the image elsewhere.
     * If you choose to build and push to each registry separately instead, you must generate a distinct attestation for each one to ensure your artifacts remain verifiable.
 
+```
 ## Hands-on practice
 
 Practice publishing Docker images with the [Publishing Docker images](https://github.com/skills/publish-docker-images) GitHub Skills exercise.

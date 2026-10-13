@@ -128,7 +128,7 @@ Para corrigir isso, utilize uma das opções a seguir.
         - name: runner
           image: ghcr.io/actions/actions-runner:latest
           command: ["/home/runner/run.sh"]
-  ```
+        ```
 
 * Se atualizar o `securityContext` do pod do executor não for uma solução viável, você poderá resolver o problema usando `initContainers` para alterar a propriedade do volume montado, como indicado abaixo.
 
@@ -146,7 +146,7 @@ Para corrigir isso, utilize uma das opções a seguir.
         - name: runner
           image: ghcr.io/actions/actions-runner:latest
           command: ["/home/runner/run.sh"]
-  ```
+        ```
 
 ## Erro: `failed to get access token for GitHub App auth: 401 Unauthorized` { #error-failed-to-get-access-token-for-github-app-auth-401-unauthorized }
 

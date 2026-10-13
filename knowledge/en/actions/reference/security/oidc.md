@@ -528,7 +528,7 @@ You can use the [`github/actions-oidc-debugger`](https://github.com/github/actio
         ```yaml
   permissions:
     id-token: write
-  ```
+        ```
 
 * Without `id-token: write`, the OIDC JWT ID token cannot be requested. This setting only enables fetching and setting the OIDC token; it does not grant write access to other resources.
 
@@ -540,14 +540,14 @@ You can use the [`github/actions-oidc-debugger`](https://github.com/github/actio
   permissions:
     id-token: write # This is required for requesting the JWT
     contents: read # This is required for actions/checkout
-  ```
+        ```
 
 * To fetch an OIDC token for a single job, set the permission within that job:
 
         ```yaml
   permissions:
     id-token: write # This is required for requesting the JWT
-  ```
+        ```
 
 * Additional permissions may be required depending on workflow needs.
 
@@ -572,4 +572,4 @@ Custom actions can request the OIDC token using:
 
         ```shell copy
   curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange"
-  ```
+        ```

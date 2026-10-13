@@ -540,7 +540,7 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-    ```
+                ```
 
 Para executar um trabalho com base no nome do branch de cabeçalho da solicitação de pull (em vez do nome do branch base da solicitação de pull), use o contexto `github.head_ref` em um condicional. Por exemplo, este fluxo de trabalho será executado sempre que uma solicitação de pull for aberta, mas o trabalho `run_if` só será executado se o cabeçalho da solicitação de pull for um branch cujo nome começa com `releases/`:
 
@@ -582,7 +582,7 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-    ```
+                ```
 
 ### Executar o fluxo de trabalho de `pull_request` quando ocorrer uma mesclagem de solicitação de pull { #running-your-pullrequest-workflow-when-a-pull-request-merges }
 
@@ -751,7 +751,7 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-    ```
+                ```
 
 Para executar um trabalho com base no nome do branch de cabeçalho da solicitação de pull (em vez do nome do branch base da solicitação de pull), use o contexto `github.head_ref` em um condicional. Por exemplo, este fluxo de trabalho será executado sempre que uma solicitação de pull for aberta, mas o trabalho `run_if` só será executado se o cabeçalho da solicitação de pull for um branch cujo nome começa com `releases/`:
 
@@ -793,7 +793,7 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-    ```
+                ```
 
 ### Executar o fluxo de trabalho de `pull_request_target` quando ocorrer uma mesclagem de solicitação de pull { #running-your-pullrequesttarget-workflow-when-a-pull-request-merges }
 
@@ -860,7 +860,7 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-    ```
+                ```
 
 ### Executando o fluxo de trabalho somente quando ocorre um push de tags específicas { #running-your-workflow-only-when-a-push-of-specific-tags-occurs }
 
@@ -905,7 +905,7 @@ on:
     jobs:
         job_name:
             if: $true
-    ```
+                ```
 
 Executa o fluxo de trabalho quando ocorre atividade relacionada a GitHub Packages em seu repositório. Para obter mais informações, consulte [GitHub Packages Documentação](https://docs.github.com/pt/packages).
 
@@ -1229,7 +1229,7 @@ jobs:
 
 Se você executar este fluxo de trabalho em um navegador, você deverá inserir valores para as entradas necessárias manualmente antes de o fluxo de trabalho ser executado.
 
-![Captura de tela de uma lista de execuções de fluxo de trabalho. Um menu suspenso, rotulado "Executar fluxo de trabalho" e expandido para mostrar os campos de entrada, está contornado em laranja escuro.](/assets/images/help/actions/workflow-dispatch-inputs.png)
+![Captura de tela de uma lista de execuções de fluxo de trabalho. Um menu suspenso, rotulado "Executar fluxo de trabalho" e expandido para mostrar os campos de entrada, está contornado em laranja escuro.](https://docs.github.com/assets/images/help/actions/workflow-dispatch-inputs.png)
 
 Você também pode passar entradas ao executar um fluxo de trabalho de um script ou usando GitHub CLI. Por exemplo:
 

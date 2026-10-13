@@ -81,7 +81,7 @@ No tutorial, primeiro você criará um arquivo de fluxo de trabalho que usa o Gi
                - [Work this week](https://github.com/orgs/github/projects/3)
              PINNED: false
              CLOSE_PREVIOUS: false
-   ```
+            ```
 
 4. Personalize os parâmetros no seu arquivo do fluxo de trabalho:
    * Altere o valor de `on.schedule` para determinar quando deseja executar esse fluxo de trabalho. No exemplo acima, o fluxo de trabalho será executado todas as segundas às 7h20 UTC. Para saber mais sobre os fluxos de trabalho agendados, confira [Eventos que disparam fluxos de trabalho](../../reference/workflows-and-actions/events-that-trigger-workflows.md#schedule).

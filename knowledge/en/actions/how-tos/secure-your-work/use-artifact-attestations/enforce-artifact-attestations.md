@@ -92,7 +92,7 @@ helm upgrade trust-policies --install --atomic \
  --set policy.organization=MY-ORGANIZATION \
  --set-json 'policy.exemptImages=["index.docker.io/library/busybox**"]' \
  --set-json 'policy.images=["ghcr.io/MY-ORGANIZATION/**"]'
- ```
+```
 
 All patterns must use the fully-qualified name, even if the images originate from Docker Hub. In this example, if we want to exempt the image `busybox`, we must provide the full name including the domain and double-star glob to match all image versions: `index.docker.io/library/busybox**`.
 

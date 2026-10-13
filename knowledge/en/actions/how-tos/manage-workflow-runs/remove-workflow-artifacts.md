@@ -27,14 +27,14 @@ By default, GitHub stores build logs and artifacts for 90 days, and this retenti
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, click the workflow you want to see.
 
-   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 1. From the list of workflow runs, click the name of the run to see the workflow run summary.
 1. Under **Artifacts**, click  next to the artifact you want to remove.
 
-    ![Screenshot showing artifacts created during a workflow run. A trash can icon, used to remove an artifact, is outlined in dark orange.](/assets/images/help/repository/actions-delete-artifact-updated.png)
+    ![Screenshot showing artifacts created during a workflow run. A trash can icon, used to remove an artifact, is outlined in dark orange.](https://docs.github.com/assets/images/help/repository/actions-delete-artifact-updated.png)
 
 ## Setting the retention period for an artifact
 

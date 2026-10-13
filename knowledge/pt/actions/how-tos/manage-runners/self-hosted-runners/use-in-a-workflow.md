@@ -21,7 +21,7 @@ Se você tiver `repo: write` acesso a um repositório, poderá exibir uma lista 
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, na seção "Management", clique em **(server) Runners**.
 4. Clique na guia **Auto-hospedado** na parte superior da lista de executores.
 5. Revise a lista de executores auto-hospedados disponíveis para o repositório. Essa lista inclui os executores auto-hospedados e os conjuntos de dimensionamento de executores criados com Actions Runner Controller. Para saber mais, confira [Controlador de Ações Runner](../../../concepts/runners/actions-runner-controller.md).

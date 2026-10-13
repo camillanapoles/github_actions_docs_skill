@@ -91,7 +91,7 @@ Use um agente de codificação para criar o fluxo de trabalho a partir de uma de
 
             ```shell
    gh aw init
-   ```
+            ```
 
 2. Inicie uma sessão de agente de codificação no contexto do repositório, por exemplo, usando Claude Code, OpenAI Codexou CLI do Google Gemini, Copilot CLIou modo de agente do VS Code.
 
@@ -99,7 +99,7 @@ Use um agente de codificação para criar o fluxo de trabalho a partir de uma de
 
             ```copilot copy
    /agentic-workflows create a pr reviewer that ensure the changes are tested.
-   ```
+            ```
 
    O agente cria um arquivo Markdown de fluxo de trabalho, `.github/workflows/`compila o arquivo de fluxo de trabalho correspondente `.lock.yml`GitHub Actions e solicita que você examine e confirme ambos os arquivos.
 

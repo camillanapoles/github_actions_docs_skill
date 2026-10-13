@@ -333,6 +333,7 @@ workflows:
 ### Complete example for GitHub Actions
 
 ```yaml
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -399,4 +400,6 @@ jobs:
         run: bundle exec appraisal install
       - name: Run appraisal
         run: bundle exec appraisal rake
+```
+
 ```

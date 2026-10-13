@@ -34,6 +34,7 @@ Under the workflow `env` key, change the following values:
 For more information about these values, see [Build configuration for Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/build-configuration?tabs=github-actions) in the Azure documentation.
 
 ```yaml copy
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -95,6 +96,7 @@ jobs:
           action: "close"
 ```
 
+```
 ## Further reading
 
 * For the original workflow template, see [`azure-staticwebapp.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/azure-staticwebapp.yml) in the GitHub Actions `starter-workflows` repository.

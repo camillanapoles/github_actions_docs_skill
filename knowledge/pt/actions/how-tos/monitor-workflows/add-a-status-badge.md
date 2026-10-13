@@ -19,7 +19,7 @@ _Você pode exibir um selo de status no seu repositório para indicar o status d
 
 Um selo de status mostra se um fluxo de trabalho está falhando ou passando. Um local comum para adicionar uma notificação de status é no arquivo `README.md` do repositório, mas você pode adicioná-lo a qualquer página da Web desejada. Por padrão, os selos exibem o status do seu branch-padrão. Se não houver execuções de fluxo de trabalho em seu branch padrão, ele exibirá o status da execução mais recente em todos os branches. Você pode exibir o status de uma execução de fluxo de trabalho para um branch ou um evento específico usando os parâmetros de consulta `branch` e `event` na URL.
 
-![Captura de tela de um selo de status de fluxo de trabalho. Da direita para a esquerda, são mostrados: o logotipo do GitHub, o nome do fluxo de trabalho ("GitHub Actions Demo") e o status ("passing").](/assets/images/help/repository/actions-workflow-status-badge.png)
+![Captura de tela de um selo de status de fluxo de trabalho. Da direita para a esquerda, são mostrados: o logotipo do GitHub, o nome do fluxo de trabalho ("GitHub Actions Demo") e o status ("passing").](https://docs.github.com/assets/images/help/repository/actions-workflow-status-badge.png)
 
 Para adicionar uma notificação de status de fluxo de trabalho ao arquivo `README.md`, primeiro localize a URL da notificação de status que você gostaria de exibir. Em seguida, você pode usar o Markdown para exibir a notificação como uma imagem em seu arquivo `README.md`. Para saber mais sobre a marcação de imagem no Markdown, confira [Sintaxe básica de escrita e formatação](https://docs.github.com/pt/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#images).
 
@@ -30,10 +30,10 @@ Você pode criar um emblema de status do fluxo de trabalho diretamente na interf
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
-   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 4. No lado direito da página, ao lado do campo "Filter workflow runs", clique em (Show workflow options) para exibir um menu suspenso e clique em **Create status badge**.
 5. Opcionalmente, selecione um branch se quiser exibir a notificação de status de um branch diferente do branch padrão.
 6. Como alternativa, selecione o evento que acionará o fluxo de trabalho.

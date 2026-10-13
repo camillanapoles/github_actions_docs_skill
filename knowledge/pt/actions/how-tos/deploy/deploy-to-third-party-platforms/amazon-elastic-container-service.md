@@ -27,7 +27,7 @@ Antes de criar seu GitHub Actions fluxo de trabalho, primeiro você precisará c
        --repository-name MY_ECR_REPOSITORY \
        --region MY_AWS_REGION
 
-   ```
+            ```
 
    Certifique-se de usar o mesmo nome de repositório do Amazon ECR (representado aqui por `MY_ECR_REPOSITORY`) para a variável `ECR_REPOSITORY` no fluxo de trabalho abaixo.
 
@@ -47,7 +47,7 @@ Antes de criar seu GitHub Actions fluxo de trabalho, primeiro você precisará c
 
    aws ecs register-task-definition --generate-cli-skeleton
 
-   ```
+            ```
 
    Certifique-se de que você definiu a variável `ECS_TASK_DEFINITION` no fluxo de trabalho abaixo como o caminho para o arquivo JSON.
 
@@ -72,14 +72,15 @@ Certifique-se de fornecer seus próprios valores para todas as variáveis na cha
 Se você configurou um ambiente de implantação, altere o valor de `environment` para que ele seja o nome do seu ambiente. Se você não tiver configurado um ambiente ou se o fluxo de trabalho estiver em um repositório privado e você não usar o GitHub Enterprise Cloud, exclua a chave `environment`.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 
-# O GitHub recomenda fixar ações em um SHA de commit.
-# Para obter uma versão mais recente, você precisará atualizar o SHA.
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
+# O GitHub recomenda fixar ações em um SHA de commit. { #github-recommends-pinning-actions-to-a-commit-sha }
+# Para obter uma versão mais recente, você precisará atualizar o SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha }
+# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning }
 
 name: Deploy to Amazon ECS
 
@@ -149,6 +150,7 @@ jobs:
           wait-for-service-stability: true
 ```
 
+```
 ## Leitura adicional { #further-reading }
 
 Para o modelo de fluxo de trabalho original, consulte [`aws.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/aws.yml) no GitHub Actions`starter-workflows` repositório.

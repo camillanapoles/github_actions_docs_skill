@@ -21,11 +21,11 @@ Você pode pesquisar e navegar por ações diretamente no editor do fluxo de tra
 1. No seu repositório, pesquise o arquivo do fluxo de trabalho que você deseja editar.
 2. No canto superior direito da visualização do arquivo, para abrir o editor de fluxo de trabalho, clique em (Edit file).
 
-![Captura de tela de um arquivo de fluxo de trabalho mostrando a seção de cabeçalho. O ícone de lápis para editar arquivos é destacado com um contorno laranja escuro.](/assets/images/help/repository/actions-edit-workflow-file.png)
+![Captura de tela de um arquivo de fluxo de trabalho mostrando a seção de cabeçalho. O ícone de lápis para editar arquivos é destacado com um contorno laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-edit-workflow-file.png)
 
 1. À direita do editor, use a barra lateral GitHub Marketplace para navegar pelas ações. As ações com o selo (Creator verified by GitHub) indicam que GitHub verificou o criador da ação como uma organização parceira.
 
-![Captura de tela de um fluxo de trabalho no editor de arquivos. A barra lateral mostra ações do Marketplace. Um selo "Criador verificado por GitHub" é destacado em laranja.](/assets/images/help/repository/actions-marketplace-sidebar.png)
+![Captura de tela de um fluxo de trabalho no editor de arquivos. A barra lateral mostra ações do Marketplace. Um selo "Criador verificado por GitHub" é destacado em laranja.](https://docs.github.com/assets/images/help/repository/actions-marketplace-sidebar.png)
 
 ## Adicionar uma ação ao seu fluxo de trabalho { #adding-an-action-to-your-workflow }
 
@@ -48,7 +48,7 @@ Uma página de listagem de ação inclui a versão da ação e a sintaxe do flux
 2. Clique para exibir a listagem completa do marketplace relacionada à ação.
 3. Em "Instalação", clique (Copy to clipboard) para copiar a sintaxe do fluxo de trabalho.
 
-![Captura de tela da listagem de uma ação no marketplace. O ícone "Copiar para área de transferência" da ação está realçado com um contorno laranja escuro.](/assets/images/help/repository/actions-sidebar-detailed-view.png)
+![Captura de tela da listagem de uma ação no marketplace. O ícone "Copiar para área de transferência" da ação está realçado com um contorno laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-sidebar-detailed-view.png)
 
 1. Cole a sintaxe como uma nova etapa no seu fluxo de trabalho. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idsteps).
 2. Se a ação exigir que você forneça entradas, defina-as no seu fluxo de trabalho. Para obter informações sobre as entradas que uma ação pode exigir, confira [Usando blocos de construção pré-gravados no seu fluxo de trabalho](find-and-customize-actions.md#using-inputs-and-outputs-with-an-action).

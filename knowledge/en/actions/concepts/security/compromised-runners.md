@@ -31,7 +31,7 @@ Workflows triggered from a forked repository using the `pull_request` event have
   uses: fakeaction/publish@v3
   with:
       key: ${{ secrets.PUBLISH_KEY }}
-  ```
+        ```
 
 Although GitHub Actions scrubs secrets from memory that are not referenced in the workflow (or an included action), the `GITHUB_TOKEN` and any referenced secrets can be harvested by a determined attacker.
 

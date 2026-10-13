@@ -43,13 +43,13 @@ Before you begin, you'll create a repository on GitHub.
 
             ```shell copy
    cd hello-world-composite-action
-   ```
+            ```
 
 1. In the `hello-world-composite-action` repository, create a new file called `goodbye.sh` with example code:
 
             ```shell copy
    echo "echo Goodbye" > goodbye.sh
-   ```
+            ```
 
 1. From your terminal, make `goodbye.sh` executable.
 
@@ -69,7 +69,7 @@ chmod +x goodbye.sh
 
 ```shell copy
    git add --chmod=+x -- goodbye.sh
-   ```
+```
 
 1. From your terminal, check in your `goodbye.sh` file.
 
@@ -94,7 +94,7 @@ git push
 ```shell copy
    git commit -m "Add goodbye script"
    git push
-   ```
+```
 
 ## Creating an action metadata file
 
@@ -136,7 +136,7 @@ git push
           run: goodbye.sh
           shell: bash
 
-    ```
+                ```
 
     This file defines the `who-to-greet` input, maps the random generated number to the `random-number` output variable, adds the action's path to the runner system path (to locate the `goodbye.sh` script during execution), and runs the `goodbye.sh` script.
 
@@ -150,14 +150,14 @@ git push
    git add action.yml
    git commit -m "Add action"
    git push
-   ```
+            ```
 
 1. From your terminal, add a tag. This example uses a tag called `v1`. For more information, see [Managing custom actions](../../how-tos/create-and-publish-actions/manage-custom-actions.md#using-release-management-for-actions#using-release-management-for-actions).
 
             ```shell copy
    git tag -a -m "Description of this release" v1
    git push --follow-tags
-   ```
+            ```
 
 ## Testing out your action in a workflow
 
@@ -193,7 +193,7 @@ From your repository, click the **Actions** tab, and select the latest workflow 
 
             ```shell copy
    echo "echo Goodbye" > goodbye.sh
-   ```
+            ```
 
 **Linux**
 
@@ -211,7 +211,7 @@ chmod +x goodbye.sh
 
 ```shell copy
    git add --chmod=+x -- goodbye.sh
-   ```
+```
 
 **Linux**
 
@@ -234,7 +234,7 @@ git push
 ```shell copy
    git commit -m "Add goodbye script"
    git push
-   ```
+```
 
 1. In the `hello-world-composite-action` folder, create the `action.yml` file based on the steps in [Creating a composite action](create-a-composite-action.md#creating-an-action-metadata-file#creating-an-action-metadata-file).
 1. When using the action, use the relative path to the folder where the composite action's `action.yml` file is located in the `uses` key. The below example assumes it is in the `.github/actions/hello-world-composite-action` folder.

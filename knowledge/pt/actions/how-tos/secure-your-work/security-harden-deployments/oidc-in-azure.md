@@ -72,10 +72,11 @@ A [`azure/login`](https://github.com/Azure/login) ação recebe um JWT do proved
 O exemplo a seguir troca um token de ID OIDC com Azure para receber um token de acesso, que pode ser usado para acessar recursos de nuvem.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 name: Run Azure Login with OIDC
 on: [push]
 
@@ -99,6 +100,7 @@ jobs:
           az group list
 ```
 
+```
 ## Leitura adicional { #further-reading }
 
 * [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](oidc-with-reusable-workflows.md)

@@ -38,7 +38,7 @@ Quando você executar seus fluxos de trabalho atualizados, eles criarão seus ar
      id-token: write
      contents: read
      attestations: write
-   ```
+            ```
 
 2. Após a etapa em que o binário foi criado, adicione a etapa a seguir.
 
@@ -47,7 +47,7 @@ Quando você executar seus fluxos de trabalho atualizados, eles criarão seus ar
      uses: actions/attest@v4
      with:
        subject-path: 'PATH/TO/ARTIFACT'
-   ```
+            ```
 
    O valor do parâmetro `subject-path` deve ser definido como o caminho do binário que você deseja atestar.
 
@@ -61,7 +61,7 @@ Quando você executar seus fluxos de trabalho atualizados, eles criarão seus ar
      contents: read
      attestations: write
      packages: write
-   ```
+            ```
 
 2. Após a etapa em que a imagem foi criada, adicione a etapa a seguir.
 
@@ -72,7 +72,7 @@ Quando você executar seus fluxos de trabalho atualizados, eles criarão seus ar
        subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
        subject-digest: 'sha256:fedcba0...'
        push-to-registry: true
-   ```
+            ```
 
    O valor do parâmetro `subject-name` deve especificar o nome completo da imagem. Por exemplo, `ghcr.io/user/app` ou `acme.azurecr.io/user/app`. Não inclua uma etiqueta como parte do nome da imagem.
 
@@ -99,7 +99,7 @@ Quando você executar seus fluxos de trabalho atualizados, eles criarão seus ar
      id-token: write
      contents: read
      attestations: write
-   ```
+            ```
 
 2. Após a etapa em que o binário foi criado, adicione a etapa a seguir.
 
@@ -109,7 +109,7 @@ Quando você executar seus fluxos de trabalho atualizados, eles criarão seus ar
      with:
        subject-path: 'PATH/TO/ARTIFACT'
        sbom-path: 'PATH/TO/SBOM'
-   ```
+            ```
 
    O valor do parâmetro `subject-path` deve ser definido como o caminho do binário descrito pela SBOM. O valor do parâmetro `sbom-path` deve ser definido como o caminho do arquivo de SBOM que você gerou.
 
@@ -123,7 +123,7 @@ Quando você executar seus fluxos de trabalho atualizados, eles criarão seus ar
      contents: read
      attestations: write
      packages: write
-   ```
+            ```
 
 2. Após a etapa em que a imagem foi criada, adicione a etapa a seguir.
 
@@ -135,7 +135,7 @@ Quando você executar seus fluxos de trabalho atualizados, eles criarão seus ar
        subject-digest: 'sha256:fedcba0...'
        sbom-path: 'sbom.json'
        push-to-registry: true
-   ```
+            ```
 
    O valor do parâmetro `subject-name` deve especificar o nome completo da imagem. Por exemplo, `ghcr.io/user/app` ou `acme.azurecr.io/user/app`. Não inclua uma etiqueta como parte do nome da imagem.
 

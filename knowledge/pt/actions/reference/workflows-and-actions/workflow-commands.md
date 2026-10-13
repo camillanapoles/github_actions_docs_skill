@@ -216,7 +216,7 @@ jobs:
             Write-Output "::endgroup::"
 ```
 
-![Captura de tela do log da etapa de fluxo de trabalho. A segunda linha, "Meu título", é um grupo expandido. A próxima linha, "Dentro do grupo", está indentada abaixo.](/assets/images/help/actions/actions-log-group.png)
+![Captura de tela do log da etapa de fluxo de trabalho. A segunda linha, "Meu título", é um grupo expandido. A próxima linha, "Dentro do grupo", está indentada abaixo.](https://docs.github.com/assets/images/help/actions/actions-log-group.png)
 
 ## Como mascarar um valor em um registro { #masking-a-value-in-a-log }
 
@@ -520,7 +520,7 @@ steps:
           - shell: powershell
             run: |
               "mypath" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-    ```
+                ```
 
     As versões 6 e superior do PowerShell Core (`shell: pwsh`) usam UTF-8 por padrão. Por exemplo:
 
@@ -532,7 +532,7 @@ steps:
           - shell: pwsh
             run: |
               "mypath" >> $env:GITHUB_PATH
-    ```
+                ```
 
 ## Configurar uma variável de ambiente { #setting-an-environment-variable }
 
@@ -547,13 +547,13 @@ echo "{environment_variable_name}={value}" >> "$GITHUB_ENV"
 
         ```powershell copy
   "{environment_variable_name}={value}" >> $env:GITHUB_ENV
-  ```
+        ```
 
 * Como usar o PowerShell versão 5.1 e inferior:
 
         ```powershell copy
   "{environment_variable_name}={value}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-  ```
+        ```
 
 Disponibilize uma variável de ambiente para todas as etapas posteriores em um trabalho de fluxo de trabalho definindo ou atualizando a variável de ambiente e gravando isso no arquivo de ambiente `GITHUB_ENV`. A etapa que cria ou atualiza a variável de ambiente não tem acesso ao novo valor, mas todos os passos subsequentes em um trabalho terão acesso.
 
@@ -694,7 +694,7 @@ echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
 "### Hello world! :rocket:" >> $env:GITHUB_STEP_SUMMARY
 ```
 
-![Captura de tela da página de resumo de uma execução de fluxo de trabalho. Em "resumo de exemplo", está "Olá, mundo!" e um emoji de foguete.](/assets/images/help/actions/actions-job-summary-simple-example.png)
+![Captura de tela da página de resumo de uma execução de fluxo de trabalho. Em "resumo de exemplo", está "Olá, mundo!" e um emoji de foguete.](https://docs.github.com/assets/images/help/actions/actions-job-summary-simple-example.png)
 
 ### Conteúdo de Markdown de várias linhas { #multiline-markdown-content }
 

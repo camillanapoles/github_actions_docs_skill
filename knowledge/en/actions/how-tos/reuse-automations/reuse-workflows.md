@@ -41,7 +41,7 @@ You can define inputs and secrets, which can be passed from the caller workflow 
        secrets:
          personal_access_token:
            required: true
-   ```
+            ```
 
    For details of the syntax for defining inputs and secrets, see [`on.workflow_call.inputs`](../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callinputs) and [`on.workflow_call.secrets`](../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callsecrets).
 1. In the reusable workflow, reference the input or secret that you defined in the `on` key in the previous step.
@@ -59,7 +59,7 @@ You can define inputs and secrets, which can be passed from the caller workflow 
          with:
            repo-token: ${{ secrets.personal_access_token }}
            configuration-path: ${{ inputs.config-path }}
-   ```
+            ```
 
    In the example above, `personal_access_token` is a secret that's defined at the repository or organization level.
 

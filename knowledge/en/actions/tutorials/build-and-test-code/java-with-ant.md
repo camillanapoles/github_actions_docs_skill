@@ -42,7 +42,7 @@ GitHub provides a workflow template for Ant that should work for most Java with 
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. If you already have a workflow in your repository, click **New workflow**.
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "Java with Ant".
 1. On the "Java with Ant" workflow, click **Configure**.
@@ -71,7 +71,7 @@ GitHub provides a workflow template for Ant that should work for most Java with 
            distribution: 'temurin'
        - name: Build with Ant
          run: ant -noinput -buildfile build.xml
-   ```
+            ```
 
 1. Edit the workflow as required. For example, change the Java version.
 1. Click **Commit changes**.

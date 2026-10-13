@@ -149,7 +149,7 @@ You can programmatically assign labels to a self-hosted runner after the runner 
 
         ```shell
   ./config.sh --url <REPOSITORY_URL> --token <REGISTRATION_TOKEN> --labels gpu
-  ```
+        ```
 
   The label is created if it does not already exist. You can also use this approach to assign the default labels to runners, such as `x64` or `linux`. When default labels are assigned using the configuration script, GitHub Actions accepts them as given and does not validate that the runner is actually using that operating system or architecture.
 
@@ -157,7 +157,7 @@ You can programmatically assign labels to a self-hosted runner after the runner 
 
         ```shell
   ./config.sh --url <REPOSITORY_URL> --token <REGISTRATION_TOKEN> --labels gpu,x64,linux
-  ```
+        ```
 
 !!! note
 

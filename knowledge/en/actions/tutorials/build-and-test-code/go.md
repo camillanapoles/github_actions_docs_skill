@@ -36,13 +36,13 @@ GitHub provides a Go workflow template that should work for most Go projects. Th
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. If you already have a workflow in your repository, click **New workflow**.
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "go".
 1. Filter the selection of workflows by clicking **Continuous integration**.
 1. On the "Go - by GitHub Actions" workflow, click **Configure**.
 
-   ![Screenshot of the "Choose a workflow" page. The "Configure" button on the "Go" workflow is highlighted with an orange outline.](/assets/images/help/actions/starter-workflow-go.png)
+   ![Screenshot of the "Choose a workflow" page. The "Configure" button on the "Go" workflow is highlighted with an orange outline.](https://docs.github.com/assets/images/help/actions/starter-workflow-go.png)
 
    If you don't find the "Go - by GitHub Actions" workflow template, copy the following workflow code to a new file called `go.yml` in the `.github/workflows` directory of your repository.
 
@@ -72,7 +72,7 @@ GitHub provides a Go workflow template that should work for most Go projects. Th
 
          - name: Test
            run: go test -v ./...
-   ```
+            ```
 
 1. Edit the workflow as required. For example, change the version of Go.
 1. Click **Commit changes**.

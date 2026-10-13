@@ -61,7 +61,7 @@ New runners are automatically assigned to the default group, or you can choose w
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the left sidebar, click ** Actions**, then click **Runners**.
 1. Click **New runner**, then click ** New GitHub-hosted runner**.
 1. Complete the required details to configure your new runner:
@@ -126,7 +126,7 @@ You can edit the name of your larger runners.
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the left sidebar, click ** Actions**, then click **Runners**.
 1. In the list of runners, select the runner you would like to edit.
 1. Enter a new name for the runner in the text field under "Name."
@@ -155,7 +155,7 @@ You can edit the size of your larger runners.
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the left sidebar, click ** Actions**, then click **Runners**.
 1. In the list of runners, select the runner you would like to edit.
 1. Select a new size for the runner from the list of available options under "Size." The available sizes depend on the image that is installed on the runner.
@@ -184,7 +184,7 @@ You can edit the image of your larger runners if you are using a GitHub-owned im
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the left sidebar, click ** Actions**, then click **Runners**.
 1. In the list of runners, select the runner you would like to edit.
 1. Select a new image for the runner from the list of available options under "Image." The available images are limited to GitHub-owned images.
@@ -213,7 +213,7 @@ You can control the maximum number of jobs allowed to run concurrently for speci
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the left sidebar, click ** Actions**, then click **Runners**.
 1. In the list of runners, select the runner you would like to edit.
 1. In the "Capacity" section, under "Maximum concurrency", enter the maximum number of jobs you would like to allow to run at the same time.
@@ -250,7 +250,7 @@ The number of available IP addresses in the assigned ranges does not restrict th
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the left sidebar, click ** Actions**, then click **Runners**.
 1. In the list of runners, select the runner you would like to edit.
 1. To assign static IP addresses to the runner, under "Networking," check **Assign unique & static public IP address ranges for this runner**.

@@ -54,13 +54,13 @@ Este procedimento demonstra como criar a conta de serviço para sua integração
 
             ```shell copy
    gcloud iam service-accounts create $SA_NAME
-   ```
+            ```
 
 2. Recupere o endereço de email da conta de serviço que você acabou de criar:
 
             ```shell copy
    gcloud iam service-accounts list
-   ```
+            ```
 
 3. Adicionar funções à conta de serviço.
 
@@ -78,19 +78,19 @@ Este procedimento demonstra como criar a conta de serviço para sua integração
    gcloud projects add-iam-policy-binding $GKE_PROJECT \
      --member=serviceAccount:$SA_EMAIL \
      --role=roles/container.clusterViewer
-   ```
+            ```
 
 4. Faça o download do arquivo chave do JSON para a conta de serviço:
 
             ```shell copy
    gcloud iam service-accounts keys create key.json --iam-account=$SA_EMAIL
-   ```
+            ```
 
 5. Armazene a chave da conta de serviço como um segredo chamado `GKE_SA_KEY`:
 
             ```shell copy
    export GKE_SA_KEY=$(cat key.json | base64)
-   ```
+            ```
 
    Para saber mais sobre como armazenar um segredo, confira [Usar segredos em ações do GitHub](../../write-workflows/choose-what-workflows-do/use-secrets.md).
 
@@ -117,14 +117,15 @@ Na chave `env`, altere o valor de `GKE_CLUSTER` para o nome do seu cluster, `GKE
 Se você configurou um ambiente de implantação, altere o valor de `environment` para que ele seja o nome do seu ambiente. Se você não tiver configurado um ambiente ou se o fluxo de trabalho estiver em um repositório privado e você não usar o GitHub Enterprise Cloud, exclua a chave `environment`.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 
-# O GitHub recomenda fixar ações em um SHA de commit.
-# Para obter uma versão mais recente, você precisará atualizar o SHA.
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
+# O GitHub recomenda fixar ações em um SHA de commit. { #github-recommends-pinning-actions-to-a-commit-sha }
+# Para obter uma versão mais recente, você precisará atualizar o SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha }
+# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning }
 
 name: Build and Deploy to GKE
 
@@ -197,6 +198,7 @@ jobs:
         kubectl get services -o wide
 ```
 
+```
 ## Leitura adicional { #further-reading }
 
 Para mais informações sobre as ferramentas usadas nesses exemplos, consulte a documentação a seguir:

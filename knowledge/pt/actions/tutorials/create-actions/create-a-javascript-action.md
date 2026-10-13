@@ -43,13 +43,13 @@ Antes de começar, você precisará baixar Node.js e criar um repositório públ
 
             ```shell copy
    cd hello-world-javascript-action
-   ```
+            ```
 
 5. No terminal, inicialize o diretório com o npm para gerar um arquivo `package.json`.
 
             ```shell copy
    npm init -y
-   ```
+            ```
 
 ## Criar um arquivo de metadados de ação { #creating-an-action-metadata-file }
 
@@ -139,6 +139,7 @@ No diretório `hello-world-javascript-action`, crie um arquivo `README.md` que e
 * Um exemplo de como usar sua ação em um fluxo de trabalho.
 
 ````markdown copy
+````
 # Hello world JavaScript action
 
 This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
@@ -164,6 +165,7 @@ with:
 ```
 ````
 
+````
 ## Faça commit, tag e push da sua ação { #commit-tag-and-push-your-action }
 
 GitHub baixa cada ação executada em um fluxo de trabalho durante o runtime e executa-a como um pacote completo de código antes que você possa usar comandos de fluxo de trabalho como `run` interagir com o computador executor. Isso significa que você deve incluir quaisquer dependências de pacotes necessárias para executar o código JavaScript. Por exemplo, essa ação usa pacotes `@actions/core` e `@actions/github`.
@@ -192,7 +194,7 @@ Realizar o check-in do diretório `node_modules` pode causar problemas. Como alt
    };
 
    export default config;
-   ```
+            ```
 
 3. Compile o arquivo `dist/index.js`.
 
@@ -207,7 +209,7 @@ Realizar o check-in do diretório `node_modules` pode causar problemas. Como alt
    git commit -m "Initial commit of my first action"
    git tag -a -m "My first action release" v1.1
    git push --follow-tags
-   ```
+            ```
 
 Quando você confirma e envia o código por push, o repositório atualizado deve ter esta aparência:
 

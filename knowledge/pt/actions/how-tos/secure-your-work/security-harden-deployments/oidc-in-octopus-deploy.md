@@ -61,10 +61,11 @@ A ação [`OctopusDeploy/login`](https://github.com/OctopusDeploy/login) recebe 
 O exemplo a seguir troca um token de identificação OIDC com sua instância do Octopus Deploy para receber um token de acesso, que pode ser usado para acessar os recursos do Octopus Deploy. Certifique-se de substituir `server` e `service_account_id` pelos detalhes adequados ao seu cenário.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 
 jobs:
   create_release_in_octopus:
@@ -87,6 +88,7 @@ jobs:
           project: My Octopus Project
 ```
 
+```
 ## Leitura adicional { #further-reading }
 
 * [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](oidc-with-reusable-workflows.md)

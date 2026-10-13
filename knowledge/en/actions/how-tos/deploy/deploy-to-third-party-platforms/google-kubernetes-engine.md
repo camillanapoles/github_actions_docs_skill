@@ -49,13 +49,13 @@ This procedure demonstrates how to create the service account for your GKE integ
 
             ```shell copy
    gcloud iam service-accounts create $SA_NAME
-   ```
+            ```
 
 1. Retrieve the email address of the service account you just created:
 
             ```shell copy
    gcloud iam service-accounts list
-   ```
+            ```
 
 1. Add roles to the service account.
 
@@ -73,19 +73,19 @@ This procedure demonstrates how to create the service account for your GKE integ
    gcloud projects add-iam-policy-binding $GKE_PROJECT \
   	 --member=serviceAccount:$SA_EMAIL \
   	 --role=roles/container.clusterViewer
-   ```
+            ```
 
 1. Download the JSON keyfile for the service account:
 
             ```shell copy
    gcloud iam service-accounts keys create key.json --iam-account=$SA_EMAIL
-   ```
+            ```
 
 1. Store the service account key as a secret named `GKE_SA_KEY`:
 
             ```shell copy
    export GKE_SA_KEY=$(cat key.json | base64)
-   ```
+            ```
 
    For more information about how to store a secret, see [Using secrets in GitHub Actions](../../write-workflows/choose-what-workflows-do/use-secrets.md).
 
@@ -112,6 +112,7 @@ Under the `env` key, change the value of `GKE_CLUSTER` to the name of your clust
 If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environment or if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
 
 ```yaml copy
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -192,6 +193,7 @@ jobs:
         kubectl get services -o wide
 ```
 
+```
 ## Further reading
 
 For more information on the tools used in these examples, see the following documentation:

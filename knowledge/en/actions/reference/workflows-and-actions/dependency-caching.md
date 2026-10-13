@@ -37,7 +37,7 @@ You cannot change the contents of an existing cache. Instead, you can create a n
         path: |
           ~/.gradle/caches
           ~/.gradle/wrapper
-    ```
+                ```
 
   * You can specify either directories or single files, and glob patterns are supported.
   * You can specify absolute paths, or paths relative to the workspace directory.
@@ -48,7 +48,7 @@ You cannot change the contents of an existing cache. Instead, you can create a n
     npm-feature-${{ hashFiles('package-lock.json') }}
     npm-feature-
     npm-
-  ```
+        ```
 
 * `enableCrossOsArchive`: **Optional** A boolean value that when enabled, allows Windows runners to save or restore caches independent of the operating system the cache was created on. If this parameter is not set, it defaults to `false`. For more information, see [Cross OS cache](https://github.com/actions/cache/blob/main/tips-and-workarounds.md#cross-os-cache) in the Actions Cache documentation.
 

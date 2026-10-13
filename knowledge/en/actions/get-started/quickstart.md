@@ -80,14 +80,14 @@ This guide assumes that:
            run: |
              ls ${{ github.workspace }}
          - run: echo "🍏 This job's status is ${{ job.status }}."
-   ```
+            ```
 
    At this stage you don't need to understand the details of this workflow. For now, you can just copy and paste the contents into the file. After completing this quickstart guide, you can learn about the syntax of workflow files in [Workflows](../concepts/workflows-and-actions/workflows.md), and for an explanation of GitHub Actions contexts, such as `${{ github.actor }}` and `${{ github.event_name }}`, see [Contexts reference](../reference/workflows-and-actions/contexts.md).
 
 1. Click **Commit changes**.
 1. In the "Propose changes" dialog, select either the option to commit to the default branch or the option to create a new branch and start a pull request. Then click **Commit changes** or **Propose changes**.
 
-   ![Screenshot of the "Propose changes" dialog with the areas mentioned highlighted with an orange outline.](/assets/images/help/repository/actions-quickstart-commit-new-file.png)
+   ![Screenshot of the "Propose changes" dialog with the areas mentioned highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-quickstart-commit-new-file.png)
 
 Committing the workflow file to a branch in your repository triggers the `push` event and runs your workflow.
 
@@ -98,23 +98,23 @@ If you chose to start a pull request, you can continue and create the pull reque
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, click the workflow you want to display, in this example "GitHub Actions Demo."
 
-   ![Screenshot of the "Actions" page. The name of the example workflow, "GitHub Actions Demo", is highlighted by a dark orange outline.](/assets/images/help/repository/actions-quickstart-workflow-sidebar.png)
+   ![Screenshot of the "Actions" page. The name of the example workflow, "GitHub Actions Demo", is highlighted by a dark orange outline.](https://docs.github.com/assets/images/help/repository/actions-quickstart-workflow-sidebar.png)
 
 1. From the list of workflow runs, click the name of the run you want to see, in this example "USERNAME is testing out GitHub Actions."
 1. In the left sidebar of the workflow run page, under **Jobs**, click the **Explore-GitHub-Actions** job.
 
-   ![Screenshot of the "Workflow run" page. In the left sidebar, the "Explore-GitHub-Actions" job is highlighted with a dark orange outline.](/assets/images/help/repository/actions-quickstart-job.png)
+   ![Screenshot of the "Workflow run" page. In the left sidebar, the "Explore-GitHub-Actions" job is highlighted with a dark orange outline.](https://docs.github.com/assets/images/help/repository/actions-quickstart-job.png)
 
 1. The log shows you how each of the steps was processed. Expand any of the steps to view its details.
 
-   ![Screenshot of steps run by the workflow.](/assets/images/help/repository/actions-quickstart-logs.png)
+   ![Screenshot of steps run by the workflow.](https://docs.github.com/assets/images/help/repository/actions-quickstart-logs.png)
 
    For example, you can see the list of files in your repository:
 
-   ![Screenshot of the "List files in the repository" step expanded to show the log output. The output for the step is highlighted with an orange outline.](/assets/images/help/repository/actions-quickstart-log-detail.png)
+   ![Screenshot of the "List files in the repository" step expanded to show the log output. The output for the step is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png)
 
 The example workflow you just added is triggered each time code is pushed to the branch, and shows you how GitHub Actions can work with the contents of your repository. For an in-depth tutorial, see [Understanding GitHub Actions](understand-github-actions.md).
 

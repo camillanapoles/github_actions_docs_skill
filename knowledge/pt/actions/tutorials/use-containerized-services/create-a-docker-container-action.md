@@ -38,6 +38,7 @@ No diretório `hello-world-docker-action`, crie um arquivo `Dockerfile`. Verifiq
 **Dockerfile**
 
 ```dockerfile copy
+```
 # Container image that runs your code
 FROM alpine:3.10
 
@@ -48,6 +49,7 @@ COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 ```
 
+```
 ## Criar um arquivo de metadados de ação { #creating-an-action-metadata-file }
 
 Crie um arquivo `action.yml` no diretório `hello-world-docker-action` que você criou acima. Para saber mais, confira [Referência de sintaxe de metadados](../../reference/workflows-and-actions/metadata-syntax.md).
@@ -55,6 +57,7 @@ Crie um arquivo `action.yml` no diretório `hello-world-docker-action` que você
 **action.yml**
 
 ```yaml copy
+```
 # action.yml
 name: 'Hello World'
 description: 'Greet someone and record the time'
@@ -77,6 +80,7 @@ Esses metadados definem um parâmetro de entrada `who-to-greet` e um de saída `
 
 GitHub criará uma imagem a partir do seu `Dockerfile` e executará comandos em um novo contêiner com essa imagem.
 
+```
 ## Gravar um código de ação { #writing-the-action-code }
 
 Você pode escolher qualquer imagem Docker de base e, portanto, qualquer linguagem para sua ação. O exemplo de script de shell a seguir usa a variável de entrada `who-to-greet` para imprimir "Olá, \[quem cumprimentar]" no arquivo de log.
@@ -105,13 +109,13 @@ Se `entrypoint.sh` for executado sem erros, o status da ação será definido co
             ```shell copy
    git add entrypoint.sh
    git update-index --chmod=+x entrypoint.sh
-   ```
+            ```
 
 2. Opcionalmente, para verificar o modo de permissão do arquivo no índice Git, execute o comando a seguir.
 
             ```shell copy
    git ls-files --stage entrypoint.sh
-   ```
+            ```
 
    Uma saída como `100755 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       entrypoint.sh` significa que o arquivo tem a permissão executável. Neste exemplo, `755` denota a permissão executável.
 
@@ -131,6 +135,7 @@ No diretório `hello-world-docker-action`, crie um arquivo `README.md` que espec
 **LEIAME.md**
 
 ```markdown copy
+```
 # Hello world docker action
 
 This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
@@ -154,6 +159,7 @@ with:
   who-to-greet: 'Mona the Octocat'
 ```
 
+```
 ## Faça commit, tag e push da sua ação { #commit-tag-and-push-your-action }
 
 Pelo terminal, faça commit dos arquivos `action.yml`, `entrypoint.sh`, `Dockerfile` e `README.md`.

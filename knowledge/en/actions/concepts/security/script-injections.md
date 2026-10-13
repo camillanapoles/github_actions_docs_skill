@@ -45,7 +45,7 @@ This example is vulnerable to script injection because the `run` command execute
 
 To inject commands into this workflow, the attacker could create a pull request with a title of `a"; ls $GITHUB_WORKSPACE"`:
 
-![Screenshot of the title of a pull request in edit mode. A new title has been entered in the field: a"; ls $GITHUB_WORKSPACE".](/assets/images/help/actions/example-script-injection-pr-title.png)
+![Screenshot of the title of a pull request in edit mode. A new title has been entered in the field: a"; ls $GITHUB_WORKSPACE".](https://docs.github.com/assets/images/help/actions/example-script-injection-pr-title.png)
 
 In this example, the `"` character is used to interrupt the `title="${{ github.event.pull_request.title }}"` statement, allowing the `ls` command to be executed on the runner. You can see the output of the `ls` command in the log:
 

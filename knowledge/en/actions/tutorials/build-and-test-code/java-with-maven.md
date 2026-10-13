@@ -42,7 +42,7 @@ GitHub provides a workflow template for Maven that should work for most Java wit
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. If you already have a workflow in your repository, click **New workflow**.
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "Java with Maven".
 1. On the "Java with Maven" workflow, click **Configure**.
@@ -51,6 +51,7 @@ GitHub provides a workflow template for Maven that should work for most Java wit
 
             ```yaml copy
    # This workflow uses actions that are not certified by GitHub.
+            ```
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
@@ -87,6 +88,7 @@ GitHub provides a workflow template for Maven that should work for most Java wit
 
    The `maven.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
+   ```
 ### Specifying the Java version and architecture
 
 The workflow template sets up the `PATH` to contain OpenJDK 8 for the x64 platform. If you want to use a different version of Java, or target a different architecture (`x64` or `x86`), you can use the `setup-java` action to choose a different Java runtime environment.

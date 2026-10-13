@@ -26,14 +26,14 @@ Por padrão, GitHub armazena logs de build e artefatos por 90 dias e esse perío
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
-   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
 5. Em **Artefatos**, clique (Remove artifact ARTIFACT-NAME) ao lado do artefato que você deseja remover.
 
-   ![Captura de tela mostrando artefatos criados durante uma execução de fluxo de trabalho. Um ícone de lixeira, usado para remover um artefato, está contornado em laranja escuro.](/assets/images/help/repository/actions-delete-artifact-updated.png)
+   ![Captura de tela mostrando artefatos criados durante uma execução de fluxo de trabalho. Um ícone de lixeira, usado para remover um artefato, está contornado em laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-delete-artifact-updated.png)
 
 ## Definir o período de retenção para um artefato { #setting-the-retention-period-for-an-artifact }
 

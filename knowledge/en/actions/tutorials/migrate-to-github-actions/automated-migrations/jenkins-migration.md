@@ -46,7 +46,7 @@ For more information on manual migrations, see [Migrating from Jenkins to GitHub
 
             ```bash copy
    gh extension install github/gh-actions-importer
-   ```
+            ```
 
 1. Verify that the extension is installed:
 
@@ -63,7 +63,7 @@ For more information on manual migrations, see [Migrating from Jenkins to GitHub
      forecast   Forecast GitHub Actions usage from historical pipeline utilization.
      dry-run    Convert a pipeline to a GitHub Actions workflow and output its yaml file.
      migrate    Convert a pipeline to a GitHub Actions workflow and open a pull request with the changes.
-   ```
+            ```
 
 ## Configuring credentials
 
@@ -81,7 +81,7 @@ The `configure` CLI command is used to set required credentials and options for 
 
             ```shell
    gh actions-importer configure
-   ```
+            ```
 
    The `configure` command will prompt you for the following information:
 
@@ -104,20 +104,20 @@ The `configure` CLI command is used to set required credentials and options for 
    ✔ Username of Jenkins user: admin
    ✔ Base url of the Jenkins instance: https://localhost
    Environment variables successfully updated.
-   ```
+            ```
 
 1. In your terminal, run the GitHub Actions Importer `update` CLI command to connect to GitHub Packages Container registry and ensure that the container image is updated to the latest version:
 
             ```shell
    gh actions-importer update
-   ```
+            ```
 
    The output of the command should be similar to below:
 
             ```shell
    Updating ghcr.io/actions-importer/cli:latest...
    ghcr.io/actions-importer/cli:latest up-to-date
-   ```
+            ```
 
 ## Perform an audit of Jenkins
 

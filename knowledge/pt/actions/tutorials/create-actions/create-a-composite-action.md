@@ -42,27 +42,27 @@ Antes de começar, você criará um repositório em GitHub.
 
             ```shell copy
    cd hello-world-composite-action
-   ```
+            ```
 
 4. No repositório `hello-world-composite-action`, crie um arquivo chamado `goodbye.sh` com o código de exemplo:
 
             ```shell copy
    echo "echo Goodbye" > goodbye.sh
-   ```
+            ```
 
 5. A partir do terminal, torne o comando `goodbye.sh` executável.
 
             ```shell copy
    chmod +x goodbye.sh
-   ```
+            ```
 
             ```shell copy
    chmod +x goodbye.sh
-   ```
+            ```
 
             ```shell copy
    git add --chmod=+x -- goodbye.sh
-   ```
+            ```
 
 6. Ainda no terminal, faça check-in do arquivo `goodbye.sh`.
 
@@ -70,18 +70,18 @@ Antes de começar, você criará um repositório em GitHub.
    git add goodbye.sh
    git commit -m "Add goodbye script"
    git push
-   ```
+            ```
 
             ```shell copy
    git add goodbye.sh
    git commit -m "Add goodbye script"
    git push
-   ```
+            ```
 
             ```shell copy
    git commit -m "Add goodbye script"
    git push
-   ```
+            ```
 
 ## Criar um arquivo de metadados de ação { #creating-an-action-metadata-file }
 
@@ -123,7 +123,7 @@ Antes de começar, você criará um repositório em GitHub.
          run: goodbye.sh
          shell: bash
 
-   ```
+            ```
 
    Esse arquivo define a entrada de`who-to-greet`, mapeia o número gerado aleatoriamente para a variável de saída`random-number`, adiciona o caminho da ação ao caminho do sistema executor (para localizar o script`goodbye.sh` durante a execução) e executa o script`goodbye.sh`.
 
@@ -137,14 +137,14 @@ Antes de começar, você criará um repositório em GitHub.
    git add action.yml
    git commit -m "Add action"
    git push
-   ```
+            ```
 
 3. No seu terminal, adicione uma tag. Este exemplo usa uma tag chamada `v1`. Para saber mais, confira [Como gerenciar ações personalizadas](../../how-tos/create-and-publish-actions/manage-custom-actions.md#using-release-management-for-actions).
 
             ```shell copy
    git tag -a -m "Description of this release" v1
    git push --follow-tags
-   ```
+            ```
 
 ## Testar sua ação em um fluxo de trabalho { #testing-out-your-action-in-a-workflow }
 
@@ -181,36 +181,36 @@ No repositório, clique na guia **Ações** e selecione a execução mais recent
 
             ```shell copy
    echo "echo Goodbye" > goodbye.sh
-   ```
+            ```
 
             ```shell copy
    chmod +x goodbye.sh
-   ```
+            ```
 
             ```shell copy
    chmod +x goodbye.sh
-   ```
+            ```
 
             ```shell copy
    git add --chmod=+x -- goodbye.sh
-   ```
+            ```
 
             ```shell copy
    git add goodbye.sh
    git commit -m "Add goodbye script"
    git push
-   ```
+            ```
 
             ```shell copy
    git add goodbye.sh
    git commit -m "Add goodbye script"
    git push
-   ```
+            ```
 
             ```shell copy
    git commit -m "Add goodbye script"
    git push
-   ```
+            ```
 
 3. Na pasta `hello-world-composite-action`, crie o arquivo `action.yml` com base nas etapas em [Criar uma ação composta](create-a-composite-action.md#creating-an-action-metadata-file).
 

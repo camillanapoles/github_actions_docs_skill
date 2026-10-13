@@ -22,7 +22,7 @@ If you have `repo: write` access to a repository, you can view a list of the run
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, under the "Management" section, click ** Runners**.
 1. Click the **Self hosted** tab at the top of the list of runners.
 1. Review the list of available self-hosted runners for the repository. This list includes both self-hosted runners and runner scale sets created with Actions Runner Controller. For more information, see [Actions Runner Controller](../../../concepts/runners/actions-runner-controller.md).

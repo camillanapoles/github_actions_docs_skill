@@ -57,6 +57,7 @@ Para fornecer os `args` definidos no arquivo de metadados da ação para um cont
 #### Exemplo de *Dockerfile* { #example-dockerfile }
 
 ```dockerfile
+```
 # Container image that runs your code
 FROM debian:9.5-slim
 
@@ -67,6 +68,7 @@ COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 ```
 
+```
 #### Exemplo de arquivo *entrypoint.sh* { #example-entrypointsh-file }
 
 Usando o exemplo de Dockerfile acima, GitHub enviará o `args` configurado no arquivo de metadados da ação como argumentos para `entrypoint.sh`. Adicione o `#!/bin/sh`[shebang](https://en.wikipedia.org/wiki/Shebang_\(Unix\)) no início do arquivo `entrypoint.sh` para usar explicitamente o shell compatível com [POSIX](https://en.wikipedia.org/wiki/POSIX) do sistema.
@@ -74,6 +76,7 @@ Usando o exemplo de Dockerfile acima, GitHub enviará o `args` configurado no ar
 ```shell
 #!/bin/sh
 
+```
 # `$#` expands to the number of arguments and `$@` expands to the supplied `args`
 printf '%d args:' "$#"
 printf " '%s'" "$@"

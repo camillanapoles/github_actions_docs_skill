@@ -212,7 +212,7 @@ You can run your deployment workflow on GitHub-hosted runners or on self-hosted 
 
 You can use a status badge to display the status of your deployment workflow. A status badge shows whether a workflow is currently failing or passing. A common place to add a status badge is in the `README.md` file of your repository, but you can add it to any web page you'd like. By default, badges display the status of your default branch. If there are no workflow runs on your default branch, it will display the status of the most recent run across all branches. You can display the status of a workflow run for a specific branch or event using the `branch` and `event` query parameters in the URL.
 
-![Screenshot of a workflow status badge. From right to left it shows: the GitHub logo, workflow name ("GitHub Actions Demo"), and status ("passing").](/assets/images/help/repository/actions-workflow-status-badge.png)
+![Screenshot of a workflow status badge. From right to left it shows: the GitHub logo, workflow name ("GitHub Actions Demo"), and status ("passing").](https://docs.github.com/assets/images/help/repository/actions-workflow-status-badge.png)
 
 For more information, see [Adding a workflow status badge](../../monitor-workflows/add-a-status-badge.md).
 

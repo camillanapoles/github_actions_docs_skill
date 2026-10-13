@@ -35,7 +35,7 @@ Os fluxos de trabalho acionados a partir de um repositório bifurcado usando o e
   uses: fakeaction/publish@v3
   with:
       key: ${{ secrets.PUBLISH_KEY }}
-  ```
+        ```
 
 Embora GitHub Actions remova da memória os segredos que não são referenciados no fluxo de trabalho (ou em uma ação incluída), o `GITHUB_TOKEN` e quaisquer segredos referenciados podem ser extraídos por um invasor determinado.
 

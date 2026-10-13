@@ -37,7 +37,7 @@ Se você configurou regras de proteção de implantação que controlam se o sof
 1. Navegue até a execução do fluxo de trabalho. Para obter mais informações sobre como acessar uma execução de fluxo de trabalho, confira [Visualizar o histórico de execução do fluxo de trabalho](../../monitor-workflows/view-workflow-run-history.md).
 2. À direita das **Regras de proteção de implantação**, clique em **Iniciar todos os trabalhos pendentes**.
 
-![Captura de tela da seção "Regras de proteção de implantação" com o botão "Iniciar todas as tarefas em espera" destacado em laranja.](/assets/images/actions-bypass-env-protection-rules.png)
+![Captura de tela da seção "Regras de proteção de implantação" com o botão "Iniciar todas as tarefas em espera" destacado em laranja.](https://docs.github.com/assets/images/actions-bypass-env-protection-rules.png)
 
 1. Na janela pop-up, selecione os ambientes para os quais você deseja ignorar as regras de proteção de implantação.
 2. Em **Deixar um comentário**, insira uma descrição para ignorar as regras de proteção de implantação.

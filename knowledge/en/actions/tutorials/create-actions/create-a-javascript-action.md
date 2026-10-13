@@ -44,13 +44,13 @@ Before you begin, you'll need to download Node.js and create a public GitHub rep
 
             ```shell copy
    cd hello-world-javascript-action
-   ```
+            ```
 
 1. From your terminal, initialize the directory with npm to generate a `package.json` file.
 
             ```shell copy
    npm init -y
-   ```
+            ```
 
 ## Creating an action metadata file
 
@@ -140,6 +140,7 @@ In your `hello-world-javascript-action` directory, create a `README.md` file tha
 * An example of how to use your action in a workflow.
 
 ````markdown copy
+````
 # Hello world JavaScript action
 
 This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
@@ -165,6 +166,7 @@ with:
 ```
 ````
 
+````
 ## Commit, tag, and push your action
 
 GitHub downloads each action run in a workflow during runtime and executes it as a complete package of code before you can use workflow commands like `run` to interact with the runner machine. This means you must include any package dependencies required to run the JavaScript code. For example, this action uses `@actions/core` and `@actions/github` packages.
@@ -193,7 +195,7 @@ Checking in your `node_modules` directory can cause problems. As an alternative,
    };
 
    export default config;
-   ```
+            ```
 
 1. Compile your `dist/index.js` file.
 
@@ -208,7 +210,7 @@ Checking in your `node_modules` directory can cause problems. As an alternative,
    git commit -m "Initial commit of my first action"
    git tag -a -m "My first action release" v1.1
    git push --follow-tags
-   ```
+            ```
 
 When you commit and push your code, your updated repository should look like this:
 

@@ -30,7 +30,7 @@ O diagrama abaixo mostra uma execução de fluxo de trabalho em andamento que us
 * Quando um trabalho é direcionado a um ambiente, a execução do fluxo de trabalho exibe uma barra de progresso que mostra o número de etapas no trabalho. No diagrama abaixo, o trabalho "Produção" contém 8 etapas, com a etapa 6 sendo processada no momento.
 * O uso um fluxo de trabalho reutilizável para executar trabalhos de implantação permite que você execute esses trabalhos para cada compilação sem duplicar o código nos fluxos de trabalho.
 
-![Diagrama de um fluxo de trabalho chamando um fluxo de trabalho reutilizável.](/assets/images/help/actions/reusable-workflows-ci-cd.png)
+![Diagrama de um fluxo de trabalho chamando um fluxo de trabalho reutilizável.](https://docs.github.com/assets/images/help/actions/reusable-workflows-ci-cd.png)
 
 Um fluxo de trabalho que usa outro fluxo de trabalho é referido como um fluxo de trabalho "de chamada". O fluxo de trabalho reutilizável é um fluxo de trabalho invocado. Um fluxo de trabalho de chamada pode usar vários fluxos de trabalho chamados. Cada fluxo de trabalho chamado é referenciado em uma única linha. O resultado é que o arquivo de fluxo de trabalho de chamadas pode conter apenas algumas linhas de YAML mas pode executar um grande número de tarefas quando for executado. Quando um fluxo de trabalho é reutilizado, todo o fluxo de trabalho chamado é usado, como se fosse parte do fluxo de trabalho de chamada.
 

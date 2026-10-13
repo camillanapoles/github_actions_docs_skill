@@ -25,7 +25,7 @@ Before creating your GitHub Actions workflow, you will first need to complete th
       --resource-group MY_RESOURCE_GROUP \
       --name MY_APP_SERVICE_PLAN \
       --is-linux
-   ```
+            ```
 
    In the command above, replace `MY_RESOURCE_GROUP` with your pre-existing Azure Resource Group, and `MY_APP_SERVICE_PLAN` with a new name for the App Service plan.
 
@@ -44,7 +44,7 @@ Before creating your GitHub Actions workflow, you will first need to complete th
        --plan MY_APP_SERVICE_PLAN \
        --resource-group MY_RESOURCE_GROUP \
        --runtime "python|3.8"
-   ```
+            ```
 
    In the command above, replace the parameters with your own values, where `MY_WEBAPP_NAME` is a new name for the web app.
 
@@ -69,6 +69,7 @@ Ensure that you set `AZURE_WEBAPP_NAME` in the workflow `env` key to the name of
 If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environment or if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
 
 ```yaml copy
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -148,6 +149,7 @@ jobs:
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
 ```
 
+```
 ## Further reading
 
 * For the original workflow template, see [`azure-webapps-python.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/azure-webapps-python.yml) in the GitHub Actions `starter-workflows` repository.

@@ -24,11 +24,11 @@ Uma execução de fluxo de trabalho pode ser executada novamente no máximo 50 v
 
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
-   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
 
@@ -45,29 +45,29 @@ Uma execução de fluxo de trabalho pode ser executada novamente no máximo 50 v
 
             ```shell copy
    gh run rerun RUN_ID
-   ```
+            ```
 
    Para habilitar o log de diagnóstico do executor e o log de depuração de etapas para a nova execução, use o sinalizador `--debug`.
 
             ```shell copy
    gh run rerun RUN_ID --debug
-   ```
+            ```
 
 2. Para ver o progresso da execução do fluxo de trabalho, use o subcomando `run watch` e selecione a execução na lista interativa.
 
             ```shell copy
    gh run watch
-   ```
+            ```
 
 ## Reexecutar trabalhos que falharam em um fluxo de trabalho { #re-running-failed-jobs-in-a-workflow }
 
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
-   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
 5. No canto superior direito do fluxo de trabalho, selecione o menu suspenso (sync) e clique em **Reexecutar trabalhos com falha**.
 6. Opcionalmente, para habilitar o log de diagnóstico do executor e o log de depuração de etapas para a nova execução, selecione **Habilitar o log de depuração**. Para saber mais, confira [Habilitando o log de depuração](../monitor-workflows/enable-debug-logging.md).
@@ -91,11 +91,11 @@ gh run rerun RUN_ID --failed --debug
 
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
-   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
 
@@ -122,9 +122,9 @@ gh run rerun --job JOB_ID --debug
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
-   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
 5. À direita do nome da execução, selecione o menu suspenso **Mais recente** e clique em uma tentativa de execução anterior.

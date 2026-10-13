@@ -46,7 +46,7 @@ Antes de provisionar runners hospedados em GitHub, estime quanta capacidade de c
 
 3. No nome da organização, clique em **(graph) Insights**.
 
-   ![Captura de tela da barra de navegação horizontal para uma organização. Uma guia, rotulada com um ícone de grafo e "Insights" tem um contorno laranja escuro.](/assets/images/help/organizations/org-nav-insights-tab.png)
+   ![Captura de tela da barra de navegação horizontal para uma organização. Uma guia, rotulada com um ícone de grafo e "Insights" tem um contorno laranja escuro.](https://docs.github.com/assets/images/help/organizations/org-nav-insights-tab.png)
 
 4. No menu de navegação "Insights", clique em **Métricas de Uso de Ações**.
 
@@ -150,7 +150,7 @@ Depois que seus executores GitHubhospedados estiverem configurados, atualize seu
            uses: actions/checkout@v6
          - name: Build project
            run: make build
-   ```
+            ```
 
 3. Verifique se há referências fixas a rótulos auto-hospedados (como `self-hosted`, `linux-x64`, ou rótulos personalizados) e substitua-as pelos rótulos de executor GitHubhospedados apropriados.
 

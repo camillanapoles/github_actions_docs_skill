@@ -70,10 +70,10 @@ Para remover uma ação publicada de GitHub Marketplace, você precisará atuali
 1. Em GitHub, acesse a página principal do repositório.
 2. À direita da lista de arquivos, clique em **Versões**.
 
-   ![Captura de tela da página principal de um repositório. Um link, rotulado como "Versões", é realçado com um contorno laranja.](/assets/images/help/releases/release-link.png)
+   ![Captura de tela da página principal de um repositório. Um link, rotulado como "Versões", é realçado com um contorno laranja.](https://docs.github.com/assets/images/help/releases/release-link.png)
 3. Ao lado da versão que você deseja editar, clique em (Edit).
 
-   ![Captura de tela de uma versão na lista de versões. Um ícone de lápis é realçado com um contorno laranja.](/assets/images/help/releases/edit-release-pencil.png)
+   ![Captura de tela de uma versão na lista de versões. Um ícone de lápis é realçado com um contorno laranja.](https://docs.github.com/assets/images/help/releases/edit-release-pencil.png)
 4. Selecione **Publicar esta ação para a GitHub Marketplace** para remover a marca da caixa.
 5. Clique em **Atualizar versão** na parte inferior da página.
 
@@ -92,4 +92,4 @@ As ações publicadas em GitHub Marketplace são vinculadas a um repositório pe
 
 Ações com o (The verified badge), ou selo de criador verificado, indicam que GitHub verificou o criador da ação como uma organização parceira. Os parceiros podem enviar um email para [<partnerships@github.com>](mailto:partnerships@github.com) a fim de solicitar o selo de criador verificado.
 
-![Captura de tela do GitHub Actions com o selo de criador verificado.](/assets/images/marketplace/verified-creator-badge-for-actions.png)
+![Captura de tela do GitHub Actions com o selo de criador verificado.](https://docs.github.com/assets/images/marketplace/verified-creator-badge-for-actions.png)

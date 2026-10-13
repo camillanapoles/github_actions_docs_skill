@@ -61,10 +61,10 @@ To remove a published action from GitHub Marketplace, you'll need to update each
 1. On GitHub, navigate to the main page of the repository.
 1. To the right of the list of files, click **Releases**.
 
-   ![Screenshot of the main page of a repository. A link, labeled "Releases", is highlighted with an orange outline.](/assets/images/help/releases/release-link.png)
+   ![Screenshot of the main page of a repository. A link, labeled "Releases", is highlighted with an orange outline.](https://docs.github.com/assets/images/help/releases/release-link.png)
 1. Next to the release you want to edit, click .
 
-   ![Screenshot of a release in the releases list. A pencil icon is highlighted with an orange outline.](/assets/images/help/releases/edit-release-pencil.png)
+   ![Screenshot of a release in the releases list. A pencil icon is highlighted with an orange outline.](https://docs.github.com/assets/images/help/releases/edit-release-pencil.png)
 1. Select **Publish this action to the GitHub Marketplace** to remove the check from the box.
 1. Click **Update release** at the bottom of the page.
 
@@ -83,4 +83,4 @@ Actions published on GitHub Marketplace are linked to a repository by their uniq
 
 Actions with the , or verified creator badge, indicate that GitHub has verified the creator of the action as a partner organization. Partners can email [partnerships@github.com](mailto:partnerships@github.com) to request the verified creator badge.
 
-![Screenshot of GitHub Actions with the verified creator badge.](/assets/images/marketplace/verified-creator-badge-for-actions.png)
+![Screenshot of GitHub Actions with the verified creator badge.](https://docs.github.com/assets/images/marketplace/verified-creator-badge-for-actions.png)

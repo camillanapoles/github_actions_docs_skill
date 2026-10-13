@@ -32,7 +32,7 @@ Alternatively, if you don't have access to the repository or organization on Git
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 1. In the left sidebar, click ** Actions**, then click **Runners**.
 1. In the list of runners, click on the name of the runner you'd like to configure.
 1. Click **Remove**.
@@ -63,7 +63,7 @@ Alternatively, if you don't have access to the repository or organization on Git
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the left sidebar, click ** Actions**, then click **Runners**.
 1. In the list of runners, click on the name of the runner you'd like to configure.
 1. Click **Remove**.

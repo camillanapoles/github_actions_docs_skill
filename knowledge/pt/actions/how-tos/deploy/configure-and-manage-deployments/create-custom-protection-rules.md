@@ -28,15 +28,15 @@ Para obter informações gerais sobre as regras de proteção à implantação, 
    2. Em "Permissões", selecione **Permissões de repositório**.
    3. À direita de "Ações", clique no menu suspenso e selecione **Acesso: somente leitura**.
 
-![Screenshot da seção "Permissões de repositório" para um novo aplicativo GitHub. A permissão "Ações" aparece como "Somente leitura" e está destacada em laranja.](/assets/images/help/actions/actions-repo-permissions-read-only.png)
+![Screenshot da seção "Permissões de repositório" para um novo aplicativo GitHub. A permissão "Ações" aparece como "Somente leitura" e está destacada em laranja.](https://docs.github.com/assets/images/help/actions/actions-repo-permissions-read-only.png)
 
 1. À direita de "Implantações", clique no menu suspenso e selecione **Acesso: Leitura e gravação**.
 
-![Screenshot da seção "Permissões de repositório" para um novo aplicativo GitHub. A permissão de Implantações mostra "Leitura e gravação" e está destacada em laranja.](/assets/images/help/actions/actions-deployments-repo-permissions-read-and-write.png)
+![Screenshot da seção "Permissões de repositório" para um novo aplicativo GitHub. A permissão de Implantações mostra "Leitura e gravação" e está destacada em laranja.](https://docs.github.com/assets/images/help/actions/actions-deployments-repo-permissions-read-and-write.png)
 
 1. Em "Inscrever-se em eventos", selecione **Regra de proteção de implantação**.
 
-![Captura de tela da seção "Inscrever-se em eventos" para um novo aplicativo GitHub. A caixa de seleção da regra de proteção de implantação está destacada em laranja.](/assets/images/help/actions/actions-subscribe-to-events-deployment-protection-rules.png)
+![Captura de tela da seção "Inscrever-se em eventos" para um novo aplicativo GitHub. A caixa de seleção da regra de proteção de implantação está destacada em laranja.](https://docs.github.com/assets/images/help/actions/actions-subscribe-to-events-deployment-protection-rules.png)
 
 1. Instale a regra de proteção de implantação personalizada em seus repositórios e habilite-a para uso. Para saber mais, confira [Configurar regras de proteção de implantação personalizadas](configure-custom-protection-rules.md).
 
@@ -65,7 +65,7 @@ As regras de proteção de implantação personalizadas não são compatíveis q
          "deployments": "write" \
       } \
    }'
-   ```
+            ```
 
 4. Opcionalmente, para adicionar um relatório de status a GitHub sem realizar nenhuma outra ação, envie uma solicitação `POST` para `/repos/OWNER/REPO/actions/runs/RUN_ID/deployment_protection_rule`. No corpo da solicitação, omita o `state`. Para saber mais, confira [Endpoints da API REST para execuções de fluxo de trabalho](https://docs.github.com/pt/rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run). Você pode postar um relatório status na mesma implantação até 10 vezes. Os relatórios de status dão suporte à formatação Markdown e podem ter até 1.024 caracteres.
 

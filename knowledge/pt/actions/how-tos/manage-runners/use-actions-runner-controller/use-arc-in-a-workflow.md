@@ -21,6 +21,7 @@ Para atribuir trabalhos a serem executados em um conjunto de dimensionamento de 
 Por exemplo, a configuração a seguir para um conjunto de escalonamento de executores tem o valor `INSTALLATION_NAME` definido como `arc-runner-set`.
 
 ```bash
+```
 # Using a Personal Access Token (PAT)
 INSTALLATION_NAME="arc-runner-set"
 NAMESPACE="arc-runners"

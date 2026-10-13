@@ -167,7 +167,7 @@ Você pode exibir informações detalhadas sobre cada imagem, excluir imagens n�
 1. Em GitHub, acesse a página principal da organização.
 2. No nome da organização, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 3. Na barra lateral esquerda, clique em **(play) Ações** e clique em **Imagens personalizadas**.
 4. Na página "Imagens personalizadas", você pode exibir todas as imagens personalizadas que foram criadas em sua organização ou empresa.
 5. Para exibir detalhes sobre uma imagem específica, clique no nome da imagem.
@@ -197,7 +197,7 @@ Depois que sua imagem personalizada estiver pronta, você poderá instalá-la em
        runs-on: my-custom-runner
        steps:
        # Add any steps for your workflow here
-   ```
+            ```
 
 4. Execute seu fluxo de trabalho para verificar se ele foi concluído com êxito. Os registros de trabalho mostrarão o nome da imagem e a versão na seção "Configuração da tarefa".
 

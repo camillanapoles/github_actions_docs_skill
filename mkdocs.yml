@@ -78,7 +78,7 @@ plugins:
         - en
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - tags:
-      tags_file: tags.md
+      listings: true
 
 markdown_extensions:
   - abbr
@@ -149,7 +149,7 @@ extra:
 
 validation:
   omitted_files: warn
-  absolute_links: relative_to_docs_dir
+  absolute_links: relative_to_docs
   unrecognized_links: warn
   anchors: warn
 
@@ -808,4 +808,5 @@ nav:
           - 'Endurecimento de segurança (hardening) e OIDC': skill/references/security-hardening.md
           - 'Sintaxe de workflow (YAML) — mapa completo de chaves': skill/references/workflow-syntax.md
   - Validação e conformidade: validation.md
+  - Tags: tags.md
 # END GENERATED NAV

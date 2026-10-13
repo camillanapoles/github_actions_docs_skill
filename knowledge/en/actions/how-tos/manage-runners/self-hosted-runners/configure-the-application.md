@@ -57,13 +57,13 @@ You can manage the runner service in the Windows **Services** application, or yo
 
             ```shell
    sudo ./svc.sh install
-   ```
+            ```
 
 1. Alternatively, the command takes an optional `user` argument to install the service as a different user.
 
             ```shell
    ./svc.sh install USERNAME
-   ```
+            ```
 
 **macOS**
 
@@ -74,7 +74,7 @@ You can manage the runner service in the Windows **Services** application, or yo
 
             ```shell
    ./svc.sh install
-   ```
+            ```
 
 ## Starting the service
 
@@ -91,7 +91,7 @@ sudo ./svc.sh start
 
                 ```bash
     echo '$nrconf{override_rc}{qr(^actions.runner..+.service$)} = 0;' | sudo tee /etc/needrestart/conf.d/actions_runner_services.conf
-    ```
+                ```
 
 **Windows**
 
@@ -160,19 +160,19 @@ Stop-Service "{{ service_win_name }}"
 
 ```shell
     sudo ./svc.sh uninstall
-    ```
+```
 
 **Windows**
 
 ```shell
     Remove-Service "{{ service_win_name }}"
-    ```
+```
 
 **macOS**
 
 ```shell
     ./svc.sh uninstall
-    ```
+```
 
 **Linux**
 

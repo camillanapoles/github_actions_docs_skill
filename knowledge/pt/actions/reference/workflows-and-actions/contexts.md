@@ -463,6 +463,7 @@ jobs:
 Este exemplo de fluxo de trabalho reutilizável usa `job.workflow_repository` e `job.workflow_sha` para verificar seu próprio código-fonte, em vez do repositório do chamador. Isso é útil quando um fluxo de trabalho reutilizável precisa acessar arquivos co-localizados com a definição de fluxo de trabalho.
 
 ```yaml copy
+```
 # In a reusable workflow (e.g., octo-org/shared-workflows/.github/workflows/deploy.yml)
 name: Reusable deploy workflow
 on:
@@ -481,6 +482,7 @@ jobs:
       - run: echo "Workflow file path is ${{ job.workflow_file_path }}"
 ```
 
+```
 ## Contexto `jobs` { #jobs-context }
 
 O contexto `jobs` só está disponível em fluxos de trabalho reutilizáveis e só pode ser usado para definir as saídas de um fluxo de trabalho reutilizável. Para saber mais, confira [Reutilizar fluxos de trabalho](../../how-tos/reuse-automations/reuse-workflows.md#using-outputs-from-a-reusable-workflow).

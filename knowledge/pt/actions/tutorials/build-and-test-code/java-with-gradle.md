@@ -10,17 +10,17 @@ captured: '2026-10-11'
 section: Tutorials / Build and test code
 ---
 
-# Compilar e testar Java com o Gradle
+# Compilar e testar Java com o Gradle { #building-and-testing-java-with-gradle }
 
 _Saiba como criar um fluxo de trabalho de CI (integração contínua) em GitHub Actions para criar e testar seu projeto de Java com o Gradle._
 
-## Introdução
+## Introdução { #introduction }
 
 Este guia mostra como criar um fluxo de trabalho que executa a CI (integração contínua) para seu projeto de Java usando o sistema de build Gradle. O fluxo de trabalho que você criar permitirá que você veja quando commits em um pull request gerarão falhas de criação ou de teste em comparação com o seu branch-padrão. Essa abordagem pode ajudar a garantir que seu código seja sempre saudável. Você pode estender seu fluxo de trabalho de CI para armazenar arquivos em cache e carregar artefatos de uma execução de fluxo de trabalho.
 
 Os executores hospedados do GitHub têm um cache de ferramentas com software pré-instalado, que inclui o JDKs (Kits de Desenvolvimento Java) e Gradle. Para obter uma lista de softwares e das versões pré-instaladas para JDK e Gradle, confira [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images).
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Você deve estar familiarizado com YAML e a sintaxe para GitHub Actions. Para saber mais, veja:
 
@@ -29,7 +29,7 @@ Você deve estar familiarizado com YAML e a sintaxe para GitHub Actions. Para sa
 
 Recomendamos que você tenha uma compreensão básica do Java e da estrutura Gradle. Para obter mais informações, consulte o [Manual do Usuário do Gradle](https://docs.gradle.org/current/userguide/userguide.html).
 
-## Usando um modelo de fluxo de trabalho do Gradle
+## Usando um modelo de fluxo de trabalho do Gradle { #using-a-gradle-workflow-template }
 
 Para uma introdução rápida, adicione um modelo de fluxo de trabalho ao diretório `.github/workflows` do repositório.
 
@@ -39,7 +39,7 @@ GitHub fornece um modelo de fluxo de trabalho para Gradle que deve funcionar par
 
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 
 3. Se você já tiver um fluxo de trabalho no repositório, clique em **Novo fluxo de trabalho**.
 
@@ -68,7 +68,7 @@ GitHub fornece um modelo de fluxo de trabalho para Gradle que deve funcionar par
 
     O `gradle.yml` arquivo de fluxo de trabalho é adicionado ao `.github/workflows` diretório do repositório.
 
-### Como especificar a versão e a arquitetura da JVM
+### Como especificar a versão e a arquitetura da JVM { #specifying-the-java-version-and-architecture }
 
 O modelo de fluxo de trabalho configura o `PATH` para conter OpenJDK 8 para a plataforma x64. Se você quiser usar uma versão diferente do Java, ou escolher uma arquitetura diferente (`x64` ou `x86`), você pode usar a ação `setup-java` para escolher um ambiente de execução Java diferente.
 
@@ -87,7 +87,7 @@ steps:
 
 Para obter mais informações, confira a ação [`setup-java`](https://github.com/actions/setup-java).
 
-## Criar e testar seu código
+## Criar e testar seu código { #building-and-testing-your-code }
 
 Você pode usar os mesmos comandos usados localmente para criar e testar seu código.
 
@@ -96,10 +96,11 @@ O modelo de fluxo de trabalho executará a tarefa `build` por padrão. Na config
 Se você usa comandos diferentes para criar seu projeto ou se você desejar usar uma atividade diferente, você poderá especificá-los. Por exemplo, você pode querer executar a tarefa `package` que está configurada no arquivo `ci.gradle`.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 steps:
   - uses: actions/checkout@v6
   - uses: actions/setup-java@v4
@@ -114,23 +115,25 @@ steps:
     run: ./gradlew -b ci.gradle package
 ```
 
-## Memorizar dependências
+```
+## Memorizar dependências { #caching-dependencies }
 
 Suas dependências de build podem ser armazenadas em cache para acelerar as execuções dos seus fluxos de trabalho. Após uma execução bem-sucedida, `gradle/actions/setup-gradle` armazena em cache partes importantes do diretório base do usuário do Gradle. Em trabalhos futuros, o cache será restaurado para que os scripts de compilação não precisem ser recalculados e as dependências não precisem ser baixadas a partir de repositórios remotos de pacotes.
 
 O cache é habilitado por padrão quando a ação `gradle/actions/setup-gradle` é usada. Para obter mais informações, consulte [`gradle/actions/setup-gradle`](https://github.com/gradle/actions/blob/main/setup-gradle/README.md#caching-build-state-between-jobs).
 
-## Empacotar dados do fluxo de trabalho como artefatos
+## Empacotar dados do fluxo de trabalho como artefatos { #packaging-workflow-data-as-artifacts }
 
 Depois que o build tiver sido bem-sucedido e seus testes tiverem sido aprovados, talvez você queira carregar os pacotes de Java resultantes como um artefato de build. Isso armazenará os pacotes criados como parte da execução do fluxo de trabalho e permitirá que você faça o download desses pacotes. Os artefatos podem ajudá-lo a testar e depurar os pull requests no seu ambiente local antes de serem mesclados. Para saber mais, confira [Armazenar e compartilhar dados com artefatos de fluxo de trabalho](../store-and-share-data.md).
 
 Em geral, o Gradle criará arquivos de saída como JARs, EARs ou WARs no diretório `build/libs`. Você pode carregar o conteúdo desse diretório usando a ação `upload-artifact`.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-1 }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by-1 }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support-1 }
+# online. { #documentation-1 }
 steps:
   - uses: actions/checkout@v6
   - uses: actions/setup-java@v4
@@ -149,4 +152,6 @@ steps:
     with:
       name: Package
       path: build/libs
+```
+
 ```

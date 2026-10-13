@@ -49,7 +49,7 @@ No tutorial, primeiro você criará um arquivo de fluxo de trabalho que usa o Gi
              GH_REPO: ${{ github.repository }}
              NUMBER: ${{ github.event.issue.number }}
              LABELS: triage
-   ```
+            ```
 
 4. Personalize os valores `env` no seu arquivo de fluxo de trabalho:
    * Os valores `GH_TOKEN`, `GH_REPO` e `NUMBER` são configurados automaticamente usando os contextos `github` e `secrets`. Não é necessário alterar esses padrões.

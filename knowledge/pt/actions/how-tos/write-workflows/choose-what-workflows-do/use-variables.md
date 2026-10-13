@@ -64,11 +64,11 @@ Para criar segredos ou variáveis em GitHub para um repositório de organizaçã
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 3. Na seção "Security" da barra lateral, selecione **(key-asterisk) Secrets and variables** e clique em **Actions**.
 4. Clique na guia **Variáveis**.
 
-![Captura de tela da página "Segredos e variáveis das ações". A aba "Variáveis" está contornada em laranja escuro.](/assets/images/help/repository/actions-variables-tab.png)
+![Captura de tela da página "Segredos e variáveis das ações". A aba "Variáveis" está contornada em laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-variables-tab.png)
 
 1. Clique em **Nova variável de repositório**.
 2. No campo **Nome**, insira um nome para sua variável.
@@ -82,7 +82,7 @@ Para criar segredos ou variáveis para um ambiente em um repositório de conta p
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 3. Na barra lateral esquerda, clique em **Ambientes**.
 4. Clique no ambiente ao qual deseja adicionar uma variável.
 5. Em **Variáveis de ambiente**, clique em **Adicionar variável**.
@@ -103,13 +103,13 @@ Os proprietários "Gerenciar variáveis de ações da organização" ou "Gerenci
 
 2. No nome da organização, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 
 3. Na seção "Security" da barra lateral, selecione **(key-asterisk) Secrets and variables** e clique em **Actions**.
 
 4. Clique na guia **Variáveis**.
 
-   ![Captura de tela da página "Ações: segredos e variáveis". A aba "Variáveis" está contornada em laranja escuro.](/assets/images/help/repository/actions-variables-tab.png)
+   ![Captura de tela da página "Ações: segredos e variáveis". A aba "Variáveis" está contornada em laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-variables-tab.png)
 
 5. Clique em **Nova variável de organização**.
 

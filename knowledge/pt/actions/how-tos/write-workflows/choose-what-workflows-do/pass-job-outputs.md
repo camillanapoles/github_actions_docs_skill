@@ -32,7 +32,7 @@ _Você pode definir saídas para passar informações de um trabalho para outro.
            run: echo "test=hello" >> "$GITHUB_OUTPUT"
          - id: step2
            run: echo "test=world" >> "$GITHUB_OUTPUT"
-   ```
+            ```
 
 3. Em um trabalho separado onde deseja acessar essas saídas, use a sintaxe `jobs.<job_id>.needs` para torná-lo dependente do trabalho original. Por exemplo, o seguinte trabalho verifica se `job1` está concluído antes da execução:
 
@@ -42,7 +42,7 @@ _Você pode definir saídas para passar informações de um trabalho para outro.
      job2:
        runs-on: ubuntu-latest
        needs: job1
-   ```
+            ```
 
 4. Para acessar as saídas de um trabalho dependente, use a sintaxe `needs.<job_id>.outputs.<output_name>`. Por exemplo, o seguinte trabalho acessa as saídas `output1` e `output2` definidas em `job1`:
 
@@ -57,7 +57,7 @@ _Você pode definir saídas para passar informações de um trabalho para outro.
              OUTPUT1: ${{needs.job1.outputs.output1}}
              OUTPUT2: ${{needs.job1.outputs.output2}}
            run: echo "$OUTPUT1 $OUTPUT2"
-   ```
+            ```
 
 ## Próximas etapas { #next-steps }
 

@@ -34,7 +34,7 @@ Um fluxo de trabalho precisa conter os seguintes componentes básicos:
 
 Para obter mais informações sobre esses componentes básicos, confira [Noções básicas sobre GitHub Actions](../../get-started/understand-github-actions.md#the-components-of-github-actions).
 
-![Diagrama de um evento que dispara o Executor 1 para executar o Trabalho 1, que dispara o Executor 2 para executar o Trabalho 2. Cada um dos trabalhos é dividido em várias etapas.](/assets/images/help/actions/overview-actions-simple.png)
+![Diagrama de um evento que dispara o Executor 1 para executar o Trabalho 1, que dispara o Executor 2 para executar o Trabalho 2. Cada um dos trabalhos é dividido em várias etapas.](https://docs.github.com/assets/images/help/actions/overview-actions-simple.png)
 
 ## Gatilhos do fluxo de trabalho { #workflow-triggers }
 

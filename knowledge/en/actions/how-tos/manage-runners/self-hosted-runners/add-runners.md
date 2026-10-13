@@ -50,12 +50,12 @@ For more information, see [Enforcing policies for github actions in your enterpr
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 1. In the left sidebar, click ** Actions**, then click **Runners**.
 1. Click **New self-hosted runner**.
 1. Select the operating system image and architecture of your self-hosted runner machine.
 
-   ![Screenshot of the choice of operating system and architecture. These options are highlighted with a dark orange outline.](/assets/images/help/actions/creating-selfhosted-runner.png)
+   ![Screenshot of the choice of operating system and architecture. These options are highlighted with a dark orange outline.](https://docs.github.com/assets/images/help/actions/creating-selfhosted-runner.png)
 
 1. You will see instructions showing you how to download the runner application and install it on your self-hosted runner machine.
 
@@ -93,12 +93,12 @@ For more information about custom organization roles, see [Permissions of custom
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the left sidebar, click ** Actions**, then click **Runners**.
 1. Click **New runner**.
 1. Select the operating system image and architecture of your self-hosted runner machine.
 
-   ![Screenshot of the choice of operating system and architecture. These options are highlighted with a dark orange outline.](/assets/images/help/actions/creating-selfhosted-runner.png)
+   ![Screenshot of the choice of operating system and architecture. These options are highlighted with a dark orange outline.](https://docs.github.com/assets/images/help/actions/creating-selfhosted-runner.png)
 
 1. You will see instructions showing you how to download the runner application and install it on your self-hosted runner machine.
 
@@ -146,7 +146,7 @@ To add a self-hosted runner to an enterprise, you must be an enterprise owner. F
 1. Click **New runner**.
 1. Select the operating system image and architecture of your self-hosted runner machine.
 
-   ![Screenshot of the choice of operating system and architecture. These options are highlighted with a dark orange outline.](/assets/images/help/actions/creating-selfhosted-runner.png)
+   ![Screenshot of the choice of operating system and architecture. These options are highlighted with a dark orange outline.](https://docs.github.com/assets/images/help/actions/creating-selfhosted-runner.png)
 
 1. You will see instructions showing you how to download the runner application and install it on your self-hosted runner machine.
 

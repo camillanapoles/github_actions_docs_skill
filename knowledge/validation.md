@@ -1,22 +1,22 @@
 ---
 title: Validação e conformidade
 description: Resultado automatizado das verificações de completude e conformidade da base de conhecimento e da skill.
-generated: 2026-10-13T14:14:39+00:00
+generated: 2026-10-13T14:33:30+00:00
 ---
 
 # Validação e conformidade
 
-> Gerado por `scripts/validate.py` em **2026-10-13T14:14:39+00:00**  
-> **27 verificações OK** · **3 avisos** · **9 falhas**
+> Gerado por `scripts/validate.py` em **2026-10-13T14:33:30+00:00**  
+> **29 verificações OK** · **3 avisos** · **7 falhas**
 
 ## Resumo da base de conhecimento
 
 | Métrica | Valor |
 | --- | --- |
 | Páginas validadas | 496 |
-| Bytes totais | 4,827,608 |
-| Headings | 4,633 |
-| Blocos de código | 2,592 |
+| Bytes totais | 4,880,652 |
+| Headings | 5,358 |
+| Blocos de código | 2,721 |
 
 ## Verificações
 
@@ -29,20 +29,20 @@ generated: 2026-10-13T14:14:39+00:00
 | inventory | en: manifest ↔ disco | ✅ pass | todas as páginas declaradas existem em disco |
 | inventory | en: falhas de captura | ✅ pass | nenhuma falha de captura registrada |
 | structure | frontmatter completo | ✅ pass | ok |
-| structure | H1 único por página | ❌ fail | 2 ocorrência(s) — páginas com H1 duplicado/ausente |
+| structure | H1 único por página | ❌ fail | 75 ocorrência(s) — páginas com H1 duplicado/ausente |
 | conversion | zero Liquid residual | ✅ pass | ok |
-| conversion | zero HTML em bloco | ✅ pass | ok |
-| conversion | cercas balanceadas | ❌ fail | 8 ocorrência(s) — arquivos com cerca não fechada |
-| conversion | tabelas bem formadas | ❌ fail | 28 ocorrência(s) — linhas com nº de células inconsistente |
+| conversion | zero HTML em bloco | ❌ fail | 84 ocorrência(s) — tags HTML de bloco fora de cercas de código |
+| conversion | cercas balanceadas | ❌ fail | 9 ocorrência(s) — arquivos com cerca não fechada |
+| conversion | tabelas bem formadas | ❌ fail | 34 ocorrência(s) — linhas com nº de células inconsistente |
 | conversion | sem ruído de UI | ✅ pass | ok |
 | conversion | alertas convertidos | ✅ pass | ok |
-| conversion | AUTOTITLE resolvido | ❌ fail | 1 ocorrência(s) — placeholders `[AUTOTITLE]` restantes |
-| structure | tamanho mínimo | ❌ fail | 14 ocorrência(s) — páginas com menos de 400 bytes |
-| links | links internos resolvem | ❌ fail | 3230 links internos, 278 quebrados |
-| links | âncoras existem | ⚠️ warn | 920 âncoras sem heading correspondente |
-| links | links externos bem formados | ❌ fail | 2419 links externos, 2 malformados |
+| conversion | AUTOTITLE resolvido | ✅ pass | ok |
+| structure | tamanho mínimo | ✅ pass | ok |
+| links | links internos resolvem | ❌ fail | 2944 links internos, 1 quebrados |
+| links | âncoras existem | ⚠️ warn | 803 âncoras sem heading correspondente |
+| links | links externos bem formados | ✅ pass | 2658 links externos, 0 malformados |
 | navigation | mkdocs.yml válido | ✅ pass | site_name='GitHub Actions — Base de Conhecimento & Skill' |
-| navigation | nav aponta para arquivos existentes | ✅ pass | 548 entradas no nav, 0 quebradas |
+| navigation | nav aponta para arquivos existentes | ✅ pass | 549 entradas no nav, 0 quebradas |
 | navigation | sem páginas órfãs | ✅ pass | 0 páginas fora do nav e sem link de entrada |
 | navigation | índice index.md | ✅ pass | presente |
 | navigation | índice pt/index.md | ✅ pass | presente |
@@ -66,19 +66,73 @@ generated: 2026-10-13T14:14:39+00:00
 
 ### ❌ structure — H1 único por página
 
+- `pt/actions/concepts/runners/actions-runner-controller.md: 7 H1 (esperado 1)`
+- `pt/actions/how-tos/deploy/deploy-to-third-party-platforms/amazon-elastic-container-service.md: 8 H1 (esperado 1)`
+- `pt/actions/how-tos/deploy/deploy-to-third-party-platforms/azure-kubernetes-service.md: 8 H1 (esperado 1)`
+- `pt/actions/how-tos/deploy/deploy-to-third-party-platforms/azure-static-web-app.md: 8 H1 (esperado 1)`
+- `pt/actions/how-tos/deploy/deploy-to-third-party-platforms/docker-to-azure-app-service.md: 8 H1 (esperado 1)`
+- `pt/actions/how-tos/deploy/deploy-to-third-party-platforms/google-kubernetes-engine.md: 8 H1 (esperado 1)`
+- `pt/actions/how-tos/deploy/deploy-to-third-party-platforms/java-to-azure-app-service.md: 8 H1 (esperado 1)`
+- `pt/actions/how-tos/deploy/deploy-to-third-party-platforms/net-to-azure-app-service.md: 8 H1 (esperado 1)`
+- `pt/actions/how-tos/deploy/deploy-to-third-party-platforms/nodejs-to-azure-app-service.md: 8 H1 (esperado 1)`
+- `pt/actions/how-tos/deploy/deploy-to-third-party-platforms/php-to-azure-app-service.md: 8 H1 (esperado 1)`
+- `pt/actions/how-tos/deploy/deploy-to-third-party-platforms/python-to-azure-app-service.md: 8 H1 (esperado 1)`
+- `pt/actions/how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets.md: 4 H1 (esperado 1)`
+- `pt/actions/how-tos/manage-runners/use-actions-runner-controller/use-arc-in-a-workflow.md: 2 H1 (esperado 1)`
+- `pt/actions/how-tos/monitor-workflows/use-workflow-run-logs.md: 5 H1 (esperado 1)`
+- `pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws.md: 8 H1 (esperado 1)`
+- `pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-azure.md: 5 H1 (esperado 1)`
+- `pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-google-cloud-platform.md: 5 H1 (esperado 1)`
+- `pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-hashicorp-vault.md: 9 H1 (esperado 1)`
+- `pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-jfrog.md: 9 H1 (esperado 1)`
+- `pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-octopus-deploy.md: 5 H1 (esperado 1)`
+- `pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-pypi.md: 5 H1 (esperado 1)`
+- `pt/actions/reference/security/securely-using-pull_request_target.md: 2 H1 (esperado 1)`
+- `pt/actions/reference/workflows-and-actions/contexts.md: 2 H1 (esperado 1)`
+- `pt/actions/reference/workflows-and-actions/dockerfile-support.md: 5 H1 (esperado 1)`
 - `pt/actions/reference/workflows-and-actions/workflow-syntax.md: 6 H1 (esperado 1)`
-- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md: 3 H1 (esperado 1)`
+- … e mais 15 ocorrências
+
+### ❌ conversion — zero HTML em bloco
+
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:438: | condição            | <ul><li>`jobs.<job_id>.if`</li><li>`jobs.<job_id>.steps[*].if`</li`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:439: | contêiner           | <ul><li>`jobs.<job_id>.container`</li><li>`jobs.<job_id>.name`</li`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:440: | integração contínua | <ul><li>`on.<push>.<branches>`</li><li>`on.<push>.<tags>`</li><li>`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:441: | cargo               | <ul><li>`jobs.<job_id>`</li></ul>                                 `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:442: | solicitação de pull | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:443: | fase                | <ul><li>`jobs`</li></ul>                                          `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:444: | etapas              | <ul><li>`jobs.<job_id>.steps`</li></ul>                           `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:445: | estratégia          | <ul><li>`jobs.<job_id>.strategy.fail-fast`</li><li>`jobs.<job_id>.`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:446: | timeoutInMinutes    | <ul><li>`jobs.<job_id>.timeout-minutes`</li></ul>                 `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:447: | variáveis           | <ul><li>`env`</li><li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.s`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:448: | implantação manual  | <ul><li>`jobs.<job_id>.environment`</li></ul>                     `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:449: | pool                | <ul><li>`runners`</li><li>`self hosted runners`</li></ul>         `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:450: | serviços            | <ul><li>`jobs.<job_id>.services`</li></ul>                        `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:451: | estratégia          | <ul><li>`jobs.<job_id>.strategy`</li></ul>                        `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:452: | disparadores        | <ul><li>`on`</li></ul>                                            `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:453: | solicitação de pull | <ul><li>`on.<pull_request>.<tags>`</li></ul>                      `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:454: | schedules           | <ul><li>`on.schedule`</li><li>`on.workflow_run`</li></ul>         `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md:455: | disparadores        | <ul><li>`on.<event_name>.types`</li></ul>                         `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md:397: | gatilhos cron         | <ul><li>`on.schedule`</li></ul>                                 `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md:398: | ambiente              | <ul><li>`env`</li><li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md:399: | executors             | <ul><li>`runs-on`</li></ul>                                     `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md:400: | trabalhos             | <ul><li>`jobs`</li></ul>                                        `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md:401: | cargo                 | <ul><li>`jobs.<job_id>`</li><li>`jobs.<job_id>.name`</li></ul>  `
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md:402: | matriz                | <ul><li>`jobs.<job_id>.strategy`</li><li>`jobs.<job_id>.strategy`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md:403: | parâmetros            | <ul><li>`env`</li><li>`workflow-dispatch.inputs`</li></ul>      `
+- … e mais 15 ocorrências
 
 ### ❌ conversion — cercas balanceadas
 
-- `pt/actions/reference/workflows-and-actions/workflow-syntax.md: cerca de código não fechada`
-- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md: cerca de código não fechada`
-- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/bamboo-migration.md: cerca de código não fechada`
-- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md: cerca de código não fechada`
-- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/gitlab-migration.md: cerca de código não fechada`
-- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/jenkins-migration.md: cerca de código não fechada`
-- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration.md: cerca de código não fechada`
-- `en/actions/tutorials/build-and-test-code/rust.md: cerca de código não fechada`
+- `pt/actions/how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets.md: cerca de código não fechada`
+- `pt/actions/how-tos/manage-runners/use-actions-runner-controller/use-arc-in-a-workflow.md: cerca de código não fechada`
+- `pt/actions/reference/workflows-and-actions/dockerfile-support.md: cerca de código não fechada`
+- `pt/actions/tutorials/build-and-test-code/ruby.md: cerca de código não fechada`
+- `en/actions/how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets.md: cerca de código não fechada`
+- `en/actions/how-tos/manage-runners/use-actions-runner-controller/use-arc-in-a-workflow.md: cerca de código não fechada`
+- `en/actions/reference/workflows-and-actions/dockerfile-support.md: cerca de código não fechada`
+- `en/actions/tutorials/build-and-test-code/ruby.md: cerca de código não fechada`
+- `en/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md: cerca de código não fechada`
 
 ### ❌ conversion — tabelas bem formadas
 
@@ -93,7 +147,13 @@ generated: 2026-10-13T14:14:39+00:00
 - `pt/actions/reference/workflows-and-actions/workflow-commands.md: linha de tabela com 4 células (esperado 2)`
 - `pt/actions/reference/workflows-and-actions/workflow-syntax.md: linha de tabela com 2 células (esperado 3)`
 - `pt/actions/tutorials/build-and-test-code/python.md: linha de tabela com 2 células (esperado 4)`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md: linha de tabela com 2 células (esperado 3)`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/bamboo-migration.md: linha de tabela com 3 células (esperado 4)`
 - `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/bitbucket-pipelines-migration.md: linha de tabela com 2 células (esperado 3)`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md: linha de tabela com 2 células (esperado 3)`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/gitlab-migration.md: linha de tabela com 2 células (esperado 3)`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/jenkins-migration.md: linha de tabela com 2 células (esperado 3)`
+- `pt/actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration.md: linha de tabela com 2 células (esperado 3)`
 - `en/actions/reference/runners/github-hosted-runners.md: linha de tabela com 3 células (esperado 6)`
 - `en/actions/reference/runners/larger-runners.md: linha de tabela com 7 células (esperado 5)`
 - `en/actions/reference/security/oidc.md: linha de tabela com 2 células (esperado 3)`
@@ -101,97 +161,40 @@ generated: 2026-10-13T14:14:39+00:00
 - `en/actions/reference/workflows-and-actions/events-that-trigger-workflows.md: linha de tabela com 3 células (esperado 4)`
 - `en/actions/reference/workflows-and-actions/variables.md: linha de tabela com 3 células (esperado 2)`
 - `en/actions/reference/workflows-and-actions/workflow-commands.md: linha de tabela com 4 células (esperado 2)`
-- `en/actions/reference/workflows-and-actions/workflow-syntax.md: linha de tabela com 2 células (esperado 3)`
-- `en/actions/tutorials/build-and-test-code/python.md: linha de tabela com 2 células (esperado 4)`
-- `en/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md: linha de tabela com 2 células (esperado 3)`
-- `en/actions/tutorials/migrate-to-github-actions/automated-migrations/bamboo-migration.md: linha de tabela com 2 células (esperado 3)`
-- `en/actions/tutorials/migrate-to-github-actions/automated-migrations/bitbucket-pipelines-migration.md: linha de tabela com 2 células (esperado 3)`
-- `en/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md: linha de tabela com 2 células (esperado 3)`
-- … e mais 3 ocorrências
-
-### ❌ conversion — AUTOTITLE resolvido
-
-- `pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-jfrog.md:25`
-
-### ❌ structure — tamanho mínimo
-
-- `en/actions/concepts/index.md: 377 bytes`
-- `en/actions/concepts/runners/index.md: 351 bytes`
-- `en/actions/concepts/security/index.md: 359 bytes`
-- `en/actions/get-started/index.md: 321 bytes`
-- `en/actions/how-tos/administer/index.md: 395 bytes`
-- `en/actions/how-tos/deploy/index.md: 363 bytes`
-- `en/actions/how-tos/index.md: 351 bytes`
-- `en/actions/how-tos/manage-runners/index.md: 395 bytes`
-- `en/actions/reference/index.md: 359 bytes`
-- `en/actions/reference/runners/index.md: 375 bytes`
-- `en/actions/reference/security/index.md: 377 bytes`
-- `en/actions/tutorials/create-actions/index.md: 379 bytes`
-- `en/actions/tutorials/index.md: 393 bytes`
-- `en/actions/tutorials/publish-packages/index.md: 379 bytes`
+- … e mais 9 ocorrências
 
 ### ❌ links — links internos resolvem
 
-- `pt/actions/concepts/runners/actions-runner-controller.md:18: /assets/images/help/actions/arc-diagram.png`
-- `pt/actions/concepts/security/openid-connect.md:27: /assets/images/help/actions/oidc-architecture.png`
-- `pt/actions/concepts/security/script-injections.md:40: /assets/images/help/actions/example-script-injection-pr-title.png`
-- `pt/actions/concepts/workflows-and-actions/reusing-workflow-configurations.md:23: /assets/images/help/actions/reusable-workflows-ci-cd.png`
-- `pt/actions/concepts/workflows-and-actions/workflows.md:27: /assets/images/help/actions/overview-actions-simple.png`
-- `pt/actions/get-started/quickstart.md:82: /assets/images/help/repository/actions-quickstart-commit-new-file.png`
-- `pt/actions/get-started/quickstart.md:94: /assets/images/help/repository/actions-tab-global-nav-update.png`
-- `pt/actions/get-started/quickstart.md:98: /assets/images/help/repository/actions-quickstart-workflow-sidebar.png`
-- `pt/actions/get-started/quickstart.md:104: /assets/images/help/repository/actions-quickstart-job.png`
-- `pt/actions/get-started/quickstart.md:108: /assets/images/help/repository/actions-quickstart-logs.png`
-- `pt/actions/get-started/quickstart.md:112: /assets/images/help/repository/actions-quickstart-log-detail.png`
-- `pt/actions/get-started/understand-github-actions.md:19: /assets/images/help/actions/overview-actions-simple.png`
-- `pt/actions/how-tos/administer/view-metrics.md:16: /assets/images/help/organizations/org-nav-insights-tab.png`
-- `pt/actions/how-tos/create-and-publish-actions/publish-in-github-marketplace.md:63: /assets/images/help/releases/release-link.png`
-- `pt/actions/how-tos/create-and-publish-actions/publish-in-github-marketplace.md:66: /assets/images/help/releases/edit-release-pencil.png`
-- `pt/actions/how-tos/create-and-publish-actions/publish-in-github-marketplace.md:85: /assets/images/marketplace/verified-creator-badge-for-actions.png`
-- `pt/actions/how-tos/deploy/configure-and-manage-deployments/configure-custom-protection-rules.md:46: /assets/images/help/repository/repo-actions-settings.png`
-- `pt/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments.md:209: /assets/images/help/repository/actions-workflow-status-badge.png`
-- `pt/actions/how-tos/deploy/configure-and-manage-deployments/create-custom-protection-rules.md:21: /assets/images/help/actions/actions-repo-permissions-read-only.png`
-- `pt/actions/how-tos/deploy/configure-and-manage-deployments/create-custom-protection-rules.md:25: /assets/images/help/actions/actions-deployments-repo-permissions-read-and-write.png`
-- `pt/actions/how-tos/deploy/configure-and-manage-deployments/create-custom-protection-rules.md:29: /assets/images/help/actions/actions-subscribe-to-events-deployment-protection-rules.png`
-- `pt/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments.md:28: /assets/images/help/repository/repo-actions-settings.png`
-- `pt/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments.md:85: /assets/images/help/repository/repo-actions-settings.png`
-- `pt/actions/how-tos/deploy/configure-and-manage-deployments/review-deployments.md:30: /assets/images/actions-bypass-env-protection-rules.png`
-- `pt/actions/how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network/connect-with-oidc.md:13: /assets/images/help/actions/actions-oidc-gateway.png`
-- … e mais 15 ocorrências
+- `en/actions/concepts/runners/support-for-arc.md:5: /support/contacting-github-support`
 
 ### ⚠️ links — âncoras existem
 
 - `pt/actions/concepts/about-actions-policies.md:31: ../reference/security/securely-using-pull_request_target.md#default-policy-for-pull_request_target (âncora inexistente)`
-- `pt/actions/concepts/billing-and-usage.md:9: ../how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job.md#standard-github-hosted-runners-for-public-repositories (âncora inexistente)`
-- `pt/actions/concepts/runners/github-hosted-runners.md:35: ../../reference/security/secure-use.md#reviewing-the-supply-chain-for-github-hosted-runners (âncora inexistente)`
-- `pt/actions/concepts/runners/runner-groups.md:30: ../../how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job.md#choosing-runners-in-a-group (âncora inexistente)`
 - `pt/actions/concepts/security/compromised-runners.md:42: ../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token (âncora inexistente)`
-- `pt/actions/concepts/security/openid-connect.md:80: ../../reference/security/oidc.md#immutable-subject-claims (âncora inexistente)`
-- `pt/actions/concepts/security/openid-connect.md:86: ../../reference/security/oidc.md#methods-for-requesting-the-oidc-token (âncora inexistente)`
-- `pt/actions/concepts/security/openid-connect.md:100: ../../reference/security/oidc.md#including-repository-custom-properties-in-oidc-tokens (âncora inexistente)`
-- `pt/actions/concepts/security/openid-connect.md:136: ../../reference/security/oidc.md#including-repository-custom-properties-in-oidc-tokens (âncora inexistente)`
-- `pt/actions/concepts/security/script-injections.md:51: ../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks (âncora inexistente)`
 - `pt/actions/concepts/security/secrets.md:25: ../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstepsenv (âncora inexistente)`
-- `pt/actions/concepts/security/secrets.md:41: ../../reference/security/secure-use.md#use-secrets-for-sensitive-information (âncora inexistente)`
 - `pt/actions/concepts/workflows-and-actions/contexts.md:11: ../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategymatrix (âncora inexistente)`
-- `pt/actions/concepts/workflows-and-actions/contexts.md:18: ../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks (âncora inexistente)`
 - `pt/actions/concepts/workflows-and-actions/expressions.md:18: ../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idif (âncora inexistente)`
-- `pt/actions/concepts/workflows-and-actions/expressions.md:21: ../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks (âncora inexistente)`
-- `pt/actions/concepts/workflows-and-actions/reusing-workflow-configurations.md:60: ../../reference/security/secure-use.md#reusing-third-party-workflows (âncora inexistente)`
-- `pt/actions/concepts/workflows-and-actions/reusing-workflow-configurations.md:84: ../../reference/workflows-and-actions/reusing-workflow-configurations.md#yaml-anchors-and-aliases (âncora inexistente)`
-- `pt/actions/concepts/workflows-and-actions/workflows.md:25: ../../get-started/understand-github-actions.md#the-components-of-github-actions (âncora inexistente)`
 - `pt/actions/get-started/understand-github-actions.md:45: ../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstepsbackground (âncora inexistente)`
 - `pt/actions/how-tos/administer/control-workflow-execution.md:11: ../../reference/security/securely-using-pull_request_target.md#default-policy-for-pull_request_target (âncora inexistente)`
 - `pt/actions/how-tos/create-and-publish-actions/release-and-maintain-actions.md:54: ../../reference/workflows-and-actions/events-that-trigger-workflows.md#workflow_dispatch (âncora inexistente)`
 - `pt/actions/how-tos/create-and-publish-actions/release-and-maintain-actions.md:54: ../../reference/workflows-and-actions/events-that-trigger-workflows.md#pull_request_target (âncora inexistente)`
-- `pt/actions/how-tos/create-and-publish-actions/release-and-maintain-actions.md:78: ../../reference/security/secure-use.md#protecting-actions-youve-created (âncora inexistente)`
-- `pt/actions/how-tos/get-support.md:23: manage-runners/self-hosted-runners/monitor-and-troubleshoot.md#reviewing-the-self-hosted-runner-application-log-files (âncora inexistente)`
+- `pt/actions/how-tos/manage-runners/larger-runners/use-larger-runners.md:213: ../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idruns-on (âncora inexistente)`
+- `pt/actions/how-tos/manage-runners/self-hosted-runners/apply-labels.md:19: #creating-a-custom-label-for-a-repository-runner`
+- `pt/actions/how-tos/manage-runners/self-hosted-runners/run-scripts.md:34: ../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idcontinue-on-error (âncora inexistente)`
+- `pt/actions/how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets.md:24: ../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idruns-on (âncora inexistente)`
+- `pt/actions/how-tos/manage-workflow-runs/manage-caches.md:50: ../../reference/workflows-and-actions/events-that-trigger-workflows.md#pull_request_target (âncora inexistente)`
+- `pt/actions/how-tos/manage-workflow-runs/manually-run-a-workflow.md:11: ../../reference/workflows-and-actions/events-that-trigger-workflows.md#workflow_dispatch (âncora inexistente)`
+- `pt/actions/how-tos/manage-workflow-runs/manually-run-a-workflow.md:31: ../../reference/workflows-and-actions/events-that-trigger-workflows.md#workflow_dispatch (âncora inexistente)`
+- `pt/actions/how-tos/manage-workflow-runs/skip-workflow-runs.md:8: ../../reference/workflows-and-actions/workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore (âncora inexistente)`
+- `pt/actions/how-tos/manage-workflow-runs/skip-workflow-runs.md:8: ../../reference/workflows-and-actions/workflow-syntax.md#onpull_requestpull_request_targetbranchesbranches-ignore (âncora inexistente)`
+- `pt/actions/how-tos/reuse-automations/reuse-workflows.md:36: ../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callinputs (âncora inexistente)`
+- `pt/actions/how-tos/reuse-automations/reuse-workflows.md:36: ../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callsecrets (âncora inexistente)`
+- `pt/actions/how-tos/reuse-automations/reuse-workflows.md:42: ../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idsecretsinherit (âncora inexistente)`
+- `pt/actions/how-tos/reuse-automations/reuse-workflows.md:65: ../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callsecrets (âncora inexistente)`
+- `pt/actions/how-tos/reuse-automations/reuse-workflows.md:123: ../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_iduses (âncora inexistente)`
+- `pt/actions/how-tos/reuse-automations/reuse-workflows.md:244: ../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idsecretsinherit (âncora inexistente)`
+- `pt/actions/how-tos/reuse-automations/reuse-workflows.md:274: ../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_calloutputs (âncora inexistente)`
 - … e mais 15 ocorrências
-
-### ❌ links — links externos bem formados
-
-- `pt/actions/reference/workflows-and-actions/dockerfile-support.md:97: http://man7.org/linux/man-pages/man7/capabilities.7.html`
-- `en/actions/reference/workflows-and-actions/dockerfile-support.md:100: http://man7.org/linux/man-pages/man7/capabilities.7.html`
 
 ### ❌ skill — referências do SKILL.md existem
 

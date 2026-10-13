@@ -29,6 +29,7 @@ O evento `pull_request` (assim como `pull_request_review` e `pull_request_review
 Você gera um risco quando o autor do fluxo de trabalho substitui esse padrão para executar o código da bifurcação. Os desenvolvedores geralmente escolhem `pull_request_target` porque desejam executar a solicitação de pull de uma bifurcação por meio da CI *e* têm acesso a segredos, por exemplo, para executar testes que precisam de um registro privado. Para fazer isso, eles apontam `actions/checkout` para o cabeçalho da solicitação pull em vez da ramificação padrão, o que não é seguro:
 
 ```yaml
+```
 # INSECURE. Provided as an example only.
 on:
   pull_request_target:
@@ -54,6 +55,7 @@ Esse padrão é conhecido como "pwn request" e tem sido a causa raiz de vários 
 
 As solicitações pwn também não são exclusivas para `pull_request_target`. Qualquer evento que seja executado com segredos pode introduzir uma solicitação pwn se fizer check-out ou baixar e executar código não confiável. Por exemplo, um fluxo de trabalho `issue_comment` ou `workflow_run` que busca e executa o código de uma pull request de um fork é vulnerável da mesma forma. Um fluxo de trabalho `workflow_run` deve tratar artefatos carregados por outros fluxos de trabalho como dados não confiáveis, pois o conteúdo pode vir de uma bifurcação.
 
+```
 ## Política padrão para `pull_request_target` { #default-policy-for-pullrequesttarget }
 
 Para ajudar a proteger seus fluxos de trabalho contra solicitações de pull não confiáveis, GitHub fornece uma política de evento padrão que bloqueia o `pull_request_target` evento em repositórios públicos.

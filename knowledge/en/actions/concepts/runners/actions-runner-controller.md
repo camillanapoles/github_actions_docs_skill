@@ -23,7 +23,7 @@ The following diagram illustrates the architecture of ARC's autoscaling runner s
 !!! note
     To view the following diagram in a larger size, see the [Autoscaling Runner Scale Sets mode](https://github.com/actions/actions-runner-controller/blob/master/docs/gha-runner-scale-set-controller/README.md#how-it-works) documentation in the Actions Runner Controller repository.
 
-![Diagram showing ARC's autoscaling runner ScaleSet mode.](/assets/images/help/actions/arc-diagram.png)
+![Diagram showing ARC's autoscaling runner ScaleSet mode.](https://docs.github.com/assets/images/help/actions/arc-diagram.png)
 
 <!-- The numbers in the ordered list below correspond to numbers in the above diagram, which is why we use explicit numbering here. -->
 
@@ -113,6 +113,7 @@ You can use the following example Dockerfile to start creating your own runner i
 ```dockerfile copy
 FROM mcr.microsoft.com/dotnet/runtime-deps:6.0 as build
 
+```
 # Replace value with the latest runner release version
 # source: https://github.com/actions/runner/releases
 # ex: 2.303.0
@@ -149,6 +150,7 @@ RUN curl -f -L -o runner-container-hooks.zip https://github.com/actions/runner-c
 USER runner
 ```
 
+```
 ## Software installed in the ARC runner image
 
 The ARC [runner image](https://github.com/actions/runner/pkgs/container/actions-runner) is bundled with the following software:

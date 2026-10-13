@@ -28,11 +28,11 @@ Para disparar o evento `workflow_dispatch`, seu fluxo de trabalho precisa estar 
 
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 
 3. Na barra lateral esquerda, clique no nome do fluxo de trabalho que deseja executar.
 
-   ![Captura de tela da página "Ações". Na barra lateral esquerda, o nome do fluxo de trabalho está realçado com um contorno em laranja escuro.](/assets/images/help/repository/actions-select-workflow-2022.png)
+   ![Captura de tela da página "Ações". Na barra lateral esquerda, o nome do fluxo de trabalho está realçado com um contorno em laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-select-workflow-2022.png)
 
 4. Clique no botão **Executar fluxo de trabalho**, que fica acima da lista de execuções de fluxo de trabalho.
 
@@ -40,7 +40,7 @@ Para disparar o evento `workflow_dispatch`, seu fluxo de trabalho precisa estar 
 
    > Para você ver o botão **Run workflow**, o arquivo de fluxo de trabalho precisa usar o gatilho de evento `workflow_dispatch`. Somente os arquivos de fluxo de trabalho que usam o gatilho do evento `workflow_dispatch` têm a opção de executar o fluxo de trabalho manualmente usando o botão **Executar fluxo de trabalho**. Para saber mais sobre a configuração do evento `workflow_dispatch`, confira [Eventos que disparam fluxos de trabalho](../../reference/workflows-and-actions/events-that-trigger-workflows.md#workflow_dispatch).
 
-   ![Captura de tela da página de fluxo de trabalho. Acima da lista de execuções de fluxo de trabalho, o botão rotulado como "Executar fluxo de trabalho" está delineado em laranja escuro.](/assets/images/help/actions/actions-workflow-dispatch.png)
+   ![Captura de tela da página de fluxo de trabalho. Acima da lista de execuções de fluxo de trabalho, o botão rotulado como "Executar fluxo de trabalho" está delineado em laranja escuro.](https://docs.github.com/assets/images/help/actions/actions-workflow-dispatch.png)
 
 5. Selecione o menu suspenso **Branch** e clique em um branch para executar o fluxo de trabalho.
 

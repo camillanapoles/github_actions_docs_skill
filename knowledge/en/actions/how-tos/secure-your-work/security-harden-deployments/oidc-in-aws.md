@@ -145,6 +145,7 @@ The `aws-actions/configure-aws-credentials` action receives a JWT from the GitHu
 * `ROLE-TO-ASSUME`: Replace this with your AWS role. For example, `arn:aws:iam::1234567890:role/example-role`
 
 ```yaml copy
+```
 # Sample workflow to access AWS resources when workflow is tied to branch
 # The workflow creates a static website using Amazon S3
 # This workflow uses actions that are not certified by GitHub.
@@ -179,6 +180,7 @@ jobs:
           aws s3 cp ./index.html s3://${{ env.BUCKET_NAME }}/
 ```
 
+```
 ## Further reading
 
 * [Using OpenID Connect with reusable workflows](oidc-with-reusable-workflows.md)

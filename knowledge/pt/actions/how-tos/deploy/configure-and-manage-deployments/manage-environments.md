@@ -35,7 +35,7 @@ Para configurar um ambiente em um repositório de conta pessoal, você deve ser 
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 3. Na barra lateral esquerda, clique em **Ambientes**.
 4. Clique em **Novo ambiente**.
 5. Insira um nome para o ambiente e clique em **Configurar ambiente**. Os nomes de ambiente não diferenciam maiúsculas de minúsculas. Um nome de ambiente não pode exceder 255 caracteres e deve ser único dentro do repositório.
@@ -92,7 +92,7 @@ A exclusão de um ambiente apagará todos os segredos e regras de proteção ass
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 3. Na barra lateral esquerda, clique em **Ambientes**.
 4. Ao lado do ambiente que você deseja excluir, clique em (Delete environment).
 5. Clique em **Entendi. Excluir este ambiente**.

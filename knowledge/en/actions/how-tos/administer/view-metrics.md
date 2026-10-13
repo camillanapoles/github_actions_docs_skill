@@ -22,7 +22,7 @@ There may be a discrepancy between the **Workflows** tab's job count and the **J
 1. Click the name of your organization.
 1. Under your organization name, click ** Insights**.
 
-   ![Screenshot of the horizontal navigation bar for an organization. A tab, labeled with a graph icon and "Insights," is outlined in dark orange.](/assets/images/help/organizations/org-nav-insights-tab.png)
+   ![Screenshot of the horizontal navigation bar for an organization. A tab, labeled with a graph icon and "Insights," is outlined in dark orange.](https://docs.github.com/assets/images/help/organizations/org-nav-insights-tab.png)
 1. In the "Insights" navigation menu, click **Actions Usage Metrics** or click **Actions Performance Metrics**.
 1. Optionally, to select a time period to view usage metrics for, choose an option from the **Period** drop down menu at the top right of the page. For more information, see [Viewing GitHub Actions metrics](view-metrics.md#understanding-github-actions-metrics-aggregation#understanding-github-actions-metrics-aggregation).
 1. Click on the tab that contains the metrics you would like to view. For more information, see [About GitHub Actions metrics](../../concepts/metrics.md).

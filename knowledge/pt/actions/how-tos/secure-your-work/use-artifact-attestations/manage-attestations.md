@@ -27,7 +27,7 @@ Quando os consumidores têm um processo de verificação em vigor, a exclusão d
 1. Navegue até o repositório em que o atestado foi produzido.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, em "Gerenciamento", clique em **(verified) Atestações**.
 4. As atestações são ordenadas pela data de criação, da mais recente para a mais antiga. Use a barra "Search or filter" para pesquisar um atestado ou filtrar os resultados.
 

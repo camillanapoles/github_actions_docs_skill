@@ -21,14 +21,14 @@ Por padrão, o GitHub armazena registros e artefatos de compilação por 90 dias
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
-   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
 5. Na seção "Artefatos", clique no artefato que deseja baixar.
 
-   ![Captura de tela da seção "Artefatos" de uma execução de fluxo de trabalho. O nome de um artefato gerado pela execução, "artefato", está destacado em laranja.](/assets/images/help/repository/artifact-drop-down-updated.png)
+   ![Captura de tela da seção "Artefatos" de uma execução de fluxo de trabalho. O nome de um artefato gerado pela execução, "artefato", está destacado em laranja.](https://docs.github.com/assets/images/help/repository/artifact-drop-down-updated.png)
 
 !!! note
     Para saber mais sobre GitHub CLI, confira [Sobre GitHub CLI](https://docs.github.com/pt/github-cli/github-cli/about-github-cli).

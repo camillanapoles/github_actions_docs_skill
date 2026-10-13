@@ -50,7 +50,7 @@ In the tutorial, you will first make a workflow file that uses the [`actions/sta
               days-before-pr-stale: -1
               days-before-pr-close: -1
               repo-token: ${{ secrets.GITHUB_TOKEN }}
-    ```
+                ```
 
 1. Customize the parameters in your workflow file:
    * Change the value for `on.schedule` to dictate when you want this workflow to run. In the example above, the workflow will run every day at 1:30 UTC. For more information about scheduled workflows, see [Events that trigger workflows](../../reference/workflows-and-actions/events-that-trigger-workflows.md#schedule#schedule).

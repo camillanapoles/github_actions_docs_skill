@@ -26,14 +26,14 @@ Este artigo descreve o gerenciamento de caches com a interface da GitHub Web, ma
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, na seção "Management", clique em **(cache) Caches**.
 4. Revise a lista de entradas de cache do repositório.
 
    * Para pesquisar as entradas de cache usadas para um branch específico, clique no menu suspenso **Branch** e selecione um branch. A lista de cache exibirá todos os caches usados para o branch selecionado.
    * Para pesquisar entradas de cache com uma chave de cache específica, use a sintaxe `key: key-name` no campo **Filtrar caches**. A lista de cache exibirá caches de todos os ramos onde a chave foi usada.
 
-   ![Captura de tela da lista de entradas de cache.](/assets/images/help/repository/actions-cache-entry-list.png)
+   ![Captura de tela da lista de entradas de cache.](https://docs.github.com/assets/images/help/repository/actions-cache-entry-list.png)
 
 ## Excluir entradas de cache { #deleting-cache-entries }
 
@@ -42,11 +42,11 @@ Os usuários com `write` acesso a um repositório podem usar a interface da GitH
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, na seção "Management", clique em **(cache) Caches**.
 4. À direita da entrada de cache que você deseja excluir, clique em (Delete cache).
 
-   ![Captura de tela da lista de entradas de cache. Um ícone de lixeira, usado para excluir um cache, é realçado com um contorno laranja escuro.](/assets/images/help/repository/actions-cache-delete.png)
+   ![Captura de tela da lista de entradas de cache. Um ícone de lixeira, usado para excluir um cache, é realçado com um contorno laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-cache-delete.png)
 
 ## Forçar a exclusão de entradas de cache { #force-deleting-cache-entries }
 

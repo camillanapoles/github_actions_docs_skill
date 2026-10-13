@@ -40,7 +40,7 @@ Não é possível alterar o conteúdo de um cache existente. Em vez disso, crie 
         path: |
           ~/.gradle/caches
           ~/.gradle/wrapper
-    ```
+                ```
 
   * Você pode especificar diretórios ou arquivos únicos e os padrões glob são compatíveis.
 
@@ -53,7 +53,7 @@ Não é possível alterar o conteúdo de um cache existente. Em vez disso, crie 
     npm-feature-${{ hashFiles('package-lock.json') }}
     npm-feature-
     npm-
-  ```
+        ```
 
 * `enableCrossOsArchive`: **Optional** Um valor booliano que, quando habilitado, permite que Windows executores salvem ou restaurem caches independentemente do sistema operacional em que o cache foi criado. Se esse parâmetro não estiver definido, ele usará como padrão `false`. Para obter mais informações, confira [Cache entre sistemas operacionais](https://github.com/actions/cache/blob/main/tips-and-workarounds.md#cross-os-cache) na documentação do Actions Cache.
 

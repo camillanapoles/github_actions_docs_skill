@@ -35,16 +35,16 @@ For jobs run on GitHub-hosted runners, "Set up job" records details of the runne
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, click the workflow you want to see.
 
-   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 1. From the list of workflow runs, click the name of the run to see the workflow run summary.
 1. Under **Jobs** or in the visualization graph, click the job you want to see.
 1. Any failed steps are automatically expanded to display the results.
 1. Optionally, to get a link to a specific line in the logs, click on the step's line number. You can then copy the link from the address bar of your web browser.
 
-   ![Screenshot of the logs for a job. The logs for a failed step are expanded, and a line number is highlighted with an orange outline.](/assets/images/help/repository/copy-link-button-updated-2.png)
+   ![Screenshot of the logs for a job. The logs for a failed step are expanded, and a line number is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/copy-link-button-updated-2.png)
 
 ## Searching logs
 
@@ -53,10 +53,10 @@ You can search the build logs for a particular step. When you search logs, only 
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, click the workflow you want to see.
 
-   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 1. From the list of workflow runs, click the name of the run to see the workflow run summary.
 1. Under **Jobs** or in the visualization graph, click the job you want to see.
 1. In the upper-right corner of the log output, in the **Search logs** search box, type a search query.
@@ -68,15 +68,15 @@ You can download the log files from your workflow run. You can also download a w
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, click the workflow you want to see.
 
-   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 1. From the list of workflow runs, click the name of the run to see the workflow run summary.
 1. Under **Jobs** or in the visualization graph, click the job you want to see.
 1. In the upper right corner of the log, select the  dropdown menu, then click **Download log archive**.
 
-   ![Screenshot of the log for a job. In the header, a gear icon is outlined in dark orange.](/assets/images/help/actions/download-logs-drop-down.png)
+   ![Screenshot of the log for a job. In the header, a gear icon is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/download-logs-drop-down.png)
 
 !!! note
 
@@ -91,14 +91,14 @@ You can delete the log files from your workflow runs through the GitHub web inte
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, click the workflow you want to see.
 
-   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 1. From the list of workflow runs, click the name of the run to see the workflow run summary.
 1. In the upper-right corner, select the  dropdown menu, then click **Delete all logs**.
 
-    ![Screenshot of the page for a workflow run. In the top-right corner, a button, labeled with a kebab icon, is outlined in dark orange.](/assets/images/help/actions/workflow-run-kebab-horizontal-icon.png)
+    ![Screenshot of the page for a workflow run. In the top-right corner, a button, labeled with a kebab icon, is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/workflow-run-kebab-horizontal-icon.png)
 
 1. Review the confirmation prompt.
 
@@ -116,7 +116,7 @@ To run the example script below:
 
                 ```shell copy
     ./delete-logs.sh REPOSITORY_NAME WORKFLOW_NAME
-    ```
+                ```
 
     For example, to delete all of the logs in the `monalisa/octocat` repository for the `.github/workflows/ci.yaml` workflow, you would run `./delete-logs.sh monalisa/octocat ci.yaml`.
 
@@ -125,6 +125,7 @@ To run the example script below:
 ```bash copy
 #!/usr/bin/env bash
 
+```
 # Delete all logs for a given workflow
 # Usage: delete-logs.sh <repository> <workflow-name>
 
@@ -172,6 +173,7 @@ for RUN in $RUNS; do
 done
 ```
 
+```
 ## Viewing logs with GitHub CLI
 
 !!! note

@@ -57,13 +57,13 @@ You can authenticate Actions Runner Controller (ARC) to the GitHub API by using 
       --from-literal=github_app_id=123456 \
       --from-literal=github_app_installation_id=654321 \
       --from-literal=github_app_private_key='-----BEGIN RSA PRIVATE KEY-----********'
-   ```
+            ```
 
    Then using the `githubConfigSecret` property in your copy of the [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) file, pass the secret name as a reference.
 
             ```yaml
    githubConfigSecret: pre-defined-secret
-   ```
+            ```
 
   For additional Helm configuration options, see [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) in the ARC repository.
 
@@ -91,13 +91,13 @@ ARC can use personal access tokens (classic) to register self-hosted runners.
    kubectl create secret generic pre-defined-secret \
       --namespace=arc-runners \
       --from-literal=github_token='YOUR-PAT'
-   ```
+            ```
 
 1. In your copy of the [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) file, pass the secret name as a reference.
 
             ```yaml
    githubConfigSecret: pre-defined-secret
-   ```
+            ```
 
    For additional Helm configuration options, see [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) in the ARC repository.
 
@@ -128,13 +128,13 @@ ARC can use fine-grained personal access tokens to register self-hosted runners.
    kubectl create secret generic pre-defined-secret \
       --namespace=arc-runners \
       --from-literal=github_token='YOUR-PAT'
-   ```
+            ```
 
 1. In your copy of the [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) file, pass the secret name as a reference.
 
             ```yaml
    githubConfigSecret: pre-defined-secret
-   ```
+            ```
 
    For additional Helm configuration options, see [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) in the ARC repository.
 

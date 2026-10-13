@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Get started
 ---
 
-# Noções básicas sobre GitHub Actions
+# Noções básicas sobre GitHub Actions { #understanding-github-actions }
 
 _Aprenda os conceitos fundamentais e a terminologia essencial em GitHub Actions._
 
-## Visão geral
+## Visão geral { #overview }
 
 GitHub Actions é uma plataforma de integração contínua e entrega contínua (CI/CD) que permite automatizar a sua compilação, testar e pipeline de implantação. Você pode criar fluxos de trabalho que compilam e testam cada solicitação de pull para seu repositório ou implantam solicitações de pull mescladas em produção.
 
@@ -22,13 +22,13 @@ GitHub Actions vai além de apenas DevOps e permite executar fluxos de trabalho 
 
 GitHub fornece máquinas virtuais Linux, Windows e macOS para executar seus fluxos de trabalho ou você pode hospedar seus próprios executores auto-hospedados em seu próprio data center ou infraestrutura de nuvem.
 
-## Os componentes de GitHub Actions
+## Os componentes de GitHub Actions { #the-components-of-github-actions }
 
 Você pode configurar um GitHub Actions**fluxo de trabalho** a ser disparado quando um **evento** ocorre em seu repositório, como uma solicitação de pull sendo aberta ou um problema que está sendo criado. Seu fluxo de trabalho contém um ou mais **trabalhos** que podem ser executados em ordem sequencial ou em paralelo. Cada trabalho será executado em um **executor** próprio de máquina virtual ou em um contêiner e tem uma ou mais **etapas** que executam um script definido por você ou uma **ação**, que é uma extensão reutilizável que pode simplificar o fluxo de trabalho.
 
-![Diagrama de um evento que dispara o Executor 1 para executar o Trabalho 1, que dispara o Executor 2 para executar o Trabalho 2. Cada um dos trabalhos é dividido em várias etapas.](/assets/images/help/actions/overview-actions-simple.png)
+![Diagrama de um evento que dispara o Executor 1 para executar o Trabalho 1, que dispara o Executor 2 para executar o Trabalho 2. Cada um dos trabalhos é dividido em várias etapas.](https://docs.github.com/assets/images/help/actions/overview-actions-simple.png)
 
-### Fluxos de trabalho
+### Fluxos de trabalho { #workflows }
 
 Um **fluxo de trabalho** é um processo automatizado configurável que executará um ou mais trabalhos. Os fluxos de trabalho são definidos por um arquivo YAML verificado no seu repositório e será executado quando acionado por um evento no repositório, ou eles podem ser acionados manualmente ou de acordo com um cronograma definido.
 
@@ -42,13 +42,13 @@ Você pode referenciar um fluxo de trabalho dentro de outro fluxo de trabalho. P
 
 Para saber mais, confira [Escrevendo fluxos de trabalho](../how-tos/write-workflows.md).
 
-### Eventos
+### Eventos { #events }
 
 Um **evento** é uma atividade específica em um repositório que dispara a execução de um **fluxo de trabalho**. Por exemplo, uma atividade pode se originar de GitHub quando alguém cria uma solicitação de pull, abre um problema ou envia uma confirmação por push para um repositório. Além disso, é possível acionar um fluxo de trabalho para execução de acordo com um [agendamento](../reference/workflows-and-actions/events-that-trigger-workflows.md#schedule) ao [postar em uma API REST](https://docs.github.com/pt/rest/repos/repos#create-a-repository-dispatch-event) ou de forma manual.
 
 Para ver uma lista completa dos eventos que podem ser usados para disparar fluxos de trabalho, confira [Eventos que disparam fluxos de trabalho](../reference/workflows-and-actions/events-that-trigger-workflows.md).
 
-### Trabalhos
+### Trabalhos { #jobs }
 
 Um **trabalho** é um conjunto de **etapas** em um fluxo de trabalho executadas no mesmo **executor**. Cada etapa é um script de shell que será executado ou uma **ação** que será executada. As etapas são executadas em ordem e dependem uma da outra. Uma vez que cada etapa é executada no mesmo executor, você pode compartilhar dados de um passo para outro. Por exemplo, você pode ter uma etapa que compila a sua aplicação seguida de uma etapa que testa ao aplicativo criado.
 
@@ -62,7 +62,7 @@ Por exemplo, você pode configurar vários trabalhos de build para diferentes ar
 
 Para saber mais, confira [Escolhendo o que seu fluxo de trabalho faz](../how-tos/write-workflows/choose-what-workflows-do.md).
 
-### Ações
+### Ações { #actions }
 
 Uma **ação** é um conjunto de trabalhos ou código reutilizável predefinido que executa tarefas específicas em um **fluxo de trabalho**, reduzindo a quantidade de código repetitivo que você escreve em seus arquivos de fluxo de trabalho. As ações podem executar tarefas como:
 
@@ -74,7 +74,7 @@ Você pode escrever suas próprias ações ou encontrar ações para usar em seu
 
 Para obter mais informações sobre ações, consulte [Reutilização de automações](../how-tos/reuse-automations.md).
 
-### Executores
+### Executores { #runners }
 
 Um **runner** é um servidor que executa seus fluxos de trabalho quando eles são disparados. Cada executor pode executar um único **trabalho** por vez.
 
@@ -86,7 +86,7 @@ Se você precisar de um sistema operacional diferente ou exigir uma configuraç�
 
 Para obter mais informações sobre os executores auto-hospedados, confira [Como gerenciar executores auto-hospedados](../how-tos/manage-runners/self-hosted-runners.md).
 
-## Próximas etapas
+## Próximas etapas { #next-steps }
 
 GitHub Actions pode ajudá-lo a automatizar quase todos os aspectos dos processos de desenvolvimento de aplicativos. Pronto para começar? Aqui estão alguns recursos úteis para executar suas próximas etapas com GitHub Actions:
 

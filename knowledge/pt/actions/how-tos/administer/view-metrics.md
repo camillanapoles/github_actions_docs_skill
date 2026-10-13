@@ -23,7 +23,7 @@ _Você pode visualizar métricas para monitorar onde sua organização ou reposi
 2. Clique no nome da sua organização.
 3. No nome da organização, clique em **(graph) Insights**.
 
-   ![Captura de tela da barra de navegação horizontal para uma organização. Uma guia, rotulada com um ícone de grafo e "Insights" tem um contorno laranja escuro.](/assets/images/help/organizations/org-nav-insights-tab.png)
+   ![Captura de tela da barra de navegação horizontal para uma organização. Uma guia, rotulada com um ícone de grafo e "Insights" tem um contorno laranja escuro.](https://docs.github.com/assets/images/help/organizations/org-nav-insights-tab.png)
 4. No menu de navegação “Insights”, selecione **Métricas de Uso do Actions** ou **Métricas de Desempenho do Actions**.
 5. Opcionalmente, para selecionar um período de tempo para exibir as métricas de uso, escolha uma opção no menu suspenso **Período** no canto superior direito da página. Para saber mais, confira [Como ver as métricas do GitHub Actions](view-metrics.md#understanding-github-actions-metrics-aggregation).
 6. Selecione a guia que contém as métricas que deseja ver. Para saber mais, confira [Sobre as métricas do GitHub Actions](../../concepts/metrics.md).

@@ -42,7 +42,7 @@ GitHub provides a workflow template for Gradle that should work for most Java wi
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. If you already have a workflow in your repository, click **New workflow**.
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "Java with Gradle".
 1. On the "Java with Gradle" workflow, click **Configure**.
@@ -51,6 +51,7 @@ GitHub provides a workflow template for Gradle that should work for most Java wi
 
             ```yaml copy
    # This workflow uses actions that are not certified by GitHub.
+            ```
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
@@ -101,6 +102,7 @@ This workflow performs the following steps:
 
    The `gradle.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
+   ```
 ### Specifying the Java version and architecture
 
 The workflow template sets up the `PATH` to contain OpenJDK 8 for the x64 platform. If you want to use a different version of Java, or target a different architecture (`x64` or `x86`), you can use the `setup-java` action to choose a different Java runtime environment.
@@ -129,10 +131,11 @@ The workflow template will run the `build` task by default. In the default Gradl
 If you use different commands to build your project, or you want to use a different task, you can specify those. For example, you may want to run the `package` task that's configured in your `ci.gradle` file.
 
 ```yaml copy
+```
 # This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+# They are provided by a third-party and are governed by { #they-are-provided-by-a-third-party-and-are-governed-by-1 }
+# separate terms of service, privacy policy, and support { #separate-terms-of-service-privacy-policy-and-support-1 }
+# documentation. { #documentation-1 }
 steps:
   - uses: actions/checkout@v6
   - uses: actions/setup-java@v4
@@ -147,6 +150,7 @@ steps:
     run: ./gradlew -b ci.gradle package
 ```
 
+```
 ## Caching dependencies
 
 Your build dependencies can be cached to speed up your workflow runs. After a successful run, `gradle/actions/setup-gradle` caches important parts of the Gradle user home directory. In future jobs, the cache will be restored so that build scripts won't need to be recompiled and dependencies won't need to be downloaded from remote package repositories.
@@ -160,10 +164,11 @@ After your build has succeeded and your tests have passed, you may want to uploa
 Gradle will usually create output files like JARs, EARs, or WARs in the `build/libs` directory. You can upload the contents of that directory using the `upload-artifact` action.
 
 ```yaml copy
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+```
+# This workflow uses actions that are not certified by GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-1 }
+# They are provided by a third-party and are governed by { #they-are-provided-by-a-third-party-and-are-governed-by-2 }
+# separate terms of service, privacy policy, and support { #separate-terms-of-service-privacy-policy-and-support-2 }
+# documentation. { #documentation-2 }
 steps:
   - uses: actions/checkout@v6
   - uses: actions/setup-java@v4
@@ -182,4 +187,6 @@ steps:
     with:
       name: Package
       path: build/libs
+```
+
 ```

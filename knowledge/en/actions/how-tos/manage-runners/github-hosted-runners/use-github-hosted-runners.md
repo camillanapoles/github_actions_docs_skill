@@ -20,7 +20,7 @@ When the job begins, GitHub automatically provisions a new VM for that job. All 
 
 The following diagram demonstrates how two jobs in a workflow are executed on two different GitHub-hosted runners.
 
-![Diagram of a workflow that consists of two jobs. One job runs on Ubuntu and the other runs on Windows.](/assets/images/help/actions/overview-github-hosted-runner.png)
+![Diagram of a workflow that consists of two jobs. One job runs on Ubuntu and the other runs on Windows.](https://docs.github.com/assets/images/help/actions/overview-github-hosted-runner.png)
 
 The following example workflow has two jobs, named `Run-npm-on-Ubuntu` and `Run-PSScriptAnalyzer-on-Windows`. When this workflow is triggered, GitHub provisions a new virtual machine for each job.
 
@@ -64,7 +64,7 @@ jobs:
 
 While the job runs, the logs and output can be viewed in the GitHub UI:
 
-![Screenshot of a workflow run. The steps for the "Run PSScriptAnalyzer on Windows" job are displayed.](/assets/images/help/repository/actions-runner-output.png)
+![Screenshot of a workflow run. The steps for the "Run PSScriptAnalyzer on Windows" job are displayed.](https://docs.github.com/assets/images/help/repository/actions-runner-output.png)
 
 The GitHub Actions runner application is open source. You can contribute and file issues in the [runner](https://github.com/actions/runner) repository.
 
@@ -75,7 +75,7 @@ If you have `repo: write` access to a repository, you can view a list of the run
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, under the "Management" section, click ** Runners**.
 1. Review the list of available GitHub-hosted runners for the repository.
 1. Optionally, to copy a runner's label to use it in a workflow, click  to the right of the runner, then click **Copy label**.

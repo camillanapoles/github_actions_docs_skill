@@ -24,14 +24,14 @@ You can use the web interface to view a list of cache entries for a repository. 
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, under the "Management" section, click ** Caches**.
 1. Review the list of cache entries for the repository.
 
    * To search for cache entries used for a specific branch, click the **Branch** dropdown menu and select a branch. The cache list will display all of the caches used for the selected branch.
    * To search for cache entries with a specific cache key, use the syntax `key: key-name` in the **Filter caches** field. The cache list will display caches from all branches where the key was used.
 
-   ![Screenshot of the list of cache entries.](/assets/images/help/repository/actions-cache-entry-list.png)
+   ![Screenshot of the list of cache entries.](https://docs.github.com/assets/images/help/repository/actions-cache-entry-list.png)
 
 ## Deleting cache entries
 
@@ -40,11 +40,11 @@ Users with `write` access to a repository can use the GitHub web interface to de
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, under the "Management" section, click ** Caches**.
 1. To the right of the cache entry you want to delete, click .
 
-   ![Screenshot of the list of cache entries. A trash can icon, used to delete a cache, is highlighted with a dark orange outline.](/assets/images/help/repository/actions-cache-delete.png)
+   ![Screenshot of the list of cache entries. A trash can icon, used to delete a cache, is highlighted with a dark orange outline.](https://docs.github.com/assets/images/help/repository/actions-cache-delete.png)
 
 ## Force deleting cache entries
 

@@ -30,10 +30,10 @@ Write access to the repository is required to perform these steps.
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, click the name of the workflow you want to run.
 
-   ![Screenshot of the "Actions" page. In the left sidebar, a workflow name is highlighted with an outline in dark orange.](/assets/images/help/repository/actions-select-workflow-2022.png)
+   ![Screenshot of the "Actions" page. In the left sidebar, a workflow name is highlighted with an outline in dark orange.](https://docs.github.com/assets/images/help/repository/actions-select-workflow-2022.png)
 
 1. Above the list of workflow runs, click the **Run workflow** button.
 
@@ -41,7 +41,7 @@ Write access to the repository is required to perform these steps.
 
    > To see the **Run workflow** button, your workflow file must use the `workflow_dispatch` event trigger. Only workflow files that use the `workflow_dispatch` event trigger will have the option to run the workflow manually using the **Run workflow** button. For more information about configuring the `workflow_dispatch` event, see [Events that trigger workflows](../../reference/workflows-and-actions/events-that-trigger-workflows.md#workflow_dispatch#workflow_dispatch).
 
-   ![Screenshot of a workflow page. Above the list of workflow runs, a button, labeled "Run workflow", is outlined in dark orange.](/assets/images/help/actions/actions-workflow-dispatch.png)
+   ![Screenshot of a workflow page. Above the list of workflow runs, a button, labeled "Run workflow", is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/actions-workflow-dispatch.png)
 1. Select the **Branch** dropdown menu and click a branch to run the workflow on.
 1. If the workflow requires input, fill in the fields.
 1. Click **Run workflow**.

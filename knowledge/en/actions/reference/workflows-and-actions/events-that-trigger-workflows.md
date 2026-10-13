@@ -515,7 +515,7 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-    ```
+                ```
 
 To run a job based on the pull request's head branch name (as opposed to the pull request's base branch name), use the `github.head_ref` context in a conditional. For example, this workflow will run whenever a pull request is opened, but the `run_if` job will only execute if the head of the pull request is a branch whose name starts with `releases/`:
 
@@ -557,7 +557,7 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-    ```
+                ```
 
 ### Running your `pull_request` workflow when a pull request merges
 
@@ -741,7 +741,7 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-    ```
+                ```
 
 To run a job based on the pull request's head branch name (as opposed to the pull request's base branch name), use the `github.head_ref` context in a conditional. For example, this workflow will run whenever a pull request is opened, but the `run_if` job will only execute if the head of the pull request is a branch whose name starts with `releases/`:
 
@@ -783,7 +783,7 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-    ```
+                ```
 
 ### Running your `pull_request_target` workflow when a pull request merges
 
@@ -850,7 +850,7 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-    ```
+                ```
 
 ### Running your workflow only when a push of specific tags occurs
 
@@ -893,7 +893,7 @@ on:
     jobs:
         job_name:
             if: ${{ github.event.registry_package.package_version.container_metadata.tag.name != '' }}
-    ```
+                ```
 
 Runs your workflow when activity related to GitHub Packages occurs in your repository. For more information, see [GitHub Packages Documentation](https://docs.github.com/packages).
 
@@ -1001,7 +1001,7 @@ The `schedule` event allows you to trigger a workflow at a scheduled time.
    on:
      schedule:
        - cron: "15 4,5 * * *"
-  ```
+        ```
 
 Use [POSIX cron syntax](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07) to schedule workflows to run at specific times. Scheduled workflows run in UTC. Scheduled workflows run on the latest commit on the default branch. The shortest interval you can run scheduled workflows is once every 5 minutes.
 
@@ -1210,7 +1210,7 @@ jobs:
 
 If you run this workflow from a browser you must enter values for the required inputs manually before the workflow will run.
 
-![Screenshot of a list of workflow runs. A dropdown menu, labeled "Run workflow" and expanded to show input fields, is outlined in dark orange.](/assets/images/help/actions/workflow-dispatch-inputs.png)
+![Screenshot of a list of workflow runs. A dropdown menu, labeled "Run workflow" and expanded to show input fields, is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/workflow-dispatch-inputs.png)
 
 You can also pass inputs when you run a workflow from a script, or by using GitHub CLI. For example:
 

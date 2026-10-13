@@ -18,7 +18,7 @@ With GitHub Actions, you can use OpenID Connect (OIDC) tokens to authenticate yo
 
 The following diagram gives an overview of this solution's architecture:
 
-![Diagram of an OIDC gateway architecture, starting with a GitHub Actions runner and ending with a private network's private service.](/assets/images/help/actions/actions-oidc-gateway.png)
+![Diagram of an OIDC gateway architecture, starting with a GitHub Actions runner and ending with a private network's private service.](https://docs.github.com/assets/images/help/actions/actions-oidc-gateway.png)
 
 It's important that you verify not just that the OIDC token came from GitHub Actions, but that it came specifically from your expected workflows, so that other GitHub Actions users aren't able to access services in your private network. You can use OIDC claims to create these conditions. For more information, see [OpenID Connect reference](../../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 

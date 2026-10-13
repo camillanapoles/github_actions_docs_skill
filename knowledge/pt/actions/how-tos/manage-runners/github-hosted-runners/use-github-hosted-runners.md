@@ -22,7 +22,7 @@ Quando o trabalho é iniciado, GitHub provisiona automaticamente uma nova VM par
 
 O diagrama a seguir demonstra como dois trabalhos em um fluxo de trabalho são executados em dois executores hospedados diferentes GitHub.
 
-![Diagrama de um fluxo de trabalho que consiste em dois trabalhos. Um trabalho é executado no Ubuntu e o outro no Windows.](/assets/images/help/actions/overview-github-hosted-runner.png)
+![Diagrama de um fluxo de trabalho que consiste em dois trabalhos. Um trabalho é executado no Ubuntu e o outro no Windows.](https://docs.github.com/assets/images/help/actions/overview-github-hosted-runner.png)
 
 O fluxo de trabalho de exemplo a seguir tem dois trabalhos, nomeados `Run-npm-on-Ubuntu` e `Run-PSScriptAnalyzer-on-Windows`. Quando esse fluxo de trabalho é disparado, GitHub provisiona uma nova máquina virtual para cada trabalho.
 
@@ -66,7 +66,7 @@ jobs:
 
 Enquanto a tarefa é executada, os logs e a saída podem ser visualizados na UI GitHub:
 
-![Captura de tela da execução de um fluxo de trabalho. As etapas para o trabalho "Executar PSScriptAnalyzer no Windows" são exibidas.](/assets/images/help/repository/actions-runner-output.png)
+![Captura de tela da execução de um fluxo de trabalho. As etapas para o trabalho "Executar PSScriptAnalyzer no Windows" são exibidas.](https://docs.github.com/assets/images/help/repository/actions-runner-output.png)
 
 O aplicativo de executor do GitHub Actions tem código aberto. Você pode contribuir e apresentar problemas no repositório do [executor](https://github.com/actions/runner).
 
@@ -77,7 +77,7 @@ Se você tiver `repo: write` acesso a um repositório, poderá exibir uma lista 
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, na seção "Management", clique em **(server) Runners**.
 4. Revise a lista de executores hospedados no GitHub disponíveis para o repositório.
 5. Opcionalmente, para copiar o rótulo de um corredor para usá-lo em um fluxo de trabalho, clique em (More options) à direita do corredor e clique em **Copiar rótulo**.

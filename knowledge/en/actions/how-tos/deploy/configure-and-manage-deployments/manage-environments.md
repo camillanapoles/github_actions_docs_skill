@@ -33,7 +33,7 @@ To configure an environment in a personal account repository, you must be the re
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 1. In the left sidebar, click **Environments**.
 1. Click **New environment**.
 1. Enter a name for the environment, then click **Configure environment**. Environment names are not case sensitive. An environment name may not exceed 255 characters and must be unique within the repository.
@@ -86,7 +86,7 @@ Deleting an environment will delete all secrets and protection rules associated 
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 1. In the left sidebar, click **Environments**.
 1. Next to the environment that you want to delete, click .
 1. Click **I understand, delete this environment**.

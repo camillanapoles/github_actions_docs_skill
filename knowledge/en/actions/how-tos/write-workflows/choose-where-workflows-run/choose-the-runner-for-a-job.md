@@ -30,7 +30,7 @@ Use `jobs.<job_id>.runs-on` to define the type of machine to run the job on.
 
         ```yaml
   runs-on: [self-hosted, linux, x64, gpu]
-  ```
+        ```
 
   For more information, see [Choosing self-hosted runners](#choosing-self-hosted-runners).
 * You can mix strings and variables in an array. For example:
@@ -51,7 +51,7 @@ Use `jobs.<job_id>.runs-on` to define the type of machine to run the job on.
       runs-on: [self-hosted, "${{ inputs.chosen-os }}"]
       steps:
       - run: echo Hello world!
-  ```
+        ```
 
 * If you would like to run your workflow on multiple machines, use [`jobs.<job_id>.strategy`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategy).
 

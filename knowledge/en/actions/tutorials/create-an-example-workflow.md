@@ -43,7 +43,7 @@ You can create an example workflow in your repository that automatically trigger
              node-version: '24'
          - run: npm install -g bats
          - run: bats -v
-   ```
+            ```
 
 1. Commit these changes and push them to your GitHub repository.
 
@@ -54,6 +54,7 @@ Your new GitHub Actions workflow file is now installed in your repository and wi
 To help you understand how YAML syntax is used to create a workflow file, this section explains each line of the introduction's example:
 
 ```yaml annotate copy
+```
 # Optional - The name of the workflow as it will appear in the "Actions" tab of the GitHub repository. If this field is omitted, the name of the workflow file will be used instead.
 name: learn-github-actions
 
@@ -90,11 +91,12 @@ jobs:
       - run: bats -v
 ```
 
+```
 ### Visualizing the workflow file
 
 In this diagram, you can see the workflow file you just created and how the GitHub Actions components are organized in a hierarchy. Each step executes a single action or shell script. Steps 1 and 2 run actions, while steps 3 and 4 run shell scripts. To find more prebuilt actions for your workflows, see [Using pre-written building blocks in your workflow](../how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions.md).
 
-![Diagram showing the trigger, runner, and job of a workflow. The job is broken into 4 steps.](/assets/images/help/actions/overview-actions-event.png)
+![Diagram showing the trigger, runner, and job of a workflow. The job is broken into 4 steps.](https://docs.github.com/assets/images/help/actions/overview-actions-event.png)
 
 ## Viewing the activity for a workflow run
 
@@ -103,10 +105,10 @@ When your workflow is triggered, a _workflow run_ is created that executes the w
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, click the workflow you want to see.
 
-   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Screenshot of the left sidebar of the "Actions" tab. A workflow, "CodeQL," is outlined in dark orange.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 1. From the list of workflow runs, click the name of the run to see the workflow run summary.
 1. In the left sidebar or in the visualization graph, click the job you want to see.
 1. To view the results of a step, click the step.

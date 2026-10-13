@@ -126,7 +126,7 @@ To fix this, you can do one of the following things.
           - name: runner
             image: ghcr.io/actions/actions-runner:latest
             command: ["/home/runner/run.sh"]
-    ```
+                ```
 
 * If updating the `securityContext` of your runner pod is not a viable solution, you can work around the issue by using `initContainers` to change the mounted volume's ownership, as follows.
 
@@ -144,7 +144,7 @@ To fix this, you can do one of the following things.
           - name: runner
             image: ghcr.io/actions/actions-runner:latest
             command: ["/home/runner/run.sh"]
-    ```
+                ```
 
 ## Error: `failed to get access token for GitHub App auth: 401 Unauthorized`
 

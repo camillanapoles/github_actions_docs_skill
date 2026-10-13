@@ -30,4 +30,4 @@ If you enable immutable releases on your action's repository, you can manage you
                 ```bash copy
     git tag -f TAG-NAME
     git push -f --tags
-    ```
+                ```

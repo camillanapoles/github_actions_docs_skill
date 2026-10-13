@@ -35,7 +35,7 @@ GitHub provides a workflow template for Ruby that should work for most Ruby proj
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. If you already have a workflow in your repository, click **New workflow**.
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "ruby".
 1. Filter the selection of workflows by clicking **Continuous integration**.
@@ -45,6 +45,7 @@ GitHub provides a workflow template for Ruby that should work for most Ruby proj
 
             ```yaml copy
    # This workflow uses actions that are not certified by GitHub.
+            ```
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
@@ -91,6 +92,7 @@ GitHub provides a workflow template for Ruby that should work for most Ruby proj
 
    The `ruby.yml` workflow file is added to the `.github/workflows` directory of your repository.
 
+   ```
 ## Specifying the Ruby version
 
 The easiest way to specify a Ruby version is by using the `ruby/setup-ruby` action provided by the Ruby organization on GitHub. The action adds any supported Ruby version to `PATH` for each job run in a workflow. For more information and available Ruby versions, see [`ruby/setup-ruby`](https://github.com/ruby/setup-ruby).
@@ -100,10 +102,11 @@ Using Ruby's `ruby/setup-ruby` action is the recommended way of using Ruby with 
 The `setup-ruby` action takes a Ruby version as an input and configures that version on the runner.
 
 ```yaml
+```
 # This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+# They are provided by a third-party and are governed by { #they-are-provided-by-a-third-party-and-are-governed-by-1 }
+# separate terms of service, privacy policy, and support { #separate-terms-of-service-privacy-policy-and-support-1 }
+# documentation. { #documentation-1 }
 steps:
 - uses: actions/checkout@v6
 - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
@@ -115,6 +118,7 @@ steps:
 
 Alternatively, you can check a `.ruby-version` file into the root of your repository and `setup-ruby` will use the version defined in that file.
 
+```
 ## Testing with multiple versions of Ruby
 
 You can add a matrix strategy to run your workflow with more than one version of Ruby. For example, you can test your code against the latest patch releases of versions 3.1, 3.0, and 2.7.
@@ -130,10 +134,11 @@ Each version of Ruby specified in the `ruby-version` array creates a job that ru
 The full updated workflow with a matrix strategy could look like this:
 
 ```yaml
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+```
+# This workflow uses actions that are not certified by GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-1 }
+# They are provided by a third-party and are governed by { #they-are-provided-by-a-third-party-and-are-governed-by-2 }
+# separate terms of service, privacy policy, and support { #separate-terms-of-service-privacy-policy-and-support-2 }
+# documentation. { #documentation-2 }
 
 # GitHub recommends pinning actions to a commit SHA.
 # To get a newer version, you will need to update the SHA.
@@ -168,15 +173,17 @@ jobs:
         run: bundle exec rake
 ```
 
+```
 ## Installing dependencies with Bundler
 
 The `setup-ruby` action will automatically install bundler for you. The version is determined by your `gemfile.lock` file. If no version is present in your lockfile, then the latest compatible version will be installed.
 
 ```yaml
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+```
+# This workflow uses actions that are not certified by GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-2 }
+# They are provided by a third-party and are governed by { #they-are-provided-by-a-third-party-and-are-governed-by-3 }
+# separate terms of service, privacy policy, and support { #separate-terms-of-service-privacy-policy-and-support-3 }
+# documentation. { #documentation-3 }
 steps:
 - uses: actions/checkout@v6
 - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
@@ -185,6 +192,7 @@ steps:
 - run: bundle install
 ```
 
+```
 ### Caching dependencies
 
 The `setup-ruby` actions provides a method to automatically handle the caching of your gems between runs.
@@ -192,10 +200,11 @@ The `setup-ruby` actions provides a method to automatically handle the caching o
 To enable caching, set the following.
 
 ```yaml
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+```
+# This workflow uses actions that are not certified by GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-3 }
+# They are provided by a third-party and are governed by { #they-are-provided-by-a-third-party-and-are-governed-by-4 }
+# separate terms of service, privacy policy, and support { #separate-terms-of-service-privacy-policy-and-support-4 }
+# documentation. { #documentation-4 }
 steps:
 - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
   with:
@@ -243,6 +252,7 @@ steps:
 The following example matrix tests all stable releases and head versions of MRI, JRuby and TruffleRuby on Ubuntu and macOS.
 
 ```yaml
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -278,11 +288,13 @@ jobs:
       - run: bundle exec rake
 ```
 
+```
 ## Linting your code
 
 The following example installs `rubocop` and uses it to lint all files. For more information, see [RuboCop](https://github.com/rubocop-hq/rubocop). You can [configure Rubocop](https://docs.rubocop.org/rubocop/configuration.html) to decide on the specific linting rules.
 
 ```yaml
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -311,6 +323,7 @@ jobs:
 
 Specifying `-f github` means that the RuboCop output will be in GitHub's annotation format. Any linting errors will show inline in the **Files changed** tab of the pull request that introduces them.
 
+```
 ## Publishing Gems
 
 You can configure your workflow to publish your Ruby package to any package registry you'd like when your CI tests pass.
@@ -318,6 +331,7 @@ You can configure your workflow to publish your Ruby package to any package regi
 You can store any access tokens or credentials needed to publish your package using repository secrets. The following example creates and publishes a package to `GitHub Package Registry` and `RubyGems`.
 
 ```yaml
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -376,4 +390,6 @@ jobs:
           gem push *.gem
         env:
           GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
+```
+
 ```

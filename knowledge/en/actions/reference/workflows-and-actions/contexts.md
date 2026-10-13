@@ -460,6 +460,7 @@ jobs:
 This example reusable workflow uses `job.workflow_repository` and `job.workflow_sha` to check out its own source code, rather than the caller's repository. This is useful when a reusable workflow needs to access files co-located with the workflow definition.
 
 ```yaml copy
+```
 # In a reusable workflow (e.g., octo-org/shared-workflows/.github/workflows/deploy.yml)
 name: Reusable deploy workflow
 on:
@@ -478,6 +479,7 @@ jobs:
       - run: echo "Workflow file path is ${{ job.workflow_file_path }}"
 ```
 
+```
 ## `jobs` context
 
 The `jobs` context is only available in reusable workflows, and can only be used to set outputs for a reusable workflow. For more information, see [Reuse workflows](../../how-tos/reuse-automations/reuse-workflows.md#using-outputs-from-a-reusable-workflow#using-outputs-from-a-reusable-workflow).

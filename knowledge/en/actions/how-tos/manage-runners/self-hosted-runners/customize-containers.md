@@ -494,7 +494,7 @@ GitHub has created an example repository that demonstrates how to generate custo
 
             ```shell
    npm install && npm run bootstrap && npm run build-all
-   ```
+            ```
 
 When the resulting `index.js` is triggered by GitHub Actions, it will run the customization commands defined in the JSON files. To trigger the `index.js`, you will need to add it to your `ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER` environment variable, as described in the next section.
 

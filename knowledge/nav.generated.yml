@@ -637,3 +637,4 @@ nav:
           - 'Endurecimento de segurança (hardening) e OIDC': skill/references/security-hardening.md
           - 'Sintaxe de workflow (YAML) — mapa completo de chaves': skill/references/workflow-syntax.md
   - Validação e conformidade: validation.md
+  - Tags: tags.md

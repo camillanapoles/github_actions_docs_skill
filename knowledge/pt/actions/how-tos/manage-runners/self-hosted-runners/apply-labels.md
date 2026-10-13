@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: How tos / Manage runners / Self hosted runners
 ---
 
-# Usar rótulos com os executores auto-hospedados
+# Usar rótulos com os executores auto-hospedados { #using-labels-with-self-hosted-runners }
 
 _Você pode usar etiquetas para organizar os seus executores auto-hospedados com base em suas características._
 
@@ -22,7 +22,7 @@ Um executor auto-hospedado pode estar localizado no repositório, na organizaç�
 * **Organização**: você precisa ser um proprietário da organização.
 * **Repositório da organização**: você precisa ser um proprietário da organização ou ter acesso de administrador no repositório.
 
-## Criar etiquetas personalizadas
+## Criar etiquetas personalizadas { #creating-a-custom-label }
 
 Você pode criar rótulos personalizados para executores nos níveis de repositório e organização.
 
@@ -32,7 +32,7 @@ Você pode criar rótulos personalizados para executores nos níveis de reposit�
 !!! note
     Os rótulos são insensíveis a maiúsculas e minúsculas.
 
-### Criar um rótulo personalizado para um executor de repositório
+### Criar um rótulo personalizado para um executor de repositório { #creating-a-custom-label-for-an-organization-runner }
 
 1. Acesse a página principal do repositório onde o grupo de executor auto-hospedado está registrado.
 2. Clique em **(gear) Settings**.
@@ -41,7 +41,7 @@ Você pode criar rótulos personalizados para executores nos níveis de reposit�
 5. Na seção "Etiquetas", clique em (The Gear icon).
 6. No campo "Localizar ou criar um rótulo", digite o nome do novo rótulo e clique em **Criar rótulo**. O rótulo personalizado é criado e atribuído ao executor auto-hospedado. É possível remover as etiquetas personalizadas dos executores auto-hospedados, mas não é possível excluí-las manualmente. Quaisquer etiquetas não utilizadas que não forem atribuídas a um executor serão automaticamente excluídas dentro de 24 horas.
 
-### Criar um rótulo personalizado para um executor de organização
+### Criar um rótulo personalizado para um executor de organização { #creating-a-custom-label-for-an-enterprise-runner }
 
 1. Navegue até a página principal da organização onde seu grupo de executores auto-hospedados está registrado.
 2. Clique em **(gear) Settings**.
@@ -50,14 +50,14 @@ Você pode criar rótulos personalizados para executores nos níveis de reposit�
 5. Na seção "Etiquetas", clique em (The Gear icon).
 6. No campo "Localizar ou criar um rótulo", digite o nome do novo rótulo e clique em **Criar rótulo**. O rótulo personalizado é criado e atribuído ao executor auto-hospedado. É possível remover as etiquetas personalizadas dos executores auto-hospedados, mas não é possível excluí-las manualmente. Quaisquer etiquetas não utilizadas que não forem atribuídas a um executor serão automaticamente excluídas dentro de 24 horas.
 
-## Atribuir uma etiqueta a um executor auto-hospedado
+## Atribuir uma etiqueta a um executor auto-hospedado { #assigning-a-label-to-a-self-hosted-runner }
 
 Você pode atribuir rótulos a executores auto-hospedados nos níveis de repositório e organização.
 
 * [Atribuir um rótulo a um executor de repositório](#assigning-a-label-to-a-repository-runner)
 * [Atribuir um rótulo a um executor de organização](#assigning-a-label-to-an-organization-runner)
 
-### Atribuir um rótulo a um executor de repositório
+### Atribuir um rótulo a um executor de repositório { #assigning-a-label-to-a-repository-runner }
 
 1. Acesse a página principal do repositório onde o grupo de executor auto-hospedado está registrado.
 2. Clique em **(gear) Settings**.
@@ -65,7 +65,7 @@ Você pode atribuir rótulos a executores auto-hospedados nos níveis de reposit
 4. Na seção "Etiquetas", clique em (The Gear icon).
 5. Para atribuir uma etiqueta ao executor auto-hospedado, no campo "Localizar ou criar uma etiqueta", clique na etiqueta.
 
-### Atribuir um rótulo a um executor de organização
+### Atribuir um rótulo a um executor de organização { #assigning-a-label-to-an-organization-runner }
 
 1. Navegue até a página principal da organização onde seu grupo de executores auto-hospedados está registrado.
 2. Clique em **(gear) Settings**.
@@ -73,14 +73,14 @@ Você pode atribuir rótulos a executores auto-hospedados nos níveis de reposit
 4. Na seção "Etiquetas", clique em (The Gear icon).
 5. Para atribuir uma etiqueta ao executor auto-hospedado, no campo "Localizar ou criar uma etiqueta", clique na etiqueta.
 
-## Remover uma etiqueta personalizada de um executor auto-hospedado
+## Remover uma etiqueta personalizada de um executor auto-hospedado { #removing-a-custom-label-from-a-self-hosted-runner }
 
 Você pode remover rótulos personalizados de executores auto-hospedados nos níveis de repositório e organização.
 
 * [Remover um rótulo personalizado de um executor de repositório](#removing-a-custom-label-from-a-repository-runner)
 * [Remover um rótulo personalizado de um executor de organização](#removing-a-custom-label-from-an-organization-runner)
 
-### Remover um rótulo personalizado de um executor de repositório
+### Remover um rótulo personalizado de um executor de repositório { #removing-a-custom-label-from-a-repository-runner }
 
 1. Acesse a página principal do repositório onde o grupo de executor auto-hospedado está registrado.
 2. Clique em **(gear) Settings**.
@@ -88,7 +88,7 @@ Você pode remover rótulos personalizados de executores auto-hospedados nos ní
 4. Na seção "Etiquetas", clique em (The Gear icon).
 5. No campo "Localizar ou criar um rótulo", os rótulos atribuídos são marcados com o ícone (The Check icon). Clique em uma etiqueta marcada para cancelar a atribuição do seu executor auto-hospedado.
 
-### Remover um rótulo personalizado de um executor de organização
+### Remover um rótulo personalizado de um executor de organização { #removing-a-custom-label-from-an-organization-runner }
 
 1. Navegue até a página principal da organização onde seu grupo de executores auto-hospedados está registrado.
 2. Clique em **(gear) Settings**.
@@ -96,7 +96,7 @@ Você pode remover rótulos personalizados de executores auto-hospedados nos ní
 4. Na seção "Etiquetas", clique em (The Gear icon).
 5. No campo "Localizar ou criar um rótulo", os rótulos atribuídos são marcados com o ícone (The Check icon). Clique em uma etiqueta marcada para cancelar a atribuição do seu executor auto-hospedado.
 
-## Atribuir rótulos programaticamente
+## Atribuir rótulos programaticamente { #programmatically-assign-labels }
 
 É possível atribuir rótulos programaticamente a um executor auto-hospedado após a criação dele ou durante sua configuração inicial.
 
@@ -111,7 +111,7 @@ Você pode remover rótulos personalizados de executores auto-hospedados nos ní
 
         ```shell
   ./config.sh --url <REPOSITORY_URL> --token <REGISTRATION_TOKEN> --labels gpu
-  ```
+        ```
 
   Caso não exista, a etiqueta será criada. Use também essa abordagem para atribuir os rótulos padrão aos executores, como `x64` ou `linux`. Quando os rótulos padrão são atribuídos usando o script de configuração, GitHub Actions aceita-os conforme determinado e não valida que o executor está realmente usando esse sistema operacional ou arquitetura.
 
@@ -119,7 +119,7 @@ Você pode remover rótulos personalizados de executores auto-hospedados nos ní
 
         ```shell
   ./config.sh --url <REPOSITORY_URL> --token <REGISTRATION_TOKEN> --labels gpu,x64,linux
-  ```
+        ```
 
 !!! note
 

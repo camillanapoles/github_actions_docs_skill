@@ -41,7 +41,7 @@ Você pode definir entradas e segredos, que podem ser passados do fluxo de traba
        secrets:
          personal_access_token:
            required: true
-   ```
+            ```
 
    Para obter detalhes da sintaxe para definir entradas e segredos, consulte [`on.workflow_call.inputs`](../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callinputs) e [`on.workflow_call.secrets`](../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callsecrets).
 
@@ -60,7 +60,7 @@ Você pode definir entradas e segredos, que podem ser passados do fluxo de traba
          with:
            repo-token: ${{ secrets.personal_access_token }}
            configuration-path: ${{ inputs.config-path }}
-   ```
+            ```
 
    No exemplo acima, `personal_access_token` é um segredo definido no nível do repositório ou da organização.
 
@@ -86,7 +86,7 @@ Você pode definir entradas e segredos, que podem ser passados do fluxo de traba
          config-path: .github/labeler.yml
        secrets:
          personal_access_token: ${{ secrets.token }}
-   ```
+            ```
 
    Fluxos de trabalho que chamam fluxos de trabalho reutilizáveis na mesma organização ou empresa podem usar a palavra-chave `inherit` para passar implicitamente os segredos.
 
@@ -97,7 +97,7 @@ Você pode definir entradas e segredos, que podem ser passados do fluxo de traba
        with:
          config-path: .github/labeler.yml
        secrets: inherit
-   ```
+            ```
 
 ### Exemplo de fluxo de trabalho reutilizável { #example-reusable-workflow }
 

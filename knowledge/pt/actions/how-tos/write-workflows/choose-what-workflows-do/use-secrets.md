@@ -21,11 +21,11 @@ Para criar segredos ou variáveis em GitHub para um repositório de organizaçã
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 3. Na seção "Security" da barra lateral, selecione **(key-asterisk) Secrets and variables** e clique em **Actions**.
 4. Clique na guia **Segredos**.
 
-![Captura de tela da página "Segredos e variáveis das ações". A guia "Segredos" está delimitada em laranja escuro.](/assets/images/help/repository/actions-secrets-tab.png)
+![Captura de tela da página "Segredos e variáveis das ações". A guia "Segredos" está delimitada em laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-secrets-tab.png)
 
 1. Clique em **Novo segredo de repositório**.
 2. No campo **Nome**, digite um nome para o segredo.
@@ -55,7 +55,7 @@ Para criar segredos ou variáveis para um ambiente em um repositório de conta p
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 3. Na barra lateral esquerda, clique em **Ambientes**.
 4. Clique no ambiente ao qual você deseja adicionar um segredo.
 5. Em **Segredos do ambiente**, clique em **Adicionar segredo**.
@@ -88,13 +88,13 @@ Os proprietários "Gerenciar variáveis de ações da organização" ou "Gerenci
 
 2. No nome da organização, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 
 3. Na seção "Security" da barra lateral, selecione **(key-asterisk) Secrets and variables** e clique em **Actions**.
 
 4. Clique na guia **Segredos**.
 
-   ![Captura de tela da página "Segredos e variáveis das ações". A guia "Segredos" está contornada em laranja escuro.](/assets/images/help/repository/actions-secrets-tab.png)
+   ![Captura de tela da página "Segredos e variáveis das ações". A guia "Segredos" está contornada em laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-secrets-tab.png)
 
 5. Clique em **Novo segredo da organização**.
 
@@ -111,7 +111,7 @@ Os proprietários "Gerenciar variáveis de ações da organização" ou "Gerenci
 
                 ```shell
     gh auth login --scopes "admin:org"
-    ```
+                ```
 
 Para adicionar um segredo a uma organização, use o subcomando `gh secret set` com o sinalizador `--org` ou `-o` seguido do nome da organização.
 
@@ -144,7 +144,7 @@ Você pode verificar quais políticas de acesso são aplicadas a um segredo na s
 1. Em GitHub, acesse a página principal da organização.
 2. No nome da organização, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 3. Na seção "Security" da barra lateral, selecione **(key-asterisk) Secrets and variables** e clique em **Actions**.
 4. A lista de segredos inclui quaisquer permissões e políticas configuradas. Para obter mais detalhes sobre as permissões configuradas para cada segredo, clique em **Atualizar**.
 
@@ -221,7 +221,7 @@ Para usar segredos maiores que 48 KB, você pode usar uma solução alternativa 
 
             ```shell
    gpg --symmetric --cipher-algo AES256 my_secret.json
-   ```
+            ```
 
 2. Você receberá a solicitação para inserir a frase secreta. Lembre-se da frase secreta, pois você precisará criar um novo segredo em GitHub que utilize a frase secreta como valor.
 
@@ -236,7 +236,7 @@ Para usar segredos maiores que 48 KB, você pode usar uma solução alternativa 
             ```shell
    git add my_secret.json.gpg
    git commit -m "Add new secret JSON file"
-   ```
+            ```
 
 5. Crie um shell script no seu repositório para descriptografar o arquivo secreto. Neste exemplo, o script se chama `decrypt_secret.sh`.
 
@@ -249,7 +249,7 @@ Para usar segredos maiores que 48 KB, você pode usar uma solução alternativa 
    # --yes to assume "yes" for questions
    gpg --quiet --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" \
    --output $HOME/secrets/my_secret.json my_secret.json.gpg
-   ```
+            ```
 
 6. Confirme que o shell script é executável antes de colocá-lo no repositório.
 
@@ -258,7 +258,7 @@ Para usar segredos maiores que 48 KB, você pode usar uma solução alternativa 
    git add decrypt_secret.sh
    git commit -m "Add new decryption script"
    git push
-   ```
+            ```
 
 7. Em sua GitHub Actions rotina de trabalho, use um `step` para chamar o script shell e decodificar a chave secreta. Para ter uma cópia do repositório no ambiente em que o fluxo de trabalho é executado, você precisará usar a ação [`actions/checkout`](https://github.com/actions/checkout). Referencie o script do shell usando o comando `run` relativo à raiz do repositório.
 
@@ -282,7 +282,7 @@ Para usar segredos maiores que 48 KB, você pode usar uma solução alternativa 
          # not hide secrets that use this workaround.
          - name: Test printing your secret (Remove this step in production)
            run: cat $HOME/secrets/my_secret.json
-   ```
+            ```
 
 ## Armazenamento de blobs binários em Base64 como segredos { #storing-base64-binary-blobs-as-secrets }
 
@@ -298,20 +298,20 @@ Você pode usar a codificação de Base64 para armazenar pequenos blobs binário
 
             ```shell
    base64 -i cert.der -o cert.base64
-   ```
+            ```
 
    No Linux, você pode executar:
 
             ```shell
    base64 -w 0 cert.der > cert.base64
-   ```
+            ```
 
 2. Crie um segredo que contenha a string de Base64. Por exemplo:
 
             ```shell
    $ gh secret set CERTIFICATE_BASE64 < cert.base64
    ✓ Set secret CERTIFICATE_BASE64 for octocat/octorepo
-   ```
+            ```
 
 3. Para acessar a string Base64 por meio do runner, encaminhe o segredo para `base64 --decode`. Por exemplo:
 
@@ -333,7 +333,7 @@ Você pode usar a codificação de Base64 para armazenar pequenos blobs binário
          - name: Show certificate information
            run: |
              openssl x509 -in cert.der -inform DER -text -noout
-   ```
+            ```
 
 ## Próximas etapas { #next-steps }
 

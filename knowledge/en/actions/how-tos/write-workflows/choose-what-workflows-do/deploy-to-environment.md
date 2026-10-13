@@ -25,7 +25,7 @@ You need to create an environment before you can use it in a workflow. See [Mana
     jobs:
       JOB-ID:
         environment: ENVIRONMENT-NAME
-    ```
+                ```
 
     The chosen job will now be subject to any rules configured for the specified environment.
 1. Optionally, specify a deployment URL for the environment using the following syntax:
@@ -36,7 +36,7 @@ You need to create an environment before you can use it in a workflow. See [Mana
         environment:
             name: ENVIRONMENT-NAME
             url: URL
-    ```
+                ```
 
     The specified URL will appear:
     * On the deployments page for the repository
@@ -51,6 +51,6 @@ You need to create an environment before you can use it in a workflow. See [Mana
         environment:
             name: ENVIRONMENT-NAME
             deployment: false
-    ```
+                ```
 
     This is useful for CI or testing jobs that need environment secrets but aren't actually deploying anything. For more information, see [Deploying with GitHub Actions](../../deploy/configure-and-manage-deployments/control-deployments.md#using-environments-without-deployments#using-environments-without-deployments).

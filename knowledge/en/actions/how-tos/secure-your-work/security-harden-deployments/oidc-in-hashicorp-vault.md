@@ -42,13 +42,13 @@ To configure your Vault server to accept JSON Web Tokens (JWT) for authenticatio
 
             ```shell copy
    vault auth enable jwt
-   ```
+            ```
 
             ```shell copy
    vault write auth/jwt/config \
      bound_issuer="https://token.actions.githubusercontent.com" \
      oidc_discovery_url="https://token.actions.githubusercontent.com"
-   ```
+            ```
 
 !!! note
 
@@ -64,7 +64,7 @@ To configure your Vault server to accept JSON Web Tokens (JWT) for authenticatio
      capabilities = [ "read" ]
    }
    EOF
-   ```
+            ```
 
 1. Configure roles to group different policies together. If the authentication is successful, these policies are attached to the resulting Vault access token.
 
@@ -80,7 +80,7 @@ To configure your Vault server to accept JSON Web Tokens (JWT) for authenticatio
      "ttl": "10m"
    }
    EOF
-   ```
+            ```
 
 * `ttl` defines the validity of the resulting access token.
 * Ensure that the `bound_claims` parameter is defined for your security requirements, and has at least one condition. Optionally, you can also set the `bound_subject` as well as the `bound_audiences` parameter.
@@ -130,6 +130,7 @@ This example demonstrates how to create a job that requests a secret from HashiC
 * `SECRET-PATH`: Replace this with the path to the secret you're retrieving from HashiCorp Vault. For example: `secret/data/production/ci npmToken`.
 
 ```yaml copy
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -159,6 +160,7 @@ jobs:
     * If your Vault server is not accessible from the public network, consider using a self-hosted runner with other available Vault [auth methods](https://www.vaultproject.io/docs/auth). For more information, see [Self-hosted runners](../../../concepts/runners/self-hosted-runners.md).
     * `VAULT-NAMESPACE` must be set for a Vault Enterprise (including HCP Vault) deployment. For more information, see [Vault namespace](https://www.vaultproject.io/docs/enterprise/namespaces).
 
+```
 ### Revoking the access token
 
 By default, the Vault server will automatically revoke access tokens when their TTL is expired, so you don't have to manually revoke the access tokens. However, if you do want to revoke access tokens immediately after your job has completed or failed, you can manually revoke the issued token using the [Vault API](https://www.vaultproject.io/api/auth/token#revoke-a-token-self).
@@ -167,10 +169,11 @@ By default, the Vault server will automatically revoke access tokens when their 
 1. Add a step to call the [Revoke a Token (Self)](https://www.vaultproject.io/api/auth/token#revoke-a-token-self) Vault API to revoke the access token.
 
 ```yaml copy
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+```
+# This workflow uses actions that are not certified by GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-1 }
+# They are provided by a third-party and are governed by { #they-are-provided-by-a-third-party-and-are-governed-by-1 }
+# separate terms of service, privacy policy, and support { #separate-terms-of-service-privacy-policy-and-support-1 }
+# documentation. { #documentation-1 }
 jobs:
   retrieve-secret:
     runs-on: ubuntu-latest
@@ -199,6 +202,7 @@ jobs:
             VAULT-URL/v1/auth/token/revoke-self
 ```
 
+```
 ## Further reading
 
 * [Using OpenID Connect with reusable workflows](oidc-with-reusable-workflows.md)

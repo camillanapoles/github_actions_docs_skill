@@ -53,7 +53,7 @@ Após a instalação de uma regra de proteção de implantação personalizada e
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 3. Na barra lateral esquerda, clique em **Ambientes**.
 4. Selecione o ambiente que deseja configurar.
 5. Em "Regras de proteção de implantação", marcar a caixa ao lado de cada regra de proteção de implantação personalizada que você deseja habilitar para o ambiente.

@@ -29,7 +29,7 @@ _You can define outputs to pass information from one job to another._
            run: echo "test=hello" >> "$GITHUB_OUTPUT"
          - id: step2
            run: echo "test=world" >> "$GITHUB_OUTPUT"
-   ```
+            ```
 
 1. In a separate job where you want to access those outputs, use the `jobs.<job_id>.needs` syntax to make it dependent on the original job. For example, the following job checks that `job1` is complete before running:
 
@@ -39,7 +39,7 @@ _You can define outputs to pass information from one job to another._
       job2:
         runs-on: ubuntu-latest
         needs: job1
-    ```
+                ```
 
 1. To access the outputs in the dependent job, use the `needs.<job_id>.outputs.<output_name>` syntax. For example, the following job accesses the `output1` and `output2` outputs defined in `job1`:
 
@@ -54,7 +54,7 @@ _You can define outputs to pass information from one job to another._
               OUTPUT1: ${{needs.job1.outputs.output1}}
               OUTPUT2: ${{needs.job1.outputs.output2}}
             run: echo "$OUTPUT1 $OUTPUT2"
-    ```
+                ```
 
 ## Next steps
 

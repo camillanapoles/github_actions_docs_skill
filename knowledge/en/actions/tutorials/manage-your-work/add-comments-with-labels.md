@@ -50,7 +50,7 @@ In the tutorial, you will first make a workflow file that uses the `gh issue com
                 This issue is available for anyone to work on.
                 **Make sure to reference this issue in your pull request.**
                 :sparkles: Thank you for your contribution! :sparkles:
-    ```
+                ```
 
 1. Customize the parameters in your workflow file:
    * Replace `help wanted` in `if: github.event.label.name == 'help wanted'` with the label that you want to act on. If you want to act on more than one label, separate the conditions with `||`. For example, `if: github.event.label.name == 'bug' || github.event.label.name == 'fix me'` will comment whenever the `bug` or `fix me` labels are added to an issue.

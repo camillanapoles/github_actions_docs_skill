@@ -36,16 +36,16 @@ Para trabalhos executados em executores hospedados no GitHub, "Configurar trabal
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
-   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
 5. Em **Trabalhos** ou no grafo de visualização, clique no trabalho que deseja ver.
 6. Todas as etapas com falha são automaticamente expandidas para exibir os resultados.
 7. Para obter um link para uma linha específica nos logs, clique no número da linha da etapa. Em seguida, você pode copiar o link da barra de endereço do seu navegador da web.
 
-   ![Captura de tela dos logs de um trabalho. Os logs de uma etapa com falha são expandidos, e um número de linha está realçado com um contorno laranja.](/assets/images/help/repository/copy-link-button-updated-2.png)
+   ![Captura de tela dos logs de um trabalho. Os logs de uma etapa com falha são expandidos, e um número de linha está realçado com um contorno laranja.](https://docs.github.com/assets/images/help/repository/copy-link-button-updated-2.png)
 
 ## Pesquisar registros { #searching-logs }
 
@@ -54,10 +54,10 @@ Para trabalhos executados em executores hospedados no GitHub, "Configurar trabal
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
-   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
 5. Em **Trabalhos** ou no grafo de visualização, clique no trabalho que deseja ver.
 6. No canto superior direito da saída do log, na caixa de pesquisa **Pesquisar logs**, digite uma consulta de pesquisa.
@@ -69,15 +69,15 @@ Você pode fazer o download dos arquivos de registro da execução do seu fluxo 
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
-   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
 5. Em **Trabalhos** ou no grafo de visualização, clique no trabalho que deseja ver.
 6. No canto superior direito do log, selecione o menu suspenso (Show options) e, em seguida, clique em **Baixar arquivo de log**.
 
-   ![Captura de tela do log de uma tarefa. No cabeçalho, um ícone de engrenagem está destacado em laranja escuro.](/assets/images/help/actions/download-logs-drop-down.png)
+   ![Captura de tela do log de uma tarefa. No cabeçalho, um ícone de engrenagem está destacado em laranja escuro.](https://docs.github.com/assets/images/help/actions/download-logs-drop-down.png)
 
 !!! note
     Quando você baixa o arquivo morto de log de um fluxo de trabalho que foi parcialmente executado novamente, o arquivo morto só inclui os trabalhos que foram executados de novo. Para obter um conjunto completo de logs de trabalhos que foram executados a partir de um fluxo de trabalho, você deve fazer o download dos arquivos de logs para as tentativas anteriores que executaram os outros trabalhos.
@@ -92,17 +92,17 @@ Você pode excluir os arquivos de log das execuções do seu fluxo de trabalho p
 
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja ver.
 
-   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](/assets/images/help/actions/superlinter-workflow-sidebar.png)
+   ![Captura de tela da barra lateral esquerda da guia "Ações". Um fluxo de trabalho, "CodeQL", é descrito em laranja escuro.](https://docs.github.com/assets/images/help/actions/superlinter-workflow-sidebar.png)
 
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução para ver o resumo da execução do fluxo de trabalho.
 
 5. No canto superior direito, selecione o menu suspenso (Show workflow options) e, em seguida, clique em **Excluir todos os logs**.
 
-   ![Captura de tela da página de um fluxo de trabalho executado. No canto superior direito, há um botão, rotulado com um ícone de kebab, com um contorno laranja escuro.](/assets/images/help/actions/workflow-run-kebab-horizontal-icon.png)
+   ![Captura de tela da página de um fluxo de trabalho executado. No canto superior direito, há um botão, rotulado com um ícone de kebab, com um contorno laranja escuro.](https://docs.github.com/assets/images/help/actions/workflow-run-kebab-horizontal-icon.png)
 
 6. Leia o aviso de confirmação.
 
@@ -120,7 +120,7 @@ Para executar o script de exemplo abaixo:
 
             ```shell copy
    ./delete-logs.sh REPOSITORY_NAME WORKFLOW_NAME
-   ```
+            ```
 
    Por exemplo, para excluir todos os logs no repositório `monalisa/octocat` do fluxo de trabalho `.github/workflows/ci.yaml`, você executaria `./delete-logs.sh monalisa/octocat ci.yaml`.
 
@@ -129,6 +129,7 @@ Para executar o script de exemplo abaixo:
 ```bash copy
 #!/usr/bin/env bash
 
+```
 # Delete all logs for a given workflow
 # Usage: delete-logs.sh <repository> <workflow-name>
 
@@ -176,6 +177,7 @@ for RUN in $RUNS; do
 done
 ```
 
+```
 ## Exibindo logs com GitHub CLI { #viewing-logs-with-github-cli }
 
 !!! note

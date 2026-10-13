@@ -33,11 +33,11 @@ Também é possível desabilitar e habilitar um fluxo de trabalho usando a API R
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja desabilitar.
 4. Clique em (Show workflow options) para exibir um menu suspenso e clique em **Desabilitar fluxo de trabalho**.
 
-   ![Captura de tela de um fluxo de trabalho. O botão "Mostrar opções de fluxo de trabalho", exibido com um ícone de kebab, e o item de menu "Desativar fluxo de trabalho" estão contornados em laranja.](/assets/images/help/repository/actions-disable-workflow-2022.png)
+   ![Captura de tela de um fluxo de trabalho. O botão "Mostrar opções de fluxo de trabalho", exibido com um ícone de kebab, e o item de menu "Desativar fluxo de trabalho" estão contornados em laranja.](https://docs.github.com/assets/images/help/repository/actions-disable-workflow-2022.png)
 
 !!! note
     Para saber mais sobre GitHub CLI, confira [Sobre GitHub CLI](https://docs.github.com/pt/github-cli/github-cli/about-github-cli).
@@ -56,11 +56,11 @@ Você pode habilitar novamente um fluxo de trabalho que foi desabilitado anterio
 
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja habilitar.
 
-   ![Captura de tela da página "Ações". Na barra lateral esquerda, o nome do fluxo de trabalho está realçado com um contorno em laranja escuro.](/assets/images/help/repository/actions-select-disabled-workflow-2022.png)
+   ![Captura de tela da página "Ações". Na barra lateral esquerda, o nome do fluxo de trabalho está realçado com um contorno em laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-select-disabled-workflow-2022.png)
 
 4. Clique em **Habilitar fluxo de trabalho**.
 

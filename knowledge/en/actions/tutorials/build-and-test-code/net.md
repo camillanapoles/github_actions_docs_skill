@@ -36,7 +36,7 @@ GitHub provides a workflow template for .NET that should work for most .NET proj
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. If you already have a workflow in your repository, click **New workflow**.
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "dotnet".
 1. On the ".NET" workflow, click **Configure**.
@@ -68,7 +68,7 @@ GitHub provides a workflow template for .NET that should work for most .NET proj
          run: dotnet build --no-restore
        - name: Test
          run: dotnet test --no-build --verbosity normal
-   ```
+            ```
 
 1. Edit the workflow as required. For example, change the .NET version.
 1. Click **Commit changes**.

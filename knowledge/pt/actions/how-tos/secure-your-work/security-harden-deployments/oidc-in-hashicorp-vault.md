@@ -39,13 +39,13 @@ Para configurar o servidor do Cofre para aceitar JWT (Tokens Web JSON) para aute
 
             ```shell copy
    vault auth enable jwt
-   ```
+            ```
 
             ```shell copy
    vault write auth/jwt/config \
      bound_issuer="https://token.actions.githubusercontent.com" \
      oidc_discovery_url="https://token.actions.githubusercontent.com"
-   ```
+            ```
 
 2. Configure uma política que só concede acesso aos caminhos específicos que seus fluxos de trabalho usarão para recuperar segredos. Para obter políticas mais avançadas, confira a [documentação de Políticas](https://www.vaultproject.io/docs/concepts/policies) do HashiCorp Vault.
 
@@ -57,7 +57,7 @@ Para configurar o servidor do Cofre para aceitar JWT (Tokens Web JSON) para aute
      capabilities = [ "read" ]
    }
    EOF
-   ```
+            ```
 
 3. Configure funções para agrupar políticas diferentes. Se a autenticação for bem-sucedida, essas políticas serão anexadas ao token de acesso resultante do Cofre.
 
@@ -73,7 +73,7 @@ Para configurar o servidor do Cofre para aceitar JWT (Tokens Web JSON) para aute
      "ttl": "10m"
    }
    EOF
-   ```
+            ```
 
 * `ttl` define a validade do token de acesso resultante.
 * Verifique se o parâmetro `bound_claims` está definido para seus requisitos de segurança e tenha pelo menos uma condição. Opcionalmente, você também pode definir o parâmetro `bound_subject`, bem como o parâmetro `bound_audiences`.
@@ -124,10 +124,11 @@ Este exemplo demonstra como criar um trabalho que solicita um segredo para o Has
 * `SECRET-PATH`: substitua isso pelo caminho para o segredo que está sendo recuperado do HashiCorp Vault. Por exemplo: `secret/data/production/ci npmToken`.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 jobs:
   retrieve-secret:
     runs-on: ubuntu-latest
@@ -155,6 +156,7 @@ jobs:
 
 `VAULT-NAMESPACE` deve ser definido para uma implantação do Vault Enterprise (incluindo o HCP Vault). Para mais informações, confira [Namespace do Cofre](https://www.vaultproject.io/docs/enterprise/namespaces).
 
+```
 ### Revogando o token de acesso { #revoking-the-access-token }
 
 Por padrão, o servidor do Cofre revogará automaticamente os tokens de acesso quando a TTL expirar, para que você não precise revogar manualmente os tokens de acesso. No entanto, se você quiser revogar tokens de acesso imediatamente após a conclusão ou falha do trabalho, será possível fazer isso manualmente usando a [API do Cofre](https://www.vaultproject.io/api/auth/token#revoke-a-token-self).
@@ -163,10 +165,11 @@ Por padrão, o servidor do Cofre revogará automaticamente os tokens de acesso q
 2. Adicione uma etapa para chamar a API do Cofre de [Revogação de um Token (Auto)](https://www.vaultproject.io/api/auth/token#revoke-a-token-self) para revogar o token de acesso.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-1 }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by-1 }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support-1 }
+# online. { #documentation-1 }
 jobs:
   retrieve-secret:
     runs-on: ubuntu-latest
@@ -195,6 +198,7 @@ jobs:
             VAULT-URL/v1/auth/token/revoke-self
 ```
 
+```
 ## Leitura adicional { #further-reading }
 
 * [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](oidc-with-reusable-workflows.md)

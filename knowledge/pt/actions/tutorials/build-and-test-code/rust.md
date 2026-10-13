@@ -36,7 +36,7 @@ GitHub fornece um modelo de fluxo de trabalho do Rust que deve funcionar para a 
 
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 
 3. Se você já tiver um fluxo de trabalho no repositório, clique em **Novo fluxo de trabalho**.
 
@@ -46,7 +46,7 @@ GitHub fornece um modelo de fluxo de trabalho do Rust que deve funcionar para a 
 
 6. No fluxo de trabalho "Rust – by GitHub Actions", clique em **Configurar**.
 
-   ![Captura de tela da página "Escolher um fluxo de trabalho". O botão "Configurar" no fluxo de trabalho "Rust" é realçado com um contorno laranja.](/assets/images/help/actions/starter-workflow-rust.png)
+   ![Captura de tela da página "Escolher um fluxo de trabalho". O botão "Configurar" no fluxo de trabalho "Rust" é realçado com um contorno laranja.](https://docs.github.com/assets/images/help/actions/starter-workflow-rust.png)
 
 7. Edite o fluxo de trabalho conforme necessário. Por exemplo, altere a versão do Rust.
 

@@ -53,7 +53,7 @@ GitHub Actions Importer has the following requirements:
 
             ```bash copy
    gh extension install github/gh-actions-importer
-   ```
+            ```
 
 1. Verify that the extension is installed:
 
@@ -70,7 +70,7 @@ GitHub Actions Importer has the following requirements:
      forecast   Forecast GitHub Actions usage from historical pipeline utilization.
      dry-run    Convert a pipeline to a GitHub Actions workflow and output its yaml file.
      migrate    Convert a pipeline to a GitHub Actions workflow and open a pull request with the changes.
-   ```
+            ```
 
 ### Updating the GitHub Actions Importer CLI
 

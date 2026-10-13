@@ -51,7 +51,7 @@ No tutorial, primeiro, você criará um arquivo de fluxo de trabalho que usa a [
              days-before-pr-stale: -1
              days-before-pr-close: -1
              repo-token: ${{ secrets.GITHUB_TOKEN }}
-   ```
+            ```
 
 4. Personalize os parâmetros no seu arquivo do fluxo de trabalho:
    * Altere o valor de `on.schedule` para determinar quando deseja executar esse fluxo de trabalho. No exemplo acima, o fluxo de trabalho será executado todos os dias à 1:30 UTC. Para saber mais sobre fluxos de trabalho agendados, confira [Eventos que disparam fluxos de trabalho](../../reference/workflows-and-actions/events-that-trigger-workflows.md#schedule).

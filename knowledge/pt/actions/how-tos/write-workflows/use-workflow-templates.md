@@ -20,7 +20,7 @@ _GitHub fornece modelos de fluxo de trabalho para uma variedade de linguagens e 
 
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 
 3. Se você já tiver um fluxo de trabalho no repositório, clique em **Novo fluxo de trabalho**.
 

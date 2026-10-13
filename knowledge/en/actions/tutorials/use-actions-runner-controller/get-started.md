@@ -38,7 +38,7 @@ In order to use ARC, ensure you have the following.
         --namespace "${NAMESPACE}" \
         --create-namespace \
         oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
-    ```
+                ```
 
     For additional Helm configuration options, see [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set-controller/values.yaml) in the ARC documentation.
 
@@ -75,7 +75,7 @@ In order to use ARC, ensure you have the following.
             --set githubConfigUrl="${GITHUB_CONFIG_URL}" \
             --set githubConfigSecret.github_token="${GITHUB_PAT}" \
             oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
-        ```
+                                ```
 
         For additional Helm configuration options, see [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) in the ARC documentation.
 
@@ -83,7 +83,7 @@ In order to use ARC, ensure you have the following.
 
                 ```bash copy
     helm list -A
-    ```
+                ```
 
     You should see an output similar to the following.
 
@@ -91,13 +91,13 @@ In order to use ARC, ensure you have the following.
     NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                       APP VERSION
     arc             arc-systems     1               2023-04-12 11:45:59.152090536 +0000 UTC deployed        gha-runner-scale-set-controller-0.4.0       0.4.0
     arc-runner-set  arc-runners     1               2023-04-12 11:46:13.451041354 +0000 UTC deployed        gha-runner-scale-set-0.4.0                  0.4.0
-    ```
+                ```
 
 1. To check the manager pod, run the following command in your terminal.
 
                 ```bash copy
     kubectl get pods -n arc-systems
-    ```
+                ```
 
     If everything was installed successfully, the status of the pods shows as **Running**.
 
@@ -105,7 +105,7 @@ In order to use ARC, ensure you have the following.
     NAME                                                   READY   STATUS    RESTARTS   AGE
     arc-gha-runner-scale-set-controller-594cdc976f-m7cjs   1/1     Running   0          64s
     arc-runner-set-754b578d-listener                       1/1     Running   0          12s
-    ```
+                ```
 
 If your installation was not successful, see [Troubleshooting Actions Runner Controller errors](troubleshoot.md) for troubleshooting information.
 
@@ -128,7 +128,7 @@ Now you will create and run a simple test workflow that uses the runner scale se
         runs-on: arc-runner-set
         steps:
         - run: echo "🎉 This job uses runner scale set runners!"
-    ```
+                ```
 
 1. Once you've added the workflow to your repository, manually trigger the workflow. For more information, see [Manually running a workflow](../../how-tos/manage-workflow-runs/manually-run-a-workflow.md).
 
@@ -136,14 +136,14 @@ Now you will create and run a simple test workflow that uses the runner scale se
 
                 ```bash copy
     kubectl get pods -n arc-runners -w
-    ```
+                ```
 
     A successful output will look similar to the following.
 
                 ```bash
     NAMESPACE     NAME                                                  READY   STATUS    RESTARTS      AGE
     arc-runners   arc-runner-set-rmrgw-runner-p9p5n                     1/1     Running   0             21s
-    ```
+                ```
 
 ## Next steps
 

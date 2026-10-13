@@ -132,19 +132,19 @@ There are several ways you can set up custom transformers to map your environmen
 
         ```ruby copy
   env "OCTO", "CAT"
-  ```
+        ```
 
   You can also remove all instances of a specific environment variable so they are not transformed to an GitHub Actions workflow. The following example removes all environment variables with the name `MONA_LISA`.
 
         ```ruby copy
   env "MONA_LISA", nil
-  ```
+        ```
 
 * You can also map your existing environment variables to secrets. For example, the following `env` method maps an environment variable named `MONALISA` to a secret named `OCTOCAT`.
 
         ```ruby copy
   env "MONALISA", secret("OCTOCAT")
-  ```
+        ```
 
   This will set up a reference to a secret named `OCTOCAT` in the transformed workflow. For the secret to work, you will need to create the secret in your GitHub repository. For more information, see [Using secrets in GitHub Actions](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md#creating-secrets-for-a-repository#creating-secrets-for-a-repository).
 
@@ -152,13 +152,13 @@ There are several ways you can set up custom transformers to map your environmen
 
         ```ruby copy
   env /.*/, nil
-  ```
+        ```
 
   The following example uses a regular expression match group to transform environment variable values to dynamically generated secrets.
 
         ```ruby copy
   env /^(.+)_SSH_KEY/, secret("%s_SSH_KEY)
-  ```
+        ```
 
 !!! note
 

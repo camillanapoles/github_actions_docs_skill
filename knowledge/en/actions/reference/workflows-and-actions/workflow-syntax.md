@@ -1318,7 +1318,7 @@ Use `jobs.<job_id>.runs-on` to define the type of machine to run the job on.
 
         ```yaml
   runs-on: [self-hosted, linux, x64, gpu]
-  ```
+        ```
 
   For more information, see [Choosing self-hosted runners](#choosing-self-hosted-runners).
 * You can mix strings and variables in an array. For example:
@@ -1339,7 +1339,7 @@ Use `jobs.<job_id>.runs-on` to define the type of machine to run the job on.
       runs-on: [self-hosted, "${{ inputs.chosen-os }}"]
       steps:
       - run: echo Hello world!
-  ```
+        ```
 
 * If you would like to run your workflow on multiple machines, use [`jobs.<job_id>.strategy`](workflow-syntax.md#jobsjob_idstrategy).
 
@@ -2313,7 +2313,7 @@ Each `run` keyword represents a new process and shell in the runner environment.
         ```yaml
   - name: Install Dependencies
     run: npm install
-  ```
+        ```
 
 * A multi-line command:
 
@@ -2322,7 +2322,7 @@ Each `run` keyword represents a new process and shell in the runner environment.
     run: |
       npm ci
       npm run build
-  ```
+        ```
 
 ## `jobs.<job_id>.steps[*].working-directory`
 
@@ -3247,6 +3247,7 @@ You can use special characters in path, branch, tag, and workflow name filters.
 The characters `*`, `[`, and `!` are special characters in YAML. If you start a pattern with `*`, `[`, or `!`, you must enclose the pattern in quotes. Also, if you use a [flow sequence](https://yaml.org/spec/1.2.2/#flow-sequences) with a pattern containing `[` and/or `]`, the pattern must be enclosed in quotes.
 
 ```yaml
+```
 # Valid
 paths:
   - '**/README.md'
@@ -3256,7 +3257,7 @@ paths:
 paths:
   - **/README.md
 
-# Valid
+# Valid { #valid-1 }
 branches: [ main, 'release/v[0-9].[0-9]' ]
 
 # Invalid - creates a parse error
@@ -3265,6 +3266,7 @@ branches: [ main, release/v[0-9].[0-9] ]
 
 For more information about branch, tag, and path filter syntax, see [`on.<push>.<branches|tags>`](#onpushbranchestagsbranches-ignoretags-ignore), [`on.<pull_request>.<branches|tags>`](#onpull_requestpull_request_targetbranchesbranches-ignore), and [`on.<push|pull_request>.paths`](#onpushpull_requestpull_request_targetpathspaths-ignore).
 
+```
 ### Patterns to match branches and tags
 
 | Pattern | Description | Example matches |

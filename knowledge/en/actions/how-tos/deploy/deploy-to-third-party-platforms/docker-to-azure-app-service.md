@@ -25,7 +25,7 @@ Before creating your GitHub Actions workflow, you will first need to complete th
       --resource-group MY_RESOURCE_GROUP \
       --name MY_APP_SERVICE_PLAN \
       --is-linux
-   ```
+            ```
 
    In the command above, replace `MY_RESOURCE_GROUP` with your pre-existing Azure Resource Group, and `MY_APP_SERVICE_PLAN` with a new name for the App Service plan.
 
@@ -44,7 +44,7 @@ Before creating your GitHub Actions workflow, you will first need to complete th
        --plan MY_APP_SERVICE_PLAN \
        --resource-group MY_RESOURCE_GROUP \
        --deployment-container-image-name nginx:latest
-   ```
+            ```
 
    In the command above, replace the parameters with your own values, where `MY_WEBAPP_NAME` is a new name for the web app.
 
@@ -65,7 +65,7 @@ Before creating your GitHub Actions workflow, you will first need to complete th
         --name MY_WEBAPP_NAME \
         --resource-group MY_RESOURCE_GROUP \
         --settings DOCKER_REGISTRY_SERVER_URL=https://ghcr.io DOCKER_REGISTRY_SERVER_USERNAME=MY_REPOSITORY_OWNER DOCKER_REGISTRY_SERVER_PASSWORD=MY_PERSONAL_ACCESS_TOKEN
-   ```
+            ```
 
 1. Optionally, configure a deployment environment. Environments are used to describe a general deployment target like `production`, `staging`, or `development`. When a GitHub Actions workflow deploys to an environment, the environment is displayed on the main page of the repository. You can use environments to require approval for a job to proceed, restrict which branches can trigger a workflow, gate deployments with custom deployment protection rules, or limit access to secrets. For more information about creating environments, see [Managing environments for deployment](../configure-and-manage-deployments/manage-environments.md).
 
@@ -80,6 +80,7 @@ Ensure that you set `AZURE_WEBAPP_NAME` in the workflow `env` key to the name of
 If you configured a deployment environment, change the value of `environment` to be the name of your environment. If you did not configure an environment or if your workflow is in a private repository and you do not use GitHub Enterprise Cloud, delete the `environment` key.
 
 ```yaml copy
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -152,6 +153,7 @@ jobs:
           images: 'ghcr.io/${{ env.REPO }}:${{ github.sha }}'
 ```
 
+```
 ## Further reading
 
 * For the original workflow template, see [`azure-container-webapp.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/azure-container-webapp.yml) in the GitHub Actions `starter-workflows` repository.

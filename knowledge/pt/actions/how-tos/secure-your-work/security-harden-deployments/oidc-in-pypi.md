@@ -57,10 +57,11 @@ A ação [`pypa/gh-action-pypi-publish`](https://github.com/marketplace/actions/
 O exemplo a seguir usa a ação `pypa/gh-action-pypi-publish` para trocar um token OIDC por um token da API do PyPI, que é então usado para carregar as distribuições de lançamento de um pacote no PyPI.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 jobs:
   release-build:
     runs-on: ubuntu-latest
@@ -100,4 +101,6 @@ jobs:
 
       - name: Publish release distributions to PyPI
         uses: pypa/gh-action-pypi-publish@3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f
+```
+
 ```

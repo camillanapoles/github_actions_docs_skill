@@ -10,17 +10,17 @@ captured: '2026-10-11'
 section: Tutorials / Build and test code
 ---
 
-# Compilar e testar Python
+# Compilar e testar Python { #building-and-testing-python }
 
 _Saiba como criar um fluxo de trabalho de CI (integração contínua) para criar e testar seu projeto de Python._
 
-## Introdução
+## Introdução { #introduction }
 
 Este guia mostra como criar, testar e publicar um pacote Python.
 
 GitHub-hosted runners têm um cache de ferramentas com software pré-instalado, que inclui Python e PyPy. Você não precisa instalar nada! Para obter uma lista completa do software atualizado e das versões pré-instaladas do Python e do PyPy, consulte [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images).
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Você deve estar familiarizado com YAML e a sintaxe para GitHub Actions. Para saber mais, confira [Escrevendo fluxos de trabalho](../../how-tos/write-workflows.md).
 
@@ -29,7 +29,7 @@ Recomendamos que você tenha uma compreensão básica de Python e pip. Para sabe
 * [Começando com Python](https://www.python.org/about/gettingstarted/)
 * [Gerenciador de pacotes Pip](https://pypi.org/project/pip/)
 
-## Usando um modelo de fluxo de trabalho Python
+## Usando um modelo de fluxo de trabalho Python { #using-a-python-workflow-template }
 
 Para uma introdução rápida, adicione um modelo de fluxo de trabalho ao diretório `.github/workflows` do repositório.
 
@@ -39,7 +39,7 @@ GitHub fornece um modelo de fluxo de trabalho para Python que deve funcionar se 
 
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 
 3. Se você já tiver um fluxo de trabalho no repositório, clique em **Novo fluxo de trabalho**.
 
@@ -53,7 +53,7 @@ GitHub fornece um modelo de fluxo de trabalho para Python que deve funcionar se 
 
    O `python-app.yml` arquivo de fluxo de trabalho é adicionado ao `.github/workflows` diretório do repositório.
 
-## Especificando uma versão Python
+## Especificando uma versão Python { #specifying-a-python-version }
 
 Para usar uma versão pré-instalada do Python ou PyPy em um executor hospedado em GitHub, use a ação `setup-python`. Essa ação localiza uma versão específica de Python ou PyPy do cache de ferramentas em cada executor e adiciona os binários necessários a `PATH`, que persiste para o restante do trabalho. Se uma versão específica do Python não estiver pré-instalada no cache de ferramentas, a ação `setup-python` baixará e configurará a versão apropriada do repositório [`python-versions`](https://github.com/actions/python-versions).
 
@@ -71,7 +71,7 @@ Se você estiver usando um executor auto-hospedado, poderá configurar o executo
 
 GitHub dá suporte à sintaxe semântica de controle de versão. Para obter mais informações, confira [Como usar o controle de versão semântico](https://docs.npmjs.com/about-semantic-versioning#using-semantic-versioning-to-specify-update-types-your-package-can-accept) e [Especificação de controle de versão semântico](https://semver.org/).
 
-### Usando várias versões de Python
+### Usando várias versões de Python { #using-multiple-python-versions }
 
 O exemplo a seguir usa uma matriz para o trabalho para configurar várias versões Python. Para saber mais, confira [Executando variações de tarefas em um workflow](../../how-tos/write-workflows/choose-what-workflows-do/run-job-variations.md).
 
@@ -99,7 +99,7 @@ jobs:
         run: python -c "import sys; print(sys.version)"
 ```
 
-### Usando uma versão de Python específica
+### Usando uma versão de Python específica { #using-a-specific-python-version }
 
 Você pode configurar uma versão específica do Python. Por exemplo, 3.12. Como alternativa, você pode usar a sintaxe da versão semântica para obter a última versão secundária. Este exemplo usa a versão secundária mais recente do Python 3.
 
@@ -128,7 +128,7 @@ jobs:
         run: python -c "import sys; print(sys.version)"
 ```
 
-### Excluir uma versão
+### Excluir uma versão { #excluding-a-version }
 
 Se você especificar uma versão de Python que não está disponível, `setup-python` falhará com um erro como: `##[error]Version 3.7 with arch x64 not found`. A mensagem de erro inclui as versões disponíveis.
 
@@ -154,7 +154,7 @@ jobs:
             python-version: "3.11"
 ```
 
-### Usando a versão de Python padrão
+### Usando a versão de Python padrão { #using-the-default-python-version }
 
 É recomendável usar `setup-python` para configurar a versão de Python usada em seus fluxos de trabalho, pois ajuda a tornar suas dependências explícitas. Se você não usar `setup-python`, a versão padrão de Python definida em `PATH` será usada em qualquer shell quando você chamar `python`. A versão padrão do Python varia entre os executores hospedados em GitHub, o que pode causar alterações inesperadas ou fazer com que seja usada uma versão mais antiga do que a esperada.
 
@@ -164,7 +164,7 @@ jobs:
 | Windows | Excluindo as versões de Python que estão no cache das ferramentas, o Windows não vem com uma versão equivalente do Python do sistema. Para manter um comportamento consistente com outros executores e permitir que o Python seja usado imediatamente, sem a ação `setup-python`, GitHub adiciona algumas versões do cache de ferramentas a `PATH`. |
 | macOS | Os executores do macOS têm mais de uma versão do sistema Python instalada, além das versões que fazem parte do cache de ferramentas. As versões Python do sistema estão localizadas no diretório `/usr/local/Cellar/python/*`. |
 
-## Instalar dependências
+## Instalar dependências { #installing-dependencies }
 
 Os executores hospedados em GitHub têm o gerenciador de pacotes pip instalado. Você pode usar o pip para instalar dependências do registro de pacotes do PyPI antes de criar e testar o seu código. Por exemplo, o YAML abaixo instala ou atualiza o instalador de pacote `pip` e os pacotes `setuptools` e `wheel`.
 
@@ -181,7 +181,7 @@ steps:
   run: python -m pip install --upgrade pip setuptools wheel
 ```
 
-### Arquivo de requisitos
+### Arquivo de requisitos { #requirements-file }
 
 Depois que você atualizar `pip`, uma próxima etapa típica será instalar dependências de `requirements.txt`. Para obter mais informações, confira [pip](https://pip.pypa.io/en/stable/cli/pip_install/#example-requirements-file).
 
@@ -198,7 +198,7 @@ steps:
     pip install -r requirements.txt
 ```
 
-### Memorizar dependências
+### Memorizar dependências { #caching-dependencies }
 
 Você pode armazenar em cache e restaurar as dependências com a ação [`setup-python`](https://github.com/actions/setup-python).
 
@@ -219,11 +219,11 @@ Por padrão, a ação `setup-python` pesquisa o arquivo de dependência (`requir
 
 Se houver uma necessidade específica ou precisar de controles mais precisos de cache, use a [ação `cache`](https://github.com/marketplace/actions/cache). O Pip armazena dependências em diferentes locais, dependendo do sistema operacional do executor. O caminho que você precisa efetuar o armazenamento em cache pode ser diferente do exemplo do Ubuntu acima, dependendo do sistema operacional que você usa. Para obter mais informações, consulte [exemplos de cache do Python](https://github.com/actions/cache/blob/main/examples.md#python---pip) no repositório de ações `cache`.
 
-## Testar seu código
+## Testar seu código { #testing-your-code }
 
 Você pode usar os mesmos comandos usados localmente para criar e testar seu código.
 
-### Testando com pytest e pytest-cov
+### Testando com pytest e pytest-cov { #testing-with-pytest-and-pytest-cov }
 
 Este exemplo instala ou atualiza `pytest` e `pytest-cov`. Em seguida, os testes são executados e retornados no formato JUnit enquanto os resultados da cobertura do código são emitidos em Cobertura. Para obter mais informações, confira [JUnit](https://junit.org/junit5/) e [Cobertura](https://cobertura.github.io/cobertura/).
 
@@ -247,7 +247,7 @@ steps:
 !!! tip
     Este exemplo já produz um relatório de cobertura XML de Cobertura (`--cov-report=xml`). Para exibir os resultados de cobertura diretamente nas pull requests, faça o upload do relatório usando a ação `actions/upload-code-coverage`. Consulte [Configurando a cobertura de código para seu repositório](https://docs.github.com/pt/code-security/how-tos/maintain-quality-code/set-up-code-coverage).
 
-### Usando o Ruff para fazer lint e/ou formatar código
+### Usando o Ruff para fazer lint e/ou formatar código { #using-ruff-to-lint-andor-format-code }
 
 O exemplo a seguir instala ou atualiza o `ruff` e o usa para fazer lint de todos os arquivos. Para obter mais informações, confira [Ruff](https://docs.astral.sh/ruff).
 
@@ -269,7 +269,7 @@ steps:
 
 A etapa de formatação tem o parâmetro `continue-on-error: true` definido. Isso impedirá que o fluxo de trabalho falhe se a etapa de formatação não for bem-sucedida. Após corrigir todos os erros de formatação, você poderá remover essa opção para que o fluxo de trabalho capture novos problemas.
 
-### Executar testes com tox
+### Executar testes com tox { #running-tests-with-tox }
 
 Com GitHub Actions, você pode executar testes com tox e distribuir o trabalho entre várias tarefas. Você precisará invocar o tox usando a opção `-e py` para escolher a versão do Python em seu `PATH`, em vez de especificar uma versão específica. Para obter mais informações, confira [Tox](https://tox.readthedocs.io/en/latest/).
 
@@ -299,7 +299,7 @@ jobs:
         run: tox -e py
 ```
 
-## Empacotar dados do fluxo de trabalho como artefatos
+## Empacotar dados do fluxo de trabalho como artefatos { #packaging-workflow-data-as-artifacts }
 
 Você pode fazer o upload de artefatos para visualização após a conclusão de um fluxo de trabalho. Por exemplo, é possível que você precise salvar os arquivos de registro, os despejos de núcleo, os resultados de teste ou capturas de tela. Para saber mais, confira [Armazenar e compartilhar dados com artefatos de fluxo de trabalho](../store-and-share-data.md).
 
@@ -340,21 +340,22 @@ jobs:
         if: ${{ always() }}
 ```
 
-## Publicando no PyPI
+## Publicando no PyPI { #publishing-to-pypi }
 
 Você pode configurar seu fluxo de trabalho para publicar seu pacote de Python no PyPI depois que os testes de CI forem aprovados. Esta seção demonstra como você pode usar GitHub Actions para carregar seu pacote no PyPI sempre que publicar uma versão. Para saber mais, confira [Gerenciar versões em repositórios](https://docs.github.com/pt/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
 
 O fluxo de trabalho de exemplo abaixo usa a [Publicação Confiável](https://docs.pypi.org/trusted-publishers/) para autenticar com o PyPI, eliminando a necessidade de um token de API configurado manualmente.
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 
-# O GitHub recomenda fixar ações em um SHA de commit.
-# Para obter uma versão mais recente, você precisará atualizar o SHA.
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
+# O GitHub recomenda fixar ações em um SHA de commit. { #github-recommends-pinning-actions-to-a-commit-sha }
+# Para obter uma versão mais recente, você precisará atualizar o SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha }
+# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning }
 
 name: Upload Python Package
 
@@ -416,3 +417,5 @@ jobs:
 ```
 
 Para obter mais informações sobre esse fluxo de trabalho, incluindo as configurações do PyPI necessárias, consulte [Configurando o OpenID Connect no PyPI](../../how-tos/secure-your-work/security-harden-deployments/oidc-in-pypi.md).
+
+```

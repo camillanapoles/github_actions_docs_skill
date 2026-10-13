@@ -84,14 +84,14 @@ Use a coding agent to create the workflow from a natural language description.
 
             ```shell
    gh aw init
-   ```
+            ```
 
 1. Start a coding agent session in the context of your repository—for example, using Claude Code, OpenAI Codex, or Google Gemini CLI, Copilot CLI, or VS Code agent mode.
 1. Use the `agentic-workflows` skill and describe the workflow you want:
 
             ```copilot copy
    /agentic-workflows create a pr reviewer that ensure the changes are tested.
-   ```
+            ```
 
     The agent creates a workflow Markdown file in `.github/workflows/`, compiles the corresponding `.lock.yml` GitHub Actions workflow file, and asks you to review and commit both files.
 

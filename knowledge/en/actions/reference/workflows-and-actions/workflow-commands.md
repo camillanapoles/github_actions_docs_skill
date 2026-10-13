@@ -245,7 +245,7 @@ jobs:
 ```
 ```
 
-![Screenshot of the log for the workflow step. The second line, "My title", is an expanded group. The next line, "Inside group", is indented below.](/assets/images/help/actions/actions-log-group.png)
+![Screenshot of the log for the workflow step. The second line, "My title", is an expanded group. The next line, "Inside group", is indented below.](https://docs.github.com/assets/images/help/actions/actions-log-group.png)
 
 ## Masking a value in a log
 
@@ -560,7 +560,7 @@ steps:
 !!! note
     PowerShell versions 5.1 and below (`shell: powershell`) do not use UTF-8 by default, so you must specify the UTF-8 encoding. For example:
 
-    ```
+```
     jobs:
       legacy-powershell-example:
         runs-on: windows-latest
@@ -572,7 +572,7 @@ steps:
 
     PowerShell Core versions 6 and higher (`shell: pwsh`) use UTF-8 by default. For example:
 
-    ```
+                ```
     jobs:
       powershell-core-example:
         runs-on: windows-latest
@@ -582,7 +582,7 @@ steps:
               "mypath" >> $env:GITHUB_PATH
                 ```
 
-```
+                ```
 
 ## Setting an environment variable
 
@@ -598,16 +598,16 @@ echo "{environment_variable_name}={value}" >> "$GITHUB_ENV"
 ```powershell
 * Using PowerShell version 6 and higher:
 
-  ```
+```
   "{environment_variable_name}={value}" >> $env:GITHUB_ENV
         ```
 
 * Using PowerShell version 5.1 and below:
 
-  ```
+        ```
   "{environment_variable_name}={value}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
         ```
-```
+        ```
 
 You can make an environment variable available to any subsequent steps in a workflow job by defining or updating the environment variable and writing this to the `GITHUB_ENV` environment file. The step that creates or updates the environment variable does not have access to the new value, but all subsequent steps in a job will have access.
 
@@ -772,7 +772,7 @@ echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
 ```
 ```
 
-![Screenshot of the summary page of a workflow run. Under "example summary" is "Hello world!" and a rocket emoji.](/assets/images/help/actions/actions-job-summary-simple-example.png)
+![Screenshot of the summary page of a workflow run. Under "example summary" is "Hello world!" and a rocket emoji.](https://docs.github.com/assets/images/help/actions/actions-job-summary-simple-example.png)
 
 ### Multiline Markdown content
 

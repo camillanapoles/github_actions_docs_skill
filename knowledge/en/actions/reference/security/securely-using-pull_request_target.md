@@ -27,6 +27,7 @@ The `pull_request` event (along with `pull_request_review` and `pull_request_rev
 You introduce risk when a workflow author overrides this default to run the fork's code. Developers frequently choose `pull_request_target` because they want to run a fork's pull request through CI _and_ have access to secrets, for example to run tests that need a private registry. To do this, they point `actions/checkout` at the pull request head instead of the default branch, which is insecure:
 
 ```yaml
+```
 # INSECURE. Provided as an example only.
 on:
   pull_request_target:
@@ -52,6 +53,7 @@ This pattern is known as a "pwn request" and has been the root cause of multiple
 
 Pwn requests are also not unique to `pull_request_target`. Any event that runs with secrets can introduce a pwn request if it checks out or downloads and executes untrusted code. For example, an `issue_comment` or `workflow_run` workflow that fetches and runs a fork's pull request code is vulnerable in the same way. A `workflow_run` workflow should treat artifacts uploaded by other workflows as untrusted data, since their contents can come from a fork.
 
+```
 ## Default policy for `pull_request_target`
 
 To help protect your workflows from untrusted pull requests, GitHub provides a default event policy that blocks the `pull_request_target` event in public repositories.

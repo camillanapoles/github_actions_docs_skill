@@ -35,7 +35,7 @@ GitHub fornece um modelo de fluxo de trabalho para Ruby que deve funcionar para 
 
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 
 3. Se você já tiver um fluxo de trabalho no repositório, clique em **Novo fluxo de trabalho**.
 
@@ -66,10 +66,11 @@ Usar a ação `ruby/setup-ruby` do Ruby é a maneira recomendada de usar Ruby co
 A ação `setup-ruby` usa uma versão do Ruby como entrada e configura essa versão no executor.
 
 ```yaml
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 steps:
 - uses: actions/checkout@v6
 - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
@@ -81,6 +82,7 @@ steps:
 
 Como alternativa, você poderá fazer check-in de um arquivo `.ruby-version` na raiz do repositório e `setup-ruby` usará a versão definida nesse arquivo.
 
+```
 ## Testar com versões múltiplas do Ruby { #testing-with-multiple-versions-of-ruby }
 
 Você pode adicionar uma estratégia matriz para executar seu fluxo de trabalho com mais de uma versão do Ruby. Por exemplo, você pode testar seu código com as últimas versões de patch das versões 3.1, 3.0 e 2.7.
@@ -96,14 +98,15 @@ Cada versão do Ruby especificada na matriz `ruby-version` cria um trabalho que 
 O fluxo de trabalho totalmente modernizado com uma estratégia de matriz pode se parecer com isto:
 
 ```yaml
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-1 }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by-1 }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support-1 }
+# online. { #documentation-1 }
 
-# O GitHub recomenda fixar ações em um SHA de commit.
-# Para obter uma versão mais recente, você precisará atualizar o SHA.
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
+# O GitHub recomenda fixar ações em um SHA de commit. { #github-recommends-pinning-actions-to-a-commit-sha }
+# Para obter uma versão mais recente, você precisará atualizar o SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha }
+# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning }
 
 name: Ruby CI
 
@@ -134,15 +137,17 @@ jobs:
         run: bundle exec rake
 ```
 
+```
 ## Instalar dependências com o Bundler { #installing-dependencies-with-bundler }
 
 A ação `setup-ruby` instalará automaticamente o Bundler para você. A versão é determinada pelo arquivo `gemfile.lock`. Se nenhuma versão estiver presente no seu arquivo de bloqueio, será instalada a última versão compatível.
 
 ```yaml
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-2 }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by-2 }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support-2 }
+# online. { #documentation-2 }
 steps:
 - uses: actions/checkout@v6
 - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
@@ -151,6 +156,7 @@ steps:
 - run: bundle install
 ```
 
+```
 ### Memorizar dependências { #caching-dependencies }
 
 As ações `setup-ruby` fornecem um método para lidar automaticamente com o cache dos seus gems entre as execuções.
@@ -158,10 +164,11 @@ As ações `setup-ruby` fornecem um método para lidar automaticamente com o cac
 Para habilitar o cache, defina o seguinte.
 
 ```yaml
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-3 }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by-3 }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support-3 }
+# online. { #documentation-3 }
 steps:
 - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
   with:
@@ -209,6 +216,7 @@ steps:
 O exemplo a seguir da matriz testa todas as versões estáveis e versões principais de MRI, JRuby e TruffleRuby no Ubuntu e no macOS.
 
 ```yaml
+```
 # Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
 # São fornecidas por terceiros e regidas por
 # termos de serviço, política de privacidade e suporte separados
@@ -244,11 +252,13 @@ jobs:
       - run: bundle exec rake
 ```
 
+```
 ## Fazer linting do seu código { #linting-your-code }
 
 O exemplo a seguir instala o `rubocop` e o usa para fazer lint de todos os arquivos. Para obter mais informações, confira [RuboCop](https://github.com/rubocop-hq/rubocop). Você pode [configurar o RuboCop](https://docs.rubocop.org/rubocop/configuration.html) para decidir as regras de linting específicas que serão usadas.
 
 ```yaml
+```
 # Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
 # São fornecidas por terceiros e regidas por
 # termos de serviço, política de privacidade e suporte separados
@@ -277,6 +287,7 @@ jobs:
 
 Especificar `-f github` significa que a saída do RuboCop estará no formato de anotação de GitHub. Quaisquer erros de linting serão mostrados embutidos na guia **Arquivos alterados** da pull request que os apresenta.
 
+```
 ## Publicar gems { #publishing-gems }
 
 Você pode configurar o seu fluxo de trabalho para publicar o seu pacote do Ruby em qualquer pacote de registro que você desejar quando os seus testes de CI passarem.
@@ -284,6 +295,7 @@ Você pode configurar o seu fluxo de trabalho para publicar o seu pacote do Ruby
 Você pode armazenar qualquer token de acesso ou credenciais necessárias para publicar seu pacote usando segredos do repositório. O exemplo a seguir cria e publica um pacote para `GitHub Package Registry` e `RubyGems`.
 
 ```yaml
+```
 # Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
 # São fornecidas por terceiros e regidas por
 # termos de serviço, política de privacidade e suporte separados
@@ -342,4 +354,6 @@ jobs:
           gem push *.gem
         env:
           GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
+```
+
 ```

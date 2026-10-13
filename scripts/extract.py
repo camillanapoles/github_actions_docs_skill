@@ -725,6 +725,56 @@ def _split_row(line: str) -> list[str]:
     return cells
 
 
+FENCE_LINE_RE = re.compile(r"^(\s*)(`{3,}|~{3,})(.*)$")
+
+
+def repair_fences(md: str) -> tuple[str, int]:
+    """Repara cercas de código danificadas (causa nº 1 de headings/tabelas perdidos).
+
+    O markdown da API traz blocos de código dentro de listas numeradas com a cerca de
+    abertura indentada (ex.: 12 espaços) e a de fechamento com outra indentação
+    (ex.: 3) — a paridade quebra e todo o resto da página passa a ser lido como código.
+
+    Regras (conservadoras):
+      1. fecho com char/comprimento compatível e indentação diferente → reindenta;
+      2. heading ATX no início da linha com cerca aberta → insere fecho antes;
+      3. fim do texto com cerca aberta → acrescenta o fecho.
+    """
+    lines = md.split("\n")
+    out: list[str] = []
+    fixes = 0
+    state: tuple[str, int, int] | None = None  # (char, length, indent)
+    for line in lines:
+        m = FENCE_LINE_RE.match(line)
+        if state is None:
+            if m:
+                indent = len(m.group(1).expandtabs(4))
+                state = (m.group(2)[0], len(m.group(2)), indent)
+            out.append(line)
+            continue
+        char, length, indent = state
+        if m and m.group(2)[0] == char and len(m.group(2)) >= length and not m.group(3).strip():
+            cur = len(m.group(1).expandtabs(4))
+            if cur != indent:
+                line = " " * indent + line.lstrip()
+                fixes += 1
+            out.append(line)
+            state = None
+            continue
+        if m is None and re.match(r"^#{1,6} ", line):
+            out.append(" " * indent + char * length)   # fecha antes do heading
+            fixes += 1
+            state = None
+            out.append(line)
+            continue
+        out.append(line)
+    if state is not None:
+        char, length, indent = state
+        out.append(" " * indent + char * length)
+        fixes += 1
+    return "\n".join(out), fixes
+
+
 def compact_tables(md: str, max_width: int = 72) -> str:
     """Realinha tabelas pipe: padding consistente e largura controlada."""
     lines = md.split("\n")
@@ -805,6 +855,7 @@ def polish_markdown(md: str) -> tuple[str, int]:
     md = unescape_noise(md)
     md = merge_multiline_cells(md)
     md = repair_table_rows(md)
+    md, _fence_fixes = repair_fences(md)
     md = compact_tables(md)
     return md, alerts + quotes
 
@@ -1063,6 +1114,23 @@ def normalize_docs_path(path: str, lang: str, scope: str) -> str | None:
     return path + ".md"
 
 
+SITE_ASSET_RE = re.compile(r"(!?\[[^\]]*\]\()(/(?:assets|site|images)/[^)\s]+)(\))")
+
+
+def rewrite_asset_links(md: str, stats: dict[str, int] | None = None) -> str:
+    """Imagens/links de assets do site (`/assets/images/help/...`) → URL absoluta.
+
+    Sem isso o MkDocs tenta resolvê-los dentro de `docs_dir` (aviso → erro em --strict)
+    e o validador os conta como links internos quebrados.
+    """
+    def _sub(m: re.Match) -> str:
+        if stats is not None:
+            stats["assets"] = stats.get("assets", 0) + 1
+        return f"{m.group(1)}{DOCS_HOST}{m.group(2)}{m.group(3)}"
+
+    return SITE_ASSET_RE.sub(_sub, md)
+
+
 def rewrite_links(md: str, current_rel: str, lang: str, stats: dict[str, int], scope: str = "actions") -> str:
     """Converte links internos do docs em links relativos do knowledge base."""
 
@@ -1087,7 +1155,8 @@ def rewrite_links(md: str, current_rel: str, lang: str, stats: dict[str, int], s
         stats["internal"] += 1
         return f"[{label}]({rel}{frag})"
 
-    return re.sub(r"(?<!\!)\[([^\]]*)\]\(([^)\s]+)\)", repl, md)
+    md = re.sub(r"(?<!\!)\[([^\]]*)\]\(([^)\s]+)\)", repl, md)
+    return rewrite_asset_links(md, stats)
 
 
 def title_from_fragment(fragment: Any, soup_title: str) -> tuple[str, str]:

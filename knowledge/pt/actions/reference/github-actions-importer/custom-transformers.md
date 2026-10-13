@@ -134,19 +134,19 @@ Há várias maneiras de configurar os transformadores personalizados para mapear
 
         ```ruby copy
   env "OCTO", "CAT"
-  ```
+        ```
 
   Você também pode remover todas as instâncias de uma variável de ambiente específica para que elas não sejam transformadas em um GitHub Actions fluxo de trabalho. O exemplo a seguir remove todas as variáveis de ambiente com o nome `MONA_LISA`.
 
         ```ruby copy
   env "MONA_LISA", nil
-  ```
+        ```
 
 * Você também pode mapear suas variáveis de ambiente existentes para segredos. Por exemplo, o método `env` a seguir mapeia uma variável de ambiente chamada `MONALISA` para um segredo chamado `OCTOCAT`.
 
         ```ruby copy
   env "MONALISA", secret("OCTOCAT")
-  ```
+        ```
 
   Isso configurará uma referência a um segredo chamado `OCTOCAT` no fluxo de trabalho transformado. Para que o segredo funcione, você precisará criar o segredo em seu repositório GitHub. Para saber mais, confira [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md#creating-secrets-for-a-repository).
 
@@ -154,13 +154,13 @@ Há várias maneiras de configurar os transformadores personalizados para mapear
 
         ```ruby copy
   env /.*/, nil
-  ```
+        ```
 
   O exemplo a seguir usa um grupo de correspondência de expressão regular para transformar os valores de variáveis de ambiente em segredos gerados dinamicamente.
 
         ```ruby copy
   env /^(.+)_SSH_KEY/, secret("%s_SSH_KEY)
-  ```
+        ```
 
 !!! note
 

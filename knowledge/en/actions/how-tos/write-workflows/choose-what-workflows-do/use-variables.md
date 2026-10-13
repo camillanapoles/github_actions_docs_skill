@@ -62,10 +62,10 @@ To create secrets or variables on GitHub for an organization repository, you mus
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 1. In the "Security" section of the sidebar, select ** Secrets and variables**, then click **Actions**.
 1. Click the **Variables** tab.
-   ![Screenshot of the "Actions secrets and variables" page. The "Variables" tab is outlined in dark orange.](/assets/images/help/repository/actions-variables-tab.png)
+   ![Screenshot of the "Actions secrets and variables" page. The "Variables" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/repository/actions-variables-tab.png)
 1. Click **New repository variable**.
 1. In the **Name** field, enter a name for your variable.
 1. In the **Value** field, enter the value for your variable.
@@ -78,7 +78,7 @@ To create secrets or variables for an environment in a personal account reposito
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 1. In the left sidebar, click **Environments**.
 1. Click on the environment that you want to add a variable to.
 1. Under **Environment variables**, click **Add variable**.
@@ -100,11 +100,11 @@ For more information, see [Permissions of custom organization roles](https://doc
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the "Security" section of the sidebar, select ** Secrets and variables**, then click **Actions**.
 1. Click the **Variables** tab.
 
-   ![Screenshot of the "Actions secrets and variables" page. The "Variables" tab is outlined in dark orange.](/assets/images/help/repository/actions-variables-tab.png)
+   ![Screenshot of the "Actions secrets and variables" page. The "Variables" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/repository/actions-variables-tab.png)
 
 !!! note
     The "Actions secrets and variables" page may not show distinct tabs for secrets and variables depending on your permissions. Organization owners and users with both the "Manage organization Actions variables" and "Manage organization Actions secrets" permissions will see the **Variables** and **Secrets** tabs. For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).

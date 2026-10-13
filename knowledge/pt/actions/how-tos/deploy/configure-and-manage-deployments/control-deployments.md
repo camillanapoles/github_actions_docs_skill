@@ -216,7 +216,7 @@ Você pode executar seu fluxo de trabalho de implantação em executores hospeda
 
 Você pode usar um selo de status para exibir o status do seu fluxo de trabalho de implantação. Um selo de status mostra se um fluxo de trabalho está falhando ou passando. Um local comum para adicionar uma notificação de status é no arquivo `README.md` do repositório, mas você pode adicioná-lo a qualquer página da Web desejada. Por padrão, os selos exibem o status do seu branch-padrão. Se não houver execuções de fluxo de trabalho em seu branch padrão, ele exibirá o status da execução mais recente em todos os branches. Você pode exibir o status de uma execução de fluxo de trabalho para um branch ou um evento específico usando os parâmetros de consulta `branch` e `event` na URL.
 
-![Captura de tela de um selo de status de fluxo de trabalho. Da direita para a esquerda, são mostrados: o logotipo do GitHub, o nome do fluxo de trabalho ("GitHub Actions Demo") e o status ("passing").](/assets/images/help/repository/actions-workflow-status-badge.png)
+![Captura de tela de um selo de status de fluxo de trabalho. Da direita para a esquerda, são mostrados: o logotipo do GitHub, o nome do fluxo de trabalho ("GitHub Actions Demo") e o status ("passing").](https://docs.github.com/assets/images/help/repository/actions-workflow-status-badge.png)
 
 Para saber mais, confira [Adicionar um selo de status de fluxo de trabalho](../../monitor-workflows/add-a-status-badge.md).
 

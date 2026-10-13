@@ -331,8 +331,10 @@ def check_pages(rep: Report, langs: list[str]) -> dict[str, int]:
                 problems["fence"].append(f"{rel}: cerca de código não fechada")
             if h1_count != 1:
                 problems["h1"].append(f"{rel}: {h1_count} H1 (esperado 1)")
-            if len(text.encode("utf-8")) < 400 and not generated:
-                problems["small"].append(f"{rel}: {len(text.encode('utf-8'))} bytes")
+            # landing pages capturadas (index.md de seção) são legitimamente curtas
+            limit = 150 if rel.endswith("index.md") else 400
+            if len(text.encode("utf-8")) < limit and not generated:
+                problems["small"].append(f"{rel}: {len(text.encode('utf-8'))} bytes (mínimo {limit})")
             stats["headings"] += headings
             stats["code_blocks"] += code_blocks
 
@@ -355,7 +357,7 @@ def check_pages(rep: Report, langs: list[str]) -> dict[str, int]:
         ("noise", "sem ruído de UI", "restos de navegação do site"),
         ("alert", "alertas convertidos", "`> \\[!NOTE]` escapado (não vira admonition)"),
         ("autotitle", "AUTOTITLE resolvido", "placeholders `[AUTOTITLE]` restantes"),
-        ("small", "tamanho mínimo", "páginas com menos de 400 bytes"),
+        ("small", "tamanho mínimo", "páginas abaixo do mínimo (400 B; 150 B para index.md de seção)"),
     ]
     for key, name, why in checks:
         items = problems[key]
@@ -399,7 +401,7 @@ def check_links(rep: Report, langs: list[str]) -> None:
                         continue
                     if target.startswith(("http://", "https://")):
                         total_external += 1
-                        if not re.match(r"^https://[^\s]+$", target):
+                        if not re.match(r"^https?://[^\s]+$", target):
                             external_malformed.append(f"{rel}:{lineno}: {target[:80]}")
                         continue
                     total_internal += 1

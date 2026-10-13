@@ -34,7 +34,7 @@ Como alternativa, se você não tiver acesso ao repositório ou organização no
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Captura de tela de um cabeçalho de repositório que mostra as guias. A guia "Configurações" é realçada por um contorno laranja-escuro.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 3. Na barra lateral esquerda, clique em **(play) Actions** e clique em **Runners**.
 4. Na lista de executores, clique no nome do executor que você deseja configurar.
 5. Clique em **Remover**.
@@ -64,7 +64,7 @@ Como alternativa, se você não tiver acesso ao repositório ou organização no
 1. Em GitHub, acesse a página principal da organização.
 2. No nome da organização, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
 
-   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Captura de tela das guias no perfil de uma organização. A guia "Configurações" está contornada em laranja escuro.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 3. Na barra lateral esquerda, clique em **(play) Actions** e clique em **Runners**.
 4. Na lista de executores, clique no nome do executor que você deseja configurar.
 5. Clique em **Remover**.

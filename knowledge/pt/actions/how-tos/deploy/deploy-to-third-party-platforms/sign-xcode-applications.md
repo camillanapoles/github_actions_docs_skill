@@ -41,7 +41,7 @@ Crie segredos no seu repositório ou organização para os seguintes itens:
 
                 ```shell
     base64 -i BUILD_CERTIFICATE.p12 | pbcopy
-    ```
+                ```
 
 * A senha para seu certificado de assinatura da Apple.
   * Neste exemplo, o segredo é chamado `P12_PASSWORD`.
@@ -56,7 +56,7 @@ Crie segredos no seu repositório ou organização para os seguintes itens:
 
                 ```shell
     base64 -i PROVISIONING_PROFILE.mobileprovision | pbcopy
-    ```
+                ```
 
 * Uma senha do Keychain.
 

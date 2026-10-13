@@ -48,7 +48,7 @@ You can deploy runner scale sets with ARC's Helm charts or by deploying the nece
          --set githubConfigUrl="${GITHUB_CONFIG_URL}" \
          --set githubConfigSecret.github_token="${GITHUB_PAT}" \
          oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
-     ```
+                    ```
 
                     ```bash copy
      INSTALLATION_NAME="arc-runner-set"
@@ -61,7 +61,7 @@ You can deploy runner scale sets with ARC's Helm charts or by deploying the nece
          --set githubConfigUrl="${GITHUB_CONFIG_URL}" \
          --set githubConfigSecret.github_token="${GITHUB_PAT}" \
          oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
-     ```
+                    ```
 
      For additional Helm configuration options, see [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) in the ARC repository.
 
@@ -69,7 +69,7 @@ You can deploy runner scale sets with ARC's Helm charts or by deploying the nece
 
                 ```bash copy
     helm list -A
-    ```
+                ```
 
     You should see an output similar to the following.
 
@@ -77,13 +77,13 @@ You can deploy runner scale sets with ARC's Helm charts or by deploying the nece
     NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                       APP VERSION
     arc             arc-systems     1               2023-04-12 11:45:59.152090536 +0000 UTC deployed        gha-runner-scale-set-controller-0.4.0       0.4.0
     arc-runner-set  arc-systems     1               2023-04-12 11:46:13.451041354 +0000 UTC deployed        gha-runner-scale-set-0.4.0                  0.4.0
-    ```
+                ```
 
 1. To check the manager pod, run the following command in your terminal.
 
                 ```bash copy
     kubectl get pods -n arc-systems
-    ```
+                ```
 
     If the installation was successful, the pods will show the `Running` status.
 
@@ -91,7 +91,7 @@ You can deploy runner scale sets with ARC's Helm charts or by deploying the nece
     NAME                                                   READY   STATUS    RESTARTS   AGE
     arc-gha-runner-scale-set-controller-594cdc976f-m7cjs   1/1     Running   0          64s
     arc-runner-set-754b578d-listener                       1/1     Running   0          12s
-    ```
+                ```
 
 If your installation was not successful, see [Troubleshooting Actions Runner Controller errors](../../../tutorials/use-actions-runner-controller/troubleshoot.md) for troubleshooting information.
 
@@ -107,12 +107,14 @@ ARC offers several advanced configuration options.
 To configure the runner scale set name, you can define an `INSTALLATION_NAME` or set the value of `runnerScaleSetName` in your copy of the [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) file.
 
 ```yaml
+```
 ## The name of the runner scale set to create, which defaults to the Helm release name
 runnerScaleSetName: "my-runners"
 ```
 
 Make sure to pass the `values.yaml` file in your `helm install` command. See the [Helm Install](https://helm.sh/docs/helm/helm_install/) documentation for more details.
 
+```
 ### Choosing runner destinations
 
 Runner scale sets can be deployed at the repository, organization, or enterprise levels.
@@ -169,6 +171,7 @@ githubConfigSecret: pre-defined-secret
 Alternatively, you can specify the values of `app_id`, `installation_id` and `private_key` in your copy of the [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) file.
 
 ```yaml
+```
 ## githubConfigSecret is the Kubernetes secret to use when authenticating with GitHub API.
 ## You can choose to use a GitHub App or a personal access token (classic)
 githubConfigSecret:
@@ -186,6 +189,7 @@ githubConfigSecret:
 
 For additional Helm configuration options, see [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) in the ARC repository.
 
+```
 ### Managing access with runner groups
 
 You can use runner groups to control which organizations or repositories have access to your runner scale sets. For more information on runner groups, see [Managing access to self-hosted runners using groups](../self-hosted-runners/manage-access.md).
@@ -241,6 +245,7 @@ The `maxRunners` and `minRunners` properties provide you with a range of options
 If you comment out both the `maxRunners` and `minRunners` properties, ARC will scale up to the number of jobs assigned to the runner scale set and will scale down to 0 if there aren't any active jobs.
 
 ```yaml
+```
 ## maxRunners is the max number of runners the auto scaling runner set will scale up to.
 # maxRunners: 0
 
@@ -249,19 +254,22 @@ If you comment out both the `maxRunners` and `minRunners` properties, ARC will s
 # minRunners: 0
 ```
 
+```
 #### Example: Minimum number of runners
 
 You can set the `minRunners` property to any number and ARC will make sure there is always the specified number of runners active and available to take jobs assigned to the runner scale set at all times.
 
 ```yaml
-## maxRunners is the max number of runners the auto scaling runner set will scale up to.
-# maxRunners: 0
+```
+## maxRunners is the max number of runners the auto scaling runner set will scale up to. { #maxrunners-is-the-max-number-of-runners-the-auto-scaling-runner-set-will-scale-up-to-1 }
+# maxRunners: 0 { #maxrunners-0-1 }
 
-## minRunners is the min number of idle runners. The target number of runners created will be
-## calculated as a sum of minRunners and the number of jobs assigned to the scale set.
+## minRunners is the min number of idle runners. The target number of runners created will be { #minrunners-is-the-min-number-of-idle-runners-the-target-number-of-runners-created-will-be-1 }
+## calculated as a sum of minRunners and the number of jobs assigned to the scale set. { #calculated-as-a-sum-of-minrunners-and-the-number-of-jobs-assigned-to-the-scale-set-1 }
 minRunners: 20
 ```
 
+```
 #### Example: Set maximum and minimum number of runners
 
 In this configuration, Actions Runner Controller will scale up to a maximum of `30` runners and will scale down to `20` runners when the jobs are complete.
@@ -270,27 +278,31 @@ In this configuration, Actions Runner Controller will scale up to a maximum of `
     The value of `minRunners` can never exceed that of `maxRunners`, unless `maxRunners` is commented out.
 
 ```yaml
-## maxRunners is the max number of runners the auto scaling runner set will scale up to.
+```
+## maxRunners is the max number of runners the auto scaling runner set will scale up to. { #maxrunners-is-the-max-number-of-runners-the-auto-scaling-runner-set-will-scale-up-to-2 }
 maxRunners: 30
 
-## minRunners is the min number of idle runners. The target number of runners created will be
-## calculated as a sum of minRunners and the number of jobs assigned to the scale set.
+## minRunners is the min number of idle runners. The target number of runners created will be { #minrunners-is-the-min-number-of-idle-runners-the-target-number-of-runners-created-will-be-2 }
+## calculated as a sum of minRunners and the number of jobs assigned to the scale set. { #calculated-as-a-sum-of-minrunners-and-the-number-of-jobs-assigned-to-the-scale-set-2 }
 minRunners: 20
 ```
 
+```
 #### Example: Jobs queue draining
 
 In certain scenarios you might want to drain the jobs queue to troubleshoot a problem or to perform maintenance on your cluster. If you set both properties to `0`, Actions Runner Controller will not create new runner pods when new jobs are available and assigned.
 
 ```yaml
-## maxRunners is the max number of runners the auto scaling runner set will scale up to.
+```
+## maxRunners is the max number of runners the auto scaling runner set will scale up to. { #maxrunners-is-the-max-number-of-runners-the-auto-scaling-runner-set-will-scale-up-to-3 }
 maxRunners: 0
 
-## minRunners is the min number of idle runners. The target number of runners created will be
-## calculated as a sum of minRunners and the number of jobs assigned to the scale set.
+## minRunners is the min number of idle runners. The target number of runners created will be { #minrunners-is-the-min-number-of-idle-runners-the-target-number-of-runners-created-will-be-3 }
+## calculated as a sum of minRunners and the number of jobs assigned to the scale set. { #calculated-as-a-sum-of-minrunners-and-the-number-of-jobs-assigned-to-the-scale-set-3 }
 minRunners: 0
 ```
 
+```
 ### Custom TLS certificates
 
 !!! note
@@ -625,7 +637,7 @@ When Kubernetes mode is enabled, workflows that are not configured with a contai
 
     ```bash
  Jobs without a job container are forbidden on this runner, please add a 'container:' to your job or contact your self-hosted runner administrator.
- ```
+    ```
 
 To allow jobs without a job container to run, set `ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER` to `false` on your runner container. This instructs the runner to disable this check.
 
@@ -663,6 +675,7 @@ Before deciding to run `dind-rootless`, make sure you are aware of [known limita
 For versions of Kubernetes >= v1.29, sidecar container will be used to run docker daemon.
 
 ```yaml
+```
 ## githubConfigUrl is the GitHub url for where you want to configure runners
 ## ex: https://github.com/myorg/myrepo or https://github.com/myorg
 githubConfigUrl: "https://github.com/actions/actions-runner-controller"
@@ -674,8 +687,8 @@ githubConfigSecret: my-super-safe-secret
 ## maxRunners is the max number of runners the autoscaling runner set will scale up to.
 maxRunners: 5
 
-## minRunners is the min number of idle runners. The target number of runners created will be
-## calculated as a sum of minRunners and the number of jobs assigned to the scale set.
+## minRunners is the min number of idle runners. The target number of runners created will be { #minrunners-is-the-min-number-of-idle-runners-the-target-number-of-runners-created-will-be-4 }
+## calculated as a sum of minRunners and the number of jobs assigned to the scale set. { #calculated-as-a-sum-of-minrunners-and-the-number-of-jobs-assigned-to-the-scale-set-4 }
 minRunners: 0
 
 runnerGroup: "my-custom-runner-group"
@@ -777,6 +790,7 @@ template:
 For versions of Kubernetes `< v1.29`, the following configuration will be applied:
 
 ```yaml
+```
 ## githubConfigUrl is the GitHub url for where you want to configure runners
 ## ex: https://github.com/myorg/myrepo or https://github.com/myorg
 githubConfigUrl: "https://github.com/actions/actions-runner-controller"
@@ -882,28 +896,29 @@ template:
 For versions of Kubernetes `>= v1.29`, sidecar container will be used to run docker daemon.
 
 ```yaml
-## githubConfigUrl is the GitHub url for where you want to configure runners
+```
+## githubConfigUrl is the GitHub url for where you want to configure runners { #githubconfigurl-is-the-github-url-for-where-you-want-to-configure-runners-1 }
 ## ex: https://<HOSTNAME>/enterprises/my_enterprise or https://<HOSTNAME>/myorg
 githubConfigUrl: "https://<HOSTNAME>/actions/actions-runner-controller"
 
-## githubConfigSecret is the k8s secrets to use when auth with GitHub API.
-## You can choose to use GitHub App or a PAT token
+## githubConfigSecret is the k8s secrets to use when auth with GitHub API. { #githubconfigsecret-is-the-k8s-secrets-to-use-when-auth-with-github-api-1 }
+## You can choose to use GitHub App or a PAT token { #you-can-choose-to-use-github-app-or-a-pat-token-1 }
 githubConfigSecret: my-super-safe-secret
 
-## maxRunners is the max number of runners the autoscaling runner set will scale up to.
+## maxRunners is the max number of runners the autoscaling runner set will scale up to. { #maxrunners-is-the-max-number-of-runners-the-autoscaling-runner-set-will-scale-up-to-1 }
 maxRunners: 5
 
-## minRunners is the min number of idle runners. The target number of runners created will be
-## calculated as a sum of minRunners and the number of jobs assigned to the scale set.
+## minRunners is the min number of idle runners. The target number of runners created will be { #minrunners-is-the-min-number-of-idle-runners-the-target-number-of-runners-created-will-be-5 }
+## calculated as a sum of minRunners and the number of jobs assigned to the scale set. { #calculated-as-a-sum-of-minrunners-and-the-number-of-jobs-assigned-to-the-scale-set-5 }
 minRunners: 0
 
 runnerGroup: "my-custom-runner-group"
 
-## name of the runner scale set to create. Defaults to the helm release name
+## name of the runner scale set to create. Defaults to the helm release name { #name-of-the-runner-scale-set-to-create-defaults-to-the-helm-release-name-1 }
 runnerScaleSetName: "my-awesome-scale-set"
 
-## template is the PodSpec for each runner Pod
-## For reference: https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec
+## template is the PodSpec for each runner Pod { #template-is-the-podspec-for-each-runner-pod-1 }
+## For reference: https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec { #for-reference-httpskubernetesiodocsreferencekubernetes-apiworkload-resourcespod-v1podspec-1 }
 template:
   spec:
     initContainers:
@@ -999,6 +1014,7 @@ template:
 For versions of Kubernetes `< v1.29`, the following configuration can be applied:
 
 ```yaml
+```
 ## githubConfigUrl is the GitHub url for where you want to configure runners
 ## ex: https://<HOSTNAME>/enterprises/my_enterprise or https://<HOSTNAME>/myorg
 githubConfigUrl: "https://<HOSTNAME>/actions/actions-runner-controller"
@@ -1101,6 +1117,7 @@ template:
       emptyDir: {}
 ```
 
+```
 #### Understanding runner-container-hooks
 
 When the runner detects a workflow run that uses a container job, service container, or Docker action, it will call runner-container-hooks to create a new pod. The runner relies on runner-container-hooks to call the Kubernetes APIs and create a new pod in the same namespace as the runner pod. This newly created pod will be used to run the container job, service container, or Docker action. For more information, see the [`runner-container-hooks`](https://github.com/actions/runner-container-hooks) repository.

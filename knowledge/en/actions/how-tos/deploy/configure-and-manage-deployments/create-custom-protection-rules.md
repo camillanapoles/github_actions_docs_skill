@@ -25,11 +25,11 @@ For general information about deployment protection rules, see [Deploying with G
    1. Optionally, in the **Callback URL** text field under "Identifying and authorizing users," enter the callback URL. For more information, see [About the user authorization callback url](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/about-the-user-authorization-callback-url).
    1. Under "Permissions," select **Repository permissions**.
    1. To the right of "Actions," click the drop down menu and select **Access: Read-only**.
-   ![Screenshot of the "Repository permissions" section for a new GitHub App. The Actions permission shows "Read-only" and is outlined in orange.](/assets/images/help/actions/actions-repo-permissions-read-only.png)
+   ![Screenshot of the "Repository permissions" section for a new GitHub App. The Actions permission shows "Read-only" and is outlined in orange.](https://docs.github.com/assets/images/help/actions/actions-repo-permissions-read-only.png)
    1. To the right of "Deployments," click the drop down menu and select **Access: Read and write**.
-   ![Screenshot of the "Repository permissions" section for a new GitHub App. The Deployments permission shows "Read and write" and is outlined in orange.](/assets/images/help/actions/actions-deployments-repo-permissions-read-and-write.png)
+   ![Screenshot of the "Repository permissions" section for a new GitHub App. The Deployments permission shows "Read and write" and is outlined in orange.](https://docs.github.com/assets/images/help/actions/actions-deployments-repo-permissions-read-and-write.png)
    1. Under "Subscribe to events," select **Deployment protection rule**.
-   ![Screenshot of the "Subscribe to events section" section for a new GitHub App. The checkbox for the Deployment protection rule is outlined in orange.](/assets/images/help/actions/actions-subscribe-to-events-deployment-protection-rules.png)
+   ![Screenshot of the "Subscribe to events section" section for a new GitHub App. The checkbox for the Deployment protection rule is outlined in orange.](https://docs.github.com/assets/images/help/actions/actions-subscribe-to-events-deployment-protection-rules.png)
 
 1. Install the custom deployment protection rule in your repositories and enable it for use. For more information, see [Configuring custom deployment protection rules](configure-custom-protection-rules.md).
 
@@ -56,7 +56,7 @@ Custom deployment protection rules are not compatible when a workflow job's envi
          "deployments": "write" \
       } \
    }'
-   ```
+            ```
 
 1. Optionally, to add a status report without taking any other action to GitHub, send a `POST` request to `/repos/OWNER/REPO/actions/runs/RUN_ID/deployment_protection_rule`. In the request body, omit the `state`. For more information, see [Workflow runs](https://docs.github.com/rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run#review-custom-deployment-protection-rules-for-a-workflow-run). You can post a status report on the same deployment up to 10 times. Status reports support Markdown formatting and can be up to 1024 characters long.
 

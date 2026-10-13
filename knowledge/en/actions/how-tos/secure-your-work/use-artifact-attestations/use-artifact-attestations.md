@@ -36,7 +36,7 @@ When you run your updated workflows, they will build your artifacts and generate
      id-token: write
      contents: read
      attestations: write
-   ```
+            ```
 
 1. After the step where the binary has been built, add the following step.
 
@@ -45,7 +45,7 @@ When you run your updated workflows, they will build your artifacts and generate
      uses: actions/attest@v4
      with:
        subject-path: 'PATH/TO/ARTIFACT'
-   ```
+            ```
 
    The value of the `subject-path` parameter should be set to the path to the binary you want to attest.
 
@@ -59,7 +59,7 @@ When you run your updated workflows, they will build your artifacts and generate
      contents: read
      attestations: write
      packages: write
-   ```
+            ```
 
 1. After the step where the image has been built, add the following step.
 
@@ -70,7 +70,7 @@ When you run your updated workflows, they will build your artifacts and generate
        subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
        subject-digest: 'sha256:fedcba0...'
        push-to-registry: true
-   ```
+            ```
 
    The value of the `subject-name` parameter should specify the fully-qualified image name. For example, `ghcr.io/user/app` or `acme.azurecr.io/user/app`. Do not include a tag as part of the image name.
 
@@ -97,7 +97,7 @@ When you run your updated workflows, they will build your artifacts and generate
      id-token: write
      contents: read
      attestations: write
-   ```
+            ```
 
 1. After the step where the binary has been built, add the following step.
 
@@ -107,7 +107,7 @@ When you run your updated workflows, they will build your artifacts and generate
      with:
        subject-path: 'PATH/TO/ARTIFACT'
        sbom-path: 'PATH/TO/SBOM'
-   ```
+            ```
 
    The value of the `subject-path` parameter should be set to the path of the binary the SBOM describes. The value of the `sbom-path` parameter should be set to the path of the SBOM file you generated.
 
@@ -121,7 +121,7 @@ When you run your updated workflows, they will build your artifacts and generate
      contents: read
      attestations: write
      packages: write
-   ```
+            ```
 
 1. After the step where the image has been built, add the following step.
 
@@ -133,7 +133,7 @@ When you run your updated workflows, they will build your artifacts and generate
        subject-digest: 'sha256:fedcba0...'
        sbom-path: 'sbom.json'
        push-to-registry: true
-   ```
+            ```
 
    The value of the `subject-name` parameter should specify the fully-qualified image name. For example, `ghcr.io/user/app` or `acme.azurecr.io/user/app`. Do not include a tag as part of the image name.
 

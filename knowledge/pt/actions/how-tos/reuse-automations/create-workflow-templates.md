@@ -46,7 +46,7 @@ Esse procedimento demonstra como criar um modelo de fluxo de trabalho e um arqui
 
          - name: Run a one-line script
            run: echo Hello from Octo Organization
-   ```
+            ```
 
 4. Crie um arquivo de metadados no diretório `workflow-templates`. O arquivo de metadados precisa ter o mesmo nome do arquivo de fluxo de trabalho, mas, em vez da extensão `.yml`, é preciso acrescentar `.properties.json` a ele. Por exemplo, este arquivo chamado `octo-organization-ci.properties.json` contém os metadados para o arquivo de fluxo de trabalho chamado `octo-organization-ci.yml`:
 
@@ -64,7 +64,7 @@ Esse procedimento demonstra como criar um modelo de fluxo de trabalho e um arqui
            ".*\\.md$"
        ]
    }
-   ```
+            ```
 
    * `name`
 

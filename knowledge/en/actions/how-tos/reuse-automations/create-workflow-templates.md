@@ -53,7 +53,7 @@ This procedure demonstrates how to create a workflow template and metadata file.
 
          - name: Run a one-line script
            run: echo Hello from Octo Organization
-   ```
+            ```
 
 1. Create a metadata file inside the `workflow-templates` directory. The metadata file must have the same name as the workflow file, but instead of the `.yml` extension, it must be appended with `.properties.json`. For example, this file named `octo-organization-ci.properties.json` contains the metadata for a workflow file named `octo-organization-ci.yml`:
 
@@ -71,7 +71,7 @@ This procedure demonstrates how to create a workflow template and metadata file.
         ".*\.md$"
     ]
 }
-```
+            ```
 
    * `name` - **Required.** The name of the workflow. This is displayed in the list of available workflows.
 * `description` - **Required.** The description of the workflow. This is displayed in the list of available workflows.

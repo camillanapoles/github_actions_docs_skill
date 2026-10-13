@@ -58,6 +58,7 @@ ENTRYPOINT ["sh", "-c", "echo $GITHUB_SHA"]
 #### Example _Dockerfile_
 
 ```dockerfile
+```
 # Container image that runs your code
 FROM debian:9.5-slim
 
@@ -68,6 +69,7 @@ COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 ```
 
+```
 #### Example _entrypoint.sh_ file
 
 Using the example Dockerfile above, GitHub will send the `args` configured in the action's metadata file as arguments to `entrypoint.sh`. Add the `#!/bin/sh` [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) at the top of the `entrypoint.sh` file to explicitly use the system's [POSIX](https://en.wikipedia.org/wiki/POSIX)-compliant shell.
@@ -75,6 +77,7 @@ Using the example Dockerfile above, GitHub will send the `args` configured in th
 ```shell
 #!/bin/sh
 
+```
 # `$#` expands to the number of arguments and `$@` expands to the supplied `args`
 printf '%d args:' "$#"
 printf " '%s'" "$@"

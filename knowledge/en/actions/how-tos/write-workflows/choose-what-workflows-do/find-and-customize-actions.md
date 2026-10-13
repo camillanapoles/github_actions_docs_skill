@@ -23,9 +23,9 @@ You can search and browse actions directly in your repository's workflow editor.
 
 1. In your repository, browse to the workflow file you want to edit.
 1. In the upper right corner of the file view, to open the workflow editor, click .
-   ![Screenshot of a workflow file showing the header section. The pencil icon for editing files is highlighted with a dark orange outline.](/assets/images/help/repository/actions-edit-workflow-file.png)
+   ![Screenshot of a workflow file showing the header section. The pencil icon for editing files is highlighted with a dark orange outline.](https://docs.github.com/assets/images/help/repository/actions-edit-workflow-file.png)
 1. To the right of the editor, use the GitHub Marketplace sidebar to browse actions. Actions with the  badge indicate GitHub has verified the creator of the action as a partner organization.
-   ![Screenshot of a workflow in the file editor. The sidebar shows Marketplace actions. A "Creator verified by GitHub" badge is outlined in orange.](/assets/images/help/repository/actions-marketplace-sidebar.png)
+   ![Screenshot of a workflow in the file editor. The sidebar shows Marketplace actions. A "Creator verified by GitHub" badge is outlined in orange.](https://docs.github.com/assets/images/help/repository/actions-marketplace-sidebar.png)
 
 ## Adding an action to your workflow
 
@@ -48,7 +48,7 @@ An action's listing page includes the action's version and the workflow syntax r
 1. Navigate to the action you want to use in your workflow.
 1. Click to view the full marketplace listing for the action.
 1. Under "Installation", click  to copy the workflow syntax.
-   ![Screenshot of the marketplace listing for an action. The "Copy to clipboard" icon for the action is highlighted with a dark orange outline.](/assets/images/help/repository/actions-sidebar-detailed-view.png)
+   ![Screenshot of the marketplace listing for an action. The "Copy to clipboard" icon for the action is highlighted with a dark orange outline.](https://docs.github.com/assets/images/help/repository/actions-sidebar-detailed-view.png)
 1. Paste the syntax as a new step in your workflow. For more information, see [Workflow syntax for GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idsteps#jobsjob_idsteps).
 1. If the action requires you to provide inputs, set them in your workflow. For information on inputs an action might require, see [Using pre-written building blocks in your workflow](find-and-customize-actions.md#using-inputs-and-outputs-with-an-action#using-inputs-and-outputs-with-an-action).
 

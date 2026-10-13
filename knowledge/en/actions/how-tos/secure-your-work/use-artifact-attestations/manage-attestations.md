@@ -25,7 +25,7 @@ When consumers have a verification process in place, deleting an attestation can
 1. Navigate to the repository where the attestation was produced.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. In the left sidebar, under "Management," click ** Attestations**.
 1. The attestations are sorted by creation date, newest first. Use the "Search or filter" bar to search for an attestation or filter the results.
 

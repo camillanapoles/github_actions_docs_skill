@@ -130,12 +130,13 @@ A `aws-actions/configure-aws-credentials` ação recebe um JWT do provedor OIDC 
 * `ROLE-TO-ASSUME`: substitua isso por sua função da AWS. Por exemplo, `arn:aws:iam::1234567890:role/example-role`
 
 ```yaml copy
+```
 # Sample workflow to access AWS resources when workflow is tied to branch
 # The workflow creates a static website using Amazon S3
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 name: AWS example workflow
 on:
   push
@@ -164,6 +165,7 @@ jobs:
           aws s3 cp ./index.html s3://${{ env.BUCKET_NAME }}/
 ```
 
+```
 ## Leitura adicional { #further-reading }
 
 * [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](oidc-with-reusable-workflows.md)

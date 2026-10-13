@@ -21,7 +21,7 @@ Se você tiver `repo: write` acesso a um repositório, poderá exibir uma lista 
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
 
-   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, na seção "Management", clique em **(server) Runners**.
 4. Revise a lista de executores disponíveis para o repositório.
 5. Opcionalmente, para copiar o rótulo de um corredor para usá-lo em um fluxo de trabalho, clique em (More options) à direita do corredor e clique em **Copiar rótulo**.

@@ -51,7 +51,7 @@ No tutorial, primeiro, você criará um arquivo de fluxo de trabalho que usa o c
                This issue is available for anyone to work on.
                **Make sure to reference this issue in your pull request.**
                :sparkles: Thank you for your contribution! :sparkles:
-   ```
+            ```
 
 4. Personalize os parâmetros no seu arquivo do fluxo de trabalho:
    * Substitua `help wanted` em `if: github.event.label.name == 'help wanted'` pelo rótulo no qual deseja trabalhar. Caso deseje trabalhar em mais de um rótulo, separe as condições com `||`. Por exemplo, `if: github.event.label.name == 'bug' || github.event.label.name == 'fix me'` adicionará um comentário sempre que os rótulos `bug` ou `fix me` forem adicionados a um problema.

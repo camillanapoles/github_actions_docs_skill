@@ -39,7 +39,7 @@ GitHub provides a workflow template for Node.js that should work for most Node.j
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Actions**.
 
-   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](/assets/images/help/repository/actions-tab-global-nav-update.png)
+   ![Screenshot of the tabs for the "github/docs" repository. The "Actions" tab is highlighted with an orange outline.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 1. If you already have a workflow in your repository, click **New workflow**.
 1. The "Choose a workflow" page shows a selection of recommended workflow templates. Search for "Node.js".
 1. Filter the selection of workflows by clicking **Continuous integration**.
@@ -75,7 +75,7 @@ GitHub provides a workflow template for Node.js that should work for most Node.j
        - run: npm ci
        - run: npm run build --if-present
        - run: npm test
-   ```
+            ```
 
 1. Edit the workflow as required. For example, change the Node versions you want to use.
 1. Click **Commit changes**.
@@ -268,6 +268,7 @@ steps:
 The following example caches dependencies for pnpm (v6.10+).
 
 ```yaml copy
+```
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -290,6 +291,7 @@ steps:
 
 If you have a custom requirement or need finer controls for caching, you can use the [`cache` action](https://github.com/marketplace/actions/cache). For more information, see [Dependency caching reference](../../reference/workflows-and-actions/dependency-caching.md).
 
+```
 ## Building and testing your code
 
 You can use the same commands that you use locally to build and test your code. For example, if you run `npm run build` to run build steps defined in your `package.json` file and `npm test` to run your test suite, you would add those commands in your workflow file.

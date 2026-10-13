@@ -21,10 +21,10 @@ To create secrets or variables on GitHub for an organization repository, you mus
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 1. In the "Security" section of the sidebar, select ** Secrets and variables**, then click **Actions**.
 1. Click the **Secrets** tab.
-   ![Screenshot of the "Actions secrets and variables" page. The "Secrets" tab is outlined in dark orange.](/assets/images/help/repository/actions-secrets-tab.png)
+   ![Screenshot of the "Actions secrets and variables" page. The "Secrets" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/repository/actions-secrets-tab.png)
 1. Click **New repository secret**.
 1. In the **Name** field, type a name for your secret.
 1. In the **Secret** field, enter the value for your secret.
@@ -57,7 +57,7 @@ To create secrets or variables for an environment in a personal account reposito
 1. On GitHub, navigate to the main page of the repository.
 1. Under your repository name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](/assets/images/help/repository/repo-actions-settings.png)
+   ![Screenshot of a repository header showing the tabs. The "Settings" tab is highlighted by a dark orange outline.](https://docs.github.com/assets/images/help/repository/repo-actions-settings.png)
 1. In the left sidebar, click **Environments**.
 1. Click on the environment that you want to add a secret to.
 1. Under **Environment secrets**, click **Add secret**.
@@ -95,11 +95,11 @@ For more information, see [Permissions of custom organization roles](https://doc
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the "Security" section of the sidebar, select ** Secrets and variables**, then click **Actions**.
 1. Click the **Secrets** tab.
 
-   ![Screenshot of the "Actions secrets and variables" page. The "Secrets" tab is outlined in dark orange.](/assets/images/help/repository/actions-secrets-tab.png)
+   ![Screenshot of the "Actions secrets and variables" page. The "Secrets" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/repository/actions-secrets-tab.png)
 
 !!! note
     The "Actions secrets and variables" page may not show distinct tabs for secrets and variables depending on your permissions. Organization owners and users with both the "Manage organization Actions variables" and "Manage organization Actions secrets" permissions will see the **Variables** and **Secrets** tabs. For more information, see [Permissions of custom organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
@@ -117,7 +117,7 @@ For more information, see [Permissions of custom organization roles](https://doc
 
                 ```shell
     gh auth login --scopes "admin:org"
-    ```
+                ```
 
 To add a secret for an organization, use the `gh secret set` subcommand with the `--org` or `-o` flag followed by the organization name.
 
@@ -150,7 +150,7 @@ You can check which access policies are being applied to a secret in your organi
 1. On GitHub, navigate to the main page of the organization.
 1. Under your organization name, click ** Settings**. If you cannot see the "Settings" tab, select the **** dropdown menu, then click **Settings**.
 
-   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](/assets/images/help/discussions/org-settings-global-nav-update.png)
+   ![Screenshot of the tabs in an organization's profile. The "Settings" tab is outlined in dark orange.](https://docs.github.com/assets/images/help/discussions/org-settings-global-nav-update.png)
 1. In the "Security" section of the sidebar, select ** Secrets and variables**, then click **Actions**.
 1. The list of secrets includes any configured permissions and policies. For more details about the configured permissions for each secret, click **Update**.
 
@@ -227,7 +227,7 @@ To use secrets that are larger than 48 KB, you can use a workaround to store sec
 
             ```shell
    gpg --symmetric --cipher-algo AES256 my_secret.json
-   ```
+            ```
 
 1. You will be prompted to enter a passphrase. Remember the passphrase, because you'll need to create a new secret on GitHub that uses the passphrase as the value.
 
@@ -242,7 +242,7 @@ To use secrets that are larger than 48 KB, you can use a workaround to store sec
             ```shell
    git add my_secret.json.gpg
    git commit -m "Add new secret JSON file"
-   ```
+            ```
 
 1. Create a shell script in your repository to decrypt the secret file. In this example, the script is named `decrypt_secret.sh`.
 
@@ -255,7 +255,7 @@ To use secrets that are larger than 48 KB, you can use a workaround to store sec
    # --yes to assume "yes" for questions
    gpg --quiet --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" \
    --output $HOME/secrets/my_secret.json my_secret.json.gpg
-   ```
+            ```
 
 1. Ensure your shell script is executable before checking it in to your repository.
 
@@ -264,7 +264,7 @@ To use secrets that are larger than 48 KB, you can use a workaround to store sec
    git add decrypt_secret.sh
    git commit -m "Add new decryption script"
    git push
-   ```
+            ```
 
 1. In your GitHub Actions workflow, use a `step` to call the shell script and decrypt the secret. To have a copy of your repository in the environment that your workflow runs in, you'll need to use the [`actions/checkout`](https://github.com/actions/checkout) action. Reference your shell script using the `run` command relative to the root of your repository.
 
@@ -288,7 +288,7 @@ To use secrets that are larger than 48 KB, you can use a workaround to store sec
          # not hide secrets that use this workaround.
          - name: Test printing your secret (Remove this step in production)
            run: cat $HOME/secrets/my_secret.json
-   ```
+            ```
 
 ## Storing Base64 binary blobs as secrets
 
@@ -304,20 +304,20 @@ You can use Base64 encoding to store small binary blobs as secrets. You can then
 
             ```shell
    base64 -i cert.der -o cert.base64
-   ```
+            ```
 
    On Linux, you could run:
 
             ```shell
    base64 -w 0 cert.der > cert.base64
-   ```
+            ```
 
 1. Create a secret that contains the Base64 string. For example:
 
             ```shell
    $ gh secret set CERTIFICATE_BASE64 < cert.base64
    ✓ Set secret CERTIFICATE_BASE64 for octocat/octorepo
-   ```
+            ```
 
 1. To access the Base64 string from your runner, pipe the secret to `base64 --decode`. For example:
 
@@ -339,7 +339,7 @@ You can use Base64 encoding to store small binary blobs as secrets. You can then
          - name: Show certificate information
            run: |
              openssl x509 -in cert.der -inform DER -text -noout
-   ```
+            ```
 
 ## Next steps
 

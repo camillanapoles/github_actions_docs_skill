@@ -74,10 +74,11 @@ Este exemplo contém um trabalho chamado `Get_OIDC_ID_token` que usa ações par
 Essa ação troca um token OIDC GitHub por um token de acesso do Google Cloud usando a [Federação de Identidade de Carga de Trabalho](https://cloud.google.com/iam/docs/workload-identity-federation).
 
 ```yaml copy
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+```
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 name: List services in GCP
 on:
   pull_request:
@@ -105,6 +106,7 @@ jobs:
         gcloud services list
 ```
 
+```
 ## Leitura adicional { #further-reading }
 
 * [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](oidc-with-reusable-workflows.md)

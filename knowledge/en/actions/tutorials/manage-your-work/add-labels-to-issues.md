@@ -48,7 +48,7 @@ In the tutorial, you will first make a workflow file that uses the GitHub CLI. T
               GH_REPO: ${{ github.repository }}
               NUMBER: ${{ github.event.issue.number }}
               LABELS: triage
-    ```
+                ```
 
 1. Customize the `env` values in your workflow file:
    * The `GH_TOKEN`, `GH_REPO`, and `NUMBER` values are automatically set using the `github` and `secrets` contexts. You do not need to change these.
