@@ -202,8 +202,9 @@ def test_C2_todos_os_gatilhos_reexecutaveis_filtram_a_memoria():
             if ignora:      # lista de exclusão precisa citar a memória
                 assert ".session/**" in ignora, f"{wf.name}: {nome} não ignora .session/** (C2)"
             else:           # allowlist: só dispara o que está listado ⇒ memória já está fora
-                assert not any((".session" in p or ".igc" in p) for p in permite), \
-                    f"{wf.name}: {nome} lista a memória no allowlist e causaria loop (C2)"
+                bot = (".session", ".igc-registry.yml", ".ci/")   # o que o commit do bot toca
+                assert not any(any(b in p for b in bot) for p in permite), \
+                    f"{wf.name}: {nome} lista caminho commitado pelo bot e causaria loop (C2)"
 
 
 def test_C1_step_de_checkpoint_nao_faz_push_em_pull_request():

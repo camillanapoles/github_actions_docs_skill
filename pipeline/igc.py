@@ -690,12 +690,25 @@ class SessionMemoryV21(SessionMemory):
         atual = set(self.wal.read_text(encoding="utf-8").splitlines()) if self.wal.exists() else set()
         return all(ln in atual for ln in proc.stdout.splitlines() if ln.startswith("|"))
 
-    def closing_gate(self, *, verificacao_verde: bool, roundtrip_verde: bool | None = None,
+    def measure_verification(self) -> bool:
+        """D14 quitado: verde é medido executando o comando de verificação do profile."""
+        prof, _ = self.profile()
+        cmd = ((prof.get("verificacao") or {}).get("comando") or "").strip()
+        if not cmd:
+            return False
+        rc = subprocess.run(["bash", "-lc", cmd], cwd=self.repo, capture_output=True).returncode
+        self.wal_append("VERIFY-MEDIDA", EventClass.CONTINUE,
+                        "D14: fechamento não pode aceitar verde declarado", cmd, f"exit {rc}")
+        return rc == 0
+
+    def closing_gate(self, *, verificacao_verde: bool | None = None, roundtrip_verde: bool | None = None,
                      territorio_pruned: bool = True, modo: str = "continuidade",
                      skips: list[str] | None = None) -> Envelope:
         """Art. 12: auto-checagem antes de CLOSE. Nota < 9.5 ⇒ não fecha, volta a EXEC."""
         started = time.monotonic()
         cp = self.read_checkpoint()
+        if verificacao_verde is None:                      # D14: medir, nunca aceitar declarado
+            verificacao_verde = self.measure_verification()
         ok_skip, injust = self.skips_justificados(skips or [])
         contexto = (self.dir / "CONTEXT.md")
         checks = {

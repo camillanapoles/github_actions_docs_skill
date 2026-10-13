@@ -1,0 +1,85 @@
+# SPEC do projeto — fonte de verdade do escopo global. O Guardião (gestor único)
+# executa contra esta spec; nada fora dela entra sem emenda registrada no WAL.
+igc_spec: "1"
+contrato: "IGC v2.1"
+projeto: "github_actions_docs_skill"
+objetivo: >-
+  Documentação pt-BR de GitHub Actions extraída do conteúdo principal, organizada em
+  MkDocs navegável, mais uma SKILL com templates completos e válidos (CI/CD, GitOps,
+  DevOps) — entregue em fluxo automático gate-driven, com completude e conformidade
+  medidas e qualidade de entrega impecável.
+
+gestor:
+  unico: "guardian"                 # uma única autoridade de continuidade
+  implementacao: "pipeline/guardian.py"
+  unicidade: "exatamente 1 linhagem ativa no .igc-registry.yml com gestor=guardian"
+  violacao: "2ª linhagem ativa ⇒ CONFLICT (G4) + job vermelho, nunca merge silencioso"
+  issue_unica: "exatamente 1 issue aberta com label pipeline:next"
+
+ralf:                               # ciclo automático por spec
+  fases: [RECONHECER, AGIR, LOGGAR, FECHAR]
+  RECONHECER: "ler spec + registry + CHECKPOINT + WAL + gates medidos + débitos (R1-R6)"
+  AGIR: "escolher a próxima ação pela prioridade da spec (gates > débitos bloqueantes > órfãos > release)"
+  LOGGAR: "entrada no WAL por fase + CHECKPOINT avançado (M1/M4/C1)"
+  FECHAR: "emissão rotulada (A4) com checkpoint_ref + âncora WAL (E3) e contração do efeito (E5)"
+  idempotencia: "chave (event_id, checkpoint) recusa repetição (E4/G2)"
+  agendamento: "guardian.yml — cron + workflow_dispatch"
+
+escopo:
+  dentro:
+    - "knowledge/pt e knowledge/en (conteúdo principal, MkDocs, índice gerado)"
+    - "skills/github-actions (SKILL.md + references + templates + scripts)"
+    - "pipeline gate-driven OO + SQLite + envelopes JSON (status 0-4)"
+    - "memória IGC (.session/, .igc-profile.yml, .igc-registry.yml, .igc-spec.yml)"
+    - "CI/CD: validate, gate-pipeline, guardian, docs-publish, admin-bootstrap, extract-docs"
+  fora:
+    - "scraping HTML como fonte primária (a fonte é a Article API)"
+    - "tradução própria de conteúdo (usa a tradução oficial pt)"
+    - "estado de sessão fora do repositório (A1)"
+
+aceite:                             # mensurável; o Guardião confere item a item
+  - id: AC1
+    criterio: "captura pt e en completas (0 falhas no relatório de extração)"
+    gate: capture
+  - id: AC2
+    criterio: "conformidade: 0 falhas no validador (tabelas, links, cercas, AUTOTITLE)"
+    gate: conformity
+  - id: AC3
+    criterio: "mkdocs build --strict sem avisos (âncoras/links/arquivos órfãos)"
+    gate: site
+  - id: AC4
+    criterio: "SKILL completa: 14 references, 24 templates, 4 scripts presentes e válidos"
+    gate: skill
+  - id: AC5
+    criterio: "suíte verde medida (0 failed; skips justificados — M6)"
+    gate: tests
+  - id: AC6
+    criterio: "1 issue pipeline:next indexando a próxima instrução; 0 issues órfãs"
+    gate: ci-issues
+  - id: AC7
+    criterio: "governança aplicada: required checks (gate-pipeline, validate) + Pages publicado"
+    gate: release
+  - id: AC8
+    criterio: "LICENÇA + NOTICE presentes (D7 quitado)"
+    gate: release
+
+gates:                              # ordem do blueprint (gateway exclusivo no fim)
+  ordem: [tests, capture, conformity, site, skill, ci-issues, release]
+  bloqueantes: [site, capture, conformity, skill, tests]
+  codes: {0: "success→continue", 1: "error_content→fix", 2: "error_infra→retry",
+          3: "pending→continue", 4: "skipped→continue"}
+
+qualidade:                          # PQMS: verde significa verde
+  verde_medido: "closing_gate deriva a verificação executando o comando do profile (D14 quitado)"
+  skip_silencioso: "proibido (M6) — justificativa em profile/INTENT/DEBT"
+  emissao_sem_efeito: "proibida (E5) — EMIT exige referência do efeito criado"
+  emissao_com_vermelho: "anti-padrão Art.12 — registrada no WAL como E2-VIOLACAO"
+  nota_minima_fechamento: 9.5
+
+debitos_bloqueantes: [D1, D5, D6, D10, D15, D16]
+doD:                                # definição de pronto do projeto
+  - "7 gates com status 0/4 no mesmo run"
+  - "release = 0 e PR mergido em main"
+  - "Pages publicado e navegável"
+  - "registry no default branch (D10) e CHECKPOINT avançado pelo próprio CI (C1)"
+  - "Art.12 nota ≥ 9.5 com verificação medida"
