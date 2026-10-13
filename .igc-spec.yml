@@ -76,7 +76,7 @@ qualidade:                          # PQMS: verde significa verde
   emissao_com_vermelho: "anti-padrão Art.12 — registrada no WAL como E2-VIOLACAO"
   nota_minima_fechamento: 9.5
 
-debitos_bloqueantes: [D1, D5, D6, D10, D15, D16]
+debitos_bloqueantes: [D1, D5, D6, D10, D19, D20]
 doD:                                # definição de pronto do projeto
   - "7 gates com status 0/4 no mesmo run"
   - "release = 0 e PR mergido em main"
