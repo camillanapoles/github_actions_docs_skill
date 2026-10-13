@@ -6,6 +6,11 @@ name: validate
 on:
   pull_request:
     branches: [main]
+    paths-ignore:
+      - ".session/**"          # C2: commit [igc-checkpoint] não reexecuta o pipeline
+      - ".igc-profile.yml"
+      - ".igc-registry.yml"
+      - ".ci/**"
   push:
     branches: [main, "arena/**"]
     # C2 (IGC v2.1): o allowlist acima já exclui .session/**, .igc-*.yml e .ci/**,
@@ -114,13 +119,18 @@ jobs:
           set -uo pipefail
           python3 .session/ci_checkpoint.py --run-id "${GITHUB_RUN_ID}" --gate "${GATE_ID:-pipeline}" || true
           rc=${PIPESTATUS[0]:-0}
-          git config user.name "igc-bot"
-          git config user.email "igc-bot@users.noreply.github.com"
-          git add -f .session .igc-registry.yml .ci/igc-checkpoint.json
-          if ! git diff --cached --quiet; then
-            git commit -m "igc(ci): run ${GITHUB_RUN_ID} [igc-checkpoint]" || true
-            git pull --rebase --autostash -X theirs origin "${GITHUB_REF_NAME}" || true
-            git push origin "HEAD:${GITHUB_REF_NAME}" || echo "::warning::push do checkpoint falhou (DEBT)"
+          if [ "${GITHUB_EVENT_NAME:-push}" = "pull_request" ]; then
+            # ref de merge não é branch: memória sai como artefato, nunca push (C1 sem E5 falso)
+            echo "pull_request: checkpoint publicado como artefato (.ci/igc-checkpoint.json)"
+          else
+            git config user.name "igc-bot"
+            git config user.email "igc-bot@users.noreply.github.com"
+            git add -f .session .igc-registry.yml .ci/igc-checkpoint.json
+            if ! git diff --cached --quiet; then
+              git commit -m "igc(ci): run ${GITHUB_RUN_ID} [igc-checkpoint]" || true
+              git pull --rebase --autostash -X theirs origin "${GITHUB_REF_NAME}" || true
+              git push origin "HEAD:${GITHUB_REF_NAME}" || echo "::warning::push do checkpoint falhou (DEBT)"
+            fi
           fi
           # C3: a falha do step de WAL reprova o gate (E2)
           python3 - <<'PYCHK'

@@ -182,3 +182,37 @@ def test_run_blocks_nao_interpolam_contexto_inputs():
             assert "${{ inputs." not in run, (
                 f"{wf.name}::{job_id}::{st.get('name')} interpola inputs.* em run: "
                 "(use env: com github.event.inputs.*)")
+
+
+# --------------------------------------------------------------------- IGC v2.1
+def test_C2_todos_os_gatilhos_reexecutaveis_filtram_a_memoria():
+    """C2: push E pull_request não podem reexecutar por commit [igc-checkpoint]."""
+    for wf in WORKFLOWS:
+        texto = wf.read_text(encoding="utf-8")
+        if "git push" not in texto:
+            continue                      # não commita na branch ⇒ não pode causar loop
+        dados = yaml.safe_load(texto)
+        gatilhos = dados.get("on") or dados.get(True) or {}
+        for nome in ("push", "pull_request"):
+            ev = gatilhos.get(nome)
+            if not isinstance(ev, dict):
+                continue
+            filtro = ev.get("paths-ignore") or ev.get("paths")
+            assert filtro, f"{wf.name}: {nome} sem filtro de caminhos (C2)"
+            texto = " ".join(filtro)
+            assert ".session" in texto or "knowledge" in texto, \
+                f"{wf.name}: {nome} não exclui a memória do IGC (C2)"
+
+
+def test_C1_step_de_checkpoint_nao_faz_push_em_pull_request():
+    """Em PR o checkout é ref de merge: push criaria emissão falsa (E5)."""
+    for wf in WORKFLOWS:
+        s = wf.read_text(encoding="utf-8")
+        if "Checkpoint IGC" not in s:
+            continue
+        bloco = s.split("Checkpoint IGC", 1)[1].split("- name:", 1)[0]
+        assert 'GITHUB_EVENT_NAME' in bloco and "pull_request" in bloco, \
+            f"{wf.name}: step C1 sem guarda de evento"
+        assert bloco.index("pull_request") < bloco.index("git push"), \
+            f"{wf.name}: guarda vem depois do push"
+        assert "[igc-checkpoint]" in bloco and "igc-checkpoint.json" in bloco
