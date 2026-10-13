@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/administer
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos
 ---
 
@@ -16,9 +16,13 @@ _Gerencie as configurações de GitHub Actions da sua organização ou empresa._
 
 ## Links
 
-* [Controlando quem pode executar GitHub Actions fluxos de trabalho](administer/control-workflow-execution.md)
+* [Controle da execução de GitHub Actions fluxos de trabalho](administer/control-workflow-execution.md)
 
   Controle quem pode disparar fluxos de trabalho GitHub Actions e quais eventos podem executá-los em toda a empresa, organização e repositório.
+
+* [Aplicar lockfiles para dependências de ação](administer/enforce-workflow-lockfiles.md)
+
+  Exija os arquivos de bloqueio de dependências do fluxo de trabalho em seus repositórios e mantenha os arquivos atualizados automaticamente.
 
 * [Como ver as métricas do GitHub Actions](administer/view-metrics.md)
 

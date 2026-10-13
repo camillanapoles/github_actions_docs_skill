@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/security/script-injections
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Concepts / Security
 ---
 
-# Injeções de script { #script-injections }
+# Injeções de script
 
 _Entenda os riscos de segurança associados a injeções de script e GitHub Actions fluxos de trabalho._
 
-## Entendendo o risco de injeções de script { #understanding-the-risk-of-script-injections }
+## Entendendo o risco de injeções de script
 
 Ao criar fluxos de trabalho, [ações personalizadas](../workflows-and-actions/custom-actions.md) e [ações compostas](../../tutorials/create-actions/create-a-composite-action.md), você sempre deve considerar se o seu código pode executar entradas não confiáveis de invasores. Isso pode ocorrer quando um invasor adiciona comandos maliciosos e scripts em um contexto. Quando seu fluxo de trabalho é executado, essas strings podem ser interpretadas como código, que então é executado no runner.
 
@@ -26,7 +26,7 @@ Além disso, há outras fontes menos óbvias de entrada potencialmente não conf
 
 As seções a seguir explicam como você pode ajudar a mitigar o risco de injeção de scripts.
 
-### Exemplo de um ataque de injeção de script { #example-of-a-script-injection-attack }
+### Exemplo de um ataque de injeção de script
 
 Um ataque de injeção de script pode ocorrer diretamente dentro do script embutido de um fluxo de trabalho. No exemplo a seguir, uma ação usa uma expressão para testar a validade de um título de pull request mas também adiciona o risco de injeção de script:
 

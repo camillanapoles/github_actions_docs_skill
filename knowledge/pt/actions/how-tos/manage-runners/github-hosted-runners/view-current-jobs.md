@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/github-hosted-runners/view-current-jobs
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Manage runners / Github hosted runners
 ---
 
-# Visualizando suas tarefas atuais { #viewing-your-current-jobs }
+# Visualizando suas tarefas atuais
 
 _Monitore como GitHubos executores hospedados estão processando trabalhos em sua organização ou empresa e identifique quaisquer restrições relacionadas._
 
-## Visualização de trabalhos ativos na sua organização ou empresa { #viewing-active-jobs-in-your-organization-or-enterprise }
+## Visualização de trabalhos ativos na sua organização ou empresa
 
 Você pode obter uma lista de todos os trabalhos atualmente em execução em GitHubexecutores hospedados em sua organização ou empresa.
 
@@ -28,7 +28,7 @@ Você pode obter uma lista de todos os trabalhos atualmente em execução em Git
 
 5. Examine a seção "Trabalhos ativos", que contém uma lista de todos os trabalhos atualmente em execução em GitHubexecutores hospedados.
 
-## Visualizando tarefas em fila na sua organização ou empresa { #viewing-queued-jobs-in-your-organization-or-enterprise }
+## Visualizando tarefas em fila na sua organização ou empresa
 
 GitHubOs executores hospedados permitem que você execute trabalhos simultaneamente e o número máximo de trabalhos simultâneos variará dependendo do seu plano. Se você atingir o número máximo de trabalhos simultâneos, tdos os novos trabalhos começarão a entrar na fila. Para saber mais sobre o número de trabalhos simultâneos disponíveis para seu plano, confira [Cobrança e uso](../../../concepts/billing-and-usage.md).
 

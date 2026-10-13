@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/workflow-syntax
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Reference / Workflows and actions
 ---
 
-# Sintaxe de fluxo de trabalho para o GitHub Actions { #workflow-syntax-for-github-actions }
+# Sintaxe de fluxo de trabalho para o GitHub Actions
 
 _Um fluxo de trabalho é um processo automatizado configurável constituído de um ou mais trabalhos. Você deve criar um arquivo YAML para definir a configuração do seu fluxo de trabalho._
 
-## Sobre sintaxe YAML para fluxos de trabalho { #about-yaml-syntax-for-workflows }
+## Sobre sintaxe YAML para fluxos de trabalho
 
 Os arquivos de fluxo de trabalho usam a sintaxe YAML e precisam ter uma extensão de arquivo `.yml` ou `.yaml`. Se você não estiver familiarizado com o YAML e quiser saber mais, confira [Aprenda a usar o YAML em Y minutos](https://learnxinyminutes.com/docs/yaml/).
 
@@ -34,7 +34,7 @@ GitHub exibe o nome da execução do fluxo de trabalho na lista de execuções d
 
 Esse valor pode incluir expressões e referenciar os contextos [`github`](contexts.md#github-context) e [`inputs`](contexts.md#inputs-context).
 
-### Exemplo de `run-name` { #example-of-run-name }
+### Exemplo de `run-name`
 
 ```yaml
 run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
@@ -46,7 +46,7 @@ Para disparar automaticamente um fluxo de trabalho, use `on` para definir os eve
 
 Você pode definir um ou vários eventos que possam disparar um fluxo de trabalho ou definir um cronograma. Também é possível restringir a execução de um fluxo de trabalho para que ocorra apenas para arquivos, tags ou alterações em branches específicos. Essas opções são descritas nas seções a seguir.
 
-### Usando um evento único { #using-a-single-event }
+### Usando um evento único
 
 Por exemplo, um fluxo de trabalho com o seguinte valor `on` será executado quando um push for feito em qualquer branch no repositório do fluxo de trabalho:
 
@@ -54,7 +54,7 @@ Por exemplo, um fluxo de trabalho com o seguinte valor `on` será executado quan
 on: push
 ```
 
-### Usando eventos múltiplos { #using-multiple-events }
+### Usando eventos múltiplos
 
 É possível especificar um único evento ou vários eventos. Por exemplo, um fluxo de trabalho com o valor `on` a seguir será executado quando um push for feito em qualquer branch no repositório ou quando alguém criar um fork do repositório:
 
@@ -64,7 +64,7 @@ on: [push, fork]
 
 Se você especificar vários eventos, apenas um desses eventos deverá ocorrer para acionar seu fluxo de trabalho. Se vários eventos de acionamento para o seu fluxo de trabalho ocorrerem ao mesmo tempo, várias execuções de fluxo de trabalho serão acionadas.
 
-### Usando tipos de atividade { #using-activity-types }
+### Usando tipos de atividade
 
 Alguns eventos têm tipos de atividade que oferecem mais controle sobre quando o fluxo de trabalho deve ser executado. Use `on.<event_name>.types` para definir o tipo de atividade de evento que vai disparar uma execução de fluxo de trabalho.
 
@@ -89,7 +89,7 @@ on:
 
 Para obter mais informações sobre cada evento e os respectivos tipos de atividade, confira [Eventos que disparam fluxos de trabalho](events-that-trigger-workflows.md).
 
-### Usando filtros { #using-filters }
+### Usando filtros
 
 Alguns eventos têm filtros que dão mais controle sobre quando seu fluxo de trabalho deve ser executado.
 
@@ -103,7 +103,7 @@ on:
       - 'releases/**'
 ```
 
-### Usando tipos de atividade e filtros com vários eventos { #using-activity-types-and-filters-with-multiple-events }
+### Usando tipos de atividade e filtros com vários eventos
 
 Se você especificar tipos de atividade ou filtros para um evento e seu fluxo de trabalho for acionado em vários eventos, você deverá configurar cada evento separadamente. Você deve acrescentar dois-pontos (`:`) a todos os eventos, incluindo eventos sem configuração.
 
@@ -146,7 +146,7 @@ Se você definir `branches`/`branches-ignore` e [`paths`/`paths-ignore`](workflo
 
 As palavras-chave `branches` e `branches-ignore` aceitam padrões glob que usam caracteres como `*`, `**`, `+`, `?`, `!` e outros para corresponder a mais de um nome de branch. Se um nome contiver um desses caracteres e você quiser ter uma correspondência literal, faça escape de cada um desses caracteres especiais com ``. Para saber mais sobre padrões glob, confira o [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#filter-pattern-cheat-sheet).
 
-### Exemplo: Incluindo branches { #example-including-branches }
+### Exemplo: Incluindo branches
 
 Os padrões definidos em `branches` são avaliados em relação ao nome da referência do Git. Por exemplo, o seguinte fluxo de trabalho será executado sempre que houver um evento `pull_request` para uma solicitação de pull direcionada a:
 
@@ -166,7 +166,7 @@ on:
 
 Se um fluxo de trabalho for ignorado devido à filtragem de ramificação, à [filtragem de caminho](workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore) ou a uma [mensagem de confirmação](../../how-tos/manage-workflow-runs/skip-workflow-runs.md), as verificações associadas a esse fluxo de trabalho permanecerão no estado "Pendente". Uma solicitação de pull que exige que essas verificações sejam bem-sucedidas não poderá ser mesclada.
 
-### Exemplo: Excluir branches { #example-excluding-branches }
+### Exemplo: Excluir branches
 
 Quando um padrão corresponder ao padrão `branches-ignore`, o fluxo de trabalho não será executado. Os padrões definidos em `branches-ignore` são avaliados em relação ao nome da referência do Git. Por exemplo, o seguinte fluxo de trabalho será executado sempre que houver um evento `pull_request`, a menos que a solicitação de pull seja direcionada a:
 
@@ -182,7 +182,7 @@ on:
       - 'releases/**-alpha'
 ```
 
-### Exemplo: Incluindo e excluindo branches { #example-including-and-excluding-branches }
+### Exemplo: Incluindo e excluindo branches
 
 Não é possível usar `branches` e `branches-ignore` para filtrar o mesmo evento em um só fluxo de trabalho. Caso deseje incluir e excluir padrões de branch para um só evento, use o filtro `branches` com o caractere `!` para indicar os branches que devem ser excluídos.
 
@@ -211,7 +211,7 @@ Use o filtro `branches` quando quiser incluir padrões de nome de ramificação 
 
 Os filtros `branches` e `branches-ignore` aceitam padrões glob que usam caracteres como `*`, `**`, `+`, `?`, `!` e outros para corresponder a mais de um nome de branch. Se um nome contiver um desses caracteres e você quiser ter uma correspondência literal, faça escape de cada um desses caracteres especiais com ``. Para obter mais informações sobre padrões glob, consulte [Sintaxe de fluxo de trabalho para o GitHub Actions](https://docs.github.com/pt/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet).
 
-### Exemplo: Incluindo branches { #example-including-branches-1 }
+### Exemplo: Incluindo branches
 
 Os padrões definidos em `branches` são avaliados em relação ao nome do branch de destino. Por exemplo, o fluxo de trabalho a seguir será executado sempre que houver um evento `merge_group` para um grupo de merge que tem como destino:
 
@@ -227,7 +227,7 @@ on:
       - 'releases/**'
 ```
 
-### Exemplo: Excluir branches { #example-excluding-branches-1 }
+### Exemplo: Excluir branches
 
 Quando um padrão corresponder ao padrão `branches-ignore`, o fluxo de trabalho não será executado. Os padrões definidos em `branches-ignore` são avaliados em relação ao nome do branch de destino. Por exemplo, o seguinte fluxo de trabalho será executado sempre que ocorrer um evento `merge_group`, a menos que os alvos do grupo de mesclagem:
 
@@ -243,7 +243,7 @@ on:
       - 'releases/**-alpha'
 ```
 
-### Exemplo: Incluindo e excluindo branches { #example-including-and-excluding-branches-1 }
+### Exemplo: Incluindo e excluindo branches
 
 Não é possível usar `branches` e `branches-ignore` para filtrar o mesmo evento em um só fluxo de trabalho. Caso deseje incluir e excluir padrões de branch para um só evento, use o filtro `branches` com o caractere `!` para indicar os branches que devem ser excluídos.
 
@@ -277,7 +277,7 @@ Se você definir apenas `tags`/`tags-ignore` or apenas `branches`/`branches-igno
 
 As palavras-chave `branches`, `branches-ignore`, `tags` e `tags-ignore` aceitam padrões glob que usam caracteres como `*`, `**`, `+`, `?`, `!` e outros para corresponder a mais de um nome de marca ou de branch. Se um nome contiver um desses caracteres e você quiser ter uma correspondência literal, *faça escape* de cada um desses caracteres especiais com ``. Para obter mais informações sobre padrões glob, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#filter-pattern-cheat-sheet).
 
-### Exemplo: Incluindo branches e tags { #example-including-branches-and-tags }
+### Exemplo: Incluindo branches e tags
 
 Os padrões definidos em `branches` e `tags` são avaliados em relação ao nome de referência do Git. Por exemplo, o seguinte fluxo de trabalho será executado sempre que houver um evento `push` para:
 
@@ -301,7 +301,7 @@ on:
       - v1.*
 ```
 
-### Exemplo: Excluindo branches e tags { #example-excluding-branches-and-tags }
+### Exemplo: Excluindo branches e tags
 
 Quando um padrão corresponder ao padrão `branches-ignore` ou `tags-ignore`, o fluxo de trabalho não será executado. Os padrões definidos em `branches` e `tags` são avaliados em relação ao nome de referência do Git. Por exemplo, o seguinte fluxo de trabalho será executado sempre que houver um evento `push`, a menos que o evento `push` seja para:
 
@@ -323,7 +323,7 @@ on:
       - v1.*
 ```
 
-### Exemplo: Incluindo e excluindo branches e tags { #example-including-and-excluding-branches-and-tags }
+### Exemplo: Incluindo e excluindo branches e tags
 
 Não é possível usar `branches` e `branches-ignore` para filtrar o mesmo evento em um fluxo de trabalho individual. Da mesma forma, não é possível usar `tags` e `tags-ignore` para filtrar o mesmo evento em um fluxo de trabalho individual. Caso deseje incluir e excluir padrões de branch para um evento individual, use o filtro `branches` ou `tags` com o caractere `!` para indicar as marcas ou os branches que devem ser excluídos.
 
@@ -360,7 +360,7 @@ Se você definir `branches`/`branches-ignore` e `paths`/`paths-ignore`, o fluxo 
 
 As palavras-chave `paths` e `paths-ignore` aceitam padrões glob que usam os caracteres curinga `*` e `**` para fazer a correspondência com mais de um nome de caminho. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#filter-pattern-cheat-sheet).
 
-### Exemplo: Incluindo caminhos { #example-including-paths }
+### Exemplo: Incluindo caminhos
 
 Se, pelo menos, um caminho corresponder a um padrão no filtro `paths`, o fluxo de trabalho será executado. Por exemplo, o fluxo de trabalho a seguir será executado sempre que você efetuar push de um arquivo JavaScript (`.js`).
 
@@ -373,7 +373,7 @@ on:
 
 Se um fluxo de trabalho for ignorado devido à filtragem de caminho, [à filtragem de ramificação](workflow-syntax.md#onpull_requestpull_request_targetbranchesbranches-ignore) ou a uma [mensagem de confirmação](../../how-tos/manage-workflow-runs/skip-workflow-runs.md), as verificações associadas a esse fluxo de trabalho permanecerão no estado "Pendente". Uma solicitação de pull que exige que essas verificações sejam bem-sucedidas não poderá ser mesclada.
 
-### Exemplo: Excluindo caminhos { #example-excluding-paths }
+### Exemplo: Excluindo caminhos
 
 Quando todos os nomes de caminho corresponderem aos padrões de `paths-ignore`, o fluxo de trabalho não será executado. Se qualquer nome de caminho não corresponder aos padrões de `paths-ignore`, mesmo que alguns nomes de caminho correspondam aos padrões, o fluxo de trabalho será executado.
 
@@ -386,7 +386,7 @@ on:
       - 'docs/**'
 ```
 
-### Exemplo: Incluindo e excluindo caminhos { #example-including-and-excluding-paths }
+### Exemplo: Incluindo e excluindo caminhos
 
 Não é possível usar `paths` e `paths-ignore` para filtrar o mesmo evento em um só fluxo de trabalho. Caso deseje incluir e excluir padrões de caminho para um evento individual, use o filtro `paths` prefixado o caractere `!` para indicar os caminhos que devem ser excluídos.
 
@@ -407,7 +407,7 @@ on:
       - '!sub-project/docs/**'
 ```
 
-### Comparações Git diff { #git-diff-comparisons }
+### Comparações Git diff
 
 O filtro determina se um fluxo de trabalho deve ser executado avaliando os arquivos alterados e executando-os na lista `paths-ignore` ou `paths`. Se não houver arquivos alterados, o fluxo de trabalho não será executado.
 
@@ -505,7 +505,7 @@ No fluxo de trabalho chamado, você pode usar o contexto `inputs` para se referi
 
 Se um fluxo de trabalho de chamada passar uma entrada que não é especificada no fluxo de trabalho de chamada, isso irá gerar um erro.
 
-### Exemplo de `on.workflow_call.inputs` { #example-of-onworkflowcallinputs }
+### Exemplo de `on.workflow_call.inputs`
 
 ```yaml
 on:
@@ -538,7 +538,7 @@ Um mapa de saídas para um fluxo de trabalho chamado. As saídas de fluxo de tra
 
 No exemplo abaixo, duas saídas são definidas para esse fluxo de trabalho reutilizável: `workflow_output1` e `workflow_output2`. Elas são mapeadas para as saídas chamadas `job_output1` e `job_output2`, ambas de um trabalho chamado `my_job`.
 
-### Exemplo de `on.workflow_call.outputs` { #example-of-onworkflowcalloutputs }
+### Exemplo de `on.workflow_call.outputs`
 
 ```yaml
 on:
@@ -566,7 +566,7 @@ No fluxo de trabalho chamado, você pode usar o contexto `secrets` para se refer
 
 Se um fluxo de trabalho de chamada passar um segredo que não é especificado no fluxo de trabalho chamado, isso irá gerar um erro.
 
-### Exemplo de `on.workflow_call.secrets` { #example-of-onworkflowcallsecrets }
+### Exemplo de `on.workflow_call.secrets`
 
 ```yaml
 on:
@@ -697,7 +697,7 @@ O fluxo de trabalho disparado recebe os dados de entrada no contexto `inputs`. P
     * O número máximo de propriedades de nível superior é `inputs` 25 .
     * O conteúdo máximo para `inputs` é de 65.535 caracteres.
 
-### Exemplo de `on.workflow_dispatch.inputs` { #example-of-onworkflowdispatchinputs }
+### Exemplo de `on.workflow_dispatch.inputs`
 
 ```yaml
 on:
@@ -777,7 +777,7 @@ Permissões disponíveis e detalhes do que cada uma permite que uma ação faça
 | `statuses` | Trabalhar com status de commits. Por exemplo, `statuses:read` permite que uma ação liste os status de commit de uma determinada referência. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses). |
 | `vulnerability-alerts` | Leia os alertas do Dependabot. Por exemplo, `vulnerability-alerts: read` permite que uma ação liste os alertas do Dependabot para o repositório. Somente `read` e `none` há suporte; `write` não é válido. Quando `write-all` ou `read-all` é usado, `vulnerability-alerts` é incluído automaticamente como `read`. Para obter mais informações, consulte [as permissões do Repositório para "Alertas do Dependabot"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
 
-### Definindo o acesso para os escopos do `GITHUB_TOKEN` { #defining-access-for-the-githubtoken-scopes }
+### Definindo o acesso para os escopos do `GITHUB_TOKEN`
 
 Você pode definir o acesso que o `GITHUB_TOKEN` permitirá especificando `read`, `write` ou `none` como o valor das permissões disponíveis na chave `permissions`.
 
@@ -820,19 +820,19 @@ Você pode usar a seguinte sintaxe para desabilitar as permissões para todas as
 permissions: {}
 ```
 
-#### Alterar as permissões em um repositório bifurcado { #changing-the-permissions-in-a-forked-repository }
+#### Alterar as permissões em um repositório bifurcado
 
 Você pode usar a tecla `permissions` para adicionar e remover permissões de leitura de repositórios derivados (forks), mas normalmente não pode conceder acesso de gravação. A exceção a esse comportamento ocorre quando um usuário administrador seleciona a opção **Enviar tokens de gravação para fluxos de trabalho a partir de pull requests** nas GitHub Actions configurações. Para saber mais, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#enabling-workflows-for-forks-of-private-repositories).
 
-### Como as permissões são calculadas para um trabalho de fluxo de trabalho { #how-permissions-are-calculated-for-a-workflow-job }
+### Como as permissões são calculadas para um trabalho de fluxo de trabalho
 
 Inicialmente, as permissões para o `GITHUB_TOKEN` são definidas como a configuração padrão para a empresa, a organização ou o repositório. Se o padrão for definido como permissões restritas em qualquer um desses níveis, isso irá aplicar-se aos repositórios relevantes. Por exemplo, Se você escolher o padrão restrito no nível da organização, todos os repositórios nessa organização usarão as permissões restritas como padrão. As permissões serão, então, ajustadas com base em qualquer configuração dentro do arquivo de fluxo de trabalho, primeiro no nível de fluxo de trabalho e, em seguida, no nível de trabalho. Por fim, se o fluxo de trabalho foi disparado por um evento de solicitação pull que não seja `pull_request_target` de um repositório com fork e a configuração **Enviar tokens de gravação para fluxos de trabalho por meio de solicitações pull** não está selecionada, as permissões são ajustadas para alterar as permissões de gravação para somente leitura.
 
-### Definir as permissões do `GITHUB_TOKEN` para todos os trabalhos em um fluxo de trabalho { #setting-the-githubtoken-permissions-for-all-jobs-in-a-workflow }
+### Definir as permissões do `GITHUB_TOKEN` para todos os trabalhos em um fluxo de trabalho
 
 Você pode especificar `permissions` no nível superior de um fluxo de trabalho para que a configuração se aplique a todos os trabalhos no fluxo de trabalho.
 
-#### Exemplo: definir as permissões do `GITHUB_TOKEN` para um fluxo de trabalho inteiro { #example-setting-the-githubtoken-permissions-for-an-entire-workflow }
+#### Exemplo: definir as permissões do `GITHUB_TOKEN` para um fluxo de trabalho inteiro
 
 Este exemplo mostra as permissões que estão sendo definidas para o `GITHUB_TOKEN` que se aplicará a todos os trabalhos no fluxo de trabalho. É concedido acesso de leitura a todas as permissões.
 
@@ -847,11 +847,11 @@ jobs:
   ...
 ```
 
-### Como usar a chave `permissions` para repositórios bifurcados { #using-the-permissions-key-for-forked-repositories }
+### Como usar a chave `permissions` para repositórios bifurcados
 
 Além disso, você pode usar a chave `permissions` para adicionar e remover permissões de `read` para repositórios com fork, mas normalmente não pode permitir acesso de `write`. A exceção a esse comportamento é quando um usuário administrador selecionou a opção **Enviar tokens de gravação para fluxos de trabalho de solicitações pull** nas configurações do GitHub Actions. Para saber mais, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#enabling-workflows-for-forks-of-private-repositories).
 
-### Permissões para execuções de fluxo de trabalho disparadas por Dependabot { #permissions-for-workflow-runs-triggered-by-dependabot }
+### Permissões para execuções de fluxo de trabalho disparadas por Dependabot
 
 As execuções de fluxo de trabalho disparadas por solicitações de pull Dependabot são executadas como se fossem de um repositório bifurcado e, portanto, usam `GITHUB_TOKEN` somente leitura. Estas execuções de fluxo de trabalho não podem acessar nenhum segredo. Para obter mais informações sobre as estratégias para manter esses fluxos de trabalho seguros, confira [Referência de uso seguro](../security/secure-use.md).
 
@@ -863,7 +863,7 @@ As variáveis no mapa `env` não podem ser definidas em termos de outras variáv
 
 Quando mais de uma variável de ambiente é definida com o mesmo nome, GitHub usa a variável mais específica. Por exemplo, uma variável de ambiente definida em uma etapa substituirá as variáveis de ambiente do trabalho e do fluxo de trabalho que tenham o mesmo nome enquanto a etapa é executada. Uma variável de ambiente definida para um trabalho substituirá uma variável de fluxo de trabalho com o mesmo nome enquanto o trabalho é executado.
 
-### Exemplo de `env` { #example-of-env }
+### Exemplo de `env`
 
 ```yaml
 env:
@@ -882,7 +882,7 @@ Você pode usar `defaults.run` para fornecer as opções `shell` e `working-dire
 
 Quando mais de uma configuração padrão é definida com o mesmo nome, GitHub usa a configuração padrão mais específica. Por exemplo, uma configuração padrão definida em uma tarefa irá substituir uma configuração padrão que tem o mesmo nome definido em um fluxo de trabalho.
 
-### Exemplo: Defina o shell padrão e o diretório de trabalho { #example-set-the-default-shell-and-working-directory }
+### Exemplo: Defina o shell padrão e o diretório de trabalho
 
 ```yaml
 defaults:
@@ -937,7 +937,7 @@ A combinação de `queue: max` e `cancel-in-progress: true` não é permitida e 
     * O nome do grupo de simultaneidade não diferencia maiúsculas de minúsculas. Por exemplo, `prod` e `Prod` serão tratados como o mesmo grupo de simultaneidade.
     * Trabalhos ou execuções de fluxo de trabalho no mesmo grupo de simultaneidade são processados na ordem de primeiro a entrar em primeiro lugar (FIFO), de acordo com o momento em que cada um começou a esperar no grupo de simultaneidade, não o tempo em que cada fluxo de trabalho foi expedido. Como o horário de início efetivo de um trabalho ou execução pode variar, a ordenação não é garantida.
 
-### Exemplos: Usar a simultaneidade e o comportamento padrão { #example-using-concurrency-and-the-default-behavior }
+### Exemplos: Usar a simultaneidade e o comportamento padrão
 
 O comportamento GitHub Actions padrão é permitir que vários trabalhos ou execuções de fluxo de trabalho sejam executados simultaneamente. A palavra-chave `concurrency` permite controlar a simultaneidade de execuções de fluxo de trabalho.
 
@@ -970,7 +970,7 @@ jobs:
       cancel-in-progress: true
 ```
 
-### Exemplo: grupos de concorrência { #example-concurrency-groups }
+### Exemplo: grupos de concorrência
 
 Os grupos de simultaneidade fornecem uma maneira de gerenciar e limitar a execução de fluxos de trabalho ou tarefas que compartilham a mesma chave de simultaneidade.
 
@@ -1004,7 +1004,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: Enfileirando várias tarefas pendentes { #example-queueing-multiple-pending-runs }
+### Exemplo: Enfileirando várias tarefas pendentes
 
 Por padrão, apenas uma execução de tarefa ou de fluxo de trabalho pode estar `pending` em um grupo de simultaneidade por vez. Para permitir várias execuções na fila em vez de serem canceladas, defina `queue: max`. Com `queue: max`, até 100 trabalhos ou execuções de fluxo de trabalho podem aguardar no grupo de simultaneidade; depois que a fila estiver cheia, quaisquer execuções adicionais são canceladas.
 
@@ -1023,7 +1023,7 @@ concurrency:
 
 Observe que `queue: max` não pode ser combinado com `cancel-in-progress: true`, porque as duas opções descrevem comportamentos conflitantes para lidar com execuções em andamento.
 
-### Exemplo: Usar a concorrência para cancelar qualquer trabalho em andamento ou em execução { #example-using-concurrency-to-cancel-any-in-progress-job-or-run }
+### Exemplo: Usar a concorrência para cancelar qualquer trabalho em andamento ou em execução
 
 Para usar a simultaneidade para cancelar qualquer trabalho em andamento GitHub Actions ou execução, você pode usar a tecla `concurrency` com a opção `cancel-in-progress` definida como `true`:
 
@@ -1035,7 +1035,7 @@ concurrency:
 
 Observe que, neste exemplo, sem definir um grupo de simultaneidade específico, GitHub Actions cancelará a execução de qualquer trabalho ou fluxo de trabalho em andamento.
 
-### Exemplo: Usando um valor para segunda opção { #example-using-a-fallback-value }
+### Exemplo: Usando um valor para segunda opção
 
 Se você construir o nome do grupo com uma propriedade que só é definida para eventos específicos, você pode usar um valor de segunda opção. Por exemplo, `github.head_ref` só é definido em eventos `pull_request`. Se o fluxo de trabalho responder a outros eventos além de eventos `pull_request`, você precisará fornecer um fallback para evitar um erro de sintaxe. O grupo de simultaneidade a seguir cancela os trabalhos em andamento ou é executado somente em eventos `pull_request`. Se `github.head_ref` for indefinido, o grupo de simultaneidade fará fallback para a ID de execução, que tem a garantia de ser exclusiva e definida para a execução.
 
@@ -1045,7 +1045,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: Cancele somente tarefas em andamento ou execuções no fluxo de trabalho atual { #example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow }
+### Exemplo: Cancele somente tarefas em andamento ou execuções no fluxo de trabalho atual
 
 Se você tiver vários fluxos de trabalho no mesmo repositório, os nomes dos grupos de execução concorrente devem ser únicos em todos os fluxos de trabalho para evitar o cancelamento de tarefas ou execuções em andamento de outros fluxos de trabalho. Caso contrário, qualquer trabalho em andamento ou pendente será cancelado, independentemente do fluxo de trabalho.
 
@@ -1057,7 +1057,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: cancelar apenas trabalhos em andamento em ramificações específicas { #example-only-cancel-in-progress-jobs-on-specific-branches }
+### Exemplo: cancelar apenas trabalhos em andamento em ramificações específicas
 
 Se você quiser cancelar trabalhos em andamento em determinadas ramificações, mas não em outras, poderá usar expressões condicionais com `cancel-in-progress`. Por exemplo, é possível fazer isso se quiser cancelar trabalhos em andamento em branches de desenvolvimento, mas não em branches de lançamento.
 
@@ -1092,7 +1092,7 @@ Se você omitir `cache-mode`, um `read` ou `write` padrão será usado com base 
 
 Quando uma operação de cache não é permitida pelo modo efetivo, a etapa de cache registra uma mensagem informativa e continua. A tarefa e o fluxo de trabalho não falham. Uma restauração ignorada é tratada como uma falha de cache; um salvamento ignorado simplesmente não é realizado. Para saber mais, confira [Referência do cache de dependência](dependency-caching.md#controlling-cache-access-with-cache-mode).
 
-### Exemplo de `cache-mode` { #example-of-cache-mode }
+### Exemplo de `cache-mode`
 
 ```yaml
 cache-mode: read
@@ -1122,7 +1122,7 @@ Se você precisar encontrar o identificador exclusivo de um trabalho em execuç�
 
 Use `jobs.<job_id>` para fornecer ao seu trabalho um identificador exclusivo. A chave `job_id` é uma cadeia de caracteres, e o valor dela é um mapa dos dados de configuração do trabalho. Você precisa substituir `<job_id>` por uma cadeia de caracteres exclusiva para o objeto `jobs`. A `<job_id>` precisa começar com uma letra ou `_` e conter apenas caracteres alfanuméricos, `-` ou `_`.
 
-### Exemplo: Criando trabalhos { #example-creating-jobs }
+### Exemplo: Criando trabalhos
 
 Neste exemplo, dois trabalhos foram criados, e os valores de `job_id` são `my_first_job` e `my_second_job`.
 
@@ -1169,7 +1169,7 @@ Permissões disponíveis e detalhes do que cada uma permite que uma ação faça
 | `statuses` | Trabalhar com status de commits. Por exemplo, `statuses:read` permite que uma ação liste os status de commit de uma determinada referência. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses). |
 | `vulnerability-alerts` | Leia os alertas do Dependabot. Por exemplo, `vulnerability-alerts: read` permite que uma ação liste os alertas do Dependabot para o repositório. Somente `read` e `none` há suporte; `write` não é válido. Quando `write-all` ou `read-all` é usado, `vulnerability-alerts` é incluído automaticamente como `read`. Para obter mais informações, consulte [as permissões do Repositório para "Alertas do Dependabot"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
 
-### Definindo o acesso para os escopos do `GITHUB_TOKEN` { #defining-access-for-the-githubtoken-scopes-1 }
+### Definindo o acesso para os escopos do `GITHUB_TOKEN`
 
 Você pode definir o acesso que o `GITHUB_TOKEN` permitirá especificando `read`, `write` ou `none` como o valor das permissões disponíveis na chave `permissions`.
 
@@ -1212,11 +1212,11 @@ Você pode usar a seguinte sintaxe para desabilitar as permissões para todas as
 permissions: {}
 ```
 
-#### Alterar as permissões em um repositório bifurcado { #alterar-as-permissões-em-um-repositório-bifurcado-1 } { #changing-the-permissions-in-a-forked-repository-1 }
+#### Alterar as permissões em um repositório bifurcado
 
 Você pode usar a tecla `permissions` para adicionar e remover permissões de leitura de repositórios derivados (forks), mas normalmente não pode conceder acesso de gravação. A exceção a esse comportamento ocorre quando um usuário administrador seleciona a opção **Enviar tokens de gravação para fluxos de trabalho a partir de pull requests** nas GitHub Actions configurações. Para saber mais, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#enabling-workflows-for-forks-of-private-repositories).
 
-#### Exemplo: definir as permissões do `GITHUB_TOKEN` para um trabalho em um fluxo de trabalho { #example-setting-the-githubtoken-permissions-for-one-job-in-a-workflow }
+#### Exemplo: definir as permissões do `GITHUB_TOKEN` para um trabalho em um fluxo de trabalho
 
 Este exemplo mostra as permissões que estão sendo definidas para o `GITHUB_TOKEN` que se aplicará somente ao trabalho chamado `stale`. O acesso de gravação é permitido para as permissões `issues` e `pull-requests`. Nenhuma outra permissão terá acesso.
 
@@ -1237,7 +1237,7 @@ jobs:
 
 Use `jobs.<job_id>.needs` para identificar todos os trabalhos que precisam ser concluídos com êxito antes que este trabalho seja executado. Esse código pode ser uma string ou array de strings. Se houver falha em um trabalho ou ele for ignorado, todos os trabalhos que dependem dele serão ignorados, a menos que os trabalhos usem uma expressão condicional que faça o trabalho continuar. Se uma execução contiver uma série de trabalhos que precisem uns dos outros, uma falha ou omissão se aplicará a todos os trabalhos na cadeia de dependência do ponto de falha ou omissão em diante. Se quiser que um trabalho seja executado mesmo que um trabalho do qual ele dependa não seja bem-sucedido, use a expressão condicional `always()` em `jobs.<job_id>.if`.
 
-### Exemplo: Exigir que as tarefas dependentes sejam concluídas com êxito { #example-requiring-successful-dependent-jobs }
+### Exemplo: Exigir que as tarefas dependentes sejam concluídas com êxito
 
 ```yaml
 jobs:
@@ -1256,7 +1256,7 @@ Os trabalhos neste exemplo são executados sequencialmente:
 2. `job2`
 3. `job3`
 
-### Exemplo: Sem exigir a conclusão bem-sucedida de tarefas dependentes { #example-not-requiring-successful-dependent-jobs }
+### Exemplo: Sem exigir a conclusão bem-sucedida de tarefas dependentes
 
 ```yaml
 jobs:
@@ -1287,7 +1287,7 @@ if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
 
 Para obter mais informações, consulte [Avaliar expressões em fluxos de trabalho e ações](expressions.md).
 
-### Exemplo: Somente executar o trabalho para um repositório específico { #example-only-run-job-for-specific-repository }
+### Exemplo: Somente executar o trabalho para um repositório específico
 
 Este exemplo usa `if` para controlar quando o trabalho `production-deploy` pode ser executado. Ele só será executado se o repositório for chamado `octo-repo-prod` e estiver na organização `octo-org`. Caso contrário, o trabalho será marcado como *ignorado*.
 
@@ -1324,7 +1324,7 @@ Use `jobs.<job_id>.runs-on` para definir o tipo de computador no qual o trabalho
 
         ```yaml
   runs-on: [self-hosted, linux, x64, gpu]
-        ```
+  ```
 
   Para obter mais informações, confira [Como escolher executores auto-hospedados](#choosing-self-hosted-runners).
 
@@ -1346,14 +1346,14 @@ Use `jobs.<job_id>.runs-on` para definir o tipo de computador no qual o trabalho
       runs-on: [self-hosted, "${{ inputs.chosen-os }}"]
       steps:
       - run: echo Hello world!
-        ```
+  ```
 
 * Se você quiser executar seu fluxo de trabalho em vários computadores, use [`jobs.<job_id>.strategy`](workflow-syntax.md#jobsjob_idstrategy).
 
 !!! note
     Aspas não são necessárias em torno de cadeias de caracteres simples como`self-hosted`, mas são necessárias para expressões como`"${{ inputs.chosen-os }}"` .
 
-### Escolher executores hospedados em GitHub { #choosing-github-hosted-runners }
+### Escolher executores hospedados em GitHub
 
 Se você usar um runner hospedado em GitHub, cada tarefa será executada em uma nova instância de uma imagem do runner especificada por `runs-on`.
 
@@ -1361,7 +1361,7 @@ O valor de runs-on, quando você estiver usando um runner hospedado pelo GitHub,
 
 Para saber mais, confira [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md).
 
-### Executores padrão hospedados GitHubpara repositórios públicos { #standard-github-hosted-runners-for-public-repositories }
+### Executores padrão hospedados GitHubpara repositórios públicos
 
 Para repositórios públicos, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados com as especificações associadas.
 Com exceção dos executores de CPU única, cada executor hospedado por GitHub é uma nova máquina virtual (VM) hospedada por GitHub. Processos de CPU única são hospedados em um contêiner em uma VM compartilhada—consulte [Referência de executores hospedados pelo GitHub](../runners/github-hosted-runners.md#single-cpu-runners). O uso dos executores hospedados padrão GitHubé gratuito e ilimitado em repositórios públicos.
@@ -1424,7 +1424,7 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
 </tr>
 ```
 
-### Executores hospedados padrão GitHubpara  privados { #standard-github-hosted-runners-for-internal-and-private-repositories }
+### Executores hospedados padrão GitHubpara  privados
 
 Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a alocação de minutos gratuitos da sua GitHub conta e, posteriormente, são cobrados a taxas por minuto de uso. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
@@ -1494,7 +1494,7 @@ Além dos executores padrão hospedados em GitHub, GitHub oferece aos clientes d
     [!WARNING]
     As imagens beta e preteridas são fornecidas “no estado em que se encontram”, “com todas as falhas” e “conforme disponível” e são excluídas do contrato de nível de serviço e da garantia. As imagens beta podem não estar cobertas pelo suporte ao cliente.
 
-#### Exemplo: Especificar um sistema operacional { #example-specifying-an-operating-system }
+#### Exemplo: Especificar um sistema operacional
 
 ```yaml
 runs-on: ubuntu-latest
@@ -1502,7 +1502,7 @@ runs-on: ubuntu-latest
 
 Para saber mais, confira [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md).
 
-### Escolhendo executores auto-hospedados { #choosing-self-hosted-runners }
+### Escolhendo executores auto-hospedados
 
 Para especificar um executor auto-hospedado para uma tarefa, configure `runs-on` no arquivo do fluxo de trabalho utilizando rótulos do executor auto-hospedado.
 
@@ -1510,7 +1510,7 @@ Os executores auto-hospedados podem ter o rótulo `self-hosted`. Ao configurar u
 
 > [!NOTE] Actions Runner Controller não dá suporte ao `self-hosted` rótulo.
 
-#### Exemplo: Usando etiquetas para seleção do executor { #example-using-labels-for-runner-selection }
+#### Exemplo: Usando etiquetas para seleção do executor
 
 ```yaml
 runs-on: [self-hosted, linux]
@@ -1518,13 +1518,13 @@ runs-on: [self-hosted, linux]
 
 Para saber mais, confira [Executores auto-hospedados](../../concepts/runners/self-hosted-runners.md) e [Usar os executores auto-hospedados em um fluxo de trabalho](../../how-tos/manage-runners/self-hosted-runners/use-in-a-workflow.md).
 
-### Escolher executores em um grupo { #choosing-runners-in-a-group }
+### Escolher executores em um grupo
 
 Você pode usar `runs-on` para direcionar grupos de executores para que o trabalho seja executado em qualquer executor que seja membro desse grupo. Para um controle mais granular, você também pode combinar grupos de executores com rótulos.
 
 Os grupos de executores só podem ter [executor avançados](../../concepts/runners/larger-runners.md) ou [executores auto-hospedados](../../how-tos/manage-runners/self-hosted-runners.md) como membros.
 
-#### Exemplo: usar grupos para controlar onde os trabalhos são executados { #example-combining-groups-and-labels }
+#### Exemplo: usar grupos para controlar onde os trabalhos são executados
 
 Neste exemplo, foram adicionados executores a um grupo chamado `build-runners`. A chave `runs-on` envia o trabalho para qualquer executor disponível no grupo `build-runners`:
 
@@ -1544,7 +1544,7 @@ jobs:
       - run: bats -v
 ```
 
-#### Exemplo: combinar grupos e rótulos { #example-using-prefixes-to-differentiate-runner-groups }
+#### Exemplo: combinar grupos e rótulos
 
 Quando você combina grupos e rótulos, o executor deve atender aos dois requisitos para ser qualificado para executar o trabalho.
 
@@ -1586,13 +1586,13 @@ Você pode fornecer o ambiente como apenas o ambiente `name` ou como um objeto d
 !!! note
     Todas as regras de proteção para implantação têm de ser aprovadas para que um trabalho que faça referência ao ambiente seja enviado a um executor. Para saber mais, confira [Gerenciar ambientes para implantação](../../how-tos/deploy/configure-and-manage-deployments/manage-environments.md).
 
-### Exemplo: Usando um único nome de ambiente { #example-using-a-single-environment-name }
+### Exemplo: Usando um único nome de ambiente
 
 ```yaml
 environment: staging_environment
 ```
 
-### Exemplo: Usando o nome de ambiente e URL { #example-using-environment-name-and-url }
+### Exemplo: Usando o nome de ambiente e URL
 
 ```yaml
 environment:
@@ -1602,7 +1602,7 @@ environment:
 
 O valor de `url` pode ser uma expressão. Contextos de expressão permitidos: [`github`](contexts.md#github-context), [`inputs`](contexts.md#inputs-context), [`vars`](contexts.md#vars-context), [`needs`](contexts.md#needs-context), [`strategy`](contexts.md#strategy-context), [`matrix`](contexts.md#matrix-context), [`job`](contexts.md#job-context), [`runner`](contexts.md#runner-context), [`env`](contexts.md#env-context) e [`steps`](contexts.md#steps-context). Para obter mais informações sobre expressões, confira [Avaliar expressões em fluxos de trabalho e ações](expressions.md).
 
-### Exemplo: Usando a saída como URL { #example-using-output-as-url }
+### Exemplo: Usando a saída como URL
 
 ```yaml
 environment:
@@ -1612,14 +1612,14 @@ environment:
 
 O valor de `name` pode ser uma expressão. Contextos de expressão permitidos: [`github`](contexts.md#github-context), [`inputs`](contexts.md#inputs-context), [`vars`](contexts.md#vars-context), [`needs`](contexts.md#needs-context), [`strategy`](contexts.md#strategy-context) e [`matrix`](contexts.md#matrix-context). Para obter mais informações sobre expressões, confira [Avaliar expressões em fluxos de trabalho e ações](expressions.md).
 
-### Exemplo: usando uma expressão como nome de ambiente { #example-using-an-expression-as-environment-name }
+### Exemplo: usando uma expressão como nome de ambiente
 
 ```yaml
 environment:
   name: ${{ github.ref_name }}
 ```
 
-### Exemplo: usar um ambiente sem criar uma implantação { #example-using-an-environment-without-creating-a-deployment }
+### Exemplo: usar um ambiente sem criar uma implantação
 
 Defina `deployment` para `false` usar os segredos e variáveis de um ambiente sem criar um objeto de implantação.
 
@@ -1653,7 +1653,7 @@ A combinação de `queue: max` e `cancel-in-progress: true` não é permitida e 
     * O nome do grupo de simultaneidade não diferencia maiúsculas de minúsculas. Por exemplo, `prod` e `Prod` serão tratados como o mesmo grupo de simultaneidade.
     * Trabalhos ou execuções de fluxo de trabalho no mesmo grupo de simultaneidade são processados na ordem de primeiro a entrar em primeiro lugar (FIFO), de acordo com o momento em que cada um começou a esperar no grupo de simultaneidade, não o tempo em que cada fluxo de trabalho foi expedido. Como o horário de início efetivo de um trabalho ou execução pode variar, a ordenação não é garantida.
 
-### Exemplos: Usar a simultaneidade e o comportamento padrão { #exemplos-usar-a-simultaneidade-e-o-comportamento-padrão-1 } { #example-using-concurrency-and-the-default-behavior-1 }
+### Exemplos: Usar a simultaneidade e o comportamento padrão
 
 O comportamento GitHub Actions padrão é permitir que vários trabalhos ou execuções de fluxo de trabalho sejam executados simultaneamente. A palavra-chave `concurrency` permite controlar a simultaneidade de execuções de fluxo de trabalho.
 
@@ -1686,7 +1686,7 @@ jobs:
       cancel-in-progress: true
 ```
 
-### Exemplo: grupos de concorrência { #exemplo-grupos-de-concorrência-1 } { #example-concurrency-groups-1 }
+### Exemplo: grupos de concorrência
 
 Os grupos de simultaneidade fornecem uma maneira de gerenciar e limitar a execução de fluxos de trabalho ou tarefas que compartilham a mesma chave de simultaneidade.
 
@@ -1720,7 +1720,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: Enfileirando várias tarefas pendentes { #exemplo-enfileirando-várias-tarefas-pendentes-1 } { #example-queueing-multiple-pending-runs-1 }
+### Exemplo: Enfileirando várias tarefas pendentes
 
 Por padrão, apenas uma execução de tarefa ou de fluxo de trabalho pode estar `pending` em um grupo de simultaneidade por vez. Para permitir várias execuções na fila em vez de serem canceladas, defina `queue: max`. Com `queue: max`, até 100 trabalhos ou execuções de fluxo de trabalho podem aguardar no grupo de simultaneidade; depois que a fila estiver cheia, quaisquer execuções adicionais são canceladas.
 
@@ -1739,7 +1739,7 @@ concurrency:
 
 Observe que `queue: max` não pode ser combinado com `cancel-in-progress: true`, porque as duas opções descrevem comportamentos conflitantes para lidar com execuções em andamento.
 
-### Exemplo: Usar a concorrência para cancelar qualquer trabalho em andamento ou em execução { #exemplo-usar-a-concorrência-para-cancelar-qualquer-trabalho-em-andamento-ou-em-execução-1 } { #example-using-concurrency-to-cancel-any-in-progress-job-or-run-1 }
+### Exemplo: Usar a concorrência para cancelar qualquer trabalho em andamento ou em execução
 
 Para usar a simultaneidade para cancelar qualquer trabalho em andamento GitHub Actions ou execução, você pode usar a tecla `concurrency` com a opção `cancel-in-progress` definida como `true`:
 
@@ -1751,7 +1751,7 @@ concurrency:
 
 Observe que, neste exemplo, sem definir um grupo de simultaneidade específico, GitHub Actions cancelará a execução de qualquer trabalho ou fluxo de trabalho em andamento.
 
-### Exemplo: Usando um valor para segunda opção { #exemplo-usando-um-valor-para-segunda-opção-1 } { #example-using-a-fallback-value-1 }
+### Exemplo: Usando um valor para segunda opção
 
 Se você construir o nome do grupo com uma propriedade que só é definida para eventos específicos, você pode usar um valor de segunda opção. Por exemplo, `github.head_ref` só é definido em eventos `pull_request`. Se o fluxo de trabalho responder a outros eventos além de eventos `pull_request`, você precisará fornecer um fallback para evitar um erro de sintaxe. O grupo de simultaneidade a seguir cancela os trabalhos em andamento ou é executado somente em eventos `pull_request`. Se `github.head_ref` for indefinido, o grupo de simultaneidade fará fallback para a ID de execução, que tem a garantia de ser exclusiva e definida para a execução.
 
@@ -1761,7 +1761,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: Cancele somente tarefas em andamento ou execuções no fluxo de trabalho atual { #exemplo-cancele-somente-tarefas-em-andamento-ou-execuções-no-fluxo-de-trabalho-atual-1 } { #example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow-1 }
+### Exemplo: Cancele somente tarefas em andamento ou execuções no fluxo de trabalho atual
 
 Se você tiver vários fluxos de trabalho no mesmo repositório, os nomes dos grupos de execução concorrente devem ser únicos em todos os fluxos de trabalho para evitar o cancelamento de tarefas ou execuções em andamento de outros fluxos de trabalho. Caso contrário, qualquer trabalho em andamento ou pendente será cancelado, independentemente do fluxo de trabalho.
 
@@ -1773,7 +1773,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: cancelar apenas trabalhos em andamento em ramificações específicas { #exemplo-cancelar-apenas-trabalhos-em-andamento-em-ramificações-específicas-1 } { #example-only-cancel-in-progress-jobs-on-specific-branches-1 }
+### Exemplo: cancelar apenas trabalhos em andamento em ramificações específicas
 
 Se você quiser cancelar trabalhos em andamento em determinadas ramificações, mas não em outras, poderá usar expressões condicionais com `cancel-in-progress`. Por exemplo, é possível fazer isso se quiser cancelar trabalhos em andamento em branches de desenvolvimento, mas não em branches de lançamento.
 
@@ -1798,7 +1798,7 @@ Os valores aceitos são`read`, , `write``write-only`e `none`, com os mesmos sign
 
 Você também pode definir `cache-mode` em um trabalho que chama um fluxo de trabalho reutilizável para limitar o acesso de cache concedido ao fluxo de trabalho chamado. Para saber mais, confira [Reutilizando configurações de fluxo de trabalho](reusing-workflow-configurations.md#supported-keywords-for-jobs-that-call-a-reusable-workflow) e [Reutilizar fluxos de trabalho](../../how-tos/reuse-automations/reuse-workflows.md#controlling-cache-access-in-reusable-workflows).
 
-### Exemplo de `jobs.<job_id>.cache-mode` { #example-of-jobsjobidcache-mode }
+### Exemplo de `jobs.<job_id>.cache-mode`
 
 ```yaml
 jobs:
@@ -1822,7 +1822,7 @@ Se uma saída for ignorada porque pode conter um segredo, você verá a seguinte
 
 Para usar saídas de trabalho em um trabalho dependente, você pode usar o contexto `needs`. Para saber mais, confira [Referência de contextos](contexts.md#needs-context).
 
-### Exemplo: Definindo saídas para um trabalho { #example-defining-outputs-for-a-job }
+### Exemplo: Definindo saídas para um trabalho
 
 ```yaml
 jobs:
@@ -1847,7 +1847,7 @@ jobs:
         run: echo "$OUTPUT1 $OUTPUT2"
 ```
 
-### Uso de saídas de trabalho em um trabalho de matriz { #using-job-outputs-in-a-matrix-job }
+### Uso de saídas de trabalho em um trabalho de matriz
 
 As matrizes podem ser usadas para gerar várias saídas de nomes diferentes. Ao usar uma matriz, as saídas dos trabalhos serão combinadas a partir de todos os trabalhos na matriz.
 
@@ -1890,7 +1890,7 @@ Um `map` das variáveis que estão disponíveis para todas as etapas do trabalho
 
 Quando mais de uma variável de ambiente é definida com o mesmo nome, GitHub usa a variável mais específica. Por exemplo, uma variável de ambiente definida em uma etapa substituirá as variáveis de ambiente do trabalho e do fluxo de trabalho que tenham o mesmo nome enquanto a etapa é executada. Uma variável de ambiente definida para um trabalho substituirá uma variável de fluxo de trabalho com o mesmo nome enquanto o trabalho é executado.
 
-### Exemplo de `jobs.<job_id>.env` { #example-of-jobsjobidenv }
+### Exemplo de `jobs.<job_id>.env`
 
 ```yaml
 jobs:
@@ -1940,7 +1940,7 @@ Use `working-directory` para definir o diretório de trabalho do `shell` de uma 
     Verifique se o `working-directory` existe no executor antes de executar seu shell nele.
     Quando mais de uma configuração padrão é definida com o mesmo nome, GitHub usa a configuração padrão mais específica. Por exemplo, uma configuração padrão definida em uma tarefa irá substituir uma configuração padrão que tem o mesmo nome definido em um fluxo de trabalho.
 
-### Exemplo: definição das opções da etapa `run` padrão para um trabalho { #example-setting-default-run-step-options-for-a-job }
+### Exemplo: definição das opções da etapa `run` padrão para um trabalho
 
 ```yaml
 jobs:
@@ -1959,7 +1959,7 @@ GitHub fornece etapas internas para configurar e concluir um trabalho.
 
 GitHub exibe apenas as primeiras 1.000 verificações, no entanto, você pode executar um número ilimitado de etapas, desde que esteja dentro dos limites de uso do fluxo de trabalho. Para obter mais informações, consulte [Cobrança e uso](../../concepts/billing-and-usage.md) sobre executores hospedados em GitHub e [Limites do Actions](../limits.md) para limites de uso de executores auto-hospedados.
 
-### Exemplo de `jobs.<job_id>.steps` { #example-of-jobsjobidsteps }
+### Exemplo de `jobs.<job_id>.steps`
 
 ```yaml
 name: Greeting from Mona
@@ -1999,7 +1999,7 @@ if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
 
 Para obter mais informações, consulte [Avaliar expressões em fluxos de trabalho e ações](expressions.md).
 
-### Exemplo: Usando contextos { #example-using-contexts }
+### Exemplo: Usando contextos
 
 Essa etapa só é executada quando o tipo de evento é uma `pull_request` e a ação do evento é `unassigned`.
 
@@ -2010,7 +2010,7 @@ steps:
     run: echo This event is a pull request that had an assignee removed.
 ```
 
-### Exemplo: Usando funções de verificação de status { #example-using-status-check-functions }
+### Exemplo: Usando funções de verificação de status
 
 A `my backup step` só é executada quando a etapa anterior de um trabalho falha. Para saber mais, confira [Avaliar expressões em fluxos de trabalho e ações](expressions.md#status-check-functions).
 
@@ -2023,7 +2023,7 @@ steps:
     uses: actions/heroku@1.0.0
 ```
 
-### Exemplo: Usando segredos { #example-using-secrets }
+### Exemplo: Usando segredos
 
 Não é possível referenciar segredos diretamente em condicionais `if:`. Em vez disso, considere definir segredos como variáveis de ambiente no nível de trabalho e, em seguida, fazer referência às variáveis de ambiente para executar etapas condicionalmente no trabalho.
 
@@ -2064,7 +2064,7 @@ Algumas ações exigem entradas que precisam ser definidas com a palavra-chave [
 
 As ações podem ser ações JavaScript, ações compostas ou ações de contêiner do Docker. Se a ação em uso for um contêiner do Docker, você deverá executar o trabalho em um ambiente do Linux. Para obter mais detalhes, consulte [`runs-on`](#jobsjob_idruns-on).
 
-### Exemplo: Usando ações de versão { #example-using-versioned-actions }
+### Exemplo: Usando ações de versão
 
 ```yaml
 steps:
@@ -2078,7 +2078,7 @@ steps:
   - uses: actions/checkout@main
 ```
 
-### Exemplo: Usando uma ação pública { #example-using-a-public-action }
+### Exemplo: Usando uma ação pública
 
 `{owner}/{repo}@{ref}`
 
@@ -2096,7 +2096,7 @@ jobs:
         uses: actions/aws@v2.0.1
 ```
 
-### Exemplo: Usando uma ação pública em um subdiretório { #example-using-a-public-action-in-a-subdirectory }
+### Exemplo: Usando uma ação pública em um subdiretório
 
 `{owner}/{repo}/{path}@{ref}`
 
@@ -2110,7 +2110,7 @@ jobs:
         uses: actions/aws/ec2@main
 ```
 
-### Exemplo: usar uma ação no mesmo repositório que o fluxo de trabalho no commit em execução (recomendado) { #example-using-an-action-in-the-same-repository-as-the-workflow-at-the-running-commit-recommended }
+### Exemplo: usar uma ação no mesmo repositório que o fluxo de trabalho no commit em execução (recomendado)
 
 `$/path/to/action`
 
@@ -2141,7 +2141,7 @@ jobs:
       - uses: $/.github/actions/hello-world-action
 ```
 
-### Exemplo: Usando uma ação no mesmo repositório que o fluxo de trabalho { #example-using-an-action-in-the-same-repository-as-the-workflow }
+### Exemplo: Usando uma ação no mesmo repositório que o fluxo de trabalho
 
 `./path/to/dir`
 
@@ -2176,7 +2176,7 @@ jobs:
         uses: ./.github/actions/hello-world-action
 ```
 
-### Exemplo: Usando uma ação do Docker Hub { #example-using-a-docker-hub-action }
+### Exemplo: Usando uma ação do Docker Hub
 
 `docker://{image}:{tag}`
 
@@ -2190,7 +2190,7 @@ jobs:
         uses: docker://alpine:3.8
 ```
 
-### Exemplo: usando o GitHub PackagesContainer registry { #example-using-the-github-packages-container-registry }
+### Exemplo: usando o GitHub PackagesContainer registry
 
 `docker://{host}/{image}:{tag}`
 
@@ -2204,7 +2204,7 @@ jobs:
         uses: docker://ghcr.io/OWNER/IMAGE_NAME
 ```
 
-### Exemplo: Usando uma ação do registro público do Docker { #example-using-a-docker-public-registry-action }
+### Exemplo: Usando uma ação do registro público do Docker
 
 `docker://{host}/{image}:{tag}`
 
@@ -2218,7 +2218,7 @@ jobs:
         uses: docker://gcr.io/cloud-builders/gradle
 ```
 
-### Exemplo: Usando uma ação dentro de um repositório privado diferente do fluxo de trabalho { #example-using-an-action-inside-a-different-private-repository-than-the-workflow }
+### Exemplo: Usando uma ação dentro de um repositório privado diferente do fluxo de trabalho
 
 Se a ação estiver em um repositório interno ou em um repositório privado configurado para permitir o acesso do repositório do seu fluxo de trabalho, você poderá referenciar a ação diretamente. Para obter mais informações, consulte [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository) e [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-a-private-repository).
 
@@ -2256,7 +2256,7 @@ Cada palavra-chave `run` representa um novo processo e um shell no ambiente do e
         ```yaml
   - name: Install Dependencies
     run: npm install
-        ```
+  ```
 
 * Um comando de várias linhas:
 
@@ -2265,7 +2265,7 @@ Cada palavra-chave `run` representa um novo processo e um shell no ambiente do e
     run: |
       npm ci
       npm run build
-        ```
+  ```
 
 ## `jobs.<job_id>.steps[*].working-directory`
 
@@ -2298,7 +2298,7 @@ Substitua as configurações padrão do shell no sistema operacional do executor
 
 Como alternativa, você pode especificar um shell padrão para todas as etapas `run` em um trabalho ou para todas as etapas `run` em todo o fluxo de trabalho. Para obter mais informações, consulte [`defaults.run.shell`](workflow-syntax.md#defaultsrunshell) e [`jobs.<job_id>.defaults.run.shell`](workflow-syntax.md#jobsjob_iddefaultsrunshell).
 
-### Exemplo: executar um comando usando o Bash { #example-running-a-command-using-bash }
+### Exemplo: executar um comando usando o Bash
 
 ```yaml
 steps:
@@ -2307,7 +2307,7 @@ steps:
     run: echo $PATH
 ```
 
-### Exemplo: executar um comando usando o Windows `cmd` { #example-running-a-command-using-windows-cmd }
+### Exemplo: executar um comando usando o Windows `cmd`
 
 ```yaml
 steps:
@@ -2316,7 +2316,7 @@ steps:
     run: echo %PATH%
 ```
 
-### Exemplo: executar um comando usando o PowerShell Core { #example-running-a-command-using-powershell-core }
+### Exemplo: executar um comando usando o PowerShell Core
 
 ```yaml
 steps:
@@ -2325,7 +2325,7 @@ steps:
     run: echo ${env:PATH}
 ```
 
-### Exemplo: usar o PowerShell Desktop para executar um comando { #example-using-powershell-desktop-to-run-a-command }
+### Exemplo: usar o PowerShell Desktop para executar um comando
 
 ```yaml
 steps:
@@ -2334,7 +2334,7 @@ steps:
     run: echo ${env:PATH}
 ```
 
-### Exemplo: executar um script do Python embutido { #example-running-an-inline-python-script }
+### Exemplo: executar um script do Python embutido
 
 ```yaml
 steps:
@@ -2345,7 +2345,7 @@ steps:
       print(os.environ['PATH'])
 ```
 
-### Shell personalizado { #custom-shell }
+### Shell personalizado
 
 Você pode definir o valor `shell` como uma cadeia de caracteres de modelo usando `command [options] {0} [more_options]`.
 GitHub interpreta a primeira palavra delimitada pelo espaço em branco da cadeia de caracteres como o comando e insere o nome do arquivo para o script temporário em `{0}`.
@@ -2364,7 +2364,7 @@ O comando usado, `perl` neste exemplo, precisa ser instalado no executor.
 
 Para obter informações sobre o software incluído nos executores hospedados no GitHub, consulte [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images).
 
-### Preferências de ação de erro e códigos de saída { #exit-codes-and-error-action-preference }
+### Preferências de ação de erro e códigos de saída
 
 Para palavras-chave de shell integradas, fornecemos os seguintes padrões que são executados por executores hospedados em GitHub. Você deve seguir estas diretrizes quando executar scripts shell.
 
@@ -2386,18 +2386,18 @@ Para palavras-chave de shell integradas, fornecemos os seguintes padrões que s�
   * Parece não haver uma forma de optar totalmente por um comportamento fail-fast que não seja gravar seu script para verificar cada código de erro e reagir de acordo. Como não podemos fornecer esse comportamento por padrão, você precisa gravá-lo em seu script.
   * `cmd.exe` sairá com o nível de erro do último programa que executou e retornará o código de erro para o executor. Esse comportamento é internamente consistente com o comportamento anterior de `sh` e `pwsh` padrão e é o `cmd.exe` padrão. Portanto, esse comportamento permanece intacto.
 
-                ```
+    ```
 ## `jobs.<job_id>.steps[*].with`
 
 Um `map` dos parâmetros de entrada definidos pela ação. Cada parâmetro de entrada é um par chave/valor. Parâmetros de entrada são definidos como variáveis de ambiente. A variável é precedida por `INPUT_` e convertida em letras maiúsculas.
 
 Os parâmetros de entrada definidos para um contêiner do Docker devem usar `args`. Para obter mais informações, consulte [`jobs.<job_id>.steps[*].with.args`](#jobsjob_idstepswithargs).
 
-### Exemplo de `jobs.<job_id>.steps[*].with` { #example-of-jobsjobidstepswith }
+### Exemplo de `jobs.<job_id>.steps[*].with`
 
 Define os três parâmetros de entrada (`first_name`, `middle_name` e `last_name`) definidos pela ação `hello_world`. Essas variáveis de entrada estarão acessíveis para a ação `hello-world` como variáveis de ambiente `INPUT_FIRST_NAME`, `INPUT_MIDDLE_NAME` e `INPUT_LAST_NAME`.
 
-```
+```yaml
 jobs:
   my_first_job:
     steps:
@@ -2413,9 +2413,9 @@ jobs:
 
 Uma `string` que define as entradas para um contêiner do Docker.               O GitHub passa o `args` para o `ENTRYPOINT` do contêiner quando o contêiner é iniciado. Não há suporte para uma `array of strings` nesse parâmetro. Um único argumento que inclui espaços deve ser cercado por aspas duplas `""`.
 
-### Exemplo de `jobs.<job_id>.steps[*].with.args` { #example-of-jobsjobidstepswithargs }
+### Exemplo de `jobs.<job_id>.steps[*].with.args`
 
-```
+```yaml
 steps:
   - name: Explain why this job ran
     uses: octo-org/action-name@main
@@ -2434,9 +2434,9 @@ Os `args` são usados no lugar da instrução `CMD` em um `Dockerfile`. Se você
 
 Substitui o `ENTRYPOINT` do Docker no `Dockerfile` ou define-o se um ainda não foi especificado. Ao contrário da instrução `ENTRYPOINT` do Docker que tem um shell e um formulário executável, a palavra-chave `entrypoint` só aceita uma cadeia de caracteres individual que define o executável para execução.
 
-### Exemplo de `jobs.<job_id>.steps[*].with.entrypoint` { #example-of-jobsjobidstepswithentrypoint }
+### Exemplo de `jobs.<job_id>.steps[*].with.entrypoint`
 
-```
+```yaml
 steps:
   - name: Run a custom command
     uses: octo-org/action-name@main
@@ -2454,9 +2454,9 @@ Quando mais de uma variável de ambiente é definida com o mesmo nome, GitHub us
 
 Ações públicas podem especificar variáveis esperadas no arquivo LEIAME. Se você estiver definindo um valor secreto ou confidencial, como uma senha ou um token, deverá definir segredos usando o contexto `secrets`. Para saber mais, confira [Referência de contextos](contexts.md).
 
-### Exemplo de `jobs.<job_id>.steps[*].env` { #example-of-jobsjobidstepsenv }
+### Exemplo de `jobs.<job_id>.steps[*].env`
 
-```
+```yaml
 steps:
   - name: My first action
     env:
@@ -2489,9 +2489,9 @@ Use `background` quando precisar de um controle refinado: iniciar um processo de
 !!! note
     Você não pode usar `background` em etapas dentro de uma ação composta. Uma ação composta pode ser executada como uma etapa em segundo plano, mas não pode declarar etapas em segundo plano internamente.
 
-### Exemplo: executando uma etapa em segundo plano { #example-running-a-step-in-the-background }
+### Exemplo: executando uma etapa em segundo plano
 
-```
+```yaml
 steps:
   - name: Start server
     id: server
@@ -2514,9 +2514,9 @@ Após a conclusão de uma etapa `wait`, as saídas das etapas em segundo plano r
 !!! note
     Uma `wait` etapa sempre é executada e não oferece suporte à condicional [`if`](#jobsjob_idstepsif).
 
-### Exemplo: aguardando etapas específicas em segundo plano { #example-waiting-for-specific-background-steps }
+### Exemplo: aguardando etapas específicas em segundo plano
 
-```
+```yaml
 steps:
   - name: Build frontend
     id: build-frontend
@@ -2547,9 +2547,9 @@ A `wait-all` palavra-chave não usa argumentos.
 !!! note
     Uma `wait-all` etapa sempre é executada e não oferece suporte à condicional [`if`](#jobsjob_idstepsif).
 
-### Exemplo: aguardando todas as etapas em segundo plano { #example-waiting-for-all-background-steps }
+### Exemplo: aguardando todas as etapas em segundo plano
 
-```
+```yaml
 steps:
   - name: Start database
     id: db
@@ -2575,9 +2575,9 @@ Encerra de forma controlada uma etapa em segundo plano em execução. O executor
 !!! note
     Uma `cancel` etapa sempre é executada e não oferece suporte à condicional [`if`](#jobsjob_idstepsif).
 
-### Exemplo: Cancelando uma etapa em segundo plano { #example-canceling-a-background-step }
+### Exemplo: Cancelando uma etapa em segundo plano
 
-```
+```yaml
 steps:
   - name: Start long-running monitor
     id: monitor
@@ -2602,9 +2602,9 @@ Cada etapa do grupo está sujeita ao mesmo limite de simultaneidade de 10 etapas
 !!! note
     Você não pode usar `parallel` dentro de uma ação composta.
 
-### Exemplo: executando etapas em paralelo { #example-running-steps-in-parallel }
+### Exemplo: executando etapas em paralelo
 
-```
+```yaml
 steps:
   - uses: actions/checkout@v6
 
@@ -2651,11 +2651,11 @@ As variáveis que você define se tornam propriedades no contexto `matrix`, e vo
 
 Por padrão, GitHub maximizará o número de trabalhos executados em paralelo, dependendo da disponibilidade do executor. A ordem das variáveis na matriz determina a ordem na qual os trabalhos são criados. A primeira variável definida será o primeiro trabalho criado na execução do fluxo de trabalho.
 
-### Como usar uma matriz unidimensional { #using-a-single-dimension-matrix }
+### Como usar uma matriz unidimensional
 
 O fluxo de trabalho a seguir define a variável `version` com os valores `[10, 12, 14]`. O fluxo de trabalho executará três trabalhos, um para cada valor na variável. Cada trabalho acessará o valor `version` por meio do contexto `matrix.version` e passará o valor como `node-version` à ação `actions/setup-node`.
 
-```
+```yaml
 jobs:
   example_matrix:
     strategy:
@@ -2667,7 +2667,7 @@ jobs:
           node-version: ${{ matrix.version }}
 ```
 
-### Como usar uma matriz multidimensional { #using-a-multi-dimensional-matrix }
+### Como usar uma matriz multidimensional
 
 Especifique diversas variáveis para criar uma matriz multidimensional. Um trabalho será executado para cada combinação possível das variáveis.
 
@@ -2678,7 +2678,7 @@ Por exemplo, o fluxo de trabalho a seguir especifica duas variáveis:
 
 O fluxo de trabalho executará seis trabalhos, um para cada combinação entre as variáveis `os` e `version`. Cada trabalho definirá o valor `runs-on` como o valor atual `os` e passará o valor atual `version` para a ação `actions/setup-node`.
 
-```
+```yaml
 jobs:
   example_matrix:
     strategy:
@@ -2694,7 +2694,7 @@ jobs:
 
 Uma configuração variável em uma matriz pode ser um `array` de `object`s. Por exemplo, a matriz a seguir produz quatro trabalhos com contextos correspondentes.
 
-```
+```yaml
 matrix:
   os:
     - ubuntu-latest
@@ -2707,7 +2707,7 @@ matrix:
 
 Cada trabalho na matriz terá uma combinação própria de valores `os` e `node`, como mostrado abaixo.
 
-```
+```yaml
 - matrix.os: ubuntu-latest
   matrix.node.version: 14
 - matrix.os: ubuntu-latest
@@ -2724,11 +2724,11 @@ Cada trabalho na matriz terá uma combinação própria de valores `os` e `node`
 
 Para cada objeto na lista `include`, os pares key:value no objeto serão adicionados a cada uma das combinações de matriz se nenhum dos pares key:value substituir qualquer um dos valores de matriz originais. Se o objeto não puder ser adicionado a nenhuma das combinações de matriz, uma nova combinação de matriz será criada. Observe que os valores de matriz originais não serão substituídos, mas os valores de matriz adicionados podem ser substituídos.
 
-### Exemplo: expandindo configurações { #example-expanding-configurations }
+### Exemplo: expandindo configurações
 
 Por exemplo, o fluxo de trabalho a seguir executará quatro trabalhos, um para cada combinação de `os` e `node`. Quando o trabalho para o valor `os` de `windows-latest` e valor `node` as execuções `16`, uma variável adicional chamada `npm` com o valor de `6` será incluída no trabalho.
 
-```
+```yaml
 jobs:
   example_matrix:
     strategy:
@@ -2749,11 +2749,11 @@ jobs:
       - run: npm --version
 ```
 
-### Exemplo: adicionando configurações { #example-adding-configurations }
+### Exemplo: adicionando configurações
 
 Por exemplo, essa matriz executará dez trabalhos, um para cada combinação de `os` e `version` na matriz, além de um trabalho para o valor `os` de `windows-latest` e o valor `version` de `17`.
 
-```
+```yaml
 jobs:
   example_matrix:
     strategy:
@@ -2767,7 +2767,7 @@ jobs:
 
 Se você não especificar nenhuma variável de matriz, todas as configurações abaixo de `include` serão executadas. Por exemplo, o fluxo de trabalho a seguir executaria dois trabalhos, um para cada entrada `include`. Isso permite que você aproveite a estratégia de matriz sem ter uma matriz totalmente populada.
 
-```
+```yaml
 jobs:
   includes_only:
     runs-on: ubuntu-latest
@@ -2796,7 +2796,7 @@ Você pode controlar como as falhas de trabalho são tratadas com `jobs.<job_id>
 
 Você não pode usar `jobs.<job_id>.strategy.fail-fast` e `jobs.<job_id>.continue-on-error` juntos. Por exemplo, o fluxo de trabalho a seguir iniciará quatro trabalhos. Para cada trabalho, `continue-on-error` é determinado pelo valor de `matrix.experimental`. Se algum dos trabalhos com `continue-on-error: false` falhar, todos os trabalhos em andamento ou enfileirados serão cancelados. Se o trabalho com `continue-on-error: true` falhar, os outros trabalhos não serão afetados.
 
-```
+```yaml
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -2821,11 +2821,11 @@ Por padrão, GitHub maximizará o número de trabalhos executados em paralelo, d
 
 Impede que ocorra falha na execução de um fluxo de trabalho quando ocorrer uma falha em um trabalho. Defina isso como `true` para permitir que uma execução de fluxo de trabalho seja aprovada quando houver uma falha nesse trabalho.
 
-### Exemplo: Evitando uma falha específica na matriz de trabalho por falha na execução de um fluxo de trabalho { #example-preventing-a-specific-failing-matrix-job-from-failing-a-workflow-run }
+### Exemplo: Evitando uma falha específica na matriz de trabalho por falha na execução de um fluxo de trabalho
 
 Você pode permitir que as tarefas específicas em uma matriz de tarefas falhem sem que ocorra falha na execução do fluxo de trabalho. Por exemplo, caso deseje permitir apenas um trabalho experimental com o `node` definido como `15` para falhar sem falhar a execução de fluxo de trabalho.
 
-```
+```yaml
 runs-on: ${{ matrix.os }}
 continue-on-error: ${{ matrix.experimental }}
 strategy:
@@ -2855,9 +2855,9 @@ Se você não definir um `container`, todas as etapas serão executadas diretame
 !!! note
     O shell padrão para etapas `run` dentro de um contêiner é `sh` em vez de `bash`. Isso pode ser substituído por [`jobs.<job_id>.defaults.run`](workflow-syntax.md#jobsjob_iddefaultsrun) ou por [`jobs.<job_id>.steps[*].shell`](/pt/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsshell).
 
-### Exemplo: Executar um trabalho dentro de um contêiner { #example-running-a-job-within-a-container }
+### Exemplo: Executar um trabalho dentro de um contêiner
 
-```
+```yaml copy
 name: CI
 on:
   push:
@@ -2881,7 +2881,7 @@ jobs:
 
 Quando você especifica apenas uma imagem de contêiner, pode omitir a palavra-chave `image`.
 
-```
+```yaml
 jobs:
   container-test-job:
     runs-on: ubuntu-latest
@@ -2899,9 +2899,9 @@ Use `jobs.<job_id>.container.image` para definir a imagem do Docker a ser usada 
 
 Se o registro de contêiner da imagem exigir autenticação para efetuar pull da imagem, use `jobs.<job_id>.container.credentials` para definir um `map` do `username` e da `password`. As credenciais são os mesmos valores que você fornecerá ao comando [`docker login`](https://docs.docker.com/engine/reference/commandline/login/).
 
-### Exemplo: Definindo credenciais para o registro de um contêiner { #example-defining-credentials-for-a-container-registry }
+### Exemplo: Definindo credenciais para o registro de um contêiner
 
-```
+```yaml
 container:
   image: ghcr.io/owner/image
   credentials:
@@ -2927,9 +2927,9 @@ Para especificar um volume, especifique o caminho de origem e destino:
 
 `<source>` é um nome de volume ou um caminho absoluto no computador host, e `<destinationPath>` é um caminho absoluto no contêiner.
 
-### Exemplo: Montando volumes em um contêiner { #example-mounting-volumes-in-a-container }
+### Exemplo: Montando volumes em um contêiner
 
-```
+```yaml
 volumes:
   - my_docker_volume:/volume_mount
   - /data/my_data
@@ -2959,12 +2959,12 @@ Se você configurar a tarefa para executar diretamente na máquina do executor e
 
 Para obter mais informações sobre as diferenças entre os contêineres de serviço de rede, consulte [Comunicar-se com os contêineres de serviço do Docker](../../tutorials/use-containerized-services/use-docker-service-containers.md).
 
-### Exemplo: Usando host local { #example-using-localhost }
+### Exemplo: Usando host local
 
 Este exemplo cria dois serviços: nginx e redis. Quando você especifica a porta do contêiner, mas não a porta do host, a porta do contêiner é atribuída aleatoriamente a uma porta livre no host.
 GitHub define a porta de host atribuída no contexto `${{job.services.<service_name>.ports}}`. Neste exemplo, você pode acessar as portas de host de serviço usando os `${{ job.services.nginx.ports['80'] }}` e `${{ job.services.redis.ports['6379'] }}` contextos.
 
-```
+```yaml
 services:
   nginx:
     image: nginx
@@ -2988,7 +2988,7 @@ Imagem Docker a ser usada como contêiner de serviço para executar a ação. O 
 
 Se uma sequência vazia for atribuída a `jobs.<job_id>.services.<service_id>.image`, o serviço não será iniciado. Você pode usar essa condição para configurar serviços condicionais, conforme o exemplo a seguir.
 
-```
+```yaml
 services:
   nginx:
     image: ${{ options.nginx == true && 'nginx' || '' }}
@@ -2998,9 +2998,9 @@ services:
 
 Se o registro de contêiner da imagem exigir autenticação para efetuar pull da imagem, use `jobs.<job_id>.container.credentials` para definir um `map` do `username` e da `password`. As credenciais são os mesmos valores que você fornecerá ao comando [`docker login`](https://docs.docker.com/engine/reference/commandline/login/).
 
-### Exemplo de `jobs.<job_id>.services.<service_id>.credentials` { #example-of-jobsjobidservicesserviceidcredentials }
+### Exemplo de `jobs.<job_id>.services.<service_id>.credentials`
 
-```
+```yaml
 services:
   myservice1:
     image: ghcr.io/owner/myservice1
@@ -3032,9 +3032,9 @@ Para especificar um volume, especifique o caminho de origem e destino:
 
 `<source>` é um nome de volume ou um caminho absoluto no computador host, e `<destinationPath>` é um caminho absoluto no contêiner.
 
-### Exemplo de `jobs.<job_id>.services.<service_id>.volumes` { #example-of-jobsjobidservicesserviceidvolumes }
+### Exemplo de `jobs.<job_id>.services.<service_id>.volumes`
 
-```
+```yaml
 volumes:
   - my_docker_volume:/volume_mount
   - /data/my_data
@@ -3052,9 +3052,9 @@ Opções adicionais de recursos do contêiner Docker. Para obter uma lista de op
 
 Substitui o comando padrão da imagem do Docker (`CMD`). O valor é passado como argumentos após o nome da imagem no `docker create` comando. Se você também especificar `entrypoint`, `command` fornecerá os argumentos para esse ponto de entrada.
 
-### Exemplo de `jobs.<job_id>.services.<service_id>.command` { #example-of-jobsjobidservicesserviceidcommand }
+### Exemplo de `jobs.<job_id>.services.<service_id>.command`
 
-```
+```yaml
 services:
   mysql:
     image: mysql:8
@@ -3069,9 +3069,9 @@ services:
 
 Substitui o padrão `ENTRYPOINT` da imagem do Docker. O valor é uma única cadeia de caracteres que define o executável a ser executado. Use isso quando precisar substituir totalmente o ponto de entrada da imagem. Você pode combinar `entrypoint` com `command` para passar argumentos para o ponto de entrada personalizado.
 
-### Exemplo de `jobs.<job_id>.services.<service_id>.entrypoint` { #example-of-jobsjobidservicesserviceidentrypoint }
+### Exemplo de `jobs.<job_id>.services.<service_id>.entrypoint`
 
-```
+```yaml
 services:
   etcd:
     image: quay.io/coreos/etcd:v3.5.17
@@ -3095,9 +3095,9 @@ Quando você faz referência a um fluxo de trabalho reutilizável com `{owner}/{
 
 Quando você faz referência a um fluxo de trabalho reutilizável no mesmo repositório usando `$/` ou `./` (sem `{owner}/{repo}` e `@{ref}`), o fluxo de trabalho chamado é da mesma confirmação que o fluxo de trabalho do chamador. Uma `$/` referência não deve incluir um `@{ref}` sufixo e `$/` não está disponível em GitHub Enterprise Server. Prefixos de referência como `refs/heads` e `refs/tags` não são permitidos. Você não pode usar contextos ou expressões nesta palavra-chave.
 
-### Exemplo de `jobs.<job_id>.uses` { #example-of-jobsjobiduses }
+### Exemplo de `jobs.<job_id>.uses`
 
-```
+```yaml
 jobs:
   call-workflow-1-in-local-repo:
     uses: octo-org/this-repo/.github/workflows/workflow-1.yml@172239021f7ba04fe7327647b213799853a9eb89
@@ -3120,9 +3120,9 @@ Qualquer entrada que você passe deve corresponder às especificações de entra
 
 Ao contrário de [`jobs.<job_id>.steps[*].with`](#jobsjob_idstepswith), as entradas transmitidas com `jobs.<job_id>.with` não estão disponíveis como variáveis de ambiente no fluxo de trabalho chamado. Você pode referenciar as entradas usando o contexto `inputs`.
 
-### Exemplo de `jobs.<job_id>.with` { #example-of-jobsjobidwith }
+### Exemplo de `jobs.<job_id>.with`
 
-```
+```yaml
 jobs:
   call-workflow:
     uses: octo-org/example-repo/.github/workflows/called-workflow.yml@main
@@ -3142,9 +3142,9 @@ Quando um trabalho é usado para chamar um fluxo de trabalho reutilizável, voc�
 
 Qualquer segredo que você passar deve corresponder aos nomes definidos no fluxo de trabalho chamado.
 
-### Exemplo de `jobs.<job_id>.secrets` { #example-of-jobsjobidsecrets }
+### Exemplo de `jobs.<job_id>.secrets`
 
-```
+```yaml
 jobs:
   call-workflow:
     uses: octo-org/example-repo/.github/workflows/called-workflow.yml@main
@@ -3156,9 +3156,9 @@ jobs:
 
 Use a palavra-chave `inherit` para passar todos os segredos do fluxo de trabalho que faz a chamada para o fluxo de trabalho chamado. Isso inclui todos os segredos aos quais o fluxo de trabalho que faz a chamada tem acesso, ou seja, segredos de organização, repositório e ambiente. A palavra-chave `inherit` pode ser usada para passar segredos entre repositórios dentro da mesma organização ou entre organizações dentro da mesma empresa.
 
-### Exemplo de `jobs.<job_id>.secrets.inherit` { #example-of-jobsjobidsecretsinherit }
+### Exemplo de `jobs.<job_id>.secrets.inherit`
 
-```
+```yaml
 on:
   workflow_dispatch:
 
@@ -3168,7 +3168,7 @@ jobs:
     secrets: inherit
 ```
 
-```
+```yaml
 on:
   workflow_call:
 
@@ -3186,7 +3186,7 @@ Um par composto por um identificador string para o segredo e o valor do segredo.
 
 Contextos de expressão permitidos: `github`, `needs` e `secrets`.
 
-## Folha de dados de padrão de filtro { #filter-pattern-cheat-sheet }
+## Folha de dados de padrão de filtro
 
 Você pode usar caracteres especiais em filtros de nome de caminho, branch, tag e fluxo de trabalho.
 
@@ -3199,7 +3199,7 @@ Você pode usar caracteres especiais em filtros de nome de caminho, branch, tag 
 
 Os caracteres `*`, `[` e `!` são caracteres especiais no YAML. Se você iniciar um padrão com `*`, `[` ou `!`, precisará colocar o padrão entre aspas. Além disso, se você usar uma [sequência de fluxo](https://yaml.org/spec/1.2.2/#flow-sequences) com um padrão contendo `[` e/ou `]`, o padrão deverá estar entre aspas.
 
-```
+```yaml
 ```
 # Valid
 paths:
@@ -3210,7 +3210,7 @@ paths:
 paths:
   - **/README.md
 
-# Valid { #valid-1 }
+# Valid
 branches: [ main, 'release/v[0-9].[0-9]' ]
 
 # Invalid - creates a parse error
@@ -3220,38 +3220,38 @@ branches: [ main, release/v[0-9].[0-9] ]
 Para obter mais informações sobre a sintaxe de filtro de ramificação, marca e caminho, consulte [`on.<push>.<branches|tags>`](#onpushbranchestagsbranches-ignoretags-ignore), [`on.<pull_request>.<branches|tags>`](#onpull_requestpull_request_targetbranchesbranches-ignore) e [`on.<push|pull_request>.paths`](#onpushpull_requestpull_request_targetpathspaths-ignore).
 
 ```
-### Padrões para corresponder branches e tags { #patterns-to-match-branches-and-tags }
+### Padrões para corresponder branches e tags
 
-| Padrão                                      | Descrição                                                                                                                                                                                | Correspondências de exemplo                                                                   |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `feature/*`                                 | O curinga `*` corresponde a qualquer caractere, mas não à barra (`/`).                                                                                                                   | `feature/my-branch`<br/><br/>`feature/your-branch`                                            |
-| `feature/**`                                | O curinga `**` corresponde a qualquer caractere, incluindo a barra (`/`) em nomes de branches e marcas.                                                                                  | `feature/beta-a/my-branch`<br/><br/>`feature/your-branch`<br/><br/>`feature/mona/the/octocat` |
-| `main`<br/><br/>`releases/mona-the-octocat` | Corresponde ao nome exato de um branch ou tag.                                                                                                                                           | `main`<br/><br/>`releases/mona-the-octocat`                                                   |
-| `'*'`                                       | Corresponde a todos os nomes de branches e marcas que não contêm uma barra (`/`). O caractere `*` é um caractere especial no YAML. Ao inciar um padrão com `*`, você precisa usar aspas. | `main`<br/><br/>`releases`                                                                    |
-| `'**'`                                      | Corresponde a todos os nomes de branches e tags. Esse é o comportamento padrão quando um filtro `branches` ou `tags` não é usado.                                                        | `all/the/branches`<br/><br/>`every/tag`                                                       |
-| `'*feature'`                                | O caractere `*` é um caractere especial no YAML. Ao inciar um padrão com `*`, você precisa usar aspas.                                                                                   | `mona-feature`<br/><br/>`feature`<br/><br/>`ver-10-feature`                                   |
-| `v2*`                                       | Corresponde aos nomes de branches e marcas que começam com `v2`.                                                                                                                         | `v2`<br/><br/>`v2.0`<br/><br/>`v2.9`                                                          |
-| `v[12].[0-9]+.[0-9]+`                       | Corresponde a todas as marcas e a todos os branches de controle de versão semântica com a versão principal 1 ou 2.                                                                       | `v1.10.1`<br/><br/>`v2.0.0`                                                                   |
+| Padrão | Descrição | Correspondências de exemplo |
+| --- | --- | --- |
+| `feature/*` | O curinga `*` corresponde a qualquer caractere, mas não à barra (`/`). | `feature/my-branch`<br/><br/>`feature/your-branch` |
+| `feature/**` | O curinga `**` corresponde a qualquer caractere, incluindo a barra (`/`) em nomes de branches e marcas. | `feature/beta-a/my-branch`<br/><br/>`feature/your-branch`<br/><br/>`feature/mona/the/octocat` |
+| `main`<br/><br/>`releases/mona-the-octocat` | Corresponde ao nome exato de um branch ou tag. | `main`<br/><br/>`releases/mona-the-octocat` |
+| `'*'` | Corresponde a todos os nomes de branches e marcas que não contêm uma barra (`/`). O caractere `*` é um caractere especial no YAML. Ao inciar um padrão com `*`, você precisa usar aspas. | `main`<br/><br/>`releases` |
+| `'**'` | Corresponde a todos os nomes de branches e tags. Esse é o comportamento padrão quando um filtro `branches` ou `tags` não é usado. | `all/the/branches`<br/><br/>`every/tag` |
+| `'*feature'` | O caractere `*` é um caractere especial no YAML. Ao inciar um padrão com `*`, você precisa usar aspas. | `mona-feature`<br/><br/>`feature`<br/><br/>`ver-10-feature` |
+| `v2*` | Corresponde aos nomes de branches e marcas que começam com `v2`. | `v2`<br/><br/>`v2.0`<br/><br/>`v2.9` |
+| `v[12].[0-9]+.[0-9]+` | Corresponde a todas as marcas e a todos os branches de controle de versão semântica com a versão principal 1 ou 2. | `v1.10.1`<br/><br/>`v2.0.0` |
 
-### Padrões para corresponder a caminhos de arquivos { #patterns-to-match-file-paths }
+### Padrões para corresponder a caminhos de arquivos
 
 Padrões de caminhos devem corresponder ao caminho completo e iniciar a partir da raiz do repositório.
 
-| Padrão                                                            | Descrição das correspondências                                                                                                                                                                                             | Correspondências de exemplo                                                             |
-| ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `'*'`                                                             | O curinga `*` corresponde a qualquer caractere, mas não à barra (`/`). O caractere `*` é um caractere especial no YAML. Ao inciar um padrão com `*`, você precisa usar aspas.                                              | `README.md`<br/><br/>`server.rb`                                                        |
-| `'*.jsx?'`                                                        | O caractere `?` corresponde a zero ou um dos caracteres anteriores.                                                                                                                                                        | `page.js`<br/><br/>`page.jsx`                                                           |
-| `'**'`                                                            | O curinga `**` corresponde a qualquer caractere, incluindo a barra (`/`). Esse é o comportamento padrão quando um filtro `path` não é usado.                                                                               | `all/the/files.md`                                                                      |
-| `'*.js'`                                                          | O curinga `*` corresponde a qualquer caractere, mas não à barra (`/`). Corresponde a todos os arquivos `.js` na raiz do repositório.                                                                                       | `app.js`<br/><br/>`index.js`                                                            |
-| `'**.js'`                                                         | Corresponde a todos os arquivos `.js` do repositório.                                                                                                                                                                      | `index.js`<br/><br/>`js/index.js`<br/><br/>`src/js/app.js`                              |
-| `docs/*`                                                          | Somente os arquivos localizados na raiz do diretório `docs`, na raiz do repositório.                                                                                                                                       | `docs/README.md`<br/><br/>`docs/file.txt`                                               |
-| `docs/**`                                                         | Qualquer arquivo no diretório `docs` e seus subdiretórios na raiz do repositório.                                                                                                                                          | `docs/README.md`<br/><br/>`docs/mona/octocat.txt`                                       |
-| `docs/**/*.md`                                                    | Um arquivo com um sufixo `.md` em qualquer lugar do diretório `docs`.                                                                                                                                                      | `docs/README.md`<br/><br/>`docs/mona/hello-world.md`<br/><br/>`docs/a/markdown/file.md` |
-| `'**/docs/**'`                                                    | Qualquer arquivo no diretório `docs`, em qualquer lugar do repositório.                                                                                                                                                    | `docs/hello.md`<br/><br/>`dir/docs/my-file.txt`<br/><br/>`space/docs/plan/space.doc`    |
-| `'**/README.md'`                                                  | Um arquivo README.md em qualquer local do repositório.                                                                                                                                                                     | `README.md`<br/><br/>`js/README.md`                                                     |
-| `'**/*src/**'`                                                    | Qualquer arquivo em uma pasta com o sufixo `src` em qualquer lugar do repositório.                                                                                                                                         | `a/src/app.js`<br/><br/>`my-src/code/js/app.js`                                         |
-| `'**/*-post.md'`                                                  | Um arquivo com o sufixo `-post.md` em qualquer lugar no repositório.                                                                                                                                                       | `my-post.md`<br/><br/>`path/their-post.md`                                              |
-| `'**/migrate-*.sql'`                                              | Um arquivo com o prefixo `migrate-` e o sufixo `.sql` em qualquer lugar no repositório.                                                                                                                                    | `migrate-10909.sql`<br/><br/>`db/migrate-v1.0.sql`<br/><br/>`db/sept/migrate-v1.sql`    |
-| `'*.md'`<br/><br/>`'!README.md'`                                  | O uso de um sinal de exclamação (`!`) na frente de um padrão o anula. Quando um arquivo corresponde a um padrão e também corresponde a um padrão negativo definido posteriormente no arquivo, o arquivo não será incluído. | `hello.md`<br/><br/>                                                                    |
-| *Não corresponde a*<br/><br/>`README.md`<br/><br/>`docs/hello.md` |                                                                                                                                                                                                                            |                                                                                         |
-| `'*.md'`<br/><br/>`'!README.md'`<br/><br/>`README*`               | Os padrões são verificados sequencialmente. Um padrão que anula um padrão anterior irá incluir caminhos de arquivos novamente.                                                                                             | `hello.md`<br/><br/>`README.md`<br/><br/>`README.doc`                                   |
+| Padrão | Descrição das correspondências | Correspondências de exemplo |
+| --- | --- | --- |
+| `'*'` | O curinga `*` corresponde a qualquer caractere, mas não à barra (`/`). O caractere `*` é um caractere especial no YAML. Ao inciar um padrão com `*`, você precisa usar aspas. | `README.md`<br/><br/>`server.rb` |
+| `'*.jsx?'` | O caractere `?` corresponde a zero ou um dos caracteres anteriores. | `page.js`<br/><br/>`page.jsx` |
+| `'**'` | O curinga `**` corresponde a qualquer caractere, incluindo a barra (`/`). Esse é o comportamento padrão quando um filtro `path` não é usado. | `all/the/files.md` |
+| `'*.js'` | O curinga `*` corresponde a qualquer caractere, mas não à barra (`/`). Corresponde a todos os arquivos `.js` na raiz do repositório. | `app.js`<br/><br/>`index.js` |
+| `'**.js'` | Corresponde a todos os arquivos `.js` do repositório. | `index.js`<br/><br/>`js/index.js`<br/><br/>`src/js/app.js` |
+| `docs/*` | Somente os arquivos localizados na raiz do diretório `docs`, na raiz do repositório. | `docs/README.md`<br/><br/>`docs/file.txt` |
+| `docs/**` | Qualquer arquivo no diretório `docs` e seus subdiretórios na raiz do repositório. | `docs/README.md`<br/><br/>`docs/mona/octocat.txt` |
+| `docs/**/*.md` | Um arquivo com um sufixo `.md` em qualquer lugar do diretório `docs`. | `docs/README.md`<br/><br/>`docs/mona/hello-world.md`<br/><br/>`docs/a/markdown/file.md` |
+| `'**/docs/**'` | Qualquer arquivo no diretório `docs`, em qualquer lugar do repositório. | `docs/hello.md`<br/><br/>`dir/docs/my-file.txt`<br/><br/>`space/docs/plan/space.doc` |
+| `'**/README.md'` | Um arquivo README.md em qualquer local do repositório. | `README.md`<br/><br/>`js/README.md` |
+| `'**/*src/**'` | Qualquer arquivo em uma pasta com o sufixo `src` em qualquer lugar do repositório. | `a/src/app.js`<br/><br/>`my-src/code/js/app.js` |
+| `'**/*-post.md'` | Um arquivo com o sufixo `-post.md` em qualquer lugar no repositório. | `my-post.md`<br/><br/>`path/their-post.md` |
+| `'**/migrate-*.sql'` | Um arquivo com o prefixo `migrate-` e o sufixo `.sql` em qualquer lugar no repositório. | `migrate-10909.sql`<br/><br/>`db/migrate-v1.0.sql`<br/><br/>`db/sept/migrate-v1.sql` |
+| `'*.md'`<br/><br/>`'!README.md'` | O uso de um sinal de exclamação (`!`) na frente de um padrão o anula. Quando um arquivo corresponde a um padrão e também corresponde a um padrão negativo definido posteriormente no arquivo, o arquivo não será incluído. | `hello.md`<br/><br/> |
+| *Não corresponde a*<br/><br/>`README.md`<br/><br/>`docs/hello.md` |  |  |
+| `'*.md'`<br/><br/>`'!README.md'`<br/><br/>`README*` | Os padrões são verificados sequencialmente. Um padrão que anula um padrão anterior irá incluir caminhos de arquivos novamente. | `hello.md`<br/><br/>`README.md`<br/><br/>`README.doc` |

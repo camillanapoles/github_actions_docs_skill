@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-where-workflows-run
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Write workflows
 ---
 

@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/use-containerized-services/create-redis-service-containers
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Tutorials / Use containerized services
 ---
 
-# Criando contêineres de serviço Redis { #creating-redis-service-containers }
+# Criando contêineres de serviço Redis
 
 _Você pode usar os contêineres de serviço para criar um cliente Redis no seu fluxo de trabalho. Este guia mostra exemplos de criação de serviço Redis para trabalhos executados em contêineres ou diretamente na máquina executora._
 
-## Introdução { #introduction }
+## Introdução
 
 Este guia mostra exemplos de fluxo de trabalho que configuram um contêiner de serviço usando a imagem Docker Hub `redis`. O fluxo de trabalho executa um script para criar um cliente Redis e preencher os dados do cliente. Para testar se o fluxo de trabalho cria e preenche o cliente Redis, o script imprime os dados do cliente no console.
 
@@ -24,7 +24,7 @@ Este guia mostra exemplos de fluxo de trabalho que configuram um contêiner de s
     * Se você estiver usando executores hospedados em GitHub, você deverá usar um executor do Ubuntu.
     * Se você estiver usando executores auto-hospedados, você deve usar uma máquina Linux, pois seu executor e o Docker precisam ser instalados.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Você deve estar familiarizado com a forma como contêineres de serviço funcionam com GitHub Actions e as diferenças de rede entre trabalhos em execução diretamente no executor ou em um contêiner. Para saber mais, confira [Comunicar-se com os contêineres de serviço do Docker](use-docker-service-containers.md).
 
@@ -33,7 +33,7 @@ Você também pode achar útil ter uma compreensão básica do YAML, da sintaxe 
 * [Escrevendo fluxos de trabalho](../../how-tos/write-workflows.md)
 * [Introdução ao Redis](https://redis.io/learn/howtos/quick-start) na documentação do Redis
 
-## Executar trabalhos em contêineres { #running-jobs-in-containers }
+## Executar trabalhos em contêineres
 
 A configuração de tarefas a serem executadas em um contêiner simplifica as configurações de rede entre o trabalho e os contêineres do serviço. Docker contêineres na mesma rede de ponte definida pelo usuário expõe todas as portas umas para as outras, então você não precisa mapear nenhuma das portas de contêiner de serviço para o host Docker. Você pode acessar o contêiner de serviço do contêiner de trabalho usando a etiqueta que você configurar no fluxo de trabalho.
 
@@ -86,7 +86,7 @@ jobs:
           REDIS_PORT: 6379
 ```
 
-### Configuração da tarefa do contêiner { #configuring-the-container-job }
+### Configuração da tarefa do contêiner
 
 Este fluxo de trabalho configura uma tarefa que é executada no contêiner `node:20-bookworm-slim` e usa o executor do `ubuntu-latest`  hospedado no GitHub como host do Docker para o contêiner. Para obter mais informações sobre o contêiner `node:20-bookworm-slim`, confira a [imagem do nó](https://hub.docker.com/_/node) no Docker Hub.
 
@@ -115,7 +115,7 @@ jobs:
           --health-retries 5
 ```
 
-### Configurando as etapas para o trabalho de contêiner { #configuring-the-steps-for-the-container-job }
+### Configurando as etapas para o trabalho de contêiner
 
 O fluxo de trabalho executa as seguintes etapas:
 
@@ -150,7 +150,7 @@ O script *client.js* procura as variáveis de ambiente `REDIS_HOST` e `REDIS_POR
 
 O hostname do serviço Redis é o rótulo que você configurou no seu fluxo de trabalho, neste caso, `redis`. Uma vez que os contêineres do Docker na mesma rede da ponte definida pelo usuário abrem todas as portas por padrão, você poderá acessar o contêiner de serviço na porta-padrão 6379 do Redis.
 
-## Executar trabalhos diretamente na máquina executora { #running-jobs-directly-on-the-runner-machine }
+## Executar trabalhos diretamente na máquina executora
 
 Ao executar um trabalho diretamente na máquina executora, você deverá mapear as portas no contêiner de serviço às portas do host Docker. Você pode acessar os contêineres de serviço do host do Docker usando o `localhost` e o número da porta do host do Docker.
 
@@ -205,7 +205,7 @@ jobs:
           REDIS_PORT: 6379
 ```
 
-### Configurar o trabalho executor { #configuring-the-runner-job }
+### Configurar o trabalho executor
 
 O exemplo usa o executor hospedado no `ubuntu-latest`  GitHub como o host do Docker.
 
@@ -237,7 +237,7 @@ jobs:
           - 6379:6379
 ```
 
-### Configurando as etapas para o trabalho do executor { #configuring-the-steps-for-the-runner-job }
+### Configurando as etapas para o trabalho do executor
 
 O fluxo de trabalho executa as seguintes etapas:
 
@@ -273,7 +273,7 @@ O script *client.js* procura as variáveis de ambiente `REDIS_HOST` e `REDIS_POR
 
 O nome do host é `localhost` ou `127.0.0.1`.
 
-## Testar o contêiner de serviço Redis { #testing-the-redis-service-container }
+## Testar o contêiner de serviço Redis
 
 Você pode testar o seu pipeline usando o script a seguir, que cria um cliente Redis e preenche o cliente com alguns dados de exemplo. Em seguida, o script imprime no terminal os valores armazenados no cliente Redis. Seu script pode usar qualquer idioma desejado, mas este exemplo usa o Node.js e o módulo npm `redis`. Para obter mais informações, confira o [módulo npm redis](https://www.npmjs.com/package/redis).
 

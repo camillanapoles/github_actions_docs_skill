@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs/manually-run-a-workflow
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Manage workflow runs
 ---
 
-# Executar um fluxo de trabalho manualmente { #manually-running-a-workflow }
+# Executar um fluxo de trabalho manualmente
 
 _Quando um fluxo de trabalho é configurado para ser executado no workflow_dispatch evento, você pode executar o fluxo de trabalho usando a guia GitHubGitHub CLIAções, ou a API REST._
 
-## Configurar um fluxo de trabalho para ser executado manualmente { #configuring-a-workflow-to-run-manually }
+## Configurar um fluxo de trabalho para ser executado manualmente
 
 Para executar um fluxo de trabalho manualmente, o fluxo de trabalho precisa ser configurado para ser executado no evento `workflow_dispatch`.
 
@@ -22,7 +22,7 @@ Para disparar o evento `workflow_dispatch`, seu fluxo de trabalho precisa estar 
 
 É necessário o acesso de gravação ao repositório é para executar essas etapas.
 
-## Executando um fluxo de trabalho { #running-a-workflow }
+## Executando um fluxo de trabalho
 
 1. Em GitHub, acesse a página principal do repositório.
 
@@ -81,7 +81,7 @@ Para ver o progresso da execução do fluxo de trabalho, use o subcomando `run w
 gh run watch
 ```
 
-## Executar um fluxo de trabalho usando a API REST { #running-a-workflow-using-the-rest-api }
+## Executar um fluxo de trabalho usando a API REST
 
 Ao usar a API REST, você configura os parâmetros do corpo da solicitação `inputs` e `ref`. Se as entradas forem omitidas, serão usados os valores-padrão definidos no arquivo de fluxo de trabalho.
 

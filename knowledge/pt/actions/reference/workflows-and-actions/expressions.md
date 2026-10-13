@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/expressions
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Reference / Workflows and actions
 ---
 
-# Avaliar expressões em fluxos de trabalho e ações { #evaluate-expressions-in-workflows-and-actions }
+# Avaliar expressões em fluxos de trabalho e ações
 
 _Encontre informações sobre expressões em GitHub Actions._
 
-## Literais { #literals }
+## Literais
 
 Como parte de uma expressão, você pode usar os tipos de dados `boolean`, `null`, `number` ou `string`.
 
@@ -28,7 +28,7 @@ Como parte de uma expressão, você pode usar os tipos de dados `boolean`, `null
 
 Note que em condicionais, valores falsos (`false`, `0`, `-0`, `""`, `''`, `null`) são coagidos para `false` e valores verdadeiros (`true` e outros valores não falsos) são coagidos para `true`.
 
-### Exemplo de literais { #example-of-literals }
+### Exemplo de literais
 
 ```yaml
 env:
@@ -42,7 +42,7 @@ env:
   myStringInBraces: ${{ 'It''s open source!' }}
 ```
 
-## Operadores { #operators }
+## Operadores
 
 | Operador          | Descrição             |
 |-----------------|---------------------|
@@ -99,23 +99,23 @@ GitHub converte tipos de dados em uma cadeia de caracteres usando estas convers�
 | Array                 | Arrays não são convertidos em uma string        |
 | Objeto                | Objetos não são convertidos em uma string       |
 
-### contém { #contains }
+### contém
 
 `contains( search, item )`
 
 Retorna `true` se `search` contém `item`. Se `search` for uma matriz, essa função retornará `true` se o `item` for um elemento na matriz. Se `search` for uma cadeia de caracteres, essa função retornará `true` se `item` uma substring de `search`. Essa função não diferencia maiúsculas de minúsculas. Lança valores em uma string.
 
-#### Exemplo de uso de string { #example-using-a-string }
+#### Exemplo de uso de string
 
 `contains('Hello world', 'llo')` retorna `true`.
 
-#### Exemplo de como usar um filtro de objeto { #example-using-an-object-filter }
+#### Exemplo de como usar um filtro de objeto
 
 `contains(github.event.issue.labels.*.name, 'bug')` retornará `true` se o problema relacionado ao evento tiver um rótulo "bug".
 
 Para obter mais informações, confira [Filtros de objeto](#object-filters).
 
-#### Exemplo que corresponde a uma matriz de cadeias de caracteres { #example-matching-an-array-of-strings }
+#### Exemplo que corresponde a uma matriz de cadeias de caracteres
 
 Em vez de escrever `github.event_name == "push" || github.event_name == "pull_request"`, você pode usar `contains()` com `fromJSON()` para verificar se uma matriz de cadeias de caracteres contém um `item`.
 
@@ -127,7 +127,7 @@ Por exemplo, `contains(fromJSON('["push", "pull_request"]'), github.event_name)`
 
 Retorna `true` quando`searchString` começa com `searchValue`. Essa função não diferencia maiúsculas de minúsculas. Lança valores em uma string.
 
-#### Exemplo de `startsWith` { #example-of-startswith }
+#### Exemplo de `startsWith`
 
 `startsWith('Hello world', 'He')` retorna `true`.
 
@@ -137,17 +137,17 @@ Retorna `true` quando`searchString` começa com `searchValue`. Essa função nã
 
 Retorna `true` se `searchString` termina com `searchValue`. Essa função não diferencia maiúsculas de minúsculas. Lança valores em uma string.
 
-#### Exemplo de `endsWith` { #example-of-endswith }
+#### Exemplo de `endsWith`
 
 `endsWith('Hello world', 'ld')` retorna `true`.
 
-### formato { #format }
+### formato
 
 `format( string, replaceValue0, replaceValue1, ..., replaceValueN)`
 
 Substitui os valores na `string`, com a variável `replaceValueN`. As variáveis na `string` são especificadas usando a sintaxe `{N}`, em que `N` é um inteiro. É necessário especificar pelo menos um `replaceValue` e uma `string`. Não há um máximo para o número de variáveis (`replaceValueN`) que você pode usar. Escape de chaves usando chaves duplas.
 
-#### Exemplo de `format` { #example-of-format }
+#### Exemplo de `format`
 
 ```javascript
 format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat')
@@ -155,7 +155,7 @@ format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat')
 
 Retorna "Hello Mona the Octocat".
 
-#### Exemplo de escape de chaves { #example-escaping-braces }
+#### Exemplo de escape de chaves
 
 ```javascript
 format('{{Hello {0} {1} {2}!}}', 'Mona', 'the', 'Octocat')
@@ -163,13 +163,13 @@ format('{{Hello {0} {1} {2}!}}', 'Mona', 'the', 'Octocat')
 
 Retorna '{Hello Mona the Octocat!}'.
 
-### ingressar { #join }
+### ingressar
 
 `join( array, optionalSeparator )`
 
 O valor para `array` pode ser uma matriz ou uma cadeia de caracteres. Todos os valores em `array` são concatenados em uma cadeia de caracteres. Se você fornecer `optionalSeparator`, ele será inserido entre os valores concatenados. Caso contrário, o separador padrão `,` será usado. Lança valores em uma string.
 
-#### Exemplo de `join` { #example-of-join }
+#### Exemplo de `join`
 
 `join(github.event.issue.labels.*.name, ', ')` pode retornar "bug, preciso de ajuda"
 
@@ -179,7 +179,7 @@ O valor para `array` pode ser uma matriz ou uma cadeia de caracteres. Todos os v
 
 Retorna uma representação JSON recém-impressa de `value`. Você pode usar essa função para depurar as informações fornecidas em contextos.
 
-#### Exemplo de `toJSON` { #example-of-tojson }
+#### Exemplo de `toJSON`
 
 `toJSON(job)` pode retornar `{ "status": "success" }`
 
@@ -189,7 +189,7 @@ Retorna uma representação JSON recém-impressa de `value`. Você pode usar ess
 
 Retorna um objeto JSON ou um tipo de dados JSON para `value`. Você pode usar essa função para fornecer um objeto JSON como uma expressão avaliada ou para converter qualquer tipo de dados que possa ser representado em JSON ou JavaScript, como cadeias de caracteres, boolianos, valores nulos, matrizes e objetos.
 
-#### Exemplo que retorna um objeto do JSON { #example-returning-a-json-object }
+#### Exemplo que retorna um objeto do JSON
 
 Esse fluxo de trabalho define uma matriz JSON em um trabalho e a passa para o próximo trabalho usando uma saída e `fromJSON`.
 
@@ -213,7 +213,7 @@ jobs:
       - run: echo "Matrix - Project ${{ matrix.project }}, Config ${{ matrix.config }}"
 ```
 
-#### Exemplo que retorna um tipo de dado do JSON { #example-returning-a-json-data-type }
+#### Exemplo que retorna um tipo de dado do JSON
 
 Esse fluxo de trabalho usa `fromJSON` para converter variáveis de ambiente de uma cadeia de caracteres em um booliano ou inteiro.
 
@@ -242,7 +242,7 @@ Retorna um único hash para o conjunto de arquivos que corresponde ao padrão `p
 
 Você pode usar a correspondência de padrão de caracteres para corresponder os nomes dos arquivos. A correspondência de padrões para `hashFiles` segue a correspondência de padrão glob e não diferencia maiúsculas de minúsculas no Windows. Para obter mais informações sobre caracteres de correspondência de padrão com suporte, confira a seção [Padrões](https://www.npmjs.com/package/@actions/glob#patterns) na documentação `@actions/glob`.
 
-#### Exemplos com um padrão único { #examples-with-a-single-pattern }
+#### Exemplos com um padrão único
 
 Corresponde a qualquer arquivo `package-lock.json` no repositório.
 
@@ -256,7 +256,7 @@ Corresponde a todos os arquivos `.rb` no diretório `lib` no nível de raiz, inc
 
 `hashFiles('/lib/**/*.rb')`
 
-#### Exemplos com vários padrões { #examples-with-multiple-patterns }
+#### Exemplos com vários padrões
 
 Cria um hash para qualquer `package-lock.json` e arquivos `Gemfile.lock` no repositório.
 
@@ -266,13 +266,13 @@ Cria um hash para todos os arquivos `.rb` no diretório `lib` no nível de raiz,
 
 `hashFiles('/lib/**/*.rb', '!/lib/foo/*.rb')`
 
-### caso { #case }
+### caso
 
 `case( pred1, val1, pred2, val2, ..., default )`
 
 Avalia predicados em ordem e retorna o valor correspondente ao primeiro predicado que é avaliado como `true`. Se nenhum predicado corresponder, ele retornará o último argumento como o valor padrão.
 
-#### Exemplo com um único predicado { #example-with-a-single-predicate }
+#### Exemplo com um único predicado
 
 ```yaml
 env:
@@ -281,7 +281,7 @@ env:
 
 Define `MY_ENV_VAR` como `production` quando o ref é `refs/heads/main`, caso contrário, define-o como `development`.
 
-#### Exemplo com vários predicados { #example-with-multiple-predicates }
+#### Exemplo com vários predicados
 
 ```yaml
 env:
@@ -296,17 +296,17 @@ env:
 
 Configura `MY_ENV_VAR` com base na ramificação: `production` para `main`, `staging` para `staging`, `development` para ramificações começando com `feature/`, ou `unknown` para todas as outras ramificações.
 
-## Funções de verificação de status { #status-check-functions }
+## Funções de verificação de status
 
 Você pode usar as funções de verificação de status a seguir como expressões em condicionais `if`. Uma verificação de status `success()` padrão é aplicada, a menos que você inclua uma dessas funções. Para obter mais informações sobre condicionais `if`, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#jobsjob_idif) e [Referência de sintaxe de metadados](metadata-syntax.md#runsstepsif).
 
 Fora de condicionais `if`, você pode usar `job.status` para acessar o status do trabalho. Para saber mais, confira [Referência de contextos](contexts.md#job-context).
 
-### sucesso { #success }
+### sucesso
 
 Retorna `true` quando todas as etapas anteriores forem bem-sucedidas.
 
-#### Exemplo de `success` { #example-of-success }
+#### Exemplo de `success`
 
 ```yaml
 steps:
@@ -315,14 +315,14 @@ steps:
     if: ${{ success() }}
 ```
 
-### sempre { #always }
+### sempre
 
 Faz com que a etapa sempre seja executada e retorna `true`, mesmo quando cancelada. A expressão `always` é melhor usada no nível da etapa ou em tarefas que você espera executar mesmo quando um trabalho é cancelado. Por exemplo, você pode usar `always` para enviar logs mesmo quando um trabalho é cancelado.
 
 !!! warning
     Evite usar `always` para qualquer tarefa que possa sofrer uma falha crítica, por exemplo, obtenção de fontes. Caso contrário, o fluxo de trabalho pode travar até atingir o tempo limite. Se você quiser executar um trabalho ou uma etapa independentemente de seu êxito ou falha, use a alternativa recomendada: `if: ${{ !cancelled() }}`
 
-#### Exemplo de `always` { #example-of-always }
+#### Exemplo de `always`
 
 ```yaml
 if: ${{ always() }}
@@ -332,17 +332,17 @@ if: ${{ always() }}
 
 Retorna `true` se o fluxo de trabalho foi cancelado.
 
-#### Exemplo de `cancelled` { #example-of-cancelled }
+#### Exemplo de `cancelled`
 
 ```yaml
 if: ${{ cancelled() }}
 ```
 
-### falha { #failure }
+### falha
 
 Retorna `true` quando qualquer etapa anterior de um trabalho falha. Se você tiver uma cadeia de trabalhos dependentes, `failure()` retornará `true` se algum trabalho ancestral falhar.
 
-#### Exemplo de `failure` { #example-of-failure }
+#### Exemplo de `failure`
 
 ```yaml
 steps:
@@ -351,11 +351,11 @@ steps:
     if: ${{ failure() }}
 ```
 
-#### falha com condições { #failure-with-conditions }
+#### falha com condições
 
 Você pode incluir condições extras para uma etapa a ser executada após uma falha, mas ainda precisa incluir `failure()` para substituir a verificação de status padrão de `success()` que é aplicada automaticamente a condições `if` que não contêm uma função de verificação de status.
 
-##### Exemplo de `failure` com condições { #example-of-failure-with-conditions }
+##### Exemplo de `failure` com condições
 
 ```yaml
 steps:
@@ -367,7 +367,7 @@ steps:
     if: ${{ failure() && steps.demo.conclusion == 'failure' }}
 ```
 
-## Filtros de objeto { #object-filters }
+## Filtros de objeto
 
 Você pode usar a sintaxe `*` para aplicar um filtro e selecionar itens de uma coleção correspondente.
 

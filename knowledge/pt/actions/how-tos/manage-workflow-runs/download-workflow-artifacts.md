@@ -6,11 +6,11 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs/download-workflow-artifacts
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Manage workflow runs
 ---
 
-# Baixar artefatos do fluxo de trabalho { #downloading-workflow-artifacts }
+# Baixar artefatos do fluxo de trabalho
 
 _Você pode fazer o download de artefatos arquivados antes que expirem automaticamente._
 

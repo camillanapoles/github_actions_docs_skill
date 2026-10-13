@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-azure-pipelines
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Tutorials / Migrate to github actions / Manual migrations
 ---
 
-# Migrando de Azure Pipelines para GitHub Actions { #migrating-from-azure-pipelines-to-github-actions }
+# Migrando de Azure Pipelines para GitHub Actions
 
 _GitHub Actions e Azure Pipelines compartilham várias semelhanças na configuração, o que torna a migração para GitHub Actions relativamente simples._
 
-## Introdução { #introduction }
+## Introdução
 
 Azure Pipelines e GitHub Actions ambos permitem criar fluxos de trabalho que criam, testam, publicam, liberam e implantam código automaticamente. Azure Pipelines e GitHub Actions compartilham algumas semelhanças na configuração do fluxo de trabalho:
 
@@ -25,7 +25,7 @@ Azure Pipelines e GitHub Actions ambos permitem criar fluxos de trabalho que cri
 
 Para saber mais, confira [Noções básicas sobre GitHub Actions](../../../get-started/understand-github-actions.md).
 
-## Principais diferenças { #key-differences }
+## Principais diferenças
 
 Ao migrar de Azure Pipelines, considere as seguintes diferenças:
 
@@ -37,7 +37,7 @@ Ao migrar de Azure Pipelines, considere as seguintes diferenças:
   GitHub Actions exige que você separe estágios em arquivos de fluxo de trabalho YAML separados.
 * Os agentes de build locais do Azure Pipelines podem ser selecionados com base em suas capacidades.               Os runners auto-hospedados do GitHub Actions podem ser selecionados com rótulos.
 
-## Migrar tarefas e processos { #migrating-jobs-and-steps }
+## Migrar tarefas e processos
 
 Trabalhos e etapas em Azure Pipelines são muito semelhantes aos trabalhos e etapas em GitHub Actions. Em ambos os sistemas, os trabalhos têm as características a seguir:
 
@@ -45,7 +45,7 @@ Trabalhos e etapas em Azure Pipelines são muito semelhantes aos trabalhos e eta
 * Os trabalhos são executados em máquinas virtuais separadas ou em contêineres separados.
 * Por padrão, os trabalhos são executados em paralelo, mas podem ser configurados para serem executados sequencialmente.
 
-## Migrar etapas de script { #migrating-script-steps }
+## Migrar etapas de script
 
 Você pode executar um script ou um comando de shell como uma etapa em um fluxo de trabalho. Em Azure Pipelines, as etapas de script podem ser especificadas usando a chave `script` ou com as chaves `bash`, `powershell` ou `pwsh`. Os scripts também podem ser especificados como uma entrada para a [tarefa do Bash](https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/bash?view=azure-devops) ou a [tarefa do PowerShell](https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/powershell?view=azure-devops).
 
@@ -53,7 +53,7 @@ Em GitHub Actions, todos os scripts são especificados usando a `run` chave. Par
 
 Abaixo, há um exemplo da sintaxe para cada sistema.
 
-### Sintaxe do Azure Pipelines para etapas de script { #azure-pipelines-syntax-for-script-steps }
+### Sintaxe do Azure Pipelines para etapas de script
 
 ```yaml
 jobs:
@@ -69,7 +69,7 @@ jobs:
           script: Write-Host "This step runs in PowerShell"
 ```
 
-### GitHub Actions sintaxe para etapas do script { #github-actions-syntax-for-script-steps }
+### GitHub Actions sintaxe para etapas do script
 
 ```yaml
 jobs:
@@ -85,14 +85,14 @@ jobs:
         shell: powershell
 ```
 
-## Diferenças na manipulação de erros de script { #differences-in-script-error-handling }
+## Diferenças na manipulação de erros de script
 
 No Azure Pipelines, os scripts podem ser configurados para erro se uma saída é enviada para `stderr`.
 GitHub Actions não dá suporte a essa configuração.
 
 O GitHub Actions configura shells como "falha rápida" sempre que possível, que interrompe o script imediatamente caso um dos comandos em um script saia com um código de erro. Por outro lado, Azure Pipelines requer configuração explícita para sair imediatamente em um erro. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#exit-codes-and-error-action-preference).
 
-## Diferenças no shell padrão no Windows { #differences-in-the-default-shell-on-windows }
+## Diferenças no shell padrão no Windows
 
 Em Azure Pipelines, o shell padrão para scripts em plataformas Windows é o shell command (*cmd.exe*). EmGitHub Actions, o shell padrão para scripts em plataformas Windows é o PowerShell. O PowerShell tem várias diferenças em comandos integrados, expansão de variáveis e controle de fluxo.
 
@@ -100,7 +100,7 @@ Se você estiver rodando um comando simples, talvez seja possível executar um s
 
 Abaixo, há um exemplo da sintaxe para cada sistema.
 
-### Sintaxe do Azure Pipelines usando CMD por padrão { #azure-pipelines-syntax-using-cmd-by-default }
+### Sintaxe do Azure Pipelines usando CMD por padrão
 
 ```yaml
 jobs:
@@ -111,7 +111,7 @@ jobs:
       - script: echo "This step runs in CMD on Windows by default"
 ```
 
-### GitHub Actions sintaxe para especificar o CMD { #github-actions-syntax-for-specifying-cmd }
+### GitHub Actions sintaxe para especificar o CMD
 
 ```yaml
 jobs:
@@ -125,7 +125,7 @@ jobs:
 
 Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstepsshell).
 
-## Migração de condicionais e sintaxe de expressão { #migrating-conditionals-and-expression-syntax }
+## Migração de condicionais e sintaxe de expressão
 
 Azure Pipelines e GitHub Actions podem executar etapas condicionalmente. Em Azure Pipelines, expressões condicionais são especificadas usando a chave `condition`. Em GitHub Actions, expressões condicionais são especificadas usando a `if` chave.
 
@@ -133,7 +133,7 @@ Azure Pipelines usa funções dentro de expressões para executar etapas condici
 
 Abaixo, há um exemplo da sintaxe para cada sistema.
 
-### sintaxe Azure Pipelines para expressões condicionais { #azure-pipelines-syntax-for-conditional-expressions }
+### sintaxe Azure Pipelines para expressões condicionais
 
 ```yaml
 jobs:
@@ -145,7 +145,7 @@ jobs:
         condition: and(eq(variables.str, 'ABC'), eq(variables.num, 123))
 ```
 
-### GitHub Actions sintaxe para expressões condicionais { #github-actions-syntax-for-conditional-expressions }
+### GitHub Actions sintaxe para expressões condicionais
 
 ```yaml
 jobs:
@@ -158,13 +158,13 @@ jobs:
 
 Para saber mais, confira [Avaliar expressões em fluxos de trabalho e ações](../../../reference/workflows-and-actions/expressions.md).
 
-## Dependências entre trabalhos { #dependencies-between-jobs }
+## Dependências entre trabalhos
 
 Tanto o Azure Pipelines quanto o GitHub Actions permitem que você defina dependências para uma tarefa. Em ambos os sistemas, os trabalhos são executados em paralelo por padrão, mas as dependências do trabalho podem ser especificadas explicitamente. Em Azure Pipelines, isso é feito com a chave `dependsOn`. Em GitHub Actions, isso é feito com a tecla `needs`.
 
 Abaixo, há um exemplo da sintaxe para cada sistema. Os fluxos de trabalho iniciam um primeiro trabalho chamado `initial` e, quando esse trabalho for concluído, dois trabalhos chamados `fanout1` e `fanout2` serão executados. Por fim, quando esses trabalhos forem concluídos, o trabalho `fanin` será executado.
 
-### A sintaxe do Azure Pipelines para dependências entre tarefas { #azure-pipelines-syntax-for-dependencies-between-jobs }
+### A sintaxe do Azure Pipelines para dependências entre tarefas
 
 ```yaml
 jobs:
@@ -193,7 +193,7 @@ jobs:
       - script: echo "This job will run after fanout1 and fanout2 have finished."
 ```
 
-### GitHub Actions sintaxe para dependências entre trabalhos { #github-actions-syntax-for-dependencies-between-jobs }
+### GitHub Actions sintaxe para dependências entre trabalhos
 
 ```yaml
 jobs:
@@ -220,14 +220,14 @@ jobs:
 
 Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idneeds).
 
-## Migrar tarefas para ações { #migrating-tasks-to-actions }
+## Migrar tarefas para ações
 
 Azure Pipelines usa *tasks*, que são componentes de aplicativo que podem ser reutilizados em vários fluxos de trabalho.
 GitHub Actions usa *ações*, que podem ser usadas para executar tarefas e personalizar seu fluxo de trabalho. Em ambos os sistemas, é possível especificar o nome da tarefa ou ação a executar, junto com quaisquer entradas necessárias como pares chave/valor.
 
 Abaixo, há um exemplo da sintaxe para cada sistema.
 
-### Sintaxe do Azure Pipelines para tarefas { #azure-pipelines-syntax-for-tasks }
+### Sintaxe do Azure Pipelines para tarefas
 
 ```yaml
 jobs:
@@ -242,7 +242,7 @@ jobs:
       - script: python script.py
 ```
 
-### GitHub Actions sintaxe para ações { #github-actions-syntax-for-actions }
+### GitHub Actions sintaxe para ações
 
 ```yaml
 jobs:

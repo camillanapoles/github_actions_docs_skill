@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/configure-and-manage-deployments/review-deployments
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Deploy / Configure and manage deployments
 ---
 
-# Revisar implantações { #reviewing-deployments }
+# Revisar implantações
 
 _Você pode aprovar ou rejeitar trabalhos que estão aguardando revisão._
 
-## Aprovar ou rejeitar um trabalho { #approving-or-rejecting-a-job }
+## Aprovar ou rejeitar um trabalho
 
 1. Acesse a execução do fluxo de trabalho que requer revisão. Para obter mais informações sobre como acessar uma execução de fluxo de trabalho, confira [Visualizar o histórico de execução do fluxo de trabalho](../../monitor-workflows/view-workflow-run-history.md).
 2. Se a execução exigir revisão, você verá uma notificação para a solicitação de revisão. Na notificação, clique em **Examinar implantações**.
@@ -26,7 +26,7 @@ _Você pode aprovar ou rejeitar trabalhos que estão aguardando revisão._
 !!! note
     Se o ambiente de destino estiver configurado para impedir a autoaprovação de implementações, você não poderá aprovar uma implementação com base em uma execução de fluxo de trabalho iniciada por você. Para saber mais, confira [Gerenciar ambientes para implantação](manage-environments.md).
 
-## Ignorando as regras de proteção de implantação { #bypassing-deployment-protection-rules }
+## Ignorando as regras de proteção de implantação
 
 Se você configurou regras de proteção de implantação que controlam se o software pode ser implantado em um ambiente, você pode ignorá-las e forçar todos os trabalhos pendentes que fazem referência ao ambiente a prosseguir.
 

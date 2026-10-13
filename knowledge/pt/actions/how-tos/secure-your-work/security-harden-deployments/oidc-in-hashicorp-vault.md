@@ -6,21 +6,21 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-hashicorp-vault
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Secure your work / Security harden deployments
 ---
 
-# Configurando o OpenID Connect no HashiCorp Vault { #configuring-openid-connect-in-hashicorp-vault }
+# Configurando o OpenID Connect no HashiCorp Vault
 
 _Use o OpenID Connect nos seus fluxos de trabalho para efetuar a autenticação com o HashiCorp Vault._
 
-## Visão geral { #overview }
+## Visão geral
 
 O OIDC (OpenID Connect) permite que seus GitHub Actions fluxos de trabalho se autentiquem com um HashiCorp Vault para recuperar segredos.
 
 Este guia fornece uma visão geral de como configurar o HashiCorp Vault para confiar no GitHubOIDC como uma identidade federada e demonstra como usar essa configuração na [ação hashicorp/vault-action](https://github.com/hashicorp/vault-action) para recuperar segredos do HashiCorp Vault.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 * Para saber os conceitos básicos de como GitHub usa o OpenID Connect (OIDC) e sua arquitetura e benefícios, consulte [OpenID Connect](../../../concepts/security/openid-connect.md).
 
@@ -28,7 +28,7 @@ Este guia fornece uma visão geral de como configurar o HashiCorp Vault para con
 
 * Os tokens OIDC solicitados para Dependabot trabalhos de atualização têm uma declaração `event_name` de `dynamic`. Se sua política de confiança se destina a autorizar apenas GitHub Actions fluxos de trabalho e seu provedor de nuvem dá suporte a condições `event_name`, permita apenas os nomes de eventos esperados por seus fluxos de trabalho. Para obter mais informações, consulte [Referência do OpenID Connect](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
-## Adicionando o provedor de identidade ao HashiCorp Vault { #adding-the-identity-provider-to-hashicorp-vault }
+## Adicionando o provedor de identidade ao HashiCorp Vault
 
 Para usar o OIDC com o HashiCorp Vault, você precisará adicionar uma configuração de confiança para o provedor OIDC GitHub . Para obter mais informações, confira a [documentação](https://www.vaultproject.io/docs/auth/jwt) do HashiCorp Vault.
 
@@ -39,13 +39,13 @@ Para configurar o servidor do Cofre para aceitar JWT (Tokens Web JSON) para aute
 
             ```shell copy
    vault auth enable jwt
-            ```
+   ```
 
             ```shell copy
    vault write auth/jwt/config \
      bound_issuer="https://token.actions.githubusercontent.com" \
      oidc_discovery_url="https://token.actions.githubusercontent.com"
-            ```
+   ```
 
 2. Configure uma política que só concede acesso aos caminhos específicos que seus fluxos de trabalho usarão para recuperar segredos. Para obter políticas mais avançadas, confira a [documentação de Políticas](https://www.vaultproject.io/docs/concepts/policies) do HashiCorp Vault.
 
@@ -57,7 +57,7 @@ Para configurar o servidor do Cofre para aceitar JWT (Tokens Web JSON) para aute
      capabilities = [ "read" ]
    }
    EOF
-            ```
+   ```
 
 3. Configure funções para agrupar políticas diferentes. Se a autenticação for bem-sucedida, essas políticas serão anexadas ao token de acesso resultante do Cofre.
 
@@ -73,7 +73,7 @@ Para configurar o servidor do Cofre para aceitar JWT (Tokens Web JSON) para aute
      "ttl": "10m"
    }
    EOF
-            ```
+   ```
 
 * `ttl` define a validade do token de acesso resultante.
 * Verifique se o parâmetro `bound_claims` está definido para seus requisitos de segurança e tenha pelo menos uma condição. Opcionalmente, você também pode definir o parâmetro `bound_subject`, bem como o parâmetro `bound_audiences`.
@@ -82,7 +82,7 @@ Para configurar o servidor do Cofre para aceitar JWT (Tokens Web JSON) para aute
 
 Para obter mais informações, confira a [documentação](https://www.vaultproject.io/docs/auth/jwt) do HashiCorp Vault.
 
-## Atualizando seu GitHub Actions fluxo de trabalho { #updating-your-github-actions-workflow }
+## Atualizando seu GitHub Actions fluxo de trabalho
 
 Para atualizar seus fluxos de trabalho para o OIDC, você deverá fazer duas alterações no seu YAML:
 
@@ -101,7 +101,7 @@ Para adicionar a integração do OIDC a seus fluxos de trabalho que lhes permite
 
 Este exemplo demonstra como usar o OIDC com a ação oficial para solicitar um segredo ao HashiCorp Vault.
 
-### Adicionando configurações de permissões { #adding-permissions-settings }
+### Adicionando configurações de permissões
 
 A execução do trabalho ou do fluxo de trabalho requer uma configuração `permissions` com [`id-token: write`](../../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token) para permitir que o provedor OIDC de GitHub crie um token JWT para cada execução.
 
@@ -112,7 +112,7 @@ Para obter informações detalhadas sobre permissões necessárias, exemplos de 
 !!! note
     Quando a chave `permissions` é usada, todas as permissões não especificadas são definidas como *sem acesso*, com exceção do escopo de metadados, que sempre obtém acesso de *leitura*. Como resultado, talvez seja necessário adicionar outras permissões, como `contents: read`. Para obter mais informações, confira "[Autenticação automática de token](../../../tutorials/authenticate-with-github_token.md)".
 
-### Solicitando o token de acesso { #requesting-the-access-token }
+### Solicitando o token de acesso
 
 A ação `hashicorp/vault-action` recebe um JWT do provedor OIDC GitHub e, em seguida, solicita um token de acesso à sua instância do HashiCorp Vault para recuperar segredos. Para obter mais informações, confira a [documentação](https://github.com/hashicorp/vault-action) do HashiCorp Vault GitHub Action.
 
@@ -125,10 +125,10 @@ Este exemplo demonstra como criar um trabalho que solicita um segredo para o Has
 
 ```yaml copy
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
-# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
-# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
-# online. { #documentation }
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
+# São fornecidas por terceiros e regidas por
+# termos de serviço, política de privacidade e suporte separados
+# online.
 jobs:
   retrieve-secret:
     runs-on: ubuntu-latest
@@ -157,7 +157,7 @@ jobs:
 `VAULT-NAMESPACE` deve ser definido para uma implantação do Vault Enterprise (incluindo o HCP Vault). Para mais informações, confira [Namespace do Cofre](https://www.vaultproject.io/docs/enterprise/namespaces).
 
 ```
-### Revogando o token de acesso { #revoking-the-access-token }
+### Revogando o token de acesso
 
 Por padrão, o servidor do Cofre revogará automaticamente os tokens de acesso quando a TTL expirar, para que você não precise revogar manualmente os tokens de acesso. No entanto, se você quiser revogar tokens de acesso imediatamente após a conclusão ou falha do trabalho, será possível fazer isso manualmente usando a [API do Cofre](https://www.vaultproject.io/api/auth/token#revoke-a-token-self).
 
@@ -166,10 +166,10 @@ Por padrão, o servidor do Cofre revogará automaticamente os tokens de acesso q
 
 ```yaml copy
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-1 }
-# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by-1 }
-# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support-1 }
-# online. { #documentation-1 }
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
+# São fornecidas por terceiros e regidas por
+# termos de serviço, política de privacidade e suporte separados
+# online.
 jobs:
   retrieve-secret:
     runs-on: ubuntu-latest
@@ -199,7 +199,7 @@ jobs:
 ```
 
 ```
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 * [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](oidc-with-reusable-workflows.md)
 * [Referência de executores auto-hospedados](../../../reference/runners/self-hosted-runners.md)

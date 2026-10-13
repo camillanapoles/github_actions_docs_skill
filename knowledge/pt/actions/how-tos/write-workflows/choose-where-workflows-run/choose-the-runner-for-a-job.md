@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Write workflows / Choose where workflows run
 ---
 
-# Escolhendo o executor para um trabalho { #choosing-the-runner-for-a-job }
+# Escolhendo o executor para um trabalho
 
 _Defina o tipo de máquina que processará um trabalho no seu fluxo de trabalho._
 
-## Visão geral { #overview }
+## Visão geral
 
 Use `jobs.<job_id>.runs-on` para definir o tipo de computador no qual o trabalho será executado.
 
@@ -32,7 +32,7 @@ Use `jobs.<job_id>.runs-on` para definir o tipo de computador no qual o trabalho
 
         ```yaml
   runs-on: [self-hosted, linux, x64, gpu]
-        ```
+  ```
 
   Para obter mais informações, confira [Como escolher executores auto-hospedados](#choosing-self-hosted-runners).
 
@@ -54,14 +54,14 @@ Use `jobs.<job_id>.runs-on` para definir o tipo de computador no qual o trabalho
       runs-on: [self-hosted, "${{ inputs.chosen-os }}"]
       steps:
       - run: echo Hello world!
-        ```
+  ```
 
 * Se você quiser executar seu fluxo de trabalho em vários computadores, use [`jobs.<job_id>.strategy`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategy).
 
 !!! note
     Aspas não são necessárias em torno de cadeias de caracteres simples como`self-hosted`, mas são necessárias para expressões como`"${{ inputs.chosen-os }}"` .
 
-## Escolhendo executores hospedados em GitHub { #choosing-github-hosted-runners }
+## Escolhendo executores hospedados em GitHub
 
 Se você usar um runner hospedado em GitHub, cada tarefa será executada em uma nova instância de uma imagem do runner especificada por `runs-on`.
 
@@ -69,7 +69,7 @@ O valor de runs-on, quando você estiver usando um runner hospedado pelo GitHub,
 
 Para saber mais, confira [Executores hospedados no GitHub](../../../concepts/runners/github-hosted-runners.md).
 
-### Executores padrão hospedados GitHubpara repositórios públicos { #standard-github-hosted-runners-for-public-repositories }
+### Executores padrão hospedados GitHubpara repositórios públicos
 
 Para repositórios públicos, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados com as especificações associadas.
 Com exceção dos executores de CPU única, cada executor hospedado por GitHub é uma nova máquina virtual (VM) hospedada por GitHub. Processos de CPU única são hospedados em um contêiner em uma VM compartilhada—consulte [Referência de executores hospedados pelo GitHub](../../../reference/runners/github-hosted-runners.md#single-cpu-runners). O uso dos executores hospedados padrão GitHubé gratuito e ilimitado em repositórios públicos.
@@ -132,7 +132,7 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
 </tr>
 ```
 
-### Executores hospedados padrão GitHubpara  privados { #standard-github-hosted-runners-for-internal-and-private-repositories }
+### Executores hospedados padrão GitHubpara  privados
 
 Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a alocação de minutos gratuitos da sua GitHub conta e, posteriormente, são cobrados a taxas por minuto de uso. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
@@ -202,7 +202,7 @@ Além dos executores padrão hospedados em GitHub, GitHub oferece aos clientes d
     [!WARNING]
     As imagens beta e preteridas são fornecidas “no estado em que se encontram”, “com todas as falhas” e “conforme disponível” e são excluídas do contrato de nível de serviço e da garantia. As imagens beta podem não estar cobertas pelo suporte ao cliente.
 
-#### Exemplo: Especificar um sistema operacional { #example-specifying-an-operating-system }
+#### Exemplo: Especificar um sistema operacional
 
 ```yaml
 runs-on: ubuntu-latest
@@ -210,7 +210,7 @@ runs-on: ubuntu-latest
 
 Para saber mais, confira [Executores hospedados no GitHub](../../../concepts/runners/github-hosted-runners.md).
 
-## Escolhendo executores auto-hospedados { #choosing-self-hosted-runners }
+## Escolhendo executores auto-hospedados
 
 Para especificar um executor auto-hospedado para uma tarefa, configure `runs-on` no arquivo do fluxo de trabalho utilizando rótulos do executor auto-hospedado.
 
@@ -218,7 +218,7 @@ Os executores auto-hospedados podem ter o rótulo `self-hosted`. Ao configurar u
 
 > [!NOTE] Actions Runner Controller não dá suporte ao `self-hosted` rótulo.
 
-#### Exemplo: Usando etiquetas para seleção do executor { #example-using-labels-for-runner-selection }
+#### Exemplo: Usando etiquetas para seleção do executor
 
 ```yaml
 runs-on: [self-hosted, linux]
@@ -226,13 +226,13 @@ runs-on: [self-hosted, linux]
 
 Para saber mais, confira [Executores auto-hospedados](../../../concepts/runners/self-hosted-runners.md) e [Usar os executores auto-hospedados em um fluxo de trabalho](../../manage-runners/self-hosted-runners/use-in-a-workflow.md).
 
-## Escolher executores em um grupo { #choosing-runners-in-a-group }
+## Escolher executores em um grupo
 
 Você pode usar `runs-on` para direcionar grupos de executores para que o trabalho seja executado em qualquer executor que seja membro desse grupo. Para um controle mais granular, você também pode combinar grupos de executores com rótulos.
 
 Os grupos de executores só podem ter [executor avançados](../../../concepts/runners/larger-runners.md) ou [executores auto-hospedados](../../manage-runners/self-hosted-runners.md) como membros.
 
-#### Exemplo: usar grupos para controlar onde os trabalhos são executados { #example-using-groups-to-control-where-jobs-are-run }
+#### Exemplo: usar grupos para controlar onde os trabalhos são executados
 
 Neste exemplo, foram adicionados executores a um grupo chamado `build-runners`. A chave `runs-on` envia o trabalho para qualquer executor disponível no grupo `build-runners`:
 
@@ -252,7 +252,7 @@ jobs:
       - run: bats -v
 ```
 
-#### Exemplo: combinar grupos e rótulos { #example-combining-groups-and-labels }
+#### Exemplo: combinar grupos e rótulos
 
 Quando você combina grupos e rótulos, o executor deve atender aos dois requisitos para ser qualificado para executar o trabalho.
 

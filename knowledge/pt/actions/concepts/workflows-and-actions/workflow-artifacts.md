@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/workflows-and-actions/workflow-artifacts
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Concepts / Workflows and actions
 ---
 
-# Artefatos do fluxo de trabalho { #workflow-artifacts }
+# Artefatos do fluxo de trabalho
 
 _Saiba mais sobre como armazenar e compartilhar dados como artefatos de fluxos de GitHub Actions trabalho._
 
-## Sobre artefatos de fluxos de trabalho { #about-workflow-artifacts }
+## Sobre artefatos de fluxos de trabalho
 
 Um artefato é um arquivo ou uma coleção de arquivos produzidos durante a execução de um fluxo de trabalho. Os artefatos permitem que você preserve os dados após a conclusão de um trabalho e compartilhe-os com outro trabalho no mesmo fluxo de trabalho. Por exemplo, você pode usar artefatos para salvar o build e os resultados dos testes após o término da execução do fluxo de trabalho.
 
@@ -27,7 +27,7 @@ Os artefatos comuns incluem:
 * Arquivos binários ou comprimidos
 * Resultados de desempenho do teste de estresse e de cobertura do código.
 
-## Artefatos versus armazenamento em cache de dependência { #artifacts-versus-dependency-caching }
+## Artefatos versus armazenamento em cache de dependência
 
 Artefatos e caches são semelhantes porque permitem armazenar arquivos em GitHub, mas cada recurso oferece casos de uso distintos e eles não podem ser usados de maneira intercambiável.
 
@@ -36,7 +36,7 @@ Artefatos e caches são semelhantes porque permitem armazenar arquivos em GitHub
 
 Para obter mais informações sobre o cache de dependência, confira [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md).
 
-## Gerar atestados de artefato para compilações { #generating-artifact-attestations-for-builds }
+## Gerar atestados de artefato para compilações
 
 Os atestados de artefatos permitem que você crie garantias de procedência e integridade infalsificáveis para o software que você cria. Por sua vez, as pessoas que consomem seu software podem verificar onde e como seu software foi criado.
 
@@ -52,6 +52,6 @@ Você pode acessar atestados após a execução de uma compilação, abaixo da l
 
 Para saber mais, confira [Usar atestados de artefatos para estabelecer a procedência de compilações](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md).
 
-## Artefatos de execuções de fluxo de trabalho excluídas { #artifacts-from-deleted-workflow-runs }
+## Artefatos de execuções de fluxo de trabalho excluídas
 
 Quando uma execução de fluxo de trabalho é excluída, todos os artefatos associados a ela também são excluídos do armazenamento. Você pode excluir uma execução de fluxo de trabalho usando a interface do usuário do GitHub Actions, a API REST ou a CLI do GitHub, confira: [Excluir a execução de um fluxo de trabalho](../../how-tos/manage-workflow-runs/delete-a-workflow-run.md), [Excluir uma execução de fluxo de trabalho](https://docs.github.com/pt/rest/actions/workflow-runs#delete-a-workflow-run) ou [gh run delete](https://cli.github.com/manual/gh_run_delete).

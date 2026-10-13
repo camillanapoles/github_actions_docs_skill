@@ -6,19 +6,19 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/runners/larger-runners
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Reference / Runners
 ---
 
-# Referência de executores avançados { #larger-runners-reference }
+# Referência de executores avançados
 
 _Encontre informações sobre corredores maiores, incluindo suas especificações e opções de personalização._
 
-## Tamanhos de máquina para executores avançados { #machine-sizes-for-larger-runners }
+## Tamanhos de máquina para executores avançados
 
 Você pode escolher entre várias especificações para executores avançados.
 
-### Especificações para geral executores avançados { #specifications-for-general-larger-runners }
+### Especificações para geral executores avançados
 
 | CPU | Memória (RAM) | Armazenamento (SSD) | Arquitetura | OS (sistema operacional) |
 |---|-------------|-------------------|-----------|------------------------|
@@ -35,13 +35,13 @@ Você pode escolher entre várias especificações para executores avançados.
 
 > [!NOTE] O executor de 4 vCPUs do Windows só funciona com a imagem base da área de trabalho do Windows 11 ou do Windows Server 2025.
 
-### Especificações para GPU executores avançados { #specifications-for-gpu-larger-runners }
+### Especificações para GPU executores avançados
 
 | CPU | GPU | Placa de GPU | Memória (RAM) | Memória da GPU (VRAM) | Armazenamento (SSD) | OS (sistema operacional) |
 |---|---|------------|-------------|---------------------|-------------------|------------------------|
 | 4   | 1   | Tesla T4     | 28 GB         | 16 GB                 | 176 GB              | Ubuntu, Windows          |
 
-## Imagens do executor { #runner-images }
+## Imagens do executor
 
 Executor avançadoé executado em VMs (máquinas virtuais) e GitHub instala um VHD (disco rígido virtual) nesta máquina durante o processo de criação da VM. Você pode escolher entre diferentes imagens de VM para instalar em seus executores.
 
@@ -54,7 +54,7 @@ GitHubImagens próprias:\*\* essas imagens são mantidas por GitHub e estão dis
 * [VMI otimizada para GPU NVIDIA](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/nvidia.ngc_azure_17_11)
 * [Máquina Virtual de Ciência de Dados – Windows 2019](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=overview).
 
-## Disponível para macOS executores avançados e rótulos { #available-macos-larger-runners-and-labels }
+## Disponível para macOS executores avançados e rótulos
 
 Os computadores a seguir estão disponíveis para macOS executores avançados. Quando você cria um macOS executor avançado, o nome do executor também está disponível como um rótulo de fluxo de trabalho que você pode usar com `runs-on`.
 
@@ -65,14 +65,14 @@ Os computadores a seguir estão disponíveis para macOS executores avançados. Q
 | XLarge | arm64 (M2) | 5 (+ 8 aceleração de hardware GPU) | 14 GB | 14 GB |  |
 | `macos-latest-xlarge`, `macos-14-xlarge`, `macos-15-xlarge` (mais recente), `macos-26-xlarge`, `xcode-27-xlarge` (Versão preliminar pública) |  |  |  |  |  |
 
-## Limitações para macOS executores avançados { #limitations-for-macos-larger-runners }
+## Limitações para macOS executores avançados
 
 * Todas as ações fornecidas pelo GitHub são compatíveis com executores arm64 hospedados pelo GitHub. No entanto, as ações da comunidade podem não ser compatíveis com o arm64 e precisam ser instaladas manualmente em tempo de execução.
 * Não há suporte para virtualização aninhada devido à limitação da Estrutura de Virtualização da Apple.
 * Os recursos de rede, como a rede privada do Azure e a atribuição de IPs estáticos, não estão disponíveis atualmente para corredores maiores do macOS.
 * Os executores macOS arm64 não têm um UUID/UDID estático atribuído a eles porque a Apple não suporta esse recurso. No entanto, os executores Intel MacOS recebem um UDID estático, especificamente `4203018E-580F-C1B5-9525-B745CECA79EB`. Caso esteja criando e assinando no mesmo host no qual planeja testar a compilação, você poderá assinar com um [perfil de provisionamento de desenvolvimento](https://developer.apple.com/help/account/provisioning-profiles/create-a-development-provisioning-profile/). Caso precise de um DID estático, você poderá usar os executores Intel e adicionar seu UDID à sua conta de desenvolvedor da Apple.
 
-## Solução de problemas executores avançados { #troubleshooting-larger-runners }
+## Solução de problemas executores avançados
 
 Se você perceber que as tarefas direcionados ao seu sistema executor avançados estão atrasadas ou não estão sendo executadas, há vários fatores que podem estar causando isso.
 
@@ -83,7 +83,7 @@ Se você perceber que as tarefas direcionados ao seu sistema executor avançados
 * \*\*Política de uso justo:\*\*GitHub tem uma política de uso justo que começa a restringir os trabalhos com base em vários fatores, como quantos trabalhos você está executando ou quantos trabalhos estão sendo executados em toda a GitHub Actions.
 * **Tempo de atribuição na fila de trabalhos:** O tempo de atribuição na fila de trabalhos refere-se ao intervalo entre uma solicitação de trabalho e GitHub a atribuição de uma VM para executar o trabalho. Executores padrão hospedados em GitHub que utilizam rótulos de fluxo de trabalho em YAML predefinidos (como `ubuntu-latest`) estão sempre em um "estado de prontidão". Com executores avançados, é possível que uma VM quente não esteja pronta para assumir um trabalho na primeira solicitação, pois os pools para essas máquinas são menores. Como resultado, GitHub talvez seja necessário criar uma nova VM, o que aumenta a fila para atribuir tempo. Quando um executor está em uso, as VMs ficam prontas para execuções de fluxo de trabalho subsequentes em 5 minutos. Se não for usado novamente nesse período, um subconjunto dessas máquinas permanecerá quente, reduzindo a fila para atribuir tempo para execuções de fluxo de trabalho futuras nas próximas 24 horas. Quanto maior o volume de trabalhos executados, mais VMs permanecerão no pool quente.
 
-## Rede para executores avançados { #networking-for-larger-runners }
+## Rede para executores avançados
 
 Por padrão, executores avançados receba um endereço IP dinâmico que é alterado para cada execução de trabalho. Opcionalmente, os clientes GitHub Enterprise Cloud podem configurar seu executores avançados para receber endereços IP estáticos do pool de endereços IP do GitHub. Para saber mais, confira [Sobre os endereços IP do GitHub](https://docs.github.com/pt/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses).
 
@@ -95,7 +95,7 @@ Se você quiser usar mais de 10 pools de executores maiores com intervalos de en
 !!! note
     Se os executores não forem usados por mais de 90 dias, os respectivos intervalos de endereços IP serão removidos automaticamente e não poderão ser recuperados.
 
-## Requisitos de comunicação para executor avançados { #communication-requirements-for-larger-runners }
+## Requisitos de comunicação para executor avançados
 
 Um(a) executor avançado deve estabelecer conexões com endpoints de propriedade de GitHub para executar operações essenciais de comunicação. Além disso, seu executor pode exigir acesso a redes adicionais que você especificar ou utilizar dentro de uma ação.
 

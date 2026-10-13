@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Manage runners / Use actions runner controller
 ---
 
-# Como implantar conjuntos de dimensionamento de executores com o Actions Runner Controller { #deploying-runner-scale-sets-with-actions-runner-controller }
+# Como implantar conjuntos de dimensionamento de executores com o Actions Runner Controller
 
 _Implante conjuntos de escalonadores com Actions Runner Controller, e use opções avançadas de configuração para adaptar Actions Runner Controller às suas necessidades._
 
-## Como implantar um conjunto de dimensionamento de executores { #deploying-a-runner-scale-set }
+## Como implantar um conjunto de dimensionamento de executores
 
 Para implantar um conjunto de dimensionamento de executores, você precisa ter o ARC em execução. Para obter mais informações, consulte [Comece a usar o Actions Runner Controller](../../../tutorials/use-actions-runner-controller/get-started.md).
 
@@ -54,7 +54,7 @@ Você pode implantar conjuntos de dimensionamento de executores com os gráficos
        --set githubConfigUrl="${GITHUB_CONFIG_URL}" \
        --set githubConfigSecret.github_token="${GITHUB_PAT}" \
        oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
-            ```
+   ```
 
    Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
@@ -62,7 +62,7 @@ Você pode implantar conjuntos de dimensionamento de executores com os gráficos
 
             ```bash copy
    helm list -A
-            ```
+   ```
 
    Você deverá ver um resultado semelhante ao seguinte.
 
@@ -70,13 +70,13 @@ Você pode implantar conjuntos de dimensionamento de executores com os gráficos
    NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                       APP VERSION
    arc             arc-systems     1               2023-04-12 11:45:59.152090536 +0000 UTC deployed        gha-runner-scale-set-controller-0.4.0       0.4.0
    arc-runner-set  arc-systems     1               2023-04-12 11:46:13.451041354 +0000 UTC deployed        gha-runner-scale-set-0.4.0                  0.4.0
-            ```
+   ```
 
 3. Para verificar o pod do gerenciador, execute o comando a seguir no terminal.
 
             ```bash copy
    kubectl get pods -n arc-systems
-            ```
+   ```
 
    Se a instalação tiver sido bem-sucedida, os pods mostrarão o status `Running`.
 
@@ -84,15 +84,15 @@ Você pode implantar conjuntos de dimensionamento de executores com os gráficos
    NAME                                                   READY   STATUS    RESTARTS   AGE
    arc-gha-runner-scale-set-controller-594cdc976f-m7cjs   1/1     Running   0          64s
    arc-runner-set-754b578d-listener                       1/1     Running   0          12s
-            ```
+   ```
 
 Se a instalação não tiver sido bem-sucedida, confira [Solução de problemas dos erros do Actions Runner Controller](../../../tutorials/use-actions-runner-controller/troubleshoot.md) para obter informações sobre solução de problemas.
 
-## Como usar as opções de configuração avançada { #using-advanced-configuration-options }
+## Como usar as opções de configuração avançada
 
 O ARC oferece várias opções de configuração avançada.
 
-### Como configurar o nome do conjunto de dimensionamento de executores { #configuring-the-runner-scale-set-name }
+### Como configurar o nome do conjunto de dimensionamento de executores
 
 !!! note
     Os nomes do conjunto de dimensionamento do executor são exclusivos dentro do grupo de executores ao qual pertencem. Caso deseje implantar vários conjuntos de dimensionamento de executores com o mesmo nome, eles precisam pertencer a diferentes grupos de executores.
@@ -108,7 +108,7 @@ runnerScaleSetName: "my-runners"
 Certifique-se de passar o arquivo `values.yaml` no comando `helm install`. Confira a documentação [instalação do Helm](https://helm.sh/docs/helm/helm_install/) para obter mais detalhes.
 
 ```
-### Como escolher destinos do executor { #choosing-runner-destinations }
+### Como escolher destinos do executor
 
 Os conjuntos de dimensionamento de executores podem ser implantados nos níveis do repositório, da organização ou da empresa.
 
@@ -122,7 +122,7 @@ githubConfigUrl: "https://github.com/octo-ent/octo-org/octo-repo"
 
 Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
-### Usando um GitHub App para autenticação { #using-a-github-app-for-authentication }
+### Usando um GitHub App para autenticação
 
 Se você não estiver usando executores de nível empresarial, poderá usar GitHub Apps para autenticar com a GitHub API. Para obter mais informações, consulte [Autenticando o ARC na API de GitHub](authenticate-to-the-api.md).
 
@@ -131,7 +131,7 @@ Se você não estiver usando executores de nível empresarial, poderá usar GitH
 
 Você pode criar um segredo do Kubernetes ou especificar valores no arquivo [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml).
 
-#### Opção 1: Criar um segredo do Kubernetes (recomendado) { #option-1-create-a-kubernetes-secret-recommended }
+#### Opção 1: Criar um segredo do Kubernetes (recomendado)
 
 Depois de criar seu GitHub App, crie um segredo do Kubernetes e passe a referência para esse segredo na cópia do arquivo [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml).
 
@@ -152,7 +152,7 @@ Na sua cópia do [`values.yaml`](https://github.com/actions/actions-runner-contr
 githubConfigSecret: pre-defined-secret
 ```
 
-#### Opção 2: Especificar valores no arquivo `values.yaml` { #option-2-specify-values-in-your-valuesyaml-file }
+#### Opção 2: Especificar valores no arquivo `values.yaml`
 
 Como alternativa, você pode especificar os valores de `app_id`, `installation_id` e `private_key` na cópia do arquivo [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml).
 
@@ -176,7 +176,7 @@ githubConfigSecret:
 Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
 ```
-### Gerenciamento de acesso com grupos de runners { #managing-access-with-runner-groups }
+### Gerenciamento de acesso com grupos de runners
 
 Use grupos de executores para controlar quais organizações ou repositórios têm acesso aos conjuntos de dimensionamento de executores. Para obter mais informações sobre os grupos de executores, confira [Gerenciar o acesso a executores auto-hospedados usando grupos](../self-hosted-runners/manage-access.md).
 
@@ -188,7 +188,7 @@ runnerGroup: "Octo-Group"
 
 Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
-### Como configurar um proxy de saída { #configuring-an-outbound-proxy }
+### Como configurar um proxy de saída
 
 Para forçar o tráfego HTTP para que o controlador e os executores passem pelo proxy de saída, defina as propriedades a seguir no gráfico do Helm.
 
@@ -219,14 +219,14 @@ O ARC dá suporte ao uso de proxies anônimos ou autenticados. Se você usar pro
 
 Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
-### Como definir o número máximo e mínimo de executores { #setting-the-maximum-and-minimum-number-of-runners }
+### Como definir o número máximo e mínimo de executores
 
 As propriedades `maxRunners` e `minRunners` fornecem uma variedade de opções para personalizar a configuração do ARC.
 
 !!! note
     O ARC não dá suporte a configurações máxima e mínima agendadas. Use um cron job ou qualquer outra solução de agendamento para atualizar a configuração em um agendamento.
 
-#### Exemplo: número ilimitado de corredores { #example-unbounded-number-of-runners }
+#### Exemplo: número ilimitado de corredores
 
 Se você comentar as propriedades `maxRunners` e `minRunners`, o ARC aumentará para o número de trabalhos atribuídos ao conjunto de dimensionamento de executores e reduzirá para 0 se não houver trabalhos ativos.
 
@@ -241,22 +241,22 @@ Se você comentar as propriedades `maxRunners` e `minRunners`, o ARC aumentará 
 ```
 
 ```
-#### Exemplo: número mínimo de executores { #example-minimum-number-of-runners }
+#### Exemplo: número mínimo de executores
 
 Você pode definir a propriedade `minRunners` com qualquer número e o ARC garantirá que sempre haverá o número específico de executores ativos e disponíveis para realizar trabalhos atribuídos ao conjunto de dimensionamento de executores o tempo todo.
 
 ```yaml
 ```
-## maxRunners is the max number of runners the auto scaling runner set will scale up to. { #maxrunners-is-the-max-number-of-runners-the-auto-scaling-runner-set-will-scale-up-to-1 }
-# maxRunners: 0 { #maxrunners-0-1 }
+## maxRunners is the max number of runners the auto scaling runner set will scale up to.
+# maxRunners: 0
 
-## minRunners is the min number of idle runners. The target number of runners created will be { #minrunners-is-the-min-number-of-idle-runners-the-target-number-of-runners-created-will-be-1 }
-## calculated as a sum of minRunners and the number of jobs assigned to the scale set. { #calculated-as-a-sum-of-minrunners-and-the-number-of-jobs-assigned-to-the-scale-set-1 }
+## minRunners is the min number of idle runners. The target number of runners created will be
+## calculated as a sum of minRunners and the number of jobs assigned to the scale set.
 minRunners: 20
 ```
 
 ```
-#### Exemplo: Defina o número máximo e mínimo de corredores { #example-set-maximum-and-minimum-number-of-runners }
+#### Exemplo: Defina o número máximo e mínimo de corredores
 
 Nessa configuração, o Actions Runner Controller será dimensionado até um máximo de `30` executores e será reduzido para `20` executores quando os trabalhos terminarem.
 
@@ -265,31 +265,31 @@ Nessa configuração, o Actions Runner Controller será dimensionado até um má
 
 ```yaml
 ```
-## maxRunners is the max number of runners the auto scaling runner set will scale up to. { #maxrunners-is-the-max-number-of-runners-the-auto-scaling-runner-set-will-scale-up-to-2 }
+## maxRunners is the max number of runners the auto scaling runner set will scale up to.
 maxRunners: 30
 
-## minRunners is the min number of idle runners. The target number of runners created will be { #minrunners-is-the-min-number-of-idle-runners-the-target-number-of-runners-created-will-be-2 }
-## calculated as a sum of minRunners and the number of jobs assigned to the scale set. { #calculated-as-a-sum-of-minrunners-and-the-number-of-jobs-assigned-to-the-scale-set-2 }
+## minRunners is the min number of idle runners. The target number of runners created will be
+## calculated as a sum of minRunners and the number of jobs assigned to the scale set.
 minRunners: 20
 ```
 
 ```
-#### Exemplo: esvaziamento da fila de trabalhos { #example-jobs-queue-draining }
+#### Exemplo: esvaziamento da fila de trabalhos
 
 Em alguns cenários, o ideal é esvaziar a fila de trabalhos para solucionar um problema ou para executar a manutenção do cluster. Se você definir ambas as propriedades para `0`, o Actions Runner Controller não criará novos pods de executor quando novos trabalhos estejam disponíveis e sejam atribuídos.
 
 ```yaml
 ```
-## maxRunners is the max number of runners the auto scaling runner set will scale up to. { #maxrunners-is-the-max-number-of-runners-the-auto-scaling-runner-set-will-scale-up-to-3 }
+## maxRunners is the max number of runners the auto scaling runner set will scale up to.
 maxRunners: 0
 
-## minRunners is the min number of idle runners. The target number of runners created will be { #minrunners-is-the-min-number-of-idle-runners-the-target-number-of-runners-created-will-be-3 }
-## calculated as a sum of minRunners and the number of jobs assigned to the scale set. { #calculated-as-a-sum-of-minrunners-and-the-number-of-jobs-assigned-to-the-scale-set-3 }
+## minRunners is the min number of idle runners. The target number of runners created will be
+## calculated as a sum of minRunners and the number of jobs assigned to the scale set.
 minRunners: 0
 ```
 
 ```
-### Certificados TLS personalizados { #custom-tls-certificates }
+### Certificados TLS personalizados
 
 !!! note
     Se você estiver usando uma imagem de executor personalizada que não se baseie na distribuição do `Debian`, as instruções a seguir não funcionarão.
@@ -318,7 +318,7 @@ O ARC observa os valores definidos no modelo de pod do executor e não os substi
 
 Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
-### Como usar um registro de contêiner privado { #using-a-private-container-registry }
+### Como usar um registro de contêiner privado
 
 !!! warning
     Essa Actions Runner Controller opção de personalização pode estar fora do escopo do que Suporte do GitHub pode ajudar e pode causar um comportamento inesperado quando configurada incorretamente.
@@ -327,7 +327,7 @@ Para obter opções adicionais de configuração do Helm, confira [`values.yaml`
 
 Para usar um registro de contêiner privado, você pode copiar a imagem do controlador e a imagem do executor para o registro de contêiner privado. Em seguida, configure os links para essas imagens e defina os valores `imagePullPolicy` e `imagePullSecrets`.
 
-#### Como configurar a imagem do controlador { #configuring-the-controller-image }
+#### Como configurar a imagem do controlador
 
 Você pode atualizar sua cópia do arquivo [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set-controller/values.yaml) e definir as propriedades `image` conforme mostrado a seguir.
 
@@ -344,7 +344,7 @@ imagePullSecrets:
 
 O contêiner do ouvinte herda a `imagePullPolicy` definida para o controlador.
 
-#### Configurando a imagem do runner { #configuring-the-runner-image }
+#### Configurando a imagem do runner
 
 Você pode atualizar sua cópia do arquivo [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) e definir as propriedades de `template.spec` para configurar o pod do executor para seu caso de uso específico.
 
@@ -367,7 +367,7 @@ template:
 
 Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
-### Como atualizar a especificação de pod para o pod do executor { #updating-the-pod-specification-for-the-runner-pod }
+### Como atualizar a especificação de pod para o pod do executor
 
 !!! warning
     Essa Actions Runner Controller opção de personalização pode estar fora do escopo do que Suporte do GitHub pode ajudar e pode causar um comportamento inesperado quando configurada incorretamente.
@@ -397,7 +397,7 @@ template:
 
 Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
-### Como atualizar a especificação de pod para o pod do ouvinte { #updating-the-pod-specification-for-the-listener-pod }
+### Como atualizar a especificação de pod para o pod do ouvinte
 
 !!! warning
     Essa Actions Runner Controller opção de personalização pode estar fora do escopo do que Suporte do GitHub pode ajudar e pode causar um comportamento inesperado quando configurada incorretamente.
@@ -429,7 +429,7 @@ listenerTemplate:
 
 Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
-## Como usar o modo Docker-in-Docker ou Kubernetes para contêineres { #using-docker-in-docker-or-kubernetes-mode-for-containers }
+## Como usar o modo Docker-in-Docker ou Kubernetes para contêineres
 
 !!! warning
     Essa Actions Runner Controller opção de personalização pode estar fora do escopo do que Suporte do GitHub pode ajudar e pode causar um comportamento inesperado quando configurada incorretamente.
@@ -441,7 +441,7 @@ Se você estiver usando trabalhos de contêiner e serviços ou ações de contê
 * Para obter mais informações sobre os trabalhos e os serviços de contêiner, confira [Executar trabalhos em um contêiner](../../write-workflows/choose-where-workflows-run/run-jobs-in-a-container.md).
 * Para obter mais informações sobre as ações de contêiner, confira [Criando uma ação de contêiner do Docker](../../../tutorials/use-containerized-services/create-a-docker-container-action.md).
 
-### Como usar o modo Docker-in-Docker { #using-docker-in-docker-mode }
+### Como usar o modo Docker-in-Docker
 
 !!! note
     O contêiner Docker-in-Docker exige o modo privilegiado. Para obter mais informações, confira [Configurar um contexto de segurança para um pod ou um contêiner](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) na documentação do Kubernetes.
@@ -581,15 +581,15 @@ Os valores em `template.spec` são injetados automaticamente e não podem ser su
 
 Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
-### Como usar o modo Kubernetes { #using-kubernetes-mode }
+### Como usar o modo Kubernetes
 
 No modo Kubernetes, o ARC usa ganchos de contêiner do executor para criar um pod no mesmo namespace para executar o serviço, o trabalho de contêiner ou a ação.
 
-#### Pré-requisitos { #prerequisites }
+#### Pré-requisitos
 
 O modo Kubernetes oferece suporte a duas abordagens para compartilhar dados de trabalhos entre o pod do executor e o pod de trabalho do contêiner. Você pode usar volumes persistentes, que continuam sendo a opção recomendada para cenários que exigem acesso de gravação simultâneo ou pode usar hooks de ciclo de vida de contêiner para restaurar e exportar sistemas de arquivos de trabalhos entre pods sem depender de volumes RWX. A abordagem do gancho de ciclo de vida melhora a portabilidade e o desempenho aproveitando o armazenamento local e é ideal para clusters sem armazenamento compartilhado.
 
-#### Configurando o modo Kubernetes com volumes persistentes { #configuring-kubernetes-mode-with-persistent-volumes }
+#### Configurando o modo Kubernetes com volumes persistentes
 
 Para usar o modo Kubernetes, você deve criar volumes persistentes que os pods dos executores possam reivindicar e usar uma solução que automaticamente provisione esses volumes sob demanda. Para o teste, você pode usar uma solução como o [OpenEBS](https://github.com/openebs/openebs).
 
@@ -608,7 +608,7 @@ containerMode:
 
 Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
-#### Configurar o modo Kubernetes com hooks de ciclo de vida de contêiner { #configuring-kubernetes-mode-with-container-lifecycle-hooks }
+#### Configurar o modo Kubernetes com hooks de ciclo de vida de contêiner
 
 Para habilitar o modo Kubernetes usando ganchos de ciclo de vida de contêiner, defina o `containerMode.type` para `kubernetes-novolume` no seu arquivo `values.yaml`.
 
@@ -617,7 +617,7 @@ containerMode:
   type: "kubernetes-novolume"
 ```
 
-#### Solução de problemas do modo kubernetes { #troubleshooting-kubernetes-mode }
+#### Solução de problemas do modo kubernetes
 
 Quando o modo Kubernetes estiver habilitado, ocorrerá uma falha nos fluxos de trabalho que não estiverem configurados com um trabalho de contêiner com um erro semelhante a:
 
@@ -642,7 +642,7 @@ Para permitir que trabalhos sem um contêiner de trabalho sejam executados, conf
               value: "false"
 ```
 
-### Como personalizar modos de contêiner { #customizing-container-modes }
+### Como personalizar modos de contêiner
 
 Ao definir o `containerMode` no arquivo `values.yaml` para o gráfico Helm [`gha-runner-scale-set`](https://github.com/actions/actions-runner-controller/blob/5347e2c2c80fbc45be7390eab117e861d30776d1/charts/gha-runner-scale-set/values.yaml#L77), você pode usar um dos seguintes valores:
 
@@ -656,7 +656,7 @@ Dependendo do valor definido para o `containerMode`, uma configuração será au
 
 Para personalizar a especificação, comente ou remova `containerMode` e acrescente a configuração desejada na seção `template`.
 
-#### Por exemplo: executar `dind-rootless` { #example-running-dind-rootless }
+#### Por exemplo: executar `dind-rootless`
 
 Antes de decidir executar `dind-rootless`, esteja ciente das [limitações conhecidas](https://docs.docker.com/engine/security/rootless/#known-limitations).
 
@@ -675,8 +675,8 @@ githubConfigSecret: my-super-safe-secret
 ## maxRunners is the max number of runners the autoscaling runner set will scale up to.
 maxRunners: 5
 
-## minRunners is the min number of idle runners. The target number of runners created will be { #minrunners-is-the-min-number-of-idle-runners-the-target-number-of-runners-created-will-be-4 }
-## calculated as a sum of minRunners and the number of jobs assigned to the scale set. { #calculated-as-a-sum-of-minrunners-and-the-number-of-jobs-assigned-to-the-scale-set-4 }
+## minRunners is the min number of idle runners. The target number of runners created will be
+## calculated as a sum of minRunners and the number of jobs assigned to the scale set.
 minRunners: 0
 
 runnerGroup: "my-custom-runner-group"
@@ -777,7 +777,7 @@ template:
 
 Para versões do Kubernetes `< v1.29`, a seguinte configuração será aplicada:
 
-```yaml
+```
 ```
 ## githubConfigUrl is the GitHub url for where you want to configure runners
 ## ex: https://github.com/myorg/myrepo or https://github.com/myorg
@@ -902,7 +902,7 @@ Há duas opções para configurar extensões de gancho.
 
 Crie um mapa de configurações no mesmo namespace que os pods do executor. Por exemplo:
 
-```yaml
+```
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -941,7 +941,7 @@ Para habilitar métricas no ARC, configure a propriedade `metrics` no arquivo [`
 
 A seguir, há um exemplo de configuração.
 
-```yaml
+```
 metrics:
   controllerManagerAddr: ":8080"
   listenerAddr: ":8080"
@@ -962,24 +962,24 @@ As métricas emitidas pelos pods controlador-gerente e ouvinte são exibidas na 
 !!! note
     As métricas que o gerenciador de controladores emite pertencem ao runtime do controlador e não pertencem a GitHub.
 
-| Proprietário | Métrica | Tipo | Descrição |
-| --- | --- | --- | --- |
-| gerenciador-controlador | gha_controller_pending_ephemeral_runners | medidor | Número de executores efêmeros em estado pendente |
-| gerenciador-controlador | gha_controller_running_ephemeral_runners | medidor | Número de executores efêmeros em estado de execução |
-| gerenciador-controlador | gha_controller_failed_ephemeral_runners | medidor | Número de executores efêmeros em estado de falha |
-| gerenciador-controlador | gha_controller_running_listeners | medidor | Número de ouvintes em um estado de execução |
-| ouvinte | gha_assigned_jobs | medidor | Número de trabalhos atribuídos ao conjunto de dimensionamento de executores |
-| ouvinte | gha_running_jobs | medidor | Número de trabalhos em execução ou na fila para execução |
-| ouvinte | gha_registered_runners | medidor | Número de executores registrados pelo conjunto de dimensionamento de executores |
-| ouvinte | gha_busy_runners | medidor | Número de corredores registrados atualmente executando um trabalho |
-| ouvinte | gha_min_runners | medidor | Número mínimo de executores configurados para o conjunto de dimensionamento de executores |
-| ouvinte | gha_max_runners | medidor | Número máximo de executores configurados para o conjunto de dimensionamento de executores |
-| ouvinte | gha_desired_runners | medidor | Número de executores desejados (meta de escala/redução vertical) pelo conjunto de dimensionamento de executores |
-| ouvinte | gha_idle_runners | medidor | Número de executores registrados que não estão executando um trabalho |
-| ouvinte | gha_started_jobs_total | contador | Número total de trabalhos iniciados desde que o listener ficou pronto \[1] |
-| ouvinte | gha_completed_jobs_total | contador | Número total de trabalhos concluídos desde que o listener ficou pronto \[1] |
-| ouvinte | gha_job_startup_duration_seconds | histograma | Número de segundos gastos aguardando a tarefa do fluxo de trabalho para iniciar no executor de propriedade do conjunto de dimensionamento do executor |
-| ouvinte | gha_job_execution_duration_seconds | histograma | Número de segundos gastos executando tarefas do fluxo de trabalho pelo conjunto de dimensionamento do executor |
+| Proprietário            | Métrica                                      | Tipo       | Descrição                                                                                                                                             |
+| ----------------------- | -------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| gerenciador-controlador | gha_controller_pending_ephemeral_runners | medidor    | Número de executores efêmeros em estado pendente                                                                                                      |
+| gerenciador-controlador | gha_controller_running_ephemeral_runners | medidor    | Número de executores efêmeros em estado de execução                                                                                                   |
+| gerenciador-controlador | gha_controller_failed_ephemeral_runners  | medidor    | Número de executores efêmeros em estado de falha                                                                                                      |
+| gerenciador-controlador | gha_controller_running_listeners          | medidor    | Número de ouvintes em um estado de execução                                                                                                           |
+| ouvinte                 | gha_assigned_jobs                          | medidor    | Número de trabalhos atribuídos ao conjunto de dimensionamento de executores                                                                           |
+| ouvinte                 | gha_running_jobs                           | medidor    | Número de trabalhos em execução ou na fila para execução                                                                                              |
+| ouvinte                 | gha_registered_runners                     | medidor    | Número de executores registrados pelo conjunto de dimensionamento de executores                                                                       |
+| ouvinte                 | gha_busy_runners                           | medidor    | Número de corredores registrados atualmente executando um trabalho                                                                                    |
+| ouvinte                 | gha_min_runners                            | medidor    | Número mínimo de executores configurados para o conjunto de dimensionamento de executores                                                             |
+| ouvinte                 | gha_max_runners                            | medidor    | Número máximo de executores configurados para o conjunto de dimensionamento de executores                                                             |
+| ouvinte                 | gha_desired_runners                        | medidor    | Número de executores desejados (meta de escala/redução vertical) pelo conjunto de dimensionamento de executores                                       |
+| ouvinte                 | gha_idle_runners                           | medidor    | Número de executores registrados que não estão executando um trabalho                                                                                 |
+| ouvinte                 | gha_started_jobs_total                    | contador   | Número total de trabalhos iniciados desde que o listener ficou pronto \[1]                                                                            |
+| ouvinte                 | gha_completed_jobs_total                  | contador   | Número total de trabalhos concluídos desde que o listener ficou pronto \[1]                                                                           |
+| ouvinte                 | gha_job_startup_duration_seconds         | histograma | Número de segundos gastos aguardando a tarefa do fluxo de trabalho para iniciar no executor de propriedade do conjunto de dimensionamento do executor |
+| ouvinte                 | gha_job_execution_duration_seconds       | histograma | Número de segundos gastos executando tarefas do fluxo de trabalho pelo conjunto de dimensionamento do executor                                        |
 
 \[1]: Listener metrics that have the counter type are reset when the listener pod restarts.
 
@@ -1028,7 +1028,7 @@ Como melhor prática, crie um namespace exclusivo para cada organização. Você
 
 Partes foram adaptadas do <https://github.com/actions/actions-runner-controller/> de acordo com a licença Apache-2.0:
 
-```text
+```
 Copyright 2019 Moto Ishizawa
 
 Licensed under the Apache License, Version 2.0 (the "License");

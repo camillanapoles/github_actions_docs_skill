@@ -6,27 +6,27 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/build-and-test-code/rust
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Tutorials / Build and test code
 ---
 
-# Como criar e testar o Rust { #building-and-testing-rust }
+# Como criar e testar o Rust
 
 _Saiba como criar um fluxo de trabalho de integração contínua (CI) para criar e testar seu projeto do Rust._
 
-## Introdução { #introduction }
+## Introdução
 
 Este guia mostra como criar, testar e publicar um pacote do Rust.
 
 Os executores hospedados do GitHub contam com um cache de ferramentas com software pré-instalado, que inclui as dependências necessárias para a linguagem Rust. Para ver a lista completa de programas de software atualizados e as versões pré-instaladas do Rust, confira [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images).
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Você já deve estar familiarizado com a sintaxe YAML e como ela é usada com GitHub Actions. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md).
 
 Recomendamos que você tenha um entendimento básico da linguagem Rust. Para ver mais informações, confira [Introdução ao Rust](https://www.rust-lang.org/learn).
 
-## Como usar um modelo de fluxo de trabalho do Rust { #using-a-rust-workflow-template }
+## Como usar um modelo de fluxo de trabalho do Rust
 
 Para uma introdução rápida, adicione um modelo de fluxo de trabalho ao diretório `.github/workflows` do repositório.
 
@@ -54,7 +54,7 @@ GitHub fornece um modelo de fluxo de trabalho do Rust que deve funcionar para a 
 
    O `rust.yml` arquivo de fluxo de trabalho é adicionado ao `.github/workflows` diretório do repositório.
 
-## Como especificar uma versão do Rust { #specifying-a-rust-version }
+## Como especificar uma versão do Rust
 
 Os executores hospedados do GitHub incluem uma versão recente do conjunto de ferramentas da linguagem Rust. Você pode usar o rustup para informar a versão instalada em um executador, substituir a versão e instalar diferentes cadeias de ferramentas. Para obter mais informações, confira [The rustup book](https://rust-lang.github.io/rustup/).
 
@@ -67,7 +67,7 @@ Este exemplo mostra as etapas que você pode usar para configurar o ambiente do 
         run: rustup --version
 ```
 
-### Memorizar dependências { #caching-dependencies }
+### Memorizar dependências
 
 Você pode armazenar em cache e restaurar as dependências usando a ação Armazenar em cache. Este exemplo pressupõe que o repositório contém um arquivo `Cargo.lock`.
 
@@ -84,7 +84,7 @@ Você pode armazenar em cache e restaurar as dependências usando a ação Armaz
 
 Se você tiver requisitos personalizados ou precisar de controles mais refinados para o cache, explore outras opções de configuração para a [ação `cache`](https://github.com/marketplace/actions/cache). Para saber mais, confira [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md).
 
-## Criar e testar seu código { #building-and-testing-your-code }
+## Criar e testar seu código
 
 Você pode usar os mesmos comandos usados localmente para criar e testar seu código. Este fluxo de trabalho de exemplo demonstra como usar `cargo build` e `cargo test` em um trabalho:
 
@@ -107,7 +107,7 @@ jobs:
 
 A palavra-chave `release` usada neste exemplo corresponde a um perfil de carga. Você pode usar qualquer [perfil](https://doc.rust-lang.org/cargo/reference/profiles.html) definido no arquivo `Cargo.toml`.
 
-## Como publicar seu pacote ou biblioteca em crates.io { #publishing-your-package-or-library-to-cratesio }
+## Como publicar seu pacote ou biblioteca em crates.io
 
 Depois de configurar o fluxo de trabalho para criar e testar seu código, use um segredo para fazer logon em [crates.io](https://crates.io/) e publicar seu pacote.
 
@@ -124,7 +124,7 @@ Depois de configurar o fluxo de trabalho para criar e testar seu código, use um
 
 Se houver erros ao compilar e empacotar o crate, verifique os metadados no manifesto, arquivo `Cargo.toml`, confira [O formato de manifesto](https://doc.rust-lang.org/cargo/reference/manifest.html). Você também deve verificar seu arquivo `Cargo.lock`, veja [Cargo.toml vs Cargo.lock](https://doc.rust-lang.org/cargo/guide/cargo-toml-vs-cargo-lock.html).
 
-## Empacotar dados do fluxo de trabalho como artefatos { #packaging-workflow-data-as-artifacts }
+## Empacotar dados do fluxo de trabalho como artefatos
 
 Após a conclusão de um fluxo de trabalho, você pode carregar os artefatos resultantes para análise ou para usar em outro fluxo de trabalho. Você pode adicionar essas etapas de exemplo ao fluxo de trabalho para carregar um aplicativo para uso por outro fluxo de trabalho.
 

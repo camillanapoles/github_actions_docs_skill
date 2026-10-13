@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/use-containerized-services
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Tutorials
 ---
 

@@ -6,19 +6,19 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/bamboo-migration
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
-# Migrando do Bamboo para o GitHub Actions Importer { #migrating-from-bamboo-with-github-actions-importer }
+# Migrando do Bamboo para o GitHub Actions Importer
 
 _Saiba como usar GitHub Actions Importer para automatizar a migração de seus pipelines do Bamboo para GitHub Actions._
 
-## Sobre a migração do Bamboo usando o Importador do GitHub Actions { #about-migrating-from-bamboo-with-github-actions-importer }
+## Sobre a migração do Bamboo usando o Importador do GitHub Actions
 
 As instruções a seguir orientarão você sobre como configurar seu ambiente para usar GitHub Actions Importer e migrar os pipelines do Bamboo para GitHub Actions.
 
-### Pré-requisitos { #prerequisites }
+### Pré-requisitos
 
 * Uma conta do Bamboo ou uma organização com projetos e pipelines que você deseja converter para fluxos de trabalho do GitHub Actions.
 * Versão Bamboo 7.1.1 ou superior.
@@ -31,7 +31,7 @@ As instruções a seguir orientarão você sobre como configurar seu ambiente pa
 
   > A CLI e o contêiner do GitHub Actions Importer não precisam ser instalados no mesmo servidor que a plataforma de CI.
 
-### Limitações { #limitations }
+### Limitações
 
 Há algumas limitações ao migrar do Bamboo para GitHub Actions com GitHub Actions Importer:
 
@@ -48,20 +48,20 @@ Há algumas limitações ao migrar do Bamboo para GitHub Actions com GitHub Acti
 * As permissões não são transformadas porque não há equivalente adequado em GitHub Actions.
 * Se a versão do Bamboo estiver entre 7.1.1 e 8.1.1, as variáveis de projeto e plano não serão migradas.
 
-#### Tarefas manuais { #manual-tasks }
+#### Tarefas manuais
 
 Certos constructos do Bamboo devem ser migrados manualmente. Eles incluem:
 
 * Variáveis mascaradas
 * Configurações de expiração do artefato
 
-## Instalando a extensão da GitHub Actions Importer CLI { #installing-the-github-actions-importer-cli-extension }
+## Instalando a extensão da GitHub Actions Importer CLI
 
 1. Instale a extensão da CLI do GitHub Actions Importer:
 
             ```bash copy
    gh extension install github/gh-actions-importer
-            ```
+   ```
 
 2. Verifique se a extensão foi instalada:
 
@@ -78,9 +78,9 @@ Certos constructos do Bamboo devem ser migrados manualmente. Eles incluem:
      forecast   Forecast GitHub Actions usage from historical pipeline utilization.
      dry-run    Convert a pipeline to a GitHub Actions workflow and output its yaml file.
      migrate    Convert a pipeline to a GitHub Actions workflow and open a pull request with the changes.
-            ```
+   ```
 
-## Como configurar credenciais { #configuring-credentials }
+## Como configurar credenciais
 
 O `configure` comando da CLI é usado para definir as credenciais e as opções necessárias para GitHub Actions Importer trabalhar com Bamboo e GitHub.
 
@@ -106,7 +106,7 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
 
             ```shell
    gh actions-importer configure
-            ```
+   ```
 
    O comando `configure` solicitará que você insira as seguintes informações:
 
@@ -127,22 +127,22 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
    ✔ Personal access token for Bamboo: ********************
    ✔ Base url of the Bamboo instance: https://bamboo.example.com
    Environment variables successfully updated.
-            ```
+   ```
 
 4. No terminal, execute o comando CLI GitHub Actions Importer`update` para se conectar a GitHub PackagesContainer registry e garantir que a imagem do contêiner esteja atualizada para a versão mais recente:
 
             ```shell
    gh actions-importer update
-            ```
+   ```
 
    A saída do comando será parecida com a mostrada abaixo:
 
             ```shell
    Updating ghcr.io/actions-importer/cli:latest...
    ghcr.io/actions-importer/cli:latest up-to-date
-            ```
+   ```
 
-## Executar uma auditoria do Bamboo { #perform-an-audit-of-bamboo }
+## Executar uma auditoria do Bamboo
 
 Você pode usar o comando `audit` para obter uma exibição de alto nível de todos os projetos em uma organização Bamboo.
 
@@ -152,7 +152,7 @@ O comando `audit` executa as seguintes etapas:
 2. Converte cada pipeline em seu fluxo de trabalho equivalente GitHub Actions .
 3. Gera um relatório que resume o quão completa e complexa de uma migração é possível com GitHub Actions Importer.
 
-### Como executar o comando de auditoria { #running-the-audit-command }
+### Como executar o comando de auditoria
 
 Para executar uma auditoria de uma instância do Bamboo, execute o seguinte comando no terminal:
 
@@ -160,7 +160,7 @@ Para executar uma auditoria de uma instância do Bamboo, execute o seguinte coma
 gh actions-importer audit bamboo --output-dir tmp/audit
 ```
 
-### Como inspecionar os resultados da auditoria { #inspecting-the-audit-results }
+### Como inspecionar os resultados da auditoria
 
 Os arquivos do diretório de saída especificado contêm os resultados da auditoria. Confira o arquivo `audit_summary.md` para ver um resumo dos resultados da auditoria.
 
@@ -180,7 +180,7 @@ Veja abaixo alguns termos importantes que podem aparecer na seção "Pipelines":
   * GitHub Actions Importer encontrou um erro interno ao convertê-lo.
   * Houve uma resposta de rede malsucedida que tornou o pipeline inacessível, o que geralmente ocorre devido a credenciais inválidas.
 
-#### Etapas de compilação { #build-steps }
+#### Etapas de compilação
 
 A seção "Etapas de compilação" contém uma visão geral das etapas de compilação individuais usadas em todos os pipelines e de quantas delas foram convertidas automaticamente por GitHub Actions Importer.
 
@@ -195,7 +195,7 @@ A seguir estão alguns termos-chave que podem aparecer na seção "Build steps":
   * Se você usar GitHub Enterprise Server, reunindo a lista de ações para sincronizar com sua instância.
   * Definir uma lista de permissões em nível organizacional para as ações utilizadas. Essa lista de ações é abrangente e inclui as ações que as equipes de segurança ou conformidade podem precisar analisar.
 
-#### Tarefas manuais { #manual-tasks-1 }
+#### Tarefas manuais
 
 A seção "Tarefas manuais" contém uma visão geral das tarefas que GitHub Actions Importer não podem ser concluídas automaticamente e que você deve concluir manualmente.
 
@@ -204,7 +204,7 @@ Veja abaixo alguns termos importantes que podem aparecer na seção "Tarefas man
 * Um **segredo** é um segredo no nível do repositório ou da organização que é usado nos pipelines convertidos. Esses segredos devem ser criados manualmente no GitHub Actions para que esses pipelines funcionem corretamente. Para saber mais, confira [Usar segredos em ações do GitHub](../../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 * Um **executor auto-hospedado refere-se** a um rótulo de um executor que é referenciado em um pipeline convertido que não é um GitHubexecutor hospedado. Será necessário definir manualmente esses executores para que os pipelines funcionem de maneira correta.
 
-#### Arquivos { #files }
+#### Arquivos
 
 A seção final do relatório de auditoria fornece um manifesto de todos os arquivos que foram gravados em disco durante a auditoria.
 
@@ -217,11 +217,11 @@ Cada arquivo de pipeline tem diversos arquivos incluídos na auditoria, incluind
 
 Além disso, o arquivo `workflow_usage.csv` contém uma lista separada por vírgula de todas as ações, todos os segredos e todos os executores usados pelos pipelines convertidos com sucesso. Isso pode ser útil para determinar quais fluxos de trabalho usam quais ações, segredos ou executores e para executar revisões de segurança.
 
-## Previsão de uso { #forecasting-usage }
+## Previsão de uso
 
 Você pode usar o comando `forecast` para prever o uso potencial do GitHub Actions calculando as métricas direto de execuções de pipeline concluídas na instância do Bamboo.
 
-### Como executar o comando de previsão { #running-the-forecast-command }
+### Como executar o comando de previsão
 
 Para executar uma previsão de uso potencial GitHub Actions , execute o comando a seguir em seu terminal. Por padrão, GitHub Actions Importer inclui os sete dias anteriores no relatório de previsão.
 
@@ -229,7 +229,7 @@ Para executar uma previsão de uso potencial GitHub Actions , execute o comando 
 gh actions-importer forecast bamboo --output-dir tmp/forecast_reports
 ```
 
-### Previsão de um projeto { #forecasting-a-project }
+### Previsão de um projeto
 
 Para limitar a previsão aos ambientes de planos e implantações associados a um projeto, você pode usar a opção `--project`, em que o valor é definido como uma chave do projeto de build.
 
@@ -239,7 +239,7 @@ Por exemplo:
 gh actions-importer forecast bamboo --project PAN --output-dir tmp/forecast_reports
 ```
 
-### Como inspecionar o relatório de previsão { #inspecting-the-forecast-report }
+### Como inspecionar o relatório de previsão
 
 O arquivo `forecast_report.md` no diretório de saída especificado contém os resultados da previsão.
 
@@ -254,24 +254,24 @@ Veja abaixo alguns termos importantes que podem aparecer no relatório de previs
         ```
 * As métricas de **trabalhos simultâneos** descrevem a quantidade de trabalhos em execução a qualquer momento. Essa métrica pode ser usada para
 
-        ```
-## Executar uma migração de simulação de um pipeline do Bamboo { #perform-a-dry-run-migration-of-a-bamboo-pipeline }
+  ```
+## Executar uma migração de simulação de um pipeline do Bamboo
 
 Você pode usar o `dry-run` comando para converter um pipeline do Bamboo em um fluxo de trabalho equivalente GitHub Actions . Uma simulação cria os arquivos de saída em um diretório especificado, mas não abre uma solicitação de pull para migrar o pipeline.
 
-### Executar uma migração simulada para um plano de build { #running-a-dry-run-migration-for-a-build-plan }
+### Executar uma migração simulada para um plano de build
 
 Para executar uma simulação da migração do plano de build do Bamboo para o GitHub Actions, execute o seguinte comando no terminal, substituindo `:my_plan_slug` pelo projeto do plano e pela chave de plano no formato `<projectKey>-<planKey>` (por exemplo: `PAN-SCRIP`).
 
-```
+```shell
 gh actions-importer dry-run bamboo build --plan-slug :my_plan_slug --output-dir tmp/dry-run
 ```
 
-### Executar uma migração simulada para um projeto de implantação { #running-a-dry-run-migration-for-a-deployment-project }
+### Executar uma migração simulada para um projeto de implantação
 
 Para executar uma simulação da migração do seu projeto de implantação do Bamboo para GitHub Actions, execute o seguinte comando no terminal, substituindo `:my_deployment_project_id` pela ID do projeto de implantação que você está convertendo.
 
-```
+```shell
 gh actions-importer dry-run bamboo deployment --deployment-project-id :my_deployment_project_id --output-dir tmp/dry-run
 ```
 
@@ -279,43 +279,43 @@ Você pode ver os logs da simulação e os arquivos de fluxo de trabalho convert
 
 Se houver algo que GitHub Actions Importer não foi capaz de converter automaticamente, como etapas de build desconhecidas ou um pipeline parcialmente bem-sucedido, talvez você queira criar transformadores personalizados para personalizar ainda mais o processo de conversão. Para saber mais, confira [Estendendo o Importador do GitHub Actions com transformadores personalizados](../../../reference/github-actions-importer/custom-transformers.md).
 
-## Executar uma migração de produção de um pipeline do Bamboo { #perform-a-production-migration-of-a-bamboo-pipeline }
+## Executar uma migração de produção de um pipeline do Bamboo
 
 Você pode usar o `migrate` comando para converter um pipeline do Bamboo e abrir uma solicitação de pull com o fluxo de trabalho equivalente GitHub Actions .
 
-### Como executar o comando de migração para um plano de build { #running-the-migrate-command-for-a-build-plan }
+### Como executar o comando de migração para um plano de build
 
 Para migrar um plano de build do Bamboo para GitHub Actions, execute o seguinte comando no terminal, substituindo o valor de `target-url` pela URL do seu repositório GitHub e o valor de `:my_plan_slug` pelo projeto e pela chave do plano no formato `<projectKey>-<planKey>`.
 
-```
+```shell
 gh actions-importer migrate bamboo build --plan-slug :my_plan_slug --target-url :target_url --output-dir tmp/migrate
 ```
 
 A saída do comando inclui a URL para a solicitação de pull que adiciona o fluxo de trabalho convertido ao seu repositório. Um exemplo de uma saída bem-sucedida é semelhante ao seguinte:
 
-```
+```shell
 $ gh actions-importer migrate bamboo build --plan-slug :PROJECTKEY-PLANKEY --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate
 [2022-08-20 22:08:20] Logs: 'tmp/migrate/log/actions-importer-20220916-014033.log'
 [2022-08-20 22:08:20] Pull request: 'https://github.com/octo-org/octo-repo/pull/1'
 ```
 
-### Executar o comando de migração para um projeto de implantação { #running-the-migrate-command-for-a-deployment-project }
+### Executar o comando de migração para um projeto de implantação
 
 Para migrar um projeto de implantação do Bamboo para GitHub Actions, execute o seguinte comando no terminal, substituindo o valor de `target-url` pela URL do seu repositório GitHub e `:my_deployment_project_id` pelo ID do projeto de implantação que você está convertendo.
 
-```
+```shell
 gh actions-importer migrate bamboo deployment --deployment-project-id :my_deployment_project_id --target-url :target_url --output-dir tmp/migrate
 ```
 
 A saída do comando inclui a URL para a solicitação de pull que adiciona o fluxo de trabalho convertido ao seu repositório. Um exemplo de uma saída bem-sucedida é semelhante ao seguinte:
 
-```
+```shell
 $ gh actions-importer migrate bamboo deployment --deployment-project-id 123 --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate
 [2023-04-20 22:08:20] Logs: 'tmp/migrate/log/actions-importer-20230420-014033.log'
 [2023-04-20 22:08:20] Pull request: 'https://github.com/octo-org/octo-repo/pull/1'
 ```
 
-### Como inspecionar a solicitação de pull { #inspecting-the-pull-request }
+### Como inspecionar a solicitação de pull
 
 A saída de uma execução bem-sucedida do comando `migrate` contém um link para a nova solicitação de pull que adiciona o fluxo de trabalho convertido ao seu repositório.
 
@@ -326,11 +326,11 @@ Alguns elementos importantes da solicitação de pull incluem:
 
 Quando terminar de inspecionar a pull request, você poderá mesclá-la para adicionar o fluxo de trabalho ao repositório do GitHub.
 
-## Referência { #reference }
+## Referência
 
 Esta seção contém informações de referência sobre variáveis de ambiente, argumentos opcionais e sintaxe com suporte ao usar GitHub Actions Importer para migrar do Bamboo.
 
-### Usando variáveis de ambiente { #using-environment-variables }
+### Usando variáveis de ambiente
 
 O GitHub Actions Importer usa variáveis de ambiente para a configuração de autenticação. Essas variáveis são definidas durante o processo de configuração com o comando `configure`. Para obter mais informações, confira a seção [Como configurar as credenciais](#configuring-credentials).
 
@@ -343,7 +343,7 @@ GitHub Actions Importer usa as seguintes variáveis de ambiente para se conectar
 
 Essas variáveis de ambiente podem ser especificadas em um `.env.local` arquivo que é carregado pelo GitHub Actions Importer quando ele é executado.
 
-### Argumentos opcionais { #optional-arguments }
+### Argumentos opcionais
 
 Há argumentos opcionais que você pode usar com os subcomandos do GitHub Actions Importer para personalizar sua migração.
 
@@ -355,7 +355,7 @@ Por padrão, GitHub Actions Importer busca o conteúdo do pipeline da instância
 
 Por exemplo:
 
-```
+```shell
 gh actions-importer dry-run bamboo build --plan-slug IN-COM -o tmp/bamboo --source-file-path ./path/to/my/bamboo/file.yml
 ```
 
@@ -365,17 +365,17 @@ Use o argumento `--config-file-path` com os subcomandos `audit`, `dry-run` e `mi
 
 Por padrão, GitHub Actions Importer busca o conteúdo do pipeline da instância do Bamboo. O argumento `--config-file-path` instrui GitHub Actions Importer a usar os arquivos de origem especificados.
 
-##### Exemplo de auditoria { #audit-example }
+##### Exemplo de auditoria
 
 Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML especificado para executar uma auditoria.
 
-```
+```bash
 gh actions-importer audit bamboo -o tmp/bamboo --config-file-path "./path/to/my/bamboo/config.yml"
 ```
 
 Para auditar uma instância do Bamboo usando um arquivo de configuração, o arquivo de configuração precisa estar no seguinte formato e cada `repository_slug` precisa ser exclusivo:
 
-```
+```yaml
 source_files:
   - repository_slug: IN/COM
     path: path/to/one/source/file.yml
@@ -383,22 +383,22 @@ source_files:
     path: path/to/another/source/file.yml
 ```
 
-##### Exemplo de simulação a seco { #dry-run-example }
+##### Exemplo de simulação a seco
 
 Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML especificado como o arquivo de origem para executar uma execução seca.
 
 O campo de dados dinâmico do repositório é criado usando a opção `--plan-slug` . O caminho do arquivo de origem é localizado e extraído do arquivo especificado.
 
-```
+```bash
 gh actions-importer dry-run bamboo build --plan-slug IN-COM -o tmp/bamboo --config-file-path "./path/to/my/bamboo/config.yml"
 ```
 
-### Sintaxe com suporte para pipelines do Bamboo { #supported-syntax-for-bamboo-pipelines }
+### Sintaxe com suporte para pipelines do Bamboo
 
 A tabela a seguir mostra o tipo de propriedades que GitHub Actions Importer atualmente é capaz de converter.
 
 | Bamboo                              | GitHub Actions                                  |              Status |
-| :---------------------------------- | :---------------------------------------------- | ------------------: |
+|:----------------------------------|:----------------------------------------------|------------------:|
 | `environments`                      | `jobs`                                          |         Com suporte |
 | `environments.<environment_id>`     | `jobs.<job_id>`                                 |         Com suporte |
 | `<job_id>.artifacts`                | `jobs.<job_id>.steps.actions/upload-artifact`   |         Com suporte |
@@ -425,55 +425,55 @@ A tabela a seguir mostra o tipo de propriedades que GitHub Actions Importer atua
 
 Para obter mais informações sobre o conceito do Bamboo e os mapeamentos de plug-in com suporte, confira o repositório [`github/gh-actions-importer`](https://github.com/github/gh-actions-importer/blob/main/docs/bamboo/index.md).
 
-### Mapeamento de variáveis de ambiente { #environment-variable-mapping }
+### Mapeamento de variáveis de ambiente
 
 GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáveis de ambiente padrão do Bamboo para os equivalentes mais próximos em GitHub Actions.
 
-| Bamboo                                           | GitHub Actions                                                                        |
-| :----------------------------------------------- | :------------------------------------------------------------------------------------ |
-| `bamboo.agentId`                                 | `${{ github.runner_name }}`                                                           |
-| `bamboo.agentWorkingDirectory`                   | `${{ github.workspace }}`                                                             |
-| `bamboo.buildKey`                                | `${{ github.workflow }}-${{ github.job }}`                                            |
-| `bamboo.buildNumber`                             | `${{ github.run_id }}`                                                                |
-| `bamboo.buildPlanName`                           | `${{ github.repository }}-${{ github.workflow }}-${{ github.job }`                    |
-| `bamboo.buildResultKey`                          | `${{ github.workflow }}-${{ github.job }}-${{ github.run_id }}`                       |
-| `bamboo.buildResultsUrl`                         | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
-| `bamboo.build.working.directory`                 | `${{ github.workspace }}`                                                             |
-| `bamboo.deploy.project`                          | `${{ github.repository }}`                                                            |
-| `bamboo.ManualBuildTriggerReason.userName`       | `${{ github.actor }}`                                                                 |
-| `bamboo.planKey`                                 | `${{ github.workflow }}`                                                              |
-| `bamboo.planName`                                | `${{ github.repository }}-${{ github.workflow }}`                                     |
-| `bamboo.planRepository.branchDisplayName`        | `${{ github.ref }}`                                                                   |
-| `bamboo.planRepository.<position>.branch`        | `${{ github.ref }}`                                                                   |
-| `bamboo.planRepository.<position>.branchName`    | `${{ github.ref }}`                                                                   |
-| `bamboo.planRepository.<position>.name`          | `${{ github.repository }}`                                                            |
-| `bamboo.planRepository.<position>.repositoryUrl` | `${{ github.server }}/${{ github.repository }}`                                       |
-| `bamboo.planRepository.<position>.revision`      | `${{ github.sha }}`                                                                   |
-| `bamboo.planRepository.<position>.username`      | `${{ github.actor}}`                                                                  |
-| `bamboo.repository.branch.name`                  | `${{ github.ref }}`                                                                   |
-| `bamboo.repository.git.branch`                   | `${{ github.ref }}`                                                                   |
-| `bamboo.repository.git.repositoryUrl`            | `${{ github.server }}/${{ github.repository }}`                                       |
-| `bamboo.repository.pr.key`                       | `${{ github.event.pull_request.number }}`                                             |
-| `bamboo.repository.pr.sourceBranch`              | `${{ github.event.pull_request.head.ref }}`                                           |
-| `bamboo.repository.pr.targetBranch`              | `${{ github.event.pull_request.base.ref }}`                                           |
-| `bamboo.resultsUrl`                              | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
-| `bamboo.shortJobKey`                             | `${{ github.job }}`                                                                   |
-| `bamboo.shortJobName`                            | `${{ github.job }}`                                                                   |
-| `bamboo.shortPlanKey`                            | `${{ github.workflow }}`                                                              |
-| `bamboo.shortPlanName`                           | `${{ github.workflow }}`                                                              |
+| Bamboo | GitHub Actions |
+| :-- | :-- |
+| `bamboo.agentId` | `${{ github.runner_name }}` |
+| `bamboo.agentWorkingDirectory` | `${{ github.workspace }}` |
+| `bamboo.buildKey` | `${{ github.workflow }}-${{ github.job }}` |
+| `bamboo.buildNumber` | `${{ github.run_id }}` |
+| `bamboo.buildPlanName` | `${{ github.repository }}-${{ github.workflow }}-${{ github.job }` |
+| `bamboo.buildResultKey` | `${{ github.workflow }}-${{ github.job }}-${{ github.run_id }}` |
+| `bamboo.buildResultsUrl` | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
+| `bamboo.build.working.directory` | `${{ github.workspace }}` |
+| `bamboo.deploy.project` | `${{ github.repository }}` |
+| `bamboo.ManualBuildTriggerReason.userName` | `${{ github.actor }}` |
+| `bamboo.planKey` | `${{ github.workflow }}` |
+| `bamboo.planName` | `${{ github.repository }}-${{ github.workflow }}` |
+| `bamboo.planRepository.branchDisplayName` | `${{ github.ref }}` |
+| `bamboo.planRepository.<position>.branch` | `${{ github.ref }}` |
+| `bamboo.planRepository.<position>.branchName` | `${{ github.ref }}` |
+| `bamboo.planRepository.<position>.name` | `${{ github.repository }}` |
+| `bamboo.planRepository.<position>.repositoryUrl` | `${{ github.server }}/${{ github.repository }}` |
+| `bamboo.planRepository.<position>.revision` | `${{ github.sha }}` |
+| `bamboo.planRepository.<position>.username` | `${{ github.actor}}` |
+| `bamboo.repository.branch.name` | `${{ github.ref }}` |
+| `bamboo.repository.git.branch` | `${{ github.ref }}` |
+| `bamboo.repository.git.repositoryUrl` | `${{ github.server }}/${{ github.repository }}` |
+| `bamboo.repository.pr.key` | `${{ github.event.pull_request.number }}` |
+| `bamboo.repository.pr.sourceBranch` | `${{ github.event.pull_request.head.ref }}` |
+| `bamboo.repository.pr.targetBranch` | `${{ github.event.pull_request.base.ref }}` |
+| `bamboo.resultsUrl` | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
+| `bamboo.shortJobKey` | `${{ github.job }}` |
+| `bamboo.shortJobName` | `${{ github.job }}` |
+| `bamboo.shortPlanKey` | `${{ github.workflow }}` |
+| `bamboo.shortPlanName` | `${{ github.workflow }}` |
 
 !!! note
     Variáveis desconhecidas são transformadas `${{ env.<variableName> }}` e devem ser substituídas ou adicionadas `env` para a operação adequada. Por exemplo, `${bamboo.jira.baseUrl}` se tornará `${{ env.jira_baseUrl }}`.
 
-### Variáveis do sistema { #system-variables }
+### Variáveis do sistema
 
 As variáveis do sistema usadas em tarefas são transformadas na variável de shell de bash equivalente e são consideradas disponíveis. Por exemplo, `${system.<variable.name>}` será transformado em `$variable_name`. Recomendamos que você verifique isso para garantir a operação adequada do fluxo de trabalho.
 
-## Aviso legal { #legal-notice }
+## Aviso legal
 
 Partes foram adaptadas do <https://github.com/github/gh-actions-importer/> de acordo com a licença MIT:
 
-```
+```text
 MIT License
 
 Copyright (c) 2022 GitHub

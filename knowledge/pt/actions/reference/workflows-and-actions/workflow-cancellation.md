@@ -6,11 +6,11 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/workflow-cancellation
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Reference / Workflows and actions
 ---
 
-# Referência de cancelamento de fluxo de trabalho { #workflow-cancellation-reference }
+# Referência de cancelamento de fluxo de trabalho
 
 _Encontre informações sobre as etapas que GitHub executa para cancelar uma execução de um fluxo de trabalho._
 

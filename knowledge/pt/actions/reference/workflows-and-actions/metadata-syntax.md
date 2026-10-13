@@ -6,11 +6,11 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/metadata-syntax
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Reference / Workflows and actions
 ---
 
-# Referência de sintaxe de metadados { #metadata-syntax-reference }
+# Referência de sintaxe de metadados
 
 _É possível criar ações para realizar tarefas no repositório. Se você estiver fazendo uma ação personalizada, ela exigirá um arquivo de metadados que use a sintaxe YAML._
 
@@ -35,7 +35,7 @@ GitHub exibe `name` na guia **Ações** para ajudar a identificar visualmente as
 **Opcional** Os parâmetros de entrada permitem que você especifique os dados que a ação espera usar durante o runtime.
 GitHub armazena parâmetros de entrada como variáveis de ambiente. Recomenda-se usar identificações de entrada com letras minúsculas.
 
-### Exemplo: Especificando entradas { #example-specifying-inputs }
+### Exemplo: Especificando entradas
 
 Este exemplo configura duas entradas: `num-octocats` e `octocat-eye-color`. A entrada `num-octocats` não é obrigatória e usará o valor `1` como padrão.
 `octocat-eye-color` é obrigatório e não tem valor padrão.
@@ -84,7 +84,7 @@ Por exemplo, se um fluxo de trabalho definir as entradas `num-octocats` e `octoc
 
 **Opcional** se o parâmetro de entrada for usado, essa `string` será registrada em log como uma mensagem de aviso. Você pode usar esse aviso para notificar os usuários de que a entrada é encerrando e mencionar quaisquer alternativas.
 
-## `outputs` para ações de contêiner do Docker e de JavaScript { #outputs-for-docker-container-and-javascript-actions }
+## `outputs` para ações de contêiner do Docker e de JavaScript
 
 **Opcional** Os parâmetros de saída permitem que você declare os dados definidos por uma ação. As ações executadas posteriormente em um fluxo de trabalho podem usar os dados de saída definidos em ações executadas anteriormente. Por exemplo, se uma ação executou a adição de duas entradas (x + y = z), a ação poderia usar o resultado da soma (z) como entrada em outras ações.
 
@@ -92,7 +92,7 @@ As saídas podem ter no máximo 1 MB por trabalho. O total de todas as saídas e
 
 Se você não declarar uma saída no seu arquivo de metadados de ação, você ainda poderá definir as saídas e usá-las no seu fluxo de trabalho. Para obter mais informações sobre como definir saídas em uma ação, consulte [Comandos de fluxo de trabalho para o GitHub Actions](workflow-commands.md#setting-an-output-parameter).
 
-### Exemplo: Declarando saídas para contêiner Docker e ações JavaScript { #example-declaring-outputs-for-docker-container-and-javascript-actions }
+### Exemplo: Declarando saídas para contêiner Docker e ações JavaScript
 
 ```yaml
 outputs:
@@ -108,13 +108,13 @@ outputs:
 
 **Obrigatório** Uma descrição `string` do parâmetro de saída.
 
-## `outputs` para ações compostas { #outputs-for-composite-actions }
+## `outputs` para ações compostas
 
 **Opcional**`outputs` usa os mesmos parâmetros que `outputs.<output_id>` e `outputs.<output_id>.description` (confira [`outputs` para ações de contêiner do Docker e de JavaScript](#outputs-for-docker-container-and-javascript-actions)), mas também inclui o token `value`.
 
 As saídas podem ter no máximo 1 MB por trabalho. O total de todas as saídas em uma execução de fluxo de trabalho pode ter no máximo 50 MB. O tamanho é aproximado com base na codificação UTF-16.
 
-### Exemplo: Declarando saídas para ações compostas { #example-declaring-outputs-for-composite-actions }
+### Exemplo: Declarando saídas para ações compostas
 
 ```yaml
 outputs:
@@ -139,11 +139,11 @@ Para obter mais informações sobre como usar a sintaxe de contexto, consulte [R
 
 **Obrigatório** Especifica se esta é uma ação de JavaScript, uma ação composta ou uma ação de contêiner do Docker e como a ação é executada.
 
-## `runs` para ações de JavaScript { #runs-for-javascript-actions }
+## `runs` para ações de JavaScript
 
 **Obrigatório** Configura o caminho para o código da ação e o runtime usado para executar o código.
 
-### Exemplo: usar o Node.js v24 { #example-using-nodejs-v24 }
+### Exemplo: usar o Node.js v24
 
 ```yaml
 runs:
@@ -151,7 +151,7 @@ runs:
   main: 'main.js'
 ```
 
-### `runs.using` para ações de JavaScript { #runsusing-for-javascript-actions }
+### `runs.using` para ações de JavaScript
 
 **Obrigatório** O runtime usado para executar o código especificado em [`main`](#runsmain).
 
@@ -218,11 +218,11 @@ Por exemplo, este `cleanup.js` só será executado em executores baseados em Lin
   post-if: runner.os == 'linux'
 ```
 
-## `runs` para ações compostas { #runs-for-composite-actions }
+## `runs` para ações compostas
 
 **Obrigatório** Configura o caminho para a ação composta.
 
-### `runs.using` para ações compostas { #runsusing-for-composite-actions }
+### `runs.using` para ações compostas
 
 **Obrigatório** Você precisa definir esse valor como `'composite'`.
 
@@ -371,11 +371,11 @@ runs:
 
 **Opcional** Impede que a ação falhe quando uma etapa falha. Defina como `true` para permitir que a ação continue se esta etapa falhar.
 
-## `runs` para ações de contêiner do Docker { #runs-for-docker-container-actions }
+## `runs` para ações de contêiner do Docker
 
 **Obrigatório** Configura a imagem usada para a ação de contêiner do Docker.
 
-### Exemplo: Usando um arquivo do Dockerfile no seu repositório { #example-using-a-dockerfile-in-your-repository }
+### Exemplo: Usando um arquivo do Dockerfile no seu repositório
 
 ```yaml
 runs:
@@ -383,7 +383,7 @@ runs:
   image: 'Dockerfile'
 ```
 
-### Exemplo: Usando o contêiner de registro público do Docker { #example-using-public-docker-registry-container }
+### Exemplo: Usando o contêiner de registro público do Docker
 
 ```yaml
 runs:
@@ -391,7 +391,7 @@ runs:
   image: 'docker://debian:stretch-slim'
 ```
 
-### `runs.using` para ações de contêiner do Docker { #runsusing-for-docker-container-actions }
+### `runs.using` para ações de contêiner do Docker
 
 **Obrigatório** Você precisa definir esse valor como `'docker'`.
 
@@ -414,7 +414,7 @@ runs:
   entrypoint: 'main.sh'
 ```
 
-### `runs.pre-if` para ações de contêiner do Docker { #runspre-if-for-docker-container-actions }
+### `runs.pre-if` para ações de contêiner do Docker
 
 **Opcional** Permite definir condições para a execução da ação `pre-entrypoint:`. A ação `pre-entrypoint:` só será executada se as condições em `pre-if` forem atendidas. Se isso não estiver definido, `pre-if` usará `always()` como padrão.
 
@@ -472,7 +472,7 @@ Se você precisar passar variáveis de ambiente para uma ação, certifique-se d
 
 Para obter mais informações sobre como usar a instrução `CMD` com GitHub Actions, consulte [Suporte do Dockerfile para GitHub Actions](dockerfile-support.md#cmd).
 
-#### Exemplo: Definir argumentos para o contêiner do Docker { #example-defining-arguments-for-the-docker-container }
+#### Exemplo: Definir argumentos para o contêiner do Docker
 
 ```yaml
 runs:
@@ -488,7 +488,7 @@ runs:
 
 **Opcional** Você pode usar uma cor e um ícone [Feather](https://feathericons.com/) para criar um distintivo para personalizar e distinguir sua ação. Os selos são mostrados ao lado do nome da ação em [GitHub Marketplace](https://github.com/marketplace?type=actions).
 
-### Exemplo: Configurar a marca para uma ação { #example-configuring-branding-for-an-action }
+### Exemplo: Configurar a marca para uma ação
 
 ```yaml
 branding:
@@ -504,7 +504,7 @@ Cor de fundo do selo. Pode ser: `white`, `black`, `yellow`, `blue`, `green`, `or
 
 O nome do ícone de [Pena](https://feathericons.com/) v4.28.0 a ser usado.
 
-#### Ícones omitidos { #omitted-icons }
+#### Ícones omitidos
 
 Os ícones de marca, e todos os ícones a seguir, são omitidos.
 
@@ -522,7 +522,7 @@ Os ícones de marca, e todos os ícones a seguir, são omitidos.
 - ferramenta
 - x-octagon
 
-#### Lista completa de todos os ícones com suporte no momento { #exhaustive-list-of-all-currently-supported-icons }
+#### Lista completa de todos os ícones com suporte no momento
 
 <!--
   This list should match the icon list in `app/models/repository_actions/icons.rb` in the internal github repo.
@@ -787,7 +787,7 @@ Os ícones de marca, e todos os ícones a seguir, são omitidos.
 - ampliar
 - afastar
 
-## Alterando o nome do arquivo de metadados { #changing-the-metadata-file-name }
+## Alterando o nome do arquivo de metadados
 
 Embora o arquivo de metadados de ações seja compatível com ambos os formatos YAML, alterar o nome do arquivo de metadados (de `action.yml` para `action.yaml` ou vice-versa) entre versões afetará as versões anteriores da release que foram publicadas em GitHub Marketplace. Alterar o nome do arquivo ocultará todas as versões de lançamento associadas ao nome de arquivo anterior de GitHub Marketplace. As versões anteriores ainda estarão acessíveis para os usuários por meio do repositório de origem.
 

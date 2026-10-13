@@ -6,11 +6,11 @@ documentType: product
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Actions
 ---
 
-# Documentação do GitHub Actions { #github-actions-documentation }
+# Documentação do GitHub Actions
 
 _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de software diretamente em seu repositório com GitHub Actions. Você pode descobrir, criar e compartilhar ações para realizar qualquer trabalho que desejar, incluindo CI/CD, bem como combinar ações em um fluxo de trabalho completamente personalizado._
 
@@ -182,6 +182,10 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
   Entenda os riscos de segurança associados a injeções de script e GitHub Actions fluxos de trabalho.
 
+* [Arquivos de bloqueio de dependências do fluxo de trabalho](concepts/security/workflow-dependency-lockfiles.md)
+
+  Um arquivo de bloqueio fixa todas as ações das quais seus fluxos de trabalho dependem em um commit verificado, portanto, o código que você analisou é o código que é executado.
+
 * [Executores comprometidos](concepts/security/compromised-runners.md)
 
   Entenda os riscos de segurança associados a runners comprometidosGitHub Actions.
@@ -286,6 +290,10 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
   É possível compartilhar uma ação ou um fluxo de trabalho reutilizável com sua empresa sem publicar a ação ou fluxo de trabalho publicamente.
 
+* [Bloqueio de dependências de ação nos fluxos de trabalho de um repositório](how-tos/secure-your-work/lock-workflow-dependencies.md)
+
+  Gere um arquivo de bloqueio que fixe cada ação que seus fluxos de trabalho usam em um commit verificado e mantenha-o atual à medida que suas dependências são alteradas.
+
 * [Usar atestados de artefatos para estabelecer a procedência de compilações](how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md)
 
   Os atestados de artefatos permitem que você aumente a segurança da cadeia de fornecedores de suas compilações, estabelecendo onde e como seu software foi criado.
@@ -313,6 +321,10 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 * [Configurando o OpenID Connect no Azure](how-tos/secure-your-work/security-harden-deployments/oidc-in-azure.md)
 
   Use o OpenID Connect em seus fluxos de trabalho para autenticar com Azure.
+
+* [Configurando o OpenID Connect no Docker](how-tos/secure-your-work/security-harden-deployments/oidc-in-docker.md)
+
+  Use o OpenID Connect em seus fluxos de trabalho para autenticar com o Docker sem armazenar credenciais de longa duração.
 
 * [Configurando OpenID Connect na Google Cloud Platform](how-tos/secure-your-work/security-harden-deployments/oidc-in-google-cloud-platform.md)
 
@@ -595,9 +607,13 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
   Você pode usar as ferramentas GitHub Actions para depurar seus fluxos de trabalho.
 
-* [Controlando quem pode executar GitHub Actions fluxos de trabalho](how-tos/administer/control-workflow-execution.md)
+* [Controle da execução de GitHub Actions fluxos de trabalho](how-tos/administer/control-workflow-execution.md)
 
   Controle quem pode disparar fluxos de trabalho GitHub Actions e quais eventos podem executá-los em toda a empresa, organização e repositório.
+
+* [Aplicar lockfiles para dependências de ação](how-tos/administer/enforce-workflow-lockfiles.md)
+
+  Exija os arquivos de bloqueio de dependências do fluxo de trabalho em seus repositórios e mantenha os arquivos atualizados automaticamente.
 
 * [Como ver as métricas do GitHub Actions](how-tos/administer/view-metrics.md)
 

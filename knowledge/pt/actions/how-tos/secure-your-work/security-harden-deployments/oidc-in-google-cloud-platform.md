@@ -6,21 +6,21 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-google-cloud-platform
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Secure your work / Security harden deployments
 ---
 
-# Configurando OpenID Connect na Google Cloud Platform { #configuring-openid-connect-in-google-cloud-platform }
+# Configurando OpenID Connect na Google Cloud Platform
 
 _Use OpenID Connect nos seus fluxos de trabalho para efetuar a autenticação com a Google Cloud Platform._
 
-## Visão geral { #overview }
+## Visão geral
 
 O OIDC (OpenID Connect) permite que seus GitHub Actions fluxos de trabalho acessem recursos no GCP (Google Cloud Platform), sem a necessidade de armazenar as credenciais do GCP como segredos de GitHub longa duração.
 
 Este guia fornece uma visão geral de como configurar o GCP para confiar no GitHubOIDC como uma identidade federada e inclui um exemplo de fluxo de trabalho para a ação [`google-github-actions/auth`](https://github.com/google-github-actions/auth) que usa tokens para autenticar no GCP e acessar recursos.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 * Para saber os conceitos básicos de como GitHub usa o OpenID Connect (OIDC) e sua arquitetura e benefícios, consulte [OpenID Connect](../../../concepts/security/openid-connect.md).
 
@@ -30,7 +30,7 @@ Este guia fornece uma visão geral de como configurar o GCP para confiar no GitH
 
 Para repositórios criados após 15 de julho de 2026 e renomeações ou transferências de repositórios após essa data, use uma declaração OIDC padrão imutável `sub` que inclui os IDs do proprietário e do repositório (não disponível no GitHub Enterprise Server). Os repositórios existentes mantêm o formato anterior, a menos que aceitem. Para saber mais, confira [Referência do OpenID Connect](../../../reference/security/oidc.md#immutable-subject-claims).
 
-## Adicionando um provedor de identidade de carga do Google Cloud { #adding-a-google-cloud-workload-identity-provider }
+## Adicionando um provedor de identidade de carga do Google Cloud
 
 Para configurar o provedor de identidade OIDC no GCP, você deverá definir a configuração a seguir. Para obter instruções sobre como fazer essas alterações, veja [a documentação do GCP](https://github.com/google-github-actions/auth).
 
@@ -44,7 +44,7 @@ Orientação adicional para a configuração do provedor de identidade:
 * Para que a conta de serviço esteja disponível para configuração, ela precisa ser atribuída à função `roles/iam.workloadIdentityUser`. Para obter mais informações, confira [a documentação do GCP](https://cloud.google.com/iam/docs/workload-identity-federation?_ga=2.114275588.-285296507.1634918453#conditions).
 * A URL do Emissor a ser usada: `https://token.actions.githubusercontent.com`
 
-## Atualizando seu GitHub Actions fluxo de trabalho { #updating-your-github-actions-workflow }
+## Atualizando seu GitHub Actions fluxo de trabalho
 
 Para atualizar seus fluxos de trabalho para o OIDC, você deverá fazer duas alterações no seu YAML:
 
@@ -54,7 +54,7 @@ Para atualizar seus fluxos de trabalho para o OIDC, você deverá fazer duas alt
 !!! note
     Quando os ambientes são usados em fluxos de trabalho ou em políticas OIDC, recomendamos adicionar regras de proteção ao ambiente para segurança adicional. Por exemplo, você pode configurar regras de implantação em um ambiente para restringir quais ramificações e tags podem ser implantadas no ambiente ou acessar segredos de ambiente. Para saber mais, confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md).
 
-### Adicionando configurações de permissões { #adding-permissions-settings }
+### Adicionando configurações de permissões
 
 A execução do trabalho ou do fluxo de trabalho requer uma configuração `permissions` com [`id-token: write`](../../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token) para permitir que o provedor OIDC de GitHub crie um token JWT para cada execução.
 
@@ -62,7 +62,7 @@ A execução do trabalho ou do fluxo de trabalho requer uma configuração `perm
 
 Para obter informações detalhadas sobre permissões necessárias, exemplos de configuração e cenários avançados, confira [Referência do OpenID Connect](../../../reference/security/oidc.md#workflow-permissions-for-the-requesting-the-oidc-token).
 
-### Solicitando o token de acesso { #requesting-the-access-token }
+### Solicitando o token de acesso
 
 A `google-github-actions/auth` ação recebe um JWT do provedor OIDC GitHub e solicita um token de acesso do GCP. Para obter mais informações, confira a [documentação](https://github.com/google-github-actions/auth) do GCP.
 
@@ -75,10 +75,10 @@ Essa ação troca um token OIDC GitHub por um token de acesso do Google Cloud us
 
 ```yaml copy
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
-# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
-# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
-# online. { #documentation }
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
+# São fornecidas por terceiros e regidas por
+# termos de serviço, política de privacidade e suporte separados
+# online.
 name: List services in GCP
 on:
   pull_request:
@@ -107,7 +107,7 @@ jobs:
 ```
 
 ```
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 * [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](oidc-with-reusable-workflows.md)
 * [Referência de executores auto-hospedados](../../../reference/runners/self-hosted-runners.md)

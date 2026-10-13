@@ -6,21 +6,21 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/manage-your-work/schedule-issue-creation
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Tutorials / Manage your work
 ---
 
-# Agendar a criação de problemas { #scheduling-issue-creation }
+# Agendar a criação de problemas
 
 _Você pode usar o GitHub Actions para criar um problema regularmente para itens como reuniões diárias ou revisões trimestrais._
 
-## Introdução { #introduction }
+## Introdução
 
 Este tutorial demonstra como usar a GitHub CLI para criar um problema regularmente. Por exemplo, você pode criar um problema toda semana para usar como agenda para uma reunião de equipe. Para obter mais informações sobre GitHub CLI, confira [Usando GitHub CLI em fluxos de trabalho](../../how-tos/write-workflows/choose-what-workflows-do/use-github-cli.md).
 
 No tutorial, primeiro você criará um arquivo de fluxo de trabalho que usa o GitHub CLI. Então, você personalizará o fluxo de trabalho para atender às suas necessidades.
 
-## Criar o fluxo de trabalho { #creating-the-workflow }
+## Criar o fluxo de trabalho
 
 1. Escolha um repositório onde você deseja aplicar este fluxo de trabalho de gerenciamento de projetos. Você pode usar um repositório existente ao qual você tem acesso de gravação ou criar um novo repositório. Para saber mais sobre como criar um repositório, confira [Criar um repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/creating-a-new-repository).
 
@@ -81,7 +81,7 @@ No tutorial, primeiro você criará um arquivo de fluxo de trabalho que usa o Gi
                - [Work this week](https://github.com/orgs/github/projects/3)
              PINNED: false
              CLOSE_PREVIOUS: false
-            ```
+   ```
 
 4. Personalize os parâmetros no seu arquivo do fluxo de trabalho:
    * Altere o valor de `on.schedule` para determinar quando deseja executar esse fluxo de trabalho. No exemplo acima, o fluxo de trabalho será executado todas as segundas às 7h20 UTC. Para saber mais sobre os fluxos de trabalho agendados, confira [Eventos que disparam fluxos de trabalho](../../reference/workflows-and-actions/events-that-trigger-workflows.md#schedule).
@@ -94,7 +94,7 @@ No tutorial, primeiro você criará um arquivo de fluxo de trabalho que usa o Gi
 
 5. Faça o commit do arquivo de fluxo de trabalho para o branch padrão do seu repositório. Para saber mais, confira [Criar novos arquivos](https://docs.github.com/pt/repositories/working-with-files/managing-files/creating-new-files).
 
-## Resultados esperados { #expected-results }
+## Resultados esperados
 
 Com base no parâmetro `schedule` (por exemplo, todas as segundas-feiras às 7h20 UTC), o fluxo de trabalho criará um problema com os destinatários, os rótulos, o título e o corpo especificados. Se você definir `PINNED` como `true`, o fluxo de trabalho fixará o problema no seu repositório. Se você definir `CLOSE_PREVIOUS` como true, o fluxo de trabalho fechará o problema mais recente com os rótulos correspondentes.
 
@@ -103,7 +103,7 @@ Com base no parâmetro `schedule` (por exemplo, todas as segundas-feiras às 7h2
 
 Você pode visualizar o histórico de execução do fluxo de trabalho para revisar a execução periódica deste fluxo. Para saber mais, confira [Visualizar o histórico de execução do fluxo de trabalho](../../how-tos/monitor-workflows/view-workflow-run-history.md).
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 * Para saber mais sobre outras coisas que você pode fazer com o GitHub CLImodelo de problema, como usar um modelo de problema, consulte a [`gh issue create` documentação](https://cli.github.com/manual/gh_issue_create).
 * [Pesquise o GitHub Marketplace](https://github.com/marketplace?category=\&type=actions\&verification=\&query=schedule+issue) para obter ações relacionadas a problemas agendados.

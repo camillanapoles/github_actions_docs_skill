@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/create-actions/create-a-javascript-action
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Tutorials / Create actions
 ---
 
-# Criando uma ação de JavaScript { #creating-a-javascript-action }
+# Criando uma ação de JavaScript
 
 _Neste tutorial, você aprenderá como criar uma ação JavaScript usando o conjunto de ferramentas de ações._
 
-## Introdução { #introduction }
+## Introdução
 
 Neste guia, você aprenderá os componentes básicos necessários para criar e usar uma ação JavaScript empacotada. Para manter o foco deste guia nos componentes necessários para empacotar a ação, a funcionalidade do código da ação é mínima. A ação imprime "Olá, mundo" nos registros ou "Olá, \[who-to-greet]", se você fornecer um nome personalizado.
 
@@ -27,7 +27,7 @@ Para garantir que suas ações de JavaScript sejam compatíveis com todos os exe
 !!! warning
     Ao criar fluxos de trabalho e ações, sempre considere se o código poderá executar entradas não confiáveis de possíveis invasores. Certos contextos devem ser tratados como entradas não confiáveis, uma vez que um invasor pode inserir seu próprio conteúdo malicioso. Para saber mais, confira [Referência de uso seguro](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks).
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Antes de começar, você precisará baixar Node.js e criar um repositório público GitHub .
 
@@ -43,15 +43,15 @@ Antes de começar, você precisará baixar Node.js e criar um repositório públ
 
             ```shell copy
    cd hello-world-javascript-action
-            ```
+   ```
 
 5. No terminal, inicialize o diretório com o npm para gerar um arquivo `package.json`.
 
             ```shell copy
    npm init -y
-            ```
+   ```
 
-## Criar um arquivo de metadados de ação { #creating-an-action-metadata-file }
+## Criar um arquivo de metadados de ação
 
 Crie um arquivo chamado `action.yml` no diretório `hello-world-javascript-action` com o código de exemplo a seguir. Para saber mais, confira [Referência de sintaxe de metadados](../../reference/workflows-and-actions/metadata-syntax.md).
 
@@ -76,7 +76,7 @@ runs:
 
 Esse arquivo define a entrada `who-to-greet` e a saída `time`. O arquivo também diz ao executor da ação como começar a executar essa ação JavaScript.
 
-## Adicionar pacotes de ferramentas de ações { #adding-actions-toolkit-packages }
+## Adicionar pacotes de ferramentas de ações
 
 O conjunto de ferramentas de ações é uma coleção de pacotes Node.js que permite a rápida criação de ações JavaScript com mais consistência.
 
@@ -94,7 +94,7 @@ npm install @actions/core @actions/github
 
 Agora você deve ver um diretório `node_modules` e um arquivo `package-lock.json` que acompanham as dependências instaladas e suas versões. Você não deve confirmar o diretório `node_modules` em seu repositório.
 
-## Gravar um código de ação { #writing-the-action-code }
+## Gravar um código de ação
 
 Essa ação usa o kit de ferramentas para obter a variável de entrada `who-to-greet` obrigatória no arquivo de metadados da ação e imprime "Olá, \[quem deve ser saudado]" em uma mensagem de depuração no log. Na sequência, o script obtém a hora atual e a configura como uma variável de saída que pode ser usada pelas ações executadas posteriormente em um trabalho.
 
@@ -125,7 +125,7 @@ try {
 
 Se um erro for gerado no exemplo `index.js` acima, `core.setFailed(error.message);` usa o pacote [`@actions/core`](https://github.com/actions/toolkit/tree/main/packages/core) do kit de ferramentas de ações para registrar uma mensagem e definir um código de saída falho. Para saber mais, confira [Definindo códigos de saída para ações](../../how-tos/create-and-publish-actions/set-exit-codes.md).
 
-## Criando um README { #creating-a-readme }
+## Criando um README
 
 Para que as pessoas saibam como usar sua ação, você pode criar um arquivo README. Um arquivo README é útil quando você planeja compartilhar publicamente sua ação, mas também é uma ótima maneira de lembrá-lo ou sua equipe sobre como usar a ação.
 
@@ -166,7 +166,7 @@ with:
 ````
 
 ````
-## Faça commit, tag e push da sua ação { #commit-tag-and-push-your-action }
+## Faça commit, tag e push da sua ação
 
 GitHub baixa cada ação executada em um fluxo de trabalho durante o runtime e executa-a como um pacote completo de código antes que você possa usar comandos de fluxo de trabalho como `run` interagir com o computador executor. Isso significa que você deve incluir quaisquer dependências de pacotes necessárias para executar o código JavaScript. Por exemplo, essa ação usa pacotes `@actions/core` e `@actions/github`.
 
@@ -194,7 +194,7 @@ Realizar o check-in do diretório `node_modules` pode causar problemas. Como alt
    };
 
    export default config;
-            ```
+   ```
 
 3. Compile o arquivo `dist/index.js`.
 
@@ -209,7 +209,7 @@ Realizar o check-in do diretório `node_modules` pode causar problemas. Como alt
    git commit -m "Initial commit of my first action"
    git tag -a -m "My first action release" v1.1
    git push --follow-tags
-            ```
+   ```
 
 Quando você confirma e envia o código por push, o repositório atualizado deve ter esta aparência:
 
@@ -226,13 +226,13 @@ hello-world-javascript-action/
     └── index.js
 ```
 
-## Testar sua ação em um fluxo de trabalho { #testing-out-your-action-in-a-workflow }
+## Testar sua ação em um fluxo de trabalho
 
 Agora você está pronto para testar sua ação em um fluxo de trabalho.
 
 As ações públicas podem ser usadas por fluxos de trabalho em qualquer repositório. Quando uma ação está em um repositório privado, as configurações do repositório determinam se a ação está disponível somente dentro do mesmo repositório ou também para outros repositórios pertencentes à mesma  corporativa. Para saber mais, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository).
 
-### Exemplo usando uma ação pública { #example-using-a-public-action }
+### Exemplo usando uma ação pública
 
 Este exemplo demonstra como sua nova ação pública pode ser executada dentro de um repositório externo.
 
@@ -263,7 +263,7 @@ jobs:
 
 Quando esse fluxo de trabalho for disparado, o executor baixará a ação `hello-world-javascript-action` do repositório público e a executará.
 
-### Exemplo usando uma ação privada { #example-using-a-private-action }
+### Exemplo usando uma ação privada
 
 Copie o código de fluxo de trabalho em um arquivo `.github/workflows/main.yml` no repositório da ação. Você também pode substituir a entrada `who-to-greet` pelo seu nome.
 
@@ -299,7 +299,7 @@ No repositório, clique na guia **Ações** e selecione a execução mais recent
 
 Clique em **Etapa da ação Olá, mundo** e você verá "Olá, Mona, o Octocat" ou o nome usado para a entrada `who-to-greet` impresso no log. Para ver o carimbo de data/hora, clique em **Obter a hora da saída**.
 
-## Repositórios de modelos para criar ações javaScript { #template-repositories-for-creating-javascript-actions }
+## Repositórios de modelos para criar ações javaScript
 
 GitHub fornece repositórios de modelo para criar ações JavaScript e TypeScript. Você pode usar esses modelos para começar rapidamente a criar uma nova ação que inclui testes, lint e outras práticas recomendadas.
 
@@ -308,7 +308,7 @@ GitHub fornece repositórios de modelo para criar ações JavaScript e TypeScrip
 * [
   `typescript-action` repositório de modelo](https://github.com/actions/typescript-action)
 
-## Exemplo de ações javaScript em GitHub.com { #example-javascript-actions-on-githubcom }
+## Exemplo de ações javaScript em GitHub.com
 
 Você pode encontrar muitos exemplos de ações JavaScript em GitHub.com.
 

@@ -6,26 +6,26 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/build-and-test-code/nodejs
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Tutorials / Build and test code
 ---
 
-# Criar e testar Node.js { #building-and-testing-nodejs }
+# Criar e testar Node.js
 
 _Saiba como criar um fluxo de trabalho de integração contínua (CI) para criar e testar o seu projeto Node.js._
 
-## Introdução { #introduction }
+## Introdução
 
 Este guia mostra como criar um fluxo de trabalho de integração contínua (CI) que cria e testa o código Node.js. Se o seu teste de CI for aprovado, é possível que você deseje publicar seu código ou um pacote.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Recomendamos que você tenha um entendimento básico do Node.js, YAML, das opções de configuração do fluxo de trabalho e de como criar um arquivo do fluxo de trabalho. Para saber mais, veja:
 
 * [Escrevendo fluxos de trabalho](../../how-tos/write-workflows.md)
 * [Introdução ao Node.js](https://nodejs.org/learn/getting-started/introduction-to-nodejs)
 
-## Usando um modelo de fluxo de trabalho do Node.js { #using-a-nodejs-workflow-template }
+## Usando um modelo de fluxo de trabalho do Node.js
 
 Para uma introdução rápida, adicione um modelo de fluxo de trabalho ao diretório `.github/workflows` do repositório.
 
@@ -51,7 +51,7 @@ GitHub fornece um modelo de fluxo de trabalho para Node.js que deve funcionar pa
 
    O `node.js.yml` arquivo de fluxo de trabalho é adicionado ao `.github/workflows` diretório do repositório.
 
-## Especificar a versão do Node.js { #specifying-the-nodejs-version }
+## Especificar a versão do Node.js
 
 A maneira mais fácil de especificar uma versão Node.js é usando a ação `setup-node` fornecida por GitHub. Para obter mais informações, confira [`setup-node`](https://github.com/actions/setup-node/).
 
@@ -108,13 +108,13 @@ jobs:
 Se você não especificar uma versão Node.js, GitHub usará a versão de Node.js padrão do ambiente.
 Para saber mais, confira [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images).
 
-## Instalar dependências { #installing-dependencies }
+## Instalar dependências
 
 Os executores hospedados do GitHub têm gerenciadores de dependência npm e Yarn instalados. Você pode usar o npm e o Yarn para instalar dependências no seu fluxo de trabalho antes de criar e testar seu código. Os runners hospedados em Windows e Linux GitHubtambém têm Grunt, Gulp e Bower instalados.
 
 Você também pode armazenar dependências em cache para acelerar seu fluxo de trabalho. Para saber mais, confira [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md).
 
-### Exemplo de uso do npm { #example-using-npm }
+### Exemplo de uso do npm
 
 Este exemplo instala as versões no arquivo `package-lock.json` ou `npm-shrinkwrap.json` e impede atualizações no arquivo de bloqueio. O uso de `npm ci` geralmente é mais rápido do que a execução de `npm install`. Para obter mais informações, confira [`npm ci`](https://docs.npmjs.com/cli/ci.html) e [Apresentação do `npm ci` para builds mais rápidos e confiáveis](https://blog.npmjs.org/post/171556855892/introducing-npm-ci-for-faster-more-reliable).
 
@@ -142,7 +142,7 @@ steps:
   run: npm install
 ```
 
-### Exemplo usando Yarn { #example-using-yarn }
+### Exemplo usando Yarn
 
 Este exemplo instala as dependências definidas no arquivo `yarn.lock` e impede atualizações no arquivo `yarn.lock`. Para obter mais informações, consulte [`yarn install`](https://yarnpkg.com/en/docs/cli/install).
 
@@ -170,7 +170,7 @@ steps:
   run: yarn
 ```
 
-### Exemplo usando um registro privado e criando o arquivo .npmrc { #example-using-a-private-registry-and-creating-the-npmrc-file }
+### Exemplo usando um registro privado e criando o arquivo .npmrc
 
 Você pode usar a ação `setup-node` para criar um arquivo `.npmrc` local no executor que configura o registro e o escopo padrão. A ação `setup-node` também aceita um token de autenticação como entrada, usado para acessar registros privados ou publicar pacotes de nós. Para obter mais informações, confira [`setup-node`](https://github.com/actions/setup-node/).
 
@@ -204,7 +204,7 @@ O exemplo acima cria um arquivo `.npmrc` com o seguinte conteúdo:
 always-auth=true
 ```
 
-### Exemplo de dependências de cache { #example-caching-dependencies }
+### Exemplo de dependências de cache
 
 Você pode armazenar em cache e restaurar as dependências usando a ação [`setup-node`](https://github.com/actions/setup-node).
 
@@ -238,10 +238,10 @@ O exemplo a seguir armazena dependências para pnpm (v6.10+).
 
 ```yaml copy
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
-# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
-# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
-# online. { #documentation }
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
+# São fornecidas por terceiros e regidas por
+# termos de serviço, política de privacidade e suporte separados
+# online.
 
 # NOTE: pnpm caching support requires pnpm version >= 6.10.0
 
@@ -261,7 +261,7 @@ steps:
 Se houver uma necessidade específica ou precisar de controles mais precisos de cache, use a [ação `cache`](https://github.com/marketplace/actions/cache). Para saber mais, confira [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md).
 
 ```
-## Criar e testar seu código { #building-and-testing-your-code }
+## Criar e testar seu código
 
 Você pode usar os mesmos comandos usados localmente para criar e testar seu código. Por exemplo, se você executar `npm run build` para executar as etapas de build definidas no arquivo `package.json` e `npm test` para executar o conjunto de testes, adicionará esses comandos ao arquivo de fluxo de trabalho.
 
@@ -277,10 +277,10 @@ steps:
 - run: npm test
 ```
 
-## Empacotar dados do fluxo de trabalho como artefatos { #packaging-workflow-data-as-artifacts }
+## Empacotar dados do fluxo de trabalho como artefatos
 
 Você pode salvar artefatos das suas etapas de criação e teste para serem visualizados após a conclusão de um trabalho. Por exemplo, é possível que você precise salvar os arquivos de registro, os despejos de núcleo, os resultados de teste ou capturas de tela. Para saber mais, confira [Armazenar e compartilhar dados com artefatos de fluxo de trabalho](../store-and-share-data.md).
 
-## Publicar nos registros do pacote { #publishing-to-package-registries }
+## Publicar nos registros do pacote
 
 Você pode configurar o seu fluxo de trabalho para publicar o seu pacote Node.js em um pacote de registro após os seus testes de CI serem aprovados. Para obter mais informações sobre publicação no npm e GitHub Packages, consulte [Publicar pacotes do Node.js](../publish-packages/publish-nodejs-packages.md).

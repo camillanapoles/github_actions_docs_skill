@@ -6,11 +6,11 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/monitor-workflows/use-the-visualization-graph
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Monitor workflows
 ---
 
-# Usar o gráfico de visualização { #using-the-visualization-graph }
+# Usar o gráfico de visualização
 
 _Cada execução de fluxo de trabalho gera um gráfico em tempo real que ilustra o progresso da execução. Você pode usar este gráfico para monitorar e depurar fluxos de trabalho._
 

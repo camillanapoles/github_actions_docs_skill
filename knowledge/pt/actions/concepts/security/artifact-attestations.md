@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/security/artifact-attestations
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Concepts / Security
 ---
 
-# Atestados de artefatos { #artifact-attestations }
+# Atestados de artefatos
 
 _Entenda os benefícios de uso e segurança dos atestados de artefato._
 
-## Visão geral { #overview }
+## Visão geral
 
 Os atestados de artefatos permitem que você crie garantias de procedência e integridade infalsificáveis para o software que você cria. Por sua vez, as pessoas que consomem seu software podem verificar onde e como seu software foi criado.
 
@@ -26,7 +26,7 @@ Ao gerar atestados de artefato com seu software, você cria declarações assina
 
 Você também pode gerar atestados de artefato que incluam uma SBOM (lista de materiais de software) associada. Associar suas compilações a uma lista de dependências de código aberto usadas nelas fornece transparência e permite que os consumidores cumpram os padrões de proteção de dados.
 
-## Níveis de SLSA para atestados de artefatos { #slsa-levels-for-artifact-attestations }
+## Níveis de SLSA para atestados de artefatos
 
 A estrutura SLSA é um padrão do setor usado para avaliar a segurança da cadeia de fornecedores. Está organizada em níveis. Cada nível representa um grau crescente de segurança e confiabilidade para uma cadeia de fornecedores de software. Os atestados de artefato em si fornecem SLSA v1.0 Build Level 2.
 
@@ -34,7 +34,7 @@ Isso fornece um link entre seu artefato e suas instruções de build, mas você 
 
 Para obter mais informações sobre os níveis de SLSA, consulte [Níveis de segurança do SLSA](https://slsa.dev/spec/v1.0/levels).
 
-## Como GitHub gera atestações de artefatos { #how-github-generates-artifact-attestations }
+## Como GitHub gera atestações de artefatos
 
 Para gerar atestados de artefato, GitHub usa o Sigstore, que é um projeto código aberto que oferece uma solução abrangente para assinar e verificar artefatos de software por meio de atestados.
 
@@ -42,7 +42,7 @@ Para gerar atestados de artefato, GitHub usa o Sigstore, que é um projeto códi
 
 **Repositórios privados** que geram atestados de artefato usam a instância Sigstore do GitHub. A instância do Sigstore do GitHub usa a mesma base de código que a instância pública do Sigstore, mas não tem um log de transparência e apenas federa com GitHub Actions.
 
-## Quando gerar atestados { #when-to-generate-attestations }
+## Quando gerar atestados
 
 A geração de atestados por si só não traz nenhum benefício de segurança, é preciso verificar os atestados para aproveitar os benefícios. Aqui estão algumas diretrizes de como pensar sobre o que assinar e com que frequência:
 
@@ -56,12 +56,12 @@ Você não **deveria** assinar:
 * Compilações frequentes que são apenas para testes automatizados.
 * Arquivos individuais, como código-fonte, arquivos de documentação ou imagens incorporadas.
 
-## Verificação de atestados de artefatos { #verifying-artifact-attestations }
+## Verificação de atestados de artefatos
 
 Se você consumir software que publica atestados de artefato, poderá usar o GitHub CLI para verificar esses atestados. Como os atestados fornecem informações sobre onde e como o software foi desenvolvido, você pode usar essas informações para criar e aplicar políticas de segurança que elevem a segurança de sua cadeia de fornecedores.
 
 > [!WARNING] É importante lembrar que os atestados de artefatos *não* são uma garantia de que um artefato seja seguro. Em vez disso, os atestados de artefatos vinculam você a itens como o código-fonte e as instruções de compilação que os produziram. Cabe a você definir os critérios de sua política, avaliá-la avaliando o conteúdo e tomar uma decisão embasada sobre riscos ao consumir software.
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 Para começar a gerar e verificar atestados de artefato para seus builds, consulte [Usar atestados de artefatos para estabelecer a procedência de compilações](../../how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md).

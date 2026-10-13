@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/configure-and-manage-deployments/view-deployment-history
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Deploy / Configure and manage deployments
 ---
 
-# Exibir o histórico de implantações { #viewing-deployment-history }
+# Exibir o histórico de implantações
 
 _Veja as implantações atuais e anteriores para o seu repositório._
 
-## Visualizar o histórico de implantações do seu repositório { #viewing-your-repositorys-deployment-history }
+## Visualizar o histórico de implantações do seu repositório
 
 Na página de implantações do seu repositório, você pode visualizar os seguintes aspectos das suas implantações.
 

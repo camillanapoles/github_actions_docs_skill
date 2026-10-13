@@ -6,11 +6,11 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/workflows-and-actions/concurrency
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: Concepts / Workflows and actions
 ---
 
-# Concorrência { #concurrency }
+# Concorrência
 
 _Saiba mais sobre como executar fluxos de trabalho e trabalhos ao mesmo tempo._
 

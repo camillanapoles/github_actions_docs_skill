@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/create-and-publish-actions/create-a-cli-action
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Create and publish actions
 ---
 
-# Criar uma ação da CLI de terceiros { #creating-a-third-party-cli-action }
+# Criar uma ação da CLI de terceiros
 
 _Saiba como desenvolver uma ação para configurar uma CLI nos executores GitHub Actions._
 
-## Introdução { #introduction }
+## Introdução
 
 Você pode escrever uma ação para oferecer uma forma de os usuários acessarem seus servidores por meio de um ambiente de CLI já configurado em GitHub Actions runners.
 
@@ -28,11 +28,11 @@ Sua ação deve:
 
 Este artigo irá demonstrar como escrever uma ação que recupera uma versão específica da sua CLI, como instalá-la, adicioná-la ao caminho e (opcionalmente), armazená-la em cache. Em geral, esse tipo de ação (uma ação que configura uma ferramenta) é chamado `setup-$TOOL`.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Você deve ter um entendimento de como escrever uma ação personalizada. Para saber mais, confira [Como gerenciar ações personalizadas](manage-custom-actions.md).
 
-## Exemplo { #example }
+## Exemplo
 
 O script a seguir demonstra como você pode obter uma versão especificada pelo usuário como entrada, fazer o download e extrair a versão específica da sua CLI e, em seguida, adicionar a CLI ao caminho.
 
@@ -61,7 +61,7 @@ module.exports = setup
 
 Para usar esse script, substitua `getDownloadURL` por uma função que baixa a CLI. Você também precisará criar um arquivo de metadados de ações (`action.yml`) que aceite uma entrada `version` e que execute esse script. Para obter detalhes completos sobre como criar uma ação, confira [Criando uma ação de JavaScript](../../tutorials/create-actions/create-a-javascript-action.md).
 
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 Este padrão é usado em várias ações. Para mais exemplos, consulte:
 

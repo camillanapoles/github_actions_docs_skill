@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/deploy-to-third-party-platforms/net-to-azure-app-service
-captured: '2026-10-11'
+captured: '2026-10-13'
 section: How tos / Deploy / Deploy to third party platforms
 ---
 
-# Implantando .NET em Azure App Service { #deploying-net-to-azure-app-service }
+# Implantando .NET em Azure App Service
 
 _Saiba como implantar um projeto de .NET para Azure App Service como parte de seus fluxos de trabalho de CD (implantação contínua)._
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Antes de criar seu fluxo de trabalho de GitHub Actions, primeiro você precisa concluir as etapas de configuração a seguir:
 
@@ -27,7 +27,7 @@ Antes de criar seu fluxo de trabalho de GitHub Actions, primeiro você precisa c
       --resource-group MY_RESOURCE_GROUP \
       --name MY_APP_SERVICE_PLAN \
       --is-linux
-            ```
+   ```
 
    No comando acima, substitua `MY_RESOURCE_GROUP` pelo grupo de recursos preexistente do Azure e `MY_APP_SERVICE_PLAN` por um novo nome para o Plano do Serviço de Aplicativo.
 
@@ -46,7 +46,7 @@ Antes de criar seu fluxo de trabalho de GitHub Actions, primeiro você precisa c
        --plan MY_APP_SERVICE_PLAN \
        --resource-group MY_RESOURCE_GROUP \
        --runtime "DOTNET|5.0"
-            ```
+   ```
 
    No comando acima, substitua os parâmetros por valores próprios, em que `MY_WEBAPP_NAME` é um novo nome para o aplicativo Web.
 
@@ -58,7 +58,7 @@ Antes de criar seu fluxo de trabalho de GitHub Actions, primeiro você precisa c
 
 4. Opcionalmente, configure um ambiente de implantação. Os ambientes são usados para descrever um destino de implantação geral, como `production`, `staging` ou `development`. Quando um GitHub Actions fluxo de trabalho é implantado em um ambiente, o ambiente é exibido na página principal do repositório. Você pode usar ambientes para exigir aprovação para um trabalho prosseguir, restringir quais ramificações podem acionar um fluxo de trabalho, bloquear implantações com regras de proteção de implantação personalizadas ou limitar o acesso a segredos. Para saber mais sobre como criar ambientes, confira [Gerenciar ambientes para implantação](../configure-and-manage-deployments/manage-environments.md).
 
-## Criar o fluxo de trabalho { #creating-the-workflow }
+## Criar o fluxo de trabalho
 
 Depois de preencher os pré-requisitos, você pode prosseguir com a criação do fluxo de trabalho.
 
@@ -70,14 +70,14 @@ Se você configurou um ambiente de implantação, altere o valor de `environment
 
 ```yaml copy
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
-# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
-# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
-# online. { #documentation }
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
+# São fornecidas por terceiros e regidas por
+# termos de serviço, política de privacidade e suporte separados
+# online.
 
-# O GitHub recomenda fixar ações em um SHA de commit. { #github-recommends-pinning-actions-to-a-commit-sha }
-# Para obter uma versão mais recente, você precisará atualizar o SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha }
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning }
+# O GitHub recomenda fixar ações em um SHA de commit.
+# Para obter uma versão mais recente, você precisará atualizar o SHA.
+# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
 
 name: Build and deploy ASP.Net Core app to an Azure Web App
 
@@ -146,7 +146,7 @@ jobs:
 ```
 
 ```
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 * Para o modelo de fluxo de trabalho original, confira [`azure-webapps-dotnet-core.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/azure-webapps-dotnet-core.yml) no repositório `starter-workflows` do GitHub Actions.
 * A ação usada para implantar o aplicativo Web é a ação oficial Azure [`Azure/webapps-deploy`](https://github.com/Azure/webapps-deploy).
