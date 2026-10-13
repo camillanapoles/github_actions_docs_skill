@@ -1,0 +1,114 @@
+{
+  "blueprint": "github-actions-docs-skill/gate-driven/1",
+  "nodes": [
+    {
+      "id": "tests",
+      "name": "Testes determinísticos do extrator e do pipeline",
+      "type": "task",
+      "order": 10,
+      "action": "python3 -m pytest tests/ -q",
+      "acceptance": [
+        "python3 -m pytest tests/ -q → 100% verde (0 failed)",
+        "todo defeito novo descoberto entra como teste de regressão antes do fix"
+      ],
+      "out": {
+        "success": "capture",
+        "failure": "issue:tests"
+      }
+    },
+    {
+      "id": "capture",
+      "name": "Captura completa (inventário pt-BR)",
+      "type": "task",
+      "order": 20,
+      "action": "scripts/extract.py (relatório em .ci/extract-report.md)",
+      "acceptance": [
+        "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+        "score de qualidade = 0 em todas as páginas (0 = impecável)",
+        "nenhuma página com aviso de cura via HTML pendente"
+      ],
+      "out": {
+        "success": "conformity",
+        "failure": "issue:capture"
+      }
+    },
+    {
+      "id": "conformity",
+      "name": "Completude e conformidade (mandato de validação)",
+      "type": "task",
+      "order": 30,
+      "action": "python3 scripts/validate.py --langs pt,en --report knowledge/validation.md --json .ci/validation.json",
+      "acceptance": [
+        "scripts/validate.py → 0 falhas nos 8 grupos",
+        "knowledge/validation.md e .ci/validation.json atualizados e commitados"
+      ],
+      "out": {
+        "success": "site",
+        "failure": "issue:conformity"
+      }
+    },
+    {
+      "id": "site",
+      "name": "Site MkDocs buildável em modo estrito",
+      "type": "task",
+      "order": 40,
+      "action": "python3 -m mkdocs build --strict --site-dir site",
+      "acceptance": [
+        "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+        "nav gerado por scripts/build_site.py cobre 100% das páginas"
+      ],
+      "out": {
+        "success": "skill",
+        "failure": "issue:site"
+      }
+    },
+    {
+      "id": "skill",
+      "name": "Skill completa (references, templates, scripts)",
+      "type": "task",
+      "order": 50,
+      "action": "pipeline.engine.SkillAction (inventário do SKILL.md × disco)",
+      "acceptance": [
+        "todas as references citadas no SKILL.md existem e não estão vazias",
+        "todos os templates prometidos existem e passam em check-jsonschema + actionlint",
+        "os 4 scripts da skill existem e passam em bash -n / py_compile"
+      ],
+      "out": {
+        "success": "ci-issues",
+        "failure": "issue:skill"
+      }
+    },
+    {
+      "id": "ci-issues",
+      "name": "CI/CD verde e sem issues pendentes",
+      "type": "task",
+      "order": 60,
+      "action": "gh run list / gh issue list (verificação de continuidade)",
+      "acceptance": [
+        "nenhuma corrida de CI com conclusion=failure nos últimos runs do branch",
+        "nenhuma issue aberta com rótulo gate:* sem responsável/andamento",
+        "se houver pendência, a próxima issue indexada existe e está publicada"
+      ],
+      "out": {
+        "success": "release",
+        "failure": "issue:ci-issues"
+      }
+    },
+    {
+      "id": "release",
+      "name": "Gateway exclusivo de produção",
+      "type": "gateway",
+      "order": 90,
+      "action": "pipeline.engine.ReleaseGateway",
+      "acceptance": [
+        "todos os gates anteriores com status 0 (sucesso)",
+        "ENTREGA.md atualizado com os números medidos da execução",
+        "próxima issue indexada = 'Concluir e publicar' ou nenhuma (fluxo completo)"
+      ],
+      "out": {
+        "success": "END",
+        "failure": "issue:release"
+      }
+    }
+  ]
+}

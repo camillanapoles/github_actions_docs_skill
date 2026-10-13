@@ -1,0 +1,387 @@
+{
+  "blueprint": "github-actions-docs-skill/gate-driven/1",
+  "run_id": "run-28999319",
+  "trigger": "manual",
+  "status": 1,
+  "status_label": "error_content",
+  "direction": "fix",
+  "message": "2/7 gates aprovados",
+  "next_issue": {
+    "key": "capture:fix:faa5f8d5",
+    "title": "[gate:capture] Captura completa (inventário pt-BR)",
+    "gate": "capture",
+    "direction": "fix",
+    "reason": "gate 'capture' reprovado (status 1): score de qualidade 46 ≠ 0 (markdown não impecável)",
+    "instructions": [
+      "executar: `scripts/extract.py (relatório em .ci/extract-report.md)`",
+      "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+      "score de qualidade = 0 em todas as páginas (0 = impecável)",
+      "nenhuma página com aviso de cura via HTML pendente",
+      "após aprovar, o próximo gate indexado é 'conformity' (Completude e conformidade (mandato de validação))"
+    ],
+    "acceptance": [
+      "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+      "score de qualidade = 0 em todas as páginas (0 = impecável)",
+      "nenhuma página com aviso de cura via HTML pendente"
+    ]
+  },
+  "envelopes": [
+    {
+      "id": "tests:bc5ece5ee7",
+      "blueprint": "gate-driven-bpmn/1",
+      "gate": "tests",
+      "action": "python3 -m pytest tests/ -q",
+      "status": 0,
+      "status_label": "success",
+      "message": "25 passed in 0.28s",
+      "direction": "continue",
+      "addenda": [],
+      "next_issue": {
+        "key": "capture:fix:faa5f8d5",
+        "title": "[gate:capture] Captura completa (inventário pt-BR)",
+        "gate": "capture",
+        "direction": "fix",
+        "reason": "gate 'capture' reprovado (status 1): score de qualidade 46 ≠ 0 (markdown não impecável)",
+        "instructions": [
+          "executar: `scripts/extract.py (relatório em .ci/extract-report.md)`",
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente",
+          "após aprovar, o próximo gate indexado é 'conformity' (Completude e conformidade (mandato de validação))"
+        ],
+        "acceptance": [
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente"
+        ]
+      },
+      "metrics": {
+        "passed": 25,
+        "failed": 0
+      },
+      "started_at": "2026-10-13T18:15:58+00:00",
+      "finished_at": "2026-10-13T18:15:58+00:00",
+      "duration_s": 0.471
+    },
+    {
+      "id": "capture:bcb88e02a1",
+      "blueprint": "gate-driven-bpmn/1",
+      "gate": "capture",
+      "action": "scripts/extract.py (relatório em .ci/extract-report.md)",
+      "status": 1,
+      "status_label": "error_content",
+      "message": "score de qualidade 46 ≠ 0 (markdown não impecável)",
+      "direction": "fix",
+      "addenda": [
+        {
+          "kind": "report",
+          "path": ".ci/extract-report.md"
+        }
+      ],
+      "next_issue": {
+        "key": "capture:fix:faa5f8d5",
+        "title": "[gate:capture] Captura completa (inventário pt-BR)",
+        "gate": "capture",
+        "direction": "fix",
+        "reason": "gate 'capture' reprovado (status 1): score de qualidade 46 ≠ 0 (markdown não impecável)",
+        "instructions": [
+          "executar: `scripts/extract.py (relatório em .ci/extract-report.md)`",
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente",
+          "após aprovar, o próximo gate indexado é 'conformity' (Completude e conformidade (mandato de validação))"
+        ],
+        "acceptance": [
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente"
+        ]
+      },
+      "metrics": {
+        "pt": 248,
+        "en": 248,
+        "pages_ok": 247,
+        "pages_failed": 0,
+        "quality_score": 46
+      },
+      "started_at": "2026-10-13T18:15:58+00:00",
+      "finished_at": "2026-10-13T18:15:58+00:00",
+      "duration_s": 0.004
+    },
+    {
+      "id": "conformity:97a480e58b",
+      "blueprint": "gate-driven-bpmn/1",
+      "gate": "conformity",
+      "action": "python3 scripts/validate.py --langs pt,en --report knowledge/validation.md --json .ci/validation.json",
+      "status": 1,
+      "status_label": "error_content",
+      "message": "7 falha(s) de conformidade",
+      "direction": "fix",
+      "addenda": [
+        {
+          "kind": "report",
+          "path": "knowledge/validation.md"
+        },
+        {
+          "kind": "json",
+          "path": ".ci/validation.json"
+        }
+      ],
+      "next_issue": {
+        "key": "capture:fix:faa5f8d5",
+        "title": "[gate:capture] Captura completa (inventário pt-BR)",
+        "gate": "capture",
+        "direction": "fix",
+        "reason": "gate 'capture' reprovado (status 1): score de qualidade 46 ≠ 0 (markdown não impecável)",
+        "instructions": [
+          "executar: `scripts/extract.py (relatório em .ci/extract-report.md)`",
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente",
+          "após aprovar, o próximo gate indexado é 'conformity' (Completude e conformidade (mandato de validação))"
+        ],
+        "acceptance": [
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente"
+        ]
+      },
+      "metrics": {
+        "failures": 7,
+        "warnings": 3,
+        "exit_code": 1
+      },
+      "started_at": "2026-10-13T18:16:00+00:00",
+      "finished_at": "2026-10-13T18:16:00+00:00",
+      "duration_s": 1.398
+    },
+    {
+      "id": "site:0007184623",
+      "blueprint": "gate-driven-bpmn/1",
+      "gate": "site",
+      "action": "python3 -m mkdocs build --strict --site-dir site",
+      "status": 1,
+      "status_label": "error_content",
+      "message": "Aborted with 677 warnings in strict mode! (677 avisos)",
+      "direction": "fix",
+      "addenda": [
+        {
+          "kind": "site",
+          "path": "site/index.html"
+        }
+      ],
+      "next_issue": {
+        "key": "capture:fix:faa5f8d5",
+        "title": "[gate:capture] Captura completa (inventário pt-BR)",
+        "gate": "capture",
+        "direction": "fix",
+        "reason": "gate 'capture' reprovado (status 1): score de qualidade 46 ≠ 0 (markdown não impecável)",
+        "instructions": [
+          "executar: `scripts/extract.py (relatório em .ci/extract-report.md)`",
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente",
+          "após aprovar, o próximo gate indexado é 'conformity' (Completude e conformidade (mandato de validação))"
+        ],
+        "acceptance": [
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente"
+        ]
+      },
+      "metrics": {
+        "warnings": 677,
+        "exit_code": 1
+      },
+      "started_at": "2026-10-13T18:16:22+00:00",
+      "finished_at": "2026-10-13T18:16:22+00:00",
+      "duration_s": 21.846
+    },
+    {
+      "id": "skill:01f45f5029",
+      "blueprint": "gate-driven-bpmn/1",
+      "gate": "skill",
+      "action": "pipeline.engine.SkillAction (inventário do SKILL.md × disco)",
+      "status": 3,
+      "status_label": "pending",
+      "message": "skill incompleta (references: 7, templates: 24, scripts: 4 pendentes)",
+      "direction": "continue",
+      "addenda": [],
+      "next_issue": {
+        "key": "capture:fix:faa5f8d5",
+        "title": "[gate:capture] Captura completa (inventário pt-BR)",
+        "gate": "capture",
+        "direction": "fix",
+        "reason": "gate 'capture' reprovado (status 1): score de qualidade 46 ≠ 0 (markdown não impecável)",
+        "instructions": [
+          "executar: `scripts/extract.py (relatório em .ci/extract-report.md)`",
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente",
+          "após aprovar, o próximo gate indexado é 'conformity' (Completude e conformidade (mandato de validação))"
+        ],
+        "acceptance": [
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente"
+        ]
+      },
+      "metrics": {
+        "promised": {
+          "references": 14,
+          "templates": 24,
+          "scripts": 4
+        },
+        "delivered": {
+          "references": 7,
+          "templates": 0,
+          "scripts": 0
+        },
+        "missing": {
+          "references": [
+            "checklists",
+            "gitops-patterns",
+            "knowledge-base-map",
+            "migration",
+            "runners",
+            "templates-catalog",
+            "troubleshooting"
+          ],
+          "templates": [
+            "actions/cache",
+            "actions/checkout",
+            "workflows/actionlint-ci.yml",
+            "workflows/ci-go.yml",
+            "workflows/ci-java.yml",
+            "workflows/ci-matrix-cache-concurrency.yml",
+            "workflows/ci-node.yml",
+            "workflows/ci-python.yml",
+            "workflows/deploy-environments-approval.yml",
+            "workflows/deploy-oidc-aws.yml",
+            "workflows/deploy-oidc-azure.yml",
+            "workflows/deploy-oidc-gcp.yml",
+            "workflows/deploy-pages-mkdocs.yml",
+            "workflows/docker-publish.yml",
+            "workflows/docs-knowledge-pipeline.yml",
+            "workflows/gitops-argocd-sync.yml",
+            "workflows/gitops-flux-image-automation.yml",
+            "workflows/gitops-kustomize-bump.yml",
+            "workflows/pr-automation.yml",
+            "workflows/release-please.yml",
+            "workflows/reusable-callee.yml",
+            "workflows/reusable-caller.yml",
+            "workflows/security-scanning.yml",
+            "workflows/terraform-plan-apply.yml"
+          ],
+          "scripts": [
+            "install_tools.sh",
+            "lint_workflows.sh",
+            "new_workflow.py",
+            "validate_skill.py"
+          ]
+        }
+      },
+      "started_at": "2026-10-13T18:16:22+00:00",
+      "finished_at": "2026-10-13T18:16:22+00:00",
+      "duration_s": 0.001
+    },
+    {
+      "id": "ci-issues:bb103f366d",
+      "blueprint": "gate-driven-bpmn/1",
+      "gate": "ci-issues",
+      "action": "gh run list / gh issue list (verificação de continuidade)",
+      "status": 4,
+      "status_label": "skipped",
+      "message": "verificação de CI/issues requer gh + rede (roda no workflow gate-pipeline.yml)",
+      "direction": "continue",
+      "addenda": [
+        {
+          "kind": "issue",
+          "path": ".ci/next-issue.md"
+        }
+      ],
+      "next_issue": {
+        "key": "capture:fix:faa5f8d5",
+        "title": "[gate:capture] Captura completa (inventário pt-BR)",
+        "gate": "capture",
+        "direction": "fix",
+        "reason": "gate 'capture' reprovado (status 1): score de qualidade 46 ≠ 0 (markdown não impecável)",
+        "instructions": [
+          "executar: `scripts/extract.py (relatório em .ci/extract-report.md)`",
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente",
+          "após aprovar, o próximo gate indexado é 'conformity' (Completude e conformidade (mandato de validação))"
+        ],
+        "acceptance": [
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente"
+        ]
+      },
+      "metrics": {
+        "mode": "offline"
+      },
+      "started_at": "2026-10-13T18:16:22+00:00",
+      "finished_at": "2026-10-13T18:16:22+00:00",
+      "duration_s": 0.0
+    },
+    {
+      "id": "release:c12eba9589",
+      "blueprint": "gate-driven-bpmn/1",
+      "gate": "release",
+      "action": "pipeline.engine.ReleaseGateway",
+      "status": 1,
+      "status_label": "error_content",
+      "message": "produção bloqueada por 'capture': score de qualidade 46 ≠ 0 (markdown não impecável)",
+      "direction": "fix",
+      "addenda": [],
+      "next_issue": {
+        "key": "capture:fix:faa5f8d5",
+        "title": "[gate:capture] Captura completa (inventário pt-BR)",
+        "gate": "capture",
+        "direction": "fix",
+        "reason": "gate 'capture' reprovado (status 1): score de qualidade 46 ≠ 0 (markdown não impecável)",
+        "instructions": [
+          "executar: `scripts/extract.py (relatório em .ci/extract-report.md)`",
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente",
+          "após aprovar, o próximo gate indexado é 'conformity' (Completude e conformidade (mandato de validação))"
+        ],
+        "acceptance": [
+          "247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)",
+          "score de qualidade = 0 em todas as páginas (0 = impecável)",
+          "nenhuma página com aviso de cura via HTML pendente"
+        ]
+      },
+      "metrics": {
+        "gates_ok": 1,
+        "gates_total": 6,
+        "blocking": [
+          "capture",
+          "conformity",
+          "site",
+          "skill"
+        ]
+      },
+      "started_at": "2026-10-13T18:16:22+00:00",
+      "finished_at": "2026-10-13T18:16:22+00:00",
+      "duration_s": 0.0
+    }
+  ],
+  "store": {
+    "runs": 3,
+    "last_run": "2026-10-13T18:15:58+00:00",
+    "envelopes_by_status": {
+      "success": 2,
+      "error_content": 8,
+      "pending": 3,
+      "skipped": 2
+    },
+    "issues_by_state": {
+      "proposed": 3
+    }
+  },
+  "generated_at": "2026-10-13T18:16:22+00:00"
+}

@@ -1,0 +1,163 @@
+name: gate-pipeline
+
+# Fluxo gate-driven (BPMN-like) com backend OO + SQLite.
+# Regra de continuidade: enquanto houver issue aberta de gate, CI com erro ou ausência
+# de testes, o fluxo NÃO está concluído — cada execução devolve envelopes JSON
+# (id, gate, status 0/1/2/3/4, message, addenda, next_issue, direction) e garante que
+# exista exatamente UMA próxima issue indexada com a instrução do que falta.
+#
+# Event-driven: também dispara quando uma issue é fechada/rotulada → constrói a seguinte.
+on:
+  push:
+    branches: [main, "arena/**"]
+  pull_request:
+    branches: [main]
+  issues:
+    types: [closed, labeled, reopened]
+  schedule:
+    - cron: "23 */6 * * *"          # varredura de continuidade (UTC)
+  workflow_dispatch:
+    inputs:
+      gate:
+        description: "Gate específico (vazio = todos)"
+        type: string
+        required: false
+      online:
+        description: "Consultar gh (runs/issues) — recomendado no CI"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  issues: write
+  actions: read
+
+concurrency:
+  group: gate-pipeline-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
+
+env:
+  PYTHON_VERSION: "3.12"
+  STATE: .ci/pipeline-state.json
+
+jobs:
+  gates:
+    name: Gates determinísticos + continuidade
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      status: ${{ steps.run.outputs.status }}
+      direction: ${{ steps.run.outputs.direction }}
+      next_issue_key: ${{ steps.run.outputs.next_issue_key }}
+      next_issue_gate: ${{ steps.run.outputs.next_issue_gate }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+          pip install pytest check-jsonschema yamllint "mkdocs-material>=9.5" "mkdocs>=1.6"
+          bash <(curl -sSL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          echo "${PWD}" >> "$GITHUB_PATH"
+
+      - name: Blueprint (auditoria do fluxo)
+        run: python -m pipeline.cli blueprint | tee .ci/blueprint.json
+
+      - name: Executa os gates
+        id: run
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          ARGS="--online --trigger ${{ github.event_name }} --run-id ${{ github.run_id }}-${{ github.run_attempt }}"
+          if [ -n "${{ inputs.gate }}" ]; then ARGS="$ARGS --gate ${{ inputs.gate }}"; fi
+          python -m pipeline.cli run $ARGS --no-exit-code > "$STATE"
+          STATUS=$(jq -r '.status' "$STATE")
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          echo "direction=$(jq -r '.direction' "$STATE")" >> "$GITHUB_OUTPUT"
+          echo "next_issue_key=$(jq -r '.next_issue.key // ""' "$STATE")" >> "$GITHUB_OUTPUT"
+          echo "next_issue_gate=$(jq -r '.next_issue.gate // ""' "$STATE")" >> "$GITHUB_OUTPUT"
+          echo "message=$(jq -r '.message' "$STATE")" >> "$GITHUB_OUTPUT"
+          jq -r '.envelopes[] | [.gate, .status, .direction, .message] | @tsv' "$STATE"
+
+      - name: Publica envelopes (resumo)
+        if: always()
+        run: |
+          {
+            echo "## Pipeline gate-driven — status ${{ steps.run.outputs.status }} (${{ steps.run.outputs.direction }})"
+            echo
+            echo "| Gate | Status | Direção | Mensagem |"
+            echo "| --- | --- | --- | --- |"
+            jq -r '.envelopes[] | "| `\(.gate)` | \(.status) | \(.direction) | \(.message) |"' "$STATE" 2>/dev/null || true
+            echo
+            echo "**Próxima issue indexada:** `${{ steps.run.outputs.next_issue_key }}`"
+            echo
+            echo '```json'
+            jq '.next_issue' "$STATE" 2>/dev/null || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Garante a próxima issue (uma única, idempotente)
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -uo pipefail
+          STATUS="${{ steps.run.outputs.status }}"
+          GATE="${{ steps.run.outputs.next_issue_gate }}"
+          KEY="${{ steps.run.outputs.next_issue_key }}"
+          if [ "$STATUS" = "0" ]; then
+            echo "Todos os gates aprovados — nada a continuar."
+            gh issue list --state open --label "pipeline:next" --json number --jq '.[].number' \
+              | xargs -r -I{} gh issue close {} --comment "Fluxo gate-driven concluído: todos os gates em status 0."
+            exit 0
+          fi
+          [ -f .ci/next-issue.md ] || { echo "sem instrução gerada"; exit 0; }
+          for L in "gate:${GATE}" "pipeline:next" "status:${STATUS}"; do
+            gh label create "$L" --color "1D76DB" --description "Pipeline gate-driven" >/dev/null 2>&1 || true
+          done
+          EXISTING=$(gh issue list --state open --label "gate:${GATE}" --json number --jq '.[0].number // empty')
+          if [ -n "$EXISTING" ]; then
+            echo "Issue #$EXISTING já cobre o gate '$GATE' — atualizando instruções."
+            gh issue comment "$EXISTING" --body-file .ci/next-issue.md
+            echo "number=$EXISTING" >> "$GITHUB_OUTPUT"
+          else
+            TITLE=$(jq -r '.next_issue.title' "$STATE")
+            NUMBER=$(gh issue create --title "$TITLE" --body-file .ci/next-issue.md \
+              --label "gate:${GATE}" --label "pipeline:next" --label "status:${STATUS}")
+            echo "Issue criada: $NUMBER (gate=$GATE key=$KEY)"
+          fi
+
+      - name: Artefatos (estado, envelopes, instrução)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-state
+          path: |
+            .ci/pipeline-state.json
+            .ci/next-issue.md
+            .ci/blueprint.json
+            .ci/pipeline.sqlite3
+            knowledge/validation.md
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Gate final (exit code do fluxo)
+        if: always()
+        run: |
+          STATUS="${{ steps.run.outputs.status }}"
+          if [ "$STATUS" != "0" ]; then
+            echo "::error::Pipeline reprovado (status=$STATUS, direção=${{ steps.run.outputs.direction }}). Instrução da próxima issue: .ci/next-issue.md"
+            exit 1
+          fi
+          echo "Pipeline aprovado: entrega pronta para produção."
