@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: Tutorials / Use actions runner controller
 ---
 
-# Comece a usar o Actions Runner Controller
+# Comece a usar o Actions Runner Controller { #get-started-with-actions-runner-controller }
 
 _Neste tutorial, você experimentará as noções básicas de Actions Runner Controller._
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Para usar o ARC, verifique se você tem os itens a seguir.
 
@@ -27,7 +27,7 @@ Para usar o ARC, verifique se você tem os itens a seguir.
 
 * Embora não seja necessário implantar o ARC, é recomendável garantir que você tenha uma maneira de coletar e reter logs do controlador, dos ouvintes e dos executores efêmeros antes de implantar o ARC em fluxos de trabalho da produção.
 
-## Como instalar o Actions Runner Controller
+## Como instalar o Actions Runner Controller { #installing-actions-runner-controller }
 
 1. Para instalar o operador e as CRDs (definições de recursos personalizados) no cluster, execute as etapas a seguir.
 
@@ -42,13 +42,13 @@ Para usar o ARC, verifique se você tem os itens a seguir.
        --namespace "${NAMESPACE}" \
        --create-namespace \
        oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
-   ```
+            ```
 
    Para ver mais opções de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set-controller/values.yaml) na documentação do ARC.
 
 2. Para permitir que o ARC se autentique em GitHub, escolha um método de autenticação para o conjunto de dimensionamento de executores. Se você estiver registrando corredores no repositório ou no nível da organização, recomendamos autenticar com um GitHub App. Os conjuntos de escala de executores registrados no nível empresarial exigem autenticação personal access token (classic). Para obter mais informações, consulte [Autenticando o ARC na API de GitHub](../../how-tos/manage-runners/use-actions-runner-controller/authenticate-to-the-api.md).
 
-## Como configurar um conjunto de dimensionamento de executores
+## Como configurar um conjunto de dimensionamento de executores { #configuring-a-runner-scale-set }
 
 1. Para configurar o conjunto de dimensionamento de executores, execute o comando a seguir no terminal usando valores da configuração do ARC.
 
@@ -95,7 +95,7 @@ Como uma melhor prática de segurança, crie segredos do Kubernetes e passe as r
 
             ```bash copy
    helm list -A
-   ```
+            ```
 
    Você deverá ver um resultado semelhante ao seguinte.
 
@@ -103,13 +103,13 @@ Como uma melhor prática de segurança, crie segredos do Kubernetes e passe as r
    NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                       APP VERSION
    arc             arc-systems     1               2023-04-12 11:45:59.152090536 +0000 UTC deployed        gha-runner-scale-set-controller-0.4.0       0.4.0
    arc-runner-set  arc-runners     1               2023-04-12 11:46:13.451041354 +0000 UTC deployed        gha-runner-scale-set-0.4.0                  0.4.0
-   ```
+            ```
 
 2. Para verificar o pod do gerenciador, execute o comando a seguir no terminal.
 
             ```bash copy
    kubectl get pods -n arc-systems
-   ```
+            ```
 
    Se tudo tiver sido instalado com sucesso, a status dos pods será exibido como **Em execução**.
 
@@ -117,11 +117,11 @@ Como uma melhor prática de segurança, crie segredos do Kubernetes e passe as r
    NAME                                                   READY   STATUS    RESTARTS   AGE
    arc-gha-runner-scale-set-controller-594cdc976f-m7cjs   1/1     Running   0          64s
    arc-runner-set-754b578d-listener                       1/1     Running   0          12s
-   ```
+            ```
 
 Se a instalação não tiver sido bem-sucedida, confira [Solução de problemas dos erros do Actions Runner Controller](troubleshoot.md) para obter informações sobre solução de problemas.
 
-## Como usar conjuntos de dimensionamento de executores
+## Como usar conjuntos de dimensionamento de executores { #using-runner-scale-sets }
 
 Agora você criará e executará um fluxo de trabalho de teste simples que usa os executores do conjunto de dimensionamento de executores.
 
@@ -140,7 +140,7 @@ Agora você criará e executará um fluxo de trabalho de teste simples que usa o
        runs-on: arc-runner-set
        steps:
        - run: echo "🎉 This job uses runner scale set runners!"
-   ```
+            ```
 
 2. Depois de adicionar o fluxo de trabalho ao repositório, dispare manualmente o fluxo de trabalho. Para obter mais informações, consulte [Executar um fluxo de trabalho manualmente](../../how-tos/manage-workflow-runs/manually-run-a-workflow.md).
 
@@ -148,16 +148,16 @@ Agora você criará e executará um fluxo de trabalho de teste simples que usa o
 
             ```bash copy
    kubectl get pods -n arc-runners -w
-   ```
+            ```
 
    Um resultado bem-sucedido será semelhante ao seguinte.
 
             ```bash
    NAMESPACE     NAME                                                  READY   STATUS    RESTARTS      AGE
    arc-runners   arc-runner-set-rmrgw-runner-p9p5n                     1/1     Running   0             21s
-   ```
+            ```
 
-## Próximas Etapas
+## Próximas Etapas { #next-steps }
 
 O Actions Runner Controller pode ajudá-lo a gerenciar os executores do GitHub Actions com eficiência. Pronto para começar? Confira alguns recursos úteis para dar seus próximos passos com o ARC:
 
@@ -165,7 +165,7 @@ O Actions Runner Controller pode ajudá-lo a gerenciar os executores do GitHub A
 * Para obter ajuda no uso de executores do ARC nos fluxos de trabalho, confira [Usar executores do Controlador do Executor de Ações em um fluxo de trabalho](../../how-tos/manage-runners/use-actions-runner-controller/use-arc-in-a-workflow.md).
 * Para obter informações sobre a implantação, consulte [Como implantar conjuntos de dimensionamento de executores com o Actions Runner Controller](../../how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets.md).
 
-## Aviso legal
+## Aviso legal { #legal-notice }
 
 Partes foram adaptadas do <https://github.com/actions/actions-runner-controller/> de acordo com a licença Apache-2.0:
 

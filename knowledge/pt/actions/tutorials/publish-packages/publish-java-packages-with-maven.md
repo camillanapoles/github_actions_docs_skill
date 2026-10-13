@@ -10,17 +10,17 @@ captured: '2026-10-13'
 section: Tutorials / Publish packages
 ---
 
-# Publicando pacotes de Java com o Maven
+# Publicando pacotes de Java com o Maven { #publishing-java-packages-with-maven }
 
 _Neste tutorial, você aprenderá a usar o Maven para publicar pacotes Java em um registro como parte do fluxo de trabalho de CI (integração contínua)._
 
-## Introdução
+## Introdução { #introduction }
 
 Este guia mostra como criar um fluxo de trabalho que publica pacotes Java no GitHub Packages e no Maven Central Repository. Com um único fluxo de trabalho, você pode publicar pacotes em um único repositório ou em vários repositórios.
 
 > [!WARNING] Os exemplos usados neste guia referem-se ao serviço OSSRH herdado. Consulte [Publicação](https://central.sonatype.org/faq/what-is-different-between-central-portal-and-legacy-ossrh/#publishing) na documentação do Repositório Central do Maven.
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Recomendamos que você tenha um entendimento básico dos arquivos de fluxo de trabalho e das opções de configuração. Para saber mais, confira [Escrevendo fluxos de trabalho](../../how-tos/write-workflows.md).
 
@@ -33,7 +33,7 @@ Você também pode achar útil ter um entendimento básico do seguinte:
 * [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md)
 * [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md)
 
-## Sobre a configuração do pacote
+## Sobre a configuração do pacote { #about-package-configuration }
 
 Os campos `groupId` e `artifactId` do arquivo *pom.xml* criam um identificador exclusivo para o pacote que os registros usam para vincular seu pacote a um registro. Para obter mais informações, confira [Guia para upload de artefatos no Central Repository](https://maven.apache.org/repository/guide-central-repository-upload.html) na documentação do Apache Maven.
 
@@ -43,7 +43,7 @@ O arquivo *pom.xml* também contém a configuração dos repositórios de gerenc
 
 Use a ação `setup-java` para configurar o repositório de implantação, bem como a autenticação para esse repositório. Para obter mais informações, confira [`setup-java`](https://github.com/actions/setup-java).
 
-## Publicar pacotes no Repositório Central do Maven
+## Publicar pacotes no Repositório Central do Maven { #publishing-packages-to-the-maven-central-repository }
 
 Cada vez que você criar uma nova versão, você poderá acionar um fluxo de trabalho para publicar o seu pacote. O fluxo de trabalho no exemplo abaixo é executado quando o evento `release` é disparado com o tipo `created`. O fluxo de trabalho publica o pacote no Repositório Central Maven se o teste de CI for aprovado. Para saber mais sobre o evento `release`, confira [Eventos que disparam fluxos de trabalho](../../reference/workflows-and-actions/events-that-trigger-workflows.md#release).
 
@@ -101,7 +101,7 @@ Este fluxo de trabalho realiza as etapas a seguir:
 
    Para saber mais sobre como usar segredos em seu fluxo de trabalho, confira [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 
-## Publicando pacotes para GitHub Packages
+## Publicando pacotes para GitHub Packages { #publishing-packages-to-github-packages }
 
 Cada vez que você criar uma nova versão, você poderá acionar um fluxo de trabalho para publicar o seu pacote. O fluxo de trabalho no exemplo abaixo é executado quando o evento `release` é disparado com o tipo `created`. O fluxo de trabalho publica o pacote para GitHub Packages se os testes de CI forem aprovados. Para saber mais sobre o evento `release`, confira [Eventos que disparam fluxos de trabalho](../../reference/workflows-and-actions/events-that-trigger-workflows.md#release).
 
@@ -159,7 +159,7 @@ Este fluxo de trabalho realiza as etapas a seguir:
 
    Para saber mais sobre como usar segredos em seu fluxo de trabalho, confira [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 
-## Publicação de pacotes no repositório Maven Central e GitHub Packages
+## Publicação de pacotes no repositório Maven Central e GitHub Packages { #publishing-packages-to-the-maven-central-repository-and-github-packages }
 
 Você pode publicar seus pacotes no Maven Central Repository e GitHub Packages usando a ação `setup-java` para cada repositório.
 

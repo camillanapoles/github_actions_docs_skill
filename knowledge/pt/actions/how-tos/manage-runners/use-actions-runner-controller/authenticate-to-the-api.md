@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: How tos / Manage runners / Use actions runner controller
 ---
 
-# Autenticando o ARC na API de GitHub
+# Autenticando o ARC na API de GitHub { #authenticating-arc-to-the-github-api }
 
 _Autenticar Actions Runner Controller na API GitHub._
 
@@ -19,7 +19,7 @@ Você pode autenticar Actions Runner Controller (ARC) na GitHub API usando um Gi
 !!! note
     Você não pode autenticar usando um GitHub App para executores no nível corporativo. Para obter mais informações, consulte [Gerenciar o acesso a executores auto-hospedados usando grupos](../self-hosted-runners/manage-access.md).
 
-## Autenticando ARC com um GitHub App
+## Autenticando ARC com um GitHub App { #authenticating-arc-with-a-github-app }
 
 1. Crie um GitHub App que pertence a uma organização. Para obter mais informações, consulte [Registrando um aplicativo GitHub](https://docs.github.com/pt/apps/creating-github-apps/registering-a-github-app/registering-a-github-app). Configure GitHub App da seguinte forma.
 
@@ -63,17 +63,17 @@ Você pode autenticar Actions Runner Controller (ARC) na GitHub API usando um Gi
       --from-literal=github_app_id=123456 \
       --from-literal=github_app_installation_id=654321 \
       --from-literal=github_app_private_key='-----BEGIN RSA PRIVATE KEY-----********'
-   ```
+            ```
 
    Usando a propriedade `githubConfigSecret` em sua cópia do arquivo [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml), passe o nome do segredo como uma referência.
 
             ```yaml
    githubConfigSecret: pre-defined-secret
-   ```
+            ```
 
 Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
-## Autenticando ARC com um personal access token (classic)
+## Autenticando ARC com um personal access token (classic) { #authenticating-arc-with-a-personal-access-token-classic }
 
 O ARC pode usar personal access tokens (classic) para registrar executores auto-hospedados.
 
@@ -94,17 +94,17 @@ O ARC pode usar personal access tokens (classic) para registrar executores auto-
    kubectl create secret generic pre-defined-secret \
       --namespace=arc-runners \
       --from-literal=github_token='YOUR-PAT'
-   ```
+            ```
 
 3. Na sua cópia do [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) arquivo , transmita o nome do segredo como uma referência.
 
             ```yaml
    githubConfigSecret: pre-defined-secret
-   ```
+            ```
 
    Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
-## Autenticando ARC com um fine-grained personal access token
+## Autenticando ARC com um fine-grained personal access token { #authenticating-arc-with-a-fine-grained-personal-access-token }
 
 O ARC pode usar fine-grained personal access tokens para registrar executores auto-hospedados.
 
@@ -129,24 +129,24 @@ O ARC pode usar fine-grained personal access tokens para registrar executores au
    kubectl create secret generic pre-defined-secret \
       --namespace=arc-runners \
       --from-literal=github_token='YOUR-PAT'
-   ```
+            ```
 
 3. Na sua cópia do [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) arquivo , transmita o nome do segredo como uma referência.
 
             ```yaml
    githubConfigSecret: pre-defined-secret
-   ```
+            ```
 
    Para obter opções adicionais de configuração do Helm, confira [`values.yaml`](https://github.com/actions/actions-runner-controller/blob/master/charts/gha-runner-scale-set/values.yaml) no repositório ARC.
 
-## Autenticar ARC com segredos do cofre
+## Autenticar ARC com segredos do cofre { #authenticating-arc-with-vault-secrets }
 
 !!! note
     No momento, a integração com o Vault está disponível em versão prévia pública com suporte para o Azure Key Vault.
 
 A partir da versão 0.12.0 do gha-runner-scale-set, o ARC dá suporte à recuperação de credenciais do GitHub de um cofre externo. A integração do cofre é configurada por conjunto de dimensionamento de executores. Isso significa que você pode executar alguns conjuntos de escalonamento usando segredos do Kubernetes, enquanto outros utilizam segredos armazenados em cofres, dependendo de seus requisitos de segurança e operacionais.
 
-### Habilitar a integração do Vault
+### Habilitar a integração do Vault { #enabling-vault-integration }
 
 Para habilitar a integração do cofre de chaves em um conjunto de escalonamento de executores:
 
@@ -154,11 +154,11 @@ Para habilitar a integração do cofre de chaves em um conjunto de escalonamento
 2. **Remova os comentários e configure a `keyVault` seção** no arquivo `values.yaml` com o provedor apropriado e os detalhes de acesso.
 3. \*\*Forneça o certificado \*\* necessário (`.pfx`) ao controlador e ao ouvinte. Para fazer isso: \*Recriar a imagem do controlador com o certificado incluído ou \*Monte o certificado como um volume no controlador e no ouvinte usando os campos `listenerTemplate` e `controllerManager`.
 
-### Formato Secreto
+### Formato Secreto { #secret-format }
 
 O segredo armazenado em Azure Key Vault deve estar no formato JSON. A estrutura depende do tipo de autenticação que você está usando:
 
-#### Exemplo: token de GitHub
+#### Exemplo: token de GitHub { #example-github-token }
 
 ```json
 {
@@ -166,7 +166,7 @@ O segredo armazenado em Azure Key Vault deve estar no formato JSON. A estrutura 
 }
 ```
 
-#### Exemplo: aplicativo GitHub
+#### Exemplo: aplicativo GitHub { #example-github-app }
 
 ```json
 {
@@ -176,7 +176,7 @@ O segredo armazenado em Azure Key Vault deve estar no formato JSON. A estrutura 
 }
 ```
 
-### Configurar `values.yaml` para a integração do Cofre
+### Configurar `values.yaml` para a integração do Cofre { #configuring-valuesyaml-for-vault-integration }
 
 O certificado é armazenado como um arquivo .pfx e montado no contêiner em /akv/cert.pfx. Veja abaixo um exemplo de como configurar a seção keyVault para usar este certificado para autenticação:
 
@@ -196,7 +196,7 @@ keyVault:
     certificatePath: "/akv/cert.pfx"
 ```
 
-### Fornecendo o certificado para o controlador e o ouvinte
+### Fornecendo o certificado para o controlador e o ouvinte { #providing-the-certificate-to-the-controller-and-listener }
 
 O ARC requer um certificado `.pfx` para autenticar no cofre. Esse certificado deve ser disponibilizado para os componentes do controlador e do ouvinte durante a instalação do controlador.
 Você pode fazer isso montando o certificado como um volume usando os campos `controllerManager` e `listenerTemplate` no arquivo `values.yaml`:
@@ -239,7 +239,7 @@ listenerTemplate:
           secretName: my-cert-secret
 ```
 
-## Aviso legal
+## Aviso legal { #legal-notice }
 
 Partes foram adaptadas do <https://github.com/actions/actions-runner-controller/> de acordo com a licença Apache-2.0:
 

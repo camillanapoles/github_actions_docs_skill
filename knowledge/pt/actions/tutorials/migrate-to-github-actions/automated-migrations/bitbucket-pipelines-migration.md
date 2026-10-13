@@ -10,15 +10,15 @@ captured: '2026-10-13'
 section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
-# Migrando do Bitbucket Pipelines com o importador de GitHub Actions
+# Migrando do Bitbucket Pipelines com o importador de GitHub Actions { #migrating-from-bitbucket-pipelines-with-github-actions-importer }
 
 _Saiba como usar GitHub Actions Importer para automatizar a migração dos pipelines do Bitbucket para GitHub Actions._
 
-## Sobre a migração do Bitbucket Pipelines com GitHub Actions Importer
+## Sobre a migração do Bitbucket Pipelines com GitHub Actions Importer { #about-migrating-from-bitbucket-pipelines-with-github-actions-importer }
 
 As instruções a seguir orientarão você na configuração do seu ambiente para usar GitHub Actions Importer para migrar pipelines do Bitbucket para GitHub Actions.
 
-### Pré-requisitos
+### Pré-requisitos { #prerequisites }
 
 * Um ambiente em que seja possível executar contêineres baseados no Linux e instalar as ferramentas necessárias.
   * O Docker está [instalado](https://docs.docker.com/get-docker/) e em execução.
@@ -28,7 +28,7 @@ As instruções a seguir orientarão você na configuração do seu ambiente par
 
   > A CLI e o contêiner do GitHub Actions Importer não precisam ser instalados no mesmo servidor que a plataforma de CI.
 
-### Limitações
+### Limitações { #limitations }
 
 Há algumas limitações ao migrar do Bitbucket Pipelines para GitHub Actions com GitHub Actions Importer.
 
@@ -53,22 +53,22 @@ Há algumas limitações ao migrar do Bitbucket Pipelines para GitHub Actions co
         echo "goodbye, for now!"
       id: after-script-2
       if: "${{ steps.after-script-1.conclusion == 'success' && always() }}"
-  ```
+        ```
 
-### Tarefas manuais
+### Tarefas manuais { #manual-tasks }
 
 Certos constructos do Bitbucket Pipelines devem ser migrados manualmente. Estão incluídos:
 
 * Repositório seguro, espaço de trabalho e variáveis de implementação
 * Chaves SSH
 
-## Instalando a extensão da GitHub Actions Importer CLI
+## Instalando a extensão da GitHub Actions Importer CLI { #installing-the-github-actions-importer-cli-extension }
 
 1. Instale a extensão da CLI do GitHub Actions Importer:
 
             ```bash copy
    gh extension install github/gh-actions-importer
-   ```
+            ```
 
 2. Verifique se a extensão foi instalada:
 
@@ -85,9 +85,9 @@ Certos constructos do Bitbucket Pipelines devem ser migrados manualmente. Estão
      forecast   Forecast GitHub Actions usage from historical pipeline utilization.
      dry-run    Convert a pipeline to a GitHub Actions workflow and output its yaml file.
      migrate    Convert a pipeline to a GitHub Actions workflow and open a pull request with the changes.
-   ```
+            ```
 
-## Como configurar credenciais
+## Como configurar credenciais { #configuring-credentials }
 
 O `configure` comando da CLI é usado para definir as credenciais e as opções necessárias para GitHub Actions Importer ao trabalhar com o Bitbucket Pipelines e GitHub.
 
@@ -103,7 +103,7 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
 
             ```shell
    gh actions-importer configure
-   ```
+            ```
 
    O comando `configure` solicitará que você insira as seguintes informações:
 
@@ -124,22 +124,22 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
    ✔ Personal access token for Bitbucket: ********************
    ✔ Base url of the Bitbucket instance: https://bitbucket.example.com
    Environment variables successfully updated.
-   ```
+            ```
 
 4. No terminal, execute o comando CLI GitHub Actions Importer`update` para se conectar a GitHub PackagesContainer registry e garantir que a imagem do contêiner esteja atualizada para a versão mais recente:
 
             ```shell
    gh actions-importer update
-   ```
+            ```
 
    A saída do comando será parecida com a mostrada abaixo:
 
             ```shell
    Updating ghcr.io/actions-importer/cli:latest...
    ghcr.io/actions-importer/cli:latest up-to-date
-   ```
+            ```
 
-## Realizar uma auditoria da instância do Bitbucket
+## Realizar uma auditoria da instância do Bitbucket { #perform-an-audit-of-the-bitbucket-instance }
 
 Você pode usar o comando audit para obter uma visão de alto nível dos pipelines em uma instância do Bitbucket.
 
@@ -149,7 +149,7 @@ O comando audit executa as seguintes etapas.
 2. Converte o pipeline em seu equivalente fluxo de trabalho do GitHub Actions.
 3. Gera um relatório que resume o quão completa e complexa de uma migração é possível com GitHub Actions Importer.
 
-### Como executar o comando de auditoria
+### Como executar o comando de auditoria { #running-the-audit-command }
 
 Para realizar uma auditoria, execute o seguinte comando em seu terminal, substituindo `:workspace` pelo nome do espaço de trabalho do Bitbucket a ser auditado.
 
@@ -165,7 +165,7 @@ No exemplo de comando abaixo, `:project_key` deve ser substituído pela chave do
 gh actions-importer audit bitbucket --workspace :workspace --project-key :project_key --output-dir tmp/audit
 ```
 
-### Como inspecionar os resultados da auditoria
+### Como inspecionar os resultados da auditoria { #inspecting-the-audit-results }
 
 Os arquivos do diretório de saída especificado contêm os resultados da auditoria. Confira o arquivo `audit_summary.md` para ver um resumo dos resultados da auditoria.
 
@@ -185,7 +185,7 @@ Veja abaixo alguns termos importantes que podem aparecer na seção "Pipelines":
   * GitHub Actions Importer encontrou um erro interno ao convertê-lo.
   * Houve uma resposta de rede malsucedida que tornou o pipeline inacessível, o que geralmente ocorre devido a credenciais inválidas.
 
-#### Etapas de compilação
+#### Etapas de compilação { #build-steps }
 
 A seção "Etapas de compilação" contém uma visão geral das etapas de compilação individuais usadas em todos os pipelines e de quantas delas foram convertidas automaticamente por GitHub Actions Importer.
 
@@ -200,7 +200,7 @@ A seguir estão alguns termos-chave que podem aparecer na seção "Build steps":
   * Se você usar GitHub Enterprise Server, reunindo a lista de ações para sincronizar com sua instância.
   * Definir uma lista de permissões em nível organizacional para as ações utilizadas. Essa lista de ações é abrangente e inclui as ações que as equipes de segurança ou conformidade podem precisar analisar.
 
-#### Tarefas manuais
+#### Tarefas manuais { #manual-tasks-1 }
 
 A seção "Tarefas manuais" contém uma visão geral das tarefas que GitHub Actions Importer não podem ser concluídas automaticamente e que você deve concluir manualmente.
 
@@ -209,7 +209,7 @@ Veja abaixo alguns termos importantes que podem aparecer na seção "Tarefas man
 * Um **segredo** é um segredo no nível do repositório ou da organização que é usado nos pipelines convertidos. Esses segredos devem ser criados manualmente no GitHub Actions para que esses pipelines funcionem corretamente. Para saber mais, confira [Usar segredos em ações do GitHub](../../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 * Um **executor auto-hospedado refere-se** a um rótulo de um executor que é referenciado em um pipeline convertido que não é um GitHubexecutor hospedado. Será necessário definir manualmente esses executores para que os pipelines funcionem de maneira correta.
 
-#### Arquivos
+#### Arquivos { #files }
 
 A seção final do relatório de auditoria fornece um manifesto de todos os arquivos que foram gravados em disco durante a auditoria.
 
@@ -222,11 +222,11 @@ Cada arquivo de pipeline tem diversos arquivos incluídos na auditoria, incluind
 
 Além disso, o arquivo `workflow_usage.csv` contém uma lista separada por vírgula de todas as ações, todos os segredos e todos os executores usados pelos pipelines convertidos com sucesso. Isso pode ser útil para determinar quais fluxos de trabalho usam quais ações, segredos ou executores e para executar revisões de segurança.
 
-## Previsão de uso
+## Previsão de uso { #forecasting-usage }
 
 Você pode usar o comando `forecast` para prever o uso potencial de GitHub Actions ao calcular métricas a partir de execuções de pipeline concluídas na sua instância do Bitbucket.
 
-### Como executar o comando de previsão
+### Como executar o comando de previsão { #running-the-forecast-command }
 
 Para realizar uma projeção do uso potencial do GitHub Actions, execute o seguinte comando no seu terminal, substituindo `:workspace` pelo nome do workspace do Bitbucket para projetar. Por padrão, GitHub Actions Importador inclui os sete dias anteriores no relatório de previsão.
 
@@ -234,7 +234,7 @@ Para realizar uma projeção do uso potencial do GitHub Actions, execute o segui
 gh actions-importer forecast bitbucket --workspace :workspace --output-dir tmp/forecast_reports
 ```
 
-### Previsão de um projeto
+### Previsão de um projeto { #forecasting-a-project }
 
 Para limitar a previsão a um projeto, você pode usar a opção `--project-key`. Substitua o valor do `:project_key` pela chave do projeto a ser previsto.
 
@@ -242,7 +242,7 @@ Para limitar a previsão a um projeto, você pode usar a opção `--project-key`
 gh actions-importer forecast bitbucket --workspace :workspace --project-key :project_key --output-dir tmp/forecast_reports
 ```
 
-### Como inspecionar o relatório de previsão
+### Como inspecionar o relatório de previsão { #inspecting-the-forecast-report }
 
 O arquivo `forecast_report.md` no diretório de saída especificado contém os resultados da previsão.
 
@@ -254,11 +254,11 @@ Veja abaixo alguns termos importantes que podem aparecer no relatório de previs
   * Essa métrica está correlacionada ao quanto você deve esperar gastar no GitHub Actions. Isso pode variar de acordo com o hardware usado para esses minutos. Você pode usar a [GitHub Actions calculadora de preços](https://github.com/pricing/calculator) para estimar os custos.
 * As métricas de **trabalhos simultâneos** descrevem a quantidade de trabalhos em execução a qualquer momento.
 
-## Realização de uma migração simulada
+## Realização de uma migração simulada { #performing-a-dry-run-migration }
 
 Você pode usar o comando de dry-run para converter um pipeline do Bitbucket em fluxo(s) de trabalho equivalente(s) doGitHub Actions. Uma simulação cria os arquivos de saída em um diretório especificado, mas não abre uma solicitação de pull para migrar o pipeline.
 
-### Como executar o comando de simulação
+### Como executar o comando de simulação { #running-the-dry-run-command }
 
 Para fazer uma simulação da migração de um pipeline no Bitbucket para GitHub Actions, execute o seguinte comando no terminal, substituindo `:workspace` pelo nome do espaço de trabalho e `:repo` pelo nome do repositório no Bitbucket.
 
@@ -266,17 +266,17 @@ Para fazer uma simulação da migração de um pipeline no Bitbucket para GitHub
 gh actions-importer dry-run bitbucket --workspace :workspace --repository :repo --output-dir tmp/dry-run
 ```
 
-### Como inspecionar os fluxos de trabalho convertidos
+### Como inspecionar os fluxos de trabalho convertidos { #inspecting-the-converted-workflows }
 
 Você pode ver os logs da simulação e os arquivos de fluxo de trabalho convertidos no diretório de saída especificado.
 
 Se houver algo que GitHub Actions Importer não foi capaz de converter automaticamente, como etapas de build desconhecidas ou um pipeline parcialmente bem-sucedido, talvez você queira criar transformadores personalizados para personalizar ainda mais o processo de conversão. Para saber mais, confira [Estendendo o Importador do GitHub Actions com transformadores personalizados](../../../reference/github-actions-importer/custom-transformers.md).
 
-## Realização de uma migração de produção
+## Realização de uma migração de produção { #performing-a-production-migration }
 
 Você pode usar o comando migrate para converter um pipeline do Bitbucket e abrir uma pull request com os fluxos de trabalho equivalentes do GitHub Actions.
 
-### Como executar o comando de migração
+### Como executar o comando de migração { #running-the-migrate-command }
 
 Para migrar um pipeline do Bitbucket para GitHub Actions, execute o seguinte comando no terminal, substituindo os valores a seguir.
 
@@ -296,7 +296,7 @@ gh actions-importer migrate bitbucket --workspace actions-importer --repository 
 [2023-07-18 09:56:24] Pull request: 'https://github.com/valet-dev-testing/demo-private/pull/55'
 ```
 
-### Como inspecionar a solicitação de pull
+### Como inspecionar a solicitação de pull { #inspecting-the-pull-request }
 
 A saída de uma execução bem-sucedida do comando `migrate` contém um link para a nova solicitação de pull que adiciona o fluxo de trabalho convertido ao seu repositório.
 
@@ -307,11 +307,11 @@ Alguns elementos importantes da solicitação de pull incluem:
 
 Quando terminar de inspecionar a pull request, você poderá mesclá-la para adicionar o fluxo de trabalho ao repositório do GitHub.
 
-## Referência
+## Referência { #reference }
 
 Esta seção contém informações de referência sobre variáveis de ambiente, argumentos opcionais e sintaxe com suporte ao usar GitHub Actions Importer para migrar do Bitbucket Pipelines.
 
-### Usando variáveis de ambiente
+### Usando variáveis de ambiente { #using-environment-variables }
 
 O GitHub Actions Importer usa variáveis de ambiente para a configuração de autenticação. Essas variáveis são definidas durante o processo de configuração com o comando `configure`. Para obter mais informações, confira a seção [Como configurar as credenciais](#configuring-credentials).
 
@@ -323,7 +323,7 @@ GitHub Actions Importer usa as variáveis de ambiente a seguir para se conectar 
 
 Essas variáveis de ambiente podem ser especificadas em um arquivo `.env.local` que será carregado por GitHub Actions Importer em tempo de execução. O arquivo de distribuição contém um arquivo `.env.local.template` que pode ser usado para criar esses arquivos.
 
-### Argumentos opcionais
+### Argumentos opcionais { #optional-arguments }
 
 Há argumentos opcionais que você pode usar com os subcomandos do GitHub Actions Importer para personalizar sua migração.
 
@@ -345,7 +345,7 @@ Use o argumento `--config-file-path` com os subcomandos `audit`, `dry-run` e `mi
 
 Por padrão, GitHub Actions Importer busca o conteúdo do pipeline da instância do Bitbucket. O argumento `--config-file-path` instrui GitHub Actions Importer a usar os arquivos de origem especificados.
 
-### Exemplo de auditoria
+### Exemplo de auditoria { #audit-example }
 
 Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML especificado para executar uma auditoria.
 
@@ -363,7 +363,7 @@ source_files:
     path: path/to/another/source/file.yml
 ```
 
-## Sintaxe compatível com o Bitbucket Pipelines
+## Sintaxe compatível com o Bitbucket Pipelines { #supported-syntax-for-bitbucket-pipelines }
 
 A tabela a seguir mostra o tipo de propriedades que GitHub Actions Importer atualmente é capaz de converter.
 
@@ -396,7 +396,7 @@ A tabela a seguir mostra o tipo de propriedades que GitHub Actions Importer atua
 | `options.size`            | Nenhum                                          | Sem suporte |
 | `size`                    | Nenhum                                          | Sem suporte |
 
-### Mapeamento de variáveis de ambiente
+### Mapeamento de variáveis de ambiente { #environment-variable-mapping }
 
 GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáveis de ambiente do Bitbucket padrão para o equivalente mais próximo em GitHub Actions.
 
@@ -430,11 +430,11 @@ GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáv
 | `BITBUCKET_PARALLEL_STEP`               | Sem mapeamento                                              |
 | `BITBUCKET_PARALLEL_STEP_COUNT`         | Sem mapeamento                                              |
 
-### Variáveis do sistema
+### Variáveis do sistema { #system-variables }
 
 As variáveis do sistema usadas em tarefas são transformadas na variável de shell de bash equivalente e são consideradas disponíveis. Por exemplo, `${system.<variable.name>}` será transformado em `$variable_name`. Recomendamos que você verifique isso para garantir a operação adequada do fluxo de trabalho.
 
-## Aviso legal
+## Aviso legal { #legal-notice }
 
 Partes foram adaptadas do <https://github.com/github/gh-actions-importer/> de acordo com a licença MIT:
 

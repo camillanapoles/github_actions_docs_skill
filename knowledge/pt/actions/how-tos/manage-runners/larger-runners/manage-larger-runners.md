@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: How tos / Manage runners / Larger runners
 ---
 
-# Gerenciar executores maiores
+# Gerenciar executores maiores { #managing-larger-runners }
 
 _Você pode configurar executor avançados para sua organização ou empresa._
 
@@ -111,7 +111,7 @@ Se você quiser exigir que os fluxos de trabalho sejam direcionados a executores
 5. Escolha um novo tamanho para o executor na lista de opções disponíveis em “Size”. Os tamanhos disponíveis dependem da imagem instalada no executor.
 6. Clique em **Save** (Salvar).
 
-## Alterando a imagem de um executor avançado
+## Alterando a imagem de um executor avançado { #adding-a-larger-runner-to-an-enterprise }
 
 1. Em GitHub, acesse a página principal da organização.
 2. No nome da organização, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.
@@ -122,7 +122,7 @@ Se você quiser exigir que os fluxos de trabalho sejam direcionados a executores
 5. Escolha uma nova imagem para o executor na lista de opções disponíveis em "Imagem". As imagens disponíveis são limitadas às de propriedade do GitHub.
 6. Clique em **Save** (Salvar).
 
-## Configurando o dimensionamento automático para executor avançados
+## Configurando o dimensionamento automático para executor avançados { #adding-a-larger-runner-to-an-organization }
 
 Você pode controlar o número máximo de trabalhos permitidos para execução simultânea para conjuntos de executores específicos. Definir esse campo como um valor mais alto pode ajudar a impedir que os fluxos de trabalho sejam bloqueados devido ao paralelismo.
 
@@ -135,7 +135,7 @@ Você pode controlar o número máximo de trabalhos permitidos para execução s
 5. Na seção "Capacidade", em "Simultaneidade máxima", insira o número máximo de trabalhos que você deseja permitir que executem ao mesmo tempo.
 6. Clique em **Salvar**.
 
-## Criando endereços IP estáticos para executor avançados
+## Criando endereços IP estáticos para executor avançados { #allowing-repositories-to-access-larger-runners }
 
 !!! note
     * Para usar endereços IP estáticos, sua organização deve usar GitHub Enterprise Cloud. Para obter mais informações sobre como você pode experimentar o GitHub Enterprise Cloud gratuitamente, confira [Como configurar uma avaliação do GitHub Enterprise Cloud](https://docs.github.com/pt/enterprise-cloud@latest/admin/overview/setting-up-a-trial-of-github-enterprise-cloud).
@@ -156,9 +156,9 @@ O número de endereços IP disponíveis nos intervalos atribuídos não restring
 5. Para atribuir endereços IP estáticos ao executor, em "Rede", marque **Atribuir intervalos de endereços IP público estáticos e exclusivo para esse executor**.
 6. Clique em **Save** (Salvar).
 
-## Armazenamento do Azure considerações de firewall
+## Armazenamento do Azure considerações de firewall { #changing-the-name-of-a-larger-runner }
 
-### Máquinas virtuais e contas de armazenamento na mesma região
+### Máquinas virtuais e contas de armazenamento na mesma região { #changing-the-name-of-an-organization-runner }
 
 Se você usar Armazenamento do Azure contas protegidas por regras de rede, lembre-se de que o tráfego de VMs para contas de executor avançadoarmazenamento na mesma região Azure usará endereços IP de Azure privados em vez do executor avançadointervalo de IP público.
 
@@ -176,13 +176,13 @@ Para obter mais informações, consulte a documentação Microsoft para [diretri
     Os intervalos de IP públicos podem ser dinâmicos, portanto, as regras baseadas em lista de permissões podem quebrar e causar falhas de conectividade intermitentes.
     Confira [Referência de executores avançados](../../../reference/runners/larger-runners.md#networking-for-larger-runners)
 
-### Usar intervalos de IP estáticos e pontos de extremidade de serviço
+### Usar intervalos de IP estáticos e pontos de extremidade de serviço { #changing-the-name-of-an-enterprise-runner }
 
 Uma opção para habilitar com segurança as regras de rede da Conta de Armazenamento é usar executores com IPs estáticos e solicitar suporte para configurar Armazenamento do Azure pontos de extremidade de serviço para a rede virtual que hospeda esses IPs estáticos. Consulte [Azure pontos de extremidade de serviço de rede virtual](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview) para obter mais informações.
 
 Entre em contato com GitHub Suporte para configurar essa configuração por meio do [portal de suporte do GitHub](https://support.github.com/).
 
-### Configurar Azure VNET
+### Configurar Azure VNET { #changing-the-size-of-an-organization-runner }
 
 Outra opção para se conectar com segurança a contas Armazenamento do Azure é habilitar Azure VNET com GitHubexecutores hospedados.
 

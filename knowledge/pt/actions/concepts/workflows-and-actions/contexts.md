@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: Concepts / Workflows and actions
 ---
 
-# Contextos
+# Contextos { #contexts }
 
 _Saiba mais sobre contextos em GitHub Actions._
 
-## Sobre os contextos
+## Sobre os contextos { #about-contexts }
 
 Os contextos são uma forma de acessar informações sobre execuções de fluxo de trabalho, variáveis, ambientes dos executores, trabalhos e etapas. Cada contexto é um objeto que contém propriedades, que podem ser cadeias de caracteres ou outros objetos.
 
@@ -27,7 +27,7 @@ Você pode acessar contextos usando a sintaxe da expressão. Para saber mais, co
 !!! warning
     Ao criar fluxos de trabalho e ações, sempre considere se o código poderá executar entradas não confiáveis de possíveis invasores. Certos contextos devem ser tratados como entradas não confiáveis, uma vez que um invasor pode inserir seu próprio conteúdo malicioso. Para saber mais, confira [Referência de uso seguro](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks).
 
-## Determinar quando usar contextos
+## Determinar quando usar contextos { #determining-when-to-use-contexts }
 
 GitHub Actions inclui uma coleção de variáveis chamadas *contextos* e uma coleção semelhante de variáveis chamadas *variáveis padrão*. Estas variáveis são destinadas a serem usadas em diferentes pontos do fluxo de trabalho:
 

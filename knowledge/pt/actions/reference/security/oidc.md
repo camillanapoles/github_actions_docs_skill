@@ -10,17 +10,17 @@ captured: '2026-10-13'
 section: Reference / Security
 ---
 
-# Referência do OpenID Connect
+# Referência do OpenID Connect { #openid-connect-reference }
 
 _Encontre informações sobre como usar o OpenID Connect (OIDC) para autenticar GitHub Actions fluxos de trabalho com provedores de nuvem._
 
-## Declarações de token OIDC
+## Declarações de token OIDC { #oidc-token-claims }
 
 Para ver todas as declarações com suporte pelo provedor OIDC do GitHub, verifique as entradas `claims_supported` em <https://token.actions.githubusercontent.com/.well-known/openid-configuration>.
 
 O token OIDC inclui as declarações a seguir.
 
-### Declarações de audiência, emissor e entidade padrão
+### Declarações de audiência, emissor e entidade padrão { #standard-audience-issuer-and-subject-claims }
 
 | Declaração | Tipo de declaração | Descrição |
 | --- | --- | --- |
@@ -28,7 +28,7 @@ O token OIDC inclui as declarações a seguir.
 | `iss` | Emissor | O emissor do token OIDC: `https://token.actions.githubusercontent.com` |
 | `sub` | Assunto | Define a declaração do sujeito que deve ser validada pelo provedor de nuvem. Esta configuração é essencial para garantir que os tokens de acesso sejam apenas alocados de forma previsível. Para repositórios que usam declarações de assunto imutáveis, o formato `sub` inclui IDs de proprietário e de repositório imutáveis (não disponíveis no GitHub Enterprise Server). |
 
-### Parâmetros e declarações de cabeçalho JOSE padrão adicionais
+### Parâmetros e declarações de cabeçalho JOSE padrão adicionais { #additional-standard-jose-header-parameters-and-claims }
 
 | Parâmetro de cabeçalho | Tipo de parâmetro      | Descrição                                                    |
 |----------------------|----------------------|------------------------------------------------------------|
@@ -43,7 +43,7 @@ O token OIDC inclui as declarações a seguir.
 | `jti`      | Identificador do token JWT | Identificador exclusivo do token OIDC.           |
 | `nbf`      | Não antes de               | O JWT não é válido para uso antes deste horário. |
 
-### Declarações personalizadas fornecidas por GitHub
+### Declarações personalizadas fornecidas por GitHub { #custom-claims-provided-by-github }
 
 | Declaração | Descrição |
 | --- | --- |
@@ -73,7 +73,7 @@ O token OIDC inclui as declarações a seguir.
 | `workflow_ref` | O caminho de referência para o fluxo de trabalho. Por exemplo, `octocat/hello-world/.github/workflows/my-workflow.yml@refs/heads/my_branch`. |
 | `workflow_sha` | O SHA de commit para o arquivo de fluxo de trabalho. |
 
-## Declarações OIDC usadas para definir condições de confiança em funções de nuvem
+## Declarações OIDC usadas para definir condições de confiança em funções de nuvem { #oidc-claims-used-to-define-trust-conditions-on-cloud-roles }
 
 As declarações de público-alvo e assunto são normalmente usadas em combinação, ao definir as condições da função/recursos em nuvem para definir o escopo do seu acesso aos fluxos de trabalho do GitHub.
 
@@ -89,11 +89,11 @@ Os tokens OIDC solicitados para Dependabot trabalhos de atualização têm uma d
 !!! note
     Para controlar como o provedor de nuvem emite os tokens de acesso, você **precisa** definir, pelo menos, uma condição, para que os repositórios não confiáveis não possam solicitar tokens de acesso aos seus recursos de nuvem.
 
-## Exemplos de reivindicações
+## Exemplos de reivindicações { #example-subject-claims }
 
 Os exemplos a seguir demonstram como usar "Assunto" como condição e explicam como o "Assunto" é montado a partir de metadados concatenados. A [entidade](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) usa as informações do [`job` contexto](../workflows-and-actions/contexts.md#job-context), e instrui seu provedor de nuvem a conceder tokens de acesso apenas para fluxos de trabalho em execução em ramificações e ambientes específicos. As seguintes secções descrevem alguns assuntos comuns que você pode usar.
 
-### Filtragem para um ambiente específico
+### Filtragem para um ambiente específico { #filtering-for-a-specific-environment }
 
 A reivindicação de assunto inclui o nome do ambiente quando o trabalho fizer referência a um ambiente.
 
@@ -102,7 +102,7 @@ Você pode configurar um assunto que filtra um nome de [ambiente](../../how-tos/
 * Sintaxe: `repo:ORG-NAME/REPO-NAME:environment:ENVIRONMENT-NAME`
 * Exemplo: `repo:octo-org/octo-repo:environment:Production`
 
-### Filtragem de eventos `pull_request`
+### Filtragem de eventos `pull_request` { #filtering-for-pullrequest-events }
 
 A declaração de entidade inclui a cadeia de caracteres `pull_request` quando o fluxo de trabalho é disparado por um evento de solicitação de pull, mas apenas se o trabalho não referencia um ambiente.
 
@@ -111,7 +111,7 @@ Você pode configurar um tópico que filtra o evento [`pull_request`](../workflo
 * Sintaxe: `repo:ORG-NAME/REPO-NAME:pull_request`
 * Exemplo: `repo:octo-org/octo-repo:pull_request`
 
-### Filtrando um branch específico
+### Filtrando um branch específico { #filtering-for-a-specific-branch }
 
 A reivindicação de assunto inclui o nome do branch do fluxo de trabalho, mas somente se o trabalho não fizer referência a um ambiente e se o fluxo de trabalho não for acionado por um evento de pull request.
 
@@ -120,7 +120,7 @@ Você pode configurar um assunto que filtra para um nome de branch específico. 
 * Sintaxe: `repo:ORG-NAME/REPO-NAME:ref:refs/heads/BRANCH-NAME`
 * Exemplo: `repo:octo-org/octo-repo:ref:refs/heads/demo-branch`
 
-### Filtrando uma tag específica
+### Filtrando uma tag específica { #filtering-for-a-specific-tag }
 
 A reivindicação de assunto inclui o nome da tag do fluxo de trabalho, mas somente se o trabalho não fizer referência a um ambiente e se o fluxo de trabalho não for acionado por um evento de pull request.
 
@@ -129,7 +129,7 @@ Você pode criar um assunto que filtra uma tag específica. Neste exemplo, a exe
 * Sintaxe: `repo:ORG-NAME/REPO-NAME:ref:refs/tags/TAG-NAME`
 * Exemplo: `repo:octo-org/octo-repo:ref:refs/tags/demo-tag`
 
-### Filtragem de metadados que contêm `:`
+### Filtragem de metadados que contêm `:` { #filtering-for-metadata-containing }
 
 Qualquer `:` presente nos valores de metadados será substituído por `%3A` na declaração de assunto.
 
@@ -138,7 +138,7 @@ Você pode configurar um tópico que inclui metadados contendo dois-pontos. Nest
 * Sintaxe: `repo:ORG-NAME/REPO-NAME:environment:ENVIRONMENT-NAME`
 * Exemplo: `repo:octo-org/octo-repo:environment:Production%3AV1`
 
-## Reivindicações de sujeito imutáveis
+## Reivindicações de sujeito imutáveis { #immutable-subject-claims }
 
 A especificação OIDC (OpenID Connect) requer que as declarações de assunto (`sub`) sejam exclusivas localmente e nunca reatribuídas. Anteriormente, o formato padrão `sub` usava apenas nomes de organização e repositório. Se um namespace foi reciclado, um proprietário diferente poderia criar o mesmo valor de assunto.
 
@@ -154,7 +154,7 @@ Repositórios criados antes de 15 de julho de 2026 mantêm o formato anterior, a
 
 Renomeações e transferências de repositórios após 15 de julho de 2026 também passam a usar o formato de assunto imutável.
 
-## Configurando o assunto no seu provedor de nuvem
+## Configurando o assunto no seu provedor de nuvem { #configuring-the-subject-in-your-cloud-provider }
 
 Para configurar o assunto no relacionamento de confiança do seu provedor de nuvem, você deve adicionar a cadeia de caracteres do assunto à sua configuração de confiança. Os seguintes exemplos demonstram como vários provedores de nuvem podem aceitar a mesma entidade `repo:octo-org/octo-repo:ref:refs/heads/demo-branch` de diferentes maneiras:
 
@@ -176,7 +176,7 @@ Para repositórios criados após 15 de julho de 2026 ou que optaram por declara�
 
 Para obter mais informações sobre como configurar provedores de nuvem específicos, confira os guias listados em [Reforço de segurança em suas implementações](../../how-tos/secure-your-work/security-harden-deployments.md).
 
-## Personalizando as declarações de token
+## Personalizando as declarações de token { #customizing-the-token-claims }
 
 Você pode proteger a segurança da configuração do OIDC personalizando as declarações incluídas no JWT. Essas personalizações permitem definir condições de confiança mais granulares em suas funções de nuvem ao permitir que seus fluxos de trabalho acessem recursos hospedados na nuvem:
 
@@ -188,19 +188,19 @@ Você pode proteger a segurança da configuração do OIDC personalizando as dec
 
 * Você pode incluir propriedades personalizadas do repositório como declarações em tokens OIDC, habilitando políticas de controle de acesso baseadas em atributo. Confira [Como incluir propriedades personalizadas do repositório em tokens OIDC](#including-repository-custom-properties-in-oidc-tokens).
 
-### Como personalizar o valor de `audience`
+### Como personalizar o valor de `audience` { #customizing-the-issuer-value-for-an-enterprise }
 
 Quando você usa ações personalizadas em seus fluxos de trabalho, essas ações podem usar o GitHub Actions Kit de Ferramentas para permitir que você forneça um valor personalizado para a `audience` declaração. Alguns provedores de nuvem também usam isso em suas ações oficiais de logon a fim de impor um valor padrão para a declaração `audience`. Por exemplo, a [GitHub Action for Azure Login](https://github.com/Azure/login/blob/master/action.yml) fornece um valor padrão `aud` de `api://AzureADTokenExchange` ou permite que você defina um valor `aud` personalizado em seus fluxos de trabalho. Para obter mais informações sobre o GitHub Actions Toolkit, consulte a seção [OIDC token](https://github.com/actions/toolkit/tree/main/packages/core#oidc-token) na documentação.
 
 Se você não quiser usar o valor padrão `aud` oferecido por uma ação, você pode fornecer um valor personalizado para a reivindicação `audience`. Isso permite que você defina uma condição de que apenas fluxos de trabalho em um repositório ou organização específica possam acessar a função de nuvem. Se a ação que você está usando suporta isso, você pode usar a palavra-chave `with` no seu fluxo de trabalho para passar um valor personalizado `aud` para a ação. Para saber mais, confira [Referência de sintaxe de metadados](../workflows-and-actions/metadata-syntax.md#inputs).
 
-### Incluindo propriedades personalizadas do repositório nos tokens OIDC
+### Incluindo propriedades personalizadas do repositório nos tokens OIDC { #including-repository-custom-properties-in-oidc-tokens }
 
 Os administradores da organização e da empresa podem selecionar propriedades personalizadas do repositório para incluir como declarações nos tokens OIDC do GitHub Actions. Depois que uma propriedade personalizada é adicionada à configuração do OIDC, cada repositório na organização ou na empresa que tem um valor definido para essa propriedade irá incluí-la automaticamente em seus tokens OIDC. O nome da propriedade aparece no token prefixado com `repo_property_`.
 
 Isso permite que você crie políticas de ABAC (controle de acesso baseado em atributo) em seu provedor de nuvem que se associam diretamente aos metadados do repositório, reduzindo o descompasso de configuração e eliminando a necessidade de gerenciar a configuração de acesso separada para cada repositório.
 
-#### Formato de declaração
+#### Formato de declaração { #claim-format }
 
 Cada propriedade personalizada habilitada aparece como uma declaração separada no token OIDC. O nome da declaração é o nome da propriedade prefixado com `repo_property_`.
 
@@ -210,7 +210,7 @@ Cada propriedade personalizada habilitada aparece como uma declaração separada
 | `workspace_id`                    | `repo_property_workspace_id`        |
 | `data_classification`             | `repo_property_data_classification` |
 
-#### Tipos de propriedade com suporte
+#### Tipos de propriedade com suporte { #supported-property-types }
 
 Os seguintes tipos de propriedade personalizada têm suporte como declarações OIDC. A representação de valor no token depende do tipo de propriedade.
 
@@ -221,7 +221,7 @@ Os seguintes tipos de propriedade personalizada têm suporte como declarações 
 | Seleção múltipla | `"repo_property_regions": "us-east-1,eu-west-1"` | Vários valores selecionados são unidos em uma única cadeia de caracteres separada por vírgulas. |
 | Verdadeiro/Falso | `"repo_property_pci_compliant": "true"` | Os valores boolianos aparecem como a cadeia de caracteres `"true"` ou `"false"`. |
 
-#### Representação de valor de seleção múltipla
+#### Representação de valor de seleção múltipla { #multi-select-value-representation }
 
 Quando um repositório tem uma propriedade personalizada de várias seleções com vários valores selecionados, os valores são unidos em uma única cadeia de caracteres separada por vírgula no token OIDC. Por exemplo, se um repositório tiver uma propriedade `regions` com os valores `us-east-1` e `eu-west-1`, a declaração aparece como:
 
@@ -233,13 +233,13 @@ Quando um repositório tem uma propriedade personalizada de várias seleções c
 
 Ao configurar políticas de confiança em seu provedor de nuvem, use a correspondência de cadeia de caracteres ou contenha verificações para avaliar declarações de seleção múltipla.
 
-#### Pré-requisitos para incluir propriedades personalizadas
+#### Pré-requisitos para incluir propriedades personalizadas { #prerequisites-for-including-custom-properties }
 
 * As propriedades personalizadas já devem ser definidas no nível da organização ou da empresa. Para saber mais, confira [Como gerenciar propriedades personalizadas para repositórios na sua organização](https://docs.github.com/pt/organizations/managing-organization-settings/managing-custom-properties-for-repositories-in-your-organization).
 * Você deve ser um administrador da organização ou administrador corporativo.
 * Depois de adicionar uma propriedade personalizada à configuração do OIDC, todos os repositórios na organização ou na empresa que têm um valor definido para essa propriedade a incluirão automaticamente em seus tokens OIDC.
 
-#### Adicionando uma propriedade personalizada a declarações de token OIDC
+#### Adicionando uma propriedade personalizada a declarações de token OIDC { #adding-a-custom-property-to-oidc-token-claims }
 
 Você pode gerenciar quais propriedades personalizadas estão incluídas em tokens OIDC usando a interface do usuário de configurações ou a API REST.
 
@@ -254,7 +254,7 @@ Você pode gerenciar quais propriedades personalizadas estão incluídas em toke
   * Para uma organização: `POST /orgs/{org}/actions/oidc/customization/properties/repo`
   * Para uma empresa: `POST /enterprises/{enterprise}/actions/oidc/customization/properties/repo` para obter parâmetros de solicitação e detalhes completos, consulte a documentação da API REST para gerenciar propriedades personalizadas do OIDC: [Pontos de extremidade da API REST para OIDC do GitHub Actions](https://docs.github.com/pt/rest/actions/oidc).
 
-#### Token de exemplo com propriedades personalizadas
+#### Token de exemplo com propriedades personalizadas { #example-token-with-custom-properties }
 
 Depois que uma propriedade personalizada for adicionada à configuração do OIDC, os repositórios com um valor definido para essa propriedade a incluirão em seus tokens. No exemplo a seguir, duas propriedades personalizadas (`business_unit` e `workspace_id`) são incluídas no token:
 
@@ -270,7 +270,7 @@ Depois que uma propriedade personalizada for adicionada à configuração do OID
 
 Você pode usar essas `repo_property_*` declarações como condições na política de confiança do provedor de nuvem. Para obter um exemplo, consulte [Exemplo: filtragem em uma propriedade personalizada do repositório](#example-filtering-on-a-repository-custom-property).
 
-### Personalizando as afirmações de assunto para uma organização ou repositório
+### Personalizando as afirmações de assunto para uma organização ou repositório { #customizing-the-subject-claims-for-an-organization-or-repository }
 
 Para ajudar a melhorar a segurança, a conformidade e a padronização, você pode personalizar as declarações padrão para atender às condições de acesso necessárias. Se o provedor de nuvem der suporte a condições em declarações de assunto, você poderá criar uma condição que verifique se o valor `sub` corresponde ao caminho do fluxo de trabalho reutilizável, como `"job_workflow_ref:octo-org/octo-automation/.github/workflows/oidc.yml@refs/heads/main"`. O formato exato variará dependendo da configuração do OIDC do provedor de nuvem. Para configurar a condição GitHubcorrespondente, você pode usar a API REST para exigir que a `sub` declaração sempre inclua uma declaração personalizada específica, como `job_workflow_ref`. Você pode usar a API REST para aplicar um modelo de personalização à declaração de entidade do OIDC; por exemplo, você pode exigir que a declaração `sub` dentro do token do OIDC sempre inclua uma declaração personalizada específica, como `job_workflow_ref`. Para saber mais, confira [Pontos de extremidade da API REST para OIDC do GitHub Actions](https://docs.github.com/pt/rest/actions/oidc).
 
@@ -289,7 +289,7 @@ Para aplicar essa configuração, envie uma solicitação ao ponto de extremidad
 
 Para personalizar suas declarações de assunto, primeiro você deve criar uma condição correspondente na configuração OIDC do provedor de nuvem, antes de personalizar a configuração usando a API REST. Depois que a configuração for concluída, cada vez que um novo trabalho for executado, o token OIDC gerado durante esse trabalho seguirá o novo modelo de personalização. Se a condição correspondente não existir na configuração OIDC do provedor de nuvem antes da execução do trabalho, o token gerado poderá não ser aceito pelo provedor de nuvem, pois as condições de nuvem podem não ser sincronizadas.
 
-#### Exemplo: permitir repositório com base na visibilidade e no proprietário
+#### Exemplo: permitir repositório com base na visibilidade e no proprietário { #example-allowing-repository-based-on-visibility-and-owner }
 
 Este modelo de exemplo permite que a declaração `sub` tenha um novo formato, usando `repository_owner` e `repository_visibility`:
 
@@ -304,7 +304,7 @@ Este modelo de exemplo permite que a declaração `sub` tenha um novo formato, u
 
 Na configuração do OIDC do provedor de nuvem, configure a `sub` condição para exigir que as declarações incluam valores específicos para `repository_owner` e `repository_visibility`. Por exemplo: `"sub": "repository_owner:monalisa:repository_visibility:private"`. A abordagem permite restringir o acesso de função de nuvem a apenas repositórios privados em uma organização ou empresa.
 
-#### Exemplo: permitindo acesso a todos os repositórios com um proprietário específico
+#### Exemplo: permitindo acesso a todos os repositórios com um proprietário específico { #example-allowing-access-to-all-repositories-with-a-specific-owner }
 
 Este modelo de exemplo permite que a declaração `sub` tenha um novo formato apenas com o valor de `repository_owner`.
 
@@ -321,7 +321,7 @@ Para aplicar essa configuração, envie uma solicitação ao ponto de extremidad
 
 Na configuração do OIDC do provedor de nuvem, configure a condição `sub` para exigir que as declarações incluam um valor específico para `repository_owner`. Por exemplo: `"sub": "repository_owner:monalisa"`
 
-#### Exemplo: exigir um fluxo de trabalho reutilizável
+#### Exemplo: exigir um fluxo de trabalho reutilizável { #example-requiring-a-reusable-workflow }
 
 Este modelo de exemplo permite que a declaração `sub` tenha um novo formato que contenha o valor da `job_workflow_ref` declaração. Isso permite que uma empresa use fluxos de trabalho reutilizáveis para impor implantações consistentes em nas organizações e nos repositórios dela.
 
@@ -337,7 +337,7 @@ Para aplicar essa configuração, envie uma solicitação ao ponto de extremidad
 
 Na configuração do OIDC do provedor de nuvem, configure a condição `sub` para exigir que as declarações incluam um valor específico para `job_workflow_ref`. Por exemplo: `"sub": "job_workflow_ref:octo-org/octo-automation/.github/workflows/oidc.yml@refs/heads/main"`.
 
-#### Exemplo: exigir um fluxo de trabalho reutilizável e outras declarações
+#### Exemplo: exigir um fluxo de trabalho reutilizável e outras declarações { #example-requiring-a-reusable-workflow-and-other-claims }
 
 O modelo de exemplo a seguir combina o requisito de um fluxo de trabalho reutilizável específico com declarações adicionais.
 
@@ -360,7 +360,7 @@ Na configuração do OIDC do provedor de nuvem, configure a condição `sub` par
 Este modelo de personalização exige que `sub` adote o seguinte formato: `repo:ORG-NAME/REPO-NAME:environment:ENVIRONMENT-NAME:job_workflow_ref:REUSABLE-WORKFLOW-PATH`.
 Por exemplo: `"sub": "repo:octo-org/octo-repo:environment:prod:job_workflow_ref:octo-org/octo-automation/.github/workflows/oidc.yml@refs/heads/main"`
 
-#### Exemplo: conceder acesso a um repositório específico
+#### Exemplo: conceder acesso a um repositório específico { #example-granting-access-to-a-specific-repository }
 
 Este modelo de exemplo permite conceder acesso à nuvem a todos os fluxos de trabalho em um repositório específico, em todos os branches/marcas e ambientes.
 
@@ -376,7 +376,7 @@ Para aplicar essa configuração, envie uma solicitação ao ponto de extremidad
 
 Na configuração do OIDC do provedor de nuvem, configure a `sub` condição para exigir uma `repo` declaração que corresponda ao valor necessário.
 
-#### Exemplo: usando GUIDs gerados pelo sistema
+#### Exemplo: usando GUIDs gerados pelo sistema { #example-using-system-generated-guids }
 
 Este modelo de exemplo permite declarações OIDC previsíveis com GUIDs gerados pelo sistema que não mudam entre renomeações de entidades (como renomear um repositório).
 
@@ -404,7 +404,7 @@ ou:
 
 Na configuração do OIDC do provedor de nuvem, configure a `sub` condição para exigir uma `repository_owner_id` declaração que corresponda ao valor necessário.
 
-#### Exemplo: valor de contexto com `:`
+#### Exemplo: valor de contexto com `:` { #example-context-value-with }
 
 Este exemplo demonstra como lidar com o valor de contexto com `:`. Por exemplo, quando o trabalho faz referência a um ambiente chamado `production:eastus`.
 
@@ -421,7 +421,7 @@ Para aplicar essa configuração, envie uma solicitação ao ponto de extremidad
 
 Na configuração do OIDC do provedor de nuvem, configure a condição `sub` para exigir que as declarações incluam um valor específico para `environment` e `repository_owner`. Por exemplo: `"sub": "environment:production%3Aeastus:repository_owner:octo-org"`.
 
-#### Exemplo: realizar filtragem em uma propriedade personalizada de um repositório
+#### Exemplo: realizar filtragem em uma propriedade personalizada de um repositório { #example-filtering-on-a-repository-custom-property }
 
 Este modelo de exemplo permite que a declaração `sub` inclua uma declaração de propriedade personalizada do repositório. As propriedades personalizadas incluídas em tokens OIDC aparecem com o prefixo `repo_property_` no token, mas o valor de `include_claim_keys` usa o nome de declaração completo como ele aparece no token.
 
@@ -437,7 +437,7 @@ Para aplicar essa configuração, envie uma solicitação ao ponto de extremidad
 
 Na configuração do OIDC do provedor de nuvem, configure a condição `sub` para exigir que as declarações incluam um valor específico para `repo_property_workspace_id`. Por exemplo: `"sub": "repo_property_workspace_id:ws-abc123"`.
 
-#### Redefinir as personalizações do modelo da organização
+#### Redefinir as personalizações do modelo da organização { #resetting-organization-template-customizations }
 
 Este modelo de exemplo redefine as declarações de assunto para o formato padrão. Esse template efetivamente exclui-se de qualquer política de customização no nível da organização.
 
@@ -454,7 +454,7 @@ Para aplicar essa configuração, envie uma solicitação ao ponto de extremidad
 
 Na configuração do OIDC do provedor de nuvem, configure a `sub` condição para exigir que as declarações incluam valores específicos para `repo` e `context`.
 
-#### Redefinir as personalizações do modelo do repositório
+#### Redefinir as personalizações do modelo do repositório { #resetting-repository-template-customizations }
 
 Todos os repositórios de uma organização têm a capacidade de aceitar ou recusar os modelos personalizados de declaração `sub` (no nível da organização e do repositório).
 
@@ -468,7 +468,7 @@ Para configurar repositórios para que usem o formato de declaração padrão `s
 }
 ```
 
-#### Exemplo: configurar um repositório para usar um modelo de organização
+#### Exemplo: configurar um repositório para usar um modelo de organização { #example-configuring-a-repository-to-use-an-organization-template }
 
 Depois que uma organização criou um modelo de declaração `sub` personalizado, a API REST pode ser usada para aplicar o modelo programaticamente aos repositórios dentro da organização. Um administrador pode configurar seu repositório para usar o modelo criado pelo administrador de sua organização.
 
@@ -480,24 +480,24 @@ Para configurar o repositório de modo que ele use o modelo da organização, um
 }
 ```
 
-## Depurar as declarações do OIDC
+## Depurar as declarações do OIDC { #debugging-your-oidc-claims }
 
 Você pode usar a ação [`github/actions-oidc-debugger`](https://github.com/github/actions-oidc-debugger) para visualizar as declarações que serão enviadas, antes de integrar com um provedor de nuvem. Essa ação solicita um JWT e imprime as declarações incluídas no JWT que foram recebidas de GitHub Actions.
 
-## Permissões de fluxo de trabalho para a solicitação do token OIDC
+## Permissões de fluxo de trabalho para a solicitação do token OIDC { #workflow-permissions-for-the-requesting-the-oidc-token }
 
-### Permissão necessária
+### Permissão necessária { #required-permission }
 
 * O trabalho ou fluxo de trabalho deve conceder permissão de [`id-token: write`](../workflows-and-actions/workflow-syntax.md#permissions) para que o provedor OIDC do GitHub possa criar um JWT (Token Web JSON):
 
         ```yaml
   permissions:
     id-token: write
-  ```
+        ```
 
 * Sem `id-token: write`, o token de ID JWT do OIDC não pode ser solicitado. Essa configuração habilita apenas a busca e a configuração do token OIDC; ela não concede acesso de gravação a outros recursos.
 
-### Como configurar as permissões
+### Como configurar as permissões { #setting-permissions }
 
 * Para buscar um token OIDC para um fluxo de trabalho, defina a permissão no nível do fluxo de trabalho:
 
@@ -505,23 +505,23 @@ Você pode usar a ação [`github/actions-oidc-debugger`](https://github.com/git
   permissions:
     id-token: write # This is required for requesting the JWT
     contents: read # This is required for actions/checkout
-  ```
+        ```
 
 * Para buscar um token OIDC para um só trabalho, defina a permissão dentro desse trabalho:
 
         ```yaml
   permissions:
     id-token: write # This is required for requesting the JWT
-  ```
+        ```
 
 * Podem ser necessárias permissões adicionais dependendo das necessidades do fluxo de trabalho.
 
-### Fluxos de trabalho reutilizáveis
+### Fluxos de trabalho reutilizáveis { #reusable-workflows }
 
 * Para fluxos de trabalho reutilizáveis pertencentes ao mesmo usuário, organização ou empresa que o chamador, o token OIDC gerado no fluxo de trabalho reutilizável está acessível pelo contexto do chamador.
 * Para fluxos de trabalho reutilizáveis fora de sua empresa ou organização, defina explicitamente a configuração `permissions` para `id-token` como `write` no fluxo de trabalho ou no nível de trabalho do chamador. Isso garante que o token OIDC só esteja disponível para fluxos de trabalho destinados ao chamador.
 
-## Métodos para solicitar o token OIDC
+## Métodos para solicitar o token OIDC { #methods-for-requesting-the-oidc-token }
 
 Ações personalizadas podem solicitar o token OIDC usando:
 
@@ -537,4 +537,4 @@ Ações personalizadas podem solicitar o token OIDC usando:
 
         ```shell copy
   curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange"
-  ```
+        ```

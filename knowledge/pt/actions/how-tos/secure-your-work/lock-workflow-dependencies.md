@@ -36,7 +36,7 @@ Recomendamos deixar o Dependabot gerenciar suas dependências GitHub Actions. Se
 
             ```bash copy
    gh extension install github/gh-actions-lock
-   ```
+            ```
 
 > [!TIP] Para atualizar a extensão mais tarde, execute `gh extension upgrade gh-actions-lock`.
 

@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: How tos / Deploy / Deploy to third party platforms
 ---
 
-# Instalar um certificado da Apple em executores do macOS para desenvolvimento do Xcode
+# Instalar um certificado da Apple em executores do macOS para desenvolvimento do Xcode { #installing-an-apple-certificate-on-macos-runners-for-xcode-development }
 
 _Saiba como assinar apps do Xcode em um fluxo de trabalho de integração contínua (CI) instalando um certificado de assinatura de código da Apple nos executores GitHub Actions._
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Você deve estar familiarizado com YAML e a sintaxe para GitHub Actions. Para saber mais, veja:
 
@@ -23,7 +23,7 @@ Você deve estar familiarizado com YAML e a sintaxe para GitHub Actions. Para sa
 
 Você deve ter um entendimento sobre construção e assinatura de aplicativos no Xcode. Para obter mais informações, confira a [documentação de desenvolvedor da Apple](https://developer.apple.com/documentation/).
 
-## Criar segredos para seu certificado e perfil de provisionamento
+## Criar segredos para seu certificado e perfil de provisionamento { #creating-secrets-for-your-certificate-and-provisioning-profile }
 
 O processo de assinatura envolve o armazenamento de certificados e provisionamento de perfis, transferindo-os para o executor, importando-os para a keychain e usando-os na sua compilação.
 
@@ -41,7 +41,7 @@ Crie segredos no seu repositório ou organização para os seguintes itens:
 
                 ```shell
     base64 -i BUILD_CERTIFICATE.p12 | pbcopy
-    ```
+                ```
 
 * A senha para seu certificado de assinatura da Apple.
   * Neste exemplo, o segredo é chamado `P12_PASSWORD`.
@@ -56,13 +56,13 @@ Crie segredos no seu repositório ou organização para os seguintes itens:
 
                 ```shell
     base64 -i PROVISIONING_PROFILE.mobileprovision | pbcopy
-    ```
+                ```
 
 * Uma senha do Keychain.
 
   * Uma nova keychain será criada no executo. Portanto, a senha para a nova keychain pode ser qualquer nova string aleatória. Neste exemplo, o segredo é chamado `KEYCHAIN_PASSWORD`.
 
-## Adicionar uma etapa ao seu fluxo de trabalho
+## Adicionar uma etapa ao seu fluxo de trabalho { #add-a-step-to-your-workflow }
 
 Este fluxo de trabalho de exemplo inclui uma etapa que importa o certificado da Apple e o perfil de provisionamento dos segredos de GitHub e os instala no executor.
 
@@ -113,7 +113,7 @@ jobs:
 !!! note
     Para destinos de build do iOS, seu perfil de provisionamento deve ter a extensão `.mobileprovision`. Para destinos de build do macOS, a extensão deve ser `.provisionprofile`. O fluxo de trabalho de exemplo acima deve ser atualizado para refletir sua plataforma de destino.
 
-## Limpeza necessária nos executores auto-hospedados
+## Limpeza necessária nos executores auto-hospedados { #required-clean-up-on-self-hosted-runners }
 
 Os executores hospedados em GitHub são máquinas virtuais isoladas, destruídas automaticamente ao final da execução do trabalho. Isso significa que os certificados e o perfil de provisionamento usados no executor durante o trabalho serão destruídos com o executor quando o trabalho for concluído.
 

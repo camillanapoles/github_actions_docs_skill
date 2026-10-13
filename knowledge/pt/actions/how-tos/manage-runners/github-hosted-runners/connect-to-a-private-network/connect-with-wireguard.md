@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: How tos / Manage runners / Github hosted runners / Connect to a private network
 ---
 
-# Usar o WireGuard para criar uma sobreposição de rede
+# Usar o WireGuard para criar uma sobreposição de rede { #using-wireguard-to-create-a-network-overlay }
 
 _Você pode criar uma rede de sobreposição entre seu executor e um serviço em sua rede privada._
 
-## Usar o WireGuard para criar uma sobreposição de rede
+## Usar o WireGuard para criar uma sobreposição de rede { #using-wireguard-to-create-a-network-overlay-1 }
 
 Se você não quiser manter uma infraestrutura separada para um Gateway de API, poderá criar uma rede de sobreposição entre o executor e um serviço em sua rede privada, executando o WireGuard em ambos os locais.
 
@@ -27,7 +27,7 @@ Há várias desvantagens nessa abordagem:
 
 Há algumas vantagens também, pois você pode executar o WireGuard em um servidor existente, assim não precisa manter uma infraestrutura separada, e ele tem bom suporte em executores hospedados em GitHub.
 
-## Exemplo: configurar o WireGuard
+## Exemplo: configurar o WireGuard { #example-configuring-wireguard }
 
 Este exemplo do fluxo de trabalho configura o WireGuard para se conectar a um serviço privado.
 
@@ -69,7 +69,7 @@ jobs:
 
 Para obter mais informações, confira [Início Rápido do WireGuard](https://www.wireguard.com/quickstart/), bem como [Usar segredos em ações do GitHub](../../../write-workflows/choose-what-workflows-do/use-secrets.md) para saber como armazenar chaves com segurança.
 
-### Usar o Tailscale para criar uma sobreposição de rede
+### Usar o Tailscale para criar uma sobreposição de rede { #using-tailscale-to-create-a-network-overlay }
 
 Tailscale é um produto comercial criado sobre o WireGuard. Essa opção é muito semelhante ao WireGuard, exceto que o Tailscale é mais uma experiência completa do produto em vez de um componente código aberto.
 

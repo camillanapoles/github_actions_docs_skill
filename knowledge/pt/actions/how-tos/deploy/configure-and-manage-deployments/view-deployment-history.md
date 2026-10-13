@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: How tos / Deploy / Configure and manage deployments
 ---
 
-# Exibir o histórico de implantações
+# Exibir o histórico de implantações { #viewing-deployment-history }
 
 _Veja as implantações atuais e anteriores para o seu repositório._
 
-## Visualizar o histórico de implantações do seu repositório
+## Visualizar o histórico de implantações do seu repositório { #viewing-your-repositorys-deployment-history }
 
 Na página de implantações do seu repositório, você pode visualizar os seguintes aspectos das suas implantações.
 

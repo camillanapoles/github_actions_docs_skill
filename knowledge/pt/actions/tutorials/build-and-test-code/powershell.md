@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: Tutorials / Build and test code
 ---
 
-# Criar e testar PowerShell
+# Criar e testar PowerShell { #building-and-testing-powershell }
 
 _Saiba como criar um fluxo de trabalho de integração contínua (CI) para criar e testar seu projeto do PowerShell._
 
-## Introdução
+## Introdução { #introduction }
 
 Este guia mostra como usar PowerShell para CI. Ele descreve como usar o Pester, instalar dependências, testar seu módulo e publicar no Galeria do PowerShell.
 
@@ -22,7 +22,7 @@ GitHubOs executores hospedados têm um cache de ferramentas com software pré-in
 
 Para ver a lista completa de softwares atualizados e as versões pré-instaladas do PowerShell and Pester, confira [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images).
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Você deve estar familiarizado com YAML e a sintaxe para GitHub Actions. Para saber mais, confira [Escrevendo fluxos de trabalho](../../how-tos/write-workflows.md).
 
@@ -31,7 +31,7 @@ Recomendamos que você tenha um entendimento básico de PowerShell e Pester. Par
 * [Introdução ao PowerShell](https://docs.microsoft.com/powershell/scripting/learn/ps101/01-getting-started)
 * [Pester](https://pester.dev)
 
-## Adicionar um fluxo de trabalho ao Pester
+## Adicionar um fluxo de trabalho ao Pester { #adding-a-workflow-for-pester }
 
 Para automatizar o seu teste com PowerShell e Pester, você pode adicionar um fluxo de trabalho que é executado toda vez que uma alteração é carregada no seu repositório. No exemplo a seguir, `Test-Path` é usado para verificar se um arquivo chamado `resultsfile.log` está presente.
 
@@ -73,9 +73,9 @@ jobs:
           Test-Path resultsfile.log | Should -Be $true
       }
   }
-  ```
+        ```
 
-## Locais de módulos do PowerShell
+## Locais de módulos do PowerShell { #powershell-module-locations }
 
 A tabela abaixo descreve os locais de vários módulos do PowerShell em cada runner hospedado em GitHub.
 
@@ -88,7 +88,7 @@ A tabela abaixo descreve os locais de vários módulos do PowerShell em cada run
 !!! note
     Nos runners do Ubuntu, os módulos Azure PowerShell são armazenados em `/usr/share/` em vez do local padrão dos módulos complementares do PowerShell (ou seja, `/usr/local/share/powershell/Modules/`).
 
-## Instalar dependências
+## Instalar dependências { #installing-dependencies }
 
 GitHubOs executores hospedados têm o PowerShell 7 e o Pester instalados. Você pode usar `Install-Module` para instalar dependências adicionais do Galeria do PowerShell antes de compilar e testar seu código.
 
@@ -116,7 +116,7 @@ jobs:
 !!! note
     Por padrão, nenhum repositório é confiável pelo PowerShell. Ao instalar módulos do Galeria do PowerShell, você deve definir explicitamente a política de instalação para `PSGallery` para `Trusted`.
 
-### Memorizar dependências
+### Memorizar dependências { #caching-dependencies }
 
 Você pode armazenar as dependências do PowerShell em cache usando uma chave exclusiva, o que permite restaurar as dependências em fluxos de trabalho futuros com a ação [`cache`](https://github.com/marketplace/actions/cache). Para saber mais, confira [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md).
 
@@ -139,11 +139,11 @@ steps:
       Install-Module SqlServer, PSScriptAnalyzer -ErrorAction Stop
 ```
 
-## Testar seu código
+## Testar seu código { #testing-your-code }
 
 Você pode usar os mesmos comandos usados localmente para criar e testar seu código.
 
-### Usar o PSScriptAnalyzer para verificar código
+### Usar o PSScriptAnalyzer para verificar código { #using-psscriptanalyzer-to-lint-code }
 
 O exemplo a seguir instala `PSScriptAnalyzer` e o usa para fazer lint de todos os arquivos `ps1` no repositório. Para obter mais informações, consulte [PSScriptAnalyzer no GitHub](https://github.com/PowerShell/PSScriptAnalyzer).
 
@@ -171,7 +171,7 @@ O exemplo a seguir instala `PSScriptAnalyzer` e o usa para fazer lint de todos o
           }
 ```
 
-## Empacotar dados do fluxo de trabalho como artefatos
+## Empacotar dados do fluxo de trabalho como artefatos { #packaging-workflow-data-as-artifacts }
 
 Você pode fazer o upload de artefatos para visualização após a conclusão de um fluxo de trabalho. Por exemplo, é possível que você precise salvar os arquivos de registro, os despejos de núcleo, os resultados de teste ou capturas de tela. Para saber mais, confira [Armazenar e compartilhar dados com artefatos de fluxo de trabalho](../store-and-share-data.md).
 
@@ -201,7 +201,7 @@ jobs:
 
 A função `always()` configura o trabalho para continuar o processamento mesmo se houver falhas de teste. Para saber mais, confira [Avaliar expressões em fluxos de trabalho e ações](../../reference/workflows-and-actions/expressions.md#always).
 
-## Publicando no Galeria do PowerShell
+## Publicando no Galeria do PowerShell { #publishing-to-powershell-gallery }
 
 Você pode configurar seu fluxo de trabalho para publicar o módulo do PowerShell no Galeria do PowerShell quando os testes de CI forem aprovados. Você pode usar segredos para armazenar quaisquer tokens ou credenciais necessárias para publicar seu pacote. Para saber mais, confira [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 

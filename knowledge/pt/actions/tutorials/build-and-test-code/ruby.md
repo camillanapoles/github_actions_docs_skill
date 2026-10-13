@@ -10,22 +10,22 @@ captured: '2026-10-13'
 section: Tutorials / Build and test code
 ---
 
-# Criar e testar o Ruby
+# Criar e testar o Ruby { #building-and-testing-ruby }
 
 _É possível criar um fluxo de trabalho de integração contínua (CI) para criar e testar o seu projeto do Ruby._
 
-## Introdução
+## Introdução { #introduction }
 
 Este guia mostra como criar um fluxo de trabalho de integração contínua (CI) que compila e testa um aplicativo do Rubi. Se os seus testes do CI passarem, você pode querer implantar seu código ou publicar uma gem.
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Recomendamos que você tenha um entendimento básico do Ruby, YAML, das opções de configuração do fluxo de trabalho e de como criar um arquivo do fluxo de trabalho. Para obter mais informações, consulte:
 
 * [Aprender GitHub Actions](../../how-tos/write-workflows.md)
 * [Ruby em 20 minutos](https://www.ruby-lang.org/en/documentation/quickstart/)
 
-## Usando um modelo de fluxo de trabalho do Ruby
+## Usando um modelo de fluxo de trabalho do Ruby { #using-a-ruby-workflow-template }
 
 Para uma introdução rápida, adicione um modelo de fluxo de trabalho ao diretório `.github/workflows` do repositório.
 
@@ -57,7 +57,7 @@ GitHub fornece um modelo de fluxo de trabalho para Ruby que deve funcionar para 
 
    O `ruby.yml` arquivo de fluxo de trabalho é adicionado ao `.github/workflows` diretório do repositório.
 
-## Especificar a versão do Ruby
+## Especificar a versão do Ruby { #specifying-the-ruby-version }
 
 A maneira mais fácil de especificar uma versão do Ruby é usando a ação `ruby/setup-ruby` fornecida pela organização Ruby no GitHub. A ação adiciona qualquer versão do Ruby compatível a `PATH` em cada trabalho executado em um fluxo de trabalho. Para obter mais informações e as versões disponíveis do Ruby, confira [`ruby/setup-ruby`](https://github.com/ruby/setup-ruby).
 
@@ -67,10 +67,10 @@ A ação `setup-ruby` usa uma versão do Ruby como entrada e configura essa vers
 
 ```yaml
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 steps:
 - uses: actions/checkout@v6
 - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
@@ -83,7 +83,7 @@ steps:
 Como alternativa, você poderá fazer check-in de um arquivo `.ruby-version` na raiz do repositório e `setup-ruby` usará a versão definida nesse arquivo.
 
 ```
-## Testar com versões múltiplas do Ruby
+## Testar com versões múltiplas do Ruby { #testing-with-multiple-versions-of-ruby }
 
 Você pode adicionar uma estratégia matriz para executar seu fluxo de trabalho com mais de uma versão do Ruby. Por exemplo, você pode testar seu código com as últimas versões de patch das versões 3.1, 3.0 e 2.7.
 
@@ -99,14 +99,14 @@ O fluxo de trabalho totalmente modernizado com uma estratégia de matriz pode se
 
 ```yaml
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-1 }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by-1 }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support-1 }
+# online. { #documentation-1 }
 
-# O GitHub recomenda fixar ações em um SHA de commit.
-# Para obter uma versão mais recente, você precisará atualizar o SHA.
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
+# O GitHub recomenda fixar ações em um SHA de commit. { #github-recommends-pinning-actions-to-a-commit-sha }
+# Para obter uma versão mais recente, você precisará atualizar o SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha }
+# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning }
 
 name: Ruby CI
 
@@ -138,16 +138,16 @@ jobs:
 ```
 
 ```
-## Instalar dependências com o Bundler
+## Instalar dependências com o Bundler { #installing-dependencies-with-bundler }
 
 A ação `setup-ruby` instalará automaticamente o Bundler para você. A versão é determinada pelo arquivo `gemfile.lock`. Se nenhuma versão estiver presente no seu arquivo de bloqueio, será instalada a última versão compatível.
 
 ```yaml
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-2 }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by-2 }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support-2 }
+# online. { #documentation-2 }
 steps:
 - uses: actions/checkout@v6
 - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
@@ -157,7 +157,7 @@ steps:
 ```
 
 ```
-### Memorizar dependências
+### Memorizar dependências { #caching-dependencies }
 
 As ações `setup-ruby` fornecem um método para lidar automaticamente com o cache dos seus gems entre as execuções.
 
@@ -165,10 +165,10 @@ Para habilitar o cache, defina o seguinte.
 
 ```yaml
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-3 }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by-3 }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support-3 }
+# online. { #documentation-3 }
 steps:
 - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
   with:
@@ -211,6 +211,7 @@ steps:
     bundle install --jobs 4 --retry 3
 ```
 
+```
 ## Matriz que testa o seu código
 
 O exemplo a seguir da matriz testa todas as versões estáveis e versões principais de MRI, JRuby e TruffleRuby no Ubuntu e no macOS.

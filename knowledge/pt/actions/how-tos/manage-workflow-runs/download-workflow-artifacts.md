@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: How tos / Manage workflow runs
 ---
 
-# Baixar artefatos do fluxo de trabalho
+# Baixar artefatos do fluxo de trabalho { #downloading-workflow-artifacts }
 
 _Você pode fazer o download de artefatos arquivados antes que expirem automaticamente._
 

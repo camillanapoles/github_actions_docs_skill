@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: How tos / Create and publish actions
 ---
 
-# Como usar versões e marcas imutáveis para gerenciar as versões da sua ação
+# Como usar versões e marcas imutáveis para gerenciar as versões da sua ação { #using-immutable-releases-and-tags-to-manage-your-actions-releases }
 
 _Saiba como você pode usar uma combinação de lançamentos imutáveis no GitHub e tags Git para gerenciar os lançamentos da sua ação._
 
@@ -33,4 +33,4 @@ Se você habilitar as versões imutáveis no repositório da sua ação, poderá
             ```bash copy
    git tag -f TAG-NAME
    git push -f --tags
-   ```
+            ```

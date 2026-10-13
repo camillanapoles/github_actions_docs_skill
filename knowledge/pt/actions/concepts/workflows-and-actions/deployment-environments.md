@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: Concepts / Workflows and actions
 ---
 
-# Ambientes de implantação
+# Ambientes de implantação { #deployment-environments }
 
 _Você pode criar e implementar em ambientes diferentes._
 

@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: How tos / Monitor workflows
 ---
 
-# Habilitando o log de depuração
+# Habilitando o log de depuração { #enabling-debug-logging }
 
 _Se os logs do fluxo de trabalho não fornecerem detalhes suficientes para diagnosticar o motivo pelo qual um fluxo de trabalho, um trabalho ou uma etapa não está funcionando como esperado, habilite o log de depuração adicional._
 
@@ -24,7 +24,7 @@ Para obter mais informações sobre como definir segredos e variáveis, consulte
 
 Além disso, qualquer pessoa que tenha acesso para executar um fluxo de trabalho pode habilitar o log de diagnóstico do executor e o log de depuração de etapas para uma nova execução do fluxo de trabalho. Para saber mais, confira [Reexecutando fluxos de trabalho e tarefas](../manage-workflow-runs/re-run-workflows-and-jobs.md).
 
-## Habilitar log de diagnóstico do runner
+## Habilitar log de diagnóstico do runner { #enabling-runner-diagnostic-logging }
 
 O log de diagnóstico do executor fornece arquivos de log adicionais que contêm informações sobre como um executor está executando um trabalho. Dois arquivos de log extras foram adicionados ao arquivo de log:
 
@@ -34,7 +34,7 @@ O log de diagnóstico do executor fornece arquivos de log adicionais que contêm
 1. Para habilitar o log de diagnósticos do executor, defina o seguinte segredo ou váriável no repositório que contém o fluxo de trabalho: `ACTIONS_RUNNER_DEBUG` como `true`. Se o segredo e a variável estiverem definidos, o valor do segredo terá precedência sobre a variável.
 2. Para baixar os logs de diagnóstico do runner, baixe o arquivo de log da execução de fluxo de trabalho. Os logs de diagnóstico do executor estão contidos na pasta `runner-diagnostic-logs`. Para obter mais informações sobre como baixar logs, consulte [Usando registros de execução de fluxo de trabalho](use-workflow-run-logs.md#downloading-logs).
 
-## Habilitar log de depuração da etapa
+## Habilitar log de depuração da etapa { #enabling-step-debug-logging }
 
 O log de depuração da etapa aumenta o detalhamento dos logs de um trabalho durante e depois da execução dele.
 

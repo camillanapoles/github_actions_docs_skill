@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: How tos / Monitor workflows
 ---
 
-# Usar o gráfico de visualização
+# Usar o gráfico de visualização { #using-the-visualization-graph }
 
 _Cada execução de fluxo de trabalho gera um gráfico em tempo real que ilustra o progresso da execução. Você pode usar este gráfico para monitorar e depurar fluxos de trabalho._
 

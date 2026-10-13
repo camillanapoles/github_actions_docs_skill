@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: How tos / Secure your work / Use artifact attestations
 ---
 
-# Como gerenciar o ciclo de vida dos atestados de artefato
+# Como gerenciar o ciclo de vida dos atestados de artefato { #managing-the-lifecycle-of-artifact-attestations }
 
 _Pesquise e exclua atestados de que você não precisa mais._
 
@@ -22,7 +22,7 @@ Os atestados só são relevantes quando estão vinculados a artefatos que as pes
 
 Quando os consumidores têm um processo de verificação em vigor, a exclusão de um atestado pode impedir o uso do artefato associado. Considere configurar automações para garantir que os atestados sejam excluídos quando o artefato associado for removido de um serviço externo (por exemplo, uma imagem é excluída de um registro de contêiner).
 
-## Como localizar atestados
+## Como localizar atestados { #finding-attestations }
 
 1. Navegue até o repositório em que o atestado foi produzido.
 2. No nome do repositório, clique em **(play) Actions**.
@@ -31,7 +31,7 @@ Quando os consumidores têm um processo de verificação em vigor, a exclusão d
 3. Na barra lateral esquerda, em "Gerenciamento", clique em **(verified) Atestações**.
 4. As atestações são ordenadas pela data de criação, da mais recente para a mais antiga. Use a barra "Search or filter" para pesquisar um atestado ou filtrar os resultados.
 
-### Pesquisando e filtrando
+### Pesquisando e filtrando { #searching-and-filtering }
 
 Insira **texto livre** para pesquisar pelo nome da entidade. Retorna todas as atestações com nomes de assunto que correspondem parcialmente ao termo de pesquisa. Vários atestados podem ter o mesmo nome de assunto.
 
@@ -46,7 +46,7 @@ Use o filtro `predicate` para filtrar pelo tipo de atestado. Um predicado é o t
 * As declarações SBOM foram criadas com a ação `attest` usando a entrada `sbom-path`.
 * **Não** há suporte para padrões de tipo de predicado personalizado no campo de pesquisa, mas são compatíveis com a API.
 
-## Como excluir atestados
+## Como excluir atestados { #deleting-attestations }
 
 Antes de excluir um atestado, recomendamos baixar uma cópia dele. Depois que o atestado for excluído, os consumidores com um processo de verificação em vigor **não poderão mais usar o artefato**associado, e você não poderá mais localizar o atestado em GitHub.
 
@@ -54,6 +54,6 @@ Antes de excluir um atestado, recomendamos baixar uma cópia dele. Depois que o 
 2. Clique em **(trash) Delete**.
 3. Leia a mensagem e confirme clicando em **Delete attestations**.
 
-## Como gerenciar atestados com a API
+## Como gerenciar atestados com a API { #managing-attestations-with-the-api }
 
 Para gerenciar atestados em massa com a API REST, confira [Pontos de extremidade de API REST para atestados de artefatos](https://docs.github.com/pt/rest/users/attestations).

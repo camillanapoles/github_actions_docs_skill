@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: How tos / Manage runners / Use actions runner controller
 ---
 
-# Usar executores do Controlador do Executor de Ações em um fluxo de trabalho
+# Usar executores do Controlador do Executor de Ações em um fluxo de trabalho { #using-actions-runner-controller-runners-in-a-workflow }
 
 _Usar executores Actions Runner Controller em um arquivo de fluxo de trabalho._
 
-## Usar executores do ARC em um arquivo de fluxo de trabalho
+## Usar executores do ARC em um arquivo de fluxo de trabalho { #using-arc-runners-in-a-workflow-file }
 
 Para atribuir trabalhos a serem executados em um conjunto de dimensionamento de executores, você poderá especificar o nome do conjunto de dimensionamento como o valor da chave `runs-on` no arquivo de fluxo de trabalho do GitHub Actions.
 
@@ -43,6 +43,7 @@ jobs:
     runs-on: arc-runner-set
 ```
 
+```
 ## Usar nomes do conjunto de dimensionamento de executores
 
 Os nomes do conjunto de dimensionamento do executor são exclusivos dentro do grupo de executores ao qual pertencem. Para implantar vários conjuntos de dimensionamento de executores com o mesmo nome, eles deverão pertencer a diferentes grupos de executores. Para obter mais informações sobre como especificar nomes do conjunto de dimensionamento de executores, confira [Como implantar conjuntos de dimensionamento de executores com o Actions Runner Controller](deploy-runner-scale-sets.md).

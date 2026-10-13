@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: How tos / Reuse automations
 ---
 
-# Reutilizar fluxos de trabalho
+# Reutilizar fluxos de trabalho { #reuse-workflows }
 
 _Aprenda a evitar a duplicação ao criar um fluxo de trabalho reutilizando os fluxos de trabalho existentes._
 
-## Criar um fluxo de trabalho reutilizável
+## Criar um fluxo de trabalho reutilizável { #creating-a-reusable-workflow }
 
 Os fluxos de trabalho reutilizáveis são arquivos formatados com YAML, muito semelhantes a qualquer outro arquivo de fluxo de trabalho. Assim como acontece com outros arquivos de fluxo de trabalho, você localiza fluxos de trabalho reutilizáveis no diretório `.github/workflows` de um repositório. Não há suporte para subdiretórios do diretório `workflows`.
 
@@ -25,7 +25,7 @@ on:
   workflow_call:
 ```
 
-## Usando entradas e segredos em um fluxo de trabalho reutilizável
+## Usando entradas e segredos em um fluxo de trabalho reutilizável { #using-inputs-and-secrets-in-a-reusable-workflow }
 
 Você pode definir entradas e segredos, que podem ser passados do fluxo de trabalho de de chamada e, em seguida, usados no fluxo de trabalho chamado. Há três etapas para usar uma entrada ou um segredo em um fluxo de trabalho reutilizável.
 
@@ -41,7 +41,7 @@ Você pode definir entradas e segredos, que podem ser passados do fluxo de traba
        secrets:
          personal_access_token:
            required: true
-   ```
+            ```
 
    Para obter detalhes da sintaxe para definir entradas e segredos, consulte [`on.workflow_call.inputs`](../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callinputs) e [`on.workflow_call.secrets`](../../reference/workflows-and-actions/workflow-syntax.md#onworkflow_callsecrets).
 
@@ -60,7 +60,7 @@ Você pode definir entradas e segredos, que podem ser passados do fluxo de traba
          with:
            repo-token: ${{ secrets.personal_access_token }}
            configuration-path: ${{ inputs.config-path }}
-   ```
+            ```
 
    No exemplo acima, `personal_access_token` é um segredo definido no nível do repositório ou da organização.
 
@@ -86,7 +86,7 @@ Você pode definir entradas e segredos, que podem ser passados do fluxo de traba
          config-path: .github/labeler.yml
        secrets:
          personal_access_token: ${{ secrets.token }}
-   ```
+            ```
 
    Fluxos de trabalho que chamam fluxos de trabalho reutilizáveis na mesma organização ou empresa podem usar a palavra-chave `inherit` para passar implicitamente os segredos.
 
@@ -97,9 +97,9 @@ Você pode definir entradas e segredos, que podem ser passados do fluxo de traba
        with:
          config-path: .github/labeler.yml
        secrets: inherit
-   ```
+            ```
 
-### Exemplo de fluxo de trabalho reutilizável
+### Exemplo de fluxo de trabalho reutilizável { #example-reusable-workflow }
 
 Esse arquivo de fluxo de trabalho reutilizável chamado `workflow-B.yml` (vamos nos referir a ele mais adiante no [exemplo de fluxo de trabalho do chamador](#example-caller-workflow)) usa uma cadeia de caracteres de entrada e um segredo do fluxo de trabalho do chamador e os usa em uma ação.
 
@@ -126,7 +126,7 @@ jobs:
         configuration-path: ${{ inputs.config-path }}
 ```
 
-## Chamando um fluxo de trabalho reutilizável
+## Chamando um fluxo de trabalho reutilizável { #calling-a-reusable-workflow }
 
 Um fluxo de trabalho reutilizável é chamado por meio da palavra-chave `uses`. Ao contrário de quando você usa ações em um fluxo de trabalho, você chama os fluxos de trabalho reutilizáveis diretamente em um trabalho, e não de dentro de etapas de trabalho.
 
@@ -157,7 +157,7 @@ jobs:
     uses: octo-org/another-repo/.github/workflows/workflow.yml@v1
 ```
 
-### Exemplo de fluxo de trabalho do chamador
+### Exemplo de fluxo de trabalho do chamador { #example-caller-workflow }
 
 Este arquivo de fluxo de trabalho chama dois arquivos de fluxo de trabalho. O segundo deles, `workflow-B.yml` (mostrado no [exemplo de fluxo de trabalho reutilizável](#example-reusable-workflow)), recebe uma entrada (`config-path`) e um segredo (`token`).
 
@@ -184,7 +184,7 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-## Passando entradas e segredos para um fluxo de trabalho reutilizável
+## Passando entradas e segredos para um fluxo de trabalho reutilizável { #passing-inputs-and-secrets-to-a-reusable-workflow }
 
 Para transmitir entradas nomeadas para um fluxo de trabalho chamado, use a palavra-chave `with` em um trabalho. Use a palavra-chave `secrets` para transmitir segredos nomeados. Para entradas, o tipo de dado do valor de entrada deve corresponder ao tipo especificado no fluxo de trabalho chamado (booleano, número ou string).
 
@@ -209,7 +209,7 @@ jobs:
     secrets: inherit
 ```
 
-## Como usar uma estratégia de matriz com um fluxo de trabalho reutilizável
+## Como usar uma estratégia de matriz com um fluxo de trabalho reutilizável { #using-a-matrix-strategy-with-a-reusable-workflow }
 
 Trabalhos que usam a estratégia de matriz podem chamar um fluxo de trabalho reutilizável.
 
@@ -228,7 +228,7 @@ jobs:
       target: ${{ matrix.target }}
 ```
 
-## Como aninhar fluxos de trabalho reutilizáveis
+## Como aninhar fluxos de trabalho reutilizáveis { #nesting-reusable-workflows }
 
 Você pode conectar no máximo dez níveis de fluxos de trabalho, ou seja, o fluxo de trabalho de chamadas de nível superior e até nove níveis de fluxos de trabalho reutilizáveis. Por exemplo: *caller-workflow\.yml\_\_→ called-workflow-1.yml\_\_→ called-workflow-2.yml* → *called-workflow-3.yml* →... → *called-workflow-9.yml*.
 
@@ -249,7 +249,7 @@ jobs:
     uses: octo-org/example-repo/.github/workflows/another-reusable.yml@v1
 ```
 
-## Como passar informações confidenciais para fluxos de trabalho aninhados
+## Como passar informações confidenciais para fluxos de trabalho aninhados { #passing-secrets-to-nested-workflows }
 
 Você pode usar `jobs.<job_id>.secrets` em um fluxo de trabalho de chamada para passar segredos nomeados para um fluxo de trabalho chamado diretamente. Como alternativa, você pode usar `jobs.<job_id>.secrets.inherit` para passar todos os segredos do fluxo de trabalho que efetuou a chamada para um fluxo de trabalho chamado diretamente. Para saber mais, confira a seção [Reutilizar fluxos de trabalho](reuse-workflows.md#passing-inputs-and-secrets-to-a-reusable-workflow) acima e o artigo de referência [Sintaxe de fluxo de trabalho para o GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idsecretsinherit). Os segredos são passados apenas para o fluxo de trabalho chamado diretamente, portanto, na cadeia de fluxo de trabalho A > B > C, o fluxo de trabalho C só receberá segredos de A se tiverem sido passados de A para B e, em seguida, de B para C.
 
@@ -270,7 +270,7 @@ jobs:
       repo-token: ${{ secrets.personal_access_token }} # pass just this secret
 ```
 
-## Usando saídas de um fluxo de trabalho reutilizável
+## Usando saídas de um fluxo de trabalho reutilizável { #using-outputs-from-a-reusable-workflow }
 
 Um fluxo de trabalho reutilizável pode gerar dados que você deseja usar no fluxo de trabalho da chamada. Para usar essas saídas, você deve especificá-las como saídas do fluxo de trabalho reutilizável.
 
@@ -333,7 +333,7 @@ jobs:
 
 Para saber mais sobre como usar saídas de trabalho, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idoutputs). Se você desejar compartilhar algo diferente de uma variável (por exemplo, um artefato de criação) entre fluxos de trabalho, consulte [Armazenar e compartilhar dados com artefatos de fluxo de trabalho](../../tutorials/store-and-share-data.md).
 
-## Controlando o acesso ao cache em fluxos de trabalho reutilizáveis
+## Controlando o acesso ao cache em fluxos de trabalho reutilizáveis { #controlling-cache-access-in-reusable-workflows }
 
 Você pode usar a chave `cache-mode` para conceder a um fluxo de trabalho reutilizável o nível mínimo de acesso ao cache GitHub Actions de que ele precisa. O valor pode ser `read`, `write`, `write-only`ou `none`. Se você omitir `cache-mode`, um `read` ou `write` padrão será usado com base no tipo de gatilho. Para obter a sintaxe completa e o significado de cada valor, consulte [Sintaxe de fluxo de trabalho para o GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md#cache-mode). Para valores padrão dependentes do acionador, consulte [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md#defaults).
 
@@ -345,10 +345,10 @@ Se um fluxo de trabalho chamado declarar um `cache-mode` que solicite acesso al�
 
 Para obter mais informações sobre o acesso ao cache e os quatro modos, consulte [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md#controlling-cache-access-with-cache-mode).
 
-## Monitorando quais fluxos de trabalho estão sendo utilizados
+## Monitorando quais fluxos de trabalho estão sendo utilizados { #monitoring-which-workflows-are-being-used }
 
 As organizações que usam GitHub Enterprise Cloud podem interagir com o log de auditoria por meio da GitHub API REST para monitorar quais fluxos de trabalho estão sendo usados. Para obter mais informações, consulte [a GitHub Enterprise Cloud documentação](https://docs.github.com/pt/enterprise-cloud@latest/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization#using-the-audit-log-api).
 
-## Próximas etapas
+## Próximas etapas { #next-steps }
 
 Para encontrar informações sobre os meandros da reutilização de fluxos de trabalho, consulte [Reutilizando configurações de fluxo de trabalho](../../reference/workflows-and-actions/reusing-workflow-configurations.md).

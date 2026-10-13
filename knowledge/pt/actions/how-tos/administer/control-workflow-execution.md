@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: How tos / Administer
 ---
 
-# Controle da execução de GitHub Actions fluxos de trabalho
+# Controle da execução de GitHub Actions fluxos de trabalho { #controlling-who-can-execute-github-actions-workflows }
 
 _Controle quem pode disparar fluxos de trabalho GitHub Actions e quais eventos podem executá-los em toda a empresa, organização e repositório._
 
@@ -22,7 +22,7 @@ Com as proteções de execução de fluxo de trabalho, você pode definir uma li
 
 <!-- end expires 2026-11-02 -->
 
-## Preparando-se para adicionar proteções
+## Preparando-se para adicionar proteções { #preparing-to-add-protections }
 
 Assim como os conjuntos de regras, as proteções de execução de fluxos de trabalho se sobrepõem a outras proteções no mesmo repositório, organização ou empresa.
 
@@ -39,7 +39,7 @@ Para cada política que você definir, pense em:
 
 3. **Quem deve ser capaz de executar esses fluxos de trabalho** nos repositórios que você está direcionando. Podem ser usuários com determinada função, contas de bot selecionadas ou uma equipe específica. Considere agrupar esses usuários em uma organização ou equipe empresarial para que eles possam ser facilmente contatados e referenciados em vários conjuntos de regras. Confira [Como criar uma equipe da organização](https://docs.github.com/pt/organizations/organizing-members-into-teams/creating-a-team) ou [Como criar equipes corporativas](https://docs.github.com/pt/enterprise-cloud@latest/admin/managing-accounts-and-repositories/managing-users-in-your-enterprise/create-enterprise-teams).
 
-## Criando uma política de execução de fluxo de trabalho
+## Criando uma política de execução de fluxo de trabalho { #creating-a-workflow-execution-policy }
 
 Primeiro, crie uma nova política de Ações para o nível de conta em que você está trabalhando.
 
@@ -55,7 +55,7 @@ Em uma empresa:
 
 > [!TIP] Para gerenciar políticas programaticamente, consulte [Pontos de extremidade da API REST para políticas de GitHub Actions](https://docs.github.com/pt/rest/actions/policies).
 
-### Configurando a política
+### Configurando a política { #configuring-the-policy }
 
 Em seguida, crie uma nova política.
 
@@ -64,7 +64,7 @@ Em seguida, crie uma nova política.
 3. Direcione seus fluxos de trabalho, organizações ou repositórios desejados.
 4. Configure as seguintes proteções de execução de fluxo de trabalho.
 
-### Restringir atores
+### Restringir atores { #restrict-actors }
 
 Por padrão, cada usuário com acesso de gravação a um repositório pode disparar fluxos de trabalho. As regras para atores permitem separar quem contribui com código de quem executa sua integração contínua (CI), para que você possa conceder a um colaborador permissão de escrita sem conceder a ele a permissão de executar fluxos de trabalho.
 
@@ -72,7 +72,7 @@ Somente os atores permitidos poderão executar os fluxos de trabalho especificad
 
 GitHub os recursos estão isentos dessas restrições para os processos integrados nos quais são executados GitHub Actions. No entanto, se você criou fluxos de trabalho que precisam ser executados pela identidade associada a um GitHub recurso, como `dependabot[bot]`, então, essa identidade deve ser adicionada como um ator permitido.
 
-### Restringir eventos
+### Restringir eventos { #restrict-events }
 
 As regras de evento controlam quais eventos são permitidos, como`push`, , `pull_request`e `workflow_dispatch``pull_request_target`.
 
@@ -84,7 +84,7 @@ Gere e verifique os arquivos de bloqueio nos repositórios que você está direc
 
 Você pode manter **Exigir que as ações sejam fixadas a um SHA de commit completo** habilitado ao adotar arquivos de bloqueio. Para dependências cobertas por um arquivo de bloqueio, GitHub avalia esse requisito usando a SHA do commit bloqueado. Manter a política habilitada durante uma implantação gradual preserva a imposição de fixação de SHA para fluxos de trabalho que ainda não adotaram os arquivos de bloqueio.
 
-## Avaliando políticas
+## Avaliando políticas { #evaluating-policies }
 
 Você pode exibir insights de política para ver as execuções de fluxo de trabalho que foram bloqueadas (para políticas ativas) ou que teriam sido bloqueadas (para políticas de "avaliação"). Essa é uma boa maneira de verificar se as políticas estão funcionando conforme o esperado e não causando atritos desnecessários.
 

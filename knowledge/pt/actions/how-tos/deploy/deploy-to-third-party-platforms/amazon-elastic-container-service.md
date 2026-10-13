@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: How tos / Deploy / Deploy to third party platforms
 ---
 
-# Implantar no Amazon Elastic Container Service
+# Implantar no Amazon Elastic Container Service { #deploying-to-amazon-elastic-container-service }
 
 _Saiba como implantar um projeto no Amazon Elastic Container Service (ECS) como parte de um fluxo de trabalho de CD (implantação contínua)._
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Antes de criar seu GitHub Actions fluxo de trabalho, primeiro você precisará concluir as seguintes etapas de configuração para Amazon ECR e ECS:
 
@@ -27,7 +27,7 @@ Antes de criar seu GitHub Actions fluxo de trabalho, primeiro você precisará c
        --repository-name MY_ECR_REPOSITORY \
        --region MY_AWS_REGION
 
-   ```
+            ```
 
    Certifique-se de usar o mesmo nome de repositório do Amazon ECR (representado aqui por `MY_ECR_REPOSITORY`) para a variável `ECR_REPOSITORY` no fluxo de trabalho abaixo.
 
@@ -47,7 +47,7 @@ Antes de criar seu GitHub Actions fluxo de trabalho, primeiro você precisará c
 
    aws ecs register-task-definition --generate-cli-skeleton
 
-   ```
+            ```
 
    Certifique-se de que você definiu a variável `ECS_TASK_DEFINITION` no fluxo de trabalho abaixo como o caminho para o arquivo JSON.
 
@@ -61,7 +61,7 @@ Antes de criar seu GitHub Actions fluxo de trabalho, primeiro você precisará c
 
 5. Opcionalmente, configure um ambiente de implantação. Os ambientes são usados para descrever um destino de implantação geral, como `production`, `staging` ou `development`. Quando um GitHub Actions fluxo de trabalho é implantado em um ambiente, o ambiente é exibido na página principal do repositório. Você pode usar ambientes para exigir aprovação para um trabalho prosseguir, restringir quais ramificações podem acionar um fluxo de trabalho, bloquear implantações com regras de proteção de implantação personalizadas ou limitar o acesso a segredos. Para saber mais sobre como criar ambientes, confira [Gerenciar ambientes para implantação](../configure-and-manage-deployments/manage-environments.md).
 
-## Criar o fluxo de trabalho
+## Criar o fluxo de trabalho { #creating-the-workflow }
 
 Depois de preencher os pré-requisitos, você pode prosseguir com a criação do fluxo de trabalho.
 
@@ -73,14 +73,14 @@ Se você configurou um ambiente de implantação, altere o valor de `environment
 
 ```yaml copy
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 
-# O GitHub recomenda fixar ações em um SHA de commit.
-# Para obter uma versão mais recente, você precisará atualizar o SHA.
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
+# O GitHub recomenda fixar ações em um SHA de commit. { #github-recommends-pinning-actions-to-a-commit-sha }
+# Para obter uma versão mais recente, você precisará atualizar o SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha }
+# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning }
 
 name: Deploy to Amazon ECS
 
@@ -151,7 +151,7 @@ jobs:
 ```
 
 ```
-## Leitura adicional
+## Leitura adicional { #further-reading }
 
 Para o modelo de fluxo de trabalho original, consulte [`aws.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/aws.yml) no GitHub Actions`starter-workflows` repositório.
 

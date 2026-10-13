@@ -10,15 +10,15 @@ captured: '2026-10-13'
 section: How tos / Deploy / Configure and manage deployments
 ---
 
-# Implantando com GitHub Actions
+# Implantando com GitHub Actions { #deploying-with-github-actions }
 
 _GitHub Actions fornece controle detalhado sobre implantações com ambientes, grupos de concorrência e regras de proteção._
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Você deve estar familiarizado com a sintaxe para GitHub Actions. Para saber mais, confira [Escrevendo fluxos de trabalho](../../write-workflows.md).
 
-## Acionando a sua implantação
+## Acionando a sua implantação { #triggering-your-deployment }
 
 Você pode usar uma série de eventos para acionar seu fluxo de trabalho de implantação. Algumas das opções mais comuns são: `pull_request`, `push` e `workflow_dispatch`.
 
@@ -41,17 +41,17 @@ on:
 
 Para saber mais, confira [Eventos que disparam fluxos de trabalho](../../../reference/workflows-and-actions/events-that-trigger-workflows.md).
 
-## Usar ambientes
+## Usar ambientes { #using-environments }
 
 Os ambientes são usados para descrever um destino de implantação geral, como `production`, `staging` ou `development`. Quando um GitHub Actions fluxo de trabalho é implantado em um ambiente, o ambiente é exibido na página principal do repositório. Você pode usar ambientes para exigir aprovação para um trabalho prosseguir, restringir quais ramificações podem acionar um fluxo de trabalho, bloquear implantações com regras de proteção de implantação personalizadas ou limitar o acesso a segredos. Para saber mais sobre como criar ambientes, confira [Gerenciar ambientes para implantação](manage-environments.md).
 
 Você pode configurar ambientes com regras de proteção e segredos. Quando um trabalho de fluxo de trabalho faz referência a um ambiente, o trabalho não será iniciado até que todas as regras de proteção do ambiente sejam aprovadas. Um trabalho também não pode acessar segredos definidos em um ambiente até que todas as regras de proteção da implantação tenham êxito. Para saber mais, consulte [Usando regras de proteção de implantação personalizadas](#using-custom-deployment-protection-rules) neste artigo.
 
-## Usando concorrência
+## Usando concorrência { #using-concurrency }
 
 A concorrência garante que apenas um único trabalho ou fluxo de trabalho que utilize o mesmo grupo de concorrência seja executado por vez. Você pode usar a simultaneidade para que um ambiente tenha no máximo uma implantação em andamento por vez. Para obter mais informações sobre a simultaneidade, confira [Controlar a simultaneidade de fluxos de trabalho e tarefas](../../write-workflows/choose-when-workflows-run/control-workflow-concurrency.md).
 
-## Usando ambientes sem implantações
+## Usando ambientes sem implantações { #using-environments-without-deployments }
 
 Por padrão, quando um trabalho de fluxo de trabalho faz referência a um ambiente, GitHub cria um objeto de implantação para acompanhar a implantação. Você pode optar por não criar a implantação definindo `deployment` como `false` na configuração do ambiente. Os valores válidos são `true` (padrão) e `false`. Você também pode usar uma expressão, por exemplo `deployment: ${{ github.ref_name == 'main' }}`.
 
@@ -82,7 +82,7 @@ Isso é útil quando você deseja usar ambientes para:
 * **Controle de acesso** — restrinja quais ramificações podem usar determinados segredos por meio de políticas de ambientes para ramificações, sem a necessidade de rastreamento de implantações.
 * **Trabalhos de CI e teste:** referenciar um ambiente para sua configuração sem adicionar ruído ao histórico de implantação.
 
-### Interação com regras de proteção
+### Interação com regras de proteção { #interaction-with-protection-rules }
 
 A propriedade `deployment` controla quais regras de proteção são aplicáveis:
 
@@ -164,25 +164,25 @@ jobs:
 
 Para obter diretrizes sobre como escrever etapas específicas à implantação, confira [Como encontrar exemplos de implantação](#finding-deployment-examples).
 
-## Exibir o histórico de implantações
+## Exibir o histórico de implantações { #viewing-deployment-history }
 
 Quando um GitHub Actions fluxo de trabalho é implantado em um ambiente, o ambiente é exibido na página principal do repositório. Para saber mais sobre como exibir implantações em ambientes, confira [Exibir o histórico de implantações](view-deployment-history.md).
 
 Sua organização pode coletar registros de implantação para todos os seus builds em um único lugar carregando dados no linked artifacts page. Confira [Sobre artefatos vinculados](https://docs.github.com/pt/code-security/concepts/supply-chain-security/linked-artifacts).
 
-## Monitoramento de fluxo de trabalho
+## Monitoramento de fluxo de trabalho { #monitoring-workflow-runs }
 
 Cada execução de fluxo de trabalho gera um gráfico em tempo real que ilustra o progresso da execução. Você pode usar este gráfico para monitorar e depurar implantações. Para saber mais, confira [Usar o gráfico de visualização](../../monitor-workflows/use-the-visualization-graph.md).
 
 Você também pode visualizar os registros de cada execução do fluxo de trabalho e o histórico de execuções do fluxo de trabalho. Para saber mais, confira [Visualizar o histórico de execução do fluxo de trabalho](../../monitor-workflows/view-workflow-run-history.md).
 
-## Usando revisões necessárias nos fluxos de trabalho
+## Usando revisões necessárias nos fluxos de trabalho { #using-required-reviews-in-workflows }
 
 Os trabalhos que fazem referência a um ambiente configurado com os revisores necessários irão aguardar a aprovação antes de serem iniciados. Enquanto um trabalho está aguardando aprovação, ele tem um status de "Aguardando". Se um trabalho não for aprovado em até 30 dias, falhará automaticamente.
 
 Para obter mais informações sobre ambientes e aprovações necessárias, confira [Gerenciar ambientes para implantação](manage-environments.md). Para obter informações de como examinar implantações com a API REST, confira [Endpoints da API REST para execuções de fluxo de trabalho](https://docs.github.com/pt/rest/actions/workflow-runs).
 
-## Usando regras de proteção de implantação personalizadas
+## Usando regras de proteção de implantação personalizadas { #using-custom-deployment-protection-rules }
 
 !!! note
     Regras de proteção de implementação personalizada estão em prévia pública e estão sujeitas a alterações.
@@ -201,18 +201,18 @@ As implantações em um ambiente podem ser aprovadas ou rejeitadas com base nas 
 
 Como alternativa, você pode escrever suas próprias regras de proteção para qualquer um dos casos de uso acima ou pode definir qualquer lógica personalizada para aprovar ou rejeitar implantações com segurança desde a pré-produção até os ambientes de produção.
 
-## Rastreando implantações por meio de aplicativos
+## Rastreando implantações por meio de aplicativos { #tracking-deployments-through-apps }
 
 Se sua conta pessoal ou organização no GitHub estiver integrada ao Microsoft Teams ou ao Slack, você poderá acompanhar implantações que usam ambientes por meio de Microsoft Teams ou Slack. Por exemplo, você pode receber notificações por meio do aplicativo quando uma implantação estiver pendente de aprovação, quando uma implantação for aprovada, ou quando o status de implantação for alterado. Para obter mais informações sobre como integrar Microsoft Teams ou Slack, consulte [Integrações de GitHub em destaque](https://docs.github.com/pt/integrations/concepts/featured-github-integrations#team-communication-tools).
 
 Você também pode criar um aplicativo que usa webhooks de status de implantação e implantação para rastrear implantações.
 Quando um trabalho de fluxo de trabalho que referencia um ambiente é executado, ele cria um objeto de implantação com a propriedade `environment` definida como o nome do ambiente. À medida que o fluxo de trabalho progride, ele também cria objetos de status de implantação com a propriedade `environment` definida como o nome do ambiente, a propriedade `environment_url` definida como a URL para o ambiente (se especificado no fluxo de trabalho) e a propriedade `state` definida como o status do trabalho. Para obter mais informações, consulte [Documentação do GitHub Apps](https://docs.github.com/pt/apps) e [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#deployment).
 
-## Escolher um executor
+## Escolher um executor { #choosing-a-runner }
 
 Você pode executar seu fluxo de trabalho de implantação em executores hospedados em GitHub ou em executores auto-hospedados. O tráfego de executores hospedados em GitHub pode vir de uma [ampla gama de endereços de rede](https://docs.github.com/pt/rest/meta/meta#get-github-meta-information). Se você estiver implantando em um ambiente interno e sua empresa restringir o tráfego externo em redes privadas, fluxos de trabalho GitHub Actions em execução em executores hospedados em GitHub podem não conseguir se comunicar com seus serviços ou recursos internos. Para superar isso, você pode hospedar seus próprios executores. Para saber mais, confira [Executores auto-hospedados](../../../concepts/runners/self-hosted-runners.md) e [Executores hospedados no GitHub](../../../concepts/runners/github-hosted-runners.md).
 
-## Exibindo um selo de status
+## Exibindo um selo de status { #displaying-a-status-badge }
 
 Você pode usar um selo de status para exibir o status do seu fluxo de trabalho de implantação. Um selo de status mostra se um fluxo de trabalho está falhando ou passando. Um local comum para adicionar uma notificação de status é no arquivo `README.md` do repositório, mas você pode adicioná-lo a qualquer página da Web desejada. Por padrão, os selos exibem o status do seu branch-padrão. Se não houver execuções de fluxo de trabalho em seu branch padrão, ele exibirá o status da execução mais recente em todos os branches. Você pode exibir o status de uma execução de fluxo de trabalho para um branch ou um evento específico usando os parâmetros de consulta `branch` e `event` na URL.
 
@@ -220,7 +220,7 @@ Você pode usar um selo de status para exibir o status do seu fluxo de trabalho 
 
 Para saber mais, confira [Adicionar um selo de status de fluxo de trabalho](../../monitor-workflows/add-a-status-badge.md).
 
-## Procurando exemplos de implantação
+## Procurando exemplos de implantação { #finding-deployment-examples }
 
 Este artigo demonstrou recursos do GitHub Actions que você pode adicionar aos workflows de implantação.
 

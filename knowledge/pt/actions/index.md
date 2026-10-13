@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: Actions
 ---
 
-# Documentação do GitHub Actions
+# Documentação do GitHub Actions { #github-actions-documentation }
 
 _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de software diretamente em seu repositório com GitHub Actions. Você pode descobrir, criar e compartilhar ações para realizar qualquer trabalho que desejar, incluindo CI/CD, bem como combinar ações em um fluxo de trabalho completamente personalizado._
 

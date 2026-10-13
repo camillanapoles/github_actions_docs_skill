@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: Concepts / Runners
 ---
 
-# Grupos de runners
+# Grupos de runners { #runner-groups }
 
 _Use grupos de executores para controlar o acesso aos executores e organizar os executores em toda a sua organização ou empresa._
 
-## Sobre os grupos de executores
+## Sobre os grupos de executores { #about-runner-groups }
 
 Para controlar o acesso aos executores no nível da organização, as organizações que usam o plano GitHub Team podem usar grupos de executores.Grupos de executores são usados para coletar grupos de executores e criar um limite de segurança em torno deles.
 
@@ -33,7 +33,7 @@ Com grupos de runners, você pode:
 
 Você também pode desabilitar os executores padrão hospedados em GitHub, de modo que os trabalhos em Linux, Windows e macOS sejam executados por meio de grupos de executores em vez de rótulos padrão de executores. Para configurações de nível de organização, consulte [Desabilitando ou limitando GitHub Actions para sua organização](https://docs.github.com/pt/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization). Se você for um proprietário da empresa, consulte [Impor políticas para GitHub Actions em sua empresa](https://docs.github.com/pt/enterprise-cloud@latest/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise).
 
-## Próximas etapas
+## Próximas etapas { #next-steps }
 
 Para saber como usar grupos de executores para controlar o acesso a corredores maiores, consulte [Como controlar o acesso a executores maiores](../../how-tos/manage-runners/larger-runners/control-access.md).
 

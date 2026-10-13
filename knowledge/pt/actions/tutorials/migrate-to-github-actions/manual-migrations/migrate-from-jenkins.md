@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: Tutorials / Migrate to github actions / Manual migrations
 ---
 
-# Migrando do Jenkins para o GitHub Actions
+# Migrando do Jenkins para o GitHub Actions { #migrating-from-jenkins-to-github-actions }
 
 _GitHub Actions e Jenkins compartilham várias semelhanças, o que torna a migração para GitHub Actions relativamente simples._
 
-## Introdução
+## Introdução { #introduction }
 
 O Jenkins e GitHub Actions ambos permitem criar fluxos de trabalho que criam, testam, publicam, liberam e implantam código automaticamente. Jenkins e GitHub Actions compartilham algumas semelhanças na configuração do fluxo de trabalho:
 
@@ -25,22 +25,22 @@ O Jenkins e GitHub Actions ambos permitem criar fluxos de trabalho que criam, te
 
 Para saber mais, confira [Noções básicas sobre GitHub Actions](../../../get-started/understand-github-actions.md).
 
-## Principais diferenças
+## Principais diferenças { #key-differences }
 
 * O Jenkins tem dois tipos de sintaxe para a criação de pipelines: Declarative Pipeline e Scripted Pipeline.
   GitHub Actions usa YAML para criar fluxos de trabalho e arquivos de configuração. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md).
 * As implementações do Jenkins são tipicamente auto-hospedadas, com usuários mantendo os servidores em seus próprios centros de dados.
   GitHub Actions oferece uma abordagem de nuvem híbrida hospedando seus próprios corredores que você pode usar para executar trabalhos, ao mesmo tempo em que dá suporte a corredores auto-hospedados. Para saber mais, confira [Executores auto-hospedados](../../../concepts/runners/self-hosted-runners.md).
 
-## Comparar recursos
+## Comparar recursos { #comparing-capabilities }
 
-### Distribuir suas criações
+### Distribuir suas criações { #distributing-your-builds }
 
 O Jenkins permite que se envie criações para um único agente de criação, ou você pode distribuí-las entre vários agentes. Você também pode classificar esses agentes de acordo com vários atributos, como, por exemplo, tipos de sistema operacional.
 
 Da mesma forma, GitHub Actions pode enviar trabalhos para executores hospedados no GitHub ou auto-hospedados, e pode usar rótulos para classificar os executores de acordo com vários atributos. Para saber mais, confira [Noções básicas sobre GitHub Actions](../../../get-started/understand-github-actions.md#runners) e [Executores auto-hospedados](../../../concepts/runners/self-hosted-runners.md).
 
-### Usar seções para organizar pipelines
+### Usar seções para organizar pipelines { #using-sections-to-organize-pipelines }
 
 O Jenkins divide seus Declarative Pipelines em múltiplas seções. Da mesma forma, GitHub Actions organiza seus fluxos de trabalho em seções separadas. A tabela a seguir compara as seções do Jenkins com o GitHub Actions fluxo de trabalho.
 
@@ -51,7 +51,7 @@ O Jenkins divide seus Declarative Pipelines em múltiplas seções. Da mesma for
 | [`stages`](https://jenkins.io/doc/book/pipeline/syntax/#stages) | [`jobs`](../../../reference/workflows-and-actions/workflow-syntax.md#jobs) |
 | [`steps`](https://jenkins.io/doc/book/pipeline/syntax/#steps) | [`jobs.<job_id>.steps`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idsteps) |
 
-## Uso de diretivas
+## Uso de diretivas { #using-directives }
 
 O Jenkins usa diretivas para gerenciar os *Pipelines Declarativos*. Essas diretivas definem as características do seu fluxo de trabalho e como ele será executado. A tabela a seguir demonstra como essas diretivas correspondem a conceitos em GitHub Actions.
 
@@ -69,9 +69,9 @@ O Jenkins usa diretivas para gerenciar os *Pipelines Declarativos*. Essas direti
 | [`input`](https://jenkins.io/doc/book/pipeline/syntax/#input) | [`inputs`](../../../reference/workflows-and-actions/metadata-syntax.md#inputs) |
 | [`when`](https://jenkins.io/doc/book/pipeline/syntax/#when) | [`jobs.<job_id>.if`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idif) |
 
-## Usar estágios sequenciais
+## Usar estágios sequenciais { #using-sequential-stages }
 
-### Processamento paralelo do trabalho
+### Processamento paralelo do trabalho { #parallel-job-processing }
 
 Jenkins pode executar o `stages` e `steps` em paralelo.
 GitHub Actions executa trabalhos em paralelo e também pode executar etapas simultaneamente em um trabalho usando a sintaxe de nível de etapa. Para obter mais informações, consulte [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstepsbackground).
@@ -80,7 +80,7 @@ GitHub Actions executa trabalhos em paralelo e também pode executar etapas simu
 | --- | --- |
 | [`parallel`](https://jenkins.io/doc/book/pipeline/syntax/#parallel) | [`jobs.<job_id>.strategy.max-parallel`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstrategymax-parallel) |
 
-### Matriz
+### Matriz { #matrix }
 
 Tanto GitHub Actions quanto Jenkins permitem que você use uma matriz para definir várias combinações do sistema.
 
@@ -90,7 +90,7 @@ Tanto GitHub Actions quanto Jenkins permitem que você use uma matriz para defin
 | [`stages`](https://jenkins.io/doc/book/pipeline/syntax/#matrix-stages) | [`steps-context`](../../../reference/workflows-and-actions/contexts.md#steps-context) |
 | [`excludes`](https://jenkins.io/doc/book/pipeline/syntax/#matrix-stages) | Nenhum |
 
-### Usar passos para executar tarefas
+### Usar passos para executar tarefas { #using-steps-to-execute-tasks }
 
 O Jenkins agrupa as `steps` em `stages`. Cada uma dessas etapas pode ser um script, função ou comando, entre outros. Da mesma forma, GitHub Actions usa `jobs` para executar grupos específicos de `steps`.
 
@@ -98,11 +98,11 @@ O Jenkins agrupa as `steps` em `stages`. Cada uma dessas etapas pode ser um scri
 | --- | --- |
 | [`steps`](https://jenkins.io/doc/book/pipeline/syntax/#steps) | [`jobs.<job_id>.steps`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idsteps) |
 
-## Exemplos de tarefas comuns
+## Exemplos de tarefas comuns { #examples-of-common-tasks }
 
-### Como agendar um pipeline para ser executado com o `cron`
+### Como agendar um pipeline para ser executado com o `cron` { #scheduling-a-pipeline-to-run-with-cron }
 
-#### Pipeline do Jenkins com `cron`
+#### Pipeline do Jenkins com `cron` { #jenkins-pipeline-with-cron }
 
 ```yaml
 pipeline {
@@ -113,7 +113,7 @@ pipeline {
 }
 ```
 
-#### GitHub Actions fluxo de trabalho com `cron`
+#### GitHub Actions fluxo de trabalho com `cron` { #github-actions-workflow-with-cron }
 
 ```yaml
 on:
@@ -123,9 +123,9 @@ on:
 
 Para obter mais informações sobre eventos `schedule` e a sintaxe cron aceita, consulte [Eventos que disparam fluxos de trabalho](../../../reference/workflows-and-actions/events-that-trigger-workflows.md#schedule).
 
-### Configurar variáveis de ambiente em um pipeline
+### Configurar variáveis de ambiente em um pipeline { #configuring-environment-variables-in-a-pipeline }
 
-#### Pipeline do Jenkins com uma variável de ambiente
+#### Pipeline do Jenkins com uma variável de ambiente { #jenkins-pipeline-with-an-environment-variable }
 
 ```yaml
 pipeline {
@@ -136,7 +136,7 @@ pipeline {
 }
 ```
 
-#### GitHub Actions fluxo de trabalho com uma variável de ambiente
+#### GitHub Actions fluxo de trabalho com uma variável de ambiente { #github-actions-workflow-with-an-environment-variable }
 
 ```yaml
 jobs:
@@ -145,9 +145,9 @@ jobs:
       MAVEN_PATH: '/usr/local/maven'
 ```
 
-### Criar projetos projetos de upstream
+### Criar projetos projetos de upstream { #building-from-upstream-projects }
 
-#### Pipeline do Jenkins baseado em um projeto upstream
+#### Pipeline do Jenkins baseado em um projeto upstream { #jenkins-pipeline-that-builds-from-an-upstream-project }
 
 ```yaml
 pipeline {
@@ -160,7 +160,7 @@ pipeline {
 }
 ```
 
-#### GitHub Actions fluxo de trabalho criado a partir de um projeto de origem
+#### GitHub Actions fluxo de trabalho criado a partir de um projeto de origem { #github-actions-workflow-that-builds-from-an-upstream-project }
 
 ```yaml
 jobs:
@@ -171,9 +171,9 @@ jobs:
     needs: [job1, job2]
 ```
 
-### Criar com vários sistemas operacionais
+### Criar com vários sistemas operacionais { #building-with-multiple-operating-systems }
 
-#### Pipeline do Jenkins baseado em vários sistemas operacionais
+#### Pipeline do Jenkins baseado em vários sistemas operacionais { #jenkins-pipeline-that-builds-with-multiple-operating-systems }
 
 ```yaml
 pipeline {
@@ -205,7 +205,7 @@ pipeline {
 }
 ```
 
-#### GitHub Actions fluxo de trabalho criado com vários sistemas operacionais
+#### GitHub Actions fluxo de trabalho criado com vários sistemas operacionais { #github-actions-workflow-that-builds-with-multiple-operating-systems }
 
 ```yaml
 name: demo-workflow

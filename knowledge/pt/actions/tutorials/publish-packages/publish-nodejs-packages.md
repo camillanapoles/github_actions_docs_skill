@@ -10,15 +10,15 @@ captured: '2026-10-13'
 section: Tutorials / Publish packages
 ---
 
-# Publicar pacotes do Node.js
+# Publicar pacotes do Node.js { #publishing-nodejs-packages }
 
 _Neste tutorial, você aprenderá a publicar pacotes do Node.js em um registro como parte do fluxo de trabalho de CI (integração contínua)._
 
-## Introdução
+## Introdução { #introduction }
 
 Este guia mostra como criar um fluxo de trabalho que publica pacotes Node.js nos registros GitHub Packages e npm após a aprovação nos testes de integração contínua (CI).
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Recomendamos que você tenha um entendimento básico das opções de configuração do fluxo de trabalho e de como criar um arquivo do fluxo de trabalho. Para saber mais, confira [Escrevendo fluxos de trabalho](../../how-tos/write-workflows.md).
 
@@ -31,7 +31,7 @@ Você também pode achar útil ter um entendimento básico do seguinte:
 * [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md)
 * [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md)
 
-## Sobre a configuração do pacote
+## Sobre a configuração do pacote { #about-package-configuration }
 
 Os campos `name` e `version` no arquivo `package.json` criam um identificador exclusivo usados pelos registros para vincular pacotes a registros. Você pode adicionar um resumo para a página de listagem de pacotes ao incluir um campo de `description` no arquivo `package.json`. Para obter mais informações, consulte [Criar um arquivo package.json](https://docs.npmjs.com/creating-a-package-json-file) e [Criar módulos do Node.js](https://docs.npmjs.com/creating-node-js-modules) na documentação do npm.
 
@@ -41,7 +41,7 @@ Você pode especificar a versão do Node.js instalada no executor usando a açã
 
 Se você adicionar etapas ao seu fluxo de trabalho para configurar os campos `publishConfig` no arquivo `package.json`, você não precisará especificar a URL do registro usando a ação `setup-node`, mas não poderá publicar o pacote em mais de um registro. Para obter mais informações, consulte [publishConfig](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#publishconfig) na documentação do npm.
 
-## Publicar pacotes no registro npm
+## Publicar pacotes no registro npm { #publishing-packages-to-the-npm-registry }
 
 Cada vez que você publicar uma nova versão, poderá acionar um fluxo de trabalho para publicar o seu pacote. O processo no exemplo a seguir é executado quando o evento de lançamento do tipo `published` é disparado. Se os testes de CI forem aprovados, o processo carregará o pacote no registro npm. Para saber mais, confira [Gerenciar versões em repositórios](https://docs.github.com/pt/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release).
 
@@ -89,11 +89,11 @@ always-auth=true
 
 Observe que você precisa definir o `registry-url` para `https://registry.npmjs.org/` no `setup-node` para configurar corretamente suas credenciais.
 
-## Publicando pacotes para GitHub Packages
+## Publicando pacotes para GitHub Packages { #publishing-packages-to-github-packages }
 
 Cada vez que você publicar uma nova versão, poderá acionar um fluxo de trabalho para publicar o seu pacote. O processo no exemplo a seguir é executado quando o evento de lançamento do tipo `published` é disparado. Se os testes de CI forem aprovados, o processo carregará o pacote para GitHub Packages. Para saber mais, confira [Gerenciar versões em repositórios](https://docs.github.com/pt/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release).
 
-### Configurar o repositório de destino
+### Configurar o repositório de destino { #configuring-the-destination-repository }
 
 Vincular seu pacote a GitHub Packages usando a chave `repository` é opcional. Se você optar por não fornecer a `repository` chave em seu `package.json` arquivo, o pacote não será vinculado a um repositório quando ele for publicado, mas você poderá optar por conectar o pacote a um repositório posteriormente.
 
@@ -109,13 +109,13 @@ Se você fornecer a chave `repository` em seu arquivo `package.json`, o reposit�
 }
 ```
 
-### Efetuar a autenticação no repositório de destino
+### Efetuar a autenticação no repositório de destino { #authenticating-to-the-destination-repository }
 
 Para executar operações autenticadas no GitHub Packages registro em seu fluxo de trabalho, você pode usar o `GITHUB_TOKEN`. O segredo `GITHUB_TOKEN` é definido como um token de acesso para o repositório sempre que um trabalho em um fluxo de trabalho é iniciado. Você deve definir as permissões desse token de acesso no arquivo de fluxo de trabalho para permitir acesso de leitura à permissão `contents` e acesso de gravação à permissão `packages`. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../authenticate-with-github_token.md).
 
 Se você quiser publicar seu pacote em um repositório diferente, deve usar um personal access token (classic) que tenha permissão de gravação nos pacotes do repositório de destino. Para saber mais, confira [Gerenciar seus tokens de acesso pessoal](https://docs.github.com/pt/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) e [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 
-### Exemplo de fluxo de trabalho
+### Exemplo de fluxo de trabalho { #example-workflow }
 
 Este exemplo armazena o segredo `GITHUB_TOKEN` na variável de ambiente `NODE_AUTH_TOKEN`. Quando a ação `setup-node` cria um arquivo `.npmrc`, ele faz referência ao token da variável de ambiente `NODE_AUTH_TOKEN`.
 
@@ -153,7 +153,7 @@ A ação `setup-node` cria um arquivo `.npmrc` no executor. Quando você usa a e
 always-auth=true
 ```
 
-## Publicar pacotes usando o Yarn
+## Publicar pacotes usando o Yarn { #publishing-packages-using-yarn }
 
 Se você usar o gerenciador de pacotes Yarn, você poderá instalar e publicar pacotes usando o Yarn.
 

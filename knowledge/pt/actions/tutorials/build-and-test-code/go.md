@@ -10,23 +10,23 @@ captured: '2026-10-13'
 section: Tutorials / Build and test code
 ---
 
-# Como criar e testar projetos com o Go
+# Como criar e testar projetos com o Go { #building-and-testing-go }
 
 _Saiba como criar um fluxo de trabalho de integração contínua (CI) para criar e testar seu projeto Go._
 
-## Introdução
+## Introdução { #introduction }
 
 Este guia mostra como criar, testar e publicar um pacote Go.
 
 Os executores hospedados do GitHub contam com um cache de ferramentas com software pré-instalado, que inclui as dependências necessárias para a linguagem Go. Para ver a lista completa de programas de software atualizados e as versões pré-instaladas do Go, confira [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images).
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Você já deve estar familiarizado com a sintaxe YAML e como ela é usada com GitHub Actions. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md).
 
 Recomendamos que você tenha um entendimento básico da linguagem Go. Para obter mais informações, confira [Introdução ao Go](https://golang.org/doc/tutorial/getting-started).
 
-## Usando um modelo de fluxo de trabalho do Go
+## Usando um modelo de fluxo de trabalho do Go { #using-a-go-workflow-template }
 
 Para uma introdução rápida, adicione um modelo de fluxo de trabalho ao diretório `.github/workflows` do repositório.
 
@@ -54,7 +54,7 @@ GitHub fornece um modelo de fluxo de trabalho Go que deve funcionar para a maior
 
    O `go.yml` arquivo de fluxo de trabalho é adicionado ao `.github/workflows` diretório do repositório.
 
-## Como especificar uma versão do Go
+## Como especificar uma versão do Go { #specifying-a-go-version }
 
 A maneira mais fácil de especificar uma versão go é usando a ação `setup-go` fornecida por GitHub. Para obter mais informações, confira a ação [`setup-go`](https://github.com/actions/setup-go/).
 
@@ -62,7 +62,7 @@ Para usar uma versão pré-instalada do Go em um runner hospedado no GitHub, pas
 
 A ação `setup-go` é a maneira recomendada de usar Go com GitHub Actions, pois ajuda a garantir um comportamento consistente entre diferentes executores e diferentes versões do Go. Se você estiver usando um executor auto-hospedado, precisará instalar o Go e adicioná-lo a `PATH`.
 
-### Como usar várias versões do Go
+### Como usar várias versões do Go { #using-multiple-versions-of-go }
 
 ```yaml copy
 name: Go
@@ -88,7 +88,7 @@ jobs:
         run: go version
 ```
 
-### Como usar uma versão específica do Go
+### Como usar uma versão específica do Go { #using-a-specific-go-version }
 
 Você pode configurar o trabalho para usar uma versão específica do Go, como `1.20.8`. Como alternativa, você pode usar a sintaxe da versão semântica para obter a última versão secundária. Este exemplo usa a versão mais recente do patch do Go 1.21:
 
@@ -100,7 +100,7 @@ Você pode configurar o trabalho para usar uma versão específica do Go, como `
           go-version: '1.21.x'
 ```
 
-## Instalar dependências
+## Instalar dependências { #installing-dependencies }
 
 Você pode usar `go get` para instalar dependências:
 
@@ -118,7 +118,7 @@ Você pode usar `go get` para instalar dependências:
           go get example.com/octo-examplemodule@v1.3.4
 ```
 
-### Memorizar dependências
+### Memorizar dependências { #caching-dependencies }
 
 Você pode armazenar em cache e restaurar as dependências usando a ação [`setup-go`](https://github.com/actions/setup-go). Por padrão, o cache é habilitado quando a ação `setup-go` é usada.
 
@@ -136,7 +136,7 @@ Use o parâmetro `cache-dependency-path` para casos em que vários arquivos de d
 
 Se houver uma necessidade específica ou precisar de controles mais precisos de cache, use a [ação `cache`](https://github.com/marketplace/actions/cache). Para saber mais, confira [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md).
 
-## Criar e testar seu código
+## Criar e testar seu código { #building-and-testing-your-code }
 
 Você pode usar os mesmos comandos usados localmente para criar e testar seu código. Este fluxo de trabalho de exemplo demonstra como usar `go build` e `go test` em um trabalho:
 
@@ -162,7 +162,7 @@ jobs:
         run: go test
 ```
 
-## Empacotar dados do fluxo de trabalho como artefatos
+## Empacotar dados do fluxo de trabalho como artefatos { #packaging-workflow-data-as-artifacts }
 
 Após a conclusão de um fluxo de trabalho, você poderá fazer o upload dos artefatos resultantes para análise. Por exemplo, é possível que você precise salvar os arquivos de registro, os despejos de núcleo, os resultados de teste ou capturas de tela. O exemplo a seguir demonstra como você pode usar a ação `upload-artifact` para carregar os resultados do teste.
 

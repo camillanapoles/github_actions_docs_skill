@@ -316,3 +316,27 @@ skill (A5) — ou seja, **2 defeitos de conteúdo + 5 itens de entrega da skill*
 actionlint ✅ · yamllint ✅ · `validate.py` (continue-on-error, relatório publicado) · 
 `mkdocs build --strict` ❌ (677 avisos) → gate **reprovado** e artefato `validation-report` publicado.
 O gate funciona como projetado: ele reprova e aponta exatamente o que falta.
+
+---
+
+## 13. Pipeline gate-driven (BPMN-like) — backend OO + SQLite
+
+Pedido adicional: gatilho que verifica **não existência de issues abertas**, **CI/CD sem
+erros** e **presença de testes**; enquanto não positivo → **continuidade**, com instrução
+por issue pendente e **toda action devolvendo objeto JSON** (`id`, `message`, `addenda`,
+`status`, `next_issue`, `direction`).
+
+Contrato, fluxo e medições: [`docs/PIPELINE-GATE-DRIVEN.md`](docs/PIPELINE-GATE-DRIVEN.md).
+
+| Componente | Estado |
+| --- | --- |
+| `pipeline/` — `domain` (Status 0-4, Envelope, Addendum, NextIssue, GateSpec), `blueprint` (7 gates + gateway), `store` (SQLite: runs/envelopes/addenda/issues), `engine` (7 actions OO + IssueFactory + Orchestrator), `cli` (run/blueprint/state) | ✅ implementado (6 módulos) |
+| Gates: `tests` → `capture` → `conformity` → `site` → `skill` → `ci-issues` → `release` | ✅ blueprint auditável em JSON |
+| Envelope JSON por action: `status` 0=sucesso · 1=erro de conteúdo (fix) · 2=erro de infra (retry) · 3=pendência (continue) · 4=ignorado | ✅ contrato testado |
+| `IssueFactory`: chave determinística `gate:direction:sha1(estado)[:8]`, corpo com instruções + critérios de aceite + próximo gate indexado; idempotente | ✅ testado |
+| `.github/workflows/gate-pipeline.yml`: push · PR · **`issues: [closed, labeled, reopened]`** · schedule 6/6h · dispatch; garante **uma** issue por gate (`gate:<id>`, `pipeline:next`, `status:<n>`); exit code = gate | ✅ validado contra o JSON Schema oficial |
+| Testes | ✅ **25 passando** (9 extrator + 16 pipeline) |
+| Última execução medida | status **1** (fix) · 2/7 gates aprovados · `next_issue: capture:fix:11ecbf57` |
+
+Após recaptura da CI + `build_site.py`: **218 cercas reparadas**, **205/500 páginas com
+âncoras alinhadas (2.277 headings com ID oficial)** · validador **29 ok · 3 avisos · 7 falhas**.

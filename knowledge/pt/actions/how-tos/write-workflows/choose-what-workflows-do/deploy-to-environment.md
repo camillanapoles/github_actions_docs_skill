@@ -10,15 +10,15 @@ captured: '2026-10-13'
 section: How tos / Write workflows / Choose what workflows do
 ---
 
-# Implantação em um ambiente específico
+# Implantação em um ambiente específico { #deploying-to-a-specific-environment }
 
 _Especifique um ambiente de implantação em seu fluxo de trabalho._
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Você precisa criar um ambiente antes de poder usá-lo em um fluxo de trabalho. Confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md#creating-an-environment).
 
-## Usar um ambiente em um fluxo de trabalho
+## Usar um ambiente em um fluxo de trabalho { #using-an-environment-in-a-workflow }
 
 1. Abra o arquivo do fluxo de trabalho que deseja editar.
 
@@ -28,7 +28,7 @@ Você precisa criar um ambiente antes de poder usá-lo em um fluxo de trabalho. 
    jobs:
      JOB-ID:
        environment: ENVIRONMENT-NAME
-   ```
+            ```
 
    O trabalho escolhido agora estará sujeito a todas as regras configuradas para o ambiente especificado.
 
@@ -40,7 +40,7 @@ Você precisa criar um ambiente antes de poder usá-lo em um fluxo de trabalho. 
        environment:
            name: ENVIRONMENT-NAME
            url: URL
-   ```
+            ```
 
    A URL especificada será exibida:
 
@@ -56,6 +56,6 @@ Você precisa criar um ambiente antes de poder usá-lo em um fluxo de trabalho. 
        environment:
            name: ENVIRONMENT-NAME
            deployment: false
-   ```
+            ```
 
    Isso é útil para trabalhos de CI ou de teste que precisam de segredos de ambiente, mas não estão realmente implantando nada. Para obter mais informações, consulte [Implantando com GitHub Actions](../../deploy/configure-and-manage-deployments/control-deployments.md#using-environments-without-deployments).

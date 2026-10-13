@@ -10,17 +10,17 @@ captured: '2026-10-13'
 section: Tutorials / Build and test code
 ---
 
-# Compilar e testar aplicativos Xamarin
+# Compilar e testar aplicativos Xamarin { #building-and-testing-xamarin-applications }
 
 _Saiba como criar um fluxo de trabalho de CI (integração contínua) em GitHub Actions para criar e testar seu aplicativo Xamarin._
 
-## Introdução
+## Introdução { #introduction }
 
 Este guia mostra como criar um fluxo de trabalho que executa a CI (integração contínua) para seu projeto de Xamarin. O fluxo de trabalho que você criar permitirá que você veja quando commits em um pull request gerarão falhas de criação ou de teste em comparação com o seu branch-padrão. Essa abordagem pode ajudar a garantir que seu código seja sempre saudável.
 
 Para obter uma lista completa das versões do SDK do Xamarin disponíveis nos runners do macOS hospedados em GitHub Actions, consulte o arquivo README da versão do macOS que você deseja usar no [repositório Runner ImagesGitHub Actions](https://github.com/actions/runner-images/tree/main/images/macos).
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Recomendamos que você tenha uma compreensão básica de Xamarin, .NET Core SDK, YAML, opções de configuração de fluxo de trabalho e como criar um arquivo de fluxo de trabalho. Para saber mais, veja:
 
@@ -28,7 +28,7 @@ Recomendamos que você tenha uma compreensão básica de Xamarin, .NET Core SDK,
 * [Introdução ao .NET](https://dotnet.microsoft.com/learn)
 * [Saiba mais sobre o Xamarin](https://dotnet.microsoft.com/learn/xamarin)
 
-## Criando aplicativos Xamarin.iOS
+## Criando aplicativos Xamarin.iOS { #building-xamarinios-apps }
 
 O exemplo a seguir demonstra como alterar as versões padrão do SDK do Xamarin e construir um aplicativo Xamarin.iOS.
 
@@ -66,7 +66,7 @@ jobs:
       run: msbuild <csproj_file_path> /p:Configuration=Debug /p:Platform=iPhoneSimulator /t:Rebuild
 ```
 
-## Desenvolvendo aplicativos Xamarin.Android
+## Desenvolvendo aplicativos Xamarin.Android { #building-xamarinandroid-apps }
 
 O exemplo a seguir demonstra como alterar as versões padrão do SDK Xamarin e criar um Xamarin. Aplicativo Android.
 
@@ -98,7 +98,7 @@ jobs:
       run: msbuild <csproj_file_path> /t:PackageForAndroid /p:Configuration=Debug
 ```
 
-## Especificando uma versão .NET
+## Especificando uma versão .NET { #specifying-a-net-version }
 
 Para usar uma versão pré-instalada do SDK do .NET Core em um executor hospedado do GitHub, use a ação `setup-dotnet`. Essa ação localiza uma versão específica de .NET do cache de ferramentas em cada executor e adiciona os binários necessários a `PATH`. Estas alterações persistirão para o resto do trabalho.
 

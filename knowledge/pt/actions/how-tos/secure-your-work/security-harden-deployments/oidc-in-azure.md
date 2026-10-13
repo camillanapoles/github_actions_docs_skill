@@ -10,17 +10,17 @@ captured: '2026-10-13'
 section: How tos / Secure your work / Security harden deployments
 ---
 
-# Configurando o OpenID Connect no Azure
+# Configurando o OpenID Connect no Azure { #configuring-openid-connect-in-azure }
 
 _Use o OpenID Connect em seus fluxos de trabalho para autenticar com Azure._
 
-## Visão geral
+## Visão geral { #overview }
 
 O OIDC (OpenID Connect) permite que seus GitHub Actions fluxos de trabalho acessem recursos no Azure, sem a necessidade de armazenar as credenciais do Azure como segredos de GitHub longa duração.
 
 Este guia fornece uma visão geral de como configurar o Azure para confiar no GitHubOIDC como uma identidade federada e inclui um exemplo de fluxo de trabalho para a ação [`azure/login`](https://github.com/Azure/login) que usa tokens para autenticar no Azure e acessar recursos.
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 * Para saber os conceitos básicos de como GitHub usa o OpenID Connect (OIDC) e sua arquitetura e benefícios, consulte [OpenID Connect](../../../concepts/security/openid-connect.md).
 
@@ -30,7 +30,7 @@ Este guia fornece uma visão geral de como configurar o Azure para confiar no Gi
 
 Para repositórios criados após 15 de julho de 2026 e renomeações ou transferências de repositórios após essa data, use uma declaração padrão imutável do OIDC `sub` que inclui IDs do proprietário e do repositório (não disponível no GitHub Enterprise Server). Os repositórios existentes mantêm o formato anterior, a menos que aceitem. Para saber mais, confira [Referência do OpenID Connect](../../../reference/security/oidc.md#immutable-subject-claims).
 
-## Adicionando as credenciais federadas a Azure
+## Adicionando as credenciais federadas a Azure { #adding-the-federated-credentials-to-azure }
 
 O provedor OIDC do GitHub funciona com a federação de identidade de carga de trabalho do Azure. Para ter uma visão geral, confira a documentação da Microsoft em [Federação de identidade de carga de trabalho](https://docs.microsoft.com/en-us/azure/active-directory/develop/workload-identity-federation).
 
@@ -47,7 +47,7 @@ Orientação adicional para a configuração do provedor de identidade:
 * Para reforçar a segurança, certifique-se de ter revisado [Referência do OpenID Connect](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles). Para ver um exemplo, confira [Referência do OpenID Connect](../../../reference/security/oidc.md#configuring-the-subject-in-your-cloud-provider).
 * Para a configuração `audience`, `api://AzureADTokenExchange` é o valor recomendado, mas você também pode especificar outros valores aqui.
 
-## Atualizando seu GitHub Actions fluxo de trabalho
+## Atualizando seu GitHub Actions fluxo de trabalho { #updating-your-github-actions-workflow }
 
 Para atualizar seus fluxos de trabalho para o OIDC, você deverá fazer duas alterações no seu YAML:
 
@@ -57,7 +57,7 @@ Para atualizar seus fluxos de trabalho para o OIDC, você deverá fazer duas alt
 !!! note
     Quando os ambientes são usados em fluxos de trabalho ou em políticas OIDC, recomendamos adicionar regras de proteção ao ambiente para segurança adicional. Por exemplo, você pode configurar regras de implantação em um ambiente para restringir quais ramificações e tags podem ser implantadas no ambiente ou acessar segredos de ambiente. Para saber mais, confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md).
 
-### Adicionando configurações de permissões
+### Adicionando configurações de permissões { #adding-permissions-settings }
 
 A execução do trabalho ou do fluxo de trabalho requer uma configuração `permissions` com [`id-token: write`](../../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token) para permitir que o provedor OIDC de GitHub crie um token JWT para cada execução.
 
@@ -65,7 +65,7 @@ A execução do trabalho ou do fluxo de trabalho requer uma configuração `perm
 
 Para obter informações detalhadas sobre permissões necessárias, exemplos de configuração e cenários avançados, confira [Referência do OpenID Connect](../../../reference/security/oidc.md#workflow-permissions-for-the-requesting-the-oidc-token).
 
-### Solicitando o token de acesso
+### Solicitando o token de acesso { #requesting-the-access-token }
 
 A [`azure/login`](https://github.com/Azure/login) ação recebe um JWT do provedor OIDC GitHub e solicita um token de acesso do Azure. Para obter mais informações, consulte a documentação [`azure/login`](https://github.com/Azure/login).
 
@@ -73,10 +73,10 @@ O exemplo a seguir troca um token de ID OIDC com Azure para receber um token de 
 
 ```yaml copy
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 name: Run Azure Login with OIDC
 on: [push]
 
@@ -101,7 +101,7 @@ jobs:
 ```
 
 ```
-## Leitura adicional
+## Leitura adicional { #further-reading }
 
 * [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](oidc-with-reusable-workflows.md)
 * [Referência de executores auto-hospedados](../../../reference/runners/self-hosted-runners.md)

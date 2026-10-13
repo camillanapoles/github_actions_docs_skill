@@ -10,15 +10,15 @@ captured: '2026-10-13'
 section: How tos / Secure your work / Use artifact attestations
 ---
 
-# Verificação de atestados offline
+# Verificação de atestados offline { #verifying-attestations-offline }
 
 _Os atestados de artefato podem ser verificados sem uma conexão de Internet._
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Antes de iniciar este guia, você deve gerar atestados de artefato para seus builds. Confira [Usar atestados de artefatos para estabelecer a procedência de compilações](use-artifact-attestations.md).
 
-## Etapa 1: baixar o pacote de atestados
+## Etapa 1: baixar o pacote de atestados { #step-1-download-attestation-bundle }
 
 Primeiro, obtenha o pacote de comprovação da API de atestado.
 
@@ -37,7 +37,7 @@ Any previous content has been overwritten
 The trusted metadata is now available at sha256:ae57936def59bc4c75edd3a837d89bcefc6d3a5e31d55a6fa7a71624f92c3c3b.jsonl
 ```
 
-## Etapa 2: Baixar raízes confiáveis
+## Etapa 2: Baixar raízes confiáveis { #step-2-download-trusted-roots }
 
 Depois, obtenha o material chave das raízes confiáveis.
 
@@ -47,13 +47,13 @@ Os atestados de artefatos usam a instância pública do Sigstore na rede públic
 gh attestation trusted-root > trusted_root.jsonl
 ```
 
-### Atualização de informações da raiz confiável em um ambiente offline
+### Atualização de informações da raiz confiável em um ambiente offline { #updating-trusted-root-information-in-an-offline-environment }
 
 É uma prática recomendada gerar um novo arquivo de `trusted_root.jsonl` sempre que você importar um novo material assinado para seu ambiente off-line.
 
 O material chave em `trusted_root.jsonl` não tem uma data de expiração embutida, portanto, qualquer coisa assinada antes da geração do arquivo de raiz confiável continuará a ser verificada com sucesso. Qualquer coisa assinada após a geração do arquivo será verificada até que a instância do Sigstore gire o respectivo material de chaves, o que geralmente acontece algumas vezes por ano. Você não saberá se o material de chave foi revogado desde a última vez que gerou o arquivo de raiz confiável.
 
-## Etapa 3: fazer verificação offline
+## Etapa 3: fazer verificação offline { #step-3-perform-offline-verification }
 
 Agora, você está pronto para verificar o artefato offline.
 

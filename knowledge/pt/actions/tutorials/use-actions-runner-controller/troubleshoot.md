@@ -10,19 +10,19 @@ captured: '2026-10-13'
 section: Tutorials / Use actions runner controller
 ---
 
-# Solução de problemas dos erros do Actions Runner Controller
+# Solução de problemas dos erros do Actions Runner Controller { #troubleshooting-actions-runner-controller-errors }
 
 _Saiba como solucionar Actions Runner Controller erros._
 
-## Registro
+## Registro { #logging }
 
 Os Actions Runner Controller recursos (ARC), que incluem o controlador, o ouvinte e os executores, gravam logs na saída padrão (`stdout`). Recomendamos que você implemente uma solução de logging para coletar e armazenar esses logs. Ter logs disponíveis pode ajudar você ou o suporte do GitHub com solução de problemas e depuração. Para obter mais informações, confira [Arquitetura de Registro em Log](https://kubernetes.io/docs/concepts/cluster-administration/logging/) na documentação do Kubernetes.
 
-## Rótulos de recursos
+## Rótulos de recursos { #resources-labels }
 
 Os rótulos são adicionados aos recursos criados por Actions Runner Controller, que incluem os pods controlador, ouvinte e executor. Você pode usar esses rótulos para filtrar recursos e ajudar na solução de problemas.
 
-### Pod do controlador
+### Pod do controlador { #controller-pod }
 
 Os seguintes rótulos são aplicados ao pod do controlador.
 
@@ -34,7 +34,7 @@ app.kubernetes.io/part-of=gha-runner-scale-set-controller
 app.kubernetes.io/version=<chart version>
 ```
 
-### Pod do ouvinte
+### Pod do ouvinte { #listener-pod }
 
 Os rótulos a seguir são aplicados aos pods do ouvinte.
 
@@ -49,7 +49,7 @@ app.kubernetes.io/part-of=gha-runner-scale-set
 app.kubernetes.io/version= # Chart version
 ```
 
-### Pod do executor
+### Pod do executor { #runner-pod }
 
 Os rótulos a seguir são aplicados aos runner pods.
 
@@ -63,7 +63,7 @@ app.kubernetes.io/part-of=gha-runner-scale-set
 app.kubernetes.io/version= # Chart version
 ```
 
-## Verificar os logs do ouvinte do conjunto de executores e controlador
+## Verificar os logs do ouvinte do conjunto de executores e controlador { #checking-the-logs-of-the-controller-and-runner-set-listener }
 
 Para verificar os logs do pod do controlador, você poderá usar o comando a seguir.
 
@@ -77,11 +77,11 @@ Para verificar os logs do ouvinte do conjunto de executores, você poderá usar 
 kubectl logs -n <CONTROLLER_NAMESPACE> -l auto-scaling-runner-set-namespace=arc-systems -l auto-scaling-runner-set-name=arc-runner-set
 ```
 
-## Usando os gráficos do branch `master`
+## Usando os gráficos do branch `master` { #using-the-charts-from-the-master-branch }
 
 Recomendamos que você use os gráficos da versão mais recente em vez do branch `master`. O branch `master` é altamente instável e não podemos garantir que os gráficos no branch `master` funcionarão em um determinado momento.
 
-## Solução de problemas do pod do ouvinte
+## Solução de problemas do pod do ouvinte { #troubleshooting-the-listener-pod }
 
 Se o pod do controlador estiver em execução, mas o pod do ouvinte não estiver, inspecione os logs do controlador primeiro e confira se há erros. Se não houver erros e o pod do ouvinte do conjunto de executores ainda não estiver em execução, verifique se o pod do controlador tem acesso ao servidor da API do Kubernetes em seu cluster.
 
@@ -89,7 +89,7 @@ Se você tiver um proxy configurado ou estiver usando um proxy sidecar injetado 
 
 Se você instalou o conjunto de executores de dimensionamento automático, mas o pod do ouvinte não foi criado, verifique se o `githubConfigSecret` fornecido está correto e se o `githubConfigUrl` fornecido é preciso. Confira [Autenticando o ARC na API de GitHub](../../how-tos/manage-runners/use-actions-runner-controller/authenticate-to-the-api.md) e [Como implantar conjuntos de dimensionamento de executores com o Actions Runner Controller](../../how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets.md) para saber mais.
 
-## Os pods do executor são recriados após uma execução de fluxo de trabalho cancelada
+## Os pods do executor são recriados após uma execução de fluxo de trabalho cancelada { #runner-pods-are-recreated-after-a-canceled-workflow-run }
 
 Depois que uma execução de fluxo de trabalho é cancelada, os eventos a seguir acontecem.
 
@@ -99,7 +99,7 @@ Depois que uma execução de fluxo de trabalho é cancelada, os eventos a seguir
 
 Poderá haver um pequeno atraso entre quando os executores recebem o sinal e quando o ouvinte recebe o sinal. Quando os pods do executor começam a terminar, o ouvinte tenta trazer novos executores para corresponder ao número desejado de executores de acordo com o estado em que está. No entanto, quando o ouvinte receber o sinal de cancelamento, ele atuará para reduzir o número de executores. Eventualmente, o ouvinte reduzirá verticalmente para o número desejado de executores. Enquanto isso, você pode conferir executores adicionais.
 
-## Erro: `Name must have up to n characters`
+## Erro: `Name must have up to n characters` { #error-name-must-have-up-to-n-characters }
 
 O ARC usa os nomes gerados de determinados recursos como rótulos para outros recursos. Devido a esse requisito, o ARC limita os nomes de recursos para 63 caracteres.
 
@@ -111,7 +111,7 @@ Error: INSTALLATION FAILED: execution error at (gha-runner-scale-set/templates/a
 Error: INSTALLATION FAILED: execution error at (gha-runner-scale-set/templates/autoscalingrunnerset.yaml:8:5): Namespace must have up to 63 characters
 ```
 
-## Erro: `Access to the path /home/runner/_work/_tool is denied`
+## Erro: `Access to the path /home/runner/_work/_tool is denied` { #error-access-to-the-path-homerunnerworktool-is-denied }
 
 Você poderá ver esse erro se estiver usando o modo Kubernetes com volumes persistentes. Este erro ocorre se o contêiner runner estiver em execução com um usuário não raiz e estiver causando uma incompatibilidade de permissões com o volume montado.
 
@@ -128,7 +128,7 @@ Para corrigir isso, utilize uma das opções a seguir.
         - name: runner
           image: ghcr.io/actions/actions-runner:latest
           command: ["/home/runner/run.sh"]
-  ```
+        ```
 
 * Se atualizar o `securityContext` do pod do executor não for uma solução viável, você poderá resolver o problema usando `initContainers` para alterar a propriedade do volume montado, como indicado abaixo.
 
@@ -146,17 +146,17 @@ Para corrigir isso, utilize uma das opções a seguir.
         - name: runner
           image: ghcr.io/actions/actions-runner:latest
           command: ["/home/runner/run.sh"]
-  ```
+        ```
 
-## Erro: `failed to get access token for GitHub App auth: 401 Unauthorized`
+## Erro: `failed to get access token for GitHub App auth: 401 Unauthorized` { #error-failed-to-get-access-token-for-github-app-auth-401-unauthorized }
 
 Um `401 Unauthorized` erro ao tentar obter um token de acesso para um GitHub App pode ser resultado de um descompasso do Protocolo de Tempo de Rede (NTP). Verifique se o sistema Kubernetes está sincronizando com precisão com um servidor do NTP e se não há um descompasso de tempo significativo. Há mais margem de manobra se o tempo do sistema estiver atrasado GitHub, mas se o ambiente estiver mais de alguns segundos à frente, ocorrerão 401 erros ao usar GitHub App.
 
-## Limites do grupo de executores
+## Limites do grupo de executores { #runner-group-limits }
 
 Você pode ter no máximo 10.000 executores auto-hospedados em um grupo de executores. Se esse limite for atingido, não será possível adicionar um novo executor.
 
-## Atualizações do executor
+## Atualizações do executor { #runner-updates }
 
 > [!WARNING] Todas as atualizações lançadas para o software, incluindo versões principais, secundárias ou de patch, são consideradas como uma atualização disponível. Se você não executar uma atualização de software em 30 dias, o serviço do GitHub Actions não colocará trabalhos na fila para o seu executor. Além disso, se uma atualização crítica de segurança for necessária, o serviço de GitHub Actions não colocará os trabalhos na fila do seu executor até que ele seja atualizado.
 
@@ -164,7 +164,7 @@ Valide se a versão do software executor e/ou as imagens de executores personali
 
 Para saber mais, confira [Referência de executores auto-hospedados](../../reference/runners/self-hosted-runners.md).
 
-## Aviso legal
+## Aviso legal { #legal-notice }
 
 Partes foram adaptadas do <https://github.com/actions/actions-runner-controller/> de acordo com a licença Apache-2.0:
 

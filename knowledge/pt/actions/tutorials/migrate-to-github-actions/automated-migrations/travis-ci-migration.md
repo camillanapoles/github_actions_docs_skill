@@ -10,15 +10,15 @@ captured: '2026-10-13'
 section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
-# Migrando do Travis CI com GitHub Actions Importer
+# Migrando do Travis CI com GitHub Actions Importer { #migrating-from-travis-ci-with-github-actions-importer }
 
 _Saiba como usar GitHub Actions Importer para automatizar a migração de seus pipelines de CI travis para GitHub Actions._
 
-## Sobre a migração do Travis CI para o GitHub Actions usando o importador
+## Sobre a migração do Travis CI para o GitHub Actions usando o importador { #about-migrating-from-travis-ci-with-github-actions-importer }
 
 As instruções a seguir orientarão você na configuração do ambiente a ser usado GitHub Actions Importer para migrar pipelines de CI do Travis para GitHub Actions.
 
-### Pré-requisitos
+### Pré-requisitos { #prerequisites }
 
 * Uma conta de CI do Travis ou uma organização com pipelines e trabalhos que você deseja converter em GitHub Actions fluxos de trabalho.
 * Acesso para criar um token de acesso à API do Travis CI para sua conta ou sua organização.
@@ -30,11 +30,11 @@ As instruções a seguir orientarão você na configuração do ambiente a ser u
 
   > A CLI e o contêiner do GitHub Actions Importer não precisam ser instalados no mesmo servidor que a plataforma de CI.
 
-### Limitações
+### Limitações { #limitations }
 
 Há algumas limitações ao migrar de pipelines de CI travis para GitHub Actions com GitHub Actions Importer.
 
-#### Tarefas manuais
+#### Tarefas manuais { #manual-tasks }
 
 Alguns constructos do Travis CI precisam ser migrados manualmente. Estão incluídos:
 
@@ -43,19 +43,19 @@ Alguns constructos do Travis CI precisam ser migrados manualmente. Estão inclu�
 
 Para saber mais sobre migrações manuais, confira [Migrando de Travis CI para GitHub Actions](../manual-migrations/migrate-from-travis-ci.md).
 
-#### Linguagens do projeto do Travis CI
+#### Linguagens do projeto do Travis CI { #travis-ci-project-languages }
 
 GitHub Actions Importer transforma as linguagens de projeto do Travis CI adicionando um conjunto de ferramentas de build pré-configuradas e um script de build padrão ao fluxo de trabalho transformado. Se nenhum idioma for declarado explicitamente, GitHub Actions Importer pressupõe que uma linguagem de projeto seja Ruby.
 
 Para obter uma lista dos idiomas de projeto com suporte, consulte [os idiomas de projeto com suporte](#supported-project-languages)GitHub Actions Importer.
 
-## Instalando a extensão da GitHub Actions Importer CLI
+## Instalando a extensão da GitHub Actions Importer CLI { #installing-the-github-actions-importer-cli-extension }
 
 1. Instale a extensão da CLI do GitHub Actions Importer:
 
             ```bash copy
    gh extension install github/gh-actions-importer
-   ```
+            ```
 
 2. Verifique se a extensão foi instalada:
 
@@ -72,9 +72,9 @@ Para obter uma lista dos idiomas de projeto com suporte, consulte [os idiomas de
      forecast   Forecast GitHub Actions usage from historical pipeline utilization.
      dry-run    Convert a pipeline to a GitHub Actions workflow and output its yaml file.
      migrate    Convert a pipeline to a GitHub Actions workflow and open a pull request with the changes.
-   ```
+            ```
 
-## Como configurar credenciais
+## Como configurar credenciais { #configuring-credentials }
 
 O `configure` comando da CLI é usado para definir as credenciais e as opções necessárias para GitHub Actions Importer ao trabalhar com Travis CI e GitHub.
 
@@ -92,7 +92,7 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
 
             ```shell
    gh actions-importer configure
-   ```
+            ```
 
    O comando `configure` solicitará que você insira as seguintes informações:
 
@@ -115,22 +115,22 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
    ✔ Base url of the Travis CI instance: https://travis-ci.com
    ✔ Travis CI organization name: actions-importer-labs
    Environment variables successfully updated.
-   ```
+            ```
 
 4. No terminal, execute o comando CLI GitHub Actions Importer`update` para se conectar a GitHub PackagesContainer registry e garantir que a imagem do contêiner esteja atualizada para a versão mais recente:
 
             ```shell
    gh actions-importer update
-   ```
+            ```
 
    A saída do comando será semelhante ao seguinte:
 
             ```shell
    Updating ghcr.io/actions-importer/cli:latest...
    ghcr.io/actions-importer/cli:latest up-to-date
-   ```
+            ```
 
-## Executar uma auditoria do Travis CI
+## Executar uma auditoria do Travis CI { #perform-an-audit-of-travis-ci }
 
 Use o comando `audit` para obter uma exibição de alto nível de todos os pipelines de um servidor do Travis CI.
 
@@ -140,7 +140,7 @@ O comando `audit` executa as seguintes etapas:
 2. Converte cada pipeline em seu fluxo de trabalho equivalente GitHub Actions .
 3. Gera um relatório que resume o quão completa e complexa de uma migração é possível com GitHub Actions Importer.
 
-### Como executar o comando de auditoria
+### Como executar o comando de auditoria { #running-the-audit-command }
 
 Para executar uma auditoria de um servidor do Travis CI, execute o seguinte comando no terminal:
 
@@ -148,7 +148,7 @@ Para executar uma auditoria de um servidor do Travis CI, execute o seguinte coma
 gh actions-importer audit travis-ci --output-dir tmp/audit
 ```
 
-### Como inspecionar os resultados da auditoria
+### Como inspecionar os resultados da auditoria { #inspecting-the-audit-results }
 
 Os arquivos do diretório de saída especificado contêm os resultados da auditoria. Confira o arquivo `audit_summary.md` para ver um resumo dos resultados da auditoria.
 
@@ -168,7 +168,7 @@ Veja abaixo alguns termos importantes que podem aparecer na seção "Pipelines":
   * GitHub Actions Importer encontrou um erro interno ao convertê-lo.
   * Houve uma resposta de rede malsucedida que tornou o pipeline inacessível, o que geralmente ocorre devido a credenciais inválidas.
 
-#### Etapas de compilação
+#### Etapas de compilação { #build-steps }
 
 A seção "Etapas de compilação" contém uma visão geral das etapas de compilação individuais usadas em todos os pipelines e de quantas delas foram convertidas automaticamente por GitHub Actions Importer.
 
@@ -183,7 +183,7 @@ A seguir estão alguns termos-chave que podem aparecer na seção "Build steps":
   * Se você usar GitHub Enterprise Server, reunindo a lista de ações para sincronizar com sua instância.
   * Definir uma lista de permissões em nível organizacional para as ações utilizadas. Essa lista de ações é abrangente e inclui as ações que as equipes de segurança ou conformidade podem precisar analisar.
 
-#### Tarefas manuais
+#### Tarefas manuais { #manual-tasks-1 }
 
 A seção "Tarefas manuais" contém uma visão geral das tarefas que GitHub Actions Importer não podem ser concluídas automaticamente e que você deve concluir manualmente.
 
@@ -192,7 +192,7 @@ Veja abaixo alguns termos importantes que podem aparecer na seção "Tarefas man
 * Um **segredo** é um segredo no nível do repositório ou da organização que é usado nos pipelines convertidos. Esses segredos devem ser criados manualmente no GitHub Actions para que esses pipelines funcionem corretamente. Para saber mais, confira [Usar segredos em ações do GitHub](../../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 * Um **executor auto-hospedado refere-se** a um rótulo de um executor que é referenciado em um pipeline convertido que não é um GitHubexecutor hospedado. Será necessário definir manualmente esses executores para que os pipelines funcionem de maneira correta.
 
-#### Arquivos
+#### Arquivos { #files }
 
 A seção final do relatório de auditoria fornece um manifesto de todos os arquivos que foram gravados em disco durante a auditoria.
 
@@ -205,11 +205,11 @@ Cada arquivo de pipeline tem diversos arquivos incluídos na auditoria, incluind
 
 Além disso, o arquivo `workflow_usage.csv` contém uma lista separada por vírgula de todas as ações, todos os segredos e todos os executores usados pelos pipelines convertidos com sucesso. Isso pode ser útil para determinar quais fluxos de trabalho usam quais ações, segredos ou executores e para executar revisões de segurança.
 
-## Prever o uso potencial do executor de compilação
+## Prever o uso potencial do executor de compilação { #forecast-potential-build-runner-usage }
 
 Você pode usar o comando para prever o `forecast` uso potencial GitHub Actions com base em métricas de computação de execuções de pipeline concluídas em seu servidor de CI Travis.
 
-### Como executar o comando de previsão
+### Como executar o comando de previsão { #running-the-forecast-command }
 
 Para executar uma previsão de uso potencial GitHub Actions , execute o comando a seguir em seu terminal. Por padrão, GitHub Actions Importer inclui os sete dias anteriores no relatório de previsão.
 
@@ -217,7 +217,7 @@ Para executar uma previsão de uso potencial GitHub Actions , execute o comando 
 gh actions-importer forecast travis-ci --output-dir tmp/forecast
 ```
 
-### Como inspecionar o relatório de previsão
+### Como inspecionar o relatório de previsão { #inspecting-the-forecast-report }
 
 O arquivo `forecast_report.md` no diretório de saída especificado contém os resultados da previsão.
 
@@ -234,8 +234,8 @@ Veja abaixo alguns termos importantes que podem aparecer no relatório de previs
 
 Além disso, essas métricas são definidas para cada fila de runners no Travis CI. Isso é especialmente útil quando há uma combinação de executores hospedados ou auto-hospedados ou quando há computadores de especificação alta ou baixa, a fim de ver métricas específicas para diferentes tipos de executores.
 
-  ```
-## Executar uma simulação de migração de um pipeline do Travis CI
+        ```
+## Executar uma simulação de migração de um pipeline do Travis CI { #perform-a-dry-run-migration-of-a-travis-ci-pipeline }
 
 Você pode usar o `dry-run` comando para converter um pipeline de CI do Travis em um fluxo de trabalho equivalente GitHub Actions . Uma simulação cria os arquivos de saída em um diretório especificado, mas não abre uma solicitação de pull para migrar o pipeline.
 
@@ -249,11 +249,11 @@ gh actions-importer dry-run travis-ci --travis-ci-repository my-travis-ci-reposi
 
 Se houver algo que GitHub Actions Importer não foi capaz de converter automaticamente, como etapas de build desconhecidas ou um pipeline parcialmente bem-sucedido, talvez você queira criar transformadores personalizados para personalizar ainda mais o processo de conversão. Para saber mais, confira [Estendendo o Importador do GitHub Actions com transformadores personalizados](../../../reference/github-actions-importer/custom-transformers.md).
 
-## Executar uma migração de produção de um pipeline do Travis CI
+## Executar uma migração de produção de um pipeline do Travis CI { #perform-a-production-migration-of-a-travis-ci-pipeline }
 
 Você pode usar o `migrate` comando para converter um pipeline de CI do Travis e abrir uma solicitação pull com o fluxo de trabalho equivalente GitHub Actions .
 
-### Como executar o comando de migração
+### Como executar o comando de migração { #running-the-migrate-command }
 
 Para migrar um pipeline de CI do Travis, GitHub Actionsexecute o seguinte comando em seu terminal, substituindo o `target-url` valor pela URL do repositório GitHub e `my-travis-ci-repository` pelo nome do repositório travis ci.
 
@@ -269,7 +269,7 @@ $ gh actions-importer migrate travis-ci --target-url https://github.com/octo-org
 [2022-08-20 22:08:20] Pull request: 'https://github.com/octo-org/octo-repo/pull/1'
 ```
 
-### Como inspecionar a solicitação de pull
+### Como inspecionar a solicitação de pull { #inspecting-the-pull-request }
 
 A saída de uma execução bem-sucedida do comando `migrate` contém um link para a nova solicitação de pull que adiciona o fluxo de trabalho convertido ao seu repositório.
 
@@ -280,11 +280,11 @@ Alguns elementos importantes da solicitação de pull incluem:
 
 Quando terminar de inspecionar a pull request, você poderá mesclá-la para adicionar o fluxo de trabalho ao repositório do GitHub.
 
-## Referência
+## Referência { #reference }
 
 Esta seção contém informações de referência sobre variáveis de ambiente, argumentos opcionais e sintaxe com suporte ao usar GitHub Actions Importer para migrar do Travis CI.
 
-### Usando variáveis de ambiente
+### Usando variáveis de ambiente { #using-environment-variables }
 
 O GitHub Actions Importer usa variáveis de ambiente para a configuração de autenticação. Essas variáveis são definidas durante o processo de configuração com o comando `configure`. Para obter mais informações, confira a seção [Como configurar as credenciais](#configuring-credentials).
 
@@ -300,7 +300,7 @@ GitHub Actions Importer usa as seguintes variáveis de ambiente para se conectar
 
 Essas variáveis de ambiente podem ser especificadas em um `.env.local` arquivo que é carregado pelo GitHub Actions Importer quando ele é executado.
 
-### Como usar argumentos opcionais
+### Como usar argumentos opcionais { #using-optional-arguments }
 
 Há argumentos opcionais que você pode usar com os subcomandos do GitHub Actions Importer para personalizar sua migração.
 
@@ -330,7 +330,7 @@ Use o argumento `--config-file-path` com os subcomandos `audit`, `dry-run` e `mi
 
 Por padrão, GitHub Actions Importer busca o conteúdo do pipeline do controle do código-fonte. O argumento `--config-file-path` instrui GitHub Actions Importer a usar os arquivos de origem especificados.
 
-##### Exemplo de auditoria
+##### Exemplo de auditoria { #audit-example }
 
 Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML especificado para executar uma auditoria.
 
@@ -348,7 +348,7 @@ source_files:
     path: path/to/.travis.yml
 ```
 
-##### Exemplo de simulação a seco
+##### Exemplo de simulação a seco { #dry-run-example }
 
 Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML especificado como o arquivo de origem para executar uma execução seca.
 
@@ -358,7 +358,7 @@ O pipeline é selecionado pela correspondência do `repository_slug` no arquivo 
 gh actions-importer dry-run travis-ci --travis-ci-repository travis-org-name/travis-repo-name --output-dir ./output/ --config-file-path ./path/to/travis-ci/config.yml
 ```
 
-### Linguagens de projeto com suporte
+### Linguagens de projeto com suporte { #supported-project-languages }
 
 GitHub Actions Importer dá suporte à migração de projetos de CI travis nos idiomas a seguir.
 
@@ -400,7 +400,7 @@ GitHub Actions Importer dá suporte à migração de projetos de CI travis nos i
 <li><code>swift</code></li>
 </ul>
 
-### Sintaxe com suporte para pipelines do Travis CI
+### Sintaxe com suporte para pipelines do Travis CI { #supported-syntax-for-travis-ci-pipelines }
 
 A tabela a seguir mostra os tipos de propriedades que GitHub Actions Importer pode converter atualmente. Para obter mais detalhes sobre como a sintaxe do pipeline do Travis CI se alinha GitHub Actions, consulte [Migrando de Travis CI para GitHub Actions](../manual-migrations/migrate-from-travis-ci.md).
 
@@ -425,7 +425,7 @@ A tabela a seguir mostra os tipos de propriedades que GitHub Actions Importer po
 
 Para obter informações sobre os recursos do Travis CI compatíveis, consulte o repositório [`github/gh-actions-importer`](https://github.com/github/gh-actions-importer/blob/main/docs/travis_ci/index.md).
 
-### Sintaxe de variáveis de ambiente
+### Sintaxe de variáveis de ambiente { #environment-variables-syntax }
 
 GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáveis de ambiente de CI travis padrão para o equivalente mais próximo em GitHub Actions.
 
@@ -451,7 +451,7 @@ GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáv
 | `$TRAVIS_REPO_SLUG`           | `${{ github.repository_owner/github.repository }}`                                    |
 | `$TRAVIS_BUILD_WEB_URL`       | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
 
-## Aviso legal
+## Aviso legal { #legal-notice }
 
 Partes foram adaptadas do <https://github.com/github/gh-actions-importer/> de acordo com a licença MIT:
 

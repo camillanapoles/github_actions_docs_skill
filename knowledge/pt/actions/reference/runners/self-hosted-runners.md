@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: Reference / Runners
 ---
 
-# Referência de executores auto-hospedados
+# Referência de executores auto-hospedados { #self-hosted-runners-reference }
 
 _Encontre informações sobre como configurar e usar executores auto-hospedados._
 
-## Requisitos para executores auto-hospedados
+## Requisitos para executores auto-hospedados { #requirements-for-self-hosted-runner-machines }
 
 Você pode usar um computador como um executor auto-hospedado, desde que ele atenda a estes requisitos:
 
@@ -23,7 +23,7 @@ Você pode usar um computador como um executor auto-hospedado, desde que ele ate
 * A máquina tem recursos de hardware suficientes para o tipo de fluxos de trabalho que você planeja executar. O aplicativo de runner autogerenciado requer apenas recursos mínimos.
 * Se você desejar executar fluxos de trabalho que usam ações do contêiner do Docker ou dos contêineres de serviço, você deverá usar uma máquina Linux e o Docker deve estar instalados.
 
-### Sistemas operacionais compatíveis
+### Sistemas operacionais compatíveis { #supported-operating-systems }
 
 #### Linux
 
@@ -49,13 +49,13 @@ Você pode usar um computador como um executor auto-hospedado, desde que ele ate
 
 * macOS 11.0 (Big Sur) ou posterior
 
-### Arquiteturas de processador com suporte
+### Arquiteturas de processador com suporte { #supported-processor-architectures }
 
 * `x64` – Linux, macOS e Windows.
 * `ARM64` – Linux, macOS, Windows (atualmente em prévia pública).
 * `ARM32` – Linux.
 
-## Precedência de encaminhamento para executores auto-hospedados
+## Precedência de encaminhamento para executores auto-hospedados { #routing-precedence-for-self-hosted-runners }
 
 Ao rotear um trabalho para um executor auto-hospedado, o GitHub procura um executor que corresponda aos rótulos e grupos `runs-on` do trabalho:
 
@@ -64,7 +64,7 @@ Ao rotear um trabalho para um executor auto-hospedado, o GitHub procura um execu
 * Se o GitHub não encontrar um executor online e ocioso que corresponda aos rótulos e grupos `runs-on` do trabalho, o trabalho permanecerá na fila até que um executor fique online.
 * Se o trabalho permanecer na fila por mais de 24 horas, o trabalho falhará.
 
-## Dimensionamento automático
+## Dimensionamento automático { #autoscaling }
 
 O dimensionamento automático permite ajustar dinamicamente o número de executores auto-hospedados com base na demanda. Isso ajuda a otimizar a utilização de recursos e garante capacidade de executor suficiente durante os horários de pico, reduzindo os custos durante períodos de baixa atividade. Há várias abordagens para implementar o dimensionamento automático para corredores auto-hospedados, cada uma com diferentes compensações em termos de complexidade, confiabilidade e capacidade de resposta.
 
@@ -78,7 +78,7 @@ GitHub recomenda o ARC para organizações com infraestrutura do Kubernetes e eq
 
 Para saber mais, confira [Controlador de Ações Runner](../../concepts/runners/actions-runner-controller.md) e [Suporte para o Controlador do Executor de Ações](../../concepts/runners/support-for-arc.md).
 
-### GitHub Actions Cliente do Conjunto de Dimensionamento do Executor
+### GitHub Actions Cliente do Conjunto de Dimensionamento do Executor { #github-actions-runner-scale-set-client }
 
 O cliente GitHub Actions Runner Scale Set é um módulo autônomo baseado em Go que capacita equipes de plataforma, integradores e provedores de infraestrutura a criar soluções personalizadas de dimensionamento automático para GitHub Actions executores em VMs, contêineres, infraestrutura local e serviços de nuvem, com suporte para plataformas Windows, Linux e macOS.
 
@@ -90,7 +90,7 @@ O GitHub Actions Runner Scale Set Client é um projeto código aberto. O [reposi
 
 > **Nota:** o Cliente do Conjunto de Dimensionamento do Executor não substitui o Actions Runner Controller (ARC), que continua sendo a implementação de referência das APIs de conjunto de dimensionamento e a solução recomendada do Kubernetes para executores de escalonamento automático. Em vez disso, o cliente é uma ferramenta complementar para interface com as mesmas APIs de conjunto de escalas para criar soluções de escalonamento automático personalizadas fora do Kubernetes.
 
-### Executores efêmeros para dimensionamento automático
+### Executores efêmeros para dimensionamento automático { #ephemeral-runners-for-autoscaling }
 
 O GitHub recomenda a implementação do escalonamento automático com executores auto-hospedados efêmeros; o escalonamento automático com executores auto-hospedados persistentes não é recomendado. Em determinados casos, GitHub não pode garantir que os trabalhos não sejam atribuídos a executores persistentes enquanto eles são desativados. Com executores efêmeros, isso pode ser garantido porque GitHub atribui apenas um trabalho a um executor.
 
@@ -111,7 +111,7 @@ O serviço GitHub Actions cancelará automaticamente o registro do executor depo
 
 Como alternativa, você pode criar executores just-in-time efêmeros usando a API REST. Para saber mais, confira [Pontos de extremidade da API REST para executores auto-hospedados](https://docs.github.com/pt/rest/actions/self-hosted-runners).
 
-### Atualizações de software dos executores em executores auto-hospedados
+### Atualizações de software dos executores em executores auto-hospedados { #runner-software-updates-on-self-hosted-runners }
 
 Por padrão, os executores auto-hospedados realizarão automaticamente uma atualização de software sempre que uma nova versão do executor estiver disponível. Se você usar executores efêmeros em contêineres, isso pode levar a atualizações de software repetidas quando uma nova versão do executor for lançada. A desabilitação das atualizações automáticas permite que você atualize a versão do executor na imagem do contêiner diretamente no seu próprio agendamento.
 
@@ -129,7 +129,7 @@ Para obter instruções sobre como instalar a última versão do executor, confi
 
 > [!WARNING] Todas as atualizações lançadas para o software, incluindo versões principais, secundárias ou de patch, são consideradas como uma atualização disponível. Se você não executar uma atualização de software em 30 dias, o serviço do GitHub Actions não colocará trabalhos na fila para o seu executor. Além disso, se uma atualização crítica de segurança for necessária, o serviço de GitHub Actions não colocará os trabalhos na fila do seu executor até que ele seja atualizado.
 
-### Webhooks para dimensionamento automático
+### Webhooks para dimensionamento automático { #webhooks-for-autoscaling }
 
 Você pode criar seu ambiente de dimensionamento automático usando cargas recebidas do webhook [`workflow_job`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#workflow_job). Esse webhook está disponível nos níveis de repositório, organização e empresa, e a carga útil desse evento contém uma chave `action` que corresponde às fases do ciclo de vida de uma tarefa de workflow; por exemplo, quando as tarefas são `queued`, `in_progress` e `completed`. Você deverá criar a sua própria automação de dimensionamento em resposta a estas cargas de webhook.
 
@@ -138,7 +138,7 @@ Você pode criar seu ambiente de dimensionamento automático usando cargas receb
 
 > **Nota:** Essa abordagem depende da pontualidade da entrega de webhook para tomar decisões de dimensionamento, o que pode introduzir atrasos e preocupações de confiabilidade. Considere usar o Actions Controller ou o Scale Set Client para cenários de escalonamento automático de grande volume.
 
-### Requisitos de autenticação
+### Requisitos de autenticação { #authentication-requirements }
 
 Você pode registrar e excluir os executores auto-hospedados do repositório e da organização usando [a API](https://docs.github.com/pt/rest/actions/self-hosted-runners). Para se autenticar na API, sua implementação de dimensionamento automático pode usar um token de acesso ou um GitHub aplicativo.
 
@@ -157,21 +157,21 @@ Você pode registrar e excluir os executores auto-hospedados da empresa usando [
 
 Seu token de acesso exigirá o escopo `manage_runners:enterprise`.
 
-## Comunicação
+## Comunicação { #communication }
 
 Os executores auto-hospedados se conectam ao GitHub para receber atribuições de trabalhos e baixar novas versões do aplicativo do executor.
 
 O aplicativo de executor do GitHub Actions tem código aberto. Você pode contribuir e apresentar problemas no repositório do [executor](https://github.com/actions/runner).
 Quando uma nova versão é lançada, o aplicativo executor se atualiza automaticamente quando um trabalho é atribuído ao executor ou dentro de uma semana após o lançamento, se o executor não tiver recebido nenhum trabalho.
 
-### Requisitos para comunicação com GitHub
+### Requisitos para comunicação com GitHub { #requirements-for-communication-with-your-github-enterprise-server-instance }
 
 * O aplicativo do executor auto-hospedado deve estar em execução no computador host para aceitar e executar trabalhos GitHub Actions.
 * O computador host deve ter acesso à rede apropriado com pelo menos 70 Kbps de velocidade de upload e download.
 * O computador host deve ser capaz de fazer conexões HTTPS de saída pela porta 443.
 * Dependendo da função dos fluxos de trabalho atribuídos ao seu executor auto-hospedado, o computador host deve ser capaz de se comunicar com os GitHub domínios listados abaixo.
 
-### Domínios acessíveis por função
+### Domínios acessíveis por função { #communication-with-githubcom }
 
 !!! note
     Alguns dos domínios listados são configurados por meio de registros `CNAME`. Alguns firewalls podem exigir que você adicione regras de maneira recursiva para todos os registros `CNAME`. Observe que os registros `CNAME` poderão mudar no futuro e que apenas os domínios listados permanecerão constantes.

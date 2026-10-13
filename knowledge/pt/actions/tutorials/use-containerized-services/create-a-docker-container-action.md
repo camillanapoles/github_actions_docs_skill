@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: Tutorials / Use containerized services
 ---
 
-# Criando uma ação de contêiner do Docker
+# Criando uma ação de contêiner do Docker { #creating-a-docker-container-action }
 
 _Neste tutorial, você aprenderá a criar uma ação de contêiner do Docker._
 
-## Introdução
+## Introdução { #introduction }
 
 Neste guia, você aprenderá os componentes básicos necessários para criar e usar uma ação do contêiner Docker empacotado. Para manter o foco deste guia nos componentes necessários para empacotar a ação, a funcionalidade do código da ação é mínima. A ação imprime "Olá, mundo" nos registros ou "Olá, \[who-to-greet]", se você fornecer um nome personalizado.
 
@@ -25,13 +25,13 @@ Executores auto-hospedados devem usar um sistema operacional Linux e ter o Docke
 !!! warning
     Ao criar fluxos de trabalho e ações, sempre considere se o código poderá executar entradas não confiáveis de possíveis invasores. Certos contextos devem ser tratados como entradas não confiáveis, uma vez que um invasor pode inserir seu próprio conteúdo malicioso. Para saber mais, confira [Referência de uso seguro](../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks).
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 * Você deve criar um repositório no GitHub e cloná-lo para sua estação de trabalho. Para saber mais, confira [Criar um repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/creating-a-new-repository) e [Clonar um repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository).
 * Se o repositório usar o Git LFS, você deverá incluir os objetos nos arquivos compactados do repositório. Para saber mais, confira [Gerenciando objetos LFS do Git em arquivos do seu repositório](https://docs.github.com/pt/enterprise-cloud@latest/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-git-lfs-objects-in-archives-of-your-repository).
 * Talvez seja útil ter uma compreensão básica das variáveis de GitHub Actionsambiente e do sistema de arquivos de contêiner do Docker. Para saber mais, confira [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md) e [Referência de executores hospedados pelo GitHub](../../reference/runners/github-hosted-runners.md#docker-container-filesystem).
 
-## Criação de um Dockerfile
+## Criação de um Dockerfile { #creating-a-dockerfile }
 
 No diretório `hello-world-docker-action`, crie um arquivo `Dockerfile`. Verifique se o seu nome de arquivo está em maiúsculas corretamente (use um `D` maiúsculo, mas não um `f` maiúsculo) se estiver tendo problemas. Para saber mais, confira [Suporte do Dockerfile para GitHub Actions](../../reference/workflows-and-actions/dockerfile-support.md).
 
@@ -50,7 +50,7 @@ ENTRYPOINT ["/entrypoint.sh"]
 ```
 
 ```
-## Criar um arquivo de metadados de ação
+## Criar um arquivo de metadados de ação { #creating-an-action-metadata-file }
 
 Crie um arquivo `action.yml` no diretório `hello-world-docker-action` que você criou acima. Para saber mais, confira [Referência de sintaxe de metadados](../../reference/workflows-and-actions/metadata-syntax.md).
 
@@ -81,7 +81,7 @@ Esses metadados definem um parâmetro de entrada `who-to-greet` e um de saída `
 GitHub criará uma imagem a partir do seu `Dockerfile` e executará comandos em um novo contêiner com essa imagem.
 
 ```
-## Gravar um código de ação
+## Gravar um código de ação { #writing-the-action-code }
 
 Você pode escolher qualquer imagem Docker de base e, portanto, qualquer linguagem para sua ação. O exemplo de script de shell a seguir usa a variável de entrada `who-to-greet` para imprimir "Olá, \[quem cumprimentar]" no arquivo de log.
 
@@ -109,17 +109,17 @@ Se `entrypoint.sh` for executado sem erros, o status da ação será definido co
             ```shell copy
    git add entrypoint.sh
    git update-index --chmod=+x entrypoint.sh
-   ```
+            ```
 
 2. Opcionalmente, para verificar o modo de permissão do arquivo no índice Git, execute o comando a seguir.
 
             ```shell copy
    git ls-files --stage entrypoint.sh
-   ```
+            ```
 
    Uma saída como `100755 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       entrypoint.sh` significa que o arquivo tem a permissão executável. Neste exemplo, `755` denota a permissão executável.
 
-## Criando um README
+## Criando um README { #creating-a-readme }
 
 Para que as pessoas saibam como usar sua ação, você pode criar um arquivo README. Um arquivo README é útil quando você planeja compartilhar publicamente sua ação, mas também é uma ótima maneira de lembrá-lo ou sua equipe sobre como usar a ação.
 
@@ -160,7 +160,7 @@ with:
 ```
 
 ```
-## Faça commit, tag e push da sua ação
+## Faça commit, tag e push da sua ação { #commit-tag-and-push-your-action }
 
 Pelo terminal, faça commit dos arquivos `action.yml`, `entrypoint.sh`, `Dockerfile` e `README.md`.
 
@@ -173,7 +173,7 @@ git tag -a -m "My first action release" v1
 git push --follow-tags
 ```
 
-## Testar sua ação em um fluxo de trabalho
+## Testar sua ação em um fluxo de trabalho { #testing-out-your-action-in-a-workflow }
 
 Agora você está pronto para testar sua ação em um fluxo de trabalho.
 
@@ -181,7 +181,7 @@ Agora você está pronto para testar sua ação em um fluxo de trabalho.
 * Quando uma ação está em um repositório interno, a ação só pode ser usada em fluxos de trabalho no mesmo repositório.
 * As ações públicas podem ser usadas por fluxos de trabalho em qualquer repositório.
 
-### Exemplo usando uma ação pública
+### Exemplo usando uma ação pública { #example-using-a-public-action }
 
 O código de fluxo de trabalho a seguir usa a ação *hello world* concluída no repositório público [`actions/hello-world-docker-action`](https://github.com/actions/hello-world-docker-action). Copie o código de exemplo de fluxo de trabalho a seguir em um arquivo `.github/workflows/main.yml`, mas substitua o `actions/hello-world-docker-action` pelo nome do repositório e da ação. Você também pode substituir a entrada `who-to-greet` pelo seu nome.
 Ações públicas podem ser usadas mesmo que não sejam publicadas em GitHub Marketplace. Para saber mais, confira [Publicar ações no GitHub Marketplace](../../how-tos/create-and-publish-actions/publish-in-github-marketplace.md#publishing-an-action).
@@ -206,7 +206,7 @@ jobs:
         run: echo "The time was ${{ steps.hello.outputs.time }}"
 ```
 
-### Exemplo usando uma ação privada
+### Exemplo usando uma ação privada { #example-using-a-private-action }
 
 Copie o código de exemplo de fluxo de trabalho a seguir para um arquivo `.github/workflows/main.yml` no repositório da ação. Você também pode substituir a entrada `who-to-greet` pelo seu nome.
 Essa ação privada não pode ser publicada em GitHub Marketplace e só pode ser usada neste repositório.
@@ -239,7 +239,7 @@ No repositório, clique na guia **Ações** e selecione a execução mais recent
 
 Clique em **Etapa da ação Olá, mundo** e você verá "Olá, Mona, o Octocat" ou o nome usado para a entrada `who-to-greet` impresso no log. Para ver o carimbo de data/hora, clique em **Obter a hora da saída**.
 
-## Acessar arquivos criados por uma ação de contêiner
+## Acessar arquivos criados por uma ação de contêiner { #accessing-files-created-by-a-container-action }
 
 Quando uma ação de contêiner é executada, ela mapeia automaticamente o diretório de trabalho padrão (`GITHUB_WORKSPACE`) no executor com o diretório `/github/workspace` no contêiner. Todos os arquivos adicionados a esse diretório no contêiner estarão disponíveis para todas as etapas subsequentes no mesmo trabalho. Por exemplo, se você tiver uma ação de contêiner que compila seu projeto e quiser carregar a saída da compilação como um artefato, poderá usar as etapas a seguir.
 
@@ -266,7 +266,7 @@ jobs:
 
 Para obter mais informações sobre como carregar a saída de compilação como um artefato, consulte [Armazenar e compartilhar dados com artefatos de fluxo de trabalho](../store-and-share-data.md).
 
-## Exemplo de ações de contêiner do Docker em GitHub.com
+## Exemplo de ações de contêiner do Docker em GitHub.com { #example-docker-container-actions-on-githubcom }
 
 Você pode encontrar muitos exemplos de ações de contêiner do Docker em GitHub.com.
 

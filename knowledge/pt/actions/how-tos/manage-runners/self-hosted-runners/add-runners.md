@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: How tos / Manage runners / Self hosted runners
 ---
 
-# Adicionar executores auto-hospedados
+# Adicionar executores auto-hospedados { #adding-self-hosted-runners }
 
 _Você pode adicionar um runner autogerenciado a um repositório, a uma organização ou a uma empresa._
 
@@ -19,7 +19,7 @@ _Você pode adicionar um runner autogerenciado a um repositório, a uma organiza
 
     Para saber mais, confira [Referência de uso seguro](../../../reference/security/secure-use.md).
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Antes de adicionar um executor auto-hospedado, entenda o que eles são e como funcionam. Confira [Executores auto-hospedados](../../../concepts/runners/self-hosted-runners.md).
 
@@ -27,7 +27,7 @@ Além disso, você deve atender aos seguintes requisitos:
 
 * Você precisa ter acesso à máquina que você usará como runner auto-hospedado no seu ambiente.
 
-## Adicionar um executor auto-hospedado a um repositório
+## Adicionar um executor auto-hospedado a um repositório { #adding-a-self-hosted-runner-to-a-repository }
 
 Você pode adicionar executores auto-hospedados a um único repositório. Para adicionar um executor auto-hospedado a um repositório de usuário, você deve ser o proprietário do repositório. Para um repositório da organização, você deve ser proprietário da organização ou ter acesso de administrador ao repositório.
 
@@ -67,7 +67,7 @@ Para obter informações sobre como adicionar um executor auto-hospedado com a A
      * No Windows, o script `config` também pergunta se você deseja instalar o aplicativo do executor auto-hospedado como um serviço. Para Linux e macOS, você pode instalar um serviço depois de terminar de adicionar o executor. Para saber mais, confira [Configurar o aplicativo do executor auto-hospedado como um serviço](configure-the-application.md).
    * Executar o aplicativo executor auto-hospedado para conectar o computador a GitHub Actions.
 
-### Verificando se o seu executor auto-hospedado foi adicionado com sucesso
+### Verificando se o seu executor auto-hospedado foi adicionado com sucesso { #checking-that-your-self-hosted-runner-was-successfully-added }
 
 Após concluir as etapas para adicionar um executor auto-hospedado, o executor e seu status agora estão listados em "Executores".
 
@@ -81,7 +81,7 @@ A aplicação dos executores auto-hospedados deve estar activa para que o execut
 
 Para saber mais, confira [Monitorar e solucionar problemas de executores auto-hospedados](monitor-and-troubleshoot.md).
 
-## Adicionar um executor auto-hospedado a uma organização
+## Adicionar um executor auto-hospedado a uma organização { #adding-a-self-hosted-runner-to-an-organization }
 
 Você pode adicionar executores auto-hospedados no nível da organização, onde podem ser usados para processar trabalhos para múltiplos repositórios em uma organização. Para adicionar um executor auto-hospedado a uma organização, você deve ser um proprietário. Para obter informações sobre como adicionar um executor auto-hospedado com a API REST, confira [Pontos de extremidade da API REST para executores auto-hospedados](https://docs.github.com/pt/rest/actions/self-hosted-runners).
 
@@ -114,7 +114,7 @@ Você pode adicionar executores auto-hospedados no nível da organização, onde
      * No Windows, o script `config` também pergunta se você deseja instalar o aplicativo do executor auto-hospedado como um serviço. Para Linux e macOS, você pode instalar um serviço depois de terminar de adicionar o executor. Para saber mais, confira [Configurar o aplicativo do executor auto-hospedado como um serviço](configure-the-application.md).
    * Executar o aplicativo executor auto-hospedado para conectar o computador a GitHub Actions.
 
-### Verificando se o seu executor auto-hospedado foi adicionado com sucesso
+### Verificando se o seu executor auto-hospedado foi adicionado com sucesso { #checking-that-your-self-hosted-runner-was-successfully-added-1 }
 
 Após concluir as etapas para adicionar um executor auto-hospedado, o executor e seu status agora estão listados em "Executores".
 
@@ -131,11 +131,11 @@ Para saber mais, confira [Monitorar e solucionar problemas de executores auto-ho
 !!! note
     Por motivos de segurança, repositórios públicos não podem usar executores em um grupo de executores por padrão, mas você pode alterar isso nas configurações do grupo de executores. Para saber mais, confira [Gerenciar o acesso a executores auto-hospedados usando grupos](manage-access.md#changing-which-repositories-can-access-a-runner-group).
 
-## Adicionar um executor auto-hospedado a uma empresa
+## Adicionar um executor auto-hospedado a uma empresa { #adding-a-self-hosted-runner-to-an-enterprise }
 
 Se você usar GitHub Enterprise Cloud, poderá adicionar executores auto-hospedados a uma empresa, onde eles podem ser atribuídos a várias organizações. O proprietário da organização pode controlar quais repositórios podem usá-lo.
 Para obter mais informações, consulte a [GitHub Enterprise Cloud documentação](add-runners.md#adding-a-self-hosted-runner-to-an-enterprise).
 
-## Próximas etapas
+## Próximas etapas { #next-steps }
 
 Você pode configurar a automação para dimensionar o número de executores auto-hospedados. Para saber mais, confira [Referência de executores auto-hospedados](../../../reference/runners/self-hosted-runners.md#autoscaling).

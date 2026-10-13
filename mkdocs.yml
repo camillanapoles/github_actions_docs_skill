@@ -202,6 +202,7 @@ nav:
             - 'OpenID Connect': pt/actions/concepts/security/openid-connect.md
             - 'Injeções de script': pt/actions/concepts/security/script-injections.md
             - 'Segredos': pt/actions/concepts/security/secrets.md
+            - 'Arquivos de bloqueio de dependências do fluxo de trabalho': pt/actions/concepts/security/workflow-dependency-lockfiles.md
           - 'Fluxos de trabalho e ações': pt/actions/concepts/workflows-and-actions.md
           - 'Workflows and actions':
             - Visão geral: pt/actions/concepts/workflows-and-actions.md
@@ -230,7 +231,8 @@ nav:
           - 'Administrando GitHub Actions': pt/actions/how-tos/administer.md
           - 'Administer':
             - Visão geral: pt/actions/how-tos/administer.md
-            - 'Controlando quem pode executar GitHub Actions fluxos de trabalho': pt/actions/how-tos/administer/control-workflow-execution.md
+            - 'Controle da execução de GitHub Actions fluxos de trabalho': pt/actions/how-tos/administer/control-workflow-execution.md
+            - 'Aplicar lockfiles para dependências de ação': pt/actions/how-tos/administer/enforce-workflow-lockfiles.md
             - 'Como disponibilizar namespaces desativados no GHE.com': pt/actions/how-tos/administer/reuse-namespaces-on-ghecom.md
             - 'Como ver as métricas do GitHub Actions': pt/actions/how-tos/administer/view-metrics.md
           - 'Criar e publicar ações': pt/actions/how-tos/create-and-publish-actions.md
@@ -343,12 +345,14 @@ nav:
           - 'Segurança para GitHub Actions': pt/actions/how-tos/secure-your-work.md
           - 'Secure your work':
             - Visão geral: pt/actions/how-tos/secure-your-work.md
+            - 'Bloqueio de dependências de ação nos fluxos de trabalho de um repositório': pt/actions/how-tos/secure-your-work/lock-workflow-dependencies.md
             - 'Reforço de segurança em suas implementações': pt/actions/how-tos/secure-your-work/security-harden-deployments.md
             - 'Security harden deployments':
               - Visão geral: pt/actions/how-tos/secure-your-work/security-harden-deployments.md
               - 'Configurando o OpenID Connect no Amazon Web Services': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws.md
               - 'Configurando o OpenID Connect no Azure': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-azure.md
               - 'Configurando OpenID Connect em provedores da nuvem': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-cloud-providers.md
+              - 'Configurando o OpenID Connect no Docker': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-docker.md
               - 'Configurando OpenID Connect na Google Cloud Platform': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-google-cloud-platform.md
               - 'Configurando o OpenID Connect no HashiCorp Vault': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-hashicorp-vault.md
               - 'Configurando o OpenID Connect no JFrog': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-jfrog.md

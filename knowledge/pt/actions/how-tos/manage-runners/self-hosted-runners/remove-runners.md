@@ -10,13 +10,13 @@ captured: '2026-10-13'
 section: How tos / Manage runners / Self hosted runners
 ---
 
-# Remover executores auto-hospedados
+# Remover executores auto-hospedados { #removing-self-hosted-runners }
 
 _Você pode remover permanentemente um executor auto-hospedado de um repositório ou organização._
 
 Você pode remover permanentemente um executor auto-hospedado de um repositório.
 
-## Remover um executor de um repositório
+## Remover um executor de um repositório { #removing-a-runner-from-a-repository }
 
 !!! note
     * Este procedimento remove permanentemente o executor auto-hospedado. Caso você deseje apenas impedir temporariamente que um executor seja atribuído a trabalhos, desligue o computador ou interrompa o aplicativo `run`. O executor permanecerá atribuído em um estado "Offline" e não executará nenhum trabalho até que você o reinicie usando o aplicativo `run`.
@@ -50,7 +50,7 @@ Como alternativa, se você não tiver acesso ao repositório ou organização no
 
    * **Se você não tiver acesso ao computador:** clique em **Force remove this runner** para forçar o GitHub a remover o executor.
 
-## Remover um executor de uma organização
+## Remover um executor de uma organização { #removing-a-runner-from-an-organization }
 
 !!! note
     * Este procedimento remove permanentemente o executor auto-hospedado. Caso você deseje apenas impedir temporariamente que um executor seja atribuído a trabalhos, desligue o computador ou interrompa o aplicativo `run`. O executor permanecerá atribuído em um estado "Offline" e não executará nenhum trabalho até que você o reinicie usando o aplicativo `run`.
@@ -80,6 +80,6 @@ Como alternativa, se você não tiver acesso ao repositório ou organização no
 
    * **Se você não tiver acesso ao computador:** clique em **Force remove this runner** para forçar o GitHub a remover o executor.
 
-## Remover um executor de uma empresa
+## Remover um executor de uma empresa { #removing-a-runner-from-an-enterprise }
 
 Se você usar GitHub Enterprise Cloud, também será possível remover executores de uma empresa. Para obter mais informações, consulte a [documentação do GitHub Enterprise Cloud](remove-runners.md#removing-a-runner-from-an-enterprise).

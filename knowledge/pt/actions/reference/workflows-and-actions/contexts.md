@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: Reference / Workflows and actions
 ---
 
-# Referência de contextos
+# Referência de contextos { #contexts-reference }
 
 _Encontre informações sobre contextos disponíveis em GitHub Actions fluxos de trabalho, incluindo propriedades disponíveis, métodos de acesso e exemplos de uso._
 
-## Contextos disponíveis
+## Contextos disponíveis { #available-contexts }
 
 | Nome do contexto | Tipo | Descrição |
 | --- | --- | --- |
@@ -40,7 +40,7 @@ Para usar a sintaxe de desreferência de propriedade, o nome da propriedade deve
 
 Se você tentar desreferenciar uma propriedade inexistente, ela será avaliada como uma cadeia de caracteres vazia.
 
-### Determinar quando usar contextos
+### Determinar quando usar contextos { #determining-when-to-use-contexts }
 
 GitHub Actions inclui uma coleção de variáveis chamadas *contextos* e uma coleção semelhante de variáveis chamadas *variáveis padrão*. Estas variáveis são destinadas a serem usadas em diferentes pontos do fluxo de trabalho:
 
@@ -62,7 +62,7 @@ jobs:
 
 Neste exemplo, a instrução `if` verifica o contexto [`github.ref`](contexts.md#github-context) para determinar o nome do branch atual. Se o nome for `refs/heads/main`, as etapas seguintes serão executadas. A `if` verificação é processada por GitHub Actions, e o trabalho só é enviado para o executor se o resultado for `true`. Depois que o trabalho é enviado para o executor, a etapa é executada e refere-se à variável [`$GITHUB_REF`](variables.md) do executor.
 
-### Disponibilidade do contexto
+### Disponibilidade do contexto { #context-availability }
 
 Contextos diferentes estão disponíveis durante a execução de um fluxo de trabalho. Por exemplo, o contexto `secrets` só pode ser usado em alguns lugares de um trabalho.
 
@@ -107,7 +107,7 @@ A tabela a seguir lista as restrições nas quais cada contexto e função espec
 | `on.workflow_call.inputs.<inputs_id>.default` | `github, inputs, vars` | Nenhum |
 | `on.workflow_call.outputs.<output_id>.value` | `github, jobs, vars, inputs` | Nenhum |
 
-### Exemplo: imprimir informações de contexto no registro
+### Exemplo: imprimir informações de contexto no registro { #example-printing-context-information-to-the-log }
 
 Você pode imprimir o conteúdo de contextos no registro para depuração. A função [`toJSON`](expressions.md#tojson) é necessária para imprimir objetos JSON no log.
 
@@ -148,7 +148,7 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
 ```
 
-## Contexto `github`
+## Contexto `github` { #github-context }
 
 O contexto `github` contém informações sobre a execução do fluxo de trabalho e sobre o evento que a disparou. Você pode ler a maior parte dos dados de contexto `github` em variáveis de ambiente. Para saber mais sobre variáveis de ambiente, confira [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md).
 
@@ -203,7 +203,7 @@ O contexto `github` contém informações sobre a execução do fluxo de trabalh
 | `github.workflow_sha` | `string` | O SHA de commit para o arquivo de fluxo de trabalho. |
 | `github.workspace` | `string` | O diretório de trabalho padrão no executor para as etapas, e a localização padrão do repositório quando a ação [`checkout`](https://github.com/actions/checkout) é usada. |
 
-### Exemplo de conteúdo do contexto `github`
+### Exemplo de conteúdo do contexto `github` { #example-contents-of-the-github-context }
 
 O contexto a seguir foi obtido de uma execução de fluxo de trabalho disparada pelo evento `push`. O objeto `event` deste exemplo foi truncado porque é idêntico ao conteúdo do payload do webhook [`push`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#push).
 
@@ -248,7 +248,7 @@ O contexto a seguir foi obtido de uma execução de fluxo de trabalho disparada 
 }
 ```
 
-### Exemplo de uso do contexto `github`
+### Exemplo de uso do contexto `github` { #example-usage-of-the-github-context }
 
 Este exemplo de fluxo de trabalho usa o contexto `github.event_name` para executar um trabalho somente se a execução de fluxo de trabalho foi disparada pelo evento `pull_request`.
 
@@ -271,7 +271,7 @@ jobs:
         run: echo "Running PR only CI"
 ```
 
-## Contexto `env`
+## Contexto `env` { #env-context }
 
 O contexto `env` contém variáveis que foram definidas em um fluxo de trabalho, um trabalho ou uma etapa. Ele não contém variáveis herdadas pelo processo do executor. Para saber mais sobre como definir variáveis em seu fluxo de trabalho, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#env).
 
@@ -284,7 +284,7 @@ Se você deseja utilizar o valor de uma variável dentro de um executor, use o m
 | `env` | `object` | Esse contexto altera cada etapa em um trabalho. Você pode acessar esse contexto em qualquer etapa de um trabalho. Este objeto contém as propriedades listadas abaixo. |
 | `env.<env_name>` | `string` | O valor de uma variável de ambiente específica. |
 
-### Exemplo de conteúdo do contexto `env`
+### Exemplo de conteúdo do contexto `env` { #example-contents-of-the-env-context }
 
 O conteúdo do contexto `env` é um mapeamento de nomes de variáveis para os respectivos valores. O conteúdo do contexto pode mudar dependendo de onde é usado na execução do fluxo de trabalho. Neste exemplo, o `env` contexto contém duas variáveis.
 
@@ -295,7 +295,7 @@ O conteúdo do contexto `env` é um mapeamento de nomes de variáveis para os re
 }
 ```
 
-### Exemplo de uso do contexto `env`
+### Exemplo de uso do contexto `env` { #example-usage-of-the-env-context }
 
 Este exemplo de fluxo de trabalho mostra variáveis sendo definidas no contexto `env` nos níveis de fluxo de trabalho, trabalho e etapa. Em seguida, a sintaxe `${{ env.VARIABLE-NAME }}` é usada para recuperar valores de variáveis em etapas individuais no fluxo de trabalho.
 
@@ -324,11 +324,11 @@ jobs:
       - run: echo 'Hi ${{ env.mascot }}'  # Hi Tux
 ```
 
-## Contexto `vars`
+## Contexto `vars` { #vars-context }
 
 O contexto `vars` contém variáveis de configuração personalizadas definidas nos níveis da organização, do repositório e do ambiente. Para saber mais sobre como definir variáveis de configuração para uso em vários fluxos de trabalho, confira [Armazenar informações em variáveis](../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md#defining-configuration-variables-for-multiple-workflows).
 
-### Exemplo de conteúdo do contexto `vars`
+### Exemplo de conteúdo do contexto `vars` { #example-contents-of-the-vars-context }
 
 O conteúdo do contexto `vars` é um mapeamento de nomes de variáveis de configuração para os respectivos valores.
 
@@ -338,7 +338,7 @@ O conteúdo do contexto `vars` é um mapeamento de nomes de variáveis de config
 }
 ```
 
-### Exemplo de uso do contexto `vars`
+### Exemplo de uso do contexto `vars` { #example-usage-of-the-vars-context }
 
 Este exemplo de fluxo de trabalho mostra como as variáveis de configuração definidas nos níveis de repositório, ambiente ou organização estão automaticamente disponíveis usando o contexto `vars`.
 
@@ -382,7 +382,7 @@ jobs:
         who-to-greet: ${{ vars.GREET_NAME }}
 ```
 
-## Contexto `job`
+## Contexto `job` { #job-context }
 
 O contexto `job` contém informações sobre o trabalho atualmente em execução.
 
@@ -403,7 +403,7 @@ O contexto `job` contém informações sobre o trabalho atualmente em execução
 | `job.workflow_repository` | `string` | O `owner/repo` do repositório que contém o arquivo de fluxo de trabalho que define a tarefa atual. Por exemplo, `octo-org/octo-repo`. (não disponível em GitHub Enterprise Server) |
 | `job.workflow_file_path` | `string` | O caminho do arquivo de fluxo de trabalho que define o trabalho atual, em relação à raiz do repositório. Por exemplo, `.github/workflows/deploy.yml`. (não disponível em GitHub Enterprise Server) |
 
-### Exemplo de conteúdo do contexto `job`
+### Exemplo de conteúdo do contexto `job` { #example-contents-of-the-job-context }
 
 Este exemplo de contexto `job` usa um contêiner de serviço do PostgreSQL com as portas mapeadas. Se não houver contêineres ou contêineres de serviço usados em um trabalho, o contexto `job` conterá apenas `status`. As propriedades de identidade `check_run_id` e de fluxo de trabalho (`workflow_ref`, `workflow_sha`, `workflow_repository`, `workflow_file_path`) não estão disponíveis em GitHub Enterprise Server.
 
@@ -430,7 +430,7 @@ Este exemplo de contexto `job` usa um contêiner de serviço do PostgreSQL com a
 }
 ```
 
-### Exemplo de uso do contexto `job`
+### Exemplo de uso do contexto `job` { #example-usage-of-the-job-context }
 
 Este exemplo de fluxo de trabalho configura um contêiner de serviço do PostgreSQL e mapeia automaticamente a porta 5432 do recipiente de serviço com uma porta disponível escolhida aleatoriamente no host. O contexto `job` é usado para acessar o número da porta atribuída no host.
 
@@ -455,7 +455,7 @@ jobs:
       - run: echo "Run tests against Postgres"
 ```
 
-### Exemplo de uso da identidade de fluxo de trabalho no contexto de `job`
+### Exemplo de uso da identidade de fluxo de trabalho no contexto de `job` { #example-usage-of-job-context-workflow-identity }
 
 !!! note
     As `job.workflow_*` propriedades de contexto não estão disponíveis em GitHub Enterprise Server.
@@ -483,7 +483,7 @@ jobs:
 ```
 
 ```
-## Contexto `jobs`
+## Contexto `jobs` { #jobs-context }
 
 O contexto `jobs` só está disponível em fluxos de trabalho reutilizáveis e só pode ser usado para definir as saídas de um fluxo de trabalho reutilizável. Para saber mais, confira [Reutilizar fluxos de trabalho](../../how-tos/reuse-automations/reuse-workflows.md#using-outputs-from-a-reusable-workflow).
 
@@ -494,7 +494,7 @@ O contexto `jobs` só está disponível em fluxos de trabalho reutilizáveis e s
 | `jobs.<job_id>.outputs` | `object` | O conjunto de saídas de um trabalho em um fluxo de trabalho reutilizável. |
 | `jobs.<job_id>.outputs.<output_name>` | `string` | O valor de uma saída específica para um trabalho em um fluxo de trabalho reutilizável. |
 
-### Exemplo de conteúdo do contexto `jobs`
+### Exemplo de conteúdo do contexto `jobs` { #example-contents-of-the-jobs-context }
 
 O contexto deste exemplo `jobs` contém o resultado e as saídas de um trabalho derivado de uma execução de fluxo de trabalho reutilizável.
 
@@ -510,7 +510,7 @@ O contexto deste exemplo `jobs` contém o resultado e as saídas de um trabalho 
 }
 ```
 
-### Exemplo de uso do contexto `jobs`
+### Exemplo de uso do contexto `jobs` { #example-usage-of-the-jobs-context }
 
 Este exemplo de fluxo de trabalho reutilizável usa o contexto `jobs` para definir saídas para o fluxo de trabalho reutilizável. Observe como as saídas fluem das etapas para o trabalho e, em seguida, para o gatilho `workflow_call`. Para saber mais, confira [Reutilizar fluxos de trabalho](../../how-tos/reuse-automations/reuse-workflows.md#using-outputs-from-a-reusable-workflow).
 
@@ -543,7 +543,7 @@ jobs:
         run: echo "secondword=world" >> $GITHUB_OUTPUT
 ```
 
-## Contexto `steps`
+## Contexto `steps` { #steps-context }
 
 O contexto `steps` contém informações sobre as etapas do trabalho atual que têm uma [`id`](workflow-syntax.md#jobsjob_idstepsid) especificada e que já foram executadas.
 
@@ -555,7 +555,7 @@ O contexto `steps` contém informações sobre as etapas do trabalho atual que t
 | `steps.<step_id>.outcome` | `string` | O resultado de uma etapa concluída antes da aplicação de [`continue-on-error`](workflow-syntax.md#jobsjob_idstepscontinue-on-error). Os valores possíveis são `success`, `failure`, `cancelled` ou `skipped`. Quando uma etapa `continue-on-error` falha, o `outcome` é `failure`, mas a `conclusion` final é `success`. |
 | `steps.<step_id>.outputs.<output_name>` | `string` | Valor de uma saída específica. |
 
-### Exemplo de conteúdo do contexto `steps`
+### Exemplo de conteúdo do contexto `steps` { #example-contents-of-the-steps-context }
 
 Este exemplo de contexto `steps` mostra duas etapas anteriores que tinham uma [`id`](workflow-syntax.md#jobsjob_idstepsid) especificada. A primeira etapa tinha a `id` chamada `checkout`, e a segunda, `generate_number`. A etapa `generate_number` tinha uma saída chamada `random_number`.
 
@@ -576,7 +576,7 @@ Este exemplo de contexto `steps` mostra duas etapas anteriores que tinham uma [`
 }
 ```
 
-### Exemplo de uso do contexto `steps`
+### Exemplo de uso do contexto `steps` { #example-usage-of-the-steps-context }
 
 Este exemplo de fluxo de trabalho gera um número aleatório como saída em uma etapa, e uma etapa posterior usa o contexto `steps` para ler o valor dessa saída.
 
@@ -595,7 +595,7 @@ jobs:
           if [[ ${{ steps.generate_number.outputs.random_number }} == 0 ]]; then exit 0; else exit 1; fi
 ```
 
-## Contexto `runner`
+## Contexto `runner` { #runner-context }
 
 O contexto `runner` contém informações sobre o runner que está executando o trabalho atual.
 
@@ -610,7 +610,7 @@ O contexto `runner` contém informações sobre o runner que está executando o 
 | `runner.debug` | `string` | Isso será definido somente se o [log de depuração](../../how-tos/monitor-workflows/enable-debug-logging.md) estiver habilitado e sempre tiver o valor de `1`. Pode ser útil como um indicador para habilitar a depuração adicional ou o log detalhado em suas etapas de trabalho. |
 | `runner.environment` | `string` | O ambiente do executor que realiza a tarefa. Os valores possíveis são: `github-hosted` para executores hospedados no GitHub fornecidos pelo GitHub e `self-hosted` para executores auto-hospedados configurados pelo proprietário do repositório. |
 
-### Exemplo de conteúdo do contexto `runner`
+### Exemplo de conteúdo do contexto `runner` { #example-contents-of-the-runner-context }
 
 O contexto de exemplo a seguir é de um executor hospedado no Linux GitHub.
 
@@ -624,7 +624,7 @@ O contexto de exemplo a seguir é de um executor hospedado no Linux GitHub.
 }
 ```
 
-### Exemplo de uso do contexto `runner`
+### Exemplo de uso do contexto `runner` { #example-usage-of-the-runner-context }
 
 Este exemplo de fluxo de trabalho usa o contexto `runner` para definir o caminho para o diretório temporário onde serão gravados registros, e se o fluxo de trabalho falhar, ele fará o upload desses registros como artefato.
 
@@ -650,7 +650,7 @@ jobs:
           path: ${{ runner.temp }}/build_logs
 ```
 
-## Contexto `secrets`
+## Contexto `secrets` { #secrets-context }
 
 O contexto `secrets` contém os nomes e valores de segredos que estão disponíveis para a execução de um fluxo de trabalho. O contexto `secrets` não está disponível para ações compostas por motivos de segurança. Para passar um segredo para uma ação composta, é necessário fazê-lo explicitamente como um parâmetro. Para saber mais sobre segredos, confira [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 
@@ -665,7 +665,7 @@ O contexto `secrets` contém os nomes e valores de segredos que estão disponív
 | `secrets.GITHUB_TOKEN` | `string` | Token criado automaticamente para cada execução do fluxo de trabalho. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md). |
 | `secrets.<secret_name>` | `string` | O valor de um segredo específico. |
 
-### Exemplo de conteúdo do contexto `secrets`
+### Exemplo de conteúdo do contexto `secrets` { #example-contents-of-the-secrets-context }
 
 O exemplo de conteúdo do contexto `secrets` mostra o `GITHUB_TOKEN` automático, assim como outros dois segredos disponíveis para a execução de fluxo de trabalho.
 
@@ -677,7 +677,7 @@ O exemplo de conteúdo do contexto `secrets` mostra o `GITHUB_TOKEN` automático
 }
 ```
 
-### Exemplo de uso do contexto `secrets`
+### Exemplo de uso do contexto `secrets` { #example-usage-of-the-secrets-context }
 
 Este exemplo de fluxo de trabalho usa a [CLI do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-github-cli.md), que requer o `GITHUB_TOKEN` como o valor para o parâmetro de entrada `GH_TOKEN`:
 
@@ -699,7 +699,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-## Contexto `strategy`
+## Contexto `strategy` { #strategy-context }
 
 Para fluxos de trabalho com uma matriz, o contexto `strategy` contém informações sobre a estratégia de execução da matriz para o trabalho atual.
 
@@ -713,7 +713,7 @@ Para fluxos de trabalho com uma matriz, o contexto `strategy` contém informaç�
 | **Observação:** esse número **não é** um número baseado em zero. Por exemplo, para uma matriz com quatro trabalhos, o valor de `job-total` é `4`. |  |  |
 | `strategy.max-parallel` | `number` | O número máximo de trabalhos que podem ser executados simultaneamente quando uma estratégia de trabalho `matrix` é usada. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#jobsjob_idstrategymax-parallel). |
 
-### Exemplo de conteúdo do contexto `strategy`
+### Exemplo de conteúdo do contexto `strategy` { #example-contents-of-the-strategy-context }
 
 O exemplo de conteúdo a seguir do contexto `strategy` é de uma matriz com quatro tarefas e foi obtido da tarefa final. Observe a diferença entre o número `job-index` baseado em zero e `job-total`, que não é baseado em zero.
 
@@ -726,7 +726,7 @@ O exemplo de conteúdo a seguir do contexto `strategy` é de uma matriz com quat
 }
 ```
 
-### Exemplo de uso do contexto `strategy`
+### Exemplo de uso do contexto `strategy` { #example-usage-of-the-strategy-context }
 
 Este exemplo de fluxo de trabalho usa a propriedade `strategy.job-index` para definir um nome exclusivo para um arquivo de log para cada trabalho em uma matriz.
 
@@ -750,7 +750,7 @@ jobs:
           path: test-job-${{ strategy.job-index }}.txt
 ```
 
-## Contexto `matrix`
+## Contexto `matrix` { #matrix-context }
 
 Para fluxos de trabalho com uma matriz, o contexto `matrix` contém as propriedades definidas no arquivo de fluxo de trabalho que se aplicam ao trabalho atual. Por exemplo, se você configurar uma matriz com as chaves `os` e `node`, o objeto de contexto `matrix` incluirá as propriedades `os` e `node` com os valores que estão sendo usados para o trabalho atual.
 
@@ -764,7 +764,7 @@ Não há propriedades padrão no contexto `matrix`, apenas aquelas que são defi
 !!! note
     Os nomes das variáveis não fazem distinção entre maiúsculas e minúsculas. Por exemplo, `OS` e `os` será tratado como a mesma variável.
 
-### Exemplo de conteúdo do contexto `matrix`
+### Exemplo de conteúdo do contexto `matrix` { #example-contents-of-the-matrix-context }
 
 O exemplo a seguir do contexto `matrix` é de um trabalho em uma matriz que tem as propriedades de matriz `os` e `node` definidas no fluxo de trabalho. O trabalho executa a combinação matricial de um sistema operacional `ubuntu-latest` com a versão `16` do Node.js.
 
@@ -775,7 +775,7 @@ O exemplo a seguir do contexto `matrix` é de um trabalho em uma matriz que tem 
 }
 ```
 
-### Exemplo de uso do contexto `matrix`
+### Exemplo de uso do contexto `matrix` { #example-usage-of-the-matrix-context }
 
 Este exemplo de fluxo de trabalho cria uma matriz com as chaves `os` e `node`. Ele usa a propriedade `matrix.os` para definir o tipo de executor de cada trabalho e a propriedade `matrix.node` para definir a versão do Node.js de cada trabalho.
 
@@ -798,7 +798,7 @@ jobs:
         run: node --version
 ```
 
-## Contexto `needs`
+## Contexto `needs` { #needs-context }
 
 O contexto `needs` contém as saídas de todos os trabalhos definidos como uma dependência direta do trabalho atual. Observe que isso não inclui trabalhos implicitamente dependentes (por exemplo, trabalhos dependentes de outro dependente). Para saber mais sobre como definir dependências de trabalho, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#jobsjob_idneeds).
 
@@ -810,7 +810,7 @@ O contexto `needs` contém as saídas de todos os trabalhos definidos como uma d
 | `needs.<job_id>.outputs.<output name>` | `string` | O valor de um resultado específico para um trabalho do qual o trabalho atual depende. |
 | `needs.<job_id>.result` | `string` | O resultado de um trabalho do qual depende o trabalho atual. Os valores possíveis são `success`, `failure`, `cancelled` ou `skipped`. |
 
-### Exemplo de conteúdo do contexto `needs`
+### Exemplo de conteúdo do contexto `needs` { #example-contents-of-the-needs-context }
 
 O exemplo de conteúdo a seguir do contexto `needs` mostra informações de dois trabalhos dos quais o trabalho atual depende.
 
@@ -829,7 +829,7 @@ O exemplo de conteúdo a seguir do contexto `needs` mostra informações de dois
 }
 ```
 
-### Exemplo de uso do contexto `needs`
+### Exemplo de uso do contexto `needs` { #example-usage-of-the-needs-context }
 
 Este exemplo de fluxo de trabalho tem três trabalhos: um trabalho `build` que faz um build, um trabalho `deploy` que exige o trabalho `build` e um trabalho `debug` que exige os trabalhos `build` e `deploy` e que será executado somente se houver uma falha no fluxo de trabalho. O trabalho `deploy` também usa o contexto `needs` para acessar uma saída do trabalho `build`.
 
@@ -859,7 +859,7 @@ jobs:
       - run: echo "Failed to build and deploy"
 ```
 
-## Contexto `inputs`
+## Contexto `inputs` { #inputs-context }
 
 O contexto `inputs` contém propriedades de entrada passadas para uma ação, para um fluxo de trabalho reutilizável ou para um fluxo de trabalho disparado manualmente. Para fluxos de trabalho reutilizáveis, os nomes e os tipos de entrada são definidos na [configuração de evento `workflow_call`](events-that-trigger-workflows.md) de um fluxo de trabalho reutilizável, e os valores de entrada são transmitidos de [`jobs.<job_id>.with`](workflow-syntax.md#jobsjob_idwith) em um fluxo de trabalho externo que chama o fluxo de trabalho reutilizável. Para fluxos de trabalho disparados manualmente, as entradas são definidas na configuração de evento[`workflow_dispatch`](events-that-trigger-workflows.md#workflow_dispatch) de um fluxo de trabalho.
 
@@ -871,7 +871,7 @@ As propriedades no contexto `inputs` são definidas no arquivo de fluxo de traba
 | `inputs.<name>` |  |  |
 | `string` ou `number` ou `boolean` ou `choice` | Cada valor de entrada é passado de um fluxo de trabalho externo. |  |
 
-### Exemplo de conteúdo do contexto `inputs`
+### Exemplo de conteúdo do contexto `inputs` { #example-contents-of-the-inputs-context }
 
 O conteúdo de exemplo a seguir do contexto `inputs` é de um fluxo de trabalho que definiu as entradas `build_id`, `deploy_target` e `perform_deploy`.
 
@@ -883,7 +883,7 @@ O conteúdo de exemplo a seguir do contexto `inputs` é de um fluxo de trabalho 
 }
 ```
 
-### Exemplo de uso do contexto `inputs` em um fluxo de trabalho reutilizável
+### Exemplo de uso do contexto `inputs` em um fluxo de trabalho reutilizável { #example-usage-of-the-inputs-context-in-a-reusable-workflow }
 
 Este exemplo de fluxo de trabalho reutilizável usa o contexto `inputs` para obter os valores dos inputs `build_id`, `deploy_target` e `perform_deploy` que foram passados para o fluxo de trabalho reutilizável a partir do fluxo de trabalho chamador.
 
@@ -911,7 +911,7 @@ jobs:
         run: echo "Deploying build:${{ inputs.build_id }} to target:${{ inputs.deploy_target }}"
 ```
 
-### Exemplo de uso do contexto `inputs` em um fluxo de trabalho acionado manualmente
+### Exemplo de uso do contexto `inputs` em um fluxo de trabalho acionado manualmente { #example-usage-of-the-inputs-context-in-a-manually-triggered-workflow }
 
 Este exemplo de fluxo de trabalho disparado por um evento de `workflow_dispatch` usa o contexto `inputs` para obter os valores de entrada de `build_id`, `deploy_target` e `perform_deploy` que foram passadas para o fluxo de trabalho.
 
@@ -938,6 +938,6 @@ jobs:
         run: echo "Deploying build:${{ inputs.build_id }} to target:${{ inputs.deploy_target }}"
 ```
 
-## Leitura adicional
+## Leitura adicional { #further-reading }
 
 * [Contextos](../../concepts/workflows-and-actions/contexts.md)

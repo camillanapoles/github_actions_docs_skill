@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: Concepts / Workflows and actions
 ---
 
-# Notificações para execuções de fluxo de trabalho
+# Notificações para execuções de fluxo de trabalho { #notifications-for-workflow-runs }
 
 _Você pode se inscrever para receber notificações sobre as execuções do fluxo de trabalho que você iniciar._
 

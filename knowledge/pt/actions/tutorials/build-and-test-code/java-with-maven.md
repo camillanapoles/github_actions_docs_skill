@@ -10,7 +10,7 @@ captured: '2026-10-13'
 section: Tutorials / Build and test code
 ---
 
-# Compilar e testar Java com o Maven
+# Compilar e testar Java com o Maven { #building-and-testing-java-with-maven }
 
 _Saiba como criar um fluxo de trabalho de CI (integração contínua) em GitHub Actions para criar e testar seu projeto de Java com o Maven._
 
@@ -20,7 +20,7 @@ Este guia mostra como criar um fluxo de trabalho que executa a CI (integração 
 
 GitHubOs servidores de execução hospedados têm um cache de ferramentas com software pré-instalado, que inclui Java Development Kits (JDKs) e Maven. Para obter uma lista de softwares e as versões pré-instaladas para JDK e Maven, confira [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images).
 
-## Pré-requisitos
+## Pré-requisitos { #introduction }
 
 Você deve estar familiarizado com YAML e a sintaxe para GitHub Actions. Para saber mais, veja:
 
@@ -29,7 +29,7 @@ Você deve estar familiarizado com YAML e a sintaxe para GitHub Actions. Para sa
 
 Recomendamos que você tenha uma compreensão básica do Java e da estrutura maven. Para obter mais informações, confira o [Guia de Introdução do Maven](https://maven.apache.org/guides/getting-started/index.html) na documentação do Maven.
 
-## Usando um modelo de fluxo de trabalho do Maven
+## Usando um modelo de fluxo de trabalho do Maven { #prerequisites }
 
 Para uma introdução rápida, adicione um modelo de fluxo de trabalho ao diretório `.github/workflows` do repositório.
 
@@ -53,7 +53,7 @@ GitHub fornece um modelo de fluxo de trabalho para o Maven que deve funcionar pa
 
    O `maven.yml` arquivo de fluxo de trabalho é adicionado ao `.github/workflows` diretório do repositório.
 
-### Como especificar a versão e a arquitetura da JVM
+### Como especificar a versão e a arquitetura da JVM { #using-self-hosted-runners-on-github-enterprise-server }
 
 O modelo de fluxo de trabalho configura o `PATH` para conter OpenJDK 8 para a plataforma x64. Se você quiser usar uma versão diferente do Java, ou escolher uma arquitetura diferente (`x64` ou `x86`), você pode usar a ação `setup-java` para escolher um ambiente de execução Java diferente.
 
@@ -72,7 +72,7 @@ steps:
 
 Para obter mais informações, confira a ação [`setup-java`](https://github.com/actions/setup-java).
 
-## Criar e testar seu código
+## Criar e testar seu código { #using-a-maven-workflow-template }
 
 Você pode usar os mesmos comandos usados localmente para criar e testar seu código.
 
@@ -91,7 +91,7 @@ steps:
     run: mvn --batch-mode --update-snapshots verify
 ```
 
-## Memorizar dependências
+## Memorizar dependências { #building-and-testing-your-code }
 
 Você pode armazenar as suas dependências para acelerar as execuções do seu fluxo de trabalho. Após uma execução bem-sucedida, seu repositório Maven local será armazenado em um cache. Para os fluxos de trabalho futuros, a cache será restaurada para que as dependências não precisem ser baixadas dos repositórios remotos do Maven. Você pode armazenar as dependências em cache simplesmente usando a [ação `setup-java`](https://github.com/marketplace/actions/setup-java-jdk) ou use a [ação `cache`](https://github.com/actions/cache) para uma configuração personalizada e mais avançada.
 
@@ -110,7 +110,7 @@ steps:
 
 Esse fluxo de trabalho salvará o conteúdo do repositório do Maven local, localizado no `.m2` diretório do diretório base do executor. A chave de cache será o conteúdo em hash do `pom.xml`, ou seja, as alterações feitas no `pom.xml` invalidarão o cache.
 
-## Empacotar dados do fluxo de trabalho como artefatos
+## Empacotar dados do fluxo de trabalho como artefatos { #caching-dependencies }
 
 Depois que o build tiver sido bem-sucedido e seus testes tiverem sido aprovados, talvez você queira carregar os pacotes de Java resultantes como um artefato de build. Isso armazenará os pacotes criados como parte da execução do fluxo de trabalho e permitirá que você faça o download desses pacotes. Os artefatos podem ajudá-lo a testar e depurar os pull requests no seu ambiente local antes de serem mesclados. Para saber mais, confira [Armazenar e compartilhar dados com artefatos de fluxo de trabalho](../store-and-share-data.md).
 

@@ -10,11 +10,11 @@ captured: '2026-10-13'
 section: Tutorials / Migrate to github actions / Manual migrations
 ---
 
-# Migrando do CircleCI para o GitHub Actions
+# Migrando do CircleCI para o GitHub Actions { #migrating-from-circleci-to-github-actions }
 
 _GitHub Actions e CircleCI compartilham várias semelhanças na configuração, o que torna a migração para GitHub Actions relativamente simples._
 
-## Introdução
+## Introdução { #introduction }
 
 O CircleCI e GitHub Actions ambos permitem que você crie fluxos de trabalho que compilem, testem, publiquem, liberem e implantem código automaticamente. CircleCI e GitHub Actions compartilham algumas semelhanças na configuração do fluxo de trabalho:
 
@@ -25,21 +25,21 @@ O CircleCI e GitHub Actions ambos permitem que você crie fluxos de trabalho que
 
 Para saber mais, confira [Noções básicas sobre GitHub Actions](../../../get-started/understand-github-actions.md).
 
-## Principais diferenças
+## Principais diferenças { #key-differences }
 
 Ao fazer a migração do CircleCI, considere as seguintes diferenças:
 
 * O paralelismo do teste automático do CircleCI agrupa automaticamente os testes de acordo com regras especificadas pelo usuário ou com informações históricas de temporização. Essa funcionalidade não está integrada ao GitHub Actions.
 * As ações que são executadas em contêineres Docker são sensíveis a problemas de permissões, uma vez que os contêineres têm um mapeamento diferente de usuários. Você pode evitar muitos desses problemas não usando a instrução `USER` no *Dockerfile*. Para obter mais informações sobre o sistema de arquivos do Docker nos executores hospedados do GitHub, consulte [Referência de executores hospedados pelo GitHub](../../../reference/runners/github-hosted-runners.md#docker-container-filesystem).
 
-## Migrar fluxos de trabalho e tarefas
+## Migrar fluxos de trabalho e tarefas { #migrating-workflows-and-jobs }
 
 O CircleCI define `workflows` no arquivo *config.yml*, que permite configurar mais de um fluxo de trabalho.
 GitHub requer um arquivo de fluxo de trabalho por fluxo de trabalho e, como consequência, não exige que você declare `workflows`. Será necessário criar um arquivo de fluxo de trabalho para cada fluxo de trabalho configurado em *config.yml*.
 
 Tanto o CircleCI quanto GitHub Actions configuram `jobs` no arquivo de configuração usando sintaxe semelhante. Se você configurar dependências entre jobs usando `requires` em seu fluxo de trabalho do CircleCI, poderá usar a sintaxe equivalente GitHub Actions`needs`. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idneeds).
 
-## Migrar orbes para ações
+## Migrar orbes para ações { #migrating-orbs-to-actions }
 
 O CircleCI e GitHub Actions fornece um mecanismo para reutilizar e compartilhar tarefas em um fluxo de trabalho. O CircleCI usa um conceito chamado orbs, escrito em YAML, para fornecer tarefas que as pessoas podem reutilizar em um fluxo de trabalho.
 GitHub Actions tem componentes reutilizáveis poderosos e flexíveis chamados ações, que você cria com arquivos JavaScript ou imagens do Docker. Você pode criar ações escrevendo código personalizado que interage com seu repositório da maneira que desejar, incluindo a integração com GitHubAPIs e qualquer API de terceiros publicamente disponível. Por exemplo, uma ação pode publicar módulos npm, enviar alertas de SMS quando problemas urgentes surgirem ou implantar o código pronto para produção. Para saber mais, confira [Reutilização de automações](../../../how-tos/reuse-automations.md).
@@ -47,7 +47,7 @@ GitHub Actions tem componentes reutilizáveis poderosos e flexíveis chamados a�
 O CircleCI pode reutilizar partes dos fluxos de trabalho com âncoras e aliases YAML.
 GitHub Actions dá suporte a âncoras YAML e aliases para reutilização e também fornece matrizes para executar trabalhos com configurações diferentes. Para obter mais informações sobre matrizes, confira [Executando variações de tarefas em um workflow](../../../how-tos/write-workflows/choose-what-workflows-do/run-job-variations.md).
 
-## Usar imagens do Docker
+## Usar imagens do Docker { #using-docker-images }
 
 Tanto o CircleCI quanto o GitHub Actions oferecem suporte à execução de etapas em uma imagem Docker.
 
@@ -59,19 +59,19 @@ Para saber mais sobre o sistema de arquivos do Docker, confira [Referência de e
 
 Para obter mais informações sobre as ferramentas e os pacotes disponíveis nas imagens de executores hospedados no GitHub, consulte [Executores hospedados no GitHub](../../../concepts/runners/github-hosted-runners.md#preinstalled-software-for-github-owned-images).
 
-## Usar variáveis e segredos
+## Usar variáveis e segredos { #using-variables-and-secrets }
 
 CircleCI e GitHub Actions oferecem suporte à definição de variáveis no arquivo de configuração e à criação de segredos usando a interface do usuário do CircleCI ou de GitHub.
 
 Para saber mais, confira [Referência de variáveis](../../../reference/workflows-and-actions/variables.md#default-environment-variables) e [Usar segredos em ações do GitHub](../../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 
-## Armazenamento em cache
+## Armazenamento em cache { #caching }
 
 CircleCI e GitHub Actions fornecem um método para armazenar arquivos em cache manualmente no arquivo de configuração.
 
 Abaixo, há um exemplo da sintaxe para cada sistema.
 
-### Sintaxe do CircleCI para cache
+### Sintaxe do CircleCI para cache { #circleci-syntax-for-caching }
 
 ```yaml
 - restore_cache:
@@ -80,7 +80,7 @@ Abaixo, há um exemplo da sintaxe para cada sistema.
       - v1-npm-deps-
 ```
 
-### A sintaxe do GitHub Actions para cache
+### A sintaxe do GitHub Actions para cache { #github-actions-syntax-for-caching }
 
 ```yaml
 - name: Cache node modules
@@ -93,13 +93,13 @@ Abaixo, há um exemplo da sintaxe para cada sistema.
 
 O GitHub Actions não tem um equivalente ao cache de camadas do Docker (ou DLC) do CircleCI.
 
-## Persistência de dados entre tarefas
+## Persistência de dados entre tarefas { #persisting-data-between-jobs }
 
 Tanto o CircleCI quanto o GitHub Actions fornecem mecanismos para suportar dados entre trabalhos.
 
 Abaixo há um exemplo na sintaxe de configuração do GitHub Actions e do CircleCI.
 
-### Sintaxe do CircleCI para persistir dados entre trabalhos
+### Sintaxe do CircleCI para persistir dados entre trabalhos { #circleci-syntax-for-persisting-data-between-jobs }
 
 ```yaml
 - persist_to_workspace:
@@ -113,7 +113,7 @@ Abaixo há um exemplo na sintaxe de configuração do GitHub Actions e do Circle
     at: /tmp/workspace
 ```
 
-### Sintaxe do GitHub Actions para persistir dados entre trabalhos
+### Sintaxe do GitHub Actions para persistir dados entre trabalhos { #github-actions-syntax-for-persisting-data-between-jobs }
 
 ```yaml
 - name: Upload math result for job 1
@@ -132,7 +132,7 @@ Abaixo há um exemplo na sintaxe de configuração do GitHub Actions e do Circle
 
 Para saber mais, confira [Armazenar e compartilhar dados com artefatos de fluxo de trabalho](../../store-and-share-data.md).
 
-## Usar bancos de dados e contêineres de serviço
+## Usar bancos de dados e contêineres de serviço { #using-databases-and-service-containers }
 
 Ambos os sistemas permitem que você inclua contêineres adicionais para bases de dados, memorização ou outras dependências.
 
@@ -141,7 +141,7 @@ GitHub Actions usa seções explícitas: use `container` para o contêiner prim�
 
 Abaixo há um exemplo na sintaxe de configuração do GitHub Actions e do CircleCI.
 
-### Sintaxe do CircleCI para usar bancos de dados e contêineres de serviço
+### Sintaxe do CircleCI para usar bancos de dados e contêineres de serviço { #circleci-syntax-for-using-databases-and-service-containers }
 
 ```yaml
 ---
@@ -193,7 +193,7 @@ workflows:
     at: /tmp/workspace
 ```
 
-### Sintaxe do GitHub Actions para o uso de bancos de dados e contêineres de serviço
+### Sintaxe do GitHub Actions para o uso de bancos de dados e contêineres de serviço { #github-actions-syntax-for-using-databases-and-service-containers }
 
 <!-- markdownlint-disable search-replace -->
 
@@ -246,11 +246,11 @@ jobs:
 
 Para saber mais, confira [Comunicar-se com os contêineres de serviço do Docker](../../use-containerized-services/use-docker-service-containers.md).
 
-## Exemplo completo
+## Exemplo completo { #complete-example }
 
 Abaixo, há um exemplo concreto. No lado esquerdo, é mostrado o *config.yml* real do CircleCI para o repositório [thoughtbot/administrator](https://github.com/thoughtbot/administrate). À direita é mostrado o GitHub Actions equivalente correspondente.
 
-### Exemplo completo do CircleCI
+### Exemplo completo do CircleCI { #complete-example-for-circleci }
 
 ```yaml
 ---
@@ -333,18 +333,18 @@ workflows:
       - ruby-25
 ```
 
-### Exemplo completo para GitHub Actions
+### Exemplo completo para GitHub Actions { #complete-example-for-github-actions }
 
 ```yaml
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
-# São fornecidas por terceiros e regidas por
-# termos de serviço, política de privacidade e suporte separados
-# online.
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
+# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
+# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
+# online. { #documentation }
 
-# O GitHub recomenda fixar ações em um SHA de commit.
-# Para obter uma versão mais recente, você precisará atualizar o SHA.
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
+# O GitHub recomenda fixar ações em um SHA de commit. { #github-recommends-pinning-actions-to-a-commit-sha }
+# Para obter uma versão mais recente, você precisará atualizar o SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha }
+# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning }
 
 name: Containers
 
