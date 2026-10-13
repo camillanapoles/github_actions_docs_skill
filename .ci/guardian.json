@@ -1,0 +1,71 @@
+{
+  "id": "igc.guardian:11320b6257",
+  "blueprint": "gate-driven-bpmn/1",
+  "checkpoint_ref": "925add483ab002c10a58fc299c35334a1732977b",
+  "gate": "igc.guardian",
+  "action": "ralf",
+  "status": 3,
+  "status_label": "pending",
+  "message": "RALF completo: próximo passo = FIX 'gate site' (status 2 medido em .ci/pipeline-state.json); gates vermelhos ['site', 'release']; 13 débitos abertos",
+  "direction": "continue",
+  "addenda": [
+    {
+      "kind": "config",
+      "path": ".igc-spec.yml"
+    },
+    {
+      "kind": "log",
+      "path": ".session/WAL.md"
+    },
+    {
+      "kind": "state",
+      "path": ".session/CHECKPOINT"
+    }
+  ],
+  "next_issue": null,
+  "metrics": {
+    "fases": {
+      "RECONHECER": {
+        "audit_status": 3,
+        "gestor": 0,
+        "gates_vermelhos": {
+          "site": 2,
+          "release": 2
+        },
+        "debitos_abertos": 13,
+        "sessoes_paralelas": [],
+        "spec_erros": []
+      },
+      "AGIR": {
+        "classe": "FIX",
+        "alvo": "gate site",
+        "motivo": "status 2 medido em .ci/pipeline-state.json",
+        "spec_gate": "site"
+      },
+      "LOGGAR": {
+        "wal_entries": 70,
+        "wal_hash": "37974c89af9c4d7a",
+        "checkpoint": "925add483ab0"
+      },
+      "FECHAR": {
+        "emissao_status": 0,
+        "classe": "FIX",
+        "chave": "ralf-38486906538",
+        "checkpoint_ref": "925add483ab002c10a58fc299c35334a1732977b",
+        "idempotente": false
+      }
+    },
+    "proximo": {
+      "classe": "FIX",
+      "alvo": "gate site",
+      "motivo": "status 2 medido em .ci/pipeline-state.json",
+      "spec_gate": "site"
+    },
+    "gestor": "guardian",
+    "run_id": "38486906538",
+    "critico": false
+  },
+  "started_at": "2026-10-13T23:53:11+00:00",
+  "finished_at": "2026-10-13T23:53:11+00:00",
+  "duration_s": 0.032
+}
