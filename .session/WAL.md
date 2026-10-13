@@ -50,3 +50,6 @@ Nunca editar/apagar entrada — correção é entrada nova.
 | 2026-10-13T22:26:00+00:00 | CLOSE-GATE | FIX | auto-checagem Art. 12 (nota 8.89) | closing_gate | volta a EXEC: ['checkpoint_gravado'] | - |
 | 2026-10-13T22:26:00+00:00 | transição ilegal EXEC->EXEC | FIX | nota 8.89 < 9.5 | corrigir pendências | rejeitada | - |
 | 2026-10-13T22:26:00+00:00 | EMIT | FIX | efeito contratado | verificar commit f6bf4ebda197 + PR #2 (arena→main) + run do gate-pipeline | ref=commit f6bf4ebda197 + PR #2 (arena→main) + run do gate-pipeline | commit f6bf4 |
+| 2026-10-13T22:26:48+00:00 | E2-VIOLACAO | FIX | anti-padrão Art.12: emissão a53cff0 saiu com 1 teste vermelho (closing_gate recebeu verificacao_verde=True sem medir) | corrigir o teste C2 (allowlist paths: exclui a memória por construção; paths-ignore precisa citar .session/**) e reemitir | verificação só é verde quando medida; entrada registrada em vez de editar a anterior (M1) | a53cff04e55c |
+| 2026-10-13T22:26:48+00:00 | débito D14 | DEBT | parâmetro booleano sem executar o comando de verificação do profile (Art.10) | closing_gate aceita verificacao_verde declarado em vez de medido | registrado | - |
+| 2026-10-13T22:26:48+00:00 | DEBT | DEBT | D14: closing_gate não mede a verificação | registrar débito com gatilho | M5 cumprido | a53cff04e55c |

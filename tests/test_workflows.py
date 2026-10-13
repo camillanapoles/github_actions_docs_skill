@@ -197,11 +197,13 @@ def test_C2_todos_os_gatilhos_reexecutaveis_filtram_a_memoria():
             ev = gatilhos.get(nome)
             if not isinstance(ev, dict):
                 continue
-            filtro = ev.get("paths-ignore") or ev.get("paths")
-            assert filtro, f"{wf.name}: {nome} sem filtro de caminhos (C2)"
-            texto = " ".join(filtro)
-            assert ".session" in texto or "knowledge" in texto, \
-                f"{wf.name}: {nome} não exclui a memória do IGC (C2)"
+            ignora, permite = ev.get("paths-ignore"), ev.get("paths")
+            assert ignora or permite, f"{wf.name}: {nome} sem filtro de caminhos (C2)"
+            if ignora:      # lista de exclusão precisa citar a memória
+                assert ".session/**" in ignora, f"{wf.name}: {nome} não ignora .session/** (C2)"
+            else:           # allowlist: só dispara o que está listado ⇒ memória já está fora
+                assert not any((".session" in p or ".igc" in p) for p in permite), \
+                    f"{wf.name}: {nome} lista a memória no allowlist e causaria loop (C2)"
 
 
 def test_C1_step_de_checkpoint_nao_faz_push_em_pull_request():
