@@ -45,13 +45,19 @@ jobs:
 
       - name: Avalia capacidade e aplica (envelope JSON)
         id: boot
+        shell: bash
         env:
           GH_TOKEN: ${{ secrets.ADMIN_TOKEN || secrets.GITHUB_TOKEN }}
           HAS_ADMIN: ${{ secrets.ADMIN_TOKEN != '' }}
           DRY: ${{ inputs.dry_run }}
           REPO: ${{ github.repository }}
         run: |
+          set +e            # o default `bash -e {0}` abortaria no primeiro 403/422
           set -uo pipefail
+          LOG=.ci/admin-bootstrap.log
+          : > "$LOG"
+          log() { echo "[$(date -u +%T)] $*" | tee -a "$LOG"; }
+
           envelope() {  # envelope() <status> <direction> <message> [addenda]
             jq -n --arg id "admin-bootstrap:${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
                   --arg repo "$REPO" \
@@ -75,7 +81,8 @@ jobs:
 
           if [ "$HAS_ADMIN" != "true" ]; then
             # GITHUB_TOKEN não tem Administration: write → tenta e relata o 403 como evidência
-            probe=$(gh api "repos/$REPO/rulesets" -X POST -f name=probe-permission 2>&1 | head -1 || true)
+            probe=$(gh api "repos/$REPO/rulesets" -X POST -f name=probe-permission 2>&1 | head -1)
+            log "sem ADMIN_TOKEN; probe: $probe"
             envelope 3 continue \
               "ADMIN_TOKEN ausente: governança não aplicada (probe: ${probe:0:120})" \
               '{"kind":"json","path":".ci/admin-bootstrap.json"}'
@@ -103,21 +110,31 @@ jobs:
                            required_review_thread_resolution:false}},
               {type:"deletion"}, {type:"non_fast_forward"}
             ]}')
-          existing=$(gh api "repos/$REPO/rulesets" --jq ".[]|select(.name==\"$RULESET_NAME\")|.id" || true)
+          existing=$(gh api "repos/$REPO/rulesets" --jq ".[]|select(.name==\"$RULESET_NAME\")|.id" 2>>"$LOG")
+          log "ruleset existente: '${existing:-nenhum}'"
           if [ -n "$existing" ]; then
-            echo "$spec" | gh api "repos/$REPO/rulesets/$existing" -X PUT --input - >/dev/null
-            msg="ruleset $RULESET_NAME atualizado (id=$existing)"
+            out=$(echo "$spec" | gh api "repos/$REPO/rulesets/$existing" -X PUT --input - 2>&1); rc=$?
           else
-            echo "$spec" | gh api "repos/$REPO/rulesets" -X POST --input - >/dev/null
-            msg="ruleset $RULESET_NAME criado"
+            out=$(echo "$spec" | gh api "repos/$REPO/rulesets" -X POST --input - 2>&1); rc=$?
           fi
+          echo "$out" >> "$LOG"
+          if [ "$rc" != "0" ]; then
+            log "falha ao aplicar ruleset (rc=$rc)"
+            envelope 2 retry "ruleset não aplicado (rc=$rc): $(echo "$out" | head -c 160)" \
+              '{"kind":"log","path":".ci/admin-bootstrap.log"}'
+            exit 0
+          fi
+          msg="ruleset $RULESET_NAME aplicado (rc=0)"
+          log "$msg"
 
           # ---- 2. Pages com build por workflow ----
-          if gh api "repos/$REPO/pages" --jq .status >/dev/null 2>&1; then
-            msg="$msg; Pages já habilitado"
-          elif gh api "repos/$REPO/pages" -X POST -f build_type=workflow >/dev/null 2>&1; then
+          pout=$(gh api "repos/$REPO/pages" -X POST -f build_type=workflow 2>&1); prc=$?
+          echo "$pout" >> "$LOG"
+          if [ "$prc" = "0" ] || echo "$pout" | grep -q "already exists"; then
             msg="$msg; Pages habilitado (build_type=workflow)"
+            log "$msg"
           else
+            log "falha ao habilitar Pages (rc=$prc)"
             envelope 2 retry "$msg; falha ao habilitar Pages (verificar permissão de Pages)" \
               '{"kind":"json","path":".ci/admin-bootstrap.json"}'
             exit 0
@@ -134,6 +151,17 @@ jobs:
             cat .ci/admin-bootstrap.json 2>/dev/null || echo '{}'
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commita diagnóstico (.ci)
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A .ci || exit 0
+          git diff --cached --quiet && { echo "nada a commitar"; exit 0; }
+          git commit -m "ci(governance): diagnóstico do admin-bootstrap [skip ci]"
+          git pull --rebase --autostash -X theirs origin "${GITHUB_REF_NAME}" || true
+          git push origin "HEAD:${GITHUB_REF_NAME}" || echo "push falhou"
 
       - name: Artefato
         if: always()
