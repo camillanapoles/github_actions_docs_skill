@@ -54,6 +54,7 @@ jobs:
           set -uo pipefail
           envelope() {  # envelope() <status> <direction> <message> [addenda]
             jq -n --arg id "admin-bootstrap:${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+                  --arg repo "$REPO" \
                   --arg gate "governance" --arg action "admin-bootstrap.yml" \
                   --argjson status "$1" --arg direction "$2" --arg message "$3" \
                   --arg addenda "${4:-}" --arg ts "$(date -u +%FT%TZ)" \
@@ -67,7 +68,7 @@ jobs:
                         "criar fine-grained PAT (ou GitHub App) com Administration: write neste repositório",
                         "gh secret set ADMIN_TOKEN --body \"<token>\"",
                         "reexecutar: gh workflow run admin-bootstrap.yml",
-                        "confirmar: gh api repos/'"$REPO"'/rulesets --jq \".[].name\""]}) ,
+                        "confirmar: gh api repos/\($repo)/rulesets --jq .[].name"]} end) ,
                     started_at:$ts, finished_at:$ts}' > .ci/admin-bootstrap.json
             cat .ci/admin-bootstrap.json
           }
