@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/administer/view-metrics
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: How tos / Administer
 ---
 

@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: How tos / Manage runners / Use actions runner controller
 ---
 
@@ -777,8 +777,7 @@ template:
 
 Para versões do Kubernetes `< v1.29`, a seguinte configuração será aplicada:
 
-```
-```
+```yaml
 ```
 ## githubConfigUrl is the GitHub url for where you want to configure runners
 ## ex: https://github.com/myorg/myrepo or https://github.com/myorg
@@ -903,7 +902,7 @@ Há duas opções para configurar extensões de gancho.
 
 Crie um mapa de configurações no mesmo namespace que os pods do executor. Por exemplo:
 
-```
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -942,7 +941,7 @@ Para habilitar métricas no ARC, configure a propriedade `metrics` no arquivo [`
 
 A seguir, há um exemplo de configuração.
 
-```
+```yaml
 metrics:
   controllerManagerAddr: ":8080"
   listenerAddr: ":8080"
@@ -963,24 +962,24 @@ As métricas emitidas pelos pods controlador-gerente e ouvinte são exibidas na 
 !!! note
     As métricas que o gerenciador de controladores emite pertencem ao runtime do controlador e não pertencem a GitHub.
 
-| Proprietário            | Métrica                                      | Tipo       | Descrição                                                                                                                                             |
-| ----------------------- | -------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| gerenciador-controlador | gha_controller_pending_ephemeral_runners | medidor    | Número de executores efêmeros em estado pendente                                                                                                      |
-| gerenciador-controlador | gha_controller_running_ephemeral_runners | medidor    | Número de executores efêmeros em estado de execução                                                                                                   |
-| gerenciador-controlador | gha_controller_failed_ephemeral_runners  | medidor    | Número de executores efêmeros em estado de falha                                                                                                      |
-| gerenciador-controlador | gha_controller_running_listeners          | medidor    | Número de ouvintes em um estado de execução                                                                                                           |
-| ouvinte                 | gha_assigned_jobs                          | medidor    | Número de trabalhos atribuídos ao conjunto de dimensionamento de executores                                                                           |
-| ouvinte                 | gha_running_jobs                           | medidor    | Número de trabalhos em execução ou na fila para execução                                                                                              |
-| ouvinte                 | gha_registered_runners                     | medidor    | Número de executores registrados pelo conjunto de dimensionamento de executores                                                                       |
-| ouvinte                 | gha_busy_runners                           | medidor    | Número de corredores registrados atualmente executando um trabalho                                                                                    |
-| ouvinte                 | gha_min_runners                            | medidor    | Número mínimo de executores configurados para o conjunto de dimensionamento de executores                                                             |
-| ouvinte                 | gha_max_runners                            | medidor    | Número máximo de executores configurados para o conjunto de dimensionamento de executores                                                             |
-| ouvinte                 | gha_desired_runners                        | medidor    | Número de executores desejados (meta de escala/redução vertical) pelo conjunto de dimensionamento de executores                                       |
-| ouvinte                 | gha_idle_runners                           | medidor    | Número de executores registrados que não estão executando um trabalho                                                                                 |
-| ouvinte                 | gha_started_jobs_total                    | contador   | Número total de trabalhos iniciados desde que o listener ficou pronto \[1]                                                                            |
-| ouvinte                 | gha_completed_jobs_total                  | contador   | Número total de trabalhos concluídos desde que o listener ficou pronto \[1]                                                                           |
-| ouvinte                 | gha_job_startup_duration_seconds         | histograma | Número de segundos gastos aguardando a tarefa do fluxo de trabalho para iniciar no executor de propriedade do conjunto de dimensionamento do executor |
-| ouvinte                 | gha_job_execution_duration_seconds       | histograma | Número de segundos gastos executando tarefas do fluxo de trabalho pelo conjunto de dimensionamento do executor                                        |
+| Proprietário | Métrica | Tipo | Descrição |
+| --- | --- | --- | --- |
+| gerenciador-controlador | gha_controller_pending_ephemeral_runners | medidor | Número de executores efêmeros em estado pendente |
+| gerenciador-controlador | gha_controller_running_ephemeral_runners | medidor | Número de executores efêmeros em estado de execução |
+| gerenciador-controlador | gha_controller_failed_ephemeral_runners | medidor | Número de executores efêmeros em estado de falha |
+| gerenciador-controlador | gha_controller_running_listeners | medidor | Número de ouvintes em um estado de execução |
+| ouvinte | gha_assigned_jobs | medidor | Número de trabalhos atribuídos ao conjunto de dimensionamento de executores |
+| ouvinte | gha_running_jobs | medidor | Número de trabalhos em execução ou na fila para execução |
+| ouvinte | gha_registered_runners | medidor | Número de executores registrados pelo conjunto de dimensionamento de executores |
+| ouvinte | gha_busy_runners | medidor | Número de corredores registrados atualmente executando um trabalho |
+| ouvinte | gha_min_runners | medidor | Número mínimo de executores configurados para o conjunto de dimensionamento de executores |
+| ouvinte | gha_max_runners | medidor | Número máximo de executores configurados para o conjunto de dimensionamento de executores |
+| ouvinte | gha_desired_runners | medidor | Número de executores desejados (meta de escala/redução vertical) pelo conjunto de dimensionamento de executores |
+| ouvinte | gha_idle_runners | medidor | Número de executores registrados que não estão executando um trabalho |
+| ouvinte | gha_started_jobs_total | contador | Número total de trabalhos iniciados desde que o listener ficou pronto \[1] |
+| ouvinte | gha_completed_jobs_total | contador | Número total de trabalhos concluídos desde que o listener ficou pronto \[1] |
+| ouvinte | gha_job_startup_duration_seconds | histograma | Número de segundos gastos aguardando a tarefa do fluxo de trabalho para iniciar no executor de propriedade do conjunto de dimensionamento do executor |
+| ouvinte | gha_job_execution_duration_seconds | histograma | Número de segundos gastos executando tarefas do fluxo de trabalho pelo conjunto de dimensionamento do executor |
 
 \[1]: Listener metrics that have the counter type are reset when the listener pod restarts.
 
@@ -1029,7 +1028,7 @@ Como melhor prática, crie um namespace exclusivo para cada organização. Você
 
 Partes foram adaptadas do <https://github.com/actions/actions-runner-controller/> de acordo com a licença Apache-2.0:
 
-```
+```text
 Copyright 2019 Moto Ishizawa
 
 Licensed under the Apache License, Version 2.0 (the "License");

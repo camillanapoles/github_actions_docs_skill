@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/dockerfile-support
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Reference / Workflows and actions
 ---
 
@@ -85,17 +85,16 @@ printf '\n'
 
 O seu código deve ser executável. Verifique se o arquivo `entrypoint.sh` tem as permissões `execute` antes de usá-lo em um fluxo de trabalho. Você pode modificar as permissões a partir do seu terminal usando este comando:
 
-```
+```shell
 chmod +x entrypoint.sh
 ```
 
 Quando um script de shell `ENTRYPOINT` não for executável, você receberá um erro semelhante a este:
 
-```
+```shell
 Error response from daemon: OCI runtime create failed: container_linux.go:348: starting container process caused "exec: \"/entrypoint.sh\": permission denied": unknown
 ```
 
-```
 ### CMD
 
 Se você definir `args` no arquivo de metadados da ação, `args` substituirá a instrução `CMD` especificada no `Dockerfile`. Para saber mais, confira [Referência de sintaxe de metadados](metadata-syntax.md#runsargs).
@@ -106,6 +105,6 @@ Se você usar `CMD` no `Dockerfile`, siga estas diretrizes:
 2. Use padrões que permitam o uso da ação sem a especificação de `args`.
 3. Se a ação expuser um sinalizador `--help` ou algo semelhante, use-o para tornar a ação autodocumentada.
 
-## Recursos compatíveis com o Linux
+## Recursos compatíveis com o Linux { #supported-linux-capabilities }
 
 GitHub Actions dá suporte aos recursos padrão do Linux compatíveis com o Docker. Não é possível adicionar ou remover recursos. Para obter mais informações sobre os recursos padrão do Linux com suporte pelo Docker, consulte [Recursos do kernel Linux](https://docs.docker.com/engine/security/#linux-kernel-capabilities) na documentação do Docker. Para saber mais sobre as funcionalidades do Linux, confira [Visão geral das funcionalidades do Linux](http://man7.org/linux/man-pages/man7/capabilities.7.html) nas páginas do manual do Linux.

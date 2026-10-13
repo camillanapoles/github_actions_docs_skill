@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/publish-packages/publish-java-packages-with-gradle
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Tutorials / Publish packages
 ---
 
@@ -287,4 +287,5 @@ Este fluxo de trabalho realiza as etapas a seguir:
 4. Executa a tarefa `publish` do Gradle para publicar no repositório Maven `OSSRH` e no GitHub Packages. A variável de ambiente `MAVEN_USERNAME` será definida com o conteúdo do segredo `OSSRH_USERNAME`, e a variável de ambiente `MAVEN_PASSWORD` será definida com o conteúdo do segredo `OSSRH_TOKEN`. A variável de ambiente `GITHUB_TOKEN` será definida com o conteúdo do segredo `GITHUB_TOKEN`. A chave `permissions` especifica o acesso que o segredo `GITHUB_TOKEN` permitirá.
 
    Para saber mais sobre como usar segredos em seu fluxo de trabalho, confira [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
+
 ```

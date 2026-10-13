@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
@@ -241,7 +241,7 @@ Você pode usar o `dry-run` comando para converter um pipeline de CI do Travis e
 
 Para executar uma execução seca da migração dos pipelines de CI do Travis para GitHub Actions, execute o seguinte comando em seu terminal, substituindo `my-travis-ci-repository` pelo nome do repositório travis ci.
 
-```shell
+```
 gh actions-importer dry-run travis-ci --travis-ci-repository my-travis-ci-repository --output-dir tmp/dry-run
 ```
 
@@ -257,13 +257,13 @@ Você pode usar o `migrate` comando para converter um pipeline de CI do Travis e
 
 Para migrar um pipeline de CI do Travis, GitHub Actionsexecute o seguinte comando em seu terminal, substituindo o `target-url` valor pela URL do repositório GitHub e `my-travis-ci-repository` pelo nome do repositório travis ci.
 
-```shell
+```
 gh actions-importer migrate travis-ci --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate --travis-ci-repository my-travis-ci-repository
 ```
 
 A saída do comando inclui a URL para a solicitação de pull que adiciona o fluxo de trabalho convertido ao repositório. Um exemplo de uma saída bem-sucedida é semelhante ao seguinte:
 
-```shell
+```
 $ gh actions-importer migrate travis-ci --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate --travis-ci-repository my-travis-ci-repository
 [2022-08-20 22:08:20] Logs: 'tmp/migrate/log/actions-importer-20220916-014033.log'
 [2022-08-20 22:08:20] Pull request: 'https://github.com/octo-org/octo-repo/pull/1'
@@ -312,7 +312,7 @@ Por padrão, GitHub Actions Importer busca o conteúdo do pipeline do controle d
 
 Por exemplo:
 
-```shell
+```
 gh actions-importer dry-run travis-ci --output-dir ./path/to/output/ --travis-ci-repository my-travis-ci-repository --source-file-path ./path/to/.travis.yml
 ```
 
@@ -320,7 +320,7 @@ gh actions-importer dry-run travis-ci --output-dir ./path/to/output/ --travis-ci
 
 Você pode usar esse argumento para especificar se GitHub Actions Importer deve incluir repositórios inativos em uma auditoria. Se essa opção não for definida, os repositórios inativos não serão incluídos nas auditorias.
 
-```shell
+```
 gh actions-importer dry-run travis-ci --output-dir ./path/to/output/ --travis-ci-repository my-travis-ci-repository --allow-inactive-repositories
 ```
 
@@ -334,13 +334,13 @@ Por padrão, GitHub Actions Importer busca o conteúdo do pipeline do controle d
 
 Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML especificado para executar uma auditoria.
 
-```shell
+```
 gh actions-importer audit travis-ci --output-dir ./path/to/output/ --config-file-path ./path/to/travis-ci/config.yml
 ```
 
 Para auditar uma instância do Travis CI usando um arquivo de configuração, o arquivo precisa estar no seguinte formato e cada valor `repository_slug` precisa ser exclusivo:
 
-```yaml
+```
 source_files:
   - repository_slug: travis-org-name/travis-repo-name
     path: path/to/.travis.yml
@@ -354,7 +354,7 @@ Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML espe
 
 O pipeline é selecionado pela correspondência do `repository_slug` no arquivo de configuração com o valor da opção `--travis-ci-repository`. Em seguida, `path` é usado para efetuar pull do arquivo de origem especificado.
 
-```shell
+```
 gh actions-importer dry-run travis-ci --travis-ci-repository travis-org-name/travis-repo-name --output-dir ./output/ --config-file-path ./path/to/travis-ci/config.yml
 ```
 
@@ -404,24 +404,24 @@ GitHub Actions Importer dá suporte à migração de projetos de CI travis nos i
 
 A tabela a seguir mostra os tipos de propriedades que GitHub Actions Importer pode converter atualmente. Para obter mais detalhes sobre como a sintaxe do pipeline do Travis CI se alinha GitHub Actions, consulte [Migrando de Travis CI para GitHub Actions](../manual-migrations/migrate-from-travis-ci.md).
 
-| Travis CI | GitHub Actions | Status |
-| :-- | :-- | --: |
-| ramificações | <ul><li>`on.<push>.<branches>`</li> | Com suporte |
-| build_pull_requests (construir solicitações de pull) | <ul><li>`on.<pull_request>`</li> | Com suporte |
-| env | <ul><li>`env`</li> <li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li> | Com suporte |
-| if | <ul><li>`jobs.<job_id>.if`</li></ul> | Com suporte |
-| cargo | <ul><li>`jobs.<job_id>`</li><li>`jobs.<job_id>.name`</li></ul> | Com suporte |
-| matriz | <ul><li>`jobs.<job_id>.strategy`</li><li>`jobs.<job_id>.strategy.fail-fast`</li><li>`jobs.<job_id>.strategy.matrix`</li> | Com suporte |
-| os \&dist | <ul><li>`runners`</li></ul> | Com suporte |
-| scripts | <ul><li>`jobs.<job_id>.steps`</li></ul> | Com suporte |
-| fases | <ul><li>`jobs`</li></ul> | Com suporte |
-| env | <ul><li>`on`</li> | Suporte parcial |
-| ramificações | <ul><li>`on.<push>.<tags>`</li><li>`on.<push>.paths`</li> | Sem suporte |
-| build_pull_requests (construir solicitações de pull) | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.<tags>`</li><li>`on.<pull_request>.paths`</li> | Sem suporte |
-| gatilhos cron | <ul><li>`on.schedule`</li><li>`on.workflow_run`</li></ul> | Sem suporte |
-| env | <ul><li>`jobs.<job_id>.timeout-minutes`</li><li>`on.<event_name>.types`</li> | Sem suporte |
-| cargo | <ul><li>`jobs.<job_id>.container`</li> | Sem suporte |
-| os \&dist | <ul><li>`self hosted runners`</li></ul> | Sem suporte |
+| Travis CI                                              | GitHub Actions                                                                                                           |          Status |
+| :----------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- | --------------: |
+| ramificações                                           | <ul><li>`on.<push>.<branches>`</li>                                                                                      |     Com suporte |
+| build_pull_requests (construir solicitações de pull) | <ul><li>`on.<pull_request>`</li>                                                                                         |     Com suporte |
+| env                                                    | <ul><li>`env`</li> <li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li>                                        |     Com suporte |
+| if                                                     | <ul><li>`jobs.<job_id>.if`</li></ul>                                                                                     |     Com suporte |
+| cargo                                                  | <ul><li>`jobs.<job_id>`</li><li>`jobs.<job_id>.name`</li></ul>                                                           |     Com suporte |
+| matriz                                                 | <ul><li>`jobs.<job_id>.strategy`</li><li>`jobs.<job_id>.strategy.fail-fast`</li><li>`jobs.<job_id>.strategy.matrix`</li> |     Com suporte |
+| os \&dist                                              | <ul><li>`runners`</li></ul>                                                                                              |     Com suporte |
+| scripts                                                | <ul><li>`jobs.<job_id>.steps`</li></ul>                                                                                  |     Com suporte |
+| fases                                                  | <ul><li>`jobs`</li></ul>                                                                                                 |     Com suporte |
+| env                                                    | <ul><li>`on`</li>                                                                                                        | Suporte parcial |
+| ramificações                                           | <ul><li>`on.<push>.<tags>`</li><li>`on.<push>.paths`</li>                                                                |     Sem suporte |
+| build_pull_requests (construir solicitações de pull) | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.<tags>`</li><li>`on.<pull_request>.paths`</li>         |     Sem suporte |
+| gatilhos cron                                          | <ul><li>`on.schedule`</li><li>`on.workflow_run`</li></ul>                                                                |     Sem suporte |
+| env                                                    | <ul><li>`jobs.<job_id>.timeout-minutes`</li><li>`on.<event_name>.types`</li>                                             |     Sem suporte |
+| cargo                                                  | <ul><li>`jobs.<job_id>.container`</li>                                                                                   |     Sem suporte |
+| os \&dist                                              | <ul><li>`self hosted runners`</li></ul>                                                                                  |     Sem suporte |
 
 Para obter informações sobre os recursos do Travis CI compatíveis, consulte o repositório [`github/gh-actions-importer`](https://github.com/github/gh-actions-importer/blob/main/docs/travis_ci/index.md).
 
@@ -429,11 +429,11 @@ Para obter informações sobre os recursos do Travis CI compatíveis, consulte o
 
 GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáveis de ambiente de CI travis padrão para o equivalente mais próximo em GitHub Actions.
 
-| Travis CI                 | GitHub Actions            |
-|:------------------------|:------------------------|
-| `$CONTINUOUS_INTEGRATION` | `$CI`                     |
-| `$USER`                   | `${{ github.actor }}`     |
-| `$HOME`                   | `${{ github.workspace }}` |
+| Travis CI                 | GitHub Actions        |
+| :------------------------ | :-------------------- |
+| `$CONTINUOUS_INTEGRATION` | `$CI`                 |
+| `$USER`                   | `${{ github.actor }}` |
+| `$HOME`                   |                       `${{ github.workspace }}` |
 |
 | `$TRAVIS_BRANCH`             | `${{ github.ref }}`                                                                   |
 | `$TRAVIS_BUILD_DIR`           | `${{ github.workspace }}`                                                             |
@@ -455,7 +455,7 @@ GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáv
 
 Partes foram adaptadas do <https://github.com/github/gh-actions-importer/> de acordo com a licença MIT:
 
-```text
+```
 MIT License
 
 Copyright (c) 2022 GitHub

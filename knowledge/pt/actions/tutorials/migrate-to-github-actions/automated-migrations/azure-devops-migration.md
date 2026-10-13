@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
@@ -266,7 +266,7 @@ Se houver algo que GitHub Actions Importer não foi capaz de converter automatic
 
 Para executar uma simulação de migração do pipeline de build do Azure DevOps para o GitHub Actions, execute o comando a seguir no terminal, substituindo `pipeline_id` pela ID do pipeline que você está convertendo.
 
-```shell
+```
 gh actions-importer dry-run azure-devops pipeline --pipeline-id :pipeline_id --output-dir tmp/dry-run
 ```
 
@@ -276,7 +276,7 @@ gh actions-importer dry-run azure-devops pipeline --pipeline-id :pipeline_id --o
 
 Para executar uma execução seca de migração para o pipeline GitHub Actionsde lançamento do Azure DevOps, execute o seguinte comando em seu terminal, substituindo `pipeline_id` pela ID do pipeline que você está convertendo.
 
-```shell
+```
 gh actions-importer dry-run azure-devops release --pipeline-id :pipeline_id --output-dir tmp/dry-run
 ```
 
@@ -290,13 +290,13 @@ Você pode usar o comando `migrate` para converter um pipeline do Azure DevOps e
 
 Para migrar um pipeline de build do Azure DevOps para GitHub Actions, execute o seguinte comando no seu terminal, substituindo o valor de `target-url` pela URL do seu repositório do GitHub, e `pipeline_id` pelo ID do pipeline que você está convertendo.
 
-```shell
+```
 gh actions-importer migrate azure-devops pipeline --pipeline-id :pipeline_id --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate
 ```
 
 A saída do comando inclui a URL da solicitação de pull que adiciona o fluxo de trabalho convertido ao repositório. Um exemplo de uma saída bem-sucedida é semelhante ao seguinte:
 
-```shell
+```
 $ gh actions-importer migrate azure-devops pipeline --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate --azure-devops-project my-azure-devops-project
 [2022-08-20 22:08:20] Logs: 'tmp/migrate/log/actions-importer-20220916-014033.log'
 [2022-08-20 22:08:20] Pull request: 'https://github.com/octo-org/octo-repo/pull/1'
@@ -306,13 +306,13 @@ $ gh actions-importer migrate azure-devops pipeline --target-url https://github.
 
 Para migrar um pipeline de release do Azure DevOps para GitHub Actions, execute o seguinte comando no terminal, substituindo o valor de `target-url` pela URL do seu repositório GitHub e `pipeline_id` pelo ID do pipeline que você está convertendo.
 
-```shell
+```
 gh actions-importer migrate azure-devops release --pipeline-id :pipeline_id --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate
 ```
 
 A saída do comando inclui a URL da solicitação de pull que adiciona o fluxo de trabalho convertido ao repositório. Um exemplo de uma saída bem-sucedida é semelhante ao seguinte:
 
-```shell
+```
 $ gh actions-importer migrate azure-devops release --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate --azure-devops-project my-azure-devops-project
 [2022-08-20 22:08:20] Logs: 'tmp/migrate/log/actions-importer-20220916-014033.log'
 [2022-08-20 22:08:20] Pull request: 'https://github.com/octo-org/octo-repo/pull/1'
@@ -367,7 +367,7 @@ Por padrão, o GitHub Actions Importer busca o conteúdo do pipeline do controle
 
 Por exemplo:
 
-```shell
+```
 gh actions-importer dry-run azure-devops pipeline --output-dir ./output/ --source-file-path ./path/to/azure_devops/pipeline.yml
 ```
 
@@ -383,13 +383,13 @@ O argumento `--config-file-path` também pode ser usado para especificar para qu
 
 Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML especificado como o arquivo de origem para executar uma auditoria.
 
-```shell
+```
 gh actions-importer audit azure-devops pipeline --output-dir ./output/ --config-file-path ./path/to/azure_devops/config.yml
 ```
 
 Para auditar uma instância Azure DevOps usando um arquivo de configuração, o arquivo de configuração deve estar no seguinte formato e cada `repository_slug` deve ser exclusivo:
 
-```yaml
+```
 source_files:
   - repository_slug: azdo-project/1
     path: file.yml
@@ -405,7 +405,7 @@ Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML espe
 
 O pipeline é selecionado pela correspondência do `repository_slug` no arquivo de configuração com o valor das opções `--azure-devops-organization` e `--azure-devops-project`. Em seguida, `path` é usado para efetuar pull do arquivo de origem especificado.
 
-```shell
+```
 gh actions-importer dry-run azure-devops pipeline --output-dir ./output/ --config-file-path ./path/to/azure_devops/config.yml
 ```
 
@@ -415,13 +415,13 @@ GitHub Actions Importer usa o arquivo YAML fornecido para o `--config-file-path`
 
 Para começar, você deve executar uma auditoria sem o argumento `--config-file-path`:
 
-```shell
+```
 gh actions-importer audit azure-devops --output-dir ./output/
 ```
 
 A saída desse comando conterá um arquivo nomeado `config.yml` que contém uma lista de todos os fluxos de trabalho reutilizáveis e ações compostas que foram convertidas por GitHub Actions Importer. Por exemplo, o arquivo `config.yml` pode ter o seguinte conteúdo:
 
-```yaml
+```
 reusable_workflows:
   - name: my-reusable-workflow.yml
     target_url: https://github.com/octo-org/octo-repo
@@ -435,7 +435,7 @@ composite_actions:
 
 Você pode usar esse arquivo para especificar a qual repositório e ref um fluxo de trabalho reutilizável ou uma ação composta deve ser adicionado. Em seguida, você pode usar o `--config-file-path` argumento para fornecer o `config.yml` arquivo para GitHub Actions Importer. Por exemplo, você pode usar esse arquivo ao executar um comando `migrate` para abrir uma solicitação de pull para cada repositório exclusivo definido no arquivo de configuração:
 
-```shell
+```
 gh actions-importer migrate azure-devops pipeline --config-file-path config.yml --target-url https://github.com/my-org/my-repo
 ```
 
@@ -443,26 +443,26 @@ gh actions-importer migrate azure-devops pipeline --config-file-path config.yml 
 
 A tabela a seguir mostra o tipo de propriedades que GitHub Actions Importer atualmente é capaz de converter.
 
-| Azure Pipelines | GitHub Actions | Status |
-| :-- | :-- | :-- |
-| condição | <ul><li>`jobs.<job_id>.if`</li><li>`jobs.<job_id>.steps[*].if`</li></ul> | Com suporte |
-| contêiner | <ul><li>`jobs.<job_id>.container`</li><li>`jobs.<job_id>.name`</li></ul> | Com suporte |
-| integração contínua | <ul><li>`on.<push>.<branches>`</li><li>`on.<push>.<tags>`</li><li>`on.<push>.paths`</li></ul> | Com suporte |
-| cargo | <ul><li>`jobs.<job_id>`</li></ul> | Com suporte |
-| solicitação de pull | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.paths`</li></ul> | Com suporte |
-| fase | <ul><li>`jobs`</li></ul> | Com suporte |
-| etapas | <ul><li>`jobs.<job_id>.steps`</li></ul> | Com suporte |
-| estratégia | <ul><li>`jobs.<job_id>.strategy.fail-fast`</li><li>`jobs.<job_id>.strategy.max-parallel`</li><li>`jobs.<job_id>.strategy.matrix`</li></ul> | Com suporte |
-| timeoutInMinutes | <ul><li>`jobs.<job_id>.timeout-minutes`</li></ul> | Com suporte |
-| variáveis | <ul><li>`env`</li><li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li></ul> | Com suporte |
-| implantação manual | <ul><li>`jobs.<job_id>.environment`</li></ul> | Suporte parcial |
-| pool | <ul><li>`runners`</li><li>`self hosted runners`</li></ul> | Suporte parcial |
-| serviços | <ul><li>`jobs.<job_id>.services`</li></ul> | Suporte parcial |
-| estratégia | <ul><li>`jobs.<job_id>.strategy`</li></ul> | Suporte parcial |
-| disparadores | <ul><li>`on`</li></ul> | Suporte parcial |
-| solicitação de pull | <ul><li>`on.<pull_request>.<tags>`</li></ul> | Sem suporte |
-| schedules | <ul><li>`on.schedule`</li><li>`on.workflow_run`</li></ul> | Sem suporte |
-| disparadores | <ul><li>`on.<event_name>.types`</li></ul> | Sem suporte |
+| Azure Pipelines     | GitHub Actions                                                                                                                             | Status          |
+| :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------- | :-------------- |
+| condição            | <ul><li>`jobs.<job_id>.if`</li><li>`jobs.<job_id>.steps[*].if`</li></ul>                                                                   | Com suporte     |
+| contêiner           | <ul><li>`jobs.<job_id>.container`</li><li>`jobs.<job_id>.name`</li></ul>                                                                   | Com suporte     |
+| integração contínua | <ul><li>`on.<push>.<branches>`</li><li>`on.<push>.<tags>`</li><li>`on.<push>.paths`</li></ul>                                              | Com suporte     |
+| cargo               | <ul><li>`jobs.<job_id>`</li></ul>                                                                                                          | Com suporte     |
+| solicitação de pull | <ul><li>`on.<pull_request>.<branches>`</li><li>`on.<pull_request>.paths`</li></ul>                                                         | Com suporte     |
+| fase                | <ul><li>`jobs`</li></ul>                                                                                                                   | Com suporte     |
+| etapas              | <ul><li>`jobs.<job_id>.steps`</li></ul>                                                                                                    | Com suporte     |
+| estratégia          | <ul><li>`jobs.<job_id>.strategy.fail-fast`</li><li>`jobs.<job_id>.strategy.max-parallel`</li><li>`jobs.<job_id>.strategy.matrix`</li></ul> | Com suporte     |
+| timeoutInMinutes    | <ul><li>`jobs.<job_id>.timeout-minutes`</li></ul>                                                                                          | Com suporte     |
+| variáveis           | <ul><li>`env`</li><li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li></ul>                                                      | Com suporte     |
+| implantação manual  | <ul><li>`jobs.<job_id>.environment`</li></ul>                                                                                              | Suporte parcial |
+| pool                | <ul><li>`runners`</li><li>`self hosted runners`</li></ul>                                                                                  | Suporte parcial |
+| serviços            | <ul><li>`jobs.<job_id>.services`</li></ul>                                                                                                 | Suporte parcial |
+| estratégia          | <ul><li>`jobs.<job_id>.strategy`</li></ul>                                                                                                 | Suporte parcial |
+| disparadores        | <ul><li>`on`</li></ul>                                                                                                                     | Suporte parcial |
+| solicitação de pull | <ul><li>`on.<pull_request>.<tags>`</li></ul>                                                                                               | Sem suporte     |
+| schedules           | <ul><li>`on.schedule`</li><li>`on.workflow_run`</li></ul>                                                                                  | Sem suporte     |
+| disparadores        | <ul><li>`on.<event_name>.types`</li></ul>                                                                                                  | Sem suporte     |
 
 Para obter mais informações sobre tarefas de Azure DevOps com suporte, consulte o [`github/gh-actions-importer` repositório](https://github.com/github/gh-actions-importer/blob/main/docs/azure_devops/index.md).
 
@@ -471,7 +471,7 @@ Para obter mais informações sobre tarefas de Azure DevOps com suporte, consult
 GitHub Actions Importerusa o mapeamento na tabela abaixo para converter variáveis de ambiente padrão Azure DevOps para o equivalente mais próximo em GitHub Actions.
 
 | Azure Pipelines                             | GitHub Actions                                      |
-|:------------------------------------------|:--------------------------------------------------|
+| :------------------------------------------ | :-------------------------------------------------- |
 | `$(Agent.BuildDirectory)`                   | `${{ runner.workspace }}`                           |
 | `$(Agent.HomeDirectory)`                    | `${{ env.HOME }}`                                   |
 | `$(Agent.JobName)`                          | `${{ github.job }}`                                 |
@@ -548,19 +548,19 @@ GitHub Actions Importeré capaz de transformar modelos Azure DevOps com algumas 
 
 GitHub Actions Importer dá suporte aos modelos listados na tabela abaixo.
 
-| Azure Pipelines | GitHub Actions | Status |
-| :-- | :-- | --: |
-| Estendendo a partir de um modelo | `Reusable workflow` | Com suporte |
-| Modelos de trabalho | `Reusable workflow` | Com suporte |
-| Modelos de etapas | `Reusable workflow` | Com suporte |
-| Modelos de etapa | `Composite action` | Com suporte |
-| Grupos de tarefas no editor clássico | Varia | Com suporte |
-| Modelos em uma organização, projeto ou repositório de Azure DevOps diferente | Varia | Com suporte |
-| Modelos em um repositório GitHub | Varia | Com suporte |
-| Modelos de variável | `env` | Com suporte |
-| Inserção condicional | Condições `if` no trabalho/nas etapas | Suporte parcial |
-| Inserção iterativa | Não aplicável | Suporte parcial |
-| Modelos com parâmetros | Varia | Suporte parcial |
+| Azure Pipelines                                                              | GitHub Actions                        |          Status |
+| :--------------------------------------------------------------------------- | :------------------------------------ | --------------: |
+| Estendendo a partir de um modelo                                             | `Reusable workflow`                   |     Com suporte |
+| Modelos de trabalho                                                          | `Reusable workflow`                   |     Com suporte |
+| Modelos de etapas                                                            | `Reusable workflow`                   |     Com suporte |
+| Modelos de etapa                                                             | `Composite action`                    |     Com suporte |
+| Grupos de tarefas no editor clássico                                         | Varia                                 |     Com suporte |
+| Modelos em uma organização, projeto ou repositório de Azure DevOps diferente | Varia                                 |     Com suporte |
+| Modelos em um repositório GitHub                                             | Varia                                 |     Com suporte |
+| Modelos de variável                                                          | `env`                                 |     Com suporte |
+| Inserção condicional                                                         | Condições `if` no trabalho/nas etapas | Suporte parcial |
+| Inserção iterativa                                                           | Não aplicável                         | Suporte parcial |
+| Modelos com parâmetros                                                       | Varia                                 | Suporte parcial |
 
 #### Nomes de caminho de arquivo de modelo { #template-file-path-names }
 
@@ -568,7 +568,7 @@ GitHub Actions Importer pode extrair modelos com caminhos de arquivo relativos o
 
 ##### Exemplo de nome de caminho de arquivo variável { #variable-file-path-name-example }
 
-```yaml
+```
 ```
 # File: azure-pipelines.yml
 variables:
@@ -578,8 +578,6 @@ steps:
 - template: "./templates/$"
 ```
 
-```
-```
 ```
 # File: templates/vars.yml
 variables:

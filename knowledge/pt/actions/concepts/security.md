@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/security
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Concepts
 ---
 
@@ -35,10 +35,6 @@ _Saiba mais sobre segurança como um conceito no GitHub Actions._
 * [Injeções de script](security/script-injections.md)
 
   Entenda os riscos de segurança associados a injeções de script e GitHub Actions fluxos de trabalho.
-
-* [Arquivos de bloqueio de dependências do fluxo de trabalho](security/workflow-dependency-lockfiles.md)
-
-  Um arquivo de bloqueio fixa todas as ações das quais seus fluxos de trabalho dependem em um commit verificado, portanto, o código que você analisou é o código que é executado.
 
 * [Executores comprometidos](security/compromised-runners.md)
 

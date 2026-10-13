@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/build-and-test-code/python
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Tutorials / Build and test code
 ---
 
@@ -417,4 +417,5 @@ jobs:
 ```
 
 Para obter mais informações sobre esse fluxo de trabalho, incluindo as configurações do PyPI necessárias, consulte [Configurando o OpenID Connect no PyPI](../../how-tos/secure-your-work/security-harden-deployments/oidc-in-pypi.md).
+
 ```

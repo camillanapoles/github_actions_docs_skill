@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: How tos / Write workflows / Choose what workflows do
 ---
 
@@ -57,7 +57,7 @@ Você também pode habilitar Dependabot version updates para as ações que adic
 
 ### Adicionando uma ação do mesmo repositório { #adding-an-action-from-the-same-repository }
 
-Se uma ação for definida no mesmo repositório em que o arquivo de fluxo de trabalho usa a ação, você poderá referenciar a ação com a referência de auto repositório `$/path/to/dir` ou com a sintaxe `{owner}/{repo}@{ref}` ou `./path/to/dir` no arquivo de fluxo de trabalho. A sintaxe `$/` não está disponível em GitHub Enterprise Server.
+Se uma ação for definida no mesmo repositório em que o arquivo de fluxo de trabalho usa a ação, você poderá referenciar a ação com a `$/path/to/dir` referência de auto repositório ou com a `{owner}/{repo}@{ref}` sintaxe ou `./path/to/dir` no arquivo de fluxo de trabalho. A `$/` sintaxe não está disponível em GitHub Enterprise Server.
 
 Exemplo de estrutura de arquivo de repositório:
 
@@ -71,7 +71,7 @@ Exemplo de estrutura de arquivo de repositório:
 |               └── action.yml
 ```
 
-Recomendamos referenciar a ação com a `$/path/to/dir` referência ao repositório self. Isso é resolvido para o mesmo repositório no commit atual, portanto, você não precisa fazer check-out do repositório primeiro. Para obter mais informações sobre como `$/` se compara a `{owner}/{repo}@{ref}` e `./`, consulte [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#example-using-an-action-in-the-same-repository-as-the-workflow-at-the-running-commit-recommended).
+Recomendamos referenciar a ação com a `$/path/to/dir` referência de auto repositório. Isso é resolvido para o mesmo repositório na confirmação em execução, portanto, você não precisa fazer check-out do repositório primeiro. Para obter mais informações sobre como `$/` se compara `{owner}/{repo}@{ref}` a e `./`, consulte [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#example-using-an-action-in-the-same-repository-as-the-workflow-at-the-running-commit-recommended).
 
 Exemplo de arquivo de fluxo de trabalho usando `$/`:
 
@@ -86,7 +86,7 @@ jobs:
         uses: $/.github/actions/hello-world-action
 ```
 
-Você também pode referenciar a ação com a sintaxe relativa `./path/to/dir` , mas ela é mais propensa a erros. O caminho é relativo (`./`) ao diretório de trabalho padrão (`github.workspace`, `$GITHUB_WORKSPACE`), portanto, requer uma etapa de check-out e, se a ação fizer check-out do repositório em um local diferente do fluxo de trabalho, o caminho relativo deverá ser atualizado.
+Você também pode referenciar a ação com a sintaxe relativa `./path/to/dir` , mas ela é mais propensa a erros. O caminho é relativo (`./`) ao diretório de trabalho padrão (`github.workspace`, portanto, `$GITHUB_WORKSPACE`requer uma etapa de check-out e, se a ação verificar o repositório para um local diferente do fluxo de trabalho, o caminho relativo deverá ser atualizado.
 
 Exemplo de arquivo de fluxo de trabalho usando `./`:
 
@@ -164,8 +164,6 @@ Ao selecionar um SHA, verifique se ele está no repositório da ação e não em
 steps:
   - uses: actions/javascript-action@a824008085750b8e136effc585c3cd6082bd575f
 ```
-
-> [!TIP] Um arquivo de bloqueio de dependências do fluxo de trabalho fixa suas ações em commits verificados sem colocar SHAs em seus arquivos de fluxo de trabalho, de modo que suas referências `uses` permaneçam legíveis. Ele também abrange dependências transitivas, o que a fixação SHA não faz. Consulte [Arquivos de bloqueio de dependências do fluxo de trabalho](../../../concepts/security/workflow-dependency-lockfiles.md).
 
 ### Usar branches { #using-branches }
 

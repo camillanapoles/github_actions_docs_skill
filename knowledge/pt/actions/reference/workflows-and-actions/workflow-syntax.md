@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/workflow-syntax
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Reference / Workflows and actions
 ---
 
@@ -1212,7 +1212,7 @@ Você pode usar a seguinte sintaxe para desabilitar as permissões para todas as
 permissions: {}
 ```
 
-#### Alterar as permissões em um repositório bifurcado { #changing-the-permissions-in-a-forked-repository-1 }
+#### Alterar as permissões em um repositório bifurcado { #alterar-as-permissões-em-um-repositório-bifurcado-1 } { #changing-the-permissions-in-a-forked-repository-1 }
 
 Você pode usar a tecla `permissions` para adicionar e remover permissões de leitura de repositórios derivados (forks), mas normalmente não pode conceder acesso de gravação. A exceção a esse comportamento ocorre quando um usuário administrador seleciona a opção **Enviar tokens de gravação para fluxos de trabalho a partir de pull requests** nas GitHub Actions configurações. Para saber mais, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#enabling-workflows-for-forks-of-private-repositories).
 
@@ -1653,7 +1653,7 @@ A combinação de `queue: max` e `cancel-in-progress: true` não é permitida e 
     * O nome do grupo de simultaneidade não diferencia maiúsculas de minúsculas. Por exemplo, `prod` e `Prod` serão tratados como o mesmo grupo de simultaneidade.
     * Trabalhos ou execuções de fluxo de trabalho no mesmo grupo de simultaneidade são processados na ordem de primeiro a entrar em primeiro lugar (FIFO), de acordo com o momento em que cada um começou a esperar no grupo de simultaneidade, não o tempo em que cada fluxo de trabalho foi expedido. Como o horário de início efetivo de um trabalho ou execução pode variar, a ordenação não é garantida.
 
-### Exemplos: Usar a simultaneidade e o comportamento padrão { #example-using-concurrency-and-the-default-behavior-1 }
+### Exemplos: Usar a simultaneidade e o comportamento padrão { #exemplos-usar-a-simultaneidade-e-o-comportamento-padrão-1 } { #example-using-concurrency-and-the-default-behavior-1 }
 
 O comportamento GitHub Actions padrão é permitir que vários trabalhos ou execuções de fluxo de trabalho sejam executados simultaneamente. A palavra-chave `concurrency` permite controlar a simultaneidade de execuções de fluxo de trabalho.
 
@@ -1686,7 +1686,7 @@ jobs:
       cancel-in-progress: true
 ```
 
-### Exemplo: grupos de concorrência { #example-concurrency-groups-1 }
+### Exemplo: grupos de concorrência { #exemplo-grupos-de-concorrência-1 } { #example-concurrency-groups-1 }
 
 Os grupos de simultaneidade fornecem uma maneira de gerenciar e limitar a execução de fluxos de trabalho ou tarefas que compartilham a mesma chave de simultaneidade.
 
@@ -1720,7 +1720,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: Enfileirando várias tarefas pendentes { #example-queueing-multiple-pending-runs-1 }
+### Exemplo: Enfileirando várias tarefas pendentes { #exemplo-enfileirando-várias-tarefas-pendentes-1 } { #example-queueing-multiple-pending-runs-1 }
 
 Por padrão, apenas uma execução de tarefa ou de fluxo de trabalho pode estar `pending` em um grupo de simultaneidade por vez. Para permitir várias execuções na fila em vez de serem canceladas, defina `queue: max`. Com `queue: max`, até 100 trabalhos ou execuções de fluxo de trabalho podem aguardar no grupo de simultaneidade; depois que a fila estiver cheia, quaisquer execuções adicionais são canceladas.
 
@@ -1739,7 +1739,7 @@ concurrency:
 
 Observe que `queue: max` não pode ser combinado com `cancel-in-progress: true`, porque as duas opções descrevem comportamentos conflitantes para lidar com execuções em andamento.
 
-### Exemplo: Usar a concorrência para cancelar qualquer trabalho em andamento ou em execução { #example-using-concurrency-to-cancel-any-in-progress-job-or-run-1 }
+### Exemplo: Usar a concorrência para cancelar qualquer trabalho em andamento ou em execução { #exemplo-usar-a-concorrência-para-cancelar-qualquer-trabalho-em-andamento-ou-em-execução-1 } { #example-using-concurrency-to-cancel-any-in-progress-job-or-run-1 }
 
 Para usar a simultaneidade para cancelar qualquer trabalho em andamento GitHub Actions ou execução, você pode usar a tecla `concurrency` com a opção `cancel-in-progress` definida como `true`:
 
@@ -1751,7 +1751,7 @@ concurrency:
 
 Observe que, neste exemplo, sem definir um grupo de simultaneidade específico, GitHub Actions cancelará a execução de qualquer trabalho ou fluxo de trabalho em andamento.
 
-### Exemplo: Usando um valor para segunda opção { #example-using-a-fallback-value-1 }
+### Exemplo: Usando um valor para segunda opção { #exemplo-usando-um-valor-para-segunda-opção-1 } { #example-using-a-fallback-value-1 }
 
 Se você construir o nome do grupo com uma propriedade que só é definida para eventos específicos, você pode usar um valor de segunda opção. Por exemplo, `github.head_ref` só é definido em eventos `pull_request`. Se o fluxo de trabalho responder a outros eventos além de eventos `pull_request`, você precisará fornecer um fallback para evitar um erro de sintaxe. O grupo de simultaneidade a seguir cancela os trabalhos em andamento ou é executado somente em eventos `pull_request`. Se `github.head_ref` for indefinido, o grupo de simultaneidade fará fallback para a ID de execução, que tem a garantia de ser exclusiva e definida para a execução.
 
@@ -1761,7 +1761,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: Cancele somente tarefas em andamento ou execuções no fluxo de trabalho atual { #example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow-1 }
+### Exemplo: Cancele somente tarefas em andamento ou execuções no fluxo de trabalho atual { #exemplo-cancele-somente-tarefas-em-andamento-ou-execuções-no-fluxo-de-trabalho-atual-1 } { #example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow-1 }
 
 Se você tiver vários fluxos de trabalho no mesmo repositório, os nomes dos grupos de execução concorrente devem ser únicos em todos os fluxos de trabalho para evitar o cancelamento de tarefas ou execuções em andamento de outros fluxos de trabalho. Caso contrário, qualquer trabalho em andamento ou pendente será cancelado, independentemente do fluxo de trabalho.
 
@@ -1773,7 +1773,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: cancelar apenas trabalhos em andamento em ramificações específicas { #example-only-cancel-in-progress-jobs-on-specific-branches-1 }
+### Exemplo: cancelar apenas trabalhos em andamento em ramificações específicas { #exemplo-cancelar-apenas-trabalhos-em-andamento-em-ramificações-específicas-1 } { #example-only-cancel-in-progress-jobs-on-specific-branches-1 }
 
 Se você quiser cancelar trabalhos em andamento em determinadas ramificações, mas não em outras, poderá usar expressões condicionais com `cancel-in-progress`. Por exemplo, é possível fazer isso se quiser cancelar trabalhos em andamento em branches de desenvolvimento, mas não em branches de lançamento.
 
@@ -2397,7 +2397,7 @@ Os parâmetros de entrada definidos para um contêiner do Docker devem usar `arg
 
 Define os três parâmetros de entrada (`first_name`, `middle_name` e `last_name`) definidos pela ação `hello_world`. Essas variáveis de entrada estarão acessíveis para a ação `hello-world` como variáveis de ambiente `INPUT_FIRST_NAME`, `INPUT_MIDDLE_NAME` e `INPUT_LAST_NAME`.
 
-```yaml
+```
 jobs:
   my_first_job:
     steps:
@@ -2415,7 +2415,7 @@ Uma `string` que define as entradas para um contêiner do Docker.               
 
 ### Exemplo de `jobs.<job_id>.steps[*].with.args` { #example-of-jobsjobidstepswithargs }
 
-```yaml
+```
 steps:
   - name: Explain why this job ran
     uses: octo-org/action-name@main
@@ -2436,7 +2436,7 @@ Substitui o `ENTRYPOINT` do Docker no `Dockerfile` ou define-o se um ainda não 
 
 ### Exemplo de `jobs.<job_id>.steps[*].with.entrypoint` { #example-of-jobsjobidstepswithentrypoint }
 
-```yaml
+```
 steps:
   - name: Run a custom command
     uses: octo-org/action-name@main
@@ -2456,7 +2456,7 @@ Ações públicas podem especificar variáveis esperadas no arquivo LEIAME. Se v
 
 ### Exemplo de `jobs.<job_id>.steps[*].env` { #example-of-jobsjobidstepsenv }
 
-```yaml
+```
 steps:
   - name: My first action
     env:
@@ -2491,7 +2491,7 @@ Use `background` quando precisar de um controle refinado: iniciar um processo de
 
 ### Exemplo: executando uma etapa em segundo plano { #example-running-a-step-in-the-background }
 
-```yaml
+```
 steps:
   - name: Start server
     id: server
@@ -2516,7 +2516,7 @@ Após a conclusão de uma etapa `wait`, as saídas das etapas em segundo plano r
 
 ### Exemplo: aguardando etapas específicas em segundo plano { #example-waiting-for-specific-background-steps }
 
-```yaml
+```
 steps:
   - name: Build frontend
     id: build-frontend
@@ -2549,7 +2549,7 @@ A `wait-all` palavra-chave não usa argumentos.
 
 ### Exemplo: aguardando todas as etapas em segundo plano { #example-waiting-for-all-background-steps }
 
-```yaml
+```
 steps:
   - name: Start database
     id: db
@@ -2577,7 +2577,7 @@ Encerra de forma controlada uma etapa em segundo plano em execução. O executor
 
 ### Exemplo: Cancelando uma etapa em segundo plano { #example-canceling-a-background-step }
 
-```yaml
+```
 steps:
   - name: Start long-running monitor
     id: monitor
@@ -2604,7 +2604,7 @@ Cada etapa do grupo está sujeita ao mesmo limite de simultaneidade de 10 etapas
 
 ### Exemplo: executando etapas em paralelo { #example-running-steps-in-parallel }
 
-```yaml
+```
 steps:
   - uses: actions/checkout@v6
 
@@ -2655,7 +2655,7 @@ Por padrão, GitHub maximizará o número de trabalhos executados em paralelo, d
 
 O fluxo de trabalho a seguir define a variável `version` com os valores `[10, 12, 14]`. O fluxo de trabalho executará três trabalhos, um para cada valor na variável. Cada trabalho acessará o valor `version` por meio do contexto `matrix.version` e passará o valor como `node-version` à ação `actions/setup-node`.
 
-```yaml
+```
 jobs:
   example_matrix:
     strategy:
@@ -2678,7 +2678,7 @@ Por exemplo, o fluxo de trabalho a seguir especifica duas variáveis:
 
 O fluxo de trabalho executará seis trabalhos, um para cada combinação entre as variáveis `os` e `version`. Cada trabalho definirá o valor `runs-on` como o valor atual `os` e passará o valor atual `version` para a ação `actions/setup-node`.
 
-```yaml
+```
 jobs:
   example_matrix:
     strategy:
@@ -2694,7 +2694,7 @@ jobs:
 
 Uma configuração variável em uma matriz pode ser um `array` de `object`s. Por exemplo, a matriz a seguir produz quatro trabalhos com contextos correspondentes.
 
-```yaml
+```
 matrix:
   os:
     - ubuntu-latest
@@ -2707,7 +2707,7 @@ matrix:
 
 Cada trabalho na matriz terá uma combinação própria de valores `os` e `node`, como mostrado abaixo.
 
-```yaml
+```
 - matrix.os: ubuntu-latest
   matrix.node.version: 14
 - matrix.os: ubuntu-latest
@@ -2728,7 +2728,7 @@ Para cada objeto na lista `include`, os pares key:value no objeto serão adicion
 
 Por exemplo, o fluxo de trabalho a seguir executará quatro trabalhos, um para cada combinação de `os` e `node`. Quando o trabalho para o valor `os` de `windows-latest` e valor `node` as execuções `16`, uma variável adicional chamada `npm` com o valor de `6` será incluída no trabalho.
 
-```yaml
+```
 jobs:
   example_matrix:
     strategy:
@@ -2753,7 +2753,7 @@ jobs:
 
 Por exemplo, essa matriz executará dez trabalhos, um para cada combinação de `os` e `version` na matriz, além de um trabalho para o valor `os` de `windows-latest` e o valor `version` de `17`.
 
-```yaml
+```
 jobs:
   example_matrix:
     strategy:
@@ -2767,7 +2767,7 @@ jobs:
 
 Se você não especificar nenhuma variável de matriz, todas as configurações abaixo de `include` serão executadas. Por exemplo, o fluxo de trabalho a seguir executaria dois trabalhos, um para cada entrada `include`. Isso permite que você aproveite a estratégia de matriz sem ter uma matriz totalmente populada.
 
-```yaml
+```
 jobs:
   includes_only:
     runs-on: ubuntu-latest
@@ -2796,7 +2796,7 @@ Você pode controlar como as falhas de trabalho são tratadas com `jobs.<job_id>
 
 Você não pode usar `jobs.<job_id>.strategy.fail-fast` e `jobs.<job_id>.continue-on-error` juntos. Por exemplo, o fluxo de trabalho a seguir iniciará quatro trabalhos. Para cada trabalho, `continue-on-error` é determinado pelo valor de `matrix.experimental`. Se algum dos trabalhos com `continue-on-error: false` falhar, todos os trabalhos em andamento ou enfileirados serão cancelados. Se o trabalho com `continue-on-error: true` falhar, os outros trabalhos não serão afetados.
 
-```yaml
+```
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -2825,7 +2825,7 @@ Impede que ocorra falha na execução de um fluxo de trabalho quando ocorrer uma
 
 Você pode permitir que as tarefas específicas em uma matriz de tarefas falhem sem que ocorra falha na execução do fluxo de trabalho. Por exemplo, caso deseje permitir apenas um trabalho experimental com o `node` definido como `15` para falhar sem falhar a execução de fluxo de trabalho.
 
-```yaml
+```
 runs-on: ${{ matrix.os }}
 continue-on-error: ${{ matrix.experimental }}
 strategy:
@@ -2857,7 +2857,7 @@ Se você não definir um `container`, todas as etapas serão executadas diretame
 
 ### Exemplo: Executar um trabalho dentro de um contêiner { #example-running-a-job-within-a-container }
 
-```yaml copy
+```
 name: CI
 on:
   push:
@@ -2881,7 +2881,7 @@ jobs:
 
 Quando você especifica apenas uma imagem de contêiner, pode omitir a palavra-chave `image`.
 
-```yaml
+```
 jobs:
   container-test-job:
     runs-on: ubuntu-latest
@@ -2901,7 +2901,7 @@ Se o registro de contêiner da imagem exigir autenticação para efetuar pull da
 
 ### Exemplo: Definindo credenciais para o registro de um contêiner { #example-defining-credentials-for-a-container-registry }
 
-```yaml
+```
 container:
   image: ghcr.io/owner/image
   credentials:
@@ -2929,7 +2929,7 @@ Para especificar um volume, especifique o caminho de origem e destino:
 
 ### Exemplo: Montando volumes em um contêiner { #example-mounting-volumes-in-a-container }
 
-```yaml
+```
 volumes:
   - my_docker_volume:/volume_mount
   - /data/my_data
@@ -2964,7 +2964,7 @@ Para obter mais informações sobre as diferenças entre os contêineres de serv
 Este exemplo cria dois serviços: nginx e redis. Quando você especifica a porta do contêiner, mas não a porta do host, a porta do contêiner é atribuída aleatoriamente a uma porta livre no host.
 GitHub define a porta de host atribuída no contexto `${{job.services.<service_name>.ports}}`. Neste exemplo, você pode acessar as portas de host de serviço usando os `${{ job.services.nginx.ports['80'] }}` e `${{ job.services.redis.ports['6379'] }}` contextos.
 
-```yaml
+```
 services:
   nginx:
     image: nginx
@@ -2988,7 +2988,7 @@ Imagem Docker a ser usada como contêiner de serviço para executar a ação. O 
 
 Se uma sequência vazia for atribuída a `jobs.<job_id>.services.<service_id>.image`, o serviço não será iniciado. Você pode usar essa condição para configurar serviços condicionais, conforme o exemplo a seguir.
 
-```yaml
+```
 services:
   nginx:
     image: ${{ options.nginx == true && 'nginx' || '' }}
@@ -3000,7 +3000,7 @@ Se o registro de contêiner da imagem exigir autenticação para efetuar pull da
 
 ### Exemplo de `jobs.<job_id>.services.<service_id>.credentials` { #example-of-jobsjobidservicesserviceidcredentials }
 
-```yaml
+```
 services:
   myservice1:
     image: ghcr.io/owner/myservice1
@@ -3034,7 +3034,7 @@ Para especificar um volume, especifique o caminho de origem e destino:
 
 ### Exemplo de `jobs.<job_id>.services.<service_id>.volumes` { #example-of-jobsjobidservicesserviceidvolumes }
 
-```yaml
+```
 volumes:
   - my_docker_volume:/volume_mount
   - /data/my_data
@@ -3054,7 +3054,7 @@ Substitui o comando padrão da imagem do Docker (`CMD`). O valor é passado como
 
 ### Exemplo de `jobs.<job_id>.services.<service_id>.command` { #example-of-jobsjobidservicesserviceidcommand }
 
-```yaml
+```
 services:
   mysql:
     image: mysql:8
@@ -3071,7 +3071,7 @@ Substitui o padrão `ENTRYPOINT` da imagem do Docker. O valor é uma única cade
 
 ### Exemplo de `jobs.<job_id>.services.<service_id>.entrypoint` { #example-of-jobsjobidservicesserviceidentrypoint }
 
-```yaml
+```
 services:
   etcd:
     image: quay.io/coreos/etcd:v3.5.17
@@ -3097,7 +3097,7 @@ Quando você faz referência a um fluxo de trabalho reutilizável no mesmo repos
 
 ### Exemplo de `jobs.<job_id>.uses` { #example-of-jobsjobiduses }
 
-```yaml
+```
 jobs:
   call-workflow-1-in-local-repo:
     uses: octo-org/this-repo/.github/workflows/workflow-1.yml@172239021f7ba04fe7327647b213799853a9eb89
@@ -3122,7 +3122,7 @@ Ao contrário de [`jobs.<job_id>.steps[*].with`](#jobsjob_idstepswith), as entra
 
 ### Exemplo de `jobs.<job_id>.with` { #example-of-jobsjobidwith }
 
-```yaml
+```
 jobs:
   call-workflow:
     uses: octo-org/example-repo/.github/workflows/called-workflow.yml@main
@@ -3144,7 +3144,7 @@ Qualquer segredo que você passar deve corresponder aos nomes definidos no fluxo
 
 ### Exemplo de `jobs.<job_id>.secrets` { #example-of-jobsjobidsecrets }
 
-```yaml
+```
 jobs:
   call-workflow:
     uses: octo-org/example-repo/.github/workflows/called-workflow.yml@main
@@ -3158,7 +3158,7 @@ Use a palavra-chave `inherit` para passar todos os segredos do fluxo de trabalho
 
 ### Exemplo de `jobs.<job_id>.secrets.inherit` { #example-of-jobsjobidsecretsinherit }
 
-```yaml
+```
 on:
   workflow_dispatch:
 
@@ -3168,7 +3168,7 @@ jobs:
     secrets: inherit
 ```
 
-```yaml
+```
 on:
   workflow_call:
 
@@ -3199,7 +3199,7 @@ Você pode usar caracteres especiais em filtros de nome de caminho, branch, tag 
 
 Os caracteres `*`, `[` e `!` são caracteres especiais no YAML. Se você iniciar um padrão com `*`, `[` ou `!`, precisará colocar o padrão entre aspas. Além disso, se você usar uma [sequência de fluxo](https://yaml.org/spec/1.2.2/#flow-sequences) com um padrão contendo `[` e/ou `]`, o padrão deverá estar entre aspas.
 
-```yaml
+```
 ```
 # Valid
 paths:
@@ -3222,36 +3222,36 @@ Para obter mais informações sobre a sintaxe de filtro de ramificação, marca 
 ```
 ### Padrões para corresponder branches e tags { #patterns-to-match-branches-and-tags }
 
-| Padrão | Descrição | Correspondências de exemplo |
-| --- | --- | --- |
-| `feature/*` | O curinga `*` corresponde a qualquer caractere, mas não à barra (`/`). | `feature/my-branch`<br/><br/>`feature/your-branch` |
-| `feature/**` | O curinga `**` corresponde a qualquer caractere, incluindo a barra (`/`) em nomes de branches e marcas. | `feature/beta-a/my-branch`<br/><br/>`feature/your-branch`<br/><br/>`feature/mona/the/octocat` |
-| `main`<br/><br/>`releases/mona-the-octocat` | Corresponde ao nome exato de um branch ou tag. | `main`<br/><br/>`releases/mona-the-octocat` |
-| `'*'` | Corresponde a todos os nomes de branches e marcas que não contêm uma barra (`/`). O caractere `*` é um caractere especial no YAML. Ao inciar um padrão com `*`, você precisa usar aspas. | `main`<br/><br/>`releases` |
-| `'**'` | Corresponde a todos os nomes de branches e tags. Esse é o comportamento padrão quando um filtro `branches` ou `tags` não é usado. | `all/the/branches`<br/><br/>`every/tag` |
-| `'*feature'` | O caractere `*` é um caractere especial no YAML. Ao inciar um padrão com `*`, você precisa usar aspas. | `mona-feature`<br/><br/>`feature`<br/><br/>`ver-10-feature` |
-| `v2*` | Corresponde aos nomes de branches e marcas que começam com `v2`. | `v2`<br/><br/>`v2.0`<br/><br/>`v2.9` |
-| `v[12].[0-9]+.[0-9]+` | Corresponde a todas as marcas e a todos os branches de controle de versão semântica com a versão principal 1 ou 2. | `v1.10.1`<br/><br/>`v2.0.0` |
+| Padrão                                      | Descrição                                                                                                                                                                                | Correspondências de exemplo                                                                   |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `feature/*`                                 | O curinga `*` corresponde a qualquer caractere, mas não à barra (`/`).                                                                                                                   | `feature/my-branch`<br/><br/>`feature/your-branch`                                            |
+| `feature/**`                                | O curinga `**` corresponde a qualquer caractere, incluindo a barra (`/`) em nomes de branches e marcas.                                                                                  | `feature/beta-a/my-branch`<br/><br/>`feature/your-branch`<br/><br/>`feature/mona/the/octocat` |
+| `main`<br/><br/>`releases/mona-the-octocat` | Corresponde ao nome exato de um branch ou tag.                                                                                                                                           | `main`<br/><br/>`releases/mona-the-octocat`                                                   |
+| `'*'`                                       | Corresponde a todos os nomes de branches e marcas que não contêm uma barra (`/`). O caractere `*` é um caractere especial no YAML. Ao inciar um padrão com `*`, você precisa usar aspas. | `main`<br/><br/>`releases`                                                                    |
+| `'**'`                                      | Corresponde a todos os nomes de branches e tags. Esse é o comportamento padrão quando um filtro `branches` ou `tags` não é usado.                                                        | `all/the/branches`<br/><br/>`every/tag`                                                       |
+| `'*feature'`                                | O caractere `*` é um caractere especial no YAML. Ao inciar um padrão com `*`, você precisa usar aspas.                                                                                   | `mona-feature`<br/><br/>`feature`<br/><br/>`ver-10-feature`                                   |
+| `v2*`                                       | Corresponde aos nomes de branches e marcas que começam com `v2`.                                                                                                                         | `v2`<br/><br/>`v2.0`<br/><br/>`v2.9`                                                          |
+| `v[12].[0-9]+.[0-9]+`                       | Corresponde a todas as marcas e a todos os branches de controle de versão semântica com a versão principal 1 ou 2.                                                                       | `v1.10.1`<br/><br/>`v2.0.0`                                                                   |
 
 ### Padrões para corresponder a caminhos de arquivos { #patterns-to-match-file-paths }
 
 Padrões de caminhos devem corresponder ao caminho completo e iniciar a partir da raiz do repositório.
 
-| Padrão | Descrição das correspondências | Correspondências de exemplo |
-| --- | --- | --- |
-| `'*'` | O curinga `*` corresponde a qualquer caractere, mas não à barra (`/`). O caractere `*` é um caractere especial no YAML. Ao inciar um padrão com `*`, você precisa usar aspas. | `README.md`<br/><br/>`server.rb` |
-| `'*.jsx?'` | O caractere `?` corresponde a zero ou um dos caracteres anteriores. | `page.js`<br/><br/>`page.jsx` |
-| `'**'` | O curinga `**` corresponde a qualquer caractere, incluindo a barra (`/`). Esse é o comportamento padrão quando um filtro `path` não é usado. | `all/the/files.md` |
-| `'*.js'` | O curinga `*` corresponde a qualquer caractere, mas não à barra (`/`). Corresponde a todos os arquivos `.js` na raiz do repositório. | `app.js`<br/><br/>`index.js` |
-| `'**.js'` | Corresponde a todos os arquivos `.js` do repositório. | `index.js`<br/><br/>`js/index.js`<br/><br/>`src/js/app.js` |
-| `docs/*` | Somente os arquivos localizados na raiz do diretório `docs`, na raiz do repositório. | `docs/README.md`<br/><br/>`docs/file.txt` |
-| `docs/**` | Qualquer arquivo no diretório `docs` e seus subdiretórios na raiz do repositório. | `docs/README.md`<br/><br/>`docs/mona/octocat.txt` |
-| `docs/**/*.md` | Um arquivo com um sufixo `.md` em qualquer lugar do diretório `docs`. | `docs/README.md`<br/><br/>`docs/mona/hello-world.md`<br/><br/>`docs/a/markdown/file.md` |
-| `'**/docs/**'` | Qualquer arquivo no diretório `docs`, em qualquer lugar do repositório. | `docs/hello.md`<br/><br/>`dir/docs/my-file.txt`<br/><br/>`space/docs/plan/space.doc` |
-| `'**/README.md'` | Um arquivo README.md em qualquer local do repositório. | `README.md`<br/><br/>`js/README.md` |
-| `'**/*src/**'` | Qualquer arquivo em uma pasta com o sufixo `src` em qualquer lugar do repositório. | `a/src/app.js`<br/><br/>`my-src/code/js/app.js` |
-| `'**/*-post.md'` | Um arquivo com o sufixo `-post.md` em qualquer lugar no repositório. | `my-post.md`<br/><br/>`path/their-post.md` |
-| `'**/migrate-*.sql'` | Um arquivo com o prefixo `migrate-` e o sufixo `.sql` em qualquer lugar no repositório. | `migrate-10909.sql`<br/><br/>`db/migrate-v1.0.sql`<br/><br/>`db/sept/migrate-v1.sql` |
-| `'*.md'`<br/><br/>`'!README.md'` | O uso de um sinal de exclamação (`!`) na frente de um padrão o anula. Quando um arquivo corresponde a um padrão e também corresponde a um padrão negativo definido posteriormente no arquivo, o arquivo não será incluído. | `hello.md`<br/><br/> |
-| *Não corresponde a*<br/><br/>`README.md`<br/><br/>`docs/hello.md` |  |  |
-| `'*.md'`<br/><br/>`'!README.md'`<br/><br/>`README*` | Os padrões são verificados sequencialmente. Um padrão que anula um padrão anterior irá incluir caminhos de arquivos novamente. | `hello.md`<br/><br/>`README.md`<br/><br/>`README.doc` |
+| Padrão                                                            | Descrição das correspondências                                                                                                                                                                                             | Correspondências de exemplo                                                             |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `'*'`                                                             | O curinga `*` corresponde a qualquer caractere, mas não à barra (`/`). O caractere `*` é um caractere especial no YAML. Ao inciar um padrão com `*`, você precisa usar aspas.                                              | `README.md`<br/><br/>`server.rb`                                                        |
+| `'*.jsx?'`                                                        | O caractere `?` corresponde a zero ou um dos caracteres anteriores.                                                                                                                                                        | `page.js`<br/><br/>`page.jsx`                                                           |
+| `'**'`                                                            | O curinga `**` corresponde a qualquer caractere, incluindo a barra (`/`). Esse é o comportamento padrão quando um filtro `path` não é usado.                                                                               | `all/the/files.md`                                                                      |
+| `'*.js'`                                                          | O curinga `*` corresponde a qualquer caractere, mas não à barra (`/`). Corresponde a todos os arquivos `.js` na raiz do repositório.                                                                                       | `app.js`<br/><br/>`index.js`                                                            |
+| `'**.js'`                                                         | Corresponde a todos os arquivos `.js` do repositório.                                                                                                                                                                      | `index.js`<br/><br/>`js/index.js`<br/><br/>`src/js/app.js`                              |
+| `docs/*`                                                          | Somente os arquivos localizados na raiz do diretório `docs`, na raiz do repositório.                                                                                                                                       | `docs/README.md`<br/><br/>`docs/file.txt`                                               |
+| `docs/**`                                                         | Qualquer arquivo no diretório `docs` e seus subdiretórios na raiz do repositório.                                                                                                                                          | `docs/README.md`<br/><br/>`docs/mona/octocat.txt`                                       |
+| `docs/**/*.md`                                                    | Um arquivo com um sufixo `.md` em qualquer lugar do diretório `docs`.                                                                                                                                                      | `docs/README.md`<br/><br/>`docs/mona/hello-world.md`<br/><br/>`docs/a/markdown/file.md` |
+| `'**/docs/**'`                                                    | Qualquer arquivo no diretório `docs`, em qualquer lugar do repositório.                                                                                                                                                    | `docs/hello.md`<br/><br/>`dir/docs/my-file.txt`<br/><br/>`space/docs/plan/space.doc`    |
+| `'**/README.md'`                                                  | Um arquivo README.md em qualquer local do repositório.                                                                                                                                                                     | `README.md`<br/><br/>`js/README.md`                                                     |
+| `'**/*src/**'`                                                    | Qualquer arquivo em uma pasta com o sufixo `src` em qualquer lugar do repositório.                                                                                                                                         | `a/src/app.js`<br/><br/>`my-src/code/js/app.js`                                         |
+| `'**/*-post.md'`                                                  | Um arquivo com o sufixo `-post.md` em qualquer lugar no repositório.                                                                                                                                                       | `my-post.md`<br/><br/>`path/their-post.md`                                              |
+| `'**/migrate-*.sql'`                                              | Um arquivo com o prefixo `migrate-` e o sufixo `.sql` em qualquer lugar no repositório.                                                                                                                                    | `migrate-10909.sql`<br/><br/>`db/migrate-v1.0.sql`<br/><br/>`db/sept/migrate-v1.sql`    |
+| `'*.md'`<br/><br/>`'!README.md'`                                  | O uso de um sinal de exclamação (`!`) na frente de um padrão o anula. Quando um arquivo corresponde a um padrão e também corresponde a um padrão negativo definido posteriormente no arquivo, o arquivo não será incluído. | `hello.md`<br/><br/>                                                                    |
+| *Não corresponde a*<br/><br/>`README.md`<br/><br/>`docs/hello.md` |                                                                                                                                                                                                                            |                                                                                         |
+| `'*.md'`<br/><br/>`'!README.md'`<br/><br/>`README*`               | Os padrões são verificados sequencialmente. Um padrão que anula um padrão anterior irá incluir caminhos de arquivos novamente.                                                                                             | `hello.md`<br/><br/>`README.md`<br/><br/>`README.doc`                                   |

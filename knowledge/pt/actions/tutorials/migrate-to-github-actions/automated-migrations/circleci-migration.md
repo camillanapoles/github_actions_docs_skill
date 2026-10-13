@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
@@ -239,7 +239,7 @@ Você pode usar o `dry-run` comando para converter um pipeline CircleCI em um fl
 
 Para executar uma execução seca de migração do projeto CircleCI para GitHub Actionsexecutar o comando a seguir em seu terminal, substituindo `my-circle-ci-project` pelo nome do projeto CircleCI.
 
-```shell
+```
 gh actions-importer dry-run circle-ci --output-dir tmp/dry-run --circle-ci-project my-circle-ci-project
 ```
 
@@ -255,13 +255,13 @@ Você pode usar o comando `migrate` para converter um pipeline CircleCI e abrir 
 
 Para migrar um pipeline do CircleCI para GitHub Actions, execute o seguinte comando em seu terminal, substituindo o valor de `target-url` pela URL do seu repositório GitHub e `my-circle-ci-project` pelo nome do seu projeto CircleCI.
 
-```shell
+```
 gh actions-importer migrate circle-ci --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate --circle-ci-project my-circle-ci-project
 ```
 
 A saída do comando inclui a URL para a solicitação de pull que adiciona o fluxo de trabalho convertido ao seu repositório. Um exemplo de uma saída bem-sucedida é semelhante ao seguinte:
 
-```shell
+```
 $ gh actions-importer migrate circle-ci --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate --circle-ci-project my-circle-ci-project
 [2022-08-20 22:08:20] Logs: 'tmp/migrate/log/actions-importer-20220916-014033.log'
 [2022-08-20 22:08:20] Pull request: 'https://github.com/octo-org/octo-repo/pull/1'
@@ -311,7 +311,7 @@ Por padrão, GitHub Actions Importer busca o conteúdo do pipeline do controle d
 
 Por exemplo:
 
-```shell
+```
 gh actions-importer dry-run circle-ci --output-dir ./output/ --source-file-path ./path/to/.circleci/config.yml
 ```
 
@@ -329,13 +329,13 @@ O argumento `--config-file-path` também pode ser usado para especificar para qu
 
 Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML especificado para executar uma auditoria.
 
-```bash
+```
 gh actions-importer audit circle-ci --output-dir ./output/ --config-file-path ./path/to/circle-ci/config.yml
 ```
 
 Para auditar uma instância do CircleCI usando um arquivo de configuração, o arquivo de configuração precisa estar no seguinte formato e cada `repository_slug` precisa ser exclusivo:
 
-```yaml
+```
 source_files:
   - repository_slug: circle-org-name/circle-project-name
     path: path/to/.circleci/config.yml
@@ -349,7 +349,7 @@ Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML espe
 
 O pipeline é selecionado pela correspondência do `repository_slug` no arquivo de configuração com o valor das opções `--circle-ci-organization` e `--circle-ci-project`. Em seguida, o `path` é usado para efetuar pull do arquivo de origem especificado.
 
-```bash
+```
 gh actions-importer dry-run circle-ci --circle-ci-project circle-org-name/circle-project-name --output-dir ./output/ --config-file-path ./path/to/circle-ci/config.yml
 ```
 
@@ -359,13 +359,13 @@ GitHub Actions Importer usa o arquivo YAML fornecido para o `--config-file-path`
 
 Para começar, você deve executar uma auditoria sem o argumento `--config-file-path`:
 
-```bash
+```
 gh actions-importer audit circle-ci --output-dir ./output/
 ```
 
 A saída desse comando conterá um arquivo nomeado `config.yml` que contém uma lista de todas as ações compostas que foram convertidas por GitHub Actions Importer. Por exemplo, o arquivo `config.yml` pode ter o seguinte conteúdo:
 
-```yaml
+```
 composite_actions:
   - name: my-composite-action.yml
     target_url: https://github.com/octo-org/octo-repo
@@ -374,7 +374,7 @@ composite_actions:
 
 Você pode usar esse arquivo para especificar a qual repositório e ref um fluxo de trabalho reutilizável ou uma ação composta deve ser adicionado. Em seguida, você pode usar o `--config-file-path` argumento para fornecer o `config.yml` arquivo para GitHub Actions Importer. Por exemplo, você pode usar esse arquivo ao executar um comando `migrate` para abrir uma solicitação de pull para cada repositório exclusivo definido no arquivo de configuração:
 
-```bash
+```
 gh actions-importer migrate circle-ci --circle-ci-project my-project-name --output-dir output/ --config-file-path config.yml --target-url https://github.com/my-org/my-repo
 ```
 
@@ -386,13 +386,13 @@ O argumento `--include-from` especifica um arquivo que contém uma lista delimit
 
 Por exemplo:
 
-```bash
+```
 gh actions-importer audit circle-ci --output-dir ./output/ --include-from repositories.txt
 ```
 
 O arquivo fornecido para esse parâmetro precisa ser uma lista de repositórios delimitada por linhas, por exemplo:
 
-```text
+```
 repository_one
 repository_two
 repository_three
@@ -402,23 +402,23 @@ repository_three
 
 A tabela a seguir mostra o tipo de propriedades que GitHub Actions Importer atualmente é capaz de converter.
 
-| Pipelines do CircleCI | GitHub Actions | Status |
-| :-- | :-- | :-- |
-| gatilhos cron | <ul><li>`on.schedule`</li></ul> | Com suporte |
-| ambiente | <ul><li>`env`</li><li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li></ul> | Com suporte |
-| executors | <ul><li>`runs-on`</li></ul> | Com suporte |
-| trabalhos | <ul><li>`jobs`</li></ul> | Com suporte |
-| cargo | <ul><li>`jobs.<job_id>`</li><li>`jobs.<job_id>.name`</li></ul> | Com suporte |
-| matriz | <ul><li>`jobs.<job_id>.strategy`</li><li>`jobs.<job_id>.strategy.matrix`</li></ul> | Com suporte |
-| parâmetros | <ul><li>`env`</li><li>`workflow-dispatch.inputs`</li></ul> | Com suporte |
-| etapas | <ul><li>`jobs.<job_id>.steps`</li></ul> | Com suporte |
-| quando, a menos que | <ul><li>`jobs.<job_id>.if`</li></ul> | Com suporte |
-| disparadores | <ul><li>`on`</li></ul> | Com suporte |
-| executors | <ul><li>`container`</li><li>`services`</li></ul> | Com suporte parcial |
-| esferas | <ul><li>`actions`</li></ul> | Com suporte parcial |
-| executors | <ul><li>`self hosted runners`</li></ul> | Sem suporte |
-| configuração | Não aplicável | Sem suporte |
-| versão | Não aplicável | Sem suporte |
+| Pipelines do CircleCI | GitHub Actions                                                                        | Status              |
+| :-------------------- | :------------------------------------------------------------------------------------ | :------------------ |
+| gatilhos cron         | <ul><li>`on.schedule`</li></ul>                                                       | Com suporte         |
+| ambiente              | <ul><li>`env`</li><li>`jobs.<job_id>.env`</li><li>`jobs.<job_id>.steps.env`</li></ul> | Com suporte         |
+| executors             | <ul><li>`runs-on`</li></ul>                                                           | Com suporte         |
+| trabalhos             | <ul><li>`jobs`</li></ul>                                                              | Com suporte         |
+| cargo                 | <ul><li>`jobs.<job_id>`</li><li>`jobs.<job_id>.name`</li></ul>                        | Com suporte         |
+| matriz                | <ul><li>`jobs.<job_id>.strategy`</li><li>`jobs.<job_id>.strategy.matrix`</li></ul>    | Com suporte         |
+| parâmetros            | <ul><li>`env`</li><li>`workflow-dispatch.inputs`</li></ul>                            | Com suporte         |
+| etapas                | <ul><li>`jobs.<job_id>.steps`</li></ul>                                               | Com suporte         |
+| quando, a menos que   | <ul><li>`jobs.<job_id>.if`</li></ul>                                                  | Com suporte         |
+| disparadores          | <ul><li>`on`</li></ul>                                                                | Com suporte         |
+| executors             | <ul><li>`container`</li><li>`services`</li></ul>                                      | Com suporte parcial |
+| esferas               | <ul><li>`actions`</li></ul>                                                           | Com suporte parcial |
+| executors             | <ul><li>`self hosted runners`</li></ul>                                               | Sem suporte         |
+| configuração          | Não aplicável                                                                         | Sem suporte         |
+| versão                | Não aplicável                                                                         | Sem suporte         |
 
 Para obter mais informações sobre os conceitos do CircleCI e os mapeamentos de orbs suportados, confira o [`github/gh-actions-importer` repositório](https://github.com/github/gh-actions-importer/blob/main/docs/circle_ci/index.md).
 
@@ -427,7 +427,7 @@ Para obter mais informações sobre os conceitos do CircleCI e os mapeamentos de
 GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáveis de ambiente CircleCI padrão para o equivalente mais próximo em GitHub Actions.
 
 | CircleCI                           | GitHub Actions                              |
-|:---------------------------------|:------------------------------------------|
+| :--------------------------------- | :------------------------------------------ |
 | `CI`                               | `$CI`                                       |
 | `CIRCLE_BRANCH`                    | `${{ github.ref }}`                         |
 | `CIRCLE_JOB`                       | `${{ github.job }}`                         |
@@ -452,7 +452,7 @@ GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáv
 
 Partes foram adaptadas do <https://github.com/github/gh-actions-importer/> de acordo com a licença MIT:
 
-```text
+```
 MIT License
 
 Copyright (c) 2022 GitHub

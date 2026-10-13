@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/bamboo-migration
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
@@ -263,7 +263,7 @@ Você pode usar o `dry-run` comando para converter um pipeline do Bamboo em um f
 
 Para executar uma simulação da migração do plano de build do Bamboo para o GitHub Actions, execute o seguinte comando no terminal, substituindo `:my_plan_slug` pelo projeto do plano e pela chave de plano no formato `<projectKey>-<planKey>` (por exemplo: `PAN-SCRIP`).
 
-```shell
+```
 gh actions-importer dry-run bamboo build --plan-slug :my_plan_slug --output-dir tmp/dry-run
 ```
 
@@ -271,7 +271,7 @@ gh actions-importer dry-run bamboo build --plan-slug :my_plan_slug --output-dir 
 
 Para executar uma simulação da migração do seu projeto de implantação do Bamboo para GitHub Actions, execute o seguinte comando no terminal, substituindo `:my_deployment_project_id` pela ID do projeto de implantação que você está convertendo.
 
-```shell
+```
 gh actions-importer dry-run bamboo deployment --deployment-project-id :my_deployment_project_id --output-dir tmp/dry-run
 ```
 
@@ -287,13 +287,13 @@ Você pode usar o `migrate` comando para converter um pipeline do Bamboo e abrir
 
 Para migrar um plano de build do Bamboo para GitHub Actions, execute o seguinte comando no terminal, substituindo o valor de `target-url` pela URL do seu repositório GitHub e o valor de `:my_plan_slug` pelo projeto e pela chave do plano no formato `<projectKey>-<planKey>`.
 
-```shell
+```
 gh actions-importer migrate bamboo build --plan-slug :my_plan_slug --target-url :target_url --output-dir tmp/migrate
 ```
 
 A saída do comando inclui a URL para a solicitação de pull que adiciona o fluxo de trabalho convertido ao seu repositório. Um exemplo de uma saída bem-sucedida é semelhante ao seguinte:
 
-```shell
+```
 $ gh actions-importer migrate bamboo build --plan-slug :PROJECTKEY-PLANKEY --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate
 [2022-08-20 22:08:20] Logs: 'tmp/migrate/log/actions-importer-20220916-014033.log'
 [2022-08-20 22:08:20] Pull request: 'https://github.com/octo-org/octo-repo/pull/1'
@@ -303,13 +303,13 @@ $ gh actions-importer migrate bamboo build --plan-slug :PROJECTKEY-PLANKEY --tar
 
 Para migrar um projeto de implantação do Bamboo para GitHub Actions, execute o seguinte comando no terminal, substituindo o valor de `target-url` pela URL do seu repositório GitHub e `:my_deployment_project_id` pelo ID do projeto de implantação que você está convertendo.
 
-```shell
+```
 gh actions-importer migrate bamboo deployment --deployment-project-id :my_deployment_project_id --target-url :target_url --output-dir tmp/migrate
 ```
 
 A saída do comando inclui a URL para a solicitação de pull que adiciona o fluxo de trabalho convertido ao seu repositório. Um exemplo de uma saída bem-sucedida é semelhante ao seguinte:
 
-```shell
+```
 $ gh actions-importer migrate bamboo deployment --deployment-project-id 123 --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate
 [2023-04-20 22:08:20] Logs: 'tmp/migrate/log/actions-importer-20230420-014033.log'
 [2023-04-20 22:08:20] Pull request: 'https://github.com/octo-org/octo-repo/pull/1'
@@ -355,7 +355,7 @@ Por padrão, GitHub Actions Importer busca o conteúdo do pipeline da instância
 
 Por exemplo:
 
-```shell
+```
 gh actions-importer dry-run bamboo build --plan-slug IN-COM -o tmp/bamboo --source-file-path ./path/to/my/bamboo/file.yml
 ```
 
@@ -369,13 +369,13 @@ Por padrão, GitHub Actions Importer busca o conteúdo do pipeline da instância
 
 Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML especificado para executar uma auditoria.
 
-```bash
+```
 gh actions-importer audit bamboo -o tmp/bamboo --config-file-path "./path/to/my/bamboo/config.yml"
 ```
 
 Para auditar uma instância do Bamboo usando um arquivo de configuração, o arquivo de configuração precisa estar no seguinte formato e cada `repository_slug` precisa ser exclusivo:
 
-```yaml
+```
 source_files:
   - repository_slug: IN/COM
     path: path/to/one/source/file.yml
@@ -389,7 +389,7 @@ Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML espe
 
 O campo de dados dinâmico do repositório é criado usando a opção `--plan-slug` . O caminho do arquivo de origem é localizado e extraído do arquivo especificado.
 
-```bash
+```
 gh actions-importer dry-run bamboo build --plan-slug IN-COM -o tmp/bamboo --config-file-path "./path/to/my/bamboo/config.yml"
 ```
 
@@ -398,7 +398,7 @@ gh actions-importer dry-run bamboo build --plan-slug IN-COM -o tmp/bamboo --conf
 A tabela a seguir mostra o tipo de propriedades que GitHub Actions Importer atualmente é capaz de converter.
 
 | Bamboo                              | GitHub Actions                                  |              Status |
-|:----------------------------------|:----------------------------------------------|------------------:|
+| :---------------------------------- | :---------------------------------------------- | ------------------: |
 | `environments`                      | `jobs`                                          |         Com suporte |
 | `environments.<environment_id>`     | `jobs.<job_id>`                                 |         Com suporte |
 | `<job_id>.artifacts`                | `jobs.<job_id>.steps.actions/upload-artifact`   |         Com suporte |
@@ -429,38 +429,38 @@ Para obter mais informações sobre o conceito do Bamboo e os mapeamentos de plu
 
 GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáveis de ambiente padrão do Bamboo para os equivalentes mais próximos em GitHub Actions.
 
-| Bamboo | GitHub Actions |
-| :-- | :-- |
-| `bamboo.agentId` | `${{ github.runner_name }}` |
-| `bamboo.agentWorkingDirectory` | `${{ github.workspace }}` |
-| `bamboo.buildKey` | `${{ github.workflow }}-${{ github.job }}` |
-| `bamboo.buildNumber` | `${{ github.run_id }}` |
-| `bamboo.buildPlanName` | `${{ github.repository }}-${{ github.workflow }}-${{ github.job }` |
-| `bamboo.buildResultKey` | `${{ github.workflow }}-${{ github.job }}-${{ github.run_id }}` |
-| `bamboo.buildResultsUrl` | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
-| `bamboo.build.working.directory` | `${{ github.workspace }}` |
-| `bamboo.deploy.project` | `${{ github.repository }}` |
-| `bamboo.ManualBuildTriggerReason.userName` | `${{ github.actor }}` |
-| `bamboo.planKey` | `${{ github.workflow }}` |
-| `bamboo.planName` | `${{ github.repository }}-${{ github.workflow }}` |
-| `bamboo.planRepository.branchDisplayName` | `${{ github.ref }}` |
-| `bamboo.planRepository.<position>.branch` | `${{ github.ref }}` |
-| `bamboo.planRepository.<position>.branchName` | `${{ github.ref }}` |
-| `bamboo.planRepository.<position>.name` | `${{ github.repository }}` |
-| `bamboo.planRepository.<position>.repositoryUrl` | `${{ github.server }}/${{ github.repository }}` |
-| `bamboo.planRepository.<position>.revision` | `${{ github.sha }}` |
-| `bamboo.planRepository.<position>.username` | `${{ github.actor}}` |
-| `bamboo.repository.branch.name` | `${{ github.ref }}` |
-| `bamboo.repository.git.branch` | `${{ github.ref }}` |
-| `bamboo.repository.git.repositoryUrl` | `${{ github.server }}/${{ github.repository }}` |
-| `bamboo.repository.pr.key` | `${{ github.event.pull_request.number }}` |
-| `bamboo.repository.pr.sourceBranch` | `${{ github.event.pull_request.head.ref }}` |
-| `bamboo.repository.pr.targetBranch` | `${{ github.event.pull_request.base.ref }}` |
-| `bamboo.resultsUrl` | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
-| `bamboo.shortJobKey` | `${{ github.job }}` |
-| `bamboo.shortJobName` | `${{ github.job }}` |
-| `bamboo.shortPlanKey` | `${{ github.workflow }}` |
-| `bamboo.shortPlanName` | `${{ github.workflow }}` |
+| Bamboo                                           | GitHub Actions                                                                        |
+| :----------------------------------------------- | :------------------------------------------------------------------------------------ |
+| `bamboo.agentId`                                 | `${{ github.runner_name }}`                                                           |
+| `bamboo.agentWorkingDirectory`                   | `${{ github.workspace }}`                                                             |
+| `bamboo.buildKey`                                | `${{ github.workflow }}-${{ github.job }}`                                            |
+| `bamboo.buildNumber`                             | `${{ github.run_id }}`                                                                |
+| `bamboo.buildPlanName`                           | `${{ github.repository }}-${{ github.workflow }}-${{ github.job }`                    |
+| `bamboo.buildResultKey`                          | `${{ github.workflow }}-${{ github.job }}-${{ github.run_id }}`                       |
+| `bamboo.buildResultsUrl`                         | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
+| `bamboo.build.working.directory`                 | `${{ github.workspace }}`                                                             |
+| `bamboo.deploy.project`                          | `${{ github.repository }}`                                                            |
+| `bamboo.ManualBuildTriggerReason.userName`       | `${{ github.actor }}`                                                                 |
+| `bamboo.planKey`                                 | `${{ github.workflow }}`                                                              |
+| `bamboo.planName`                                | `${{ github.repository }}-${{ github.workflow }}`                                     |
+| `bamboo.planRepository.branchDisplayName`        | `${{ github.ref }}`                                                                   |
+| `bamboo.planRepository.<position>.branch`        | `${{ github.ref }}`                                                                   |
+| `bamboo.planRepository.<position>.branchName`    | `${{ github.ref }}`                                                                   |
+| `bamboo.planRepository.<position>.name`          | `${{ github.repository }}`                                                            |
+| `bamboo.planRepository.<position>.repositoryUrl` | `${{ github.server }}/${{ github.repository }}`                                       |
+| `bamboo.planRepository.<position>.revision`      | `${{ github.sha }}`                                                                   |
+| `bamboo.planRepository.<position>.username`      | `${{ github.actor}}`                                                                  |
+| `bamboo.repository.branch.name`                  | `${{ github.ref }}`                                                                   |
+| `bamboo.repository.git.branch`                   | `${{ github.ref }}`                                                                   |
+| `bamboo.repository.git.repositoryUrl`            | `${{ github.server }}/${{ github.repository }}`                                       |
+| `bamboo.repository.pr.key`                       | `${{ github.event.pull_request.number }}`                                             |
+| `bamboo.repository.pr.sourceBranch`              | `${{ github.event.pull_request.head.ref }}`                                           |
+| `bamboo.repository.pr.targetBranch`              | `${{ github.event.pull_request.base.ref }}`                                           |
+| `bamboo.resultsUrl`                              | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
+| `bamboo.shortJobKey`                             | `${{ github.job }}`                                                                   |
+| `bamboo.shortJobName`                            | `${{ github.job }}`                                                                   |
+| `bamboo.shortPlanKey`                            | `${{ github.workflow }}`                                                              |
+| `bamboo.shortPlanName`                           | `${{ github.workflow }}`                                                              |
 
 !!! note
     Variáveis desconhecidas são transformadas `${{ env.<variableName> }}` e devem ser substituídas ou adicionadas `env` para a operação adequada. Por exemplo, `${bamboo.jira.baseUrl}` se tornará `${{ env.jira_baseUrl }}`.
@@ -473,7 +473,7 @@ As variáveis do sistema usadas em tarefas são transformadas na variável de sh
 
 Partes foram adaptadas do <https://github.com/github/gh-actions-importer/> de acordo com a licença MIT:
 
-```text
+```
 MIT License
 
 Copyright (c) 2022 GitHub

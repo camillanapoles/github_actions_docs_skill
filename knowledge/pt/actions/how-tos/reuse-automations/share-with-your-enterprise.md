@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: enterprise-cloud@latest
 source: https://docs.github.com/pt/enterprise-cloud@latest/actions/how-tos/reuse-automations/share-with-your-enterprise
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: How tos / Reuse automations
 ---
 

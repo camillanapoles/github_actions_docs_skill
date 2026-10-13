@@ -15,11 +15,11 @@ Repositório de referência construído em três camadas:
 | **Espelho** | Source-of-truth `github/docs` convertido (Liquid resolvido) para comparação/auditoria | `knowledge/en/` |
 | **Skill** | `SKILL.md` + referências + templates de workflows/actions validados em CI | `skills/github-actions/` |
 
-> **498 páginas** · 4,781,064 bytes · atualizado em 2026-10-13
+> **494 páginas** · 4,766,213 bytes · atualizado em 2026-10-13
 
 ## Comece por aqui
 
-- [Português (pt-BR)](pt/index.md) — 251 páginas (fonte `api`, plano `free-pro-team@latest,enterprise-cloud@latest`)
+- [Português (pt-BR)](pt/index.md) — 247 páginas (fonte `api`, plano `free-pro-team@latest,enterprise-cloud@latest`)
 - [English (source-of-truth)](en/index.md) — 247 páginas (fonte `repo`, plano `free-pro-team@latest`)
 - [Skill: SKILL.md](skill/index.md) — como usar este repositório como skill de agente
 - [Catálogo de templates](skill/templates.md) — workflows prontos por contexto (CI/CD, GitOps, DevOps, segurança)

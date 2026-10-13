@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: How tos
 ---
 
@@ -15,10 +15,6 @@ section: How tos
 _Use as práticas recomendadas de segurança com GitHub Actionse use GitHub Actions para melhorar a segurança da cadeia de fornecimento de software._
 
 ## Links
-
-* [Bloqueio de dependências de ação nos fluxos de trabalho de um repositório](secure-your-work/lock-workflow-dependencies.md)
-
-  Gere um arquivo de bloqueio que fixe cada ação que seus fluxos de trabalho usam em um commit verificado e mantenha-o atual à medida que suas dependências são alteradas.
 
 * [Usar atestados de artefatos](secure-your-work/use-artifact-attestations.md)
 

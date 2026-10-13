@@ -8,7 +8,7 @@ generated: true
 
 # GitHub Actions — Português (pt-BR)
 
-> **251 páginas** · 2,519,982 bytes · capturado em **2026-10-13** · fonte `api` · plano `free-pro-team@latest,enterprise-cloud@latest`
+> **247 páginas** · 2,505,131 bytes · capturado em **2026-10-11** · fonte `api` · plano `free-pro-team@latest,enterprise-cloud@latest`
 
 Cada página contém **somente o conteúdo principal do artigo** — navegação, sidebars, breadcrumbs,
 sumário "Neste artigo" e rodapé são removidos na captura.

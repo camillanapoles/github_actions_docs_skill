@@ -1,16 +1,16 @@
 ---
-title: Controle da execução de GitHub Actions fluxos de trabalho
+title: Controlando quem pode executar GitHub Actions fluxos de trabalho
 description: Controle quem pode disparar fluxos de trabalho GitHub Actions e quais eventos podem executá-los em toda a empresa, organização e repositório.
 product: GitHub Actions
 documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/administer/control-workflow-execution
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: How tos / Administer
 ---
 
-# Controle da execução de GitHub Actions fluxos de trabalho { #controlling-who-can-execute-github-actions-workflows }
+# Controlando quem pode executar GitHub Actions fluxos de trabalho { #controlling-who-can-execute-github-actions-workflows }
 
 _Controle quem pode disparar fluxos de trabalho GitHub Actions e quais eventos podem executá-los em toda a empresa, organização e repositório._
 
@@ -75,14 +75,6 @@ GitHub os recursos estão isentos dessas restrições para os processos integrad
 ### Restringir eventos { #restrict-events }
 
 As regras de evento controlam quais eventos são permitidos, como`push`, , `pull_request`e `workflow_dispatch``pull_request_target`.
-
-### Exigir lockfile
-
-A proteção **Exigir arquivo de bloqueio** bloqueia execuções de fluxos de trabalho com `uses:` dependências de outras ações, a menos que as dependências sejam fixadas em um arquivo de bloqueio de dependência. Isso garante que os fluxos de trabalho direcionados executem código previsível e validado, em vez de qualquer tag ou branch para a qual apontem em tempo de execução. Consulte [Arquivos de bloqueio de dependências do fluxo de trabalho](../../concepts/security/workflow-dependency-lockfiles.md).
-
-Gere e verifique os arquivos de bloqueio nos repositórios que você está direcionando antes de definir essa proteção como **Ativa**. Caso contrário, você bloqueará as execuções de fluxo de trabalho em repositórios que não estão prontos. Para obter um lançamento gradual, consulte [Aplicar lockfiles para dependências de ação](enforce-workflow-lockfiles.md).
-
-Você pode manter **Exigir que as ações sejam fixadas a um SHA de commit completo** habilitado ao adotar arquivos de bloqueio. Para dependências cobertas por um arquivo de bloqueio, GitHub avalia esse requisito usando a SHA do commit bloqueado. Manter a política habilitada durante uma implantação gradual preserva a imposição de fixação de SHA para fluxos de trabalho que ainda não adotaram os arquivos de bloqueio.
 
 ## Avaliando políticas { #evaluating-policies }
 

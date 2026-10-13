@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-what-workflows-do/set-default-values-for-jobs
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: How tos / Write workflows / Choose what workflows do
 ---
 

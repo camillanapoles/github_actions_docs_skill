@@ -7,7 +7,6 @@ templates válidos de workflows e actions para CI/CD, GitOps e DevOps.
 
 > 📋 **Relatório completo de entrega, stack, testes, validação e auditoria do que
 > falta:** [`ENTREGA.md`](ENTREGA.md)
-> 🔁 **Pipeline gate-driven (BPMN, backend OO + SQLite, envelopes JSON):** [`docs/PIPELINE-GATE-DRIVEN.md`](docs/PIPELINE-GATE-DRIVEN.md)
 > ✅ **Relatório de validação (mandato de completude e conformidade):**
 > [`knowledge/validation.md`](knowledge/validation.md)
 

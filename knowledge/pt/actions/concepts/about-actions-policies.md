@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/about-actions-policies
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Concepts
 ---
 
@@ -51,6 +51,6 @@ GitHub planeja adicionar mais regras ao longo do tempo.
 
 ## Próximas Etapas { #next-steps }
 
-Para configurar proteções de execução de fluxo de trabalho, consulte [Controle da execução de GitHub Actions fluxos de trabalho](../how-tos/administer/control-workflow-execution.md).
+Para configurar proteções de execução de fluxo de trabalho, consulte [Controlando quem pode executar GitHub Actions fluxos de trabalho](../how-tos/administer/control-workflow-execution.md).
 
 Para gerenciar políticas programaticamente, consulte [Pontos de extremidade da API REST para políticas de GitHub Actions](https://docs.github.com/pt/rest/actions/policies).

@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/security-harden-deployments
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: How tos / Secure your work
 ---
 
@@ -23,10 +23,6 @@ _Use o OpenID Connect dentro de seus fluxos de trabalho para efetuar a autentica
 * [Configurando o OpenID Connect no Azure](security-harden-deployments/oidc-in-azure.md)
 
   Use o OpenID Connect em seus fluxos de trabalho para autenticar com Azure.
-
-* [Configurando o OpenID Connect no Docker](security-harden-deployments/oidc-in-docker.md)
-
-  Use o OpenID Connect em seus fluxos de trabalho para autenticar com o Docker sem armazenar credenciais de longa duração.
 
 * [Configurando OpenID Connect na Google Cloud Platform](security-harden-deployments/oidc-in-google-cloud-platform.md)
 

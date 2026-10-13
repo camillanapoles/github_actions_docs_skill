@@ -1,0 +1,142 @@
+name: admin-bootstrap
+
+# Automatiza os dois passos de governança que o GITHUB_TOKEN não alcança
+# (Administration: write não existe como permissão de GITHUB_TOKEN — 403 confirmado):
+#   1. ruleset `main-gate-driven` em `main` com required status checks
+#      (`gate-pipeline`, `validate`) + PR obrigatório + proteção contra deletion,
+#      com bypass para o papel admin (o dono nunca fica travado);
+#   2. GitHub Pages habilitado com build_type=workflow (produção via docs-publish.yml).
+#
+# Idempotente: lista → cria se não existe → atualiza se existe.
+# Sem `secrets.ADMIN_TOKEN` o job devolve envelope status 3 (pendência) com a
+# instrução exata do passo humano único — continuidade com informação.
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Somente relatar (não escreve nothing no GitHub)"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: [".github/workflows/admin-bootstrap.yml"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: admin-bootstrap
+  cancel-in-progress: false
+
+env:
+  RULESET_NAME: main-gate-driven
+  REQUIRED_CHECKS: '["gate-pipeline","validate"]'
+
+jobs:
+  bootstrap:
+    name: Governança (ruleset + Pages)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Avalia capacidade e aplica (envelope JSON)
+        id: boot
+        env:
+          GH_TOKEN: ${{ secrets.ADMIN_TOKEN || secrets.GITHUB_TOKEN }}
+          HAS_ADMIN: ${{ secrets.ADMIN_TOKEN != '' }}
+          DRY: ${{ inputs.dry_run }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -uo pipefail
+          envelope() {  # envelope() <status> <direction> <message> [addenda]
+            jq -n --arg id "admin-bootstrap:${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+                  --arg gate "governance" --arg action "admin-bootstrap.yml" \
+                  --argjson status "$1" --arg direction "$2" --arg message "$3" \
+                  --arg addenda "${4:-}" --arg ts "$(date -u +%FT%TZ)" \
+                  '{id:$id, blueprint:"gate-driven-bpmn/1", gate:$gate, action:$action,
+                    status:$status, direction:$direction, message:$message,
+                    addenda:(if $addenda=="" then [] else [$addenda|fromjson] end),
+                    next_issue:(if $status==0 then null else
+                      {key:("governance:\($direction):admin-token"), gate:"governance",
+                       title:"[gate:governance] Habilitar governança automática (ruleset + Pages)",
+                       instructions:[
+                        "criar fine-grained PAT (ou GitHub App) com Administration: write neste repositório",
+                        "gh secret set ADMIN_TOKEN --body \"<token>\"",
+                        "reexecutar: gh workflow run admin-bootstrap.yml",
+                        "confirmar: gh api repos/'"$REPO"'/rulesets --jq \".[].name\""]}) ,
+                    started_at:$ts, finished_at:$ts}' > .ci/admin-bootstrap.json
+            cat .ci/admin-bootstrap.json
+          }
+
+          if [ "$HAS_ADMIN" != "true" ]; then
+            # GITHUB_TOKEN não tem Administration: write → tenta e relata o 403 como evidência
+            probe=$(gh api "repos/$REPO/rulesets" -X POST -f name=probe-permission 2>&1 | head -1 || true)
+            envelope 3 continue \
+              "ADMIN_TOKEN ausente: governança não aplicada (probe: ${probe:0:120})" \
+              '{"kind":"json","path":".ci/admin-bootstrap.json"}'
+            exit 0
+          fi
+
+          if [ "$DRY" = "true" ]; then
+            envelope 0 continue "dry-run: ADMIN_TOKEN presente, nada foi escrito" \
+              '{"kind":"json","path":".ci/admin-bootstrap.json"}'
+            exit 0
+          fi
+
+          # ---- 1. ruleset idempotente ----
+          spec=$(jq -n --arg name "$RULESET_NAME" --argjson checks "$REQUIRED_CHECKS" '{
+            name:$name, target:"branch", source_type:"Repository", enforcement:"active",
+            bypass_actors:[{actor_id:5, actor_type:"RepositoryRole", bypass_mode:"always"}],
+            conditions:{ref_name:{include:["refs/heads/main"], exclude:[]}},
+            rules:[
+              {type:"required_status_checks",
+               parameters:{strict_required_status_checks_policy:false,
+                           required_status_checks:($checks|map({context:.}))}},
+              {type:"pull_request",
+               parameters:{required_approving_review_count:0, dismiss_stale_reviews:false,
+                           require_code_owner_review:false, require_last_push_approval:false,
+                           required_review_thread_resolution:false}},
+              {type:"deletion"}, {type:"non_fast_forward"}
+            ]}')
+          existing=$(gh api "repos/$REPO/rulesets" --jq ".[]|select(.name==\"$RULESET_NAME\")|.id" || true)
+          if [ -n "$existing" ]; then
+            echo "$spec" | gh api "repos/$REPO/rulesets/$existing" -X PUT --input - >/dev/null
+            msg="ruleset $RULESET_NAME atualizado (id=$existing)"
+          else
+            echo "$spec" | gh api "repos/$REPO/rulesets" -X POST --input - >/dev/null
+            msg="ruleset $RULESET_NAME criado"
+          fi
+
+          # ---- 2. Pages com build por workflow ----
+          if gh api "repos/$REPO/pages" --jq .status >/dev/null 2>&1; then
+            msg="$msg; Pages já habilitado"
+          elif gh api "repos/$REPO/pages" -X POST -f build_type=workflow >/dev/null 2>&1; then
+            msg="$msg; Pages habilitado (build_type=workflow)"
+          else
+            envelope 2 retry "$msg; falha ao habilitar Pages (verificar permissão de Pages)" \
+              '{"kind":"json","path":".ci/admin-bootstrap.json"}'
+            exit 0
+          fi
+          envelope 0 continue "$msg; checks obrigatórios: $REQUIRED_CHECKS" \
+            '{"kind":"json","path":".ci/admin-bootstrap.json"}'
+
+      - name: Publica resumo
+        if: always()
+        run: |
+          {
+            echo "## Governança automática (ruleset + Pages)"
+            echo '```json'
+            cat .ci/admin-bootstrap.json 2>/dev/null || echo '{}'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Artefato
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: admin-bootstrap
+          path: .ci/admin-bootstrap.json
+          retention-days: 14
+          if-no-files-found: warn

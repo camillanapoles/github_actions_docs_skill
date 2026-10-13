@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/build-and-test-code/ruby
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Tutorials / Build and test code
 ---
 
@@ -181,7 +181,7 @@ Isso vai configurar o empacotador para instalar os gems em `vendor/cache`. Para 
 
 Para maior controle sobre o cache, você pode usar a ação `actions/cache` diretamente. Para saber mais, confira [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md).
 
-```
+```yaml
 steps:
 - uses: actions/cache@v4
   with:
@@ -197,7 +197,7 @@ steps:
 
 Se você estiver usando uma compilação de matriz, você vai querer incluir as variáveis da matriz na sua chave de cache. Por exemplo, se você tiver uma estratégia de matriz para diferentes versões do Ruby (`matrix.ruby-version`) e diferentes sistemas operacionais (`matrix.os`), as etapas de fluxo de trabalho poderão ter esta aparência:
 
-```
+```yaml
 steps:
 - uses: actions/cache@v4
   with:
@@ -211,12 +211,11 @@ steps:
     bundle install --jobs 4 --retry 3
 ```
 
-```
-## Matriz que testa o seu código
+## Matriz que testa o seu código { #matrix-testing-your-code }
 
 O exemplo a seguir da matriz testa todas as versões estáveis e versões principais de MRI, JRuby e TruffleRuby no Ubuntu e no macOS.
 
-```
+```yaml
 ```
 # Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
 # São fornecidas por terceiros e regidas por
@@ -254,11 +253,11 @@ jobs:
 ```
 
 ```
-## Fazer linting do seu código
+## Fazer linting do seu código { #linting-your-code }
 
 O exemplo a seguir instala o `rubocop` e o usa para fazer lint de todos os arquivos. Para obter mais informações, confira [RuboCop](https://github.com/rubocop-hq/rubocop). Você pode [configurar o RuboCop](https://docs.rubocop.org/rubocop/configuration.html) para decidir as regras de linting específicas que serão usadas.
 
-```
+```yaml
 ```
 # Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
 # São fornecidas por terceiros e regidas por
@@ -289,13 +288,13 @@ jobs:
 Especificar `-f github` significa que a saída do RuboCop estará no formato de anotação de GitHub. Quaisquer erros de linting serão mostrados embutidos na guia **Arquivos alterados** da pull request que os apresenta.
 
 ```
-## Publicar gems
+## Publicar gems { #publishing-gems }
 
 Você pode configurar o seu fluxo de trabalho para publicar o seu pacote do Ruby em qualquer pacote de registro que você desejar quando os seus testes de CI passarem.
 
 Você pode armazenar qualquer token de acesso ou credenciais necessárias para publicar seu pacote usando segredos do repositório. O exemplo a seguir cria e publica um pacote para `GitHub Package Registry` e `RubyGems`.
 
-```
+```yaml
 ```
 # Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
 # São fornecidas por terceiros e regidas por
@@ -356,4 +355,5 @@ jobs:
         env:
           GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
 ```
+
 ```

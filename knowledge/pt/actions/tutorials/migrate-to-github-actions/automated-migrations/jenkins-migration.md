@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/jenkins-migration
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
@@ -248,7 +248,7 @@ Você pode usar o `dry-run` comando para converter um pipeline jenkins em um flu
 
 Para executar uma execução seca de migração dos pipelines do Jenkins para GitHub Actionsexecutar o comando a seguir no terminal, substituindo `my-jenkins-project` pela URL do trabalho do Jenkins.
 
-```shell
+```
 gh actions-importer dry-run jenkins --source-url my-jenkins-project --output-dir tmp/dry-run
 ```
 
@@ -266,13 +266,13 @@ Você pode usar o `migrate` comando para converter um pipeline do Jenkins e abri
 
 Para migrar um pipeline do Jenkins, GitHub Actionsexecute o seguinte comando em seu terminal, substituindo o `target-url` valor pela URL do repositório GitHub e `my-jenkins-project` pela URL do trabalho do Jenkins.
 
-```shell
+```
 gh actions-importer migrate jenkins --target-url https://github.com/:owner/:repo --output-dir tmp/migrate --source-url my-jenkins-project
 ```
 
 A saída do comando inclui a URL para a solicitação de pull que adiciona o fluxo de trabalho convertido ao seu repositório. Um exemplo de uma saída bem-sucedida é semelhante ao seguinte:
 
-```shell
+```
 $ gh actions-importer migrate jenkins --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate --source-url http://localhost:8080/job/monas_dev_work/job/monas_freestyle
 [2022-08-20 22:08:20] Logs: 'tmp/migrate/log/actions-importer-20220916-014033.log'
 [2022-08-20 22:08:20] Pull request: 'https://github.com/octo-org/octo-repo/pull/1'
@@ -333,7 +333,7 @@ Caso você deseje fornecer vários arquivos de origem ao executar o subcomando `
 
 Neste exemplo, GitHub Actions Importer usa o Jenkinsfile especificado como o arquivo de origem para executar uma execução seca.
 
-```shell
+```
 gh actions-importer dry-run jenkins --output-dir path/to/output/ --source-file-path path/to/Jenkinsfile --source-url :url_to_jenkins_job
 ```
 
@@ -349,13 +349,13 @@ Quando você usa a opção `--config-file-path` com os `dry-run` subcomandos ou 
 
 Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML especificado para executar uma auditoria.
 
-```shell
+```
 gh actions-importer audit jenkins --output-dir path/to/output/ --config-file-path path/to/jenkins/config.yml
 ```
 
 Para auditar uma instância do Jenkins usando um arquivo de configuração, o arquivo de configuração precisa estar no seguinte formato e cada valor `repository_slug` precisa ser exclusivo:
 
-```yaml
+```
 source_files:
   - repository_slug: pipeline-name
     path: path/to/Jenkinsfile
@@ -376,7 +376,7 @@ Para obter informações sobre os plug-ins do Jenkins com suporte, confira o [ r
 #### Sintaxe suportada para pipelines Freestyle { #supported-syntax-for-freestyle-pipelines }
 
 | Jenkins           | GitHub Actions            | Status          |
-|:----------------|:------------------------|:--------------|
+| :---------------- | :------------------------ | :-------------- |
 | modelo do Docker  | `jobs.<job_id>.container` | Com suporte     |
 | build             | `jobs`                    | Suporte parcial |
 | compilar ambiente | `env`                     | Suporte parcial |
@@ -386,7 +386,7 @@ Para obter informações sobre os plug-ins do Jenkins com suporte, confira o [ r
 #### Sintaxe suportada para pipelines Jenkinsfile { #supported-syntax-for-jenkinsfile-pipelines }
 
 | Jenkins      | GitHub Actions                  | Status          |
-|:-----------|:------------------------------|:--------------|
+| :----------- | :------------------------------ | :-------------- |
 | docker       | `jobs.<job_id>.container`       | Com suporte     |
 | fase         | `jobs.<job_id>`                 | Com suporte     |
 | agente       | `runners`                       | Suporte parcial |
@@ -404,21 +404,21 @@ Para obter informações sobre os plug-ins do Jenkins com suporte, confira o [ r
 
 GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáveis de ambiente jenkins padrão para o equivalente mais próximo em GitHub Actions.
 
-| Jenkins | GitHub Actions |
-| :-- | :-- |
-| `${BUILD_ID}` | `${{ github.run_id }}` |
-| `${BUILD_NUMBER}` | `${{ github.run_id }}` |
-| `${BUILD_TAG}` | `${{ github.workflow }}-${{ github.run_id }}` |
-| `${BUILD_URL}` | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
-| `${JENKINS_URL}` | `${{ github.server_url }}` |
-| `${JOB_NAME}` | `${{ github.workflow }}` |
-| `${WORKSPACE}` | `${{ github.workspace }}` |
+| Jenkins           | GitHub Actions                                                                        |
+| :---------------- | :------------------------------------------------------------------------------------ |
+| `${BUILD_ID}`     | `${{ github.run_id }}`                                                                |
+| `${BUILD_NUMBER}` | `${{ github.run_id }}`                                                                |
+| `${BUILD_TAG}`    | `${{ github.workflow }}-${{ github.run_id }}`                                         |
+| `${BUILD_URL}`    | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
+| `${JENKINS_URL}`  | `${{ github.server_url }}`                                                            |
+| `${JOB_NAME}`     | `${{ github.workflow }}`                                                              |
+| `${WORKSPACE}`    | `${{ github.workspace }}`                                                             |
 
 ## Aviso legal { #legal-notice }
 
 Partes foram adaptadas do <https://github.com/github/gh-actions-importer/> de acordo com a licença MIT:
 
-```text
+```
 MIT License
 
 Copyright (c) 2022 GitHub

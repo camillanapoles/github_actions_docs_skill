@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/security/secure-use
-captured: '2026-10-13'
+captured: '2026-10-11'
 section: Reference / Security
 ---
 
@@ -120,23 +120,27 @@ Para obter orientações detalhadas sobre como decidir se deseja usar `pull_requ
 
 Os trabalhos individuais em fluxo de trabalho podem interagir com (e comprometer) outros trabalhos. Por exemplo, um trabalho que consulta as variáveis de ambiente usadas por um trabalho posterior, que escreve arquivos para um diretório compartilhado que um trabalho posterior processa, ou ainda mais diretamente, que interage com o conector do Docker e inspeciona outros contêineres em execução e executa comandos neles.
 
-Isso significa que comprometer uma só ação em um fluxo de trabalho pode ser muito significativo, pois essa ação comprometida terá acesso a todos os segredos configurados no repositório e poderá usar o `GITHUB_TOKEN` para fazer gravações no repositório. Consequentemente, há um risco significativo em obter ações de repositórios de terceiros em GitHub.
+Isso significa que comprometer uma só ação em um fluxo de trabalho pode ser muito significativo, pois essa ação comprometida terá acesso a todos os segredos configurados no repositório e poderá usar o `GITHUB_TOKEN` para fazer gravações no repositório. Consequentemente, há um risco significativo em obter ações de repositórios de terceiros em GitHub. Para obter mais informações sobre algumas das etapas que um invasor pode executar, confira [Referência de uso seguro](secure-use.md).
 
-A melhor medida é **bloquear suas dependências do fluxo de trabalho** com um lockfile. Isso registra o commit exato de cada ação da qual seus fluxos de trabalho dependem, incluindo dependências transitivas, e verifica a identidade de cada repositório de origem em tempo de execução. Essa é a proteção mais forte disponível e substitui o pinning SHA para repositórios que a adotam. Para saber mais, confira [Arquivos de bloqueio de dependências do fluxo de trabalho](../../concepts/security/workflow-dependency-lockfiles.md).
-
-Para repositórios que **não podem** adotar um arquivo de bloqueio, você pode:
+Você pode ajudar a mitigar esse risco seguindo estas boas práticas:
 
 * **Fixar as ações em um SHA de commit de comprimento completo**
 
-  Fixe as referências de ações em um SHA de commit em seus arquivos de fluxo de trabalho. Isso ajuda a reduzir o risco de um agente mal-intencionado adicionar um backdoor ao repositório da ação, pois ele precisaria gerar uma colisão SHA-1 para uma carga de objeto Git válida. Ao selecionar um SHA, verifique se ele está no repositório da ação e não em uma bifurcação do repositório.
+  Fixar uma ação para um commit SHA de comprimento completo é, atualmente, a única maneira de usar uma ação como uma versão imutável. Fixar um SHA em particular ajuda a mitigar o risco de um ator malicioso adicionar uma porta traseira ao repositório da ação, porque precisariam gerar uma colisão de SHA-1 para uma carga válida do objeto de Git. Ao selecionar um SHA, verifique se ele está no repositório da ação e não em uma bifurcação do repositório.
 
   Para obter um exemplo de como usar um SHA de commit de comprimento completo em um fluxo de trabalho, confira [Usando blocos de construção pré-gravados no seu fluxo de trabalho](../../how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions.md#using-shas).
 
+GitHub oferece políticas nos níveis de repositório empresa para exigir que as ações sejam vinculadas a um SHA de commit completo:
+* Para configurar a política no nível do repositório, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository).
+* Para configurar a política no nível da organização, confira [Desabilitando ou limitando GitHub Actions para sua organização](https://docs.github.com/pt/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#managing-github-actions-permissions-for-your-organization).
+
+* **Auditar o código-fonte da ação**
+
+  Certifique-se de que a ação está tratando o conteúdo do seu repositório e os segredos, como esperado. Por exemplo, verifique se os segredos não são enviados para hosts não autorizados ou se não estejam registrados inadvertidamente.
+
 * **Fixar ações em uma marca somente se você confiar no criador**
 
-  Se você desejar de especificar uma etiqueta, certifique-se de que você confia nos criadores da ação. O selo GitHub Marketplace 'Criador verificado' é um sinal útil, pois indica que a ação foi escrita por uma equipe cuja identidade foi verificada por GitHub. Observe que há risco para esta abordagem, mesmo que você confie no autor, porque uma etiqueta pode ser movida ou excluída se um ator malicioso obtiver acesso ao repositório que armazena a ação.
-
-Independentemente das medidas adotadas, sempre **audite o código-fonte da ação**. Certifique-se de que a ação está tratando o conteúdo do seu repositório e os segredos, como esperado. Por exemplo, verifique se os segredos não são enviados para hosts não autorizados ou se não estejam registrados inadvertidamente.
+  Embora a fixação de um commit de SHA seja a opção mais segura, especificar uma etiqueta é a opção mais conveniente, além de ser amplamente usada. Se você desejar de especificar uma etiqueta, certifique-se de que você confia nos criadores da ação. O selo GitHub Marketplace 'Criador verificado' é um sinal útil, pois indica que a ação foi escrita por uma equipe cuja identidade foi verificada por GitHub. Observe que há risco para esta abordagem, mesmo que você confie no autor, porque uma etiqueta pode ser movida ou excluída se um ator malicioso obtiver acesso ao repositório que armazena a ação.
 
 ### Reutilizando fluxos de trabalho de terceiros { #reusing-third-party-workflows }
 
