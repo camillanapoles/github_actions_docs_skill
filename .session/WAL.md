@@ -49,3 +49,4 @@ Nunca editar/apagar entrada — correção é entrada nova.
 | 2026-10-13T22:26:00+00:00 | PR-DESCOBERTO | CONTINUE | gate release exige PR + merge; nenhum PR constava na memória | gh pr list: PR #2 arena/c91bd6a1 → main OPEN, runs action_required (aprovação) | D10 se resolve no merge (registry vai a main); DEV-1 permanece até lá | 6defae3a571b |
 | 2026-10-13T22:26:00+00:00 | CLOSE-GATE | FIX | auto-checagem Art. 12 (nota 8.89) | closing_gate | volta a EXEC: ['checkpoint_gravado'] | - |
 | 2026-10-13T22:26:00+00:00 | transição ilegal EXEC->EXEC | FIX | nota 8.89 < 9.5 | corrigir pendências | rejeitada | - |
+| 2026-10-13T22:26:00+00:00 | EMIT | FIX | efeito contratado | verificar commit f6bf4ebda197 + PR #2 (arena→main) + run do gate-pipeline | ref=commit f6bf4ebda197 + PR #2 (arena→main) + run do gate-pipeline | commit f6bf4 |

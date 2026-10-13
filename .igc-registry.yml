@@ -7,7 +7,7 @@ linhagens:
   github-actions-docs-skill:
     branch: arena/c91bd6a1-github-actions-docs-skill
     base_sha: 0ddafab815385d69ea8f70d93c3479daa7f50175
-    checkpoint_ref: 4ce4a8e7e55e7d4a4e7f97884db54fa6caf20e89
+    checkpoint_ref: f6bf4ebda197e46c8da2b8ac5c42f31de3c1a4e5
     ativa: true
     modo: continuidade
     estado_fsm: EXEC
@@ -17,6 +17,8 @@ linhagens:
     desvios:
     - DEV-1
     - DEV-2
+    - DEV-3
     ultima_verificacao: status 1 · 2/7 gates aprovados
     next_issue: capture:fix:11ecbf57
     atualizado_em: '2026-10-13'
+    pr: '#2'
