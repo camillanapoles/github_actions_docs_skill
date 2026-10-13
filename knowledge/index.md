@@ -15,7 +15,7 @@ Repositório de referência construído em três camadas:
 | **Espelho** | Source-of-truth `github/docs` convertido (Liquid resolvido) para comparação/auditoria | `knowledge/en/` |
 | **Skill** | `SKILL.md` + referências + templates de workflows/actions validados em CI | `skills/github-actions/` |
 
-> **494 páginas** · 4,766,213 bytes · atualizado em 2026-10-11
+> **494 páginas** · 4,766,213 bytes · atualizado em 2026-10-13
 
 ## Comece por aqui
 

@@ -10,14 +10,14 @@ captured: '2026-10-11'
 section: How tos / Manage runners / Self hosted runners
 ---
 
-# Como personalizar os contêineres usados por trabalhos
+# Como personalizar os contêineres usados por trabalhos { #customizing-the-containers-used-by-jobs }
 
 _Você pode personalizar como o executor auto-hospedado invoca um contêiner para um trabalho._
 
 !!! note
     Esse recurso está atualmente dentro prévia pública e está sujeito a alterações.
 
-## Sobre a personalização de contêiner
+## Sobre a personalização de contêiner { #about-container-customization }
 
 GitHub Actions permite que você execute um trabalho em um contêiner, usando a `container:` instrução em seu arquivo de fluxo de trabalho. Para saber mais, confira [Executar trabalhos em um contêiner](../../write-workflows/choose-where-workflows-run/run-jobs-in-a-container.md). Para processar trabalhos baseados em contêiner, o executor auto-hospedado cria um contêiner para cada trabalho.
 
@@ -25,7 +25,7 @@ GitHub Actions dá suporte a comandos que permitem personalizar a maneira como o
 
 Essa personalização só está disponível para executores auto-hospedados baseados em Linux e o acesso de usuário raiz não é necessário.
 
-## Comandos de personalização de contêiner
+## Comandos de personalização de contêiner { #container-customization-commands }
 
 GitHub Actions inclui os seguintes comandos para personalização de contêiner:
 
@@ -63,7 +63,7 @@ GitHub Actions pressupõe que você realizará as seguintes tarefas no `prepare_
   * Opcional: todos os campos de contexto que você deseja definir no contexto do trabalho, caso contrário, eles não estarão disponíveis para os usuários usarem. Para saber mais, confira [Referência de contextos](../../../reference/workflows-and-actions/contexts.md#job-context).
 * Retornar `0` quando as verificações de integridade forem bem-sucedidas e os contêineres de trabalho/serviço forem iniciados.
 
-#### Argumentos para `prepare_job`
+#### Argumentos para `prepare_job` { #arguments-for-preparejob }
 
 * `jobContainer`: **opcional**. Um objeto que contém informações sobre o contêiner de trabalho especificado.
   * `image`: **obrigatório**. Uma cadeia de caracteres que contém a imagem do Docker.
@@ -100,7 +100,7 @@ GitHub Actions pressupõe que você realizará as seguintes tarefas no `prepare_
     * `serverUrl`: **opcional**. A URL do registro.
   * `portMappings`: **opcional**. Um hash de valor de chave das portas *source:target* a serem mapeadas para o contêiner.
 
-#### Exemplo de entrada para `prepare_job`
+#### Exemplo de entrada para `prepare_job` { #example-input-for-preparejob }
 
 ```json copy
 {
@@ -185,7 +185,7 @@ GitHub Actions pressupõe que você realizará as seguintes tarefas no `prepare_
 }
 ```
 
-#### Exemplo de saída para `prepare_job`
+#### Exemplo de saída para `prepare_job` { #example-output-for-preparejob }
 
 Este exemplo de saída é o conteúdo do `responseFile` definido na entrada acima.
 
@@ -228,11 +228,11 @@ GitHub Actions pressupõe que você realizará as seguintes tarefas no `cleanup_
 * Exclua a rede (se existir).
 * Limpe todos os outros itens que foram criados para o trabalho.
 
-#### Argumentos para `cleanup_job`
+#### Argumentos para `cleanup_job` { #arguments-for-cleanupjob }
 
 Nenhum argumento é fornecido para `cleanup_job`.
 
-#### Exemplo de entrada para `cleanup_job`
+#### Exemplo de entrada para `cleanup_job` { #example-input-for-cleanupjob }
 
 ```json copy
 {
@@ -249,7 +249,7 @@ Nenhum argumento é fornecido para `cleanup_job`.
 }
 ```
 
-#### Exemplo de saída para `cleanup_job`
+#### Exemplo de saída para `cleanup_job` { #example-output-for-cleanupjob }
 
 Nenhuma saída é esperada para `cleanup_job`.
 
@@ -263,7 +263,7 @@ GitHub Actions pressupõe que você realizará as seguintes tarefas no `run_cont
 * Transmitir as saídas de logs de etapa para stdout e stderr.
 * Limpar o contêiner depois que ele for executado.
 
-#### Argumentos para `run_container_step`
+#### Argumentos para `run_container_step` { #arguments-for-runcontainerstep }
 
 * `image`: **opcional**. Uma cadeia de caracteres que contém a imagem do Docker. Caso contrário, um dockerfile precisará ser fornecido.
 * `dockerfile`: **opcional**. Uma cadeia de caracteres que contém o caminho para o dockerfile, caso contrário, uma imagem precisará ser fornecida.
@@ -288,7 +288,7 @@ GitHub Actions pressupõe que você realizará as seguintes tarefas no `run_cont
   * `serverUrl`: **opcional**. A URL do registro.
 * `portMappings`: **opcional**. Um hash de valor de chave das portas *source:target* a serem mapeadas para o contêiner.
 
-#### Exemplo de entrada de imagem
+#### Exemplo de entrada de imagem { #example-input-for-image }
 
 Se você estiver usando uma imagem do Docker, especifique o nome da imagem no parâmetro `"image":`.
 
@@ -364,7 +364,7 @@ Se você estiver usando uma imagem do Docker, especifique o nome da imagem no pa
 }
 ```
 
-#### Entrada de exemplo de Dockerfile
+#### Entrada de exemplo de Dockerfile { #example-input-for-dockerfile }
 
 Para um contêiner definido por um Dockerfile, este exemplo demonstra como especificar o caminho para um `Dockerfile` na entrada usando o parâmetro `"dockerfile":`.
 
@@ -440,7 +440,7 @@ Para um contêiner definido por um Dockerfile, este exemplo demonstra como espec
 }
 ```
 
-#### Exemplo de saída para `run_container_step`
+#### Exemplo de saída para `run_container_step` { #example-output-for-runcontainerstep }
 
 Nenhuma saída é esperada para `run_container_step`.
 
@@ -451,7 +451,7 @@ GitHub Actions pressupõe que você realizará as seguintes tarefas:
 * Invocar o script fornecido dentro do contêiner de trabalho e retornar o código de saída.
 * Transmitir as saídas de logs de etapa para stdout e stderr.
 
-#### Argumentos para `run_script_step`
+#### Argumentos para `run_script_step` { #arguments-for-runscriptstep }
 
 * `entryPointArgs`: **opcional**. Uma lista que contém os argumentos de ponto de entrada.
 * `entryPoint`: **opcional**. O ponto de entrada do contêiner a ser usado se o ponto de entrada de imagem padrão precisar ser substituído.
@@ -459,7 +459,7 @@ GitHub Actions pressupõe que você realizará as seguintes tarefas:
 * `workingDirectory`: **obrigatório**. Uma cadeia de caracteres que contém o caminho absoluto do diretório de trabalho.
 * `environmentVariables`: **opcional**. Define um mapa das principais variáveis de ambiente.
 
-#### Exemplo de entrada para `run_script_step`
+#### Exemplo de entrada para `run_script_step` { #example-input-for-runscriptstep }
 
 ```json copy
 {
@@ -484,11 +484,11 @@ GitHub Actions pressupõe que você realizará as seguintes tarefas:
 }
 ```
 
-#### Exemplo de saída para `run_script_step`
+#### Exemplo de saída para `run_script_step` { #example-output-for-runscriptstep }
 
 Nenhuma saída é esperada para `run_script_step`.
 
-## Como gerar o script de personalização
+## Como gerar o script de personalização { #generating-the-customization-script }
 
 GitHub criou um repositório de exemplo que demonstra como gerar scripts de personalização para Docker e Kubernetes.
 
@@ -511,7 +511,7 @@ GitHub criou um repositório de exemplo que demonstra como gerar scripts de pers
 
 Quando o(a) `index.js` resultante for acionado(a) por GitHub Actions, ele executará os comandos de personalização definidos nos arquivos JSON. Para disparar o `index.js`, você precisa adicioná-la à variável de ambiente `ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER`, como está descrito na próxima seção.
 
-## Como disparar o script de personalização
+## Como disparar o script de personalização { #triggering-the-customization-script }
 
 Os scripts personalizados precisam estar localizados no executor, mas não precisam ser armazenados no diretório do aplicativo executor auto-hospedado (ou seja, o diretório no qual você baixou e descompactou o software executor). Os scripts são executados no contexto de segurança da conta de serviço que executa o serviço de executor.
 
@@ -530,12 +530,12 @@ ACTIONS_RUNNER_CONTAINER_HOOKS=/Users/octocat/runner/index.js
 
 Se você quiser garantir que o trabalho sempre seja executado dentro de um contêiner e, portanto, sempre aplique as personalizações de contêiner, defina a variável `ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER` no executor auto-hospedado como `true`. Isso falhará trabalhos que não especificam um contêiner de trabalho.
 
-## Solução de problemas
+## Solução de problemas { #troubleshooting }
 
-### Sem configuração de tempo limite
+### Sem configuração de tempo limite { #no-timeout-setting }
 
 No momento, não há nenhuma configuração de tempo limite disponível para o script executado por `ACTIONS_RUNNER_CONTAINER_HOOKS`. Como resultado, você pode considerar a adição de tratamento do tempo limite ao script.
 
-### Examinar o log de execução do fluxo de trabalho
+### Examinar o log de execução do fluxo de trabalho { #reviewing-the-workflow-run-log }
 
 Para confirmar se os scripts estão em execução, você pode revisar os logs desse trabalho. Para obter mais informações sobre como verificar os logs, confira [Usando registros de execução de fluxo de trabalho](../../monitor-workflows/use-workflow-run-logs.md#viewing-logs-to-diagnose-failures).

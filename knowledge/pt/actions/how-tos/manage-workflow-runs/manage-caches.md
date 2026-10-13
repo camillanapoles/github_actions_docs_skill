@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: How tos / Manage workflow runs
 ---
 
-# Gerenciando caches
+# Gerenciando caches { #managing-caches }
 
 _Você pode monitorar, filtrar e excluir caches de dependência criados com base em seus fluxos de trabalho._
 
@@ -19,7 +19,7 @@ Este artigo descreve o gerenciamento de caches com a interface da GitHub Web, ma
 * Uso da API REST. Confira [Pontos de extremidade da API REST para o cache do GitHub Actions](https://docs.github.com/pt/rest/actions/cache).
 * Com o subcomando `gh cache` da linha de comando. Confira a [Documentação da CLI do GitHub](https://cli.github.com/manual/gh_cache).
 
-## Exibir entradas de cache
+## Exibir entradas de cache { #viewing-cache-entries }
 
 É possível usar a interface da Web para exibir uma lista das entradas de cache de um repositório. Na lista de cache, é possível ver quanto espaço em disco cada cache está usando, quando os caches foram criados e quando foram usados pela última vez.
 
@@ -35,7 +35,7 @@ Este artigo descreve o gerenciamento de caches com a interface da GitHub Web, ma
 
    ![Captura de tela da lista de entradas de cache.](/assets/images/help/repository/actions-cache-entry-list.png)
 
-## Excluir entradas de cache
+## Excluir entradas de cache { #deleting-cache-entries }
 
 Os usuários com `write` acesso a um repositório podem usar a interface da GitHub Web para excluir entradas de cache.
 
@@ -48,7 +48,7 @@ Os usuários com `write` acesso a um repositório podem usar a interface da GitH
 
    ![Captura de tela da lista de entradas de cache. Um ícone de lixeira, usado para excluir um cache, é realçado com um contorno laranja escuro.](/assets/images/help/repository/actions-cache-delete.png)
 
-## Forçar a exclusão de entradas de cache
+## Forçar a exclusão de entradas de cache { #force-deleting-cache-entries }
 
 Os caches têm restrições de escopo de ramificação em vigor, o que significa que alguns caches têm opções de uso limitadas. Para obter mais informações sobre as restrições do escopo de cache, confira [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md). Se caches limitados a um branch específico estiverem usando um excesso de cota de armazenamento, isso poderá fazer com que os caches do branch `default` sejam criados e excluídos com alta frequência.
 

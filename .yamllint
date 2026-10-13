@@ -1,0 +1,29 @@
+# yamllint — regras ajustadas para workflows do GitHub Actions e templates da skill.
+# `on:` é chave legítima em workflows (o YAML a leria como true) → regra truthy desligada.
+extends: default
+
+ignore: |
+  .git/
+  site/
+  node_modules/
+  .ci/schema/
+
+rules:
+  line-length:
+    max: 200
+    level: warning
+  truthy:
+    allowed-values: ["true", "false", "yes", "no"]
+    check-keys: false
+  comments:
+    min-spaces-from-content: 1
+  indentation:
+    spaces: consistent
+    indent-sequences: consistent
+  document-start: disable
+  braces:
+    max-spaces-inside: 1
+  brackets:
+    max-spaces-inside: 1
+  empty-lines:
+    max: 2

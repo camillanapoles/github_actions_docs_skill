@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: How tos / Manage workflow runs
 ---
 
-# Reexecutando fluxos de trabalho e tarefas
+# Reexecutando fluxos de trabalho e tarefas { #re-running-workflows-and-jobs }
 
 _Você pode executar novamente um fluxo de trabalho, todos os trabalhos que falharam na execução de um fluxo de trabalho, ou trabalhos específicos em uma execução de fluxo de trabalho até 30 dias após sua execução inicial._
 
@@ -18,7 +18,7 @@ As re-execuções usam os privilégios do ator que inicialmente disparou o fluxo
 
 Uma execução de fluxo de trabalho pode ser executada novamente no máximo 50 vezes. Esse limite inclui tanto reexecuções completas quanto reexecuções de um subconjunto de tarefas.
 
-## Reexecutar todos os trabalhos em um fluxo de trabalho
+## Reexecutar todos os trabalhos em um fluxo de trabalho { #re-running-all-the-jobs-in-a-workflow }
 
 1. Em GitHub, acesse a página principal do repositório.
 
@@ -59,7 +59,7 @@ Uma execução de fluxo de trabalho pode ser executada novamente no máximo 50 v
    gh run watch
    ```
 
-## Reexecutar trabalhos que falharam em um fluxo de trabalho
+## Reexecutar trabalhos que falharam em um fluxo de trabalho { #re-running-failed-jobs-in-a-workflow }
 
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
@@ -85,7 +85,7 @@ Para habilitar o log de diagnóstico do executor e o log de depuração de etapa
 gh run rerun RUN_ID --failed --debug
 ```
 
-## Reexecutando um trabalho específico em um fluxo de trabalho
+## Reexecutando um trabalho específico em um fluxo de trabalho { #re-running-a-specific-job-in-a-workflow }
 
 1. Em GitHub, acesse a página principal do repositório.
 
@@ -117,7 +117,7 @@ Para habilitar o log de diagnóstico do executor e o log de depuração de etapa
 gh run rerun --job JOB_ID --debug
 ```
 
-## Revisando execuções de workflows anteriores
+## Revisando execuções de workflows anteriores { #reviewing-previous-workflow-runs }
 
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.

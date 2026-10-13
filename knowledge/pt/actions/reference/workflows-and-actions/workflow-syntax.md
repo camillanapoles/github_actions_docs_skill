@@ -211,7 +211,7 @@ Use o filtro `branches` quando quiser incluir padrões de nome de ramificação 
 
 Os filtros `branches` e `branches-ignore` aceitam padrões glob que usam caracteres como `*`, `**`, `+`, `?`, `!` e outros para corresponder a mais de um nome de branch. Se um nome contiver um desses caracteres e você quiser ter uma correspondência literal, faça escape de cada um desses caracteres especiais com ``. Para obter mais informações sobre padrões glob, consulte [Sintaxe de fluxo de trabalho para o GitHub Actions](https://docs.github.com/pt/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet).
 
-### Exemplo: Incluindo branches
+### Exemplo: Incluindo branches { #exemplo-incluindo-branches-1 }
 
 Os padrões definidos em `branches` são avaliados em relação ao nome do branch de destino. Por exemplo, o fluxo de trabalho a seguir será executado sempre que houver um evento `merge_group` para um grupo de merge que tem como destino:
 
@@ -227,7 +227,7 @@ on:
       - 'releases/**'
 ```
 
-### Exemplo: Excluir branches
+### Exemplo: Excluir branches { #exemplo-excluir-branches-1 }
 
 Quando um padrão corresponder ao padrão `branches-ignore`, o fluxo de trabalho não será executado. Os padrões definidos em `branches-ignore` são avaliados em relação ao nome do branch de destino. Por exemplo, o seguinte fluxo de trabalho será executado sempre que ocorrer um evento `merge_group`, a menos que os alvos do grupo de mesclagem:
 
@@ -243,7 +243,7 @@ on:
       - 'releases/**-alpha'
 ```
 
-### Exemplo: Incluindo e excluindo branches
+### Exemplo: Incluindo e excluindo branches { #exemplo-incluindo-e-excluindo-branches-1 }
 
 Não é possível usar `branches` e `branches-ignore` para filtrar o mesmo evento em um só fluxo de trabalho. Caso deseje incluir e excluir padrões de branch para um só evento, use o filtro `branches` com o caractere `!` para indicar os branches que devem ser excluídos.
 
@@ -1169,7 +1169,7 @@ Permissões disponíveis e detalhes do que cada uma permite que uma ação faça
 | `statuses` | Trabalhar com status de commits. Por exemplo, `statuses:read` permite que uma ação liste os status de commit de uma determinada referência. Para obter mais informações, confira [Permissões necessárias para aplicativos GitHub](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-commit-statuses). |
 | `vulnerability-alerts` | Leia os alertas do Dependabot. Por exemplo, `vulnerability-alerts: read` permite que uma ação liste os alertas do Dependabot para o repositório. Somente `read` e `none` há suporte; `write` não é válido. Quando `write-all` ou `read-all` é usado, `vulnerability-alerts` é incluído automaticamente como `read`. Para obter mais informações, consulte [as permissões do Repositório para "Alertas do Dependabot"](https://docs.github.com/pt/rest/authentication/permissions-required-for-github-apps#repository-permissions-for-dependabot-alerts). |
 
-### Definindo o acesso para os escopos do `GITHUB_TOKEN`
+### Definindo o acesso para os escopos do `GITHUB_TOKEN` { #definindo-o-acesso-para-os-escopos-do-githubtoken-1 }
 
 Você pode definir o acesso que o `GITHUB_TOKEN` permitirá especificando `read`, `write` ou `none` como o valor das permissões disponíveis na chave `permissions`.
 
@@ -1212,7 +1212,7 @@ Você pode usar a seguinte sintaxe para desabilitar as permissões para todas as
 permissions: {}
 ```
 
-#### Alterar as permissões em um repositório bifurcado
+#### Alterar as permissões em um repositório bifurcado { #alterar-as-permissões-em-um-repositório-bifurcado-1 }
 
 Você pode usar a tecla `permissions` para adicionar e remover permissões de leitura de repositórios derivados (forks), mas normalmente não pode conceder acesso de gravação. A exceção a esse comportamento ocorre quando um usuário administrador seleciona a opção **Enviar tokens de gravação para fluxos de trabalho a partir de pull requests** nas GitHub Actions configurações. Para saber mais, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#enabling-workflows-for-forks-of-private-repositories).
 
@@ -1653,7 +1653,7 @@ A combinação de `queue: max` e `cancel-in-progress: true` não é permitida e 
     * O nome do grupo de simultaneidade não diferencia maiúsculas de minúsculas. Por exemplo, `prod` e `Prod` serão tratados como o mesmo grupo de simultaneidade.
     * Trabalhos ou execuções de fluxo de trabalho no mesmo grupo de simultaneidade são processados na ordem de primeiro a entrar em primeiro lugar (FIFO), de acordo com o momento em que cada um começou a esperar no grupo de simultaneidade, não o tempo em que cada fluxo de trabalho foi expedido. Como o horário de início efetivo de um trabalho ou execução pode variar, a ordenação não é garantida.
 
-### Exemplos: Usar a simultaneidade e o comportamento padrão
+### Exemplos: Usar a simultaneidade e o comportamento padrão { #exemplos-usar-a-simultaneidade-e-o-comportamento-padrão-1 }
 
 O comportamento GitHub Actions padrão é permitir que vários trabalhos ou execuções de fluxo de trabalho sejam executados simultaneamente. A palavra-chave `concurrency` permite controlar a simultaneidade de execuções de fluxo de trabalho.
 
@@ -1686,7 +1686,7 @@ jobs:
       cancel-in-progress: true
 ```
 
-### Exemplo: grupos de concorrência
+### Exemplo: grupos de concorrência { #exemplo-grupos-de-concorrência-1 }
 
 Os grupos de simultaneidade fornecem uma maneira de gerenciar e limitar a execução de fluxos de trabalho ou tarefas que compartilham a mesma chave de simultaneidade.
 
@@ -1720,7 +1720,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: Enfileirando várias tarefas pendentes
+### Exemplo: Enfileirando várias tarefas pendentes { #exemplo-enfileirando-várias-tarefas-pendentes-1 }
 
 Por padrão, apenas uma execução de tarefa ou de fluxo de trabalho pode estar `pending` em um grupo de simultaneidade por vez. Para permitir várias execuções na fila em vez de serem canceladas, defina `queue: max`. Com `queue: max`, até 100 trabalhos ou execuções de fluxo de trabalho podem aguardar no grupo de simultaneidade; depois que a fila estiver cheia, quaisquer execuções adicionais são canceladas.
 
@@ -1739,7 +1739,7 @@ concurrency:
 
 Observe que `queue: max` não pode ser combinado com `cancel-in-progress: true`, porque as duas opções descrevem comportamentos conflitantes para lidar com execuções em andamento.
 
-### Exemplo: Usar a concorrência para cancelar qualquer trabalho em andamento ou em execução
+### Exemplo: Usar a concorrência para cancelar qualquer trabalho em andamento ou em execução { #exemplo-usar-a-concorrência-para-cancelar-qualquer-trabalho-em-andamento-ou-em-execução-1 }
 
 Para usar a simultaneidade para cancelar qualquer trabalho em andamento GitHub Actions ou execução, você pode usar a tecla `concurrency` com a opção `cancel-in-progress` definida como `true`:
 
@@ -1751,7 +1751,7 @@ concurrency:
 
 Observe que, neste exemplo, sem definir um grupo de simultaneidade específico, GitHub Actions cancelará a execução de qualquer trabalho ou fluxo de trabalho em andamento.
 
-### Exemplo: Usando um valor para segunda opção
+### Exemplo: Usando um valor para segunda opção { #exemplo-usando-um-valor-para-segunda-opção-1 }
 
 Se você construir o nome do grupo com uma propriedade que só é definida para eventos específicos, você pode usar um valor de segunda opção. Por exemplo, `github.head_ref` só é definido em eventos `pull_request`. Se o fluxo de trabalho responder a outros eventos além de eventos `pull_request`, você precisará fornecer um fallback para evitar um erro de sintaxe. O grupo de simultaneidade a seguir cancela os trabalhos em andamento ou é executado somente em eventos `pull_request`. Se `github.head_ref` for indefinido, o grupo de simultaneidade fará fallback para a ID de execução, que tem a garantia de ser exclusiva e definida para a execução.
 
@@ -1761,7 +1761,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: Cancele somente tarefas em andamento ou execuções no fluxo de trabalho atual
+### Exemplo: Cancele somente tarefas em andamento ou execuções no fluxo de trabalho atual { #exemplo-cancele-somente-tarefas-em-andamento-ou-execuções-no-fluxo-de-trabalho-atual-1 }
 
 Se você tiver vários fluxos de trabalho no mesmo repositório, os nomes dos grupos de execução concorrente devem ser únicos em todos os fluxos de trabalho para evitar o cancelamento de tarefas ou execuções em andamento de outros fluxos de trabalho. Caso contrário, qualquer trabalho em andamento ou pendente será cancelado, independentemente do fluxo de trabalho.
 
@@ -1773,7 +1773,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: cancelar apenas trabalhos em andamento em ramificações específicas
+### Exemplo: cancelar apenas trabalhos em andamento em ramificações específicas { #exemplo-cancelar-apenas-trabalhos-em-andamento-em-ramificações-específicas-1 }
 
 Se você quiser cancelar trabalhos em andamento em determinadas ramificações, mas não em outras, poderá usar expressões condicionais com `cancel-in-progress`. Por exemplo, é possível fazer isso se quiser cancelar trabalhos em andamento em branches de desenvolvimento, mas não em branches de lançamento.
 
@@ -3208,7 +3208,7 @@ paths:
 paths:
   - **/README.md
 
-# Valid
+# Valid { #valid-1 }
 branches: [ main, 'release/v[0-9].[0-9]' ]
 
 # Invalid - creates a parse error

@@ -10,13 +10,13 @@ captured: '2026-10-11'
 section: How tos
 ---
 
-# Obtendo ajuda do suporte GitHub sobre GitHub Actions
+# Obtendo ajuda do suporte GitHub sobre GitHub Actions { #getting-help-from-github-support-about-github-actions }
 
 _Saiba como Suporte do GitHub ajudar com GitHub Actions_
 
 Você pode [entrar em contato Suporte do GitHub](https://docs.github.com/pt/support/contacting-github-support) para obter assistência com GitHub Actions.
 
-## Fornecendo informações de diagnóstico e solução de problemas
+## Fornecendo informações de diagnóstico e solução de problemas { #providing-diagnostic-and-troubleshooting-information }
 
 O conteúdo dos repositórios privados e internos não é visível Suporte do GitHub, portanto Suporte do GitHub , pode solicitar informações adicionais para entender o contexto completo da investigação e reproduzir qualquer comportamento inesperado. Você pode acelerar a resolução do seu inquérito fornecendo essas informações ao gerar inicialmente um tíquete com Suporte do GitHub.
 
@@ -42,7 +42,7 @@ Algumas informações que Suporte do GitHub serão solicitadas podem incluir, ma
     [!WARNING]
     Verifique se todos os arquivos e textos fornecidos Suporte do GitHub foram redigidos corretamente para remover informações confidenciais, como tokens e outros segredos.
 
-### Arquivos de log do aplicativo do executor efêmero
+### Arquivos de log do aplicativo do executor efêmero { #ephemeral-runner-application-log-files }
 
 Suporte do GitHub pode solicitar os arquivos de log do aplicativo executor de executores de executores efêmeros.
 GitHub espera e recomenda que você tenha implementado um mecanismo para encaminhar e preservar os arquivos de log do aplicativo executor de executores efêmeros auto-hospedados. Para obter mais informações sobre arquivos de log do aplicativo do executor e solução de problemas de executores auto-hospedados, consulte [Monitorar e solucionar problemas de executores auto-hospedados](manage-runners/self-hosted-runners/monitor-and-troubleshoot.md#reviewing-the-self-hosted-runner-application-log-files).
@@ -53,7 +53,7 @@ Se você estiver usando Actions Runner Controller (ARC), Suporte do GitHub poder
 
 Para obter mais informações sobre o escopo do suporte, Actions Runner Controllerconsulte [Suporte para o Controlador do Executor de Ações](../concepts/runners/support-for-arc.md).
 
-### CodeQL e GitHub Actions
+### CodeQL e GitHub Actions { #codeql-and-github-actions }
 
 Se você estiver solicitando assistência com um Fluxo de trabalho de análise do CodeQL, Suporte do GitHub poderá solicitar uma cópia dos CodeQL artefatos de depuração. Para obter mais informações sobre a depuração de artefatos para um Fluxo de trabalho de análise do CodeQL, consulte [Os logs não são detalhados o suficiente](https://docs.github.com/pt/code-security/reference/code-scanning/troubleshoot-analysis-errors/logs-not-detailed-enough#creating-codeql-debugging-artifacts).
 
@@ -61,7 +61,7 @@ Para fornecer os artefatos de depuração, Suporte do GitHubbaixe os CodeQL arte
 
 Se o CodeQL arquivo de artefatos `.zip` de depuração for muito grande para carregar no tíquete, informe Suporte do GitHube trabalharemos com você para determinar as próximas etapas.
 
-## Escopo do suporte
+## Escopo do suporte { #scope-of-support }
 
 Se sua solicitação de suporte estiver fora do escopo com o qual nossa equipe pode ajudar, poderemos recomendar os próximos passos para resolver seu problema fora de Suporte do GitHub. Sua solicitação de suporte possivelmente estará fora do Suporte do GitHubescopo se a solicitação for principalmente sobre:
 

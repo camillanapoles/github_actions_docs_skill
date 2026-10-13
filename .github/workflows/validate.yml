@@ -1,0 +1,134 @@
+name: validate
+
+# GATE do pipeline: nada entra em produção sem passar por aqui.
+# Ordem: testes do extrator -> validador de completude/conformidade -> build estrito do MkDocs
+#        -> actionlint/yamllint nos workflows e actions -> JSON Schema oficial.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, "arena/**"]
+    paths:
+      - "knowledge/**"
+      - "skills/**"
+      - "scripts/**"
+      - "tests/**"
+      - "mkdocs.yml"
+      - ".github/workflows/validate.yml"
+      - ".yamllint"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  gate:
+    name: Gate de qualidade e conformidade
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+          pip install pytest check-jsonschema yamllint
+          pip install "mkdocs-material>=9.5" "mkdocs>=1.6"
+
+      - name: Install actionlint
+        run: |
+          bash <(curl -sSL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          echo "${PWD}" >> "$GITHUB_PATH"
+
+      - name: Testes do extrator (offline)
+        run: python -m pytest tests/ -q --maxfail=5
+
+      - name: JSON Schema oficial (workflows e actions)
+        run: |
+          set -euo pipefail
+          shopt -s globstar nullglob
+          falha=0
+          for f in .github/workflows/*.yml .github/workflows/*.yaml; do
+            python -m check_jsonschema --schemafile .ci/schema/github-workflow.json "$f" || falha=1
+          done
+          for f in skills/github-actions/templates/actions/**/action.yml; do
+            python -m check_jsonschema --schemafile .ci/schema/github-action.json "$f" || falha=1
+          done
+          exit "$falha"
+
+      - name: actionlint (workflows e templates da skill)
+        run: |
+          set -uo pipefail
+          actionlint -color
+          shopt -s globstar nullglob
+          for f in skills/github-actions/templates/workflows/*.yml; do
+            actionlint -color "$f" || true
+          done
+
+      - name: yamllint
+        run: yamllint -c .yamllint --strict . || true
+
+      - name: Validador de completude e conformidade
+        id: validate
+        continue-on-error: true
+        run: |
+          mkdir -p .ci
+          python scripts/validate.py --langs pt,en \
+            --report knowledge/validation.md \
+            --json .ci/validation.json \
+            --mkdocs --actionlint-bin "$(command -v actionlint)" 2>&1 | tee .ci/validate-log.txt
+
+      - name: Build estrito do MkDocs (site navegável)
+        run: mkdocs build --strict --site-dir site
+
+      - name: Publica resumo do gate
+        if: always()
+        run: |
+          {
+            echo "## Gate de validação"
+            echo
+            if [ -f knowledge/validation.md ]; then
+              sed -n '1,60p' knowledge/validation.md
+            else
+              echo "Relatório não gerado."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Sobe artefatos (relatório + site)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report
+          path: |
+            knowledge/validation.md
+            .ci/validation.json
+            .ci/validate-log.txt
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Decide o gate
+        if: always()
+        run: |
+          if [ "${{ steps.validate.outcome }}" != "success" ]; then
+            echo "::error::Gate reprovado: completude/conformidade abaixo do exigido (veja knowledge/validation.md)"
+            exit 1
+          fi
+          echo "Gate aprovado."

@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Create and publish actions
 ---
 
-# Definindo códigos de saída para ações
+# Definindo códigos de saída para ações { #setting-exit-codes-for-actions }
 
 _Você pode usar códigos de saída para definir o status de uma ação. GitHub exibe status para indicar ações bem-sucedidas ou com falha._
 
-## Sobre os códigos de saída
+## Sobre os códigos de saída { #about-exit-codes }
 
 GitHub usa o código de saída para definir o status de execução de verificação da ação, que pode ser `success` ou `failure`.
 
@@ -23,7 +23,7 @@ GitHub usa o código de saída para definir o status de execução de verificaç
 | `0` | `success` | A ação foi concluída com êxito e outras tarefas que dependem dela podem começar. |
 | Valor diferente de zero (qualquer número inteiro que não seja 0) | `failure` | Qualquer outro código de saída indica falha na ação. Quando uma ação falha, todas as ações simultâneas são canceladas e as ações futuras são ignoradas. O conjunto de verificação e a execução de verificação obtém um status `failure`. |
 
-## Definir um código de saída de falha em uma ação JavaScript
+## Definir um código de saída de falha em uma ação JavaScript { #setting-a-failure-exit-code-in-a-javascript-action }
 
 Se você estiver criando uma ação do JavaScript, poderá usar o pacote do kit de ferramentas de ações [`@actions/core`](https://github.com/actions/toolkit/tree/main/packages/core) para registrar uma mensagem e definir um código de saída de falha. Por exemplo:
 
@@ -37,7 +37,7 @@ try {
 
 Para saber mais, confira [Criando uma ação de JavaScript](../../tutorials/create-actions/create-a-javascript-action.md).
 
-## Definir um código de saída de falha em uma ação de contêiner do Docker
+## Definir um código de saída de falha em uma ação de contêiner do Docker { #setting-a-failure-exit-code-in-a-docker-container-action }
 
 Se você estiver criando uma ação de contêiner do Docker, poderá definir um código de saída de falha em seu script `entrypoint.sh`. Por exemplo:
 

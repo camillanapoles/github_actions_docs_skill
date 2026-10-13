@@ -10,22 +10,22 @@ captured: '2026-10-11'
 section: Tutorials / Build and test code
 ---
 
-# Criar e testar o Ruby
+# Criar e testar o Ruby { #building-and-testing-ruby }
 
 _É possível criar um fluxo de trabalho de integração contínua (CI) para criar e testar o seu projeto do Ruby._
 
-## Introdução
+## Introdução { #introduction }
 
 Este guia mostra como criar um fluxo de trabalho de integração contínua (CI) que compila e testa um aplicativo do Rubi. Se os seus testes do CI passarem, você pode querer implantar seu código ou publicar uma gem.
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Recomendamos que você tenha um entendimento básico do Ruby, YAML, das opções de configuração do fluxo de trabalho e de como criar um arquivo do fluxo de trabalho. Para obter mais informações, consulte:
 
 * [Aprender GitHub Actions](../../how-tos/write-workflows.md)
 * [Ruby em 20 minutos](https://www.ruby-lang.org/en/documentation/quickstart/)
 
-## Usando um modelo de fluxo de trabalho do Ruby
+## Usando um modelo de fluxo de trabalho do Ruby { #using-a-ruby-workflow-template }
 
 Para uma introdução rápida, adicione um modelo de fluxo de trabalho ao diretório `.github/workflows` do repositório.
 
@@ -57,7 +57,7 @@ GitHub fornece um modelo de fluxo de trabalho para Ruby que deve funcionar para 
 
    O `ruby.yml` arquivo de fluxo de trabalho é adicionado ao `.github/workflows` diretório do repositório.
 
-## Especificar a versão do Ruby
+## Especificar a versão do Ruby { #specifying-the-ruby-version }
 
 A maneira mais fácil de especificar uma versão do Ruby é usando a ação `ruby/setup-ruby` fornecida pela organização Ruby no GitHub. A ação adiciona qualquer versão do Ruby compatível a `PATH` em cada trabalho executado em um fluxo de trabalho. Para obter mais informações e as versões disponíveis do Ruby, confira [`ruby/setup-ruby`](https://github.com/ruby/setup-ruby).
 
@@ -81,7 +81,7 @@ steps:
 
 Como alternativa, você poderá fazer check-in de um arquivo `.ruby-version` na raiz do repositório e `setup-ruby` usará a versão definida nesse arquivo.
 
-## Testar com versões múltiplas do Ruby
+## Testar com versões múltiplas do Ruby { #testing-with-multiple-versions-of-ruby }
 
 Você pode adicionar uma estratégia matriz para executar seu fluxo de trabalho com mais de uma versão do Ruby. Por exemplo, você pode testar seu código com as últimas versões de patch das versões 3.1, 3.0 e 2.7.
 
@@ -134,7 +134,7 @@ jobs:
         run: bundle exec rake
 ```
 
-## Instalar dependências com o Bundler
+## Instalar dependências com o Bundler { #installing-dependencies-with-bundler }
 
 A ação `setup-ruby` instalará automaticamente o Bundler para você. A versão é determinada pelo arquivo `gemfile.lock`. Se nenhuma versão estiver presente no seu arquivo de bloqueio, será instalada a última versão compatível.
 
@@ -151,7 +151,7 @@ steps:
 - run: bundle install
 ```
 
-### Memorizar dependências
+### Memorizar dependências { #caching-dependencies }
 
 As ações `setup-ruby` fornecem um método para lidar automaticamente com o cache dos seus gems entre as execuções.
 
@@ -204,7 +204,7 @@ steps:
     bundle install --jobs 4 --retry 3
 ```
 
-## Matriz que testa o seu código
+## Matriz que testa o seu código { #matrix-testing-your-code }
 
 O exemplo a seguir da matriz testa todas as versões estáveis e versões principais de MRI, JRuby e TruffleRuby no Ubuntu e no macOS.
 
@@ -244,7 +244,7 @@ jobs:
       - run: bundle exec rake
 ```
 
-## Fazer linting do seu código
+## Fazer linting do seu código { #linting-your-code }
 
 O exemplo a seguir instala o `rubocop` e o usa para fazer lint de todos os arquivos. Para obter mais informações, confira [RuboCop](https://github.com/rubocop-hq/rubocop). Você pode [configurar o RuboCop](https://docs.rubocop.org/rubocop/configuration.html) para decidir as regras de linting específicas que serão usadas.
 
@@ -277,7 +277,7 @@ jobs:
 
 Especificar `-f github` significa que a saída do RuboCop estará no formato de anotação de GitHub. Quaisquer erros de linting serão mostrados embutidos na guia **Arquivos alterados** da pull request que os apresenta.
 
-## Publicar gems
+## Publicar gems { #publishing-gems }
 
 Você pode configurar o seu fluxo de trabalho para publicar o seu pacote do Ruby em qualquer pacote de registro que você desejar quando os seus testes de CI passarem.
 

@@ -10,15 +10,15 @@ captured: '2026-10-11'
 section: How tos / Write workflows / Choose what workflows do
 ---
 
-# Implantação em um ambiente específico
+# Implantação em um ambiente específico { #deploying-to-a-specific-environment }
 
 _Especifique um ambiente de implantação em seu fluxo de trabalho._
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Você precisa criar um ambiente antes de poder usá-lo em um fluxo de trabalho. Confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md#creating-an-environment).
 
-## Usar um ambiente em um fluxo de trabalho
+## Usar um ambiente em um fluxo de trabalho { #using-an-environment-in-a-workflow }
 
 1. Abra o arquivo do fluxo de trabalho que deseja editar.
 

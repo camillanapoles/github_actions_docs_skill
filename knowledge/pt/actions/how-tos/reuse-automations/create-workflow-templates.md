@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Reuse automations
 ---
 
-# Criar modelos de fluxo de trabalho para sua organização
+# Criar modelos de fluxo de trabalho para sua organização { #creating-workflow-templates-for-your-organization }
 
 _Saiba como você pode criar modelos de fluxo de trabalho para ajudar as pessoas de sua equipe a adicionar novos fluxos de trabalho com mais facilidade._
 
-## Criando modelos de fluxo de trabalho
+## Criando modelos de fluxo de trabalho { #creating-workflow-templates }
 
 Esse procedimento demonstra como criar um modelo de fluxo de trabalho e um arquivo de metadados. O arquivo de metadados descreve como os modelos de fluxo de trabalho serão apresentados aos usuários quando eles criarem um novo fluxo de trabalho.
 
@@ -96,6 +96,6 @@ Esse procedimento demonstra como criar um modelo de fluxo de trabalho e um arqui
 
 5. Para adicionar outro modelo de fluxo de trabalho, adicione seus arquivos ao mesmo diretório `workflow-templates`.
 
-## Próximas etapas
+## Próximas etapas { #next-steps }
 
 * Para obter informações de referência sobre modelos de fluxo de trabalho, consulte [Reutilizando configurações de fluxo de trabalho](../../reference/workflows-and-actions/reusing-workflow-configurations.md#workflow-templates).

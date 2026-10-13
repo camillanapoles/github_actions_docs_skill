@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Deploy / Deploy to third party platforms
 ---
 
-# Implantando Node.js em Azure App Service
+# Implantando Node.js em Azure App Service { #deploying-nodejs-to-azure-app-service }
 
 _Saiba como implantar um projeto de Node.js para Azure App Service como parte de seus fluxos de trabalho de CD (implantação contínua)._
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Antes de criar seu fluxo de trabalho de GitHub Actions, primeiro você precisa concluir as etapas de configuração a seguir:
 
@@ -58,7 +58,7 @@ Antes de criar seu fluxo de trabalho de GitHub Actions, primeiro você precisa c
 
 4. Opcionalmente, configure um ambiente de implantação. Os ambientes são usados para descrever um destino de implantação geral, como `production`, `staging` ou `development`. Quando um GitHub Actions fluxo de trabalho é implantado em um ambiente, o ambiente é exibido na página principal do repositório. Você pode usar ambientes para exigir aprovação para um trabalho prosseguir, restringir quais ramificações podem acionar um fluxo de trabalho, bloquear implantações com regras de proteção de implantação personalizadas ou limitar o acesso a segredos. Para saber mais sobre como criar ambientes, confira [Gerenciar ambientes para implantação](../configure-and-manage-deployments/manage-environments.md).
 
-## Criar o fluxo de trabalho
+## Criar o fluxo de trabalho { #creating-the-workflow }
 
 Depois de preencher os pré-requisitos, você pode prosseguir com a criação do fluxo de trabalho.
 
@@ -133,7 +133,7 @@ jobs:
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 ```
 
-## Leitura adicional
+## Leitura adicional { #further-reading }
 
 * Para o modelo de fluxo de trabalho original, confira [`azure-webapps-node.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/azure-webapps-node.yml) no repositório `starter-workflows` do GitHub Actions.
 * A ação usada para implantar o aplicativo Web é a ação oficial Azure [`Azure/webapps-deploy`](https://github.com/Azure/webapps-deploy).

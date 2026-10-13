@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Write workflows / Choose what workflows do
 ---
 
-# Passando informações entre tarefas
+# Passando informações entre tarefas { #passing-information-between-jobs }
 
 _Você pode definir saídas para passar informações de um trabalho para outro._
 
-## Como definir e usar saídas de trabalho
+## Como definir e usar saídas de trabalho { #defining-and-using-job-outputs }
 
 1. Abra o arquivo de fluxo de trabalho que contém o trabalho do qual você deseja obter saídas.
 
@@ -59,7 +59,7 @@ _Você pode definir saídas para passar informações de um trabalho para outro.
            run: echo "$OUTPUT1 $OUTPUT2"
    ```
 
-## Próximas etapas
+## Próximas etapas { #next-steps }
 
 Para saber mais sobre saídas de trabalho e o contexto de `needs`, confira as seguintes seções de [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idoutputs):
 

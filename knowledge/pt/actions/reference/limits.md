@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: Reference
 ---
 
-# Limites do Actions
+# Limites do Actions { #actions-limits }
 
 _Há limites no GitHub Actions que você pode atingir à medida que escala seu uso; alguns deles podem aumentar ao entrar em contato com o suporte._
 
@@ -20,7 +20,7 @@ A menos que seja indicado de outra forma, o comportamento esperado quando um lim
 
 Estes limites estão sujeitos a mudanças.
 
-## Limites do sistema existente
+## Limites do sistema existente { #existing-system-limits }
 
 | Categoria do limite | Limite | Limite | Descrição | É possível aumentar o suporte GitHub? |
 | :-- | :-- | :-- | :-- | :-- |
@@ -55,11 +55,11 @@ Estes limites estão sujeitos a mudanças.
 | Cache de dependência | Downloads por minuto | 1500 por minuto | Cada repositório é limitado a 1500 downloads de entrada de cache por minuto. Se esse limite for excedido, as tentativas de download de cache subsequentes falharão até que o limite de taxa seja redefinido. | ❌ |
 | Cache de dependência | Exclusões por minuto | 400 por minuto | Cada repositório é limitado a 400 operações de exclusão de cache por minuto. Se esse limite for excedido, as tentativas subsequentes de exclusão de cache falharão até que o limite de taxa seja redefinido. Cada solicitação para excluir caches por chave ou por ID conta para esse limite. | ❌ |
 
-### Tamanho do arquivo de fluxo de trabalho
+### Tamanho do arquivo de fluxo de trabalho { #workflow-file-size }
 
 Cada arquivo de fluxo de trabalho no `.github/workflows` diretório deve ter 500 KB ou menor para disparar uma execução. Para reduzir o tamanho de um arquivo de fluxo de trabalho, mova a lógica compartilhada para um fluxo de trabalho reutilizável ou uma ação composta. Confira [Reutilizar fluxos de trabalho](../how-tos/reuse-automations/reuse-workflows.md) ou [Criar uma ação composta](../tutorials/create-actions/create-a-composite-action.md).
 
-### Limites de simultaneidade de trabalhos para executores hospedados pelo GitHub
+### Limites de simultaneidade de trabalhos para executores hospedados pelo GitHub { #job-concurrency-limits-for-github-hosted-runners }
 
 GitHub O suporte **pode** aumentar os limites de concorrência de tarefas para GitHub Actions. Para solicitar um aumento, envie um tíquete de suporte.
 
@@ -76,7 +76,7 @@ GitHub Plano | Total de tarefas simultâneas | Máximo de tarefas macOS simultâ
 !!! note
     O número máximo de trabalhos simultâneos no macOS é compartilhado entre os executores padrão hospedados pelo GitHub e os executores maiores hospedados pelo GitHub
 
-### Limites de armazenamento para todos os executores hospedados pelo GitHub
+### Limites de armazenamento para todos os executores hospedados pelo GitHub { #storage-limits-for-all-github-hosted-runners }
 
 GitHub O **suporte não pode** aumentar os limites de armazenamento para GitHub Actions.
 
@@ -90,11 +90,11 @@ GitHub O **suporte não pode** aumentar os limites de armazenamento para GitHub 
 
 Para obter informações sobre os limites de armazenamento em cache e como aumentá-los, consulte [limites de uso e política de remoção](workflows-and-actions/dependency-caching.md#usage-limits-and-eviction-policy).
 
-### Dimensionamento de IP privado para injeção de Vnet em executores avançados
+### Dimensionamento de IP privado para injeção de Vnet em executores avançados { #private-ip-scaling-for-vnet-injection-on-larger-runners }
 
 Ao usar executores avançados com injeção vnet, você precisa determinar o intervalo de endereços IP de sub-rede apropriado, recomendamos adicionar um buffer à simultaneidade máxima de trabalho prevista. Por exemplo, se os executores da configuração de rede estiverem definidos para uma simultaneidade de trabalho máxima de 300, utilize um intervalo de endereços IP de sub-rede que possa acomodar pelo menos 390 executores. Observe que Azure reserva 5 IPs em cada sub-rede (primeiro 4 e último 1), o que define um tamanho mínimo de sub-rede prática dependendo dos requisitos do executor. Sub-redes muito pequenas (como /29 ou menor) podem não fornecer endereços utilizáveis suficientes para suas necessidades.
 
-## Limites de serviço dependentes que costumam ser atingidos
+## Limites de serviço dependentes que costumam ser atingidos { #commonly-hit-dependent-service-limits }
 
 GitHubOs [limites de taxa da API REST](https://docs.github.com/pt/rest/using-the-rest-api/rate-limits-for-the-rest-api) se aplicam aos GitHub Actions usuários, aqueles que geralmente são atingidos são:
 
@@ -113,7 +113,7 @@ GitHubOs [limites de taxa da API REST](https://docs.github.com/pt/rest/using-the
 * **GITHUB TOKEN**-O limite de taxa de `GITHUB_TOKEN` é de mil solicitações por hora e por repositório. Para solicitações de recursos que pertencem a uma conta de GitHub Enterprise Cloud, o limite é de 15.000 solicitações por hora e por repositório.
 * **Limites de taxa secundários**- Além dos limites de taxa primária, GitHub impõe limites de taxa secundários para evitar abusos e manter a API disponível para todos os usuários, elas não são configuráveis com GHEC. Para saber mais, confira [Limites de taxa para a API REST](https://docs.github.com/pt/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits).
 
-### Limite de taxa do Docker Hub para GitHub Actions
+### Limite de taxa do Docker Hub para GitHub Actions { #docker-hubs-rate-limit-for-github-actions }
 
 * \*\*              Executores hospedados pelo GitHub extraindo imagens públicas:\*\* não se aplica o limite de taxa do Docker Hub.
 * \*\*              Executores hospedados pelo GitHub que extraem imagens privadas:\*\* a extração de imagens privadas do Docker Hub está sujeita ao limite de taxa.

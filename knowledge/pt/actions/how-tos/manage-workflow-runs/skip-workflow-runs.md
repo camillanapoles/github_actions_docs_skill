@@ -10,7 +10,7 @@ captured: '2026-10-11'
 section: How tos / Manage workflow runs
 ---
 
-# Ignorar execuções de fluxo de trabalho
+# Ignorar execuções de fluxo de trabalho { #skipping-workflow-runs }
 
 _Você pode ignorar as execuções de fluxo de trabalho disparadas pelos eventos push e pull_request incluindo um comando na mensagem de commit._
 

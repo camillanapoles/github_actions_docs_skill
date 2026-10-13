@@ -10,17 +10,17 @@ captured: '2026-10-11'
 section: How tos / Secure your work / Security harden deployments
 ---
 
-# Configurando o OpenID Connect no PyPI
+# Configurando o OpenID Connect no PyPI { #configuring-openid-connect-in-pypi }
 
 _Use o OpenID Connect em seus fluxos de trabalho para se autenticar no PyPI._
 
-## Visão geral
+## Visão geral { #overview }
 
 O OIDC (OpenID Connect) permite que seus fluxos de trabalho GitHub Actions se autentiquem com [PyPI](https://pypi.org) para publicar pacotes Python.
 
 Este guia oferece uma visão geral de como configurar o PyPI para confiar no OIDC do GitHub como uma identidade federada e demonstra como usar essa configuração na ação [`pypa/gh-action-pypi-publish`](https://github.com/marketplace/actions/pypi-publish) para publicar pacotes no PyPI (ou em outros repositórios de pacotes Python) sem qualquer necessidade de gerenciamento manual de tokens de API.
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 * Para saber os conceitos básicos de como GitHub usa o OpenID Connect (OIDC) e sua arquitetura e benefícios, consulte [OpenID Connect](../../../concepts/security/openid-connect.md).
 
@@ -28,7 +28,7 @@ Este guia oferece uma visão geral de como configurar o PyPI para confiar no OID
 
 * Os tokens OIDC solicitados para Dependabot trabalhos de atualização têm uma declaração `event_name` de `dynamic`. Se sua política de confiança se destina a autorizar apenas GitHub Actions fluxos de trabalho e seu provedor de nuvem dá suporte a condições `event_name`, permita apenas os nomes de eventos esperados por seus fluxos de trabalho. Para obter mais informações, consulte [Referência do OpenID Connect](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
-## Adicionando o provedor de identidade ao PyPI
+## Adicionando o provedor de identidade ao PyPI { #adding-the-identity-provider-to-pypi }
 
 Para usar o OIDC com o PyPI, adicione uma configuração de confiança que vincule cada projeto no PyPI a cada repositório e combinação de fluxo de trabalho que tenha permissão para publicar para ele.
 
@@ -45,7 +45,7 @@ Para usar o OIDC com o PyPI, adicione uma configuração de confiança que vincu
    * Nome do fluxo de trabalho: `release.yml`
    * (Opcionalmente) um nome de ambiente do GitHub Actions: `release`
 
-## Atualizar o seu fluxo de trabalho de GitHub Actions
+## Atualizar o seu fluxo de trabalho de GitHub Actions { #updating-your-github-actions-workflow }
 
 Depois que seu editor confiável estiver registrado no PyPI, você poderá atualizar seu fluxo de trabalho de lançamento para usar a publicação confiável.
 

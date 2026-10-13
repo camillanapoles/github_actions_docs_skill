@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Manage runners / Self hosted runners
 ---
 
-# Como executar scripts antes ou depois de um trabalho
+# Como executar scripts antes ou depois de um trabalho { #running-scripts-before-or-after-a-job }
 
 _Os scripts podem ser executado automaticamente em um executor autohospedado, diretamente antes ou depois de um trabalho._
 
-## Sobre os scripts pré e pós-trabalho
+## Sobre os scripts pré e pós-trabalho { #about-pre--and-post-job-scripts }
 
 Você pode executar scripts automaticamente em um executor auto-hospedado, antes da execução de um trabalho ou após a conclusão da execução dele. Use esses scripts para dar suporte aos requisitos do trabalho, como a criação ou a destruição de um ambiente de executor ou a limpeza de diretórios. Use também esses scripts para acompanhar a telemetria de como os executores são usados.
 
@@ -25,7 +25,7 @@ Há suporte para as seguintes linguagens de script:
 * **Bash**: usa `bash` e pode usar `sh` como alternativa. É executado por meio de `-e {pathtofile}`.
 * **PowerShell**: usa `pwsh` e pode usar `powershell` como alternativa. É executado por meio de `-command \". '{pathtofile}'\"`.
 
-## Como escrever os scripts
+## Como escrever os scripts { #writing-the-scripts }
 
 Seus scripts personalizados podem usar os seguintes recursos:
 
@@ -37,13 +37,13 @@ Seus arquivos de script precisam usar uma extensão de arquivo para a linguagem 
 !!! note
     Evite usar seus scripts para exibir informações confidenciais no console, pois qualquer pessoa com acesso de leitura ao repositório poderá ver a saída nos logs da interface do usuário.
 
-### Como tratar os códigos de saída
+### Como tratar os códigos de saída { #handling-exit-codes }
 
 Para scripts de pré-trabalho, o código de saída `0` indica que o script foi concluído com sucesso e o trabalho continuará sendo executado. Se houver outro código de saída, o trabalho não será executado e será marcado como com falha. Para ver os resultados dos scripts de pré-trabalho, verifique se há entradas `Set up runner` nos logs. Para obter mais informações sobre como verificar os logs, confira [Usando registros de execução de fluxo de trabalho](../../monitor-workflows/use-workflow-run-logs.md#viewing-logs-to-diagnose-failures).
 
 Não há suporte para a configuração [`continue-on-error`](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idcontinue-on-error) para uso por esses scripts.
 
-## Acionando os scripts
+## Acionando os scripts { #triggering-the-scripts }
 
 Os scripts personalizados precisam estar localizados no executor, mas não precisam ser armazenados no diretório do aplicativo `actions-runner`. Os scripts são executados no contexto de segurança da conta de serviço que executa o serviço de executor.
 
@@ -65,9 +65,9 @@ ACTIONS_RUNNER_HOOK_JOB_STARTED=/opt/runner/cleanup_script.sh
 !!! note
     O script definido em `ACTIONS_RUNNER_HOOK_JOB_COMPLETED` é executado no final do trabalho, antes da conclusão do trabalho. Isso o torna inadequado para casos de uso que podem interromper um executor, como excluir o computador executor como parte de uma implementação de dimensionamento automático.
 
-## Solução de problemas
+## Solução de problemas { #troubleshooting }
 
-### Permissão negada
+### Permissão negada { #permission-denied }
 
 Se você receber um erro de "permissão negada" ao tentar executar um script, verifique se o script é executável. Por exemplo, em um terminal no Linux ou no macOS, você pode usar o seguinte comando para tornar um arquivo executável.
 
@@ -77,10 +77,10 @@ chmod +x PATH/TO/FILE
 
 Para obter informações sobre como usar fluxos de trabalho para executar scripts, confira [Adicionar scripts ao seu fluxo de trabalho](../../write-workflows/choose-what-workflows-do/add-scripts.md).
 
-### Sem configuração de tempo limite
+### Sem configuração de tempo limite { #no-timeout-setting }
 
 Atualmente, não há nenhuma configuração de tempo limite disponível para os scripts executados por `ACTIONS_RUNNER_HOOK_JOB_STARTED` ou `ACTIONS_RUNNER_HOOK_JOB_COMPLETED`. Como resultado, você pode considerar a adição de tratamento do tempo limite ao script.
 
-### Examinar o log de execução do fluxo de trabalho
+### Examinar o log de execução do fluxo de trabalho { #reviewing-the-workflow-run-log }
 
 Para confirmar se os scripts estão em execução, você pode revisar os logs desse trabalho. Os scripts serão listados em etapas separadas para `Set up runner` ou `Complete runner`, dependendo do variável de ambiente que dispara o script. Para obter mais informações sobre como verificar os logs, confira [Usando registros de execução de fluxo de trabalho](../../monitor-workflows/use-workflow-run-logs.md#viewing-logs-to-diagnose-failures).

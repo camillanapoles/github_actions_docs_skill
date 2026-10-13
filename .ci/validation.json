@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11T23:47:53+00:00",
+  "generated": "2026-10-13T14:14:39+00:00",
   "summary": {
     "pass": 27,
     "warn": 3,
@@ -444,7 +444,7 @@
   ],
   "manifests": {
     "pt": {
-      "generated": "2026-10-11T23:40:36+00:00",
+      "generated": "2026-10-11T23:50:09+00:00",
       "source": "api",
       "lang": "pt",
       "page_count": 247,
@@ -453,10 +453,10 @@
       "out": "/home/runner/work/github_actions_docs_skill/github_actions_docs_skill/knowledge/pt",
       "plan": "free-pro-team@latest,enterprise-cloud@latest",
       "links": {
-        "files": 247,
-        "links": 1720,
+        "files": 248,
+        "links": 1731,
         "reverted": 7,
-        "ok": 1713
+        "ok": 1724
       }
     },
     "en": {

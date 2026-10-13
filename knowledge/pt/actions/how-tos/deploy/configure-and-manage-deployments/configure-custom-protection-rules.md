@@ -10,14 +10,14 @@ captured: '2026-10-11'
 section: How tos / Deploy / Configure and manage deployments
 ---
 
-# Configurar regras de proteção de implantação personalizadas
+# Configurar regras de proteção de implantação personalizadas { #configuring-custom-deployment-protection-rules }
 
 _Use GitHub Apps para automatizar a proteção de implantações com sistemas de terceiros._
 
 !!! note
     Regras de proteção de implementação personalizada estão em prévia pública e estão sujeitas a alterações.
 
-## Sobre regras de proteção de implantação personalizada
+## Sobre regras de proteção de implantação personalizada { #about-custom-deployment-protection-rules }
 
 As regras de proteção de implantação personalizada são alimentadas por GitHub Apps. Depois que uma regra de proteção de implantação é configurada e instalada em um repositório, ela pode ser habilitada para qualquer ambiente no repositório.
 
@@ -30,7 +30,7 @@ Para saber mais sobre como criar suas regras de proteção de implantação pers
 !!! note
     Qualquer quantidade de regras de proteção de implantação baseadas no GitHub Apps pode ser instalada em um repositório. No entanto, no máximo seis regras de proteção de implantação podem ser habilitadas em qualquer ambiente ao mesmo tempo.
 
-## Usar regras de proteção de implantação personalizadas existentes
+## Usar regras de proteção de implantação personalizadas existentes { #using-existing-custom-deployment-protection-rules }
 
 Você pode optar por criar suas próprias regras de proteção de implantação personalizadas ou pode usar qualquer regra de proteção de implantação personalizada existente.
 
@@ -42,13 +42,13 @@ A seguir está uma lista de implementações de parceiros oficiais para regras d
 * NCM NodeSource: para obter mais informações, consulte [o aplicativo NCM NodeSource](https://github.com/apps/ncm-nodesource) no GitHub Marketplace.
 * ServiceNow: para obter mais informações, consulte [integração do GitHub com o DevOps Change Velocity](https://www.servicenow.com/docs/bundle/utah-devops/page/product/enterprise-dev-ops/concept/github-integration-dev-ops.html) na documentação do ServiceNow.
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Para que uma regra de proteção de implantação personalizada esteja disponível para todos os ambientes em um repositório, primeiro você deve instalar a regra de proteção de implantação personalizada no repositório. Para saber mais, confira [Instalando seu próprio aplicativo GitHub](https://docs.github.com/pt/apps/using-github-apps/installing-your-own-github-app).
 
 Após a instalação de uma regra de proteção de implantação personalizada em um repositório, ela deve ser habilitada para cada ambiente em que você deseja que a regra seja aplicada.
 
-## Habilitar regras de proteção de implantação personalizadas para o ambiente
+## Habilitar regras de proteção de implantação personalizadas para o ambiente { #enabling-custom-deployment-protection-rules-for-the-environment }
 
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.

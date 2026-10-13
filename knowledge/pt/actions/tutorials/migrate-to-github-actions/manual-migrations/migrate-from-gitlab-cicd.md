@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Tutorials / Migrate to github actions / Manual migrations
 ---
 
-# Migrando de CI/CD do GitLab para GitHub Actions
+# Migrando de CI/CD do GitLab para GitHub Actions { #migrating-from-gitlab-cicd-to-github-actions }
 
 _GitHub Actions e o GITLab CI/CD compartilham várias semelhanças de configuração, o que torna a migração para GitHub Actions relativamente simples._
 
-## Introdução
+## Introdução { #introduction }
 
 O GitLab CI/CD e GitHub Actions ambos permitem criar fluxos de trabalho que criam, testam, publicam, liberam e implantam código automaticamente. GitLab CI/CD e GitHub Actions compartilham algumas semelhanças na configuração do fluxo de trabalho:
 
@@ -25,7 +25,7 @@ O GitLab CI/CD e GitHub Actions ambos permitem criar fluxos de trabalho que cria
 
 Há algumas diferenças e este guia mostrará as diferenças importantes para que você possa migrar seu fluxo de trabalho para GitHub Actions.
 
-## Trabalhos
+## Trabalhos { #jobs }
 
 As tarefas no CI/CD do GitLab são muito parecidas com as tarefas em GitHub Actions. Em ambos os sistemas, os trabalhos têm as características a seguir:
 
@@ -37,7 +37,7 @@ Você pode executar um script ou um comando de shell em um trabalho. Na CI/CD do
 
 Abaixo, há um exemplo da sintaxe para cada sistema.
 
-### Sintaxe de CI/CD do GitLab para trabalhos
+### Sintaxe de CI/CD do GitLab para trabalhos { #gitlab-cicd-syntax-for-jobs }
 
 ```yaml
 job1:
@@ -47,7 +47,7 @@ job1:
     - echo "Run your script here"
 ```
 
-### Sintaxe do GitHub Actions para trabalhos
+### Sintaxe do GitHub Actions para trabalhos { #github-actions-syntax-for-jobs }
 
 ```yaml
 jobs:
@@ -57,13 +57,13 @@ jobs:
       - run: echo "Run your script here"
 ```
 
-## Executores
+## Executores { #runners }
 
 Os executores são máquinas nas quais os trabalhos são executados. Tanto o CI/CD do GitLab quanto o GitHub Actions oferecem opções gerenciadas e auto-hospedadas de executores. No GitLab CI/CD, `tags` são usados para executar jobs em diferentes plataformas, enquanto em GitHub Actions isso é feito com a chave `runs-on`.
 
 Abaixo, há um exemplo da sintaxe para cada sistema.
 
-### Sintaxe de CI/CD do GitLab para executores
+### Sintaxe de CI/CD do GitLab para executores { #gitlab-cicd-syntax-for-runners }
 
 ```yaml
 windows_job:
@@ -79,7 +79,7 @@ linux_job:
     - echo "Hello, $USER!"
 ```
 
-### Sintaxe do GitHub Actions para executores
+### Sintaxe do GitHub Actions para executores { #github-actions-syntax-for-runners }
 
 ```yaml
 windows_job:
@@ -95,20 +95,20 @@ linux_job:
 
 Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idruns-on).
 
-## Imagens do Docker
+## Imagens do Docker { #docker-images }
 
 Tanto o GitLab CI/CD quanto GitHub Actions oferecem suporte à execução de tarefas em uma imagem Docker. No GitLab CI/CD, as imagens do Docker são definidas com a chave `image`, enquanto em GitHub Actions isso é feito com a chave `container`.
 
 Abaixo, há um exemplo da sintaxe para cada sistema.
 
-### Sintaxe de CI/CD do GitLab para imagens do Docker
+### Sintaxe de CI/CD do GitLab para imagens do Docker { #gitlab-cicd-syntax-for-docker-images }
 
 ```yaml
 my_job:
   image: node:20-bookworm-slim
 ```
 
-### GitHub Actions sintaxe para imagens do Docker
+### GitHub Actions sintaxe para imagens do Docker { #github-actions-syntax-for-docker-images }
 
 ```yaml
 jobs:
@@ -118,14 +118,14 @@ jobs:
 
 Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idcontainer).
 
-## Condição e sintaxe de expressão
+## Condição e sintaxe de expressão { #condition-and-expression-syntax }
 
 A CI/CD do GitLab usa `rules` para determinar se um trabalho será executado para uma condição específica.
 GitHub Actions usa a `if` palavra-chave para impedir que um trabalho seja executado, a menos que uma condição seja atendida.
 
 Abaixo, há um exemplo da sintaxe para cada sistema.
 
-### Sintaxe de CI/CD do GitLab para condições e expressões
+### Sintaxe de CI/CD do GitLab para condições e expressões { #gitlab-cicd-syntax-for-conditions-and-expressions }
 
 ```yaml
 deploy_prod:
@@ -136,7 +136,7 @@ deploy_prod:
     - if: '$CI_COMMIT_BRANCH == "master"'
 ```
 
-### GitHub Actions sintaxe para condições e expressões
+### GitHub Actions sintaxe para condições e expressões { #github-actions-syntax-for-conditions-and-expressions }
 
 ```yaml
 jobs:
@@ -149,13 +149,13 @@ jobs:
 
 Para saber mais, confira [Avaliar expressões em fluxos de trabalho e ações](../../../reference/workflows-and-actions/expressions.md).
 
-## Dependências entre trabalhos
+## Dependências entre trabalhos { #dependencies-between-jobs }
 
 Tanto o CI/CD do GitLab quanto GitHub Actions permitem que você defina dependências para um job. Em ambos os sistemas, os trabalhos são executados em paralelo por padrão, mas as dependências entre trabalhos em GitHub Actions podem ser especificadas explicitamente com a chave `needs`. A CI/CD do GitLab também tem um conceito de `stages`, em que os trabalhos em uma fase são executados simultaneamente, mas a próxima fase será iniciada quando todos os trabalhos da fase anterior tiverem sido concluídos. Você pode reproduzir este cenário em GitHub Actions com a tecla `needs`.
 
 Abaixo, há um exemplo da sintaxe para cada sistema. Os fluxos de trabalho começam com dois trabalhos chamados `build_a` e `build_b` em execução em paralelo e, quando esses trabalhos forem concluídos, outro trabalho chamado `test_ab` será executado. Por fim, quando `test_ab` é concluído, o trabalho `deploy_ab` será executado.
 
-### Sintaxe de CI/CD do GitLab para dependências entre trabalhos
+### Sintaxe de CI/CD do GitLab para dependências entre trabalhos { #gitlab-cicd-syntax-for-dependencies-between-jobs }
 
 ```yaml
 stages:
@@ -184,7 +184,7 @@ deploy_ab:
     - echo "This job will run after test_ab is complete"
 ```
 
-### GitHub Actions sintaxe para dependências entre trabalhos
+### GitHub Actions sintaxe para dependências entre trabalhos { #github-actions-syntax-for-dependencies-between-jobs }
 
 ```yaml
 jobs:
@@ -213,25 +213,25 @@ jobs:
 
 Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idneeds).
 
-## Agendar fluxos de trabalho
+## Agendar fluxos de trabalho { #scheduling-workflows }
 
 Tanto o CI/CD do GitLab quanto GitHub Actions permitem que você execute fluxos de trabalho em um intervalo específico. No GitLab CI/CD, os agendamentos de pipeline são configurados pela interface do usuário, enquanto em GitHub Actions você pode acionar um fluxo de trabalho em um intervalo programado com a chave "on".
 
 Para saber mais, confira [Eventos que disparam fluxos de trabalho](../../../reference/workflows-and-actions/events-that-trigger-workflows.md#schedule).
 
-## Variáveis e segredos
+## Variáveis e segredos { #variables-and-secrets }
 
 O GitLab CI/CD e GitHub Actions permitem definir variáveis no arquivo de configuração do pipeline ou do fluxo de trabalho e criar segredos usando a interface do usuário do GitLab ou do GitHub.
 
 Para saber mais, confira [Armazenar informações em variáveis](../../../how-tos/write-workflows/choose-what-workflows-do/use-variables.md) e [Segredos](../../../concepts/security/secrets.md).
 
-## Armazenamento em cache
+## Armazenamento em cache { #caching }
 
 O GitLab CI/CD e GitHub Actions fornece um método no arquivo de configuração para armazenar em cache manualmente arquivos de fluxo de trabalho.
 
 Abaixo, há um exemplo da sintaxe para cada sistema.
 
-### Sintaxe de CI/CD do GitLab para cacheamento
+### Sintaxe de CI/CD do GitLab para cacheamento { #gitlab-cicd-syntax-for-caching }
 
 ```yaml
 image: node:latest
@@ -249,7 +249,7 @@ test_async:
     - node ./specs/start.js ./specs/async.spec.js
 ```
 
-### GitHub Actions sintaxe para armazenamento em cache
+### GitHub Actions sintaxe para armazenamento em cache { #github-actions-syntax-for-caching }
 
 ```yaml
 jobs:
@@ -270,7 +270,7 @@ Tanto o GitLab CI/CD quanto GitHub Actions podem fazer upload de arquivos e dire
 
 Abaixo, há um exemplo da sintaxe para cada sistema.
 
-### Sintaxe de CI/CD do GitLab para artefatos
+### Sintaxe de CI/CD do GitLab para artefatos { #gitlab-cicd-syntax-for-artifacts }
 
 ```yaml
 script:
@@ -279,7 +279,7 @@ artifacts:
     - math-homework.txt
 ```
 
-### GitHub Actions sintaxe para artefatos
+### GitHub Actions sintaxe para artefatos { #github-actions-syntax-for-artifacts }
 
 ```yaml
 - name: Upload math result for job 1
@@ -291,7 +291,7 @@ artifacts:
 
 Para saber mais, confira [Armazenar e compartilhar dados com artefatos de fluxo de trabalho](../../store-and-share-data.md).
 
-## Bancos de dados e contêineres de serviço
+## Bancos de dados e contêineres de serviço { #databases-and-service-containers }
 
 Ambos os sistemas permitem que você inclua contêineres adicionais para bases de dados, memorização ou outras dependências.
 
@@ -299,7 +299,7 @@ No GitLab CI/CD, um contêiner para o trabalho é especificado com a `image` cha
 
 Abaixo, há um exemplo da sintaxe para cada sistema.
 
-### Sintaxe de CI/CD do GitLab para bancos de dados e contêineres de serviço
+### Sintaxe de CI/CD do GitLab para bancos de dados e contêineres de serviço { #gitlab-cicd-syntax-for-databases-and-service-containers }
 
 ```yaml
 container-job:
@@ -324,7 +324,7 @@ container-job:
     - docker
 ```
 
-### GitHub Actions sintaxe para bancos de dados e contêineres de serviço
+### GitHub Actions sintaxe para bancos de dados e contêineres de serviço { #github-actions-syntax-for-databases-and-service-containers }
 
 ```yaml
 jobs:

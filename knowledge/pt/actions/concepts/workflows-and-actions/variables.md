@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Concepts / Workflows and actions
 ---
 
-# Variáveis
+# Variáveis { #variables }
 
 _Saiba mais sobre variáveis em GitHub Actions fluxos de trabalho._
 
-## Sobre
+## Sobre { #about }
 
 As variáveis fornecem uma forma de armazenar e reutilizar informações de configuração não confidenciais. Você pode armazenar quaisquer dados de configuração, como sinalizadores de compilador, nomes de usuário ou nomes de servidor como variáveis. As variáveis são interpoladas no computador executor que executa seu fluxo de trabalho. Os comandos que são executados em ações ou etapas do fluxo de trabalho podem criar, ler e modificar variáveis.
 

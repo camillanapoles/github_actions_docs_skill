@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: Concepts / Runners
 ---
 
-# Executores avançados
+# Executores avançados { #larger-runners }
 
 _Organize e governe seus fluxos de trabalho com executores maiores hospedados em GitHub usando grupos de executores, políticas de concorrência e controles de acesso granulares._
 
-## Sobre o executores avançados
+## Sobre o executores avançados { #about-larger-runners }
 
 Executor avançados são máquinas virtuais gerenciadas com mais recursos do que [executores padrão hospedados em GitHub](../../reference/runners/github-hosted-runners.md#supported-runners-and-hardware-resources). Eles oferecem os seguintes recursos avançados:
 
@@ -27,7 +27,7 @@ Executor avançados são máquinas virtuais gerenciadas com mais recursos do que
 
 Esses executores avançados são hospedados por GitHub e têm o aplicativo runner e outras ferramentas pré-instaladas.
 
-## O que você pode fazer com corredores maiores
+## O que você pode fazer com corredores maiores { #what-you-can-do-with-larger-runners }
 
 Todos os executores avançados oferecem os seguintes recursos:
 
@@ -41,7 +41,7 @@ Os seguintes recursos estão disponíveis apenas nos executores Linux e Windows:
 * **Imagens personalizadas**: use imagens personalizadas do runner para pré-instalar dependências e reduzir o tempo de configuração.
 * **Rede privada do Azure**: Conecte seus runners a redes privadas do Azure.
 
-## Sobre executores avançados para a configuração padrão code scanning
+## Sobre executores avançados para a configuração padrão code scanning { #about-larger-runners-for-code-scanning-default-setup }
 
 Considere configurar executores avançados para a configuração padrão de code scanning se:
 
@@ -51,7 +51,7 @@ Considere configurar executores avançados para a configuração padrão de code
 
 Para obter mais informações sobre como configurar executores avançados para a configuração padrão de code scanning, consulte [Configurando executores maiores para configuração padrão](https://docs.github.com/pt/code-security/how-tos/find-and-fix-code-vulnerabilities/manage-your-configuration/configure-larger-runners).
 
-## Faturamento
+## Faturamento { #billing }
 
 !!! note
     Executor avançados não são elegíveis para o uso de minutos incluídos em repositórios privados. Para repositórios privados e públicos, quando executores avançados forem utilizados, eles sempre serão cobrados à taxa por minuto.
@@ -59,7 +59,7 @@ Para obter mais informações sobre como configurar executores avançados para a
 Em comparação com os executores hospedados GitHub padrão, executores avançados são cobrados de forma diferente.
 Executor avançado são cobrados somente pela taxa por minuto do tempo em que os fluxos de trabalho são executados neles. Não há nenhum custo associado à criação de um executor avançado que não está sendo usado pelo fluxo de trabalho. Para obter mais informações, consulte [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
-## Próximas etapas
+## Próximas etapas { #next-steps }
 
 Para começar a usar executores maiores, consulte [Gerenciar executores maiores](../../how-tos/manage-runners/larger-runners/manage-larger-runners.md).
 

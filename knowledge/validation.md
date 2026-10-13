@@ -1,12 +1,12 @@
 ---
 title: Validação e conformidade
 description: Resultado automatizado das verificações de completude e conformidade da base de conhecimento e da skill.
-generated: 2026-10-11T23:47:53+00:00
+generated: 2026-10-13T14:14:39+00:00
 ---
 
 # Validação e conformidade
 
-> Gerado por `scripts/validate.py` em **2026-10-11T23:47:53+00:00**  
+> Gerado por `scripts/validate.py` em **2026-10-13T14:14:39+00:00**  
 > **27 verificações OK** · **3 avisos** · **9 falhas**
 
 ## Resumo da base de conhecimento

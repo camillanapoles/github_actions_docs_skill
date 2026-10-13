@@ -10,11 +10,11 @@ captured: '2026-10-11'
 section: How tos / Deploy / Deploy to third party platforms
 ---
 
-# Implantando o Docker no Serviço de Aplicativo do Azure
+# Implantando o Docker no Serviço de Aplicativo do Azure { #deploying-docker-to-azure-app-service }
 
 _Saiba como implantar um contêiner do Docker para Serviço de Aplicativo do Azure como parte de seus fluxos de trabalho de CD (implantação contínua)._
 
-## Pré-requisitos
+## Pré-requisitos { #prerequisites }
 
 Antes de criar seu GitHub Actions fluxo de trabalho, primeiro você precisará concluir as seguintes etapas de instalação:
 
@@ -71,7 +71,7 @@ Antes de criar seu GitHub Actions fluxo de trabalho, primeiro você precisará c
 
 5. Opcionalmente, configure um ambiente de implantação. Os ambientes são usados para descrever um destino de implantação geral, como `production`, `staging` ou `development`. Quando um GitHub Actions fluxo de trabalho é implantado em um ambiente, o ambiente é exibido na página principal do repositório. Você pode usar ambientes para exigir aprovação para um trabalho prosseguir, restringir quais ramificações podem acionar um fluxo de trabalho, bloquear implantações com regras de proteção de implantação personalizadas ou limitar o acesso a segredos. Para saber mais sobre como criar ambientes, confira [Gerenciar ambientes para implantação](../configure-and-manage-deployments/manage-environments.md).
 
-## Criar o fluxo de trabalho
+## Criar o fluxo de trabalho { #creating-the-workflow }
 
 Depois de preencher os pré-requisitos, você pode prosseguir com a criação do fluxo de trabalho.
 
@@ -154,7 +154,7 @@ jobs:
           images: 'ghcr.io/${{ env.REPO }}:${{ github.sha }}'
 ```
 
-## Leitura adicional
+## Leitura adicional { #further-reading }
 
 * Para o modelo de fluxo de trabalho original, consulte [`azure-container-webapp.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/azure-container-webapp.yml) no GitHub Actions`starter-workflows` repositório.
 * A ação usada para implantar o aplicativo Web é a ação oficial Azure [`Azure/webapps-deploy`](https://github.com/Azure/webapps-deploy).
