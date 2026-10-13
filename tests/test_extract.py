@@ -12,7 +12,19 @@ import pytest
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 
+pytest.importorskip("bs4", reason="beautifulsoup4 ausente (pip install -r scripts/requirements.txt)")
+pytest.importorskip("markdownify", reason="markdownify ausente")
+
 import extract  # noqa: E402
+
+pandoc_disponivel = True
+try:
+    import pypandoc  # noqa: F401
+    pypandoc.get_pandoc_version()
+except Exception:  # pragma: no cover
+    pandoc_disponivel = False
+
+requer_pandoc = pytest.mark.skipif(not pandoc_disponivel, reason="pandoc indisponível no ambiente")
 
 LONG_TEXT = "conteúdo suficientemente longo " * 20
 
@@ -21,6 +33,7 @@ LONG_TEXT = "conteúdo suficientemente longo " * 20
 # polish_markdown
 # --------------------------------------------------------------------------- #
 
+@requer_pandoc
 def test_html_table_vira_pipe_table():
     md, _ = extract.polish_markdown(
         "<table><thead><tr><th>Contexto</th><th>Disponível</th></tr></thead>"
@@ -115,6 +128,7 @@ def test_clean_fragment_nao_quebra_com_ancestral_decomposto():
     assert "Seção" in texto
 
 
+@requer_pandoc
 def test_heal_with_html_melhora_pagina_danificada(tmp_path, monkeypatch):
     html = _page_html(
         f"<h2>Limites</h2><p>{LONG_TEXT}</p>"
@@ -144,6 +158,7 @@ def test_heal_with_html_melhora_pagina_danificada(tmp_path, monkeypatch):
     assert any("curada via HTML" in w for w in res.warnings)
 
 
+@requer_pandoc
 def test_heal_preserva_versao_melhor_da_api(tmp_path, monkeypatch):
     monkeypatch.setattr(extract, "http_get_text", lambda url, **kw: _page_html("<p>curto</p>"))
     dest = tmp_path / "p.md"

@@ -51,12 +51,15 @@ def test_todos_os_workflows_parseiam():
 
 
 def test_workflows_contra_json_schema_oficial():
-    pytest.importorskip("jsonschema")
-    import jsonschema
-
-    schema = json.loads((SCHEMA_DIR / "github-workflow.json").read_text(encoding="utf-8"))
+    """Mesma ferramenta do CI (check-jsonschema) — evita divergência de validador."""
+    pytest.importorskip("check_jsonschema",
+                        reason="pip install check-jsonschema (o CI instala)")
     for wf in WORKFLOWS:
-        jsonschema.validate(_load(wf), schema)
+        proc = subprocess.run(
+            ["python3", "-m", "check_jsonschema", "--schemafile",
+             str(SCHEMA_DIR / "github-workflow.json"), str(wf)],
+            capture_output=True, text=True)
+        assert proc.returncode == 0, f"{wf.name}: {proc.stdout}{proc.stderr}"
 
 
 def test_jobs_tem_timeout_e_nome():
