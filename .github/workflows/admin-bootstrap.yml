@@ -14,11 +14,13 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "Somente relatar (não escreve nothing no GitHub)"
+        description: "Somente relatar (não escreve nada no GitHub)"
         type: boolean
         default: false
   push:
-    branches: [main]
+    # workflow_dispatch só registra workflows presentes no branch default; enquanto o
+    # merge não acontece, o push no branch de trabalho também aplica a governança.
+    branches: [main, "arena/**"]
     paths: [".github/workflows/admin-bootstrap.yml"]
 
 permissions:
