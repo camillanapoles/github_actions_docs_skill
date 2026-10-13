@@ -70,3 +70,7 @@ Nunca editar/apagar entrada — correção é entrada nova.
 | 2026-10-13T23:52:48+00:00 | débito D21 | DEBT | critérios do gate e do validador podem não ser os mesmos | divergência local × CI: validate.py aponta 7 falhas (34 linhas de tabela, 1 link) e o gate conformity mediu 0 | registrado | - |
 | 2026-10-13T23:52:48+00:00 | SETTLE-LOTE | DEBT | pedido do usuário: quitar débitos e deixar gestor único | settle(D7,D9,D13,D14) com evidência + abertura de D15/D16/D17 | abertos: 13 (bloqueantes ['D1', 'D5', 'D6', 'D10']) | 214acea63798 |
 | 2026-10-13T23:52:48+00:00 | D16-FIX | FIX | gate site = error_infra no CI (mkdocs ausente) | instalar mkdocs>=1.6 e mkdocs-material>=9.5 no passo de deps do gate-pipeline | próximo run deve medir conteúdo (avisos strict) em vez de infraestrutura | 214acea63798 |
+| 2026-10-13T23:52:54+00:00 | VERIFY-MEDIDA | CONTINUE | D14: fechamento não pode aceitar verde declarado | python3 -m pytest tests/ -q | exit 0 | - |
+| 2026-10-13T23:52:54+00:00 | CLOSE-GATE | FIX | auto-checagem Art. 12 (nota 8.89) | closing_gate | volta a EXEC: ['checkpoint_gravado'] | - |
+| 2026-10-13T23:52:54+00:00 | transição ilegal EXEC->EXEC | FIX | nota 8.89 < 9.5 | corrigir pendências | rejeitada | - |
+| 2026-10-13T23:52:54+00:00 | EMIT | IMPLEMENT | efeito contratado | verificar commit bddbe6b4f08c + guardian.yml (cron) + PR #2 · 92 passed, 3 skipped in 2.82s | ref=commit bddbe6b4f08c + guardian.yml (cron) + PR #2 · 92 passed, 3 skipped in 2.82s | commit bddbe |
