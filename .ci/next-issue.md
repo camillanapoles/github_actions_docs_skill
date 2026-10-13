@@ -1,31 +1,29 @@
-## [gate:capture] Captura completa (inventário pt-BR)
+## [gate:site] Site MkDocs buildável em modo estrito
 
-**Gate:** `capture` · **Direção:** `fix` · **Chave determinística:** `capture:fix:faa5f8d5`
-**Motivo:** gate 'capture' reprovado (status 1): score de qualidade 46 ≠ 0 (markdown não impecável)
+**Gate:** `site` · **Direção:** `retry` · **Chave determinística:** `site:retry:f9e22f40`
+**Motivo:** gate 'site' reprovado (status 2): site: error_infra
 
 ### Instruções (ordem determinística)
 
-1. executar: `scripts/extract.py (relatório em .ci/extract-report.md)`
-2. 247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)
-3. score de qualidade = 0 em todas as páginas (0 = impecável)
-4. nenhuma página com aviso de cura via HTML pendente
-5. após aprovar, o próximo gate indexado é 'conformity' (Completude e conformidade (mandato de validação))
+1. executar: `python3 -m mkdocs build --strict --site-dir site`
+2. mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)
+3. nav gerado por scripts/build_site.py cobre 100% das páginas
+4. após aprovar, o próximo gate indexado é 'skill' (Skill completa (references, templates, scripts))
 
 ### Critérios de aceite
 
-- [ ] 247/247 páginas pt capturadas, 0 falhas (relatório .ci/extract-report.md)
-- [ ] score de qualidade = 0 em todas as páginas (0 = impecável)
-- [ ] nenhuma página com aviso de cura via HTML pendente
+- [ ] mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)
+- [ ] nav gerado por scripts/build_site.py cobre 100% das páginas
 
 ### Saída obrigatória (contrato do envelope JSON)
 
 ```json
 {
   "id": "<gate>:<hash>",
-  "gate": "capture",
+  "gate": "site",
   "status": 0,
   "message": "<mensagem>",
-  "direction": "fix",
+  "direction": "retry",
   "addenda": [
     {
       "kind": "report",
@@ -33,8 +31,8 @@
     }
   ],
   "next_issue": {
-    "key": "capture:fix:faa5f8d5",
-    "gate": "capture"
+    "key": "site:retry:f9e22f40",
+    "gate": "site"
   }
 }
 ```
@@ -43,12 +41,12 @@
 
 | Gate | Status | Mensagem |
 | --- | --- | --- |
-| `tests` | 0 (continue) | 25 passed in 0.28s |
-| `capture` | 1 (fix) | score de qualidade 46 ≠ 0 (markdown não impecável) |
-| `conformity` | 1 (fix) | 7 falha(s) de conformidade |
-| `site` | 1 (fix) | Aborted with 677 warnings in strict mode! (677 avisos) |
-| `skill` | 3 (continue) | skill incompleta (references: 7, templates: 24, scripts: 4 pendentes) |
-| `ci-issues` | 4 (continue) | verificação de CI/issues requer gh + rede (roda no workflow gate-pipeline.yml) |
-| `release` | 1 (fix) | produção bloqueada por 'capture': score de qualidade 46 ≠ 0 (markdown não impecável) |
+| `tests` | 0 (continue) | tests: success |
+| `capture` | 0 (continue) | capture: success |
+| `conformity` | 0 (continue) | conformity: success |
+| `site` | 2 (retry) | site: error_infra |
+| `skill` | 0 (continue) | skill: success |
+| `ci-issues` | 0 (continue) | ci-issues: success |
+| `release` | 2 (retry) | produção bloqueada por 'site': site: error_infra |
 
-_Gerado por `pipeline.factory` em 2026-10-13T18:16:22+00:00 — blueprint github-actions-docs-skill/gate-driven/1._
+_Gerado por `pipeline.factory` em 2026-10-13T20:20:57+00:00 — blueprint github-actions-docs-skill/gate-driven/1._

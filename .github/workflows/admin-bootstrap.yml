@@ -49,7 +49,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.ADMIN_TOKEN || secrets.GITHUB_TOKEN }}
           HAS_ADMIN: ${{ secrets.ADMIN_TOKEN != '' }}
-          DRY: ${{ inputs.dry_run }}
+          DRY: ${{ github.event.inputs.dry_run }}
           REPO: ${{ github.repository }}
         run: |
           set +e            # o default `bash -e {0}` abortaria no primeiro 403/422

@@ -77,10 +77,12 @@ jobs:
       - name: Executa os gates
         id: run
         continue-on-error: true
+        env:
+          GATE_INPUT: ${{ github.event.inputs.gate }}
         run: |
           set -uo pipefail
           ARGS="--online --trigger ${{ github.event_name }} --run-id ${{ github.run_id }}-${{ github.run_attempt }}"
-          if [ -n "${{ inputs.gate }}" ]; then ARGS="$ARGS --gate ${{ inputs.gate }}"; fi
+          if [ -n "${GATE_INPUT:-}" ]; then ARGS="$ARGS --gate ${GATE_INPUT}"; fi
           python -m pipeline.cli run $ARGS --no-exit-code > "$STATE"
           STATUS=$(jq -r '.status' "$STATE")
           echo "status=$STATUS" >> "$GITHUB_OUTPUT"
