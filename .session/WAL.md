@@ -41,3 +41,4 @@ Nunca editar/apagar entrada — correção é entrada nova.
 | 2026-10-13T22:11:20+00:00 | M6-VERIFY | CONTINUE | M6: skip silencioso proibido | skips_justificados(['pandoc indisponível no ambiente']) contra profile+INTENT+DEBT D11 | justificado=True; motivo desconhecido reprova (teste M6) | 70942fbe18af |
 | 2026-10-13T22:11:20+00:00 | CLOSE-GATE | FIX | auto-checagem Art. 12 (nota 7.78) | closing_gate | volta a EXEC: ['checkpoint_gravado', 'emit_contratado_E5'] | - |
 | 2026-10-13T22:11:20+00:00 | transição ilegal EXEC->EXEC | FIX | nota 7.78 < 9.5 | corrigir pendências | rejeitada | - |
+| 2026-10-13T22:11:20+00:00 | EMIT | IMPLEMENT | efeito contratado | verificar commit 574e0b9fee15 → push origin arena/c91bd6a1-github-actions-docs-skill | ref=commit 574e0b9fee15 → push origin arena/c91bd6a1-github-actions-docs-skill | commit 574e0 |
