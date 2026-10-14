@@ -41,3 +41,15 @@ com templates válidos de workflows/actions para CI/CD, GitOps e DevOps — tudo
 11. **E4/E5:** mesma chave `(event_id, checkpoint)` é recusada com `status 3`; todo EMIT é
     contraído (`contract_emit`) com a referência do efeito e resolve o débito correspondente.
 12. **Art. 12:** fechamento só com nota ≥ 9.5 — abaixo disso a FSM volta a `EXEC`.
+
+
+## Pedido em aberto (aguardando decisão do usuário)
+
+13. **opencli** — instalar no local e no repo, com instrução e continuidade de uso, para
+    otimizar a comunicação runtime ↔ action ↔ WASM. Candidatos medidos via
+    `gh api search/repositories?q=opencli`: `jackwener/OpenCLI` (30218★, JavaScript,
+    "Make Any Website into CLI & Use your logged-in browser by AI agent"),
+    `joeseesun/qiaomu-opencli-skills` (996★), `open-cli-tools/*`. Restrição do ambiente:
+    só `github.com`, `pypi.org`, `registry.npmjs.org` — sem browser logado.
+    Critério de aceite: repo integrado por método declarado na spec, `docs/` com instrução
+    de uso e continuidade, e teste de fumaça verde no CI. Débito correspondente aberto.
