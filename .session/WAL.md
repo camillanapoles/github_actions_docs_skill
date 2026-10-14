@@ -91,3 +91,6 @@ Nunca editar/apagar entrada — correção é entrada nova.
 | 2026-10-14T00:07:48+00:00 | MEDIATOR | FIX | merge exige mediação por spec (DoD) | PR #2 mergeable=MERGEABLE nota=10.0 | RECUSADO: ['gates_verdes', 'release_zero', 'sem_debitos_bloqueantes'] | - |
 | 2026-10-14T00:07:51+00:00 | EMIT | IMPLEMENT | efeito contratado | verificar push origin arena/c91bd6a1-github-actions-docs-skill + PR #2 + guardian.yml (cron 17 */6) + issues pipeline:next | ref=push origin arena/c91bd6a1-github-actions-docs-skill + PR #2 + guardian.yml (cron 17 */6) + issues pipeline:next | push origin  |
 | 2026-10-14T00:07:54+00:00 | CLOSE-GATE | CONTINUE | auto-checagem Art. 12 (nota 10.0) | closing_gate | CLOSE autorizado | - |
+| 2026-10-14T00:08:08+00:00 | AUDIT | CONTINUE | gestor único audita escopo global (spec) e pendências | audit(): registry + DEBT.md + gates medidos + sweep G5 | 13 débitos abertos (5 bloqueantes); gates vermelhos {'site': 2, 'release': 2} | - |
+| 2026-10-14T00:08:08+00:00 | EMIT-PREP ralf-38488377037@b7f4dfa7f9d9 | FIX | emissão autorizada para gate site | emit_guard (E2) | chave=ralf-38488377037@b7f4dfa7f9d9 | b7f4dfa7f9d9 |
+| 2026-10-14T00:08:08+00:00 | CI run 38488377037 (guardian) | FIX | execução do gate 'guardian' no CI | pipeline gate-driven + testes determinísticos | status 2 · 5/7 gates aprovados | b7f4dfa7f9d9 |
