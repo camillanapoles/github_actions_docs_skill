@@ -7,7 +7,7 @@
   "direction": "retry",
   "message": "5/7 gates aprovados",
   "next_issue": {
-    "key": "site:retry:dfcb6d4c",
+    "key": "site:retry:4da0ee86",
     "title": "[gate:site] Site MkDocs buildável em modo estrito",
     "gate": "site",
     "direction": "retry",
@@ -25,7 +25,7 @@
   },
   "envelopes": [
     {
-      "id": "tests:1dd4e2e970",
+      "id": "tests:c10d0e7ee2",
       "blueprint": "gate-driven-bpmn/1",
       "checkpoint_ref": "",
       "gate": "tests",
@@ -36,7 +36,7 @@
       "direction": "continue",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:dfcb6d4c",
+        "key": "site:retry:4da0ee86",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -55,12 +55,12 @@
       "metrics": {
         "gate": "tests"
       },
-      "started_at": "2026-10-14T00:15:58+00:00",
-      "finished_at": "2026-10-14T00:15:58+00:00",
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
       "duration_s": 0.0
     },
     {
-      "id": "capture:c845e46d6e",
+      "id": "capture:b70f54f493",
       "blueprint": "gate-driven-bpmn/1",
       "checkpoint_ref": "",
       "gate": "capture",
@@ -71,7 +71,7 @@
       "direction": "continue",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:dfcb6d4c",
+        "key": "site:retry:4da0ee86",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -90,12 +90,12 @@
       "metrics": {
         "gate": "capture"
       },
-      "started_at": "2026-10-14T00:15:58+00:00",
-      "finished_at": "2026-10-14T00:15:58+00:00",
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
       "duration_s": 0.0
     },
     {
-      "id": "conformity:5f965540b0",
+      "id": "conformity:ea85d1a989",
       "blueprint": "gate-driven-bpmn/1",
       "checkpoint_ref": "",
       "gate": "conformity",
@@ -106,7 +106,7 @@
       "direction": "continue",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:dfcb6d4c",
+        "key": "site:retry:4da0ee86",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -125,12 +125,12 @@
       "metrics": {
         "gate": "conformity"
       },
-      "started_at": "2026-10-14T00:15:58+00:00",
-      "finished_at": "2026-10-14T00:15:58+00:00",
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
       "duration_s": 0.0
     },
     {
-      "id": "site:f7f8cb0a65",
+      "id": "site:2060532b12",
       "blueprint": "gate-driven-bpmn/1",
       "checkpoint_ref": "",
       "gate": "site",
@@ -141,7 +141,7 @@
       "direction": "retry",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:dfcb6d4c",
+        "key": "site:retry:4da0ee86",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -160,12 +160,12 @@
       "metrics": {
         "gate": "site"
       },
-      "started_at": "2026-10-14T00:15:58+00:00",
-      "finished_at": "2026-10-14T00:15:58+00:00",
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
       "duration_s": 0.0
     },
     {
-      "id": "skill:187d778640",
+      "id": "skill:5453feb7b4",
       "blueprint": "gate-driven-bpmn/1",
       "checkpoint_ref": "",
       "gate": "skill",
@@ -176,7 +176,7 @@
       "direction": "continue",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:dfcb6d4c",
+        "key": "site:retry:4da0ee86",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -195,12 +195,12 @@
       "metrics": {
         "gate": "skill"
       },
-      "started_at": "2026-10-14T00:15:58+00:00",
-      "finished_at": "2026-10-14T00:15:58+00:00",
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
       "duration_s": 0.0
     },
     {
-      "id": "ci-issues:444e315b52",
+      "id": "ci-issues:50178d451e",
       "blueprint": "gate-driven-bpmn/1",
       "checkpoint_ref": "",
       "gate": "ci-issues",
@@ -211,7 +211,7 @@
       "direction": "continue",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:dfcb6d4c",
+        "key": "site:retry:4da0ee86",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -230,12 +230,12 @@
       "metrics": {
         "gate": "ci-issues"
       },
-      "started_at": "2026-10-14T00:15:58+00:00",
-      "finished_at": "2026-10-14T00:15:58+00:00",
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
       "duration_s": 0.0
     },
     {
-      "id": "release:b0b472da3d",
+      "id": "release:819c852049",
       "blueprint": "gate-driven-bpmn/1",
       "checkpoint_ref": "",
       "gate": "release",
@@ -246,7 +246,7 @@
       "direction": "retry",
       "addenda": [],
       "next_issue": {
-        "key": "site:retry:dfcb6d4c",
+        "key": "site:retry:4da0ee86",
         "title": "[gate:site] Site MkDocs buildável em modo estrito",
         "gate": "site",
         "direction": "retry",
@@ -269,14 +269,14 @@
           "site"
         ]
       },
-      "started_at": "2026-10-14T00:15:58+00:00",
-      "finished_at": "2026-10-14T00:15:58+00:00",
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
       "duration_s": 0.0
     }
   ],
   "store": {
     "runs": 1,
-    "last_run": "2026-10-14T00:15:58+00:00",
+    "last_run": "2026-10-14T00:27:11+00:00",
     "envelopes_by_status": {
       "success": 5,
       "error_infra": 2
@@ -285,5 +285,5 @@
       "proposed": 1
     }
   },
-  "generated_at": "2026-10-14T00:15:58+00:00"
+  "generated_at": "2026-10-14T00:27:11+00:00"
 }

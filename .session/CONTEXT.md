@@ -74,3 +74,7 @@ closing_gate → contract_emit → commit → push`. `closing_gate` e `contract_
 acrescentam entradas ao WAL e por isso chamam `_refaz_checkpoint()`: nenhum append
 fica depois do CHECKPOINT. `wal_append` permanece puro — é isso que permite a
 `verify()` detectar adulteração (M4/T4).
+
+  - **DEV-4** — Art. 12/DoD: o merge do PR #2 foi executado por **instrução explícita do
+    usuário** com DoD vermelho (`site=2`, `release=2`, 679 avisos strict). O mediador mediu
+    e recusou; o desvio foi registrado no WAL (`SPEC-OVERRIDE`) e virou débito pós-merge.
