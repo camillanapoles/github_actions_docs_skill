@@ -1,0 +1,812 @@
+# ==============================================================================
+# Base de conhecimento GitHub Actions — MkDocs (Material)
+#
+# O bloco `nav:` entre os marcadores abaixo é GERADO por scripts/build_site.py
+# (ordem oficial da sidebar do docs.github.com + índices por seção).
+#   python3 scripts/build_site.py
+# ==============================================================================
+
+site_name: GitHub Actions — Base de Conhecimento & Skill
+site_description: >-
+  Documentação oficial do GitHub Actions capturada página a página (conteúdo
+  principal, sem nav/sidebar) + skill com templates de workflows e actions
+  validados para CI/CD, GitOps e DevOps.
+site_author: camillanapoles
+site_url: https://camillanapoles.github.io/github_actions_docs_skill/
+repo_url: https://github.com/camillanapoles/github_actions_docs_skill
+repo_name: camillanapoles/github_actions_docs_skill
+edit_uri: edit/arena/c91bd6a1-github-actions-docs-skill/knowledge/
+
+docs_dir: knowledge
+site_dir: site
+use_directory_urls: true
+strict: false
+
+theme:
+  name: material
+  language: pt
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+    logo: octicons/rocket-16
+    annotation: material/plus-circle-outline
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - content.tooltips
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.path
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Trocar para modo escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Trocar para modo claro
+
+plugins:
+  - search:
+      lang:
+        - pt
+        - en
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - tags:
+      listings: true
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - meta
+  - sane_lists
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Link para esta seção
+      toc_depth: 4
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      base_path:
+        - skills/github-actions/templates
+        - .
+      check_paths: false
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  generator: false
+  status:
+    new: Recém-adicionado
+  alternate:
+    - name: Português (pt-BR)
+      link: /pt/
+      lang: pt-BR
+    - name: English (source-of-truth)
+      link: /en/
+      lang: en
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/camillanapoles/github_actions_docs_skill
+
+validation:
+  omitted_files: warn
+  absolute_links: relative_to_docs
+  unrecognized_links: warn
+  anchors: warn
+
+exclude_docs: |
+  nav.generated.yml
+  */manifest.json
+  manifest.json
+  .ci/
+
+extra_css:
+  - assets/extra.css
+
+copyright: >-
+  Conteúdo da documentação: © GitHub, Inc. — licenciado sob
+  <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a>
+  (repositório <a href="https://github.com/github/docs">github/docs</a>).
+  Código, scripts, templates e skill deste repositório: MIT.
+
+# BEGIN GENERATED NAV
+nav:
+  - Início: index.md
+  - 'Documentação oficial (pt-BR)':
+      - Visão geral: pt/index.md
+      - 'GitHub Actions':
+        - Visão geral: pt/actions/index.md
+        - 'Conceitos do GitHub Actions': pt/actions/concepts.md
+        - 'Conceitos':
+          - Visão geral: pt/actions/concepts.md
+          - 'Sobre as políticas do Actions': pt/actions/concepts/about-actions-policies.md
+          - 'Cobrança e uso': pt/actions/concepts/billing-and-usage.md
+          - 'Sobre as métricas do GitHub Actions': pt/actions/concepts/metrics.md
+          - 'Executores do GitHub Actions': pt/actions/concepts/runners.md
+          - 'Runners':
+            - Visão geral: pt/actions/concepts/runners.md
+            - 'Controlador de Ações Runner': pt/actions/concepts/runners/actions-runner-controller.md
+            - 'Executores hospedados no GitHub': pt/actions/concepts/runners/github-hosted-runners.md
+            - 'Executores avançados': pt/actions/concepts/runners/larger-runners.md
+            - 'Rede privada com executores hospedados pelo GitHub': pt/actions/concepts/runners/private-networking.md
+            - 'Grupos de runners': pt/actions/concepts/runners/runner-groups.md
+            - 'Conjuntos de dimensionamento de executor': pt/actions/concepts/runners/runner-scale-sets.md
+            - 'Executores auto-hospedados': pt/actions/concepts/runners/self-hosted-runners.md
+            - 'Suporte para o Controlador do Executor de Ações': pt/actions/concepts/runners/support-for-arc.md
+          - 'Segurança no GitHub Actions': pt/actions/concepts/security.md
+          - 'Security':
+            - Visão geral: pt/actions/concepts/security.md
+            - 'Atestados de artefatos': pt/actions/concepts/security/artifact-attestations.md
+            - 'Executores comprometidos': pt/actions/concepts/security/compromised-runners.md
+            - 'GITHUB_TOKEN': pt/actions/concepts/security/github_token.md
+            - 'Controlador de admissão do Kubernetes': pt/actions/concepts/security/kubernetes-admissions-controller.md
+            - 'OpenID Connect': pt/actions/concepts/security/openid-connect.md
+            - 'Injeções de script': pt/actions/concepts/security/script-injections.md
+            - 'Segredos': pt/actions/concepts/security/secrets.md
+          - 'Fluxos de trabalho e ações': pt/actions/concepts/workflows-and-actions.md
+          - 'Workflows and actions':
+            - Visão geral: pt/actions/concepts/workflows-and-actions.md
+            - 'Concorrência': pt/actions/concepts/workflows-and-actions/concurrency.md
+            - 'Contextos': pt/actions/concepts/workflows-and-actions/contexts.md
+            - 'Sobre ações personalizadas': pt/actions/concepts/workflows-and-actions/custom-actions.md
+            - 'Cache de dependência': pt/actions/concepts/workflows-and-actions/dependency-caching.md
+            - 'Ambientes de implantação': pt/actions/concepts/workflows-and-actions/deployment-environments.md
+            - 'Expressões': pt/actions/concepts/workflows-and-actions/expressions.md
+            - 'Notificações para execuções de fluxo de trabalho': pt/actions/concepts/workflows-and-actions/notifications-for-workflow-runs.md
+            - 'Reutilizando configurações de fluxo de trabalho': pt/actions/concepts/workflows-and-actions/reusing-workflow-configurations.md
+            - 'Variáveis': pt/actions/concepts/workflows-and-actions/variables.md
+            - 'Artefatos do fluxo de trabalho': pt/actions/concepts/workflows-and-actions/workflow-artifacts.md
+            - 'Fluxos de trabalho': pt/actions/concepts/workflows-and-actions/workflows.md
+        - 'Introdução ao GitHub Actions': pt/actions/get-started.md
+        - 'Introdução':
+          - Visão geral: pt/actions/get-started.md
+          - 'GitHub Actions vs GitHub Apps': pt/actions/get-started/actions-vs-apps.md
+          - 'Implantação contínua': pt/actions/get-started/continuous-deployment.md
+          - 'Integração contínua': pt/actions/get-started/continuous-integration.md
+          - 'Guia Rápido do GitHub Actions': pt/actions/get-started/quickstart.md
+          - 'Noções básicas sobre GitHub Actions': pt/actions/get-started/understand-github-actions.md
+        - 'Instruções para o GitHub Actions': pt/actions/how-tos.md
+        - 'How-tos':
+          - Visão geral: pt/actions/how-tos.md
+          - 'Administrando GitHub Actions': pt/actions/how-tos/administer.md
+          - 'Administer':
+            - Visão geral: pt/actions/how-tos/administer.md
+            - 'Controlando quem pode executar GitHub Actions fluxos de trabalho': pt/actions/how-tos/administer/control-workflow-execution.md
+            - 'Como disponibilizar namespaces desativados no GHE.com': pt/actions/how-tos/administer/reuse-namespaces-on-ghecom.md
+            - 'Como ver as métricas do GitHub Actions': pt/actions/how-tos/administer/view-metrics.md
+          - 'Criar e publicar ações': pt/actions/how-tos/create-and-publish-actions.md
+          - 'Create and publish actions':
+            - Visão geral: pt/actions/how-tos/create-and-publish-actions.md
+            - 'Criar uma ação da CLI de terceiros': pt/actions/how-tos/create-and-publish-actions/create-a-cli-action.md
+            - 'Como gerenciar ações personalizadas': pt/actions/how-tos/create-and-publish-actions/manage-custom-actions.md
+            - 'Publicar ações no GitHub Marketplace': pt/actions/how-tos/create-and-publish-actions/publish-in-github-marketplace.md
+            - 'Aprovando e mantendo ações': pt/actions/how-tos/create-and-publish-actions/release-and-maintain-actions.md
+            - 'Definindo códigos de saída para ações': pt/actions/how-tos/create-and-publish-actions/set-exit-codes.md
+            - 'Como usar versões e marcas imutáveis para gerenciar as versões da sua ação': pt/actions/how-tos/create-and-publish-actions/using-immutable-releases-and-tags-to-manage-your-actions-releases.md
+          - 'Implantando com GitHub Actions': pt/actions/how-tos/deploy.md
+          - 'Deploy':
+            - Visão geral: pt/actions/how-tos/deploy.md
+            - 'Configurando e gerenciando implantações': pt/actions/how-tos/deploy/configure-and-manage-deployments.md
+            - 'Configure and manage deployments':
+              - Visão geral: pt/actions/how-tos/deploy/configure-and-manage-deployments.md
+              - 'Configurar regras de proteção de implantação personalizadas': pt/actions/how-tos/deploy/configure-and-manage-deployments/configure-custom-protection-rules.md
+              - 'Implantando com GitHub Actions': pt/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments.md
+              - 'Criar regras de proteção de implantação personalizadas': pt/actions/how-tos/deploy/configure-and-manage-deployments/create-custom-protection-rules.md
+              - 'Gerenciar ambientes para implantação': pt/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments.md
+              - 'Revisar implantações': pt/actions/how-tos/deploy/configure-and-manage-deployments/review-deployments.md
+              - 'Exibir o histórico de implantações': pt/actions/how-tos/deploy/configure-and-manage-deployments/view-deployment-history.md
+            - 'Implantação em plataformas de terceiros': pt/actions/how-tos/deploy/deploy-to-third-party-platforms.md
+            - 'Deploy to third party platforms':
+              - Visão geral: pt/actions/how-tos/deploy/deploy-to-third-party-platforms.md
+              - 'Implantar no Amazon Elastic Container Service': pt/actions/how-tos/deploy/deploy-to-third-party-platforms/amazon-elastic-container-service.md
+              - 'Implantando no Azure Kubernetes Service': pt/actions/how-tos/deploy/deploy-to-third-party-platforms/azure-kubernetes-service.md
+              - 'Fazendo a implantação nos Aplicativos Web Estáticos do Azure': pt/actions/how-tos/deploy/deploy-to-third-party-platforms/azure-static-web-app.md
+              - 'Implantando o Docker no Serviço de Aplicativo do Azure': pt/actions/how-tos/deploy/deploy-to-third-party-platforms/docker-to-azure-app-service.md
+              - 'Implantar no Google Kubernetes Engine': pt/actions/how-tos/deploy/deploy-to-third-party-platforms/google-kubernetes-engine.md
+              - 'Implantando Java em Azure App Service': pt/actions/how-tos/deploy/deploy-to-third-party-platforms/java-to-azure-app-service.md
+              - 'Implantando .NET em Azure App Service': pt/actions/how-tos/deploy/deploy-to-third-party-platforms/net-to-azure-app-service.md
+              - 'Implantando Node.js em Azure App Service': pt/actions/how-tos/deploy/deploy-to-third-party-platforms/nodejs-to-azure-app-service.md
+              - 'Implantando o PHP em Azure App Service': pt/actions/how-tos/deploy/deploy-to-third-party-platforms/php-to-azure-app-service.md
+              - 'Implantando Python em Azure App Service': pt/actions/how-tos/deploy/deploy-to-third-party-platforms/python-to-azure-app-service.md
+              - 'Instalar um certificado da Apple em executores do macOS para desenvolvimento do Xcode': pt/actions/how-tos/deploy/deploy-to-third-party-platforms/sign-xcode-applications.md
+          - 'Obtendo ajuda do suporte GitHub sobre GitHub Actions': pt/actions/how-tos/get-support.md
+          - 'Gerenciar corredores': pt/actions/how-tos/manage-runners.md
+          - 'Manage runners':
+            - Visão geral: pt/actions/how-tos/manage-runners.md
+            - 'Usar executores hospedados no GitHub': pt/actions/how-tos/manage-runners/github-hosted-runners.md
+            - 'Github hosted runners':
+              - Visão geral: pt/actions/how-tos/manage-runners/github-hosted-runners.md
+              - 'Conectando-se a uma rede privada com executores hospedados pelo GitHub': pt/actions/how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network.md
+              - 'Connect to a private network':
+                - Visão geral: pt/actions/how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network.md
+                - 'Usando um gateway de API com o OIDC': pt/actions/how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network/connect-with-oidc.md
+                - 'Usar o WireGuard para criar uma sobreposição de rede': pt/actions/how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network/connect-with-wireguard.md
+              - 'Personalizando executores hospedados no GitHub': pt/actions/how-tos/manage-runners/github-hosted-runners/customize-runners.md
+              - 'Usar executores hospedados no GitHub': pt/actions/how-tos/manage-runners/github-hosted-runners/use-github-hosted-runners.md
+              - 'Visualizando suas tarefas atuais': pt/actions/how-tos/manage-runners/github-hosted-runners/view-current-jobs.md
+            - 'Usando executores maiores': pt/actions/how-tos/manage-runners/larger-runners.md
+            - 'Larger runners':
+              - Visão geral: pt/actions/how-tos/manage-runners/larger-runners.md
+              - 'Como controlar o acesso a executores maiores': pt/actions/how-tos/manage-runners/larger-runners/control-access.md
+              - 'Gerenciar executores maiores': pt/actions/how-tos/manage-runners/larger-runners/manage-larger-runners.md
+              - 'Usando imagens personalizadas': pt/actions/how-tos/manage-runners/larger-runners/use-custom-images.md
+              - 'Como executar trabalhos em executores maiores': pt/actions/how-tos/manage-runners/larger-runners/use-larger-runners.md
+            - 'Como gerenciar executores auto-hospedados': pt/actions/how-tos/manage-runners/self-hosted-runners.md
+            - 'Self hosted runners':
+              - Visão geral: pt/actions/how-tos/manage-runners/self-hosted-runners.md
+              - 'Adicionar executores auto-hospedados': pt/actions/how-tos/manage-runners/self-hosted-runners/add-runners.md
+              - 'Usar rótulos com os executores auto-hospedados': pt/actions/how-tos/manage-runners/self-hosted-runners/apply-labels.md
+              - 'Configurar o aplicativo do executor auto-hospedado como um serviço': pt/actions/how-tos/manage-runners/self-hosted-runners/configure-the-application.md
+              - 'Como personalizar os contêineres usados por trabalhos': pt/actions/how-tos/manage-runners/self-hosted-runners/customize-containers.md
+              - 'Gerenciar o acesso a executores auto-hospedados usando grupos': pt/actions/how-tos/manage-runners/self-hosted-runners/manage-access.md
+              - 'Monitorar e solucionar problemas de executores auto-hospedados': pt/actions/how-tos/manage-runners/self-hosted-runners/monitor-and-troubleshoot.md
+              - 'Remover executores auto-hospedados': pt/actions/how-tos/manage-runners/self-hosted-runners/remove-runners.md
+              - 'Como executar scripts antes ou depois de um trabalho': pt/actions/how-tos/manage-runners/self-hosted-runners/run-scripts.md
+              - 'Usar os executores auto-hospedados em um fluxo de trabalho': pt/actions/how-tos/manage-runners/self-hosted-runners/use-in-a-workflow.md
+            - 'Usar o Controlador de Executores de Ação': pt/actions/how-tos/manage-runners/use-actions-runner-controller.md
+            - 'Use actions runner controller':
+              - Visão geral: pt/actions/how-tos/manage-runners/use-actions-runner-controller.md
+              - 'Autenticando o ARC na API de GitHub': pt/actions/how-tos/manage-runners/use-actions-runner-controller/authenticate-to-the-api.md
+              - 'Como implantar conjuntos de dimensionamento de executores com o Actions Runner Controller': pt/actions/how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets.md
+              - 'Usar executores do Controlador do Executor de Ações em um fluxo de trabalho': pt/actions/how-tos/manage-runners/use-actions-runner-controller/use-arc-in-a-workflow.md
+            - 'Utilizando servidores proxy com um executor': pt/actions/how-tos/manage-runners/use-proxy-servers.md
+          - 'Gerenciar fluxos de trabalho': pt/actions/how-tos/manage-workflow-runs.md
+          - 'Manage workflow runs':
+            - Visão geral: pt/actions/how-tos/manage-workflow-runs.md
+            - 'Aprovando execuções de fluxo de trabalho de forks': pt/actions/how-tos/manage-workflow-runs/approve-runs-from-forks.md
+            - 'Cancelar a execução do fluxo de trabalho': pt/actions/how-tos/manage-workflow-runs/cancel-a-workflow-run.md
+            - 'Excluir a execução de um fluxo de trabalho': pt/actions/how-tos/manage-workflow-runs/delete-a-workflow-run.md
+            - 'Desabilitar e habilitar um fluxo de trabalho': pt/actions/how-tos/manage-workflow-runs/disable-and-enable-workflows.md
+            - 'Baixar artefatos do fluxo de trabalho': pt/actions/how-tos/manage-workflow-runs/download-workflow-artifacts.md
+            - 'Gerenciando caches': pt/actions/how-tos/manage-workflow-runs/manage-caches.md
+            - 'Executar um fluxo de trabalho manualmente': pt/actions/how-tos/manage-workflow-runs/manually-run-a-workflow.md
+            - 'Reexecutando fluxos de trabalho e tarefas': pt/actions/how-tos/manage-workflow-runs/re-run-workflows-and-jobs.md
+            - 'Remover artefatos de fluxo de trabalho': pt/actions/how-tos/manage-workflow-runs/remove-workflow-artifacts.md
+            - 'Ignorar execuções de fluxo de trabalho': pt/actions/how-tos/manage-workflow-runs/skip-workflow-runs.md
+          - 'Monitorar fluxos de trabalho': pt/actions/how-tos/monitor-workflows.md
+          - 'Monitor workflows':
+            - Visão geral: pt/actions/how-tos/monitor-workflows.md
+            - 'Adicionar um selo de status de fluxo de trabalho': pt/actions/how-tos/monitor-workflows/add-a-status-badge.md
+            - 'Habilitando o log de depuração': pt/actions/how-tos/monitor-workflows/enable-debug-logging.md
+            - 'Usar o gráfico de visualização': pt/actions/how-tos/monitor-workflows/use-the-visualization-graph.md
+            - 'Usando registros de execução de fluxo de trabalho': pt/actions/how-tos/monitor-workflows/use-workflow-run-logs.md
+            - 'Exibindo logs de expressão de condição de tarefa': pt/actions/how-tos/monitor-workflows/view-job-condition-logs.md
+            - 'Visualizar o tempo de execução do trabalho': pt/actions/how-tos/monitor-workflows/view-job-execution-time.md
+            - 'Visualizar o histórico de execução do fluxo de trabalho': pt/actions/how-tos/monitor-workflows/view-workflow-run-history.md
+          - 'Reutilização de automações': pt/actions/how-tos/reuse-automations.md
+          - 'Reuse automations':
+            - Visão geral: pt/actions/how-tos/reuse-automations.md
+            - 'Criar modelos de fluxo de trabalho para sua organização': pt/actions/how-tos/reuse-automations/create-workflow-templates.md
+            - 'Reutilizar fluxos de trabalho': pt/actions/how-tos/reuse-automations/reuse-workflows.md
+            - 'Compartilhamento de ações e fluxos de trabalho de seu repositório privado': pt/actions/how-tos/reuse-automations/share-across-private-repositories.md
+            - 'Compartilhando ações e fluxos de trabalho com sua empresa': pt/actions/how-tos/reuse-automations/share-with-your-enterprise.md
+            - 'Compartilhamento de ações e fluxos de trabalho com sua organização': pt/actions/how-tos/reuse-automations/share-with-your-organization.md
+          - 'Segurança para GitHub Actions': pt/actions/how-tos/secure-your-work.md
+          - 'Secure your work':
+            - Visão geral: pt/actions/how-tos/secure-your-work.md
+            - 'Reforço de segurança em suas implementações': pt/actions/how-tos/secure-your-work/security-harden-deployments.md
+            - 'Security harden deployments':
+              - Visão geral: pt/actions/how-tos/secure-your-work/security-harden-deployments.md
+              - 'Configurando o OpenID Connect no Amazon Web Services': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws.md
+              - 'Configurando o OpenID Connect no Azure': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-azure.md
+              - 'Configurando OpenID Connect em provedores da nuvem': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-cloud-providers.md
+              - 'Configurando OpenID Connect na Google Cloud Platform': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-google-cloud-platform.md
+              - 'Configurando o OpenID Connect no HashiCorp Vault': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-hashicorp-vault.md
+              - 'Configurando o OpenID Connect no JFrog': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-jfrog.md
+              - 'Configurando o OpenID Connect no Octopus Deploy': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-octopus-deploy.md
+              - 'Configurando o OpenID Connect no PyPI': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-pypi.md
+              - 'Usando o OpenID Connect com fluxos de trabalho reutilizáveis': pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-with-reusable-workflows.md
+            - 'Usar atestados de artefatos': pt/actions/how-tos/secure-your-work/use-artifact-attestations.md
+            - 'Use artifact attestations':
+              - Visão geral: pt/actions/how-tos/secure-your-work/use-artifact-attestations.md
+              - 'Impondo atestados de artefatos com um controlador de admissão do Kubernetes': pt/actions/how-tos/secure-your-work/use-artifact-attestations/enforce-artifact-attestations.md
+              - 'Usando atestados de artefatos e fluxos de trabalho reutilizáveis para alcançar o SLSA v1 Build Level 3': pt/actions/how-tos/secure-your-work/use-artifact-attestations/increase-security-rating.md
+              - 'Como gerenciar o ciclo de vida dos atestados de artefato': pt/actions/how-tos/secure-your-work/use-artifact-attestations/manage-attestations.md
+              - 'Usar atestados de artefatos para estabelecer a procedência de compilações': pt/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md
+              - 'Verificação de atestados offline': pt/actions/how-tos/secure-your-work/use-artifact-attestations/verify-attestations-offline.md
+          - 'Solução de problemas de fluxos de trabalho': pt/actions/how-tos/troubleshoot-workflows.md
+          - 'Escrevendo fluxos de trabalho': pt/actions/how-tos/write-workflows.md
+          - 'Write workflows':
+            - Visão geral: pt/actions/how-tos/write-workflows.md
+            - 'Escolhendo o que seu fluxo de trabalho faz': pt/actions/how-tos/write-workflows/choose-what-workflows-do.md
+            - 'Choose what workflows do':
+              - Visão geral: pt/actions/how-tos/write-workflows/choose-what-workflows-do.md
+              - 'Adicionar scripts ao seu fluxo de trabalho': pt/actions/how-tos/write-workflows/choose-what-workflows-do/add-scripts.md
+              - 'Implantação em um ambiente específico': pt/actions/how-tos/write-workflows/choose-what-workflows-do/deploy-to-environment.md
+              - 'Usando blocos de construção pré-gravados no seu fluxo de trabalho': pt/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions.md
+              - 'Passando informações entre tarefas': pt/actions/how-tos/write-workflows/choose-what-workflows-do/pass-job-outputs.md
+              - 'Executando variações de tarefas em um workflow': pt/actions/how-tos/write-workflows/choose-what-workflows-do/run-job-variations.md
+              - 'Definindo um shell padrão e diretório de trabalho': pt/actions/how-tos/write-workflows/choose-what-workflows-do/set-default-values-for-jobs.md
+              - 'Usando GitHub CLI em fluxos de trabalho': pt/actions/how-tos/write-workflows/choose-what-workflows-do/use-github-cli.md
+              - 'Usando tarefas em um fluxo de trabalho': pt/actions/how-tos/write-workflows/choose-what-workflows-do/use-jobs.md
+              - 'Usar segredos em ações do GitHub': pt/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets.md
+              - 'Armazenar informações em variáveis': pt/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables.md
+            - 'Escolhendo quando seu fluxo de trabalho é executado': pt/actions/how-tos/write-workflows/choose-when-workflows-run.md
+            - 'Choose when workflows run':
+              - Visão geral: pt/actions/how-tos/write-workflows/choose-when-workflows-run.md
+              - 'Usando condições para controlar a execução do trabalho': pt/actions/how-tos/write-workflows/choose-when-workflows-run/control-jobs-with-conditions.md
+              - 'Controlar a simultaneidade de fluxos de trabalho e tarefas': pt/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency.md
+              - 'Acionando um fluxo de trabalho': pt/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow.md
+            - 'Escolhendo onde seu fluxo de trabalho é executado': pt/actions/how-tos/write-workflows/choose-where-workflows-run.md
+            - 'Choose where workflows run':
+              - Visão geral: pt/actions/how-tos/write-workflows/choose-where-workflows-run.md
+              - 'Escolhendo o executor para um trabalho': pt/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job.md
+              - 'Executar trabalhos em um contêiner': pt/actions/how-tos/write-workflows/choose-where-workflows-run/run-jobs-in-a-container.md
+            - 'Usando modelos de fluxo de trabalho': pt/actions/how-tos/write-workflows/use-workflow-templates.md
+        - 'Referência para GitHub Actions': pt/actions/reference.md
+        - 'Referência':
+          - Visão geral: pt/actions/reference.md
+          - 'Referência do Importador do GitHub Actions': pt/actions/reference/github-actions-importer.md
+          - 'Github actions importer':
+            - Visão geral: pt/actions/reference/github-actions-importer.md
+            - 'Estendendo o Importador do GitHub Actions com transformadores personalizados': pt/actions/reference/github-actions-importer/custom-transformers.md
+            - 'Argumentos e configurações complementares': pt/actions/reference/github-actions-importer/supplemental-arguments-and-settings.md
+          - 'Limites do Actions': pt/actions/reference/limits.md
+          - 'Referência de executores': pt/actions/reference/runners.md
+          - 'Runners':
+            - Visão geral: pt/actions/reference/runners.md
+            - 'Referência de executores hospedados pelo GitHub': pt/actions/reference/runners/github-hosted-runners.md
+            - 'Referência de executores avançados': pt/actions/reference/runners/larger-runners.md
+            - 'Referência de executores auto-hospedados': pt/actions/reference/runners/self-hosted-runners.md
+          - 'Referência de segurança': pt/actions/reference/security.md
+          - 'Security':
+            - Visão geral: pt/actions/reference/security.md
+            - 'Referência do OpenID Connect': pt/actions/reference/security/oidc.md
+            - 'Referência de segredos': pt/actions/reference/security/secrets.md
+            - 'Referência de uso seguro': pt/actions/reference/security/secure-use.md
+            - 'Uso seguro de pull_request_target': pt/actions/reference/security/securely-using-pull_request_target.md
+          - 'Referência de fluxos de trabalho e ações': pt/actions/reference/workflows-and-actions.md
+          - 'Workflows and actions':
+            - Visão geral: pt/actions/reference/workflows-and-actions.md
+            - 'Referência de contextos': pt/actions/reference/workflows-and-actions/contexts.md
+            - 'Referência do cache de dependência': pt/actions/reference/workflows-and-actions/dependency-caching.md
+            - 'Implantações e ambientes': pt/actions/reference/workflows-and-actions/deployments-and-environments.md
+            - 'Suporte do Dockerfile para GitHub Actions': pt/actions/reference/workflows-and-actions/dockerfile-support.md
+            - 'Eventos que disparam fluxos de trabalho': pt/actions/reference/workflows-and-actions/events-that-trigger-workflows.md
+            - 'Avaliar expressões em fluxos de trabalho e ações': pt/actions/reference/workflows-and-actions/expressions.md
+            - 'Referência de sintaxe de metadados': pt/actions/reference/workflows-and-actions/metadata-syntax.md
+            - 'Reutilizando configurações de fluxo de trabalho': pt/actions/reference/workflows-and-actions/reusing-workflow-configurations.md
+            - 'Referência de variáveis': pt/actions/reference/workflows-and-actions/variables.md
+            - 'Referência de cancelamento de fluxo de trabalho': pt/actions/reference/workflows-and-actions/workflow-cancellation.md
+            - 'Comandos de fluxo de trabalho para o GitHub Actions': pt/actions/reference/workflows-and-actions/workflow-commands.md
+            - 'Sintaxe de fluxo de trabalho para o GitHub Actions': pt/actions/reference/workflows-and-actions/workflow-syntax.md
+        - 'Tutoriais do GitHub Actions': pt/actions/tutorials.md
+        - 'Tutoriais':
+          - Visão geral: pt/actions/tutorials.md
+          - 'Usar GITHUB_TOKEN para autenticação em fluxos de trabalho': pt/actions/tutorials/authenticate-with-github_token.md
+          - 'Criar e testar seu código': pt/actions/tutorials/build-and-test-code.md
+          - 'Build and test code':
+            - Visão geral: pt/actions/tutorials/build-and-test-code.md
+            - 'Como criar e testar projetos com o Go': pt/actions/tutorials/build-and-test-code/go.md
+            - 'Construir e testar Java com Ant': pt/actions/tutorials/build-and-test-code/java-with-ant.md
+            - 'Compilar e testar Java com o Gradle': pt/actions/tutorials/build-and-test-code/java-with-gradle.md
+            - 'Compilar e testar Java com o Maven': pt/actions/tutorials/build-and-test-code/java-with-maven.md
+            - 'Criar e testar .NET': pt/actions/tutorials/build-and-test-code/net.md
+            - 'Criar e testar Node.js': pt/actions/tutorials/build-and-test-code/nodejs.md
+            - 'Criar e testar PowerShell': pt/actions/tutorials/build-and-test-code/powershell.md
+            - 'Compilar e testar Python': pt/actions/tutorials/build-and-test-code/python.md
+            - 'Criar e testar o Ruby': pt/actions/tutorials/build-and-test-code/ruby.md
+            - 'Como criar e testar o Rust': pt/actions/tutorials/build-and-test-code/rust.md
+            - 'Construção e teste Swift': pt/actions/tutorials/build-and-test-code/swift.md
+            - 'Compilar e testar aplicativos Xamarin': pt/actions/tutorials/build-and-test-code/xamarin-apps.md
+          - 'Criar ações': pt/actions/tutorials/create-actions.md
+          - 'Create actions':
+            - Visão geral: pt/actions/tutorials/create-actions.md
+            - 'Criar uma ação composta': pt/actions/tutorials/create-actions/create-a-composite-action.md
+            - 'Criando uma ação de JavaScript': pt/actions/tutorials/create-actions/create-a-javascript-action.md
+          - 'Criando um exemplo de fluxo de trabalho': pt/actions/tutorials/create-an-example-workflow.md
+          - 'Desenvolver fluxos de trabalho agente no GitHub Actions': pt/actions/tutorials/develop-agentic-workflows-in-github-actions.md
+          - 'Gerenciando seu trabalho com o GitHub Actions': pt/actions/tutorials/manage-your-work.md
+          - 'Manage your work':
+            - Visão geral: pt/actions/tutorials/manage-your-work.md
+            - 'Comentar sobre um problema quando uma etiqueta é adicionada': pt/actions/tutorials/manage-your-work/add-comments-with-labels.md
+            - 'Adicionando etiquetas a problemas': pt/actions/tutorials/manage-your-work/add-labels-to-issues.md
+            - 'Fechar questões inativas': pt/actions/tutorials/manage-your-work/close-inactive-issues.md
+            - 'Agendar a criação de problemas': pt/actions/tutorials/manage-your-work/schedule-issue-creation.md
+          - 'Migrar para o GitHub Actions': pt/actions/tutorials/migrate-to-github-actions.md
+          - 'Migrate to github actions':
+            - Visão geral: pt/actions/tutorials/migrate-to-github-actions.md
+            - 'Usar GitHub Actions Importer para automatizar migrações': pt/actions/tutorials/migrate-to-github-actions/automated-migrations.md
+            - 'Automated migrations':
+              - Visão geral: pt/actions/tutorials/migrate-to-github-actions/automated-migrations.md
+              - 'Migrando de Azure DevOps com o Importador de GitHub Actions': pt/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md
+              - 'Migrando do Bamboo para o GitHub Actions Importer': pt/actions/tutorials/migrate-to-github-actions/automated-migrations/bamboo-migration.md
+              - 'Migrando do Bitbucket Pipelines com o importador de GitHub Actions': pt/actions/tutorials/migrate-to-github-actions/automated-migrations/bitbucket-pipelines-migration.md
+              - 'Migrando do CircleCI com GitHub Actions Importer': pt/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md
+              - 'Migrando do GitLab com o Importador de GitHub Actions': pt/actions/tutorials/migrate-to-github-actions/automated-migrations/gitlab-migration.md
+              - 'Migrando do Jenkins com o Importador de GitHub Actions': pt/actions/tutorials/migrate-to-github-actions/automated-migrations/jenkins-migration.md
+              - 'Migrando do Travis CI com GitHub Actions Importer': pt/actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration.md
+              - 'Automatizando a migração com o importador de GitHub Actions': pt/actions/tutorials/migrate-to-github-actions/automated-migrations/use-github-actions-importer.md
+            - 'Como migrar para o GitHub Actions manualmente': pt/actions/tutorials/migrate-to-github-actions/manual-migrations.md
+            - 'Manual migrations':
+              - Visão geral: pt/actions/tutorials/migrate-to-github-actions/manual-migrations.md
+              - 'Migrando de Azure Pipelines para GitHub Actions': pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-azure-pipelines.md
+              - 'Migrando do CircleCI para o GitHub Actions': pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-circleci.md
+              - 'Migrando de CI/CD do GitLab para GitHub Actions': pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-gitlab-cicd.md
+              - 'Migrando do Jenkins para o GitHub Actions': pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-jenkins.md
+              - 'Migrando de Travis CI para GitHub Actions': pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-travis-ci.md
+          - 'Migrando de executores auto-hospedados para executores hospedados no GitHub': pt/actions/tutorials/migrate-to-github-runners.md
+          - 'Publicando pacotes': pt/actions/tutorials/publish-packages.md
+          - 'Publish packages':
+            - Visão geral: pt/actions/tutorials/publish-packages.md
+            - 'Publicando imagens do Docker': pt/actions/tutorials/publish-packages/publish-docker-images.md
+            - 'Publicando pacotes Java com o Gradle': pt/actions/tutorials/publish-packages/publish-java-packages-with-gradle.md
+            - 'Publicando pacotes de Java com o Maven': pt/actions/tutorials/publish-packages/publish-java-packages-with-maven.md
+            - 'Publicar pacotes do Node.js': pt/actions/tutorials/publish-packages/publish-nodejs-packages.md
+          - 'Armazenar e compartilhar dados com artefatos de fluxo de trabalho': pt/actions/tutorials/store-and-share-data.md
+          - 'Controlador de Ações Runner': pt/actions/tutorials/use-actions-runner-controller.md
+          - 'Use actions runner controller':
+            - Visão geral: pt/actions/tutorials/use-actions-runner-controller.md
+            - 'Comece a usar o Actions Runner Controller': pt/actions/tutorials/use-actions-runner-controller/get-started.md
+            - 'Solução de problemas dos erros do Actions Runner Controller': pt/actions/tutorials/use-actions-runner-controller/troubleshoot.md
+          - 'Usando serviços de contêineres': pt/actions/tutorials/use-containerized-services.md
+          - 'Use containerized services':
+            - Visão geral: pt/actions/tutorials/use-containerized-services.md
+            - 'Criando uma ação de contêiner do Docker': pt/actions/tutorials/use-containerized-services/create-a-docker-container-action.md
+            - 'Criar contêineres de serviço PostgreSQL': pt/actions/tutorials/use-containerized-services/create-postgresql-service-containers.md
+            - 'Criando contêineres de serviço Redis': pt/actions/tutorials/use-containerized-services/create-redis-service-containers.md
+            - 'Comunicar-se com os contêineres de serviço do Docker': pt/actions/tutorials/use-containerized-services/use-docker-service-containers.md
+  - 'Espelho do source-of-truth (en)':
+      - Visão geral: en/index.md
+      - 'GitHub Actions':
+        - Visão geral: en/actions/index.md
+        - 'Conceitos':
+          - Visão geral: en/actions/concepts/index.md
+          - 'About Actions policies': en/actions/concepts/about-actions-policies.md
+          - 'Billing and usage': en/actions/concepts/billing-and-usage.md
+          - 'About GitHub Actions metrics': en/actions/concepts/metrics.md
+          - 'Runners':
+            - Visão geral: en/actions/concepts/runners/index.md
+            - 'Actions Runner Controller': en/actions/concepts/runners/actions-runner-controller.md
+            - 'GitHub-hosted runners': en/actions/concepts/runners/github-hosted-runners.md
+            - 'Larger runners': en/actions/concepts/runners/larger-runners.md
+            - 'Private networking with GitHub-hosted runners': en/actions/concepts/runners/private-networking.md
+            - 'Runner groups': en/actions/concepts/runners/runner-groups.md
+            - 'Runner scale sets': en/actions/concepts/runners/runner-scale-sets.md
+            - 'Self-hosted runners': en/actions/concepts/runners/self-hosted-runners.md
+            - 'Support for Actions Runner Controller': en/actions/concepts/runners/support-for-arc.md
+          - 'Security':
+            - Visão geral: en/actions/concepts/security/index.md
+            - 'Artifact attestations': en/actions/concepts/security/artifact-attestations.md
+            - 'Compromised runners': en/actions/concepts/security/compromised-runners.md
+            - 'GITHUB_TOKEN': en/actions/concepts/security/github_token.md
+            - 'Kubernetes admissions controller': en/actions/concepts/security/kubernetes-admissions-controller.md
+            - 'OpenID Connect': en/actions/concepts/security/openid-connect.md
+            - 'Script injections': en/actions/concepts/security/script-injections.md
+            - 'Secrets': en/actions/concepts/security/secrets.md
+          - 'Workflows and actions':
+            - Visão geral: en/actions/concepts/workflows-and-actions/index.md
+            - 'Concurrency': en/actions/concepts/workflows-and-actions/concurrency.md
+            - 'Contexts': en/actions/concepts/workflows-and-actions/contexts.md
+            - 'About custom actions': en/actions/concepts/workflows-and-actions/custom-actions.md
+            - 'Dependency caching': en/actions/concepts/workflows-and-actions/dependency-caching.md
+            - 'Deployment environments': en/actions/concepts/workflows-and-actions/deployment-environments.md
+            - 'Expressions': en/actions/concepts/workflows-and-actions/expressions.md
+            - 'Notifications for workflow runs': en/actions/concepts/workflows-and-actions/notifications-for-workflow-runs.md
+            - 'Reusing workflow configurations': en/actions/concepts/workflows-and-actions/reusing-workflow-configurations.md
+            - 'Variables': en/actions/concepts/workflows-and-actions/variables.md
+            - 'Workflow artifacts': en/actions/concepts/workflows-and-actions/workflow-artifacts.md
+            - 'Workflows': en/actions/concepts/workflows-and-actions/workflows.md
+        - 'Introdução':
+          - Visão geral: en/actions/get-started/index.md
+          - 'GitHub Actions vs GitHub Apps': en/actions/get-started/actions-vs-apps.md
+          - 'Continuous deployment': en/actions/get-started/continuous-deployment.md
+          - 'Continuous integration': en/actions/get-started/continuous-integration.md
+          - 'Quickstart for GitHub Actions': en/actions/get-started/quickstart.md
+          - 'Understanding GitHub Actions': en/actions/get-started/understand-github-actions.md
+        - 'How-tos':
+          - Visão geral: en/actions/how-tos/index.md
+          - 'Administer':
+            - Visão geral: en/actions/how-tos/administer/index.md
+            - 'Controlling who can execute GitHub Actions workflows': en/actions/how-tos/administer/control-workflow-execution.md
+            - 'Making retired namespaces available on GHE.com': en/actions/how-tos/administer/reuse-namespaces-on-ghecom.md
+            - 'Viewing GitHub Actions metrics': en/actions/how-tos/administer/view-metrics.md
+          - 'Create and publish actions':
+            - Visão geral: en/actions/how-tos/create-and-publish-actions/index.md
+            - 'Creating a third party CLI action': en/actions/how-tos/create-and-publish-actions/create-a-cli-action.md
+            - 'Managing custom actions': en/actions/how-tos/create-and-publish-actions/manage-custom-actions.md
+            - 'Publishing actions in GitHub Marketplace': en/actions/how-tos/create-and-publish-actions/publish-in-github-marketplace.md
+            - 'Releasing and maintaining actions': en/actions/how-tos/create-and-publish-actions/release-and-maintain-actions.md
+            - 'Setting exit codes for actions': en/actions/how-tos/create-and-publish-actions/set-exit-codes.md
+            - 'Using immutable releases and tags to manage your action''s releases': en/actions/how-tos/create-and-publish-actions/using-immutable-releases-and-tags-to-manage-your-actions-releases.md
+          - 'Deploy':
+            - Visão geral: en/actions/how-tos/deploy/index.md
+            - 'Configure and manage deployments':
+              - Visão geral: en/actions/how-tos/deploy/configure-and-manage-deployments/index.md
+              - 'Configuring custom deployment protection rules': en/actions/how-tos/deploy/configure-and-manage-deployments/configure-custom-protection-rules.md
+              - 'Deploying with GitHub Actions': en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments.md
+              - 'Creating custom deployment protection rules': en/actions/how-tos/deploy/configure-and-manage-deployments/create-custom-protection-rules.md
+              - 'Managing environments for deployment': en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments.md
+              - 'Reviewing deployments': en/actions/how-tos/deploy/configure-and-manage-deployments/review-deployments.md
+              - 'Viewing deployment history': en/actions/how-tos/deploy/configure-and-manage-deployments/view-deployment-history.md
+            - 'Deploy to third party platforms':
+              - Visão geral: en/actions/how-tos/deploy/deploy-to-third-party-platforms/index.md
+              - 'Deploying to Amazon Elastic Container Service': en/actions/how-tos/deploy/deploy-to-third-party-platforms/amazon-elastic-container-service.md
+              - 'Deploying to Azure Kubernetes Service': en/actions/how-tos/deploy/deploy-to-third-party-platforms/azure-kubernetes-service.md
+              - 'Deploying to Azure Static Web App': en/actions/how-tos/deploy/deploy-to-third-party-platforms/azure-static-web-app.md
+              - 'Deploying Docker to Azure App Service': en/actions/how-tos/deploy/deploy-to-third-party-platforms/docker-to-azure-app-service.md
+              - 'Deploying to Google Kubernetes Engine': en/actions/how-tos/deploy/deploy-to-third-party-platforms/google-kubernetes-engine.md
+              - 'Deploying Java to Azure App Service': en/actions/how-tos/deploy/deploy-to-third-party-platforms/java-to-azure-app-service.md
+              - 'Deploying .NET to Azure App Service': en/actions/how-tos/deploy/deploy-to-third-party-platforms/net-to-azure-app-service.md
+              - 'Deploying Node.js to Azure App Service': en/actions/how-tos/deploy/deploy-to-third-party-platforms/nodejs-to-azure-app-service.md
+              - 'Deploying PHP to Azure App Service': en/actions/how-tos/deploy/deploy-to-third-party-platforms/php-to-azure-app-service.md
+              - 'Deploying Python to Azure App Service': en/actions/how-tos/deploy/deploy-to-third-party-platforms/python-to-azure-app-service.md
+              - 'Installing an Apple certificate on macOS runners for Xcode development': en/actions/how-tos/deploy/deploy-to-third-party-platforms/sign-xcode-applications.md
+          - 'Getting help from GitHub Support about GitHub Actions': en/actions/how-tos/get-support.md
+          - 'Manage runners':
+            - Visão geral: en/actions/how-tos/manage-runners/index.md
+            - 'Github hosted runners':
+              - Visão geral: en/actions/how-tos/manage-runners/github-hosted-runners/index.md
+              - 'Connect to a private network':
+                - Visão geral: en/actions/how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network/index.md
+                - 'Using an API gateway with OIDC': en/actions/how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network/connect-with-oidc.md
+                - 'Using WireGuard to create a network overlay': en/actions/how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network/connect-with-wireguard.md
+              - 'Customizing GitHub-hosted runners': en/actions/how-tos/manage-runners/github-hosted-runners/customize-runners.md
+              - 'Using GitHub-hosted runners': en/actions/how-tos/manage-runners/github-hosted-runners/use-github-hosted-runners.md
+              - 'Viewing your current jobs': en/actions/how-tos/manage-runners/github-hosted-runners/view-current-jobs.md
+            - 'Larger runners':
+              - Visão geral: en/actions/how-tos/manage-runners/larger-runners/index.md
+              - 'Controlling access to larger runners': en/actions/how-tos/manage-runners/larger-runners/control-access.md
+              - 'Managing larger runners': en/actions/how-tos/manage-runners/larger-runners/manage-larger-runners.md
+              - 'Using custom images': en/actions/how-tos/manage-runners/larger-runners/use-custom-images.md
+              - 'Running jobs on larger runners': en/actions/how-tos/manage-runners/larger-runners/use-larger-runners.md
+            - 'Self hosted runners':
+              - Visão geral: en/actions/how-tos/manage-runners/self-hosted-runners/index.md
+              - 'Adding self-hosted runners': en/actions/how-tos/manage-runners/self-hosted-runners/add-runners.md
+              - 'Using labels with self-hosted runners': en/actions/how-tos/manage-runners/self-hosted-runners/apply-labels.md
+              - 'Configuring the self-hosted runner application as a service': en/actions/how-tos/manage-runners/self-hosted-runners/configure-the-application.md
+              - 'Customizing the containers used by jobs': en/actions/how-tos/manage-runners/self-hosted-runners/customize-containers.md
+              - 'Managing access to self-hosted runners using groups': en/actions/how-tos/manage-runners/self-hosted-runners/manage-access.md
+              - 'Monitoring and troubleshooting self-hosted runners': en/actions/how-tos/manage-runners/self-hosted-runners/monitor-and-troubleshoot.md
+              - 'Removing self-hosted runners': en/actions/how-tos/manage-runners/self-hosted-runners/remove-runners.md
+              - 'Running scripts before or after a job': en/actions/how-tos/manage-runners/self-hosted-runners/run-scripts.md
+              - 'Using self-hosted runners in a workflow': en/actions/how-tos/manage-runners/self-hosted-runners/use-in-a-workflow.md
+            - 'Use actions runner controller':
+              - Visão geral: en/actions/how-tos/manage-runners/use-actions-runner-controller/index.md
+              - 'Authenticating ARC to the GitHub API': en/actions/how-tos/manage-runners/use-actions-runner-controller/authenticate-to-the-api.md
+              - 'Deploying runner scale sets with Actions Runner Controller': en/actions/how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets.md
+              - 'Using Actions Runner Controller runners in a workflow': en/actions/how-tos/manage-runners/use-actions-runner-controller/use-arc-in-a-workflow.md
+            - 'Using proxy servers with a runner': en/actions/how-tos/manage-runners/use-proxy-servers.md
+          - 'Manage workflow runs':
+            - Visão geral: en/actions/how-tos/manage-workflow-runs/index.md
+            - 'Approving workflow runs from forks': en/actions/how-tos/manage-workflow-runs/approve-runs-from-forks.md
+            - 'Canceling a workflow run': en/actions/how-tos/manage-workflow-runs/cancel-a-workflow-run.md
+            - 'Deleting a workflow run': en/actions/how-tos/manage-workflow-runs/delete-a-workflow-run.md
+            - 'Disabling and enabling a workflow': en/actions/how-tos/manage-workflow-runs/disable-and-enable-workflows.md
+            - 'Downloading workflow artifacts': en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts.md
+            - 'Managing caches': en/actions/how-tos/manage-workflow-runs/manage-caches.md
+            - 'Manually running a workflow': en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow.md
+            - 'Re-running workflows and jobs': en/actions/how-tos/manage-workflow-runs/re-run-workflows-and-jobs.md
+            - 'Removing workflow artifacts': en/actions/how-tos/manage-workflow-runs/remove-workflow-artifacts.md
+            - 'Skipping workflow runs': en/actions/how-tos/manage-workflow-runs/skip-workflow-runs.md
+          - 'Monitor workflows':
+            - Visão geral: en/actions/how-tos/monitor-workflows/index.md
+            - 'Adding a workflow status badge': en/actions/how-tos/monitor-workflows/add-a-status-badge.md
+            - 'Enabling debug logging': en/actions/how-tos/monitor-workflows/enable-debug-logging.md
+            - 'Using the visualization graph': en/actions/how-tos/monitor-workflows/use-the-visualization-graph.md
+            - 'Using workflow run logs': en/actions/how-tos/monitor-workflows/use-workflow-run-logs.md
+            - 'Viewing job condition expression logs': en/actions/how-tos/monitor-workflows/view-job-condition-logs.md
+            - 'Viewing job execution time': en/actions/how-tos/monitor-workflows/view-job-execution-time.md
+            - 'Viewing workflow run history': en/actions/how-tos/monitor-workflows/view-workflow-run-history.md
+          - 'Reuse automations':
+            - Visão geral: en/actions/how-tos/reuse-automations/index.md
+            - 'Creating workflow templates for your organization': en/actions/how-tos/reuse-automations/create-workflow-templates.md
+            - 'Reuse workflows': en/actions/how-tos/reuse-automations/reuse-workflows.md
+            - 'Sharing actions and workflows from your private repository': en/actions/how-tos/reuse-automations/share-across-private-repositories.md
+            - 'Sharing actions and workflows with your enterprise': en/actions/how-tos/reuse-automations/share-with-your-enterprise.md
+            - 'Sharing actions and workflows with your organization': en/actions/how-tos/reuse-automations/share-with-your-organization.md
+          - 'Secure your work':
+            - Visão geral: en/actions/how-tos/secure-your-work/index.md
+            - 'Security harden deployments':
+              - Visão geral: en/actions/how-tos/secure-your-work/security-harden-deployments/index.md
+              - 'Configuring OpenID Connect in Amazon Web Services': en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws.md
+              - 'Configuring OpenID Connect in Azure': en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-azure.md
+              - 'Configuring OpenID Connect in cloud providers': en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-cloud-providers.md
+              - 'Configuring OpenID Connect in Google Cloud Platform': en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-google-cloud-platform.md
+              - 'Configuring OpenID Connect in HashiCorp Vault': en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-hashicorp-vault.md
+              - 'Configuring OpenID Connect in JFrog': en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-jfrog.md
+              - 'Configuring OpenID Connect in Octopus Deploy': en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-octopus-deploy.md
+              - 'Configuring OpenID Connect in PyPI': en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-pypi.md
+              - 'Using OpenID Connect with reusable workflows': en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-with-reusable-workflows.md
+            - 'Use artifact attestations':
+              - Visão geral: en/actions/how-tos/secure-your-work/use-artifact-attestations/index.md
+              - 'Enforcing artifact attestations with a Kubernetes admission controller': en/actions/how-tos/secure-your-work/use-artifact-attestations/enforce-artifact-attestations.md
+              - 'Using artifact attestations and reusable workflows to achieve SLSA v1 Build Level 3': en/actions/how-tos/secure-your-work/use-artifact-attestations/increase-security-rating.md
+              - 'Managing the lifecycle of artifact attestations': en/actions/how-tos/secure-your-work/use-artifact-attestations/manage-attestations.md
+              - 'Using artifact attestations to establish provenance for builds': en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations.md
+              - 'Verifying attestations offline': en/actions/how-tos/secure-your-work/use-artifact-attestations/verify-attestations-offline.md
+          - 'Troubleshooting workflows': en/actions/how-tos/troubleshoot-workflows.md
+          - 'Write workflows':
+            - Visão geral: en/actions/how-tos/write-workflows/index.md
+            - 'Choose what workflows do':
+              - Visão geral: en/actions/how-tos/write-workflows/choose-what-workflows-do/index.md
+              - 'Adding scripts to your workflow': en/actions/how-tos/write-workflows/choose-what-workflows-do/add-scripts.md
+              - 'Deploying to a specific environment': en/actions/how-tos/write-workflows/choose-what-workflows-do/deploy-to-environment.md
+              - 'Using pre-written building blocks in your workflow': en/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions.md
+              - 'Passing information between jobs': en/actions/how-tos/write-workflows/choose-what-workflows-do/pass-job-outputs.md
+              - 'Running variations of jobs in a workflow': en/actions/how-tos/write-workflows/choose-what-workflows-do/run-job-variations.md
+              - 'Setting a default shell and working directory': en/actions/how-tos/write-workflows/choose-what-workflows-do/set-default-values-for-jobs.md
+              - 'Using GitHub CLI in workflows': en/actions/how-tos/write-workflows/choose-what-workflows-do/use-github-cli.md
+              - 'Using jobs in a workflow': en/actions/how-tos/write-workflows/choose-what-workflows-do/use-jobs.md
+              - 'Using secrets in GitHub Actions': en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets.md
+              - 'Store information in variables': en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables.md
+            - 'Choose when workflows run':
+              - Visão geral: en/actions/how-tos/write-workflows/choose-when-workflows-run/index.md
+              - 'Using conditions to control job execution': en/actions/how-tos/write-workflows/choose-when-workflows-run/control-jobs-with-conditions.md
+              - 'Control the concurrency of workflows and jobs': en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency.md
+              - 'Triggering a workflow': en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow.md
+            - 'Choose where workflows run':
+              - Visão geral: en/actions/how-tos/write-workflows/choose-where-workflows-run/index.md
+              - 'Choosing the runner for a job': en/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job.md
+              - 'Running jobs in a container': en/actions/how-tos/write-workflows/choose-where-workflows-run/run-jobs-in-a-container.md
+            - 'Using workflow templates': en/actions/how-tos/write-workflows/use-workflow-templates.md
+        - 'Referência':
+          - Visão geral: en/actions/reference/index.md
+          - 'Github actions importer':
+            - Visão geral: en/actions/reference/github-actions-importer/index.md
+            - 'Extending GitHub Actions Importer with custom transformers': en/actions/reference/github-actions-importer/custom-transformers.md
+            - 'Supplemental arguments and settings': en/actions/reference/github-actions-importer/supplemental-arguments-and-settings.md
+          - 'Actions limits': en/actions/reference/limits.md
+          - 'Runners':
+            - Visão geral: en/actions/reference/runners/index.md
+            - 'GitHub-hosted runners reference': en/actions/reference/runners/github-hosted-runners.md
+            - 'Larger runners reference': en/actions/reference/runners/larger-runners.md
+            - 'Self-hosted runners reference': en/actions/reference/runners/self-hosted-runners.md
+          - 'Security':
+            - Visão geral: en/actions/reference/security/index.md
+            - 'OpenID Connect reference': en/actions/reference/security/oidc.md
+            - 'Secrets reference': en/actions/reference/security/secrets.md
+            - 'Secure use reference': en/actions/reference/security/secure-use.md
+            - 'Securely using pull_request_target': en/actions/reference/security/securely-using-pull_request_target.md
+          - 'Workflows and actions':
+            - Visão geral: en/actions/reference/workflows-and-actions/index.md
+            - 'Contexts reference': en/actions/reference/workflows-and-actions/contexts.md
+            - 'Dependency caching reference': en/actions/reference/workflows-and-actions/dependency-caching.md
+            - 'Deployments and environments': en/actions/reference/workflows-and-actions/deployments-and-environments.md
+            - 'Dockerfile support for GitHub Actions': en/actions/reference/workflows-and-actions/dockerfile-support.md
+            - 'Events that trigger workflows': en/actions/reference/workflows-and-actions/events-that-trigger-workflows.md
+            - 'Evaluate expressions in workflows and actions': en/actions/reference/workflows-and-actions/expressions.md
+            - 'Metadata syntax reference': en/actions/reference/workflows-and-actions/metadata-syntax.md
+            - 'Reusing workflow configurations': en/actions/reference/workflows-and-actions/reusing-workflow-configurations.md
+            - 'Variables reference': en/actions/reference/workflows-and-actions/variables.md
+            - 'Workflow cancellation reference': en/actions/reference/workflows-and-actions/workflow-cancellation.md
+            - 'Workflow commands for GitHub Actions': en/actions/reference/workflows-and-actions/workflow-commands.md
+            - 'Workflow syntax for GitHub Actions': en/actions/reference/workflows-and-actions/workflow-syntax.md
+        - 'Tutoriais':
+          - Visão geral: en/actions/tutorials/index.md
+          - 'Use GITHUB_TOKEN for authentication in workflows': en/actions/tutorials/authenticate-with-github_token.md
+          - 'Build and test code':
+            - Visão geral: en/actions/tutorials/build-and-test-code/index.md
+            - 'Building and testing Go': en/actions/tutorials/build-and-test-code/go.md
+            - 'Building and testing Java with Ant': en/actions/tutorials/build-and-test-code/java-with-ant.md
+            - 'Building and testing Java with Gradle': en/actions/tutorials/build-and-test-code/java-with-gradle.md
+            - 'Building and testing Java with Maven': en/actions/tutorials/build-and-test-code/java-with-maven.md
+            - 'Building and testing .NET': en/actions/tutorials/build-and-test-code/net.md
+            - 'Building and testing Node.js': en/actions/tutorials/build-and-test-code/nodejs.md
+            - 'Building and testing PowerShell': en/actions/tutorials/build-and-test-code/powershell.md
+            - 'Building and testing Python': en/actions/tutorials/build-and-test-code/python.md
+            - 'Building and testing Ruby': en/actions/tutorials/build-and-test-code/ruby.md
+            - 'Building and testing Rust': en/actions/tutorials/build-and-test-code/rust.md
+            - 'Building and testing Swift': en/actions/tutorials/build-and-test-code/swift.md
+            - 'Building and testing Xamarin applications': en/actions/tutorials/build-and-test-code/xamarin-apps.md
+          - 'Create actions':
+            - Visão geral: en/actions/tutorials/create-actions/index.md
+            - 'Creating a composite action': en/actions/tutorials/create-actions/create-a-composite-action.md
+            - 'Creating a JavaScript action': en/actions/tutorials/create-actions/create-a-javascript-action.md
+          - 'Creating an example workflow': en/actions/tutorials/create-an-example-workflow.md
+          - 'Develop agentic workflows in GitHub Actions': en/actions/tutorials/develop-agentic-workflows-in-github-actions.md
+          - 'Manage your work':
+            - Visão geral: en/actions/tutorials/manage-your-work/index.md
+            - 'Commenting on an issue when a label is added': en/actions/tutorials/manage-your-work/add-comments-with-labels.md
+            - 'Adding labels to issues': en/actions/tutorials/manage-your-work/add-labels-to-issues.md
+            - 'Closing inactive issues': en/actions/tutorials/manage-your-work/close-inactive-issues.md
+            - 'Scheduling issue creation': en/actions/tutorials/manage-your-work/schedule-issue-creation.md
+          - 'Migrate to github actions':
+            - Visão geral: en/actions/tutorials/migrate-to-github-actions/index.md
+            - 'Automated migrations':
+              - Visão geral: en/actions/tutorials/migrate-to-github-actions/automated-migrations/index.md
+              - 'Migrating from Azure DevOps with GitHub Actions Importer': en/actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md
+              - 'Migrating from Bamboo with GitHub Actions Importer': en/actions/tutorials/migrate-to-github-actions/automated-migrations/bamboo-migration.md
+              - 'Migrating from Bitbucket Pipelines with GitHub Actions Importer': en/actions/tutorials/migrate-to-github-actions/automated-migrations/bitbucket-pipelines-migration.md
+              - 'Migrating from CircleCI with GitHub Actions Importer': en/actions/tutorials/migrate-to-github-actions/automated-migrations/circleci-migration.md
+              - 'Migrating from GitLab with GitHub Actions Importer': en/actions/tutorials/migrate-to-github-actions/automated-migrations/gitlab-migration.md
+              - 'Migrating from Jenkins with GitHub Actions Importer': en/actions/tutorials/migrate-to-github-actions/automated-migrations/jenkins-migration.md
+              - 'Migrating from Travis CI with GitHub Actions Importer': en/actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration.md
+              - 'Automating migration with GitHub Actions Importer': en/actions/tutorials/migrate-to-github-actions/automated-migrations/use-github-actions-importer.md
+            - 'Manual migrations':
+              - Visão geral: en/actions/tutorials/migrate-to-github-actions/manual-migrations/index.md
+              - 'Migrating from Azure Pipelines to GitHub Actions': en/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-azure-pipelines.md
+              - 'Migrating from CircleCI to GitHub Actions': en/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-circleci.md
+              - 'Migrating from GitLab CI/CD to GitHub Actions': en/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-gitlab-cicd.md
+              - 'Migrating from Jenkins to GitHub Actions': en/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-jenkins.md
+              - 'Migrating from Travis CI to GitHub Actions': en/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-travis-ci.md
+          - 'Migrating from self-hosted runners to GitHub-hosted runners': en/actions/tutorials/migrate-to-github-runners.md
+          - 'Publish packages':
+            - Visão geral: en/actions/tutorials/publish-packages/index.md
+            - 'Publishing Docker images': en/actions/tutorials/publish-packages/publish-docker-images.md
+            - 'Publishing Java packages with Gradle': en/actions/tutorials/publish-packages/publish-java-packages-with-gradle.md
+            - 'Publishing Java packages with Maven': en/actions/tutorials/publish-packages/publish-java-packages-with-maven.md
+            - 'Publishing Node.js packages': en/actions/tutorials/publish-packages/publish-nodejs-packages.md
+          - 'Store and share data with workflow artifacts': en/actions/tutorials/store-and-share-data.md
+          - 'Use actions runner controller':
+            - Visão geral: en/actions/tutorials/use-actions-runner-controller/index.md
+            - 'Get started with Actions Runner Controller': en/actions/tutorials/use-actions-runner-controller/get-started.md
+            - 'Troubleshooting Actions Runner Controller errors': en/actions/tutorials/use-actions-runner-controller/troubleshoot.md
+          - 'Use containerized services':
+            - Visão geral: en/actions/tutorials/use-containerized-services/index.md
+            - 'Creating a Docker container action': en/actions/tutorials/use-containerized-services/create-a-docker-container-action.md
+            - 'Creating PostgreSQL service containers': en/actions/tutorials/use-containerized-services/create-postgresql-service-containers.md
+            - 'Creating Redis service containers': en/actions/tutorials/use-containerized-services/create-redis-service-containers.md
+            - 'Communicating with Docker service containers': en/actions/tutorials/use-containerized-services/use-docker-service-containers.md
+  - Skill (padrão Agent Skills):
+      - SKILL.md: skill/index.md
+      - Referências:
+          - 'Contextos (github, secrets, vars, env, needs, matrix, steps, runner, inputs, jobs, strategy, job)': skill/references/contexts.md
+          - 'Eventos e gatilhos — qual usar e com quais filtros': skill/references/events-and-triggers.md
+          - 'Expressões e funções (${{ }})': skill/references/expressions.md
+          - 'Reusable workflows e actions compostas (reuso de pipelines)': skill/references/reusable-workflows.md
+          - 'Segredos e variáveis (secrets, vars, GITHUB_TOKEN, ambientes)': skill/references/secrets-and-variables.md
+          - 'Endurecimento de segurança (hardening) e OIDC': skill/references/security-hardening.md
+          - 'Sintaxe de workflow (YAML) — mapa completo de chaves': skill/references/workflow-syntax.md
+  - Validação e conformidade: validation.md
+  - Tags: tags.md
+# END GENERATED NAV

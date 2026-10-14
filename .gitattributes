@@ -1,0 +1,3 @@
+# IGC v2.1 (M1/G4): o WAL é append-only — merge por união, nunca por escolha de lado.
+.session/WAL.md merge=union
+.session/DEBT.md merge=union

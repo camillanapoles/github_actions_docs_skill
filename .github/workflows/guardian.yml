@@ -1,0 +1,143 @@
+name: guardian
+
+# IGC v2.1 — Guardião de projeto (gestor único): ciclo automático RALF por spec.
+# RECONHECER (memória+registry+gates) → AGIR (próxima ação pela spec) →
+# LOGGAR (WAL+CHECKPOINT) → FECHAR (emissão rotulada com checkpoint_ref).
+# Continuidade não é falha: gates vermelhos devolvem status 3 e a próxima instrução;
+# só auditoria crítica (sessão paralela, órfão, spec inválida) reprova o job.
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      executar_verificacao:
+        description: "Rodar o comando de verificação do profile (D14)"
+        type: boolean
+        default: false
+  push:
+    branches: [main, "arena/**"]
+    paths:
+      - ".igc-spec.yml"
+      - ".igc-profile.yml"
+      - "pipeline/guardian.py"
+      - "pipeline/igc.py"
+      - "tests/test_guardian.py"
+      - ".github/workflows/guardian.yml"
+
+permissions:
+  contents: write
+  issues: read
+
+concurrency:
+  group: guardian-unico
+  cancel-in-progress: false
+
+env:
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  guardian:
+    name: Guardião (gestor único)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    if: >-
+      !contains(github.event.head_commit.message, '[igc-checkpoint]')
+    steps:
+      - name: Checkout da linhagem
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Instalar dependências
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip >/dev/null
+          pip install -q pyyaml
+          [ -f scripts/requirements.txt ] && pip install -q -r scripts/requirements.txt || true
+
+      - name: Ciclo RALF (auditoria + próxima ação)
+        shell: bash
+        env:
+          EXEC_VERIF: ${{ github.event.inputs.executar_verificacao }}
+        run: |
+          set -uo pipefail
+          args="--cycle --run-id ${GITHUB_RUN_ID}"
+          [ "${EXEC_VERIF:-false}" = "true" ] && args="${args} --executar"
+          python3 -m pipeline.guardian ${args} | tee .ci/guardian.json
+          rc=${PIPESTATUS[0]}
+          echo "GUARDIAN_RC=${rc}" >> "$GITHUB_ENV"
+          python3 - <<'PYCHK'
+          import json, pathlib
+          d = json.loads(pathlib.Path(".ci/guardian.json").read_text(encoding="utf-8"))
+          m = d.get("metrics", {})
+          print("::notice::gestor=%s próximos=%s gates_vermelhos=%s débitos=%s" % (
+              m.get("gestor"), (m.get("proximo") or {}).get("alvo"),
+              list((m.get("fases", {}).get("RECONHECER", {}) or {}).get("gates_vermelhos", {})),
+              (m.get("fases", {}).get("RECONHECER", {}) or {}).get("debitos_abertos")))
+          if d.get("status") == 1:
+              print("::error::auditoria crítica: %s" % d.get("message"))
+          PYCHK
+          exit "${rc}"
+
+      - name: Checkpoint IGC (WAL + CHECKPOINT + registry)
+        if: always()
+        shell: bash
+        run: |
+          set -uo pipefail
+          # D24 (M4): rebase ANTES de escrever memória — o CHECKPOINT é calculado sobre o
+          # tip mais recente, então o commit do bot nunca sobrescreve o wal_sha256.
+          git config user.name "igc-bot"
+          git config user.email "igc-bot@users.noreply.github.com"
+          if [ "${GITHUB_EVENT_NAME:-push}" != "pull_request" ]; then
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || echo "::warning::rebase pré-checkpoint falhou"
+          fi
+          python3 .session/ci_checkpoint.py --run-id "${GITHUB_RUN_ID}" --gate "guardian" || true
+          rc=${PIPESTATUS[0]:-0}
+          if [ "${GITHUB_EVENT_NAME:-push}" = "pull_request" ]; then
+            echo "pull_request: checkpoint publicado como artefato (.ci/igc-checkpoint.json)"
+          else
+            git add -f .session .igc-registry.yml || true
+            git add -f .ci/igc-checkpoint.json || true
+            git add -f .ci/guardian.json || true
+            git add -f .ci/actionlint.txt || true
+            if ! git diff --cached --quiet; then
+              git commit -m "igc(ci): run ${GITHUB_RUN_ID} [igc-checkpoint]" || true
+              git push origin "HEAD:${GITHUB_REF_NAME}" || {
+                git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+                git push origin "HEAD:${GITHUB_REF_NAME}" || echo "::warning::push do checkpoint falhou (DEBT)"
+              }
+            fi
+          fi
+          python3 - <<'PYCHK'
+          import json, pathlib, sys
+          f = pathlib.Path(".ci/igc-checkpoint.json")
+          if not f.exists():
+              print("::error::checkpoint IGC ausente (C1/C3)")
+              sys.exit(1)
+          env = json.loads(f.read_text(encoding="utf-8"))
+          if int(env.get("status", 1)) != 0:
+              print("::error::checkpoint IGC reprovado: %s" % env.get("message"))
+              sys.exit(1)
+          print("checkpoint IGC ok: %s wal=%s" % (env.get("checkpoint_ref", "")[:12], env.get("wal_hash")))
+          PYCHK
+          chk=$?
+          [ "${chk}" -ne 0 ] && exit 1
+          exit "${rc}"
+
+      - name: Artefatos do guardião
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: guardian
+          path: |
+            .ci/guardian.json
+            .ci/igc-checkpoint.json
+            .session/WAL.md
+            .session/CHECKPOINT
+          if-no-files-found: warn

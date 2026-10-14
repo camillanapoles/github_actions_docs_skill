@@ -1,0 +1,289 @@
+{
+  "blueprint": "github-actions-docs-skill/gate-driven/1",
+  "run_id": "run-o",
+  "trigger": "test",
+  "status": 2,
+  "status_label": "error_infra",
+  "direction": "retry",
+  "message": "5/7 gates aprovados",
+  "next_issue": {
+    "key": "site:retry:4da0ee86",
+    "title": "[gate:site] Site MkDocs buildável em modo estrito",
+    "gate": "site",
+    "direction": "retry",
+    "reason": "gate 'site' reprovado (status 2): site: error_infra",
+    "instructions": [
+      "executar: `python3 -m mkdocs build --strict --site-dir site`",
+      "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+      "nav gerado por scripts/build_site.py cobre 100% das páginas",
+      "após aprovar, o próximo gate indexado é 'skill' (Skill completa (references, templates, scripts))"
+    ],
+    "acceptance": [
+      "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+      "nav gerado por scripts/build_site.py cobre 100% das páginas"
+    ]
+  },
+  "envelopes": [
+    {
+      "id": "tests:c10d0e7ee2",
+      "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
+      "gate": "tests",
+      "action": "python3 -m pytest tests/ -q",
+      "status": 0,
+      "status_label": "success",
+      "message": "tests: success",
+      "direction": "continue",
+      "addenda": [],
+      "next_issue": {
+        "key": "site:retry:4da0ee86",
+        "title": "[gate:site] Site MkDocs buildável em modo estrito",
+        "gate": "site",
+        "direction": "retry",
+        "reason": "gate 'site' reprovado (status 2): site: error_infra",
+        "instructions": [
+          "executar: `python3 -m mkdocs build --strict --site-dir site`",
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas",
+          "após aprovar, o próximo gate indexado é 'skill' (Skill completa (references, templates, scripts))"
+        ],
+        "acceptance": [
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas"
+        ]
+      },
+      "metrics": {
+        "gate": "tests"
+      },
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
+      "duration_s": 0.0
+    },
+    {
+      "id": "capture:b70f54f493",
+      "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
+      "gate": "capture",
+      "action": "scripts/extract.py (relatório em .ci/extract-report.md)",
+      "status": 0,
+      "status_label": "success",
+      "message": "capture: success",
+      "direction": "continue",
+      "addenda": [],
+      "next_issue": {
+        "key": "site:retry:4da0ee86",
+        "title": "[gate:site] Site MkDocs buildável em modo estrito",
+        "gate": "site",
+        "direction": "retry",
+        "reason": "gate 'site' reprovado (status 2): site: error_infra",
+        "instructions": [
+          "executar: `python3 -m mkdocs build --strict --site-dir site`",
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas",
+          "após aprovar, o próximo gate indexado é 'skill' (Skill completa (references, templates, scripts))"
+        ],
+        "acceptance": [
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas"
+        ]
+      },
+      "metrics": {
+        "gate": "capture"
+      },
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
+      "duration_s": 0.0
+    },
+    {
+      "id": "conformity:ea85d1a989",
+      "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
+      "gate": "conformity",
+      "action": "python3 scripts/validate.py --langs pt,en --report knowledge/validation.md --json .ci/validation.json",
+      "status": 0,
+      "status_label": "success",
+      "message": "conformity: success",
+      "direction": "continue",
+      "addenda": [],
+      "next_issue": {
+        "key": "site:retry:4da0ee86",
+        "title": "[gate:site] Site MkDocs buildável em modo estrito",
+        "gate": "site",
+        "direction": "retry",
+        "reason": "gate 'site' reprovado (status 2): site: error_infra",
+        "instructions": [
+          "executar: `python3 -m mkdocs build --strict --site-dir site`",
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas",
+          "após aprovar, o próximo gate indexado é 'skill' (Skill completa (references, templates, scripts))"
+        ],
+        "acceptance": [
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas"
+        ]
+      },
+      "metrics": {
+        "gate": "conformity"
+      },
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
+      "duration_s": 0.0
+    },
+    {
+      "id": "site:2060532b12",
+      "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
+      "gate": "site",
+      "action": "python3 -m mkdocs build --strict --site-dir site",
+      "status": 2,
+      "status_label": "error_infra",
+      "message": "site: error_infra",
+      "direction": "retry",
+      "addenda": [],
+      "next_issue": {
+        "key": "site:retry:4da0ee86",
+        "title": "[gate:site] Site MkDocs buildável em modo estrito",
+        "gate": "site",
+        "direction": "retry",
+        "reason": "gate 'site' reprovado (status 2): site: error_infra",
+        "instructions": [
+          "executar: `python3 -m mkdocs build --strict --site-dir site`",
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas",
+          "após aprovar, o próximo gate indexado é 'skill' (Skill completa (references, templates, scripts))"
+        ],
+        "acceptance": [
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas"
+        ]
+      },
+      "metrics": {
+        "gate": "site"
+      },
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
+      "duration_s": 0.0
+    },
+    {
+      "id": "skill:5453feb7b4",
+      "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
+      "gate": "skill",
+      "action": "pipeline.engine.SkillAction (inventário do SKILL.md × disco)",
+      "status": 0,
+      "status_label": "success",
+      "message": "skill: success",
+      "direction": "continue",
+      "addenda": [],
+      "next_issue": {
+        "key": "site:retry:4da0ee86",
+        "title": "[gate:site] Site MkDocs buildável em modo estrito",
+        "gate": "site",
+        "direction": "retry",
+        "reason": "gate 'site' reprovado (status 2): site: error_infra",
+        "instructions": [
+          "executar: `python3 -m mkdocs build --strict --site-dir site`",
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas",
+          "após aprovar, o próximo gate indexado é 'skill' (Skill completa (references, templates, scripts))"
+        ],
+        "acceptance": [
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas"
+        ]
+      },
+      "metrics": {
+        "gate": "skill"
+      },
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
+      "duration_s": 0.0
+    },
+    {
+      "id": "ci-issues:50178d451e",
+      "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
+      "gate": "ci-issues",
+      "action": "gh run list / gh issue list (verificação de continuidade)",
+      "status": 0,
+      "status_label": "success",
+      "message": "ci-issues: success",
+      "direction": "continue",
+      "addenda": [],
+      "next_issue": {
+        "key": "site:retry:4da0ee86",
+        "title": "[gate:site] Site MkDocs buildável em modo estrito",
+        "gate": "site",
+        "direction": "retry",
+        "reason": "gate 'site' reprovado (status 2): site: error_infra",
+        "instructions": [
+          "executar: `python3 -m mkdocs build --strict --site-dir site`",
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas",
+          "após aprovar, o próximo gate indexado é 'skill' (Skill completa (references, templates, scripts))"
+        ],
+        "acceptance": [
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas"
+        ]
+      },
+      "metrics": {
+        "gate": "ci-issues"
+      },
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
+      "duration_s": 0.0
+    },
+    {
+      "id": "release:819c852049",
+      "blueprint": "gate-driven-bpmn/1",
+      "checkpoint_ref": "",
+      "gate": "release",
+      "action": "pipeline.engine.ReleaseGateway",
+      "status": 2,
+      "status_label": "error_infra",
+      "message": "produção bloqueada por 'site': site: error_infra",
+      "direction": "retry",
+      "addenda": [],
+      "next_issue": {
+        "key": "site:retry:4da0ee86",
+        "title": "[gate:site] Site MkDocs buildável em modo estrito",
+        "gate": "site",
+        "direction": "retry",
+        "reason": "gate 'site' reprovado (status 2): site: error_infra",
+        "instructions": [
+          "executar: `python3 -m mkdocs build --strict --site-dir site`",
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas",
+          "após aprovar, o próximo gate indexado é 'skill' (Skill completa (references, templates, scripts))"
+        ],
+        "acceptance": [
+          "mkdocs build --strict → 0 avisos (âncoras, links, nav, arquivos órfãos)",
+          "nav gerado por scripts/build_site.py cobre 100% das páginas"
+        ]
+      },
+      "metrics": {
+        "gates_ok": 5,
+        "gates_total": 6,
+        "blocking": [
+          "site"
+        ]
+      },
+      "started_at": "2026-10-14T00:27:11+00:00",
+      "finished_at": "2026-10-14T00:27:11+00:00",
+      "duration_s": 0.0
+    }
+  ],
+  "store": {
+    "runs": 1,
+    "last_run": "2026-10-14T00:27:11+00:00",
+    "envelopes_by_status": {
+      "success": 5,
+      "error_infra": 2
+    },
+    "issues_by_state": {
+      "proposed": 1
+    }
+  },
+  "generated_at": "2026-10-14T00:27:11+00:00"
+}

@@ -1,0 +1,42 @@
+# STATE.yml — FSM gate-driven da sessão (M2)
+# Transição só ocorre com: condição satisfeita + entrada no WAL + commit do estado.
+schema: igc/v1.0
+session:
+  lineage_branch: arena/c91bd6a1-github-actions-docs-skill
+  base_commit: 0ddafab815385d69ea8f70d93c3479daa7f50175
+  runtime_restriction: "sessão fixa nesta branch; não cria/empurra sessao/<id>/<slug>"
+states: [BOOT, RECON, PLAN, EXEC, VERIFY, GATE, EMIT, CONTINUE, CLOSE]
+current_state: EXEC
+previous_state: GATE
+transition_reason: "GATE reprovado (site) → loop de correção (E2), nunca emissão parcial"
+next_state: VERIFY
+event_class: FIX
+direction: fix
+gates:
+  tests: 0
+  capture: 1
+  conformity: 1
+  site: 1
+  skill: 3
+  ci-issues: 4
+  governance: 3
+  release: 1
+next_issue:
+  key: capture:fix:11ecbf57
+  number: 1
+  title: "[gate:capture] Captura completa (inventário pt-BR)"
+  labels: [gate:capture, pipeline:next, status:1]
+pending_emissions:
+  - class: FIX
+    target: "gate site — âncoras restantes (D1)"
+  - class: IMPLEMENT
+    target: "gate skill — 7 references, 24 templates, 4 scripts (D2)"
+  - class: DEBT
+    target: "governance — ADMIN_TOKEN/ruleset/Pages (D5, D6)"
+  - class: DEBT
+    target: "LICENSE + NOTICE (D7); PR/merge (D9)"
+invariants:
+  - "A3: nada de emissão sem commit anterior"
+  - "A4: toda emissão rotulada FIX|CONTINUE|IMPLEMENT|DEBT"
+  - "E2: gate antes de EMIT (verificação + WAL + CHECKPOINT)"
+  - "diagnóstico de CI é commitado em .ci/ (logs inacessíveis)"

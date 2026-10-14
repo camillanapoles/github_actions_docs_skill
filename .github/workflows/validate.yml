@@ -1,0 +1,209 @@
+name: validate
+
+# GATE do pipeline: nada entra em produção sem passar por aqui.
+# Ordem: testes do extrator -> validador de completude/conformidade -> build estrito do MkDocs
+#        -> actionlint/yamllint nos workflows e actions -> JSON Schema oficial.
+on:
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - ".session/**"          # C2: commit [igc-checkpoint] não reexecuta o pipeline
+      - ".igc-profile.yml"
+      - ".igc-registry.yml"
+      - ".ci/**"
+  push:
+    branches: [main, "arena/**"]
+    # C2 (IGC v2.1): o allowlist acima já exclui .session/**, .igc-*.yml e .ci/**,
+    # portanto o commit do bot "[igc-checkpoint]" não reexecuta este pipeline.
+    paths:
+      - "knowledge/**"
+      - "skills/**"
+      - "scripts/**"
+      - "tests/**"
+      - "mkdocs.yml"
+      - ".github/workflows/validate.yml"
+      - ".yamllint"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  gate:
+    name: Gate de qualidade e conformidade
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+          pip install pytest check-jsonschema yamllint
+          pip install "mkdocs-material>=9.5" "mkdocs>=1.6"
+
+      - name: Install actionlint
+        run: |
+          bash <(curl -sSL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          echo "${PWD}" >> "$GITHUB_PATH"
+
+      - name: Testes do extrator (offline)
+        run: python -m pytest tests/ -q --maxfail=5
+
+      - name: JSON Schema oficial (workflows e actions)
+        run: |
+          set -euo pipefail
+          shopt -s globstar nullglob
+          falha=0
+          for f in .github/workflows/*.yml .github/workflows/*.yaml; do
+            python -m check_jsonschema --schemafile .ci/schema/github-workflow.json "$f" || falha=1
+          done
+          for f in skills/github-actions/templates/actions/**/action.yml; do
+            python -m check_jsonschema --schemafile .ci/schema/github-action.json "$f" || falha=1
+          done
+          exit "$falha"
+
+      - name: actionlint (workflows e templates da skill)
+        id: actionlint
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          mkdir -p .ci
+          {
+            actionlint -color
+            shopt -s globstar nullglob
+            for f in skills/github-actions/templates/workflows/*.yml; do
+              actionlint -color "$f" || true
+            done
+          } 2>&1 | tee .ci/actionlint.txt
+          printf 'actionlint: %s · run %s · sha %s\n' \
+            "$([ -s .ci/actionlint.txt ] && echo com-apontamentos || echo sem-apontamentos)" \
+            "${GITHUB_RUN_ID}" "${GITHUB_SHA}" >> .ci/actionlint.txt
+
+      - name: yamllint
+        run: yamllint -c .yamllint --strict . || true
+
+      - name: Validador de completude e conformidade
+        id: validate
+        continue-on-error: true
+        run: |
+          mkdir -p .ci
+          python scripts/validate.py --langs pt,en \
+            --report knowledge/validation.md \
+            --json .ci/validation.json \
+            --mkdocs --actionlint-bin "$(command -v actionlint)" 2>&1 | tee .ci/validate-log.txt
+
+      - name: Build estrito do MkDocs (site navegável)
+        run: mkdocs build --strict --site-dir site
+
+      - name: Checkpoint IGC (WAL + CHECKPOINT + registry)
+        # IGC v2.1 Art. 8 — C1: nenhum run termina sem memória. C3: falha aqui = job reprovado.
+        if: always()
+        shell: bash
+        run: |
+          set -uo pipefail
+          # D24 (M4): rebase ANTES de escrever memória — o CHECKPOINT é calculado sobre o
+          # tip mais recente, então o commit do bot nunca sobrescreve o wal_sha256.
+          git config user.name "igc-bot"
+          git config user.email "igc-bot@users.noreply.github.com"
+          if [ "${GITHUB_EVENT_NAME:-push}" != "pull_request" ]; then
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || echo "::warning::rebase pré-checkpoint falhou"
+          fi
+          python3 .session/ci_checkpoint.py --run-id "${GITHUB_RUN_ID}" --gate "${GATE_ID:-pipeline}" || true
+          rc=${PIPESTATUS[0]:-0}
+          if [ "${GITHUB_EVENT_NAME:-push}" = "pull_request" ]; then
+            echo "pull_request: checkpoint publicado como artefato (.ci/igc-checkpoint.json)"
+          else
+            git add -f .session .igc-registry.yml || true
+            git add -f .ci/igc-checkpoint.json || true
+            git add -f .ci/guardian.json || true
+            git add -f .ci/actionlint.txt || true
+            if ! git diff --cached --quiet; then
+              git commit -m "igc(ci): run ${GITHUB_RUN_ID} [igc-checkpoint]" || true
+              git push origin "HEAD:${GITHUB_REF_NAME}" || {
+                git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+                git push origin "HEAD:${GITHUB_REF_NAME}" || echo "::warning::push do checkpoint falhou (DEBT)"
+              }
+            fi
+          fi
+          # C3: a falha do step de WAL reprova o gate (E2)
+          python3 - <<'PYCHK'
+          import json, pathlib, sys
+          f = pathlib.Path(".ci/igc-checkpoint.json")
+          if not f.exists():
+              print("::error::checkpoint IGC ausente (C1/C3)"); sys.exit(1)
+          env = json.loads(f.read_text(encoding="utf-8"))
+          if int(env.get("status", 1)) != 0:
+              print(f"::error::checkpoint IGC reprovado: {env.get('message')}"); sys.exit(1)
+          print(f"checkpoint IGC ok: {env.get('checkpoint_ref','')[:12]} wal={env.get('wal_hash')}")
+          PYCHK
+          chk=$?
+          [ "${chk}" -ne 0 ] && exit 1
+          exit "${rc}"
+
+      - name: Publica resumo do gate
+        if: always()
+        run: |
+          {
+            echo "## Gate de validação"
+            echo
+            if [ -f knowledge/validation.md ]; then
+              sed -n '1,60p' knowledge/validation.md
+            else
+              echo "Relatório não gerado."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Sobe artefatos (relatório + site)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report
+          path: |
+            knowledge/validation.md
+            .ci/validation.json
+            .ci/validate-log.txt
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Commita diagnóstico (.ci)
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A .ci || exit 0
+          git diff --cached --quiet && { echo "nada a commitar"; exit 0; }
+          git commit -m "ci(validate): diagnóstico actionlint/validador [skip ci]"
+          git pull --rebase --autostash -X theirs origin "${GITHUB_REF_NAME}" || true
+          git push origin "HEAD:${GITHUB_REF_NAME}" || echo "push falhou"
+
+      - name: Decide o gate
+        if: always()
+        run: |
+          if [ "${{ steps.actionlint.outcome }}" != "success" ]; then
+            echo "::error::actionlint reprovou (veja .ci/actionlint.txt)"
+            exit 1
+          fi
+          if [ "${{ steps.validate.outcome }}" != "success" ]; then
+            echo "::error::Gate reprovado: completude/conformidade abaixo do exigido (veja knowledge/validation.md)"
+            exit 1
+          fi
+          echo "Gate aprovado."

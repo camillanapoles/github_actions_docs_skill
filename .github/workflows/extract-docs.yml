@@ -1,0 +1,143 @@
+name: extract-docs
+
+# Captura a documentação do GitHub Actions (conteúdo principal de cada página)
+# e publica Markdown otimizado para MkDocs em knowledge/<lang>/.
+on:
+  workflow_dispatch:
+    inputs:
+      lang:
+        description: "Idioma do docs.github.com (pt, en, es, ...)"
+        default: "pt"
+        type: string
+      limit:
+        description: "Nº máximo de páginas (0 = todas) — útil para smoke test"
+        default: "0"
+        type: string
+      jobs:
+        description: "Paralelismo da captura"
+        default: "4"
+        type: string
+      plan:
+        description: "Plano/versão do docs"
+        default: "free-pro-team@latest,enterprise-cloud@latest"
+        type: string
+      commit:
+        description: "Commitar o resultado no branch"
+        default: true
+        type: boolean
+  push:
+    branches: ["arena/c91bd6a1-github-actions-docs-skill"]
+    paths:
+      - ".github/workflows/extract-docs.yml"
+      - "scripts/extract.py"
+      - "scripts/requirements.txt"
+  schedule:
+    # re-captura semanal para manter a base sincronizada com o site
+    - cron: "17 4 * * 1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: extract-docs-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      LANG_CODE: ${{ github.event.inputs.lang || 'pt' }}
+      LIMIT: ${{ github.event.inputs.limit || '0' }}
+      JOBS: ${{ github.event.inputs.jobs || '4' }}
+      PLAN: ${{ github.event.inputs.plan || 'free-pro-team@latest,enterprise-cloud@latest' }}
+      DO_COMMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.commit == 'false' && 'no' || 'yes' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sincroniza com a ponta do branch
+        # Corridas concorrentes (ou commits do próprio CI) podem ter avançado o branch
+        # depois do checkout; partir da ponta evita rebase conflitante e push no-op.
+        run: |
+          git fetch origin "${GITHUB_REF_NAME}"
+          git reset --hard FETCH_HEAD
+          echo "HEAD=$(git rev-parse --short HEAD)"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+          python -c "import pypandoc; print('pandoc', pypandoc.get_pandoc_version())"
+
+      - name: Extract main content (docs.github.com → Markdown)
+        continue-on-error: true
+        run: |
+          mkdir -p .ci
+          set -o pipefail
+          python scripts/extract.py \
+            --source api \
+            --lang "${LANG_CODE}" \
+            --scope actions \
+            --out "knowledge/${LANG_CODE}" \
+            --jobs "${JOBS}" \
+            --plan "${PLAN}" \
+            --limit "${LIMIT}" \
+            --manifest "knowledge/${LANG_CODE}/manifest.json" \
+            --report ".ci/extract-report.md" \
+            --max-failures 10 2>&1 | tee .ci/extract-log.txt
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## Extração docs.github.com/${LANG_CODE}/actions"
+            echo ""
+            echo "| Métrica | Valor |"
+            echo "| --- | --- |"
+            python - <<PY
+          import json, pathlib
+          p = pathlib.Path("knowledge/${LANG_CODE}/manifest.json")
+          if p.exists():
+              m = json.loads(p.read_text())
+              pages = m.get("pages", [])
+              ok = [x for x in pages if x["status"] == "ok"]
+              bad = [x for x in pages if x["status"] != "ok"]
+              print(f"| Páginas capturadas | {len(ok)} |")
+              print(f"| Falhas | {len(bad)} |")
+              print(f"| Bytes totais | {m.get('total_bytes', 0):,} |")
+              print(f"| Headings | {sum(x['headings'] for x in ok):,} |")
+              print(f"| Blocos de código | {sum(x['code_blocks'] for x in ok):,} |")
+              print(f"| Tabelas | {sum(x['tables'] for x in ok):,} |")
+              print(f"| Seletor usado | {sorted({x['selector'] for x in ok})} |")
+          else:
+              print("| manifest | ausente |")
+          PY
+          } >> "$GITHUB_STEP_SUMMARY"
+          cat .ci/extract-report.md >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+
+      - name: Commit knowledge base
+        if: always() && env.DO_COMMIT == 'yes'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          tail -c 200000 .ci/extract-log.txt > .ci/extract-log.tail.txt 2>/dev/null || true
+          rm -f .ci/extract-log.txt
+          git add -A knowledge .ci
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração para commitar."
+          else
+            git commit -m "docs(knowledge): captura de knowledge/${LANG_CODE} (limit=${LIMIT}) [skip ci]"
+            if ! git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              echo "push rejeitado — rebaseando sobre a ponta do branch (mantendo a captura nova)"
+              git pull --rebase --autostash -X theirs origin "${GITHUB_REF_NAME}"
+              git push origin "HEAD:${GITHUB_REF_NAME}"
+            fi
+          fi

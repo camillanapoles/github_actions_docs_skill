@@ -1,0 +1,68 @@
+# IGC v2.1 — Artigo 10 (PROFILE): COMO este repositório cumpre o protocolo.
+# O profile NUNCA enfraquece axioma (Art. 1) ou garantia (Art. 6): só escolhe mecanismo.
+igc_profile: "1"
+contrato: "IGC v2.1"
+
+linhagem:
+  formato_branch: "sessao/<id>/<slug>"          # convenção do contrato (A2)
+  designada: "arena/c91bd6a1-github-actions-docs-skill"  # A2': runtime proíbe criar branch
+  base_sha: "0ddafab815385d69ea8f70d93c3479daa7f50175"   # W1': SHA-pinada, nunca ref solta
+  territorio: "worktree único do runtime (sem worktrees adicionais)"
+  m7_pre_base: "PASS — diff --stat 0ddafab..origin/main vazio (upstream = 1 commit, sem revert)"
+
+eventos:
+  fontes: [ci, issues, cron, manual]            # domínio: docs GitHub Actions + pipeline gate-driven
+  classes: [FIX, CONTINUE, IMPLEMENT, DEBT, HANDOFF]
+
+bootstrap:
+  comando: "./.session/bootstrap.sh"
+  verde_quando: "exit 0 + .session/env.ok"
+  capacidades_testadas: [fs_write, vcs, exec, append_wal]
+
+verificacao:
+  comando: "python3 -m pytest tests/ -q"
+  criterio: "0 failed; skips justificados (M6)"
+  skips_justificados:
+    - "tests/test_extract.py: pandoc indisponível (marcador requer_pandoc) — DEBT D11"
+
+integridade:
+  comando: "git fsck --no-dangling"
+  checkpoint: "sha + wal_sha256 (M4)"
+  pre_base: "diff amplo vs upstream (M7)"
+
+envelope:
+  schema: ".ci/schema/envelope.schema.json"
+  minimo: [status, message, checkpoint_ref]     # E3
+
+transporte:
+  mecanismo: "git bundle + patch"
+  aceite: "round-trip T8 (bundle → verify → clone frio da base → ingestão offline → suíte verde)"
+  exigido_para: [HANDOFF]
+
+ci:
+  commit_checkpoint: "bot via GITHUB_TOKEN (permissions: contents: write)"
+  mensagem: "igc(ci): run <run_id> [igc-checkpoint]"
+  step_obrigatorio: "Checkpoint IGC (WAL + CHECKPOINT + registry)"   # C1
+  falha_do_step: "falha do job (C3)"
+  nao_reexecuta: "paths-ignore: .session/**, .igc-*.yml, .ci/**"      # C2
+
+runtime:
+  requer: [fs_write, vcs, exec]
+  fallbacks:
+    vcs: "branch + clone (W1) quando worktree indisponível (WASI puro)"
+    exec: "hooks por território viram gates de pipeline (W4)"
+  sem_fallback: [fs_write]      # capability mínima: ausente ⇒ BOOT recusado (G6/CP2)
+
+desvios:
+  - id: "DEV-1"
+    artigo: "A2' + Art. 7 (D1)"
+    texto: >-
+      O runtime fixa esta sessão em arena/c91bd6a1-github-actions-docs-skill e proíbe
+      push em main. O .igc-registry.yml é versionado na linhagem e chega ao default
+      branch no merge (gate `release`); enquanto isso, a descoberta R1 usa o registry
+      da própria linhagem. Declarado aqui, em CONTEXT.md e no gate de fechamento (Art. 12).
+  - id: "DEV-2"
+    artigo: "Art. 8 (C1)"
+    texto: >-
+      Persistência do bot no CI usa GITHUB_TOKEN com contents:write na própria branch
+      (sem ADMIN_TOKEN). Filtrado por paths-ignore para satisfazer C2.

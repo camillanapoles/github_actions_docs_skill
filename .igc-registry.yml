@@ -1,0 +1,29 @@
+# IGC v2.1 — Artigo 7: registry de linhagens (D1/D2/D3)
+igc_registry: '1'
+contrato: IGC v2.1
+default_branch: main
+atualizado_em: '2026-10-13'
+linhagens:
+  github-actions-docs-skill:
+    branch: arena/c91bd6a1-github-actions-docs-skill
+    base_sha: 0ddafab815385d69ea8f70d93c3479daa7f50175
+    checkpoint_ref: 347bd9ec8c6b010a25c74c83f63f16c721ca4f14
+    ativa: true
+    modo: continuidade
+    estado_fsm: EMIT
+    territorio: worktree único do runtime
+    profile: .igc-profile.yml
+    memoria: .session/
+    desvios:
+    - DEV-1
+    - DEV-2
+    - DEV-3
+    - DEV-4
+    ultima_verificacao: status 1 · 2/7 gates aprovados
+    next_issue: 'D26: 679 avisos mkdocs --strict (pós-merge)'
+    atualizado_em: '2026-10-14'
+    pr: '#2'
+    gestor: guardian
+    spec: .igc-spec.yml
+    pedido_pendente: opencli (decisão do usuário)
+    override: merge por instrução do usuário com DoD vermelho
