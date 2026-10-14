@@ -23,6 +23,13 @@ ralf:                               # ciclo automático por spec
   LOGGAR: "entrada no WAL por fase + CHECKPOINT avançado (M1/M4/C1)"
   FECHAR: "emissão rotulada (A4) com checkpoint_ref + âncora WAL (E3) e contração do efeito (E5)"
   idempotencia: "chave (event_id, checkpoint) recusa repetição (E4/G2)"
+  por_issue: >-
+    1 issue aberta com label pipeline:next = 1 instrução de trabalho = 1 ciclo RALF.
+    Mais de uma ⇒ o gestor consolida (mantém a de menor número, comenta e fecha as demais).
+    Nenhuma ⇒ a fábrica do guardião cria a próxima a partir de next_action().
+  mediador_merge: >-
+    merge só com DoD verde: gates 0/4, release=0, sem débitos bloqueantes, spec válida,
+    nota Art.12 ≥ 9.5, PR MERGEABLE e gestor único. Recusado ⇒ status 3 + próxima instrução.
   agendamento: "guardian.yml — cron + workflow_dispatch"
 
 escopo:
@@ -68,6 +75,12 @@ gates:                              # ordem do blueprint (gateway exclusivo no f
   bloqueantes: [site, capture, conformity, skill, tests]
   codes: {0: "success→continue", 1: "error_content→fix", 2: "error_infra→retry",
           3: "pending→continue", 4: "skipped→continue"}
+
+merge:
+  pr: "#2"
+  metodo: "--merge"
+  mediador: "pipeline/guardian.py::merge_mediator"
+  politica: "dry-run por padrão; execução exige --autorizar-merge com DoD verde"
 
 qualidade:                          # PQMS: verde significa verde
   verde_medido: "closing_gate deriva a verificação executando o comando do profile (D14 quitado)"

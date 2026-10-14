@@ -90,18 +90,28 @@ jobs:
         shell: bash
         run: |
           set -uo pipefail
+          # D24 (M4): rebase ANTES de escrever memória — o CHECKPOINT é calculado sobre o
+          # tip mais recente, então o commit do bot nunca sobrescreve o wal_sha256.
+          git config user.name "igc-bot"
+          git config user.email "igc-bot@users.noreply.github.com"
+          if [ "${GITHUB_EVENT_NAME:-push}" != "pull_request" ]; then
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || echo "::warning::rebase pré-checkpoint falhou"
+          fi
           python3 .session/ci_checkpoint.py --run-id "${GITHUB_RUN_ID}" --gate "guardian" || true
           rc=${PIPESTATUS[0]:-0}
           if [ "${GITHUB_EVENT_NAME:-push}" = "pull_request" ]; then
             echo "pull_request: checkpoint publicado como artefato (.ci/igc-checkpoint.json)"
           else
-            git config user.name "igc-bot"
-            git config user.email "igc-bot@users.noreply.github.com"
-            git add -f .session .igc-registry.yml .ci/guardian.json .ci/igc-checkpoint.json
+            git add -f .session .igc-registry.yml || true
+            git add -f .ci/igc-checkpoint.json || true
+            git add -f .ci/guardian.json || true
+            git add -f .ci/actionlint.txt || true
             if ! git diff --cached --quiet; then
               git commit -m "igc(ci): run ${GITHUB_RUN_ID} [igc-checkpoint]" || true
-              git pull --rebase --autostash -X theirs origin "${GITHUB_REF_NAME}" || true
-              git push origin "HEAD:${GITHUB_REF_NAME}" || echo "::warning::push do checkpoint falhou"
+              git push origin "HEAD:${GITHUB_REF_NAME}" || {
+                git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+                git push origin "HEAD:${GITHUB_REF_NAME}" || echo "::warning::push do checkpoint falhou (DEBT)"
+              }
             fi
           fi
           python3 - <<'PYCHK'

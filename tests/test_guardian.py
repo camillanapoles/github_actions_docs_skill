@@ -135,3 +135,116 @@ def test_workflow_guardian_existe_com_cron_c1_c2_e_timeout():
     assert "Checkpoint IGC" in texto and "[igc-checkpoint]" in texto                 # C1
     assert dados["jobs"]["guardian"]["timeout-minutes"] <= 30
     assert dados["permissions"]["contents"] == "write"
+
+
+# ------------------------------------------- /ralf por issue + mediador de merge
+class GhFake:
+    """gh injetável: testes hermeticos, sem rede (o contrato exige medição, não sorte)."""
+
+    def __init__(self, issues=None, prs=None, rc=0):
+        self.calls, self.issues, self.prs, self.rc = [], issues or [], prs or [], rc
+
+    def __call__(self, args):
+        self.calls.append(list(args))
+
+        class R:
+            returncode, stdout, stderr = self.rc, "", ""
+        r = R()
+        if args[:2] == ["issue", "list"]:
+            r.stdout = json.dumps(self.issues)
+        elif args[:2] == ["pr", "list"]:
+            r.stdout = json.dumps(self.prs)
+        elif args[:2] == ["issue", "create"]:
+            r.stdout = "https://github.com/x/y/issues/99"
+        elif args[:2] == ["pr", "merge"]:
+            r.stdout = "https://github.com/x/y/pull/2/merges"
+        return r
+
+    def chamou(self, *prefixo):
+        return [c for c in self.calls if c[:len(prefixo)] == list(prefixo)]
+
+
+def verde_todos(g):
+    st = json.loads((g.root / ".ci/pipeline-state.json").read_text(encoding="utf-8"))
+    for e in st["envelopes"]:
+        e["status"] = 0
+    (g.root / ".ci/pipeline-state.json").write_text(json.dumps(st), encoding="utf-8")
+    spec = yaml.safe_load((g.root / SPEC_FILE).read_text(encoding="utf-8"))
+    spec["debitos_bloqueantes"] = []
+    (g.root / SPEC_FILE).write_text(yaml.safe_dump(spec, allow_unicode=True), encoding="utf-8")
+
+
+def test_ralf_por_issue_comenta_a_unica_instrucao(g):
+    gh = GhFake(issues=[{"number": 7, "title": "t", "url": "u"}])
+    env = g.issue_cycle(runner=gh, run_id="r1")
+    assert gh.chamou("issue", "comment", "7") and not gh.chamou("issue", "create")
+    assert env.metrics["issue"]["number"] == 7 and env.metrics["consolidadas"] == []
+    assert env.metrics["fases"][:4] == list(RALF)
+
+
+def test_ralf_por_issue_consolida_multiplas_e_preserva_a_menor(g):
+    gh = GhFake(issues=[{"number": 8, "title": "b", "url": "u"}, {"number": 3, "title": "a", "url": "u"}])
+    env = g.issue_cycle(runner=gh)
+    assert env.metrics["issue"]["number"] == 3 and env.metrics["consolidadas"] == [8]
+    assert gh.chamou("issue", "close", "8") and not gh.chamou("issue", "close", "3")
+    assert any(e["evento"] == "ISSUE-CONSOLID" for e in g.mem.wal_entries())
+
+
+def test_ralf_por_issue_cria_quando_nao_existe_instrucao(g):
+    gh = GhFake(issues=[])
+    env = g.issue_cycle(runner=gh)
+    criadas = gh.chamou("issue", "create")
+    assert criadas and "gate site" in " ".join(criadas[0])
+    assert any(e["evento"] == "ISSUE-CREATE" for e in g.mem.wal_entries())
+    assert env.status == int(Status.PENDING)
+
+
+def test_ralf_por_issue_fecha_a_issue_quando_o_gate_fica_verde(g):
+    verde_todos(g)
+    gh = GhFake(issues=[{"number": 5, "title": "t", "url": "u"}])
+    env = g.issue_cycle(runner=gh)
+    assert gh.chamou("issue", "close", "5") and env.metrics["fechada"] is True
+    assert any(e["evento"] == "EMIT" for e in g.mem.wal_entries())      # E5 contraído
+
+
+def test_mediador_recusa_merge_com_gates_vermelhos(g):
+    gh = GhFake(prs=[{"number": 2, "headRefName": "arena/x", "mergeable": "MERGEABLE"}])
+    env = g.merge_mediator(runner=gh, pr=2, nota=10.0)
+    assert env.status == int(Status.PENDING)
+    assert "gates_verdes" in env.metrics["bloqueios"]
+    assert not gh.chamou("pr", "merge")                                 # nunca mergir no escuro
+    assert any(e["evento"] == "MEDIATOR" for e in g.mem.wal_entries())
+
+
+def test_mediador_autoriza_em_dry_run_com_dod_verde(g):
+    verde_todos(g)
+    gh = GhFake(prs=[{"number": 2, "headRefName": "arena/x", "mergeable": "MERGEABLE"}])
+    env = g.merge_mediator(runner=gh, pr=2, nota=10.0)
+    assert env.status == int(Status.SUCCESS) and env.metrics["executado"] is False
+    assert not gh.chamou("pr", "merge") and env.metrics["dod"]["release_zero"] is True
+
+
+def test_mediador_executa_e_contrai_o_merge_quando_autorizado(g):
+    verde_todos(g)
+    gh = GhFake(prs=[{"number": 2, "headRefName": "arena/x", "mergeable": "MERGEABLE"}])
+    env = g.merge_mediator(runner=gh, pr=2, nota=9.8, dry_run=False)
+    assert env.status == int(Status.SUCCESS) and env.metrics["executado"] is True
+    assert gh.chamou("pr", "merge", "2", "--merge")
+    assert any(e["evento"] == "EMIT" and "merge" in e["resultado"] for e in g.mem.wal_entries())
+
+
+def test_mediador_recusa_sem_nota_minima_mesmo_com_gates_verdes(g):
+    verde_todos(g)
+    gh = GhFake(prs=[{"number": 2, "headRefName": "arena/x", "mergeable": "MERGEABLE"}])
+    env = g.merge_mediator(runner=gh, pr=2, nota=8.0)
+    assert env.status == int(Status.PENDING)
+    assert any(b.startswith("nota_minima") for b in env.metrics["bloqueios"])
+
+
+def test_D24_rebase_vem_antes_da_memoria_e_sem_X_theirs():
+    for nome in ("gate-pipeline.yml", "validate.yml", "guardian.yml"):
+        s = (ROOT / ".github/workflows" / nome).read_text(encoding="utf-8")
+        bloco = s.split("Checkpoint IGC", 1)[1].split("- name:", 1)[0]   # só o step C1
+        assert bloco.index("git pull --rebase") < bloco.index("ci_checkpoint.py"), nome
+        assert "-X theirs" not in bloco, f"{nome}: -X theirs sobrescreve o CHECKPOINT (M4)"
+        assert bloco.count("git push origin") >= 2, f"{nome}: push sem retry"

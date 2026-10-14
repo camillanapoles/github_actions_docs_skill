@@ -249,6 +249,121 @@ class Guardian:
                                     "critico": critico},
                            checkpoint_ref=head).close(started)
 
+    # ------------------------------------------------ /ralf por issue (gestor)
+    def _gh(self, args: list[str], runner=None):
+        if runner is not None:
+            return runner(list(args))
+        return subprocess.run(["gh", *args], cwd=self.root, capture_output=True, text=True)
+
+    @staticmethod
+    def _json(res, padrao):
+        try:
+            return json.loads(getattr(res, "stdout", "") or padrao)
+        except Exception:                                   # noqa: BLE001
+            return json.loads(padrao)
+
+    def issue_cycle(self, *, runner=None, run_id: str = "", label: str = "pipeline:next") -> Envelope:
+        """1 issue pipeline:next = 1 instrução = 1 ciclo RALF (unicidade do gestor)."""
+        started = time.monotonic()
+        proximo = self.next_action()
+        itens = self._json(self._gh(["issue", "list", "--state", "open", "--label", label,
+                                     "--json", "number,title,url", "--limit", "20"], runner), "[]")
+        consolidadas = []
+        if len(itens) > 1:
+            itens = sorted(itens, key=lambda i: int(i.get("number", 0)))
+            for extra in itens[1:]:
+                self._gh(["issue", "comment", str(extra["number"]), "--body",
+                          f"Consolidada pelo guardião (gestor único): a instrução vigente é "
+                          f"#{itens[0]['number']}."], runner)
+                self._gh(["issue", "close", str(extra["number"]), "--reason", "not planned"], runner)
+                consolidadas.append(extra["number"])
+            self.mem.wal_append("ISSUE-CONSOLID", EventClass.DEBT,
+                                f"{len(consolidadas)} issues '{label}' abertas ao mesmo tempo",
+                                f"manter #{itens[0]['number']}, fechar {consolidadas}",
+                                "gestor único restaurado")
+        if not itens:
+            titulo = (f"[gate:{proximo.get('spec_gate') or 'guardian'}] {proximo['alvo']} — "
+                      f"{proximo['motivo'][:60]}")
+            corpo = (f"Classe: {proximo['classe']}\nAlvo: {proximo['alvo']}\n"
+                     f"Motivo: {proximo['motivo']}\n\nInstrução emitida pelo guardião "
+                     "(gestor único) via /ralf por issue.")
+            cr = self._gh(["issue", "create", "--title", titulo, "--body", corpo,
+                           "--label", f"{label},status:1"], runner)
+            ref = (getattr(cr, "stdout", "") or "").strip()
+            self.mem.wal_append("ISSUE-CREATE", EventClass(proximo["classe"]),
+                                f"nenhuma issue '{label}' aberta", titulo, ref or "criada")
+            itens = [{"number": None, "title": titulo, "url": ref}]
+        ciclo = self.ralf(run_id=run_id or "issue")
+        alvo = itens[0]
+        fechado = False
+        if alvo.get("number"):
+            gate_alvo = self.gate_status().get(proximo.get("spec_gate") or "")
+            corpo = (f"Ciclo RALF (run {run_id or '-'}): {ciclo.message}\n\n"
+                     f"checkpoint_ref: `{(ciclo.checkpoint_ref or '')[:12]}` · fases: "
+                     + ", ".join(ciclo.metrics["fases"]))
+            self._gh(["issue", "comment", str(alvo["number"]), "--body", corpo], runner)
+            if gate_alvo in (0, 4):
+                self._gh(["issue", "close", str(alvo["number"]), "--reason", "completed"], runner)
+                self.mem.contract_emit(EventClass.CONTINUE,
+                                       f"issue #{alvo['number']} fechada (gate verde)")
+                fechado = True
+        return Envelope.of("igc.guardian", "issue_cycle", ciclo.status,
+                           f"/ralf por issue: #{alvo.get('number')} — {ciclo.message}",
+                           metrics={"issue": alvo, "consolidadas": consolidadas,
+                                    "proximo": proximo, "fechada": fechado,
+                                    "fases": list(ciclo.metrics["fases"])},
+                           checkpoint_ref=ciclo.checkpoint_ref).close(started)
+
+    # ------------------------------------- /ralf mediador de merge (por spec)
+    def merge_mediator(self, *, runner=None, pr: str | int | None = None, nota: float | None = None,
+                       dry_run: bool = True, metodo: str = "--merge") -> Envelope:
+        """Media o merge pela spec: DoD verde autoriza; qualquer bloqueio recusa e dirige."""
+        started = time.monotonic()
+        spec, spec_errs = self.spec()
+        aud = self.audit()
+        gates, vermelhos = aud.metrics["gates"], aud.metrics["gates_vermelhos"]
+        bloqueantes = aud.metrics["debitos_bloqueantes"]
+        lista = self._json(self._gh(["pr", "list", "--state", "open",
+                                     "--json", "number,headRefName,mergeable"], runner), "[]")
+        alvo = next((p for p in lista if str(p.get("number")) == str(pr)), lista[0] if lista else {})
+        mergeable = alvo.get("mergeable", "UNKNOWN")
+        minima = float((spec.get("qualidade") or {}).get("nota_minima_fechamento", 9.5))
+        dod = {"gates_verdes": not vermelhos,
+               "release_zero": gates.get("release") == 0,
+               "sem_debitos_bloqueantes": not bloqueantes,
+               "spec_valida": not spec_errs,
+               f"nota_minima_{minima}": bool(nota is not None and nota >= minima),
+               "pr_mergeable": mergeable == "MERGEABLE",
+               "gestor_unico": not aud.metrics["sessoes_paralelas"]}
+        bloqueios = [k for k, v in dod.items() if not v]
+        cp = (self.mem.read_checkpoint() or {}).get("sha", "")
+        self.mem.wal_append("MEDIATOR", EventClass.CONTINUE if not bloqueios else EventClass.FIX,
+                            "merge exige mediação por spec (DoD)",
+                            f"PR #{alvo.get('number')} mergeable={mergeable} nota={nota}",
+                            "AUTORIZADO" if not bloqueios else f"RECUSADO: {bloqueios}")
+        if bloqueios:
+            return Envelope.of("igc.guardian", "merge_mediator", Status.PENDING,
+                               f"merge RECUSADO por spec: {bloqueios} — continuidade dirigida a "
+                               f"{self.next_action()['alvo']}",
+                               metrics={"dod": dod, "bloqueios": bloqueios, "pr": alvo, "nota": nota},
+                               checkpoint_ref=cp).close(started)
+        if dry_run:
+            return Envelope.of("igc.guardian", "merge_mediator", Status.SUCCESS,
+                               f"merge AUTORIZADO (dry-run) do PR #{alvo.get('number')}: DoD verde",
+                               metrics={"dod": dod, "pr": alvo, "nota": nota, "executado": False},
+                               checkpoint_ref=cp).close(started)
+        res = self._gh(["pr", "merge", str(alvo.get("number")), metodo], runner)
+        if getattr(res, "returncode", 1) == 0:
+            ref = (getattr(res, "stdout", "") or "").strip() or f"PR #{alvo.get('number')}"
+            self.mem.contract_emit(EventClass.CONTINUE, f"merge {ref} ({metodo})")
+            return Envelope.of("igc.guardian", "merge_mediator", Status.SUCCESS,
+                               f"merge executado e contraído (E5): {ref}",
+                               metrics={"dod": dod, "pr": alvo, "nota": nota, "executado": True,
+                                        "ref": ref}, checkpoint_ref=cp).close(started)
+        return Envelope.of("igc.guardian", "merge_mediator", Status.ERROR_INFRA,
+                           f"merge falhou: {getattr(res, 'stderr', '')[:160]}",
+                           metrics={"dod": dod, "pr": alvo}, checkpoint_ref=cp).close(started)
+
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Guardião (gestor único) — ciclo RALF")
@@ -258,14 +373,27 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--settle", action="append", default=[], metavar="Dn=EVIDENCIA")
     ap.add_argument("--run-id", default="")
     ap.add_argument("--executar", action="store_true", help="rodar a verificação do profile")
+    ap.add_argument("--por-issue", action="store_true", help="/ralf por issue (pipeline:next)")
+    ap.add_argument("--mediar-merge", action="store_true", help="/ralf mediador de merge")
+    ap.add_argument("--pr", default=None)
+    ap.add_argument("--nota", type=float, default=None)
+    ap.add_argument("--autorizar-merge", action="store_true", help="executa o merge (DoD verde)")
     a = ap.parse_args(argv)
     g = Guardian(a.root)
     if a.settle:
         for item in a.settle:
             debt, _, ev = item.partition("=")
             print(json.dumps(g.settle(debt.strip(), ev.strip()).to_dict(), ensure_ascii=False, indent=2))
-    env = g.audit() if a.audit and not a.cycle else (g.ralf(run_id=a.run_id, executar=a.executar)
-                                                     if a.cycle else g.audit())
+    if a.mediar_merge:
+        env = g.merge_mediator(pr=a.pr, nota=a.nota, dry_run=not a.autorizar_merge,
+                               run_id=a.run_id) if False else g.merge_mediator(
+                                   pr=a.pr, nota=a.nota, dry_run=not a.autorizar_merge)
+    elif a.por_issue:
+        env = g.issue_cycle(run_id=a.run_id)
+    elif a.cycle:
+        env = g.ralf(run_id=a.run_id, executar=a.executar)
+    else:
+        env = g.audit()
     print(json.dumps(env.to_dict(), ensure_ascii=False, indent=2))
     return 0 if env.status in (int(Status.SUCCESS), int(Status.PENDING)) else 1
 

@@ -1,6 +1,6 @@
 ## [gate:site] Site MkDocs buildável em modo estrito
 
-**Gate:** `site` · **Direção:** `retry` · **Chave determinística:** `site:retry:55ae7573`
+**Gate:** `site` · **Direção:** `retry` · **Chave determinística:** `site:retry:c910745f`
 **Motivo:** gate 'site' reprovado (status 2): site: error_infra
 
 ### Instruções (ordem determinística)
@@ -31,7 +31,7 @@
     }
   ],
   "next_issue": {
-    "key": "site:retry:55ae7573",
+    "key": "site:retry:c910745f",
     "gate": "site"
   }
 }
@@ -49,4 +49,4 @@
 | `ci-issues` | 0 (continue) | ci-issues: success |
 | `release` | 2 (retry) | produção bloqueada por 'site': site: error_infra |
 
-_Gerado por `pipeline.factory` em 2026-10-13T23:54:05+00:00 — blueprint github-actions-docs-skill/gate-driven/1._
+_Gerado por `pipeline.factory` em 2026-10-14T00:07:52+00:00 — blueprint github-actions-docs-skill/gate-driven/1._

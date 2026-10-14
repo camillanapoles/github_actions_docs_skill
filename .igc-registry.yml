@@ -7,7 +7,7 @@ linhagens:
   github-actions-docs-skill:
     branch: arena/c91bd6a1-github-actions-docs-skill
     base_sha: 0ddafab815385d69ea8f70d93c3479daa7f50175
-    checkpoint_ref: a5e6336b0fa113bc1e28fc96a4b5c309a054f847
+    checkpoint_ref: d4ac27a690a35c31453e84d4da88acc4d82617aa
     ativa: true
     modo: continuidade
     estado_fsm: EXEC
@@ -18,9 +18,9 @@ linhagens:
     - DEV-1
     - DEV-2
     - DEV-3
-    ultima_verificacao: status 1 · 1/7 gates aprovados
+    ultima_verificacao: 1 failed, 100 passed, 3 skipped in 3.08s
     next_issue: gate site
-    atualizado_em: '2026-10-13'
+    atualizado_em: '2026-10-14'
     pr: '#2'
     gestor: guardian
     spec: .igc-spec.yml
