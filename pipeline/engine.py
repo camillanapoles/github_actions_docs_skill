@@ -203,11 +203,11 @@ class CiIssuesAction(Action):
                                  "verificação de CI/issues requer gh + rede (roda no workflow gate-pipeline.yml)",
                                  started=started, addenda=addenda, metrics={"mode": "offline"})
         code, out, _ = _run(["gh", "run", "list", "--limit", "10",
-                             "--json", "databaseId,conclusion,workflowName"], ctx.root, timeout=120)
+                             "--json", "databaseId,conclusion,workflowName"], ctx.root, timeout=900)
         runs: list[dict[str, Any]] = json.loads(out) if code == 0 and out.strip() else []
         failures = [r for r in runs if r.get("conclusion") == "failure"]
         code2, out2, _ = _run(["gh", "issue", "list", "--state", "open",
-                               "--json", "number,title,labels"], ctx.root, timeout=120)
+                               "--json", "number,title,labels"], ctx.root, timeout=900)
         issues: list[dict[str, Any]] = json.loads(out2) if code2 == 0 and out2.strip() else []
         gate_issues = [i for i in issues
                        if any(str(l.get("name", "")).startswith("gate:") for l in i.get("labels", []))]

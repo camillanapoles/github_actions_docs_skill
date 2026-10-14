@@ -556,12 +556,25 @@ class SessionMemoryV21(SessionMemory):
                                f"EMIT sem contratação causal: ref='{ref}' (E5) — lacuna de auditoria",
                                metrics={"ref": ref}).close(started)
         self.wal_append("EMIT", classe, "efeito contratado", f"verificar {ref}", f"ref={ref}", ref[:12])
+        self._refaz_checkpoint()      # M4: contração E5 também deixa o CHECKPOINT coerente
         if debt_id:
             self.resolve_debt(debt_id, f"EMIT contratado: {ref}")
         return Envelope.of("igc.emit", "contract_emit", Status.SUCCESS,
                            f"EMIT {classe.value} contratado: {ref}",
                            metrics={"ref": ref, "debt_resolvido": debt_id or None},
                            checkpoint_ref=ref).close(started)
+
+    def _refaz_checkpoint(self) -> None:
+        """M4: qualquer append de fechamento recalcula o CHECKPOINT (wal_sha256 ≡ WAL).
+
+        Mantém `wal_append` puro (é ele que permite detectar adulteração em verify()),
+        mas garante que o ciclo nunca termine com o hash do WAL atrasado.
+        """
+        atual = self.read_checkpoint() or {}
+        sha = atual.get("sha") or self.git_head() or ""
+        estado = atual.get("state") or (self.state().value if self.state() else "EXEC")
+        if sha:
+            self.write_checkpoint(sha=sha, state=estado)
 
     def resolve_debt(self, debt_id: str, motivo: str) -> bool:
         """M5: débito resolvido por linha nova (nunca apagando histórico)."""
@@ -729,6 +742,7 @@ class SessionMemoryV21(SessionMemory):
         self.wal_append("CLOSE-GATE", EventClass.CONTINUE if fecha else EventClass.FIX,
                         f"auto-checagem Art. 12 (nota {nota})",
                         "closing_gate", ("CLOSE autorizado" if fecha else f"volta a EXEC: {pend}"))
+        self._refaz_checkpoint()      # M4: nenhum append fica depois do CHECKPOINT
         if not fecha:
             self.transition(State.EXEC, event="CLOSE-GATE→EXEC", classe=EventClass.FIX,
                             cause=f"nota {nota} < 9.5", action="corrigir pendências",

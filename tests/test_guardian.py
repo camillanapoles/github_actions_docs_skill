@@ -22,7 +22,16 @@ def g(tmp_path):
     shutil.copytree(ROOT / ".session", tmp_path / ".session")
     for nome in (".igc-profile.yml", ".igc-registry.yml", SPEC_FILE):
         shutil.copy(ROOT / nome, tmp_path / nome)
-    shutil.copytree(ROOT / ".ci", tmp_path / ".ci", ignore=shutil.ignore_patterns("*.sqlite3"))
+    # Artefato determinístico: o .ci/pipeline-state.json real é mutável (qualquer run local
+    # o sobrescreve), então o teste sintetiza os gates medidos — hermeticidade (PQMS).
+    (tmp_path / ".ci").mkdir(exist_ok=True)
+    medidos = [("tests", 0), ("capture", 0), ("conformity", 0), ("site", 2),
+               ("skill", 0), ("ci-issues", 0), ("release", 2)]
+    (tmp_path / ".ci/pipeline-state.json").write_text(json.dumps(
+        {"status": 2, "envelopes": [{"gate": g, "status": st, "direction": "retry" if st == 2
+                                     else ("continue" if st == 0 else "fix"),
+                                     "message": f"{g}: status {st}"} for g, st in medidos]},
+        ensure_ascii=False), encoding="utf-8")
     return Guardian(tmp_path)
 
 

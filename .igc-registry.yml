@@ -7,7 +7,7 @@ linhagens:
   github-actions-docs-skill:
     branch: arena/c91bd6a1-github-actions-docs-skill
     base_sha: 0ddafab815385d69ea8f70d93c3479daa7f50175
-    checkpoint_ref: bc63e47e00d7d756267f2aa619ee56f4b0124cb8
+    checkpoint_ref: 6f29680502bc3f61f1b43a69dcb8a13e9c209251
     ativa: true
     modo: continuidade
     estado_fsm: EXEC

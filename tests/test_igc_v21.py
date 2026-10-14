@@ -287,3 +287,13 @@ def test_art12_nota_abaixo_de_9_5_nao_fecha_e_volta_a_exec(mem):
     assert env.status == int(Status.ERROR_CONTENT) and env.metrics["nota"] < 9.5
     assert "verificacao_verde" in env.metrics["pendencias"]
     assert mem.state() is State.EXEC                       # retorna a EXEC, nunca CLOSE
+
+
+def test_M4_checkpoint_nao_fica_atrasado_apos_fechamento(mem):
+    """Retificação: closing_gate/contract_emit acrescentam ao WAL ⇒ CHECKPOINT é refeito."""
+    mem.write_checkpoint(sha="a" * 40, state="GATE")
+    mem.contract_emit(EventClass.CONTINUE, "run 1")
+    assert mem.read_checkpoint()["wal_sha256"] == mem.wal_hash()
+    mem.closing_gate(verificacao_verde=True, territorio_pruned=True, modo="continuidade")
+    assert mem.read_checkpoint()["wal_sha256"] == mem.wal_hash(), "M4: hash do WAL atrasado"
+    assert mem.read_checkpoint()["sha"] == "a" * 40 and mem.read_checkpoint()["state"] == "GATE"

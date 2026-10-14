@@ -65,3 +65,12 @@ pytest, jq, git, `gh` (autenticado), actionlint (só no CI: download bloqueado n
     (gate-pipeline) e por allowlist de `paths` (validate) para não reexecutar o pipeline (C2).
   - **DEV-3** — nomenclatura de branch `arena/*` em vez de `sessao/<id>/<slug>` (EV-6):
     declarado aqui, no profile e no registry.
+
+
+## Ordem do ciclo (invariante M4 operacional)
+
+`WAL appends → registry (D2) → write_checkpoint → medir (pytest, só leitura) →
+closing_gate → contract_emit → commit → push`. `closing_gate` e `contract_emit`
+acrescentam entradas ao WAL e por isso chamam `_refaz_checkpoint()`: nenhum append
+fica depois do CHECKPOINT. `wal_append` permanece puro — é isso que permite a
+`verify()` detectar adulteração (M4/T4).
