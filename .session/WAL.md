@@ -115,3 +115,4 @@ Nunca editar/apagar entrada — correção é entrada nova.
 | 2026-10-14T00:13:59+00:00 | AUDIT | CONTINUE | gestor único audita escopo global (spec) e pendências | audit(): registry + DEBT.md + gates medidos + sweep G5 | 14 débitos abertos (5 bloqueantes); gates vermelhos {'site': 2, 'release': 2} | - |
 | 2026-10-14T00:13:59+00:00 | EMIT-PREP ralf-38488943627@d01587755b73 | FIX | emissão autorizada para gate site | emit_guard (E2) | chave=ralf-38488943627@d01587755b73 | d01587755b73 |
 | 2026-10-14T00:14:00+00:00 | CI run 38488943627 (guardian) | FIX | execução do gate 'guardian' no CI | pipeline gate-driven + testes determinísticos | status 2 · 5/7 gates aprovados | d01587755b73 |
+| 2026-10-14T00:15:00+00:00 | CI run 38488943703 (pipeline) | FIX | execução do gate 'pipeline' no CI | pipeline gate-driven + testes determinísticos | status 1 · 2/7 gates aprovados | 2745a0a379a0 |
