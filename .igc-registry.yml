@@ -5,12 +5,12 @@ default_branch: main
 atualizado_em: '2026-10-13'
 linhagens:
   github-actions-docs-skill:
-    branch: arena/c91bd6a1-github-actions-docs-skill
+    branch: main
     base_sha: 0ddafab815385d69ea8f70d93c3479daa7f50175
-    checkpoint_ref: 347bd9ec8c6b010a25c74c83f63f16c721ca4f14
+    checkpoint_ref: 85eafdb363d0954441c2daba3b9a389557cf3eb4
     ativa: true
     modo: continuidade
-    estado_fsm: EMIT
+    estado_fsm: EXEC
     territorio: worktree único do runtime
     profile: .igc-profile.yml
     memoria: .session/
@@ -19,7 +19,7 @@ linhagens:
     - DEV-2
     - DEV-3
     - DEV-4
-    ultima_verificacao: status 1 · 2/7 gates aprovados
+    ultima_verificacao: status 2 · 5/7 gates aprovados
     next_issue: 'D26: 679 avisos mkdocs --strict (pós-merge)'
     atualizado_em: '2026-10-14'
     pr: '#2'

@@ -1,12 +1,12 @@
 {
-  "id": "igc.guardian:21b7fc4cb5",
+  "id": "igc.guardian:3ff58b0752",
   "blueprint": "gate-driven-bpmn/1",
-  "checkpoint_ref": "d01587755b73beb2633d5c68c113200af4772b02",
+  "checkpoint_ref": "85eafdb363d0954441c2daba3b9a389557cf3eb4",
   "gate": "igc.guardian",
   "action": "ralf",
   "status": 3,
   "status_label": "pending",
-  "message": "RALF completo: próximo passo = FIX 'gate site' (status 2 medido em .ci/pipeline-state.json); gates vermelhos ['site', 'release']; 14 débitos abertos",
+  "message": "RALF completo: próximo passo = FIX 'gate site' (status 2 medido em .ci/pipeline-state.json); gates vermelhos ['site', 'release']; 17 débitos abertos",
   "direction": "continue",
   "addenda": [
     {
@@ -32,7 +32,7 @@
           "site": 2,
           "release": 2
         },
-        "debitos_abertos": 14,
+        "debitos_abertos": 17,
         "sessoes_paralelas": [],
         "spec_erros": []
       },
@@ -43,15 +43,15 @@
         "spec_gate": "site"
       },
       "LOGGAR": {
-        "wal_entries": 108,
-        "wal_hash": "bc33e97d3cdb0456",
-        "checkpoint": "d01587755b73"
+        "wal_entries": 123,
+        "wal_hash": "cf33dc00b844c4dd",
+        "checkpoint": "85eafdb363d0"
       },
       "FECHAR": {
         "emissao_status": 0,
         "classe": "FIX",
-        "chave": "ralf-38488943627",
-        "checkpoint_ref": "d01587755b73beb2633d5c68c113200af4772b02",
+        "chave": "ralf-38490303538",
+        "checkpoint_ref": "85eafdb363d0954441c2daba3b9a389557cf3eb4",
         "idempotente": false
       }
     },
@@ -62,10 +62,10 @@
       "spec_gate": "site"
     },
     "gestor": "guardian",
-    "run_id": "38488943627",
+    "run_id": "38490303538",
     "critico": false
   },
-  "started_at": "2026-10-14T00:13:59+00:00",
-  "finished_at": "2026-10-14T00:13:59+00:00",
-  "duration_s": 0.036
+  "started_at": "2026-10-14T00:27:54+00:00",
+  "finished_at": "2026-10-14T00:27:54+00:00",
+  "duration_s": 0.051
 }
