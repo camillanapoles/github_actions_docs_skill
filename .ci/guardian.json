@@ -1,7 +1,7 @@
 {
-  "id": "igc.guardian:8164e73ec3",
+  "id": "igc.guardian:7e7e041c26",
   "blueprint": "gate-driven-bpmn/1",
-  "checkpoint_ref": "7221e0481dd6002ce901cd454d292ca1016eeda8",
+  "checkpoint_ref": "78658bb1d0e1662e0ff92563c5a86756666d1d25",
   "gate": "igc.guardian",
   "action": "ralf",
   "status": 3,
@@ -43,15 +43,15 @@
         "spec_gate": "site"
       },
       "LOGGAR": {
-        "wal_entries": 179,
-        "wal_hash": "37ea2ef15ac520a9",
-        "checkpoint": "7221e0481dd6"
+        "wal_entries": 183,
+        "wal_hash": "a2993eb49d3527dc",
+        "checkpoint": "78658bb1d0e1"
       },
       "FECHAR": {
         "emissao_status": 0,
         "classe": "FIX",
-        "chave": "ralf-39045665806",
-        "checkpoint_ref": "7221e0481dd6002ce901cd454d292ca1016eeda8",
+        "chave": "ralf-39067463430",
+        "checkpoint_ref": "78658bb1d0e1662e0ff92563c5a86756666d1d25",
         "idempotente": false
       }
     },
@@ -62,10 +62,10 @@
       "spec_gate": "site"
     },
     "gestor": "guardian",
-    "run_id": "39045665806",
+    "run_id": "39067463430",
     "critico": false
   },
-  "started_at": "2026-10-17T15:34:58+00:00",
-  "finished_at": "2026-10-17T15:34:58+00:00",
+  "started_at": "2026-10-17T20:37:07+00:00",
+  "finished_at": "2026-10-17T20:37:07+00:00",
   "duration_s": 0.05
 }
