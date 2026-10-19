@@ -6,21 +6,21 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/manage-your-work/close-inactive-issues
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Tutorials / Manage your work
 ---
 
-# Fechar questões inativas { #closing-inactive-issues }
+# Fechar questões inativas
 
 _Você pode usar o GitHub Actions para comentar ou fechar problemas inativos por um determinado período de tempo._
 
-## Introdução { #introduction }
+## Introdução
 
 Este tutorial demonstra como usar a [ação `actions/stale`](https://github.com/marketplace/actions/close-stale-issues) para comentar e fechar problemas que estiveram inativos por um determinado período de tempo. Por exemplo, você pode comentar se um problema está inativo por 30 dias para incentivar os participantes a agir. Em seguida, se nenhuma atividade adicional ocorrer após 14 dias, você poderá fechar a questão.
 
 No tutorial, primeiro, você criará um arquivo de fluxo de trabalho que usa a [ação `actions/stale`](https://github.com/marketplace/actions/close-stale-issues). Então, você personalizará o fluxo de trabalho para atender às suas necessidades.
 
-## Criar o fluxo de trabalho { #creating-the-workflow }
+## Criar o fluxo de trabalho
 
 1. Escolha um repositório onde você deseja aplicar este fluxo de trabalho de gerenciamento de projetos. Você pode usar um repositório existente ao qual você tem acesso de gravação ou criar um novo repositório. Para saber mais sobre como criar um repositório, confira [Criar um repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/creating-a-new-repository).
 
@@ -51,7 +51,7 @@ No tutorial, primeiro, você criará um arquivo de fluxo de trabalho que usa a [
              days-before-pr-stale: -1
              days-before-pr-close: -1
              repo-token: ${{ secrets.GITHUB_TOKEN }}
-            ```
+   ```
 
 4. Personalize os parâmetros no seu arquivo do fluxo de trabalho:
    * Altere o valor de `on.schedule` para determinar quando deseja executar esse fluxo de trabalho. No exemplo acima, o fluxo de trabalho será executado todos os dias à 1:30 UTC. Para saber mais sobre fluxos de trabalho agendados, confira [Eventos que disparam fluxos de trabalho](../../reference/workflows-and-actions/events-that-trigger-workflows.md#schedule).
@@ -63,7 +63,7 @@ No tutorial, primeiro, você criará um arquivo de fluxo de trabalho que usa a [
 
 5. Faça o commit do arquivo de fluxo de trabalho para o branch padrão do seu repositório. Para saber mais, confira [Criar novos arquivos](https://docs.github.com/pt/repositories/working-with-files/managing-files/creating-new-files).
 
-## Resultados esperados { #expected-results }
+## Resultados esperados
 
 Com base no parâmetro `schedule` (por exemplo, todos os dias à 1h30 UTC), o fluxo de trabalho encontrará os problemas inativos durante o período de tempo especificado e adicionará o comentário e o rótulo especificados. Além disso, o seu fluxo de trabalho fechará quaisquer problemas etiquetados anteriormente se nenhuma atividade adicional tiver ocorrido pelo período de tempo especificado.
 
@@ -74,7 +74,7 @@ Você pode visualizar o histórico de execução do fluxo de trabalho para revis
 
 Este fluxo de trabalho só irá etiquetar e/ou fechar 30 problemas de cada vez para evitar exceder um limite de taxa. Você pode definir isso com a configuração `operations-per-run`. Para obter mais informações, confira a [documentação da ação `actions/stale`](https://github.com/marketplace/actions/close-stale-issues).
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 * Para descobrir outras coisas que você pode fazer com a ação `actions/stale`, como fechar solicitações de pull inativas, ignorar problemas com determinados rótulos ou marcos ou verificar apenas problemas com determinados rótulos, confira a [documentação da ação `actions/stale`](https://github.com/marketplace/actions/close-stale-issues).
 * [Search GitHub](https://github.com/search?q=%22uses%3A+actions%2Fstale%22\&type=code) para obter exemplos de fluxos de trabalho usando essa ação.

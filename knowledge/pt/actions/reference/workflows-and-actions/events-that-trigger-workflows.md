@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/events-that-trigger-workflows
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Reference / Workflows and actions
 ---
 
-# Eventos que disparam fluxos de trabalho { #events-that-trigger-workflows }
+# Eventos que disparam fluxos de trabalho
 
 _Você pode configurar seus fluxos de trabalho para serem executados quando uma atividade GitHub específica ocorrer, em um horário agendado ou quando ocorrer um evento fora dele GitHub ._
 
-## Sobre eventos que acionam fluxos de trabalho { #about-events-that-trigger-workflows }
+## Sobre eventos que acionam fluxos de trabalho
 
 Os acionadores de fluxo de trabalho são eventos que fazem com que um fluxo de trabalho seja executado. Para obter mais informações sobre como usar gatilhos de fluxo de trabalho, confira [Acionando um fluxo de trabalho](../../how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow.md).
 
@@ -288,7 +288,7 @@ on:
     types: [created, deleted]
 ```
 
-### `issue_comment` apenas em problemas ou em solicitações de pull { #issuecomment-on-issues-only-or-pull-requests-only }
+### `issue_comment` apenas em problemas ou em solicitações de pull
 
 O evento `issue_comment` ocorre em comentários sobre problemas e solicitações de pull. Você pode usar a propriedade `github.event.issue.pull_request` em um condicional para realizar uma ação diferente, dependendo se o objeto de gatilho foi um problema ou uma solicitação de pull.
 
@@ -482,7 +482,7 @@ Executa o fluxo de trabalho quando ocorre uma atividade em uma pull request no r
 
 Observe que o `GITHUB_SHA` desse evento é o último commit de mesclagem do branch de mesclagem da pull request. Caso deseje obter a ID de commit do último commit no branch principal da pull request, use `github.event.pull_request.head.sha`. Para obter mais informações sobre ramificações de mesclagem, consulte [Solicitações de pull](https://docs.github.com/pt/pull-requests/reference/pull-requests#pull-request-refs-and-merge-branches).
 
-### Como o ramo de mesclagem afeta seu fluxo de trabalho { #how-the-merge-branch-affects-your-workflow }
+### Como o ramo de mesclagem afeta seu fluxo de trabalho
 
 Para solicitações de pull abertas e mescláveis, os fluxos de trabalho acionados pelo evento `pull_request` definem o `GITHUB_REF` para o branch de mesclagem. Como o `actions/checkout` usa o `GITHUB_REF` por padrão, ele faz o checkout do branch de mesclagem. Os testes de CI são executados no resultado mesclado, não apenas no branch principal:
 
@@ -513,7 +513,7 @@ jobs:
       - run: echo 'A review from octo-team was requested'
 ```
 
-### Executar o fluxo de trabalho de `pull_request` com base no branch de cabeçalho ou no branch base de uma pull request { #running-your-pullrequest-workflow-based-on-the-head-or-base-branch-of-a-pull-request }
+### Executar o fluxo de trabalho de `pull_request` com base no branch de cabeçalho ou no branch base de uma pull request
 
 Você pode usar o filtro `branches` ou `branches-ignore` para configurar seu fluxo de trabalho para que ele seja executado somente em solicitações de pull direcionadas a branches específicos. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onpull_requestpull_request_targetbranchesbranches-ignore).
 
@@ -540,7 +540,7 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-                ```
+    ```
 
 Para executar um trabalho com base no nome do branch de cabeçalho da solicitação de pull (em vez do nome do branch base da solicitação de pull), use o contexto `github.head_ref` em um condicional. Por exemplo, este fluxo de trabalho será executado sempre que uma solicitação de pull for aberta, mas o trabalho `run_if` só será executado se o cabeçalho da solicitação de pull for um branch cujo nome começa com `releases/`:
 
@@ -557,7 +557,7 @@ jobs:
       - run: echo "The head of this PR starts with 'releases/'"
 ```
 
-### Executar o fluxo de trabalho de `pull_request` com base em arquivos alterados em uma solicitação de pull { #running-your-pullrequest-workflow-based-on-files-changed-in-a-pull-request }
+### Executar o fluxo de trabalho de `pull_request` com base em arquivos alterados em uma solicitação de pull
 
 Também é possível configurar o fluxo de trabalho para ser executado quando uma pull request alterar arquivos específicos. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore).
 
@@ -582,9 +582,9 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-                ```
+    ```
 
-### Executar o fluxo de trabalho de `pull_request` quando ocorrer uma mesclagem de solicitação de pull { #running-your-pullrequest-workflow-when-a-pull-request-merges }
+### Executar o fluxo de trabalho de `pull_request` quando ocorrer uma mesclagem de solicitação de pull
 
 Quando uma pull request faz merge, a pull request é automaticamente fechada. Para executar um fluxo de trabalho quando uma solicitação de pull surgir, use o tipo de evento `pull_request``closed` juntamente com uma condicional que verifica o valor `merged` do evento. Por exemplo, o fluxo de trabalho a seguir será executado sempre que uma pull request for fechada. O trabalho `if_merged` só será executado se a pull request também tiver sido mesclada.
 
@@ -603,13 +603,13 @@ jobs:
         echo The PR was merged
 ```
 
-#### Fluxos de trabalho em repositórios com fork { #workflows-in-forked-repositories }
+#### Fluxos de trabalho em repositórios com fork
 
 Por padrão, os fluxos de trabalho não são executados em repositórios com fork. É preciso habilitar o GitHub Actions na guia **Actions** do repositório com fork.
 
 Com exceção do `GITHUB_TOKEN`, os segredos não são transmitidos para o executor quando um fluxo de trabalho é disparado de um repositório com fork. O `GITHUB_TOKEN` tem permissões somente leitura em solicitações de pull de repositórios bifurcados. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md).
 
-#### Eventos de pull request para repositórios bifurcados { #pull-request-events-for-forked-repositories }
+#### Eventos de pull request para repositórios bifurcados
 
 Para solicitações de pull de um repositório bifurcado para o repositório base, GitHub envia o `pull_request`, `issue_comment`, , `pull_request_review_comment`e `pull_request_target``pull_request_review`eventos para o repositório base. Nenhum evento de solicitação de pull ocorre no repositório com fork.
 
@@ -620,7 +620,7 @@ Para pull requests de um repositório com forks para um repositório privado, os
 !!! note
     Os fluxos de trabalho disparados por Dependabot solicitações de pull são tratados como se fossem de um repositório bifurcado e também estão sujeitos a essas restrições.
 
-## `pull_request_comment` (usar `issue_comment`) { #pullrequestcomment-use-issuecomment }
+## `pull_request_comment` (usar `issue_comment`)
 
 Para executar o fluxo de trabalho quando um comentário em uma solicitação de pull (não em um diff de uma solicitação de pull) é criado, editado ou excluído, use o evento [`issue_comment`](#issue_comment). Para as atividades relacionadas a avaliações de solicitação de pull ou a comentários de avaliações de uma solicitação de pull, use os eventos [`pull_request_review`](#pull_request_review) ou [`pull_request_review_comment`](#pull_request_review_comment).
 
@@ -643,7 +643,7 @@ on:
     types: [edited, dismissed]
 ```
 
-### Executando um fluxo de trabalho quando uma pull request é aprovada { #running-a-workflow-when-a-pull-request-is-approved }
+### Executando um fluxo de trabalho quando uma pull request é aprovada
 
 Para executar o fluxo de trabalho quando uma solicitação de pull tiver sido aprovada, dispare o fluxo de trabalho com o tipo `submitted` de evento `pull_request_review` e verifique o estado de revisão com a propriedade `github.event.review.state`. Por exemplo, este fluxo de trabalho será executado sempre que uma revisão de solicitação de pull for enviada, mas o trabalho `approved` só será executado se a revisão enviada for uma revisão de aprovação:
 
@@ -660,13 +660,13 @@ jobs:
       - run: echo "This PR was approved"
 ```
 
-#### Fluxos de trabalho em repositórios com fork { #workflows-in-forked-repositories-1 }
+#### Fluxos de trabalho em repositórios com fork
 
 Por padrão, os fluxos de trabalho não são executados em repositórios com fork. É preciso habilitar o GitHub Actions na guia **Actions** do repositório com fork.
 
 Com exceção do `GITHUB_TOKEN`, os segredos não são transmitidos para o executor quando um fluxo de trabalho é disparado de um repositório com fork. O `GITHUB_TOKEN` tem permissões somente leitura em solicitações de pull de repositórios bifurcados. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md).
 
-#### Eventos de pull request para repositórios bifurcados { #pull-request-events-for-forked-repositories-1 }
+#### Eventos de pull request para repositórios bifurcados
 
 Para solicitações de pull de um repositório bifurcado para o repositório base, GitHub envia o `pull_request`, `issue_comment`, , `pull_request_review_comment`e `pull_request_target``pull_request_review`eventos para o repositório base. Nenhum evento de solicitação de pull ocorre no repositório com fork.
 
@@ -696,13 +696,13 @@ on:
     types: [created, deleted]
 ```
 
-#### Fluxos de trabalho em repositórios com fork { #workflows-in-forked-repositories-2 }
+#### Fluxos de trabalho em repositórios com fork
 
 Por padrão, os fluxos de trabalho não são executados em repositórios com fork. É preciso habilitar o GitHub Actions na guia **Actions** do repositório com fork.
 
 Com exceção do `GITHUB_TOKEN`, os segredos não são transmitidos para o executor quando um fluxo de trabalho é disparado de um repositório com fork. O `GITHUB_TOKEN` tem permissões somente leitura em solicitações de pull de repositórios bifurcados. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md).
 
-#### Eventos de pull request para repositórios bifurcados { #pull-request-events-for-forked-repositories-2 }
+#### Eventos de pull request para repositórios bifurcados
 
 Para solicitações de pull de um repositório bifurcado para o repositório base, GitHub envia o `pull_request`, `issue_comment`, , `pull_request_review_comment`e `pull_request_target``pull_request_review`eventos para o repositório base. Nenhum evento de solicitação de pull ocorre no repositório com fork.
 
@@ -724,7 +724,7 @@ on:
     types: [assigned, opened, synchronize, reopened]
 ```
 
-### Executar o fluxo de trabalho de `pull_request_target` com base no branch de cabeçalho ou no branch base de uma pull request { #running-your-pullrequesttarget-workflow-based-on-the-head-or-base-branch-of-a-pull-request }
+### Executar o fluxo de trabalho de `pull_request_target` com base no branch de cabeçalho ou no branch base de uma pull request
 
 Você pode usar o filtro `branches` ou `branches-ignore` para configurar seu fluxo de trabalho para que ele seja executado somente em solicitações de pull direcionadas a branches específicos. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onpull_requestpull_request_targetbranchesbranches-ignore).
 
@@ -751,7 +751,7 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-                ```
+    ```
 
 Para executar um trabalho com base no nome do branch de cabeçalho da solicitação de pull (em vez do nome do branch base da solicitação de pull), use o contexto `github.head_ref` em um condicional. Por exemplo, este fluxo de trabalho será executado sempre que uma solicitação de pull for aberta, mas o trabalho `run_if` só será executado se o cabeçalho da solicitação de pull for um branch cujo nome começa com `releases/`:
 
@@ -768,7 +768,7 @@ jobs:
       - run: echo "The head of this PR starts with 'releases/'"
 ```
 
-### Executar o fluxo de trabalho de `pull_request_target` com base em arquivos alterados em uma solicitação de pull { #running-your-pullrequesttarget-workflow-based-on-files-changed-in-a-pull-request }
+### Executar o fluxo de trabalho de `pull_request_target` com base em arquivos alterados em uma solicitação de pull
 
 Você pode usar o filtro `paths` ou `paths-ignore` para configurar o fluxo de trabalho para ser executado quando uma solicitação de pull alterar arquivos específicos. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore).
 
@@ -793,9 +793,9 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-                ```
+    ```
 
-### Executar o fluxo de trabalho de `pull_request_target` quando ocorrer uma mesclagem de solicitação de pull { #running-your-pullrequesttarget-workflow-when-a-pull-request-merges }
+### Executar o fluxo de trabalho de `pull_request_target` quando ocorrer uma mesclagem de solicitação de pull
 
 Quando uma pull request faz merge, a pull request é automaticamente fechada. Para executar um fluxo de trabalho quando uma solicitação de pull surgir, use o tipo de evento `pull_request_target``closed` juntamente com uma condicional que verifica o valor `merged` do evento. Por exemplo, o fluxo de trabalho a seguir será executado sempre que uma pull request for fechada. O trabalho `if_merged` só será executado se a pull request também tiver sido mesclada.
 
@@ -836,7 +836,7 @@ on:
 !!! note
     Quando um evento de webhook `push` aciona uma execução de fluxo de trabalho, o campo "enviado por" da interface do usuário de ações mostra a conta do pusher e não o autor ou o confirmador. No entanto, se as alterações forem enviadas para um repositório usando autenticação SSH com uma chave de implantação, o campo "enviado por" será o administrador do repositório que verificou a chave de implantação quando ela foi adicionada a um repositório.
 
-### Executando o fluxo de trabalho apenas quando um push para branches específicos ocorre { #running-your-workflow-only-when-a-push-to-specific-branches-occurs }
+### Executando o fluxo de trabalho apenas quando um push para branches específicos ocorre
 
 Você pode usar o filtro `branches` ou `branches-ignore` para configurar seu fluxo de trabalho para ser executado somente quando branches específicos forem enviados por push. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onpushbranchestagsbranches-ignoretags-ignore).
 
@@ -860,9 +860,9 @@ on:
           - 'releases/**'
         paths:
           - '**.js'
-                ```
+    ```
 
-### Executando o fluxo de trabalho somente quando ocorre um push de tags específicas { #running-your-workflow-only-when-a-push-of-specific-tags-occurs }
+### Executando o fluxo de trabalho somente quando ocorre um push de tags específicas
 
 Você pode usar o filtro `tags` ou `tags-ignore` para configurar seu fluxo de trabalho para ser executado somente quando marcas específicas forem enviadas por push. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onpushbranchestagsbranches-ignoretags-ignore).
 
@@ -875,7 +875,7 @@ on:
       - v1.**
 ```
 
-### Executando seu fluxo de trabalho apenas quando um push afeta arquivos específicos { #running-your-workflow-only-when-a-push-affects-specific-files }
+### Executando seu fluxo de trabalho apenas quando um push afeta arquivos específicos
 
 Você pode usar o filtro `paths` ou `paths-ignore` para configurar o fluxo de trabalho para ser executado quando ocorrer um push para arquivos específicos. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore).
 
@@ -905,7 +905,7 @@ on:
     jobs:
         job_name:
             if: $true
-                ```
+    ```
 
 Executa o fluxo de trabalho quando ocorre atividade relacionada a GitHub Packages em seu repositório. Para obter mais informações, consulte [GitHub Packages Documentação](https://docs.github.com/pt/packages).
 
@@ -1078,7 +1078,7 @@ jobs:
 
 Você pode usar o [crontab guru](https://crontab.guru/) para ajudar a gerar a sintaxe cron e confirmar a hora em que ela será executada. Para ajudar você a começar, há também uma lista de [exemplos do crontab guru](https://crontab.guru/examples.html).
 
-### `actor` para fluxos de trabalho agendados { #actor-for-scheduled-workflows }
+### `actor` para fluxos de trabalho agendados
 
 Determinados eventos de repositório alteram a `actor` associada ao fluxo de trabalho. Por exemplo, um usuário que altera o branch padrão do repositório, o que altera o branch no qual os fluxos de trabalho agendados são executados, torna-se `actor` para esses fluxos de trabalho agendados.
 
@@ -1180,7 +1180,7 @@ Para permitir que um fluxo de trabalho seja disparado manualmente, configure o e
 on: workflow_dispatch
 ```
 
-### Fornecendo entradas { #providing-inputs }
+### Fornecendo entradas
 
 É possível configurar as propriedades de entrada definidas por personalização, os valores-padrão de entrada e as entradas obrigatórias para o evento diretamente no seu fluxo de trabalho. Ao disparar o evento, você pode fornecer a `ref` e qualquer `inputs`. Quando o fluxo de trabalho é executado, você pode acessar os valores de entrada no contexto `inputs`. Para obter mais informações, confira [Referência de contextos](contexts.md).
 
@@ -1277,7 +1277,7 @@ on:
       - completed
 ```
 
-### Executando um fluxo de trabalho com base na conclusão de outro fluxo de trabalho { #running-a-workflow-based-on-the-conclusion-of-another-workflow }
+### Executando um fluxo de trabalho com base na conclusão de outro fluxo de trabalho
 
 A execução de um fluxo de trabalho é acionada independentemente da conclusão do fluxo de trabalho anterior. Caso deseje executar um trabalho ou uma etapa com base no resultado do fluxo de trabalho disparado, use uma condição com a propriedade `github.event.workflow_run.conclusion`. Por exemplo, este fluxo de trabalho será executado sempre que um fluxo de trabalho chamado "Build" for concluído, mas o trabalho `on-success` só será executado se o fluxo de trabalho "Build" for bem-sucedido, e o trabalho `on-failure` só será executado se o fluxo de trabalho "Build" falhar:
 
@@ -1300,7 +1300,7 @@ jobs:
       - run: echo 'The triggering workflow failed'
 ```
 
-### Limitando seu fluxo de trabalho para ser executado com base em branches { #limiting-your-workflow-to-run-based-on-branches }
+### Limitando seu fluxo de trabalho para ser executado com base em branches
 
 Você pode usar o filtro `branches` ou `branches-ignore` para especificar os branches em que o fluxo de trabalho de gatilho precisa ser executado para disparar o fluxo de trabalho. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](workflow-syntax.md#onworkflow_runbranchesbranches-ignore). Por exemplo, um fluxo de trabalho com o gatilho a seguir só será executado quando o fluxo de trabalho chamado `Build` for executado em um branch chamado `canary`.
 
@@ -1312,7 +1312,7 @@ on:
     branches: [canary]
 ```
 
-### Usando dados do fluxo de trabalho acionador { #using-data-from-the-triggering-workflow }
+### Usando dados do fluxo de trabalho acionador
 
 Você pode acessar a payload do evento [`workflow_run` que](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#workflow_run) corresponde ao fluxo de trabalho que disparou seu fluxo de trabalho. Por exemplo, se o fluxo de trabalho de disparo gerar artefatos, um fluxo de trabalho disparado com o evento `workflow_run` poderá acessar esses artefatos.
 

@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/workflows-and-actions/workflows
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Concepts / Workflows and actions
 ---
 
-# Fluxos de trabalho { #workflows }
+# Fluxos de trabalho
 
 _Obtenha uma visão geral de alto nível dos fluxos de GitHub Actions trabalho, incluindo gatilhos, sintaxe e recursos avançados._
 
-## Sobre fluxos de trabalho { #about-workflows }
+## Sobre fluxos de trabalho
 
 Um **fluxo de trabalho** é um processo automatizado configurável que executará um ou mais trabalhos. Os fluxos de trabalho são definidos por um arquivo YAML verificado no seu repositório e será executado quando acionado por um evento no repositório, ou eles podem ser acionados manualmente ou de acordo com um cronograma definido.
 
@@ -24,7 +24,7 @@ Os fluxos de trabalho são definidos no diretório `.github/workflows` de um rep
 * Como implantar seu aplicativo sempre que uma versão for criada
 * Como adicionar um rótulo sempre que um novo problema for aberto
 
-## Noções básicas do fluxo de trabalho { #workflow-basics }
+## Noções básicas do fluxo de trabalho
 
 Um fluxo de trabalho precisa conter os seguintes componentes básicos:
 
@@ -36,7 +36,7 @@ Para obter mais informações sobre esses componentes básicos, confira [Noçõe
 
 ![Diagrama de um evento que dispara o Executor 1 para executar o Trabalho 1, que dispara o Executor 2 para executar o Trabalho 2. Cada um dos trabalhos é dividido em várias etapas.](https://docs.github.com/assets/images/help/actions/overview-actions-simple.png)
 
-## Gatilhos do fluxo de trabalho { #workflow-triggers }
+## Gatilhos do fluxo de trabalho
 
 Os acionadores de fluxo de trabalho são eventos que fazem com que um fluxo de trabalho seja executado. Esses eventos podem ser:
 
@@ -59,6 +59,6 @@ Cada execução de fluxo de trabalho usará a versão do fluxo de trabalho prese
 
 Para saber mais, confira [Acionando um fluxo de trabalho](../../how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow.md).
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 Para criar seu primeiro fluxo de trabalho, confira [Criando um exemplo de fluxo de trabalho](../../tutorials/create-an-example-workflow.md).

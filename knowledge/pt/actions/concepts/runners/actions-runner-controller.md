@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/runners/actions-runner-controller
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Concepts / Runners
 ---
 
-# Controlador de Ações Runner { #actions-runner-controller }
+# Controlador de Ações Runner
 
 _Você pode hospedar seus próprios executores e personalizar o ambiente usado para executar trabalhos em seus GitHub Actions fluxos de trabalho._
 
-## Sobre o Actions Runner Controller { #about-actions-runner-controller }
+## Sobre o Actions Runner Controller
 
 Actions Runner Controller (ARC) é um operador de Kubernetes que orquestra e dimensiona executores auto-hospedados para GitHub Actions. Para obter mais informações, confira [Padrão do operador](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) da documentação do Kubernetes.
 
@@ -41,7 +41,7 @@ O diagrama a seguir ilustra a arquitetura do modo de conjunto de escalonamento a
 10. Ao longo da execução do trabalho, o runner comunica continuamente os logs e o status da execução do trabalho para o GitHub Actions Serviço.
 11. Quando o runner conclui seu trabalho com êxito, o Controlador de EphemeralRunner verifica com o serviço GitHub Actions se o runner pode ser excluído. Se puder, o RunnerSet Efêmero excluirá o executor.
 
-## Componentes Actions Runner Controller { #actions-runner-controller-components }
+## Componentes Actions Runner Controller
 
 O ARC consiste em um conjunto de recursos, alguns dos quais criados especificamente para ele. A implantação do ARC aplica esses recursos a um cluster de Kubernetes. Uma vez aplicado, ele cria um conjunto de Pods que contêm os contêineres dos executores auto-hospedados. Com o ARC, GitHub pode tratar esses contêineres de executores como executores auto-hospedados e atribuir jobs a eles conforme necessário.
 
@@ -53,7 +53,7 @@ Cada recurso implantado pelo ARC recebe um nome formado por estes elementos:
 !!! note
     Cada versão do Kubernetes têm limites de comprimento diferentes para os nomes dos recursos. O limite do comprimento do nome do recurso é calculado adicionando o comprimento do nome da instalação ao comprimento do sufixo de identificação do recurso. Se o nome do recurso for maior que o comprimento reservado, você receberá uma mensagem de erro.
 
-### Recursos implementados por `gha-runner-scale-set-controller` { #resources-deployed-by-gha-runner-scale-set-controller }
+### Recursos implementados por `gha-runner-scale-set-controller`
 
 | Modelo | Tipo de recurso | Nome | Comprimento reservado | Descrição | Observações |
 | --- | --- | --- | --- | --- | --- |
@@ -68,7 +68,7 @@ Cada recurso implantado pelo ARC recebe um nome formado por estes elementos:
 | `manager_listener_role.yaml` | Função | INSTALLATION_NAME-gha-rs-controller-listener | 26 | Função do ouvinte | Esse recurso é sempre criado. |
 | `manager_listener_role_binding.yaml ` | RoleBinding | INSTALLATION_NAME-gha-rs-controller-listener | 26 | RoleBinding para o ouvinte | Esse recurso é sempre criado e associa a função de ouvinte à conta de serviço, que é criada por `serviceaccount.yaml` ou configurada com `values.yaml`. |
 
-### Recursos implementados por `gha-runner-scale-set` { #resources-deployed-by-gha-runner-scale-set }
+### Recursos implementados por `gha-runner-scale-set`
 
 | Modelo | Tipo de recurso | Nome | Comprimento reservado | Descrição | Observações |
 | --- | --- | --- | --- | --- | --- |
@@ -80,7 +80,7 @@ Cada recurso implantado pelo ARC recebe um nome formado por estes elementos:
 | `kube_mode_role.yaml` | Função | INSTALLATION_NAME-gha-rs-kube-modo | 17 | Função que fornece as permissões necessárias para o gancho | Esse recurso é criado quando o modo do contêiner é definido como "kubernetes" e `template.spec.serviceAccount` não é fornecido. |
 | `kube_mode_serviceaccount.yaml` | ServiceAccount | INSTALLATION_NAME-gha-rs-kube-modo | 17 | Conta de serviço associada ao pod do executor. | Esse recurso é criado quando o modo do contêiner é definido como "kubernetes" e `template.spec.serviceAccount` não é fornecido. |
 
-### Sobre recursos personalizados { #about-custom-resources }
+### Sobre recursos personalizados
 
 O ARC consiste em várias CRDs (definições de recursos personalizados). Para obter mais informações sobre recursos personalizados, confira [Recursos personalizados](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) na documentação do Kubernetes. Você pode encontrar a lista de definições de recursos personalizados usadas para ARC nas definições de esquema de API a seguir.
 
@@ -91,7 +91,7 @@ Como os recursos personalizados são extensões da API do Kubernetes, eles não 
 
 Depois que os recursos personalizados forem instalados, você poderá implantar o ARC no cluster do Kubernetes. Para saber mais sobre como implantar o ARC, confira [Como implantar conjuntos de dimensionamento de executores com o Actions Runner Controller](../../how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets.md).
 
-### Sobre a imagem de contêiner do executor { #about-the-runner-container-image }
+### Sobre a imagem de contêiner do executor
 
 GitHub mantém uma [imagem mínima de contêiner do runner](https://github.com/actions/runner/pkgs/container/actions-runner). Uma nova imagem será publicada com cada versão de binários do executor. A imagem mais recente terá a versão de binários do executor e `latest` como tags.
 
@@ -101,7 +101,7 @@ Você pode encontrar a definição da imagem de executor do [ARC neste Dockerfil
 
 Por exemplo, se a linha `FROM` no Dockerfile da imagem do executor for `mcr.microsoft.com/dotnet/runtime-deps:8.0-jammy AS build`, você poderá encontrar a imagem base em [`https://github.com/dotnet/dotnet-docker/blob/main/src/runtime-deps/8.0/jammy/amd64/Dockerfile`](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime-deps/8.0/jammy/amd64/Dockerfile).
 
-#### Criando sua própria imagem de runner { #creating-your-own-runner-image }
+#### Criando sua própria imagem de runner
 
 Você pode criar sua própria imagem do runner que atenda às suas necessidades. A imagem do executor deve atender às condições a seguir.
 
@@ -154,7 +154,7 @@ USER runner
 ```
 
 ```
-## Software instalado na imagem do ARC runner { #software-installed-in-the-arc-runner-image }
+## Software instalado na imagem do ARC runner
 
 A [imagem do executor](https://github.com/actions/runner/pkgs/container/actions-runner) ARC é agrupada com o seguinte software:
 
@@ -164,7 +164,7 @@ A [imagem do executor](https://github.com/actions/runner/pkgs/container/actions-
 
 Para obter mais informações, confira [Dockerfile da imagem do executor do ARC](https://github.com/actions/runner/blob/main/images/Dockerfile) no repositório Ações.
 
-## Ativos e lançamentos { #assets-and-releases }
+## Ativos e lançamentos
 
 O ARC é lançado como dois gráficos do Helm e uma imagem de contêiner. Os gráficos do Helm são publicados apenas como pacotes do Open Container Initiative (OCI). O ARC não fornece tarballs ou repositórios do Helm por meio de GitHub Pages.
 
@@ -176,7 +176,7 @@ Você pode encontrar as versões mais recentes dos gráficos helm da ARC e da im
 
 A imagem de runner com suporte é disponibilizada como uma imagem de contêiner separada, que você pode encontrar em [`actions-runner`](https://github.com/actions/runner/pkgs/container/actions-runner) no GitHub Packages.
 
-## Aviso legal { #legal-notice }
+## Aviso legal
 
 Partes foram adaptadas do <https://github.com/actions/actions-runner-controller/> de acordo com a licença Apache-2.0:
 
@@ -196,7 +196,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 Se você for novo no ARC, consulte [Comece a usar o Actions Runner Controller](../../tutorials/use-actions-runner-controller/get-started.md) para experimentar as noções básicas.
 

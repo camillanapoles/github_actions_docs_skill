@@ -6,11 +6,11 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-runners
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Tutorials
 ---
 
-# Migrando de executores auto-hospedados para executores hospedados no GitHub { #migrating-from-self-hosted-runners-to-github-hosted-runners }
+# Migrando de executores auto-hospedados para executores hospedados no GitHub
 
 _Saiba como avaliar sua infraestrutura atual de CI e migrar fluxos de trabalho de executores auto-hospedados para executores GitHubhospedados._
 
@@ -18,7 +18,7 @@ Você pode executar fluxos de trabalho em GitHubexecutores hospedados ou auto-ho
 
 Este tutorial mostra como avaliar o uso atual dos executores e, em seguida, migrar os fluxos de trabalho de executores auto-hospedados para executores GitHubhospedados de maneira eficiente.
 
-## 1. Avaliar sua infraestrutura de CI atual { #1-assess-your-current-ci-infrastructure }
+## 1. Avaliar sua infraestrutura de CI atual
 
 A migração de executores auto-hospedados para GitHubexecutores maiores hospedados começa com uma avaliação minuciosa da sua infraestrutura atual de CI. Ao dedicar tempo para corresponder cuidadosamente às especificações e ambientes, você minimizará o tempo gasto corrigindo problemas ao começar a executar fluxos de trabalho em diferentes executores.
 
@@ -28,7 +28,7 @@ A migração de executores auto-hospedados para GitHubexecutores maiores hospeda
 4. Identifique quais workflows atualmente têm como alvo executores auto-hospedados e por quê. Por exemplo, nas GitHub Actions métricas de uso, use a guia **Trabalhos** e filtre por rótulo de executor (como `self-hosted` ou um rótulo personalizado) para ver quais repositórios e trabalhos estão usando esse rótulo. Se você precisar validar arquivos de fluxo de trabalho específicos, também poderá usar a pesquisa de código para encontrar arquivos de fluxo de trabalho que fazem referência `runs-on: self-hosted` ou outros rótulos auto-hospedados.
 5. Identifique fluxos de trabalho que acessam recursos de rede privada (por exemplo, registros de pacotes internos, APIs privadas, bancos de dados ou serviços locais), pois eles podem exigir configuração de rede adicional.
 
-## 2. Mapeie seus requisitos de processamento para tipos de runner hospedados em GitHub { #2-map-your-processing-requirements-to-github-hosted-runner-types }
+## 2. Mapeie seus requisitos de processamento para tipos de runner hospedados em GitHub
 
 GitHub oferece runners gerenciados em vários sistemas operacionais, Linux, Windows e macOS, com opções de máquinas com GPU. Confira [Referência de executores avançados](../reference/runners/larger-runners.md).
 
@@ -36,7 +36,7 @@ GitHub oferece runners gerenciados em vários sistemas operacionais, Linux, Wind
 2. Anote todos os executores auto-hospedados para os quais não haja um executor GitHubhospedado adequado.
 3. Exclua todos os fluxos de trabalho que devem continuar a ser executados em executores auto-hospedados de seus planos de migração.
 
-## 3. Estimar os requisitos de capacidade { #3-estimate-capacity-requirements }
+## 3. Estimar os requisitos de capacidade
 
 Antes de provisionar runners hospedados em GitHub, estime quanta capacidade de computação seus fluxos de trabalho precisarão. A revisão do uso atual do executor auto-hospedado ajuda você a escolher tamanhos de executor apropriados, definir limites de simultaneidade e prever possíveis alterações de custo.
 
@@ -72,7 +72,7 @@ Antes de provisionar runners hospedados em GitHub, estime quanta capacidade de c
 
 Seu plano de capacidade orientará quantos executores provisionar, quais tipos de computador usar e como configurar grupos de executores e políticas nas próximas etapas.
 
-## 4. Configurar grupos de executores e políticas { #4-configure-runner-groups-and-policies }
+## 4. Configurar grupos de executores e políticas
 
 Depois de estimar suas necessidades de capacidade, configure os grupos de executores e as políticas de acesso para que seus executores GitHubhospedados estejam disponíveis para as organizações e fluxos de trabalho corretos.
 
@@ -86,7 +86,7 @@ Configurar grupos de executores antes de provisionar executores ajuda a garantir
 
 3. Examine as configurações de política para garantir que os executores sejam usados apenas pelos fluxos de trabalho pretendidos. Por exemplo, restringir o uso a repositórios específicos ou impedir que fluxos de trabalho não confiáveis acessem tipos de computador mais poderosos.
 
-## 5. Configurar executores GitHubhospedados { #5-set-up-github-hosted-runners }
+## 5. Configurar executores GitHubhospedados
 
 Em seguida, configure seus executores GitHubhospedados com base nos tipos de computador e na capacidade que você identificou anteriormente.
 
@@ -103,11 +103,11 @@ Em seguida, configure seus executores GitHubhospedados com base nos tipos de com
 
 5. Opcionalmente, configure a rede privada se os executores precisarem acessar recursos internos. Confira [Rede privada com executores hospedados pelo GitHub](../concepts/runners/private-networking.md).
 
-### Configurar opções de conectividade privada { #configure-private-connectivity-options }
+### Configurar opções de conectividade privada
 
 Se os fluxos de trabalho precisarem de acesso a recursos privados (por exemplo, registros de pacote internos, APIs privadas, bancos de dados ou serviços locais), escolha uma abordagem que atenda aos requisitos de rede e segurança.
 
-#### Configurar a Rede Privada do Azure { #configure-azure-private-networking }
+#### Configurar a Rede Privada do Azure
 
 Execute executores GitHubhospedados dentro de uma Rede Virtual do Azure (VNET) para obter acesso seguro aos recursos internos.
 
@@ -121,19 +121,19 @@ Para obter instruções detalhadas, consulte:
 * [Configurando rede privada para executores hospedados no GitHub na sua organização](https://docs.github.com/pt/organizations/managing-organization-settings/configuring-private-networking-for-github-hosted-runners-in-your-organization)
 * [Configurando a rede privada para executores hospedados por GitHub em sua empresa](https://docs.github.com/pt/enterprise-cloud@latest/admin/configuring-settings/configuring-private-networking-for-hosted-compute-products/configuring-private-networking-for-github-hosted-runners-in-your-enterprise)
 
-#### Conectar usando uma rede de sobreposição WireGuard { #connect-using-a-wireguard-overlay-network }
+#### Conectar usando uma rede de sobreposição WireGuard
 
 Se a rede privada do Azure não for aplicável (por exemplo, como sua rede de destino é local ou em outra nuvem), você pode usar uma sobreposição VPN, como o WireGuard, para fornecer acesso em nível de rede a recursos privados.
 
 Para obter instruções e exemplos detalhados, consulte [Usar o WireGuard para criar uma sobreposição de rede](../how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network/connect-with-wireguard.md).
 
-#### Usar o OIDC com um gateway de API para acesso confiável a recursos privados { #use-oidc-with-an-api-gateway-for-trusted-access-to-private-resources }
+#### Usar o OIDC com um gateway de API para acesso confiável a recursos privados
 
 Se você não precisar que o runner entre na sua rede privada, poderá usar o OIDC para estabelecer acesso confiável e temporário a um serviço exposto por meio de um gateway de API. Essa abordagem pode reduzir a necessidade de segredos de longa duração e limita o acesso à rede aos pontos de extremidade específicos que seu fluxo de trabalho precisa.
 
 Para obter instruções e exemplos detalhados, consulte [Usando um gateway de API com o OIDC](../how-tos/manage-runners/github-hosted-runners/connect-to-a-private-network/connect-with-oidc.md).
 
-## 6. Atualizar fluxos de trabalho para usar os novos executores { #6-update-workflows-to-use-the-new-runners }
+## 6. Atualizar fluxos de trabalho para usar os novos executores
 
 Depois que seus executores GitHubhospedados estiverem configurados, atualize seus arquivos de fluxo de trabalho para direcioná-los a esses executores.
 
@@ -150,13 +150,13 @@ Depois que seus executores GitHubhospedados estiverem configurados, atualize seu
            uses: actions/checkout@v6
          - name: Build project
            run: make build
-            ```
+   ```
 
 3. Verifique se há referências fixas a rótulos auto-hospedados (como `self-hosted`, `linux-x64`, ou rótulos personalizados) e substitua-as pelos rótulos de executor GitHubhospedados apropriados.
 
 4. Teste cada fluxo de trabalho atualizado para garantir que ele seja executado corretamente nos novos executores. Monitore quaisquer problemas relacionados a diferenças de ambiente ou dependências ausentes.
 
-## 7. Remover executores auto-hospedados não utilizados { #7-remove-unused-self-hosted-runners }
+## 7. Remover executores auto-hospedados não utilizados
 
 Depois que seus fluxos de trabalho tiverem sido atualizados e testados em executores hospedados em GitHub, remova os executores auto-hospedados que não forem mais necessários. Isso impede que os trabalhos sejam acidentalmente direcionados para a infraestrutura desatualizada. Confira [Remover executores auto-hospedados](../how-tos/manage-runners/self-hosted-runners/remove-runners.md).
 

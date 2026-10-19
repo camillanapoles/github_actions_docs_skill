@@ -6,11 +6,11 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/workflows-and-actions/deployment-environments
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Concepts / Workflows and actions
 ---
 
-# Ambientes de implantação { #deployment-environments }
+# Ambientes de implantação
 
 _Você pode criar e implementar em ambientes diferentes._
 

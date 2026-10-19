@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-what-workflows-do/pass-job-outputs
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Write workflows / Choose what workflows do
 ---
 
-# Passando informações entre tarefas { #passing-information-between-jobs }
+# Passando informações entre tarefas
 
 _Você pode definir saídas para passar informações de um trabalho para outro._
 
-## Como definir e usar saídas de trabalho { #defining-and-using-job-outputs }
+## Como definir e usar saídas de trabalho
 
 1. Abra o arquivo de fluxo de trabalho que contém o trabalho do qual você deseja obter saídas.
 
@@ -32,7 +32,7 @@ _Você pode definir saídas para passar informações de um trabalho para outro.
            run: echo "test=hello" >> "$GITHUB_OUTPUT"
          - id: step2
            run: echo "test=world" >> "$GITHUB_OUTPUT"
-            ```
+   ```
 
 3. Em um trabalho separado onde deseja acessar essas saídas, use a sintaxe `jobs.<job_id>.needs` para torná-lo dependente do trabalho original. Por exemplo, o seguinte trabalho verifica se `job1` está concluído antes da execução:
 
@@ -42,7 +42,7 @@ _Você pode definir saídas para passar informações de um trabalho para outro.
      job2:
        runs-on: ubuntu-latest
        needs: job1
-            ```
+   ```
 
 4. Para acessar as saídas de um trabalho dependente, use a sintaxe `needs.<job_id>.outputs.<output_name>`. Por exemplo, o seguinte trabalho acessa as saídas `output1` e `output2` definidas em `job1`:
 
@@ -57,9 +57,9 @@ _Você pode definir saídas para passar informações de um trabalho para outro.
              OUTPUT1: ${{needs.job1.outputs.output1}}
              OUTPUT2: ${{needs.job1.outputs.output2}}
            run: echo "$OUTPUT1 $OUTPUT2"
-            ```
+   ```
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 Para saber mais sobre saídas de trabalho e o contexto de `needs`, confira as seguintes seções de [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idoutputs):
 

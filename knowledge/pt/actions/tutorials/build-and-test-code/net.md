@@ -6,27 +6,27 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/build-and-test-code/net
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Tutorials / Build and test code
 ---
 
-# Criar e testar .NET { #building-and-testing-net }
+# Criar e testar .NET
 
 _Saiba como criar um fluxo de trabalho de integração contínua (CI) para criar e testar seu projeto .NET._
 
-## Introdução { #introduction }
+## Introdução
 
 Este guia mostra como criar, testar e publicar um pacote no .NET.
 
 Os executores hospedados do GitHub têm um cache de ferramentas com software pré-instalado, que inclui o SDK do .NET Core. Para ver a lista completa de programas de software atualizados e as versões pré-instaladas do SDK do .NET Core, consulte [software instalado nos executores hospedados do GitHub](../../concepts/runners/github-hosted-runners.md).
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Você já deve estar familiarizado com a sintaxe YAML e como ela é usada com GitHub Actions. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../reference/workflows-and-actions/workflow-syntax.md).
 
 Recomendamos que você tenha um entendimento básico do .NET Core SDK. Para obter mais informações, confira [Introdução ao .NET](https://dotnet.microsoft.com/learn).
 
-## Usando um modelo de fluxo de trabalho do .NET { #using-a-net-workflow-template }
+## Usando um modelo de fluxo de trabalho do .NET
 
 Para uma introdução rápida, adicione um modelo de fluxo de trabalho ao diretório `.github/workflows` do repositório.
 
@@ -50,13 +50,13 @@ GitHubfornece um modelo de fluxo de trabalho para .NET que deve funcionar para a
 
    O `dotnet.yml` arquivo de fluxo de trabalho é adicionado ao `.github/workflows` diretório do repositório.
 
-## Especificando uma versão do .NET { #specifying-a-net-version }
+## Especificando uma versão do .NET
 
 Para usar uma versão pré-instalada do SDK do .NET Core em um executor hospedado do GitHub, use a ação `setup-dotnet`. Essa ação localiza uma versão específica do .NET no cache de ferramentas em cada executor e adiciona os binários necessários a `PATH`. Estas alterações persistirão para o resto do trabalho.
 
 A ação `setup-dotnet` é a maneira recomendada de usar o .NET com GitHub Actions, pois garante comportamento consistente em diferentes executores e versões diferentes do .NET. Se você estiver usando um executor auto-hospedado, precisará instalar o .NET e adicioná-lo a `PATH`. Para obter mais informações, consulte a ação [`setup-dotnet`](https://github.com/marketplace/actions/setup-net-core-sdk).
 
-### Usar múltiplas versões do .NET { #using-multiple-net-versions }
+### Usar múltiplas versões do .NET
 
 ```yaml
 name: dotnet package
@@ -82,7 +82,7 @@ jobs:
         run: dotnet --version
 ```
 
-### Usar uma versão específica do .NET { #using-a-specific-net-version }
+### Usar uma versão específica do .NET
 
 Você pode configurar seu trabalho para usar uma versão específica do .NET, como `6.0.22`. Como alternativa, você pode usar a sintaxe da versão semântica para obter a última versão secundária. Este exemplo usa a versão mais recente do .NET 6.
 
@@ -94,7 +94,7 @@ Você pode configurar seu trabalho para usar uma versão específica do .NET, co
         dotnet-version: '6.x'
 ```
 
-## Instalar dependências { #installing-dependencies }
+## Instalar dependências
 
 Os executores hospedados do GitHub têm o gerenciador de pacotes NuGet instalado. Você pode usar o dotnet CLI para instalar dependências do registro do pacote NuGet antes de criar e testar seu código. Por exemplo, o YAML abaixo instala o pacote `Newtonsoft`.
 
@@ -109,7 +109,7 @@ steps:
   run: dotnet add package Newtonsoft.Json --version 12.0.1
 ```
 
-### Memorizar dependências { #caching-dependencies }
+### Memorizar dependências
 
 Você pode armazenar em cache dependências do NuGet para fluxos de trabalho futuros usando a entrada opcional `cache`. Por exemplo, o YAML abaixo armazena em cache a pasta NuGet `global-packages` e, em seguida, instala o pacote `Newtonsoft`. Uma segunda entrada opcional, `cache-dependency-path`, pode ser usada para especificar o caminho para um arquivo de dependência: `packages.lock.json`.
 
@@ -130,7 +130,7 @@ steps:
 !!! note
     Dependendo do número de dependências, pode ser mais rápido usar o cache de dependências. "Os desenvolvedores de projetos com muitas dependências grandes poderão observar um aumento no desempenho, pois isso reduz o tempo necessário para fazer o download." Os projetos com menos dependências podem não ver um aumento significativo no desempenho e até mesmo ver um ligeiro diminuir devido à forma como o NuGet instala dependências armazenadas em cache. O desempenho varia de projeto para projeto.
 
-## Criar e testar seu código { #building-and-testing-your-code }
+## Criar e testar seu código
 
 Você pode usar os mesmos comandos usados localmente para criar e testar seu código. Este exemplo demonstra como usar `dotnet build` e `dotnet test` em um trabalho:
 
@@ -149,7 +149,7 @@ steps:
   run: dotnet test --no-build
 ```
 
-## Empacotar dados do fluxo de trabalho como artefatos { #packaging-workflow-data-as-artifacts }
+## Empacotar dados do fluxo de trabalho como artefatos
 
 Após a conclusão de um fluxo de trabalho, você poderá fazer o upload dos artefatos resultantes para análise. Por exemplo, é possível que você precise salvar os arquivos de registro, os despejos de núcleo, os resultados de teste ou capturas de tela. O exemplo a seguir demonstra como você pode usar a ação `upload-artifact` para carregar os resultados do teste.
 
@@ -187,7 +187,7 @@ jobs:
           if: ${{ always() }}
 ```
 
-## Publicar nos registros do pacote { #publishing-to-package-registries }
+## Publicar nos registros do pacote
 
 É possível configurar o seu fluxo de trabalho para publicar o pacote .NET em um registro de pacotes quando os testes de CI são aprovados. Você pode usar segredos do repositório para armazenar quaisquer tokens ou credenciais necessárias para publicar seu binário. O exemplo a seguir cria e publica um pacote para GitHub Packages usando `dotnet core cli`.
 

@@ -6,21 +6,21 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/workflow-commands
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Reference / Workflows and actions
 ---
 
-# Comandos de fluxo de trabalho para o GitHub Actions { #workflow-commands-for-github-actions }
+# Comandos de fluxo de trabalho para o GitHub Actions
 
 _Você pode usar comandos do fluxo de trabalho ao executar comandos do shell em um fluxo de trabalho ou no código de uma ação._
 
-## Sobre os comandos do fluxo de trabalho { #about-workflow-commands }
+## Sobre os comandos do fluxo de trabalho
 
 As ações podem comunicar-se com a máquina do executor para definir as variáveis de ambiente, valores de saída usados por outras ações, adicionar mensagens de depuração aos registros de saída e outras tarefas.
 
 A maioria dos comandos do fluxo de trabalho usa o comando `echo` em um formato específico, enquanto outros são chamados pela gravação em um arquivo. Para obter mais informações, confira [Arquivos de ambiente](#environment-files).
 
-### Exemplo de um comando de fluxo de trabalho { #example-of-a-workflow-command }
+### Exemplo de um comando de fluxo de trabalho
 
 ```bash copy
 echo "::workflow-command parameter1={data},parameter2={data}::{command value}"
@@ -36,7 +36,7 @@ Write-Output "::workflow-command parameter1={data},parameter2={data}::{command v
     [!WARNING]
     Se estiver usando um prompt de comando, omita os caracteres de aspas duplas (`"`) ao usar comandos do fluxo de trabalho.
 
-## Usar comandos do fluxo de trabalho para acessar funções do kit de ferramentas { #using-workflow-commands-to-access-toolkit-functions }
+## Usar comandos do fluxo de trabalho para acessar funções do kit de ferramentas
 
 O [actions/toolkit](https://github.com/actions/toolkit) inclui várias funções que podem ser executadas como comandos do fluxo de trabalho. Use a sintaxe `::` para executar os comandos do fluxo de trabalho no arquivo YAML. Em seguida, esses comandos são enviados ao executor por meio do `stdout`.
 
@@ -46,7 +46,7 @@ Por exemplo, em vez de usar código para criar uma anotação de erro, como abai
 core.error('Missing semicolon', {file: 'app.js', startLine: 1})
 ```
 
-### Exemplo: como criar uma anotação de erro { #example-creating-an-annotation-for-an-error }
+### Exemplo: como criar uma anotação de erro
 
 Use o comando `error` no fluxo de trabalho para criar a mesma anotação de erro:
 
@@ -82,7 +82,7 @@ A tabela a seguir mostra quais funções do conjunto de ferramentas estão dispo
 | `core.startGroup`            | `group`                                                         |
 | `core.warning`               | `warning`                                                       |
 
-## Definindo uma mensagem de depuração { #setting-a-debug-message }
+## Definindo uma mensagem de depuração
 
 Imprime uma mensagem de erro no log. Você precisa criar um segredo chamado `ACTIONS_STEP_DEBUG` com o valor `true` para ver as mensagens de depuração definidas por esse comando no log. Para saber mais, confira [Habilitando o log de depuração](../../how-tos/monitor-workflows/enable-debug-logging.md).
 
@@ -90,7 +90,7 @@ Imprime uma mensagem de erro no log. Você precisa criar um segredo chamado `ACT
 ::debug::{message}
 ```
 
-### Exemplo: definição de uma mensagem de depuração { #example-setting-a-debug-message }
+### Exemplo: definição de uma mensagem de depuração
 
 ```bash copy
 echo "::debug::Set the Octocat variable"
@@ -100,7 +100,7 @@ echo "::debug::Set the Octocat variable"
 Write-Output "::debug::Set the Octocat variable"
 ```
 
-## Configurando uma mensagem de aviso { #setting-a-notice-message }
+## Configurando uma mensagem de aviso
 
 Cria uma mensagem de aviso e a imprime no registro. Esta mensagem criará uma anotação, que pode associar a mensagem a um arquivo em particular no repositório. Opcionalmente, sua mensagem pode especificar uma posição dentro do arquivo.
 
@@ -117,7 +117,7 @@ Cria uma mensagem de aviso e a imprime no registro. Esta mensagem criará uma an
 | `line`      | Número de linha, começando em 1  | Não         | `1`       |
 | `endLine`   | Número final da linha            | Não         | `1`       |
 
-### Exemplo: definição de uma mensagem de aviso { #example-setting-a-notice-message }
+### Exemplo: definição de uma mensagem de aviso
 
 ```bash copy
 echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
@@ -127,7 +127,7 @@ echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
 Write-Output "::notice file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
 ```
 
-## Configurar uma mensagem de aviso { #setting-a-warning-message }
+## Configurar uma mensagem de aviso
 
 Cria uma mensagem de aviso e a imprime no log. Esta mensagem criará uma anotação, que pode associar a mensagem a um arquivo em particular no repositório. Opcionalmente, sua mensagem pode especificar uma posição dentro do arquivo.
 
@@ -144,7 +144,7 @@ Cria uma mensagem de aviso e a imprime no log. Esta mensagem criará uma anotaç
 | `line`      | Número de linha, começando em 1  | Não         | `1`       |
 | `endLine`   | Número final da linha            | Não         | `1`       |
 
-### Exemplo: definição de uma mensagem de aviso { #example-setting-a-warning-message }
+### Exemplo: definição de uma mensagem de aviso
 
 ```bash copy
 echo "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
@@ -154,7 +154,7 @@ echo "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing s
 Write-Output "::warning file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
 ```
 
-## Configurar uma mensagem de erro { #setting-an-error-message }
+## Configurar uma mensagem de erro
 
 Cria uma mensagem de erro e a imprime no log. Esta mensagem criará uma anotação, que pode associar a mensagem a um arquivo em particular no repositório. Opcionalmente, sua mensagem pode especificar uma posição dentro do arquivo.
 
@@ -171,7 +171,7 @@ Cria uma mensagem de erro e a imprime no log. Esta mensagem criará uma anotaç�
 | `line`      | Número de linha, começando em 1  | Não         | `1`       |
 | `endLine`   | Número final da linha            | Não         | `1`       |
 
-### Exemplo: definição de uma mensagem de erro { #example-setting-an-error-message }
+### Exemplo: definição de uma mensagem de erro
 
 ```bash copy
 echo "::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
@@ -181,7 +181,7 @@ echo "::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing sem
 Write-Output "::error file=app.js,line=1,col=5,endColumn=7,title=YOUR-TITLE::Missing semicolon"
 ```
 
-## Agrupar linhas de log { #grouping-log-lines }
+## Agrupar linhas de log
 
 Cria um grupo expansível no registro. Para criar um grupo, use o comando `group` e especifique um `title`. Qualquer coisa que você imprimir no log entre os comandos `group` e `endgroup` estará aninhada dentro de uma entrada expansível no log.
 
@@ -190,7 +190,7 @@ Cria um grupo expansível no registro. Para criar um grupo, use o comando `group
 ::endgroup::
 ```
 
-### Exemplo: agrupamento de linhas de log { #example-grouping-log-lines }
+### Exemplo: agrupamento de linhas de log
 
 ```yaml copy
 jobs:
@@ -218,7 +218,7 @@ jobs:
 
 ![Captura de tela do log da etapa de fluxo de trabalho. A segunda linha, "Meu título", é um grupo expandido. A próxima linha, "Dentro do grupo", está indentada abaixo.](https://docs.github.com/assets/images/help/actions/actions-log-group.png)
 
-## Como mascarar um valor em um registro { #masking-a-value-in-a-log }
+## Como mascarar um valor em um registro
 
 ```text copy
 ::add-mask::{value}
@@ -226,7 +226,7 @@ jobs:
 
 Mascarar um valor evita que uma string ou variável seja impressa no log. Cada palavra mascarada separada por um espaço em branco é substituída pelo caractere `*`. Use uma variável de ambiente ou uma cadeia de caracteres para o `value` da máscara. Esse processo deve ser feito uma vez por valor por trabalho. Quando você mascara um valor, ele é tratado como um segredo e será redigido no executor. Por exemplo, depois de mascarar um valor, você não poderá definir esse valor como uma saída.
 
-### Exemplo: mascaramento de uma cadeia de caracteres { #example-masking-a-string }
+### Exemplo: mascaramento de uma cadeia de caracteres
 
 Ao imprimir `"Mona The Octocat"` no log, você verá `"***"`.
 
@@ -241,7 +241,7 @@ Write-Output "::add-mask::Mona The Octocat"
 !!! warning
     Registre o segredo com ‘add-mask’ antes de enviá-lo aos logs de build ou usá-lo em comandos de outro fluxo de trabalho.
 
-### Exemplo: mascaramento de uma variável de ambiente { #example-masking-an-environment-variable }
+### Exemplo: mascaramento de uma variável de ambiente
 
 Ao imprimir a variável `MY_NAME` ou o valor `"Mona The Octocat"` no log, você verá `"***"` em vez de `"Mona The Octocat"`.
 
@@ -267,7 +267,7 @@ jobs:
         run: Write-Output "::add-mask::$env:MY_NAME"
 ```
 
-### Exemplo: mascarar uma saída gerada em um único trabalho { #example-masking-a-generated-output-within-a-single-job }
+### Exemplo: mascarar uma saída gerada em um único trabalho
 
 Se você não precisar passar seu segredo de um trabalho para outro, poderá:
 
@@ -311,11 +311,11 @@ jobs:
           Write-Output "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"
 ```
 
-### Exemplo: mascarar e passar um segredo entre trabalhos ou fluxos de trabalho { #example-masking-and-passing-a-secret-between-jobs-or-workflows }
+### Exemplo: mascarar e passar um segredo entre trabalhos ou fluxos de trabalho
 
 Se você quiser passar um segredo mascarado entre trabalhos ou fluxos de trabalho, deverá armazená-lo em um repositório e recuperá-lo no trabalho ou fluxo de trabalho subsequente.
 
-#### Instalação { #setup }
+#### Instalação
 
 1. Configure um repositório secreto para armazenar o segredo que você gerará durante o fluxo de trabalho. Por exemplo, Vault.
 2. Gere uma chave para leitura e gravação nesse repositório secreto. Armazene a chave como um segredo do repositório. No fluxo de trabalho no exemplo a seguir, o nome do segredo é `SECRET_STORE_CREDENTIALS`. Para saber mais, confira [Usar segredos em ações do GitHub](../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
@@ -399,7 +399,7 @@ jobs:
         echo "We retrieved our masked secret: $Retrieved_Secret"
 ```
 
-## Parar e iniciar os comandos no fluxo de trabalho { #stopping-and-starting-workflow-commands }
+## Parar e iniciar os comandos no fluxo de trabalho
 
 Para de processar quaisquer comandos de fluxo de trabalho. Esse comando especial permite fazer o registro do que você desejar sem executar um comando do fluxo de trabalho acidentalmente. Por exemplo, é possível interromper o registro para exibir um script completo com comentários.
 
@@ -416,7 +416,7 @@ Para interromper o processamento de comandos do fluxo de trabalho, transmita um 
 ::{endtoken}::
 ```
 
-### Exemplo: interrupção e inicialização de comandos do fluxo de trabalho { #example-stopping-and-starting-workflow-commands }
+### Exemplo: interrupção e inicialização de comandos do fluxo de trabalho
 
 ```yaml copy
 jobs:
@@ -448,7 +448,7 @@ jobs:
           Write-Output '::warning:: This is a warning again, because stop-commands has been turned off.'
 ```
 
-## Enviar valores para as ações anterior e posterior { #sending-values-to-the-pre-and-post-actions }
+## Enviar valores para as ações anterior e posterior
 
 Você pode criar variáveis de ambiente para compartilhamento com as ações `pre:` ou `post:` do fluxo de trabalho gravando no arquivo localizado em `GITHUB_STATE`. Por exemplo, você pode criar um arquivo com a ação `pre:`, transmitir a localização do arquivo para a ação `main:` e usar a ação `post:` para excluir o arquivo. Como alternativa, você pode criar um arquivo com a ação `main:`, transmitir a localização do arquivo para a ação `post:` e usar a ação `post:` para excluir o arquivo.
 
@@ -473,7 +473,7 @@ Em seguida, a variável `STATE_processID` fica disponível exclusivamente para o
 console.log("The running PID from the main action is: " + process.env.STATE_processID);
 ```
 
-## Arquivos de ambiente { #environment-files }
+## Arquivos de ambiente
 
 Durante a execução de um fluxo de trabalho, o executor gera arquivos temporários que podem ser usados para executar certas ações. O caminho para esses arquivos pode ser acessado e editado usando as variáveis de ambiente padrão do GitHub. Confira [Referência de variáveis](variables.md#default-environment-variables). Você precisará usar a codificação UTF-8 ao escrever para esses arquivos para garantir o processamento adequado dos comandos. Vários comandos podem ser escritos no mesmo arquivo, separados por novas linhas.
 Para usar variáveis de ambiente em uma GitHub Action, crie ou modifique arquivos `.env` usando comandos específicos do GitHub Actions.
@@ -520,7 +520,7 @@ steps:
           - shell: powershell
             run: |
               "mypath" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-                ```
+    ```
 
     As versões 6 e superior do PowerShell Core (`shell: pwsh`) usam UTF-8 por padrão. Por exemplo:
 
@@ -532,9 +532,9 @@ steps:
           - shell: pwsh
             run: |
               "mypath" >> $env:GITHUB_PATH
-                ```
+    ```
 
-## Configurar uma variável de ambiente { #setting-an-environment-variable }
+## Configurar uma variável de ambiente
 
 !!! note
     Para evitar problemas, é uma boa prática tratar as variáveis de ambiente como com diferenciação de maiúsculas e minúsculas, independentemente do comportamento do sistema operacional e do shell que você está usando.
@@ -547,13 +547,13 @@ echo "{environment_variable_name}={value}" >> "$GITHUB_ENV"
 
         ```powershell copy
   "{environment_variable_name}={value}" >> $env:GITHUB_ENV
-        ```
+  ```
 
 * Como usar o PowerShell versão 5.1 e inferior:
 
         ```powershell copy
   "{environment_variable_name}={value}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-        ```
+  ```
 
 Disponibilize uma variável de ambiente para todas as etapas posteriores em um trabalho de fluxo de trabalho definindo ou atualizando a variável de ambiente e gravando isso no arquivo de ambiente `GITHUB_ENV`. A etapa que cria ou atualiza a variável de ambiente não tem acesso ao novo valor, mas todos os passos subsequentes em um trabalho terão acesso.
 
@@ -562,7 +562,7 @@ Não é possível substituir o valor das variáveis de ambiente padrão chamadas
 !!! note
     Devido a restrições de segurança, `GITHUB_ENV` não pode ser usado para definir a variável de ambiente `NODE_OPTIONS`.
 
-### Exemplo de gravação de uma variável de ambiente em `GITHUB_ENV` { #example-of-writing-an-environment-variable-to-githubenv }
+### Exemplo de gravação de uma variável de ambiente em `GITHUB_ENV`
 
 ```yaml copy
 steps:
@@ -588,7 +588,7 @@ steps:
       Write-Output "$env:action_state" # This will output 'yellow'
 ```
 
-### Strings de linha múltipla { #multiline-strings }
+### Strings de linha múltipla
 
 Para strings multilinha, você pode usar um delimitador com a seguinte sintaxe.
 
@@ -601,7 +601,7 @@ Para strings multilinha, você pode usar um delimitador com a seguinte sintaxe.
 !!! warning
     Confira se o delimitador que você está usando não ocorre em uma linha separada dentro do valor. Se o valor for completamente arbitrário, você não deverá usar esse formato. Em vez disso, grave o valor em um arquivo.
 
-#### Exemplo de uma cadeia de caracteres de várias linhas { #example-of-a-multiline-string }
+#### Exemplo de uma cadeia de caracteres de várias linhas
 
 Este exemplo usa `EOF` como delimitador e define a variável de ambiente `JSON_RESPONSE` como o valor da resposta `curl`.
 
@@ -629,7 +629,7 @@ steps:
     shell: pwsh
 ```
 
-## Definir um parâmetro de saída { #setting-an-output-parameter }
+## Definir um parâmetro de saída
 
 Define o parâmetro de saída de uma etapa. Observe que a etapa precisará de um `id` a ser definido para recuperar o valor de saída mais tarde. Você pode definir valores de saída de várias linhas com a mesma técnica usada na seção [Cadeias de caracteres de várias linhas](workflow-commands.md#multiline-strings) para definir variáveis de ambiente de várias linhas.
 
@@ -641,7 +641,7 @@ echo "{name}={value}" >> "$GITHUB_OUTPUT"
 "{name}=value" >> $env:GITHUB_OUTPUT
 ```
 
-### Exemplo de definição de um parâmetro de saída { #example-of-setting-an-output-parameter }
+### Exemplo de definição de um parâmetro de saída
 
 Este exemplo demonstra como definir o parâmetro de saída `SELECTED_COLOR` e recuperá-lo mais tarde:
 
@@ -668,7 +668,7 @@ Este exemplo demonstra como definir o parâmetro de saída `SELECTED_COLOR` e re
         run: Write-Output "The selected color is $env:SELECTED_COLOR"
 ```
 
-## Adicionando um resumo de trabalho { #adding-a-job-summary }
+## Adicionando um resumo de trabalho
 
 ```bash copy
 echo "{markdown content}" >> $GITHUB_STEP_SUMMARY
@@ -684,7 +684,7 @@ Os resumos de trabalho dão suporte ao [GitHub Flavored Markdown](https://github
 
 Quando um trabalho é concluído, os resumos de todas as etapas de um trabalho são agrupados em um único resumo de trabalho e são mostrados na página de resumo da execução do fluxo de trabalho. Se vários trabalhos gerarem resumos, os resumos do trabalho serão ordenados pelo tempo de conclusão do trabalho.
 
-### Exemplo de adição de um resumo de trabalho { #example-of-adding-a-job-summary }
+### Exemplo de adição de um resumo de trabalho
 
 ```bash copy
 echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
@@ -696,11 +696,11 @@ echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
 
 ![Captura de tela da página de resumo de uma execução de fluxo de trabalho. Em "resumo de exemplo", está "Olá, mundo!" e um emoji de foguete.](https://docs.github.com/assets/images/help/actions/actions-job-summary-simple-example.png)
 
-### Conteúdo de Markdown de várias linhas { #multiline-markdown-content }
+### Conteúdo de Markdown de várias linhas
 
 Para conteúdo de Markdown de várias linhas, você pode usar `>>` para acrescentar continuamente o conteúdo para a etapa atual. A cada operação de acréscimo, um caractere de nova linha é adicionado automaticamente.
 
-#### Exemplo de conteúdo Markdown de várias linhas { #example-of-multiline-markdown-content }
+#### Exemplo de conteúdo Markdown de várias linhas
 
 ```yaml
 - name: Generate list using Markdown
@@ -722,11 +722,11 @@ Para conteúdo de Markdown de várias linhas, você pode usar `>>` para acrescen
     "- How about a third one?" >> $env:GITHUB_STEP_SUMMARY
 ```
 
-### Substituir resumos de trabalho { #overwriting-job-summaries }
+### Substituir resumos de trabalho
 
 Para limpar todo o conteúdo da etapa atual, você pode usar `>` para substituir qualquer conteúdo adicionado anteriormente no Bash ou remover `-Append` no PowerShell
 
-#### Exemplo de substituição de resumos de trabalho { #example-of-overwriting-job-summaries }
+#### Exemplo de substituição de resumos de trabalho
 
 ```yaml
 - name: Overwrite Markdown
@@ -742,11 +742,11 @@ Para limpar todo o conteúdo da etapa atual, você pode usar `>` para substituir
     "There was an error, we need to clear the previous Markdown with some new content." >> $env:GITHUB_STEP_SUMMARY
 ```
 
-### Removendo resumos de trabalho { #removing-job-summaries }
+### Removendo resumos de trabalho
 
 Para remover completamente um resumo da etapa atual, o arquivo que `GITHUB_STEP_SUMMARY` faz referência pode ser excluído.
 
-#### Exemplo de remoção de resumos de trabalho { #example-of-removing-job-summaries }
+#### Exemplo de remoção de resumos de trabalho
 
 ```yaml
 - name: Delete all summary content
@@ -764,15 +764,15 @@ Para remover completamente um resumo da etapa atual, o arquivo que `GITHUB_STEP_
 
 Depois que uma etapa for concluída, os resumos de trabalho serão carregados e as etapas subsequentes não poderão modificar o conteúdo do Markdown carregado anteriormente. Os resumos mascaram automaticamente todos os segredos que podem ter sido adicionados acidentalmente. Se um resumo de trabalho contiver informações confidenciais que devem ser excluídas, você poderá excluir toda a execução do fluxo de trabalho para remover todos os resumos de trabalho. Para saber mais, confira [Excluir a execução de um fluxo de trabalho](../../how-tos/manage-workflow-runs/delete-a-workflow-run.md).
 
-### Limites e isolamento de etapa { #step-isolation-and-limits }
+### Limites e isolamento de etapa
 
 Os resumos de trabalho são isolados entre as etapas e cada etapa é restrita a um tamanho máximo de 1MiB. O isolamento é imposto entre as etapas para que um Markdown potencialmente malformado de uma única etapa não possa interromper a renderização do Markdown para as etapas subsequentes. Se mais de 1MiB de conteúdo for adicionado a uma etapa, o upload da etapa falhará e uma anotação de erro será criada. Os problemas de upload de resumos de trabalho não afetam o status geral de uma etapa ou de um trabalho. No máximo 20 resumos de trabalho das etapas são exibidos por trabalho.
 
-## Adicionar um caminho do sistema { #adding-a-system-path }
+## Adicionar um caminho do sistema
 
 Insere um diretório antes da variável `PATH` do sistema e o disponibiliza automaticamente para todas as ações posteriores do trabalho atual. A ação atualmente em execução não pode acessar a variável de caminho atualizada. Para ver os caminhos atualmente definidos para seu trabalho, use `echo "$PATH"` em uma etapa ou uma ação.
 
-### Exemplo de adição de um caminho do sistema { #example-of-adding-a-system-path }
+### Exemplo de adição de um caminho do sistema
 
 Este exemplo demonstra como adicionar o diretório `$HOME/.local/bin` do usuário a `PATH`:
 
@@ -786,7 +786,7 @@ Este exemplo demonstra como adicionar o diretório `$env:HOMEPATH/.local/bin` do
 "$env:HOMEPATH/.local/bin" | Out-File -FilePath "$env:GITHUB_PATH" -Append
 ```
 
-## Declarando artefatos de fluxo de trabalho { #declaring-workflow-artifacts }
+## Declarando artefatos de fluxo de trabalho
 
 Declare arquivos ou referências de OCI como artefatos de fluxo de trabalho escrevendo uma declaração por linha no arquivo de `GITHUB_ARTIFACTS` ambiente. Cada etapa grava em um arquivo novo por etapa; o caminho é exclusivo para essa etapa.
 
@@ -825,7 +825,7 @@ Para declarar uma referência de OCI:
 "oci://ghcr.io/octocat/myapp:1.0.0@sha256:914b38d45a65e4263a179d9c2b09cc04dcbcaa8257fa85100cf42f9a3b408cfb" >> $env:GITHUB_ARTIFACTS
 ```
 
-## Lendo artefatos de fluxo de trabalho { #reading-workflow-artifacts }
+## Lendo artefatos de fluxo de trabalho
 
 Leia os metadados de artefato de fluxo de trabalho agregado declarados por etapas anteriores no trabalho atual do `GITHUB_ARTIFACTS_LIST` arquivo de ambiente. Esse arquivo é somente leitura e é atualizado pelo executor após a conclusão de cada etapa. Ele contém um objeto JSON codificado em UTF-8 com a seguinte estrutura:
 

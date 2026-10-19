@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/lock-workflow-dependencies
-captured: '2026-10-13'
+captured: '2026-10-19'
 section: How tos / Secure your work
 ---
 
@@ -36,7 +36,7 @@ Recomendamos deixar o Dependabot gerenciar suas dependências GitHub Actions. Se
 
             ```bash copy
    gh extension install github/gh-actions-lock
-            ```
+   ```
 
 > [!TIP] Para atualizar a extensão mais tarde, execute `gh extension upgrade gh-actions-lock`.
 

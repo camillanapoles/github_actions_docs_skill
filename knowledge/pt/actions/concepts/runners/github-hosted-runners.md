@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/runners/github-hosted-runners
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Concepts / Runners
 ---
 
-# Executores hospedados no GitHub { #github-hosted-runners }
+# Executores hospedados no GitHub
 
 _GitHub oferece máquinas virtuais hospedadas para executar fluxos de trabalho. A máquina virtual contém um ambiente de ferramentas, pacotes e configurações disponíveis para GitHub Actions usar._
 
-## Visão geral dos executores hospedados em GitHub { #overview-of-github-hosted-runners }
+## Visão geral dos executores hospedados em GitHub
 
 Os runners são as máquinas responsáveis por executar trabalhos em um GitHub Actions fluxo de trabalho. Por exemplo, um executor pode clonar seu repositório localmente, instalar software de teste e executar comandos que avaliam seu código.
 
@@ -28,11 +28,11 @@ Executores avançados também dá suporte a imagens personalizadas, que permitem
 
 O uso de executores hospedados em GitHub requer acesso à rede com pelo menos 70 quilobits por segundo de carregamento e velocidades de download.
 
-## Imagens do executor { #runner-images }
+## Imagens do executor
 
 GitHub mantém nosso próprio conjunto de imagens de VM para nossos executores hospedados padrão. A lista de imagens e suas ferramentas incluídas são gerenciadas no repositório [`actions/runner-images`](https://github.com/actions/runner-images).
 
-### Software pré-instalado para imagens de propriedade do GitHub { #preinstalled-software-for-github-owned-images }
+### Software pré-instalado para imagens de propriedade do GitHub
 
 As ferramentas de software incluídas em nossas imagens de propriedade do GitHub são atualizadas semanalmente. O processo de atualização leva vários dias, e a lista de programas de software pré-instalados no branch `main` é atualizada após o término de toda a implantação.
 
@@ -55,7 +55,7 @@ Se houver uma ferramenta que você deseja solicitar, abra um problema em [action
     * Você também pode instalar software adicional em executores hospedados em GitHub. Confira [Personalizando executores hospedados no GitHub](../../how-tos/manage-runners/github-hosted-runners/customize-runners.md).
     * Embora a virtualização aninhada seja tecnicamente possível ao usar runners, ela não é oficialmente compatível. Qualquer uso de VMs aninhadas é experimental e feito por sua conta e risco, não oferecemos garantias sobre estabilidade, desempenho ou compatibilidade.
 
-### Imagens personalizadas { #custom-images }
+### Imagens personalizadas
 
 As imagens personalizadas permitem que você comece com uma GitHubimagem base fornecida e crie sua própria imagem de VM personalizada de acordo com suas necessidades de fluxo de trabalho. Com imagens personalizadas, você pode:
 
@@ -69,17 +69,17 @@ As imagens personalizadas só podem ser usadas com executores avançados. Os tra
 
 Para começar a usar imagens personalizadas, consulte [Usando imagens personalizadas](../../how-tos/manage-runners/larger-runners/use-custom-images.md).
 
-## Hosts de nuvem usados por executores hospedados em GitHub { #cloud-hosts-used-by-github-hosted-runners }
+## Hosts de nuvem usados por executores hospedados em GitHub
 
 GitHub hospeda executores Linux e Windows em máquinas virtuais em Microsoft Azure com o aplicativo de executor do GitHub Actions instalado. O aplicativo de executor hospedado em GitHub é uma ramificação do Agente do Azure Pipelines. Os pacotes ICMP de entrada estão bloqueados para todas as máquinas virtuais do Azure. Portanto, é possível que os comandos ping ou traceroute não funcionem.
 GitHub hospeda corredores macOS em data centers Azure.
 
-## Continuidade do fluxo de trabalho { #workflow-continuity }
+## Continuidade do fluxo de trabalho
 
 Se os serviços de GitHub Actions estiverem temporariamente indisponíveis, a execução do fluxo de trabalho será descartada se não tiver sido enfileirada em 30 minutos após ser acionada. Por exemplo, se um fluxo de trabalho for acionado e os serviços de GitHub Actions não estiverem disponíveis por 31 minutos ou mais, a execução do fluxo de trabalho não será processada.
 
 Além disso, se a execução do fluxo de trabalho entrar na fila com sucesso, mas não foi processado por um executor hospedado em GitHub dentro de 45 minutos, a execução do fluxo de trabalho na fila será descartada.
 
-## O arquivo `etc/hosts` { #the-etchosts-file }
+## O arquivo `etc/hosts`
 
 Os executores hospedados pelo GitHub são provisionados com um arquivo `etc/hosts` que bloqueia o acesso à rede a vários pools de mineração de criptomoedas e sites mal-intencionados. Hosts como MiningMadness.com e cpu-pool.com são redirecionados para localhost para que não apresentem um risco de segurança significativo.

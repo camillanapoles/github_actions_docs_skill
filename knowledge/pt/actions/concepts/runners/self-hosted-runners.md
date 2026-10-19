@@ -6,11 +6,11 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/runners/self-hosted-runners
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Concepts / Runners
 ---
 
-# Executores auto-hospedados { #self-hosted-runners }
+# Executores auto-hospedados
 
 _Você pode hospedar seus próprios executores e personalizar o ambiente usado para executar trabalhos em seus fluxos de trabalho GitHub Actions._
 
@@ -28,7 +28,7 @@ Executores auto-hospedados:
 
 Você pode usar executores auto-hospedados em qualquer lugar na hierarquia de gerenciamento. Os executores do nível do repositório são dedicados a um só repositório, enquanto os executores do nível da organização podem processar trabalhos para vários repositórios em uma organização. Os proprietários da organização podem escolher quais repositórios têm permissão para criar executores auto-hospedados no nível do repositório. Confira [Desabilitando ou limitando GitHub Actions para sua organização](https://docs.github.com/pt/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#limiting-the-use-of-self-hosted-runners). Por fim, executores de nível empresarial podem ser atribuídos a várias organizações em uma conta corporativa.
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 Para configurar um executor auto-hospedado em seu workspace, consulte [Adicionar executores auto-hospedados](../../how-tos/manage-runners/self-hosted-runners/add-runners.md).
 

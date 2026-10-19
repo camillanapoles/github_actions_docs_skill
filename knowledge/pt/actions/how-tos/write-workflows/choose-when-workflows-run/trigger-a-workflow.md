@@ -6,19 +6,19 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Write workflows / Choose when workflows run
 ---
 
-# Acionando um fluxo de trabalho { #triggering-a-workflow }
+# Acionando um fluxo de trabalho
 
 _Como disparar GitHub Actions fluxos de trabalho automaticamente_
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Para saber mais sobre fluxos de trabalho e o disparo de fluxos de trabalho, confira [Fluxos de trabalho](../../../concepts/workflows-and-actions/workflows.md).
 
-## Acionando um fluxo de trabalho a partir de um fluxo de trabalho { #triggering-a-workflow-from-a-workflow }
+## Acionando um fluxo de trabalho a partir de um fluxo de trabalho
 
 Quando você usa o `GITHUB_TOKEN` do repositório para executar tarefas, os eventos acionados pelo `GITHUB_TOKEN` não criarão uma nova execução de fluxo de trabalho, com as seguintes exceções:
 
@@ -26,8 +26,8 @@ Quando você usa o `GITHUB_TOKEN` do repositório para executar tarefas, os even
             Eventos `workflow_dispatch` e `repository_dispatch` sempre criam execuções do fluxo de trabalho.
         ```
 * ```
-            Eventos `pull_request` com os tipos de atividade `opened`, `synchronize` ou `reopened`: quando um fluxo de trabalho que usa `GITHUB_TOKEN` cria ou atualiza uma pull request, o evento `pull_request` resultante cria execuções do fluxo de trabalho em um estado **aprovação-obrigatória**. O pull request exibe um banner na caixa de merge, e um usuário com acesso de escrita ao repositório pode iniciar as execuções selecionando **Aprovar fluxos de trabalho para execução**. Outros `pull_request` tipos de atividade (como `labeled`, `edited`ou `closed`) não criam execuções de fluxo de trabalho. Isso impede que o fluxo de trabalho recursivo seja executado enquanto ainda permite que os fluxos de trabalho de CI sejam executados em solicitações de pull criadas pela automação. Para obter mais informações sobre como aprovar execuções de fluxo de trabalho, consulte [Approve runs from forks](../../manage-workflow-runs/approve-runs-from-forks.md).
-        ```
+            Eventos `pull_request` com os tipos de atividade `opened`, `synchronize` ou `reopened`: quando um fluxo de trabalho que usa `GITHUB_TOKEN` cria ou atualiza uma pull request, o evento `pull_request` resultante cria execuções do fluxo de trabalho em um estado **aprovação-obrigatória**. O pull request exibe um banner na caixa de merge, e um usuário com acesso de escrita ao repositório pode iniciar as execuções selecionando **Aprovar fluxos de trabalho para execução**. Outros `pull_request` tipos de atividade (como `labeled`, `edited`ou `closed`) não criam execuções de fluxo de trabalho. Isso impede que o fluxo de trabalho recursivo seja executado enquanto ainda permite que os fluxos de trabalho de CI sejam executados em solicitações de pull criadas pela automação. Para obter mais informações sobre como aprovar execuções de fluxo de trabalho, consulte [AUTOTITLE](../../manage-workflow-runs/approve-runs-from-forks.md).
+  ```
 
 Para todos os outros eventos, esse comportamento impede que você crie acidentalmente execuções de fluxo de trabalho recursivo. Por exemplo, se uma execução de fluxo de trabalho efetuar push do código usando o `GITHUB_TOKEN` do repositório, um novo fluxo de trabalho não será executado mesmo quando o repositório contiver um fluxo de trabalho configurado para ser executado quando os eventos do `push` ocorrerem. Para obter mais informações, consulte [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../../tutorials/authenticate-with-github_token.md).
 
@@ -75,11 +75,11 @@ jobs:
           gh issue edit $ISSUE_URL --add-label "triage"
 ```
 
-## Usando eventos para acionar fluxos de trabalho { #using-events-to-trigger-workflows }
+## Usando eventos para acionar fluxos de trabalho
 
 Use a chave `on` para especificar os eventos que disparam o fluxo de trabalho. Para obter mais informações sobre os eventos que podem ser usados, confira [Eventos que disparam fluxos de trabalho](../../../reference/workflows-and-actions/events-that-trigger-workflows.md).
 
-### Usando um evento único { #using-a-single-event }
+### Usando um evento único
 
 Por exemplo, um fluxo de trabalho com o seguinte valor `on` será executado quando um push for feito em qualquer branch no repositório do fluxo de trabalho:
 
@@ -87,7 +87,7 @@ Por exemplo, um fluxo de trabalho com o seguinte valor `on` será executado quan
 on: push
 ```
 
-### Usando eventos múltiplos { #using-multiple-events }
+### Usando eventos múltiplos
 
 É possível especificar um único evento ou vários eventos. Por exemplo, um fluxo de trabalho com o valor `on` a seguir será executado quando um push for feito em qualquer branch no repositório ou quando alguém criar um fork do repositório:
 
@@ -97,7 +97,7 @@ on: [push, fork]
 
 Se você especificar vários eventos, apenas um desses eventos deverá ocorrer para acionar seu fluxo de trabalho. Se vários eventos de acionamento para o seu fluxo de trabalho ocorrerem ao mesmo tempo, várias execuções de fluxo de trabalho serão acionadas.
 
-### Usando tipos de atividade e filtros com vários eventos { #using-activity-types-and-filters-with-multiple-events }
+### Usando tipos de atividade e filtros com vários eventos
 
 É possível usar tipos de atividade e filtros para controlar ainda mais quando o fluxo de trabalho será executado. Para obter mais informações, confira [Como usar tipos de atividade de evento](#using-event-activity-types) e [Como usar filtros](#using-filters). Se você especificar tipos de atividade ou filtros para um evento e seu fluxo de trabalho for acionado em vários eventos, você deverá configurar cada evento separadamente. Você deve acrescentar dois-pontos (`:`) a todos os eventos, incluindo eventos sem configuração.
 
@@ -118,7 +118,7 @@ on:
   page_build:
 ```
 
-## Usando tipos de atividade do evento { #using-event-activity-types }
+## Usando tipos de atividade do evento
 
 Alguns eventos têm tipos de atividade que oferecem mais controle sobre quando o fluxo de trabalho deve ser executado. Use `on.<event_name>.types` para definir o tipo de atividade de evento que vai disparar uma execução de fluxo de trabalho.
 
@@ -143,7 +143,7 @@ on:
 
 Para obter mais informações sobre cada evento e os respectivos tipos de atividade, confira [Eventos que disparam fluxos de trabalho](../../../reference/workflows-and-actions/events-that-trigger-workflows.md).
 
-## Usando filtros { #using-filters }
+## Usando filtros
 
 Alguns eventos têm filtros que dão mais controle sobre quando seu fluxo de trabalho deve ser executado.
 
@@ -157,7 +157,7 @@ on:
       - 'releases/**'
 ```
 
-### Usando filtros para focar em branches específicos para eventos de pull request { #using-filters-to-target-specific-branches-for-pull-request-events }
+### Usando filtros para focar em branches específicos para eventos de pull request
 
 Ao usar os eventos `pull_request` e `pull_request_target`, você pode configurar um fluxo de trabalho para ser executado somente para solicitações de pull direcionadas a branches específicos.
 
@@ -167,7 +167,7 @@ Se você definir `branches`/`branches-ignore` e [`paths`/`paths-ignore`](../../.
 
 As palavras-chave `branches` e `branches-ignore` aceitam padrões glob que usam caracteres como `*`, `**`, `+`, `?`, `!` e outros para corresponder a mais de um nome de branch. Se um nome contiver um desses caracteres e você quiser ter uma correspondência literal, faça escape de cada um desses caracteres especiais com ``. Para saber mais sobre padrões glob, confira o [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#filter-pattern-cheat-sheet).
 
-#### Exemplo: Incluindo ramificações { #example-including-branches }
+#### Exemplo: Incluindo ramificações
 
 Os padrões definidos em `branches` são avaliados em relação ao nome da referência do Git. Por exemplo, o seguinte fluxo de trabalho será executado sempre que houver um evento `pull_request` para uma solicitação de pull direcionada a:
 
@@ -187,7 +187,7 @@ on:
 
 Se um fluxo de trabalho for ignorado devido à filtragem de ramificação, à [filtragem de caminho](../../../reference/workflows-and-actions/workflow-syntax.md#onpushpull_requestpull_request_targetpathspaths-ignore) ou a uma [mensagem de confirmação](../../manage-workflow-runs/skip-workflow-runs.md), as verificações associadas a esse fluxo de trabalho permanecerão no estado "Pendente". Uma solicitação de pull que exige que essas verificações sejam bem-sucedidas não poderá ser mesclada.
 
-#### Exemplo: Excluir branches { #example-excluding-branches }
+#### Exemplo: Excluir branches
 
 Quando um padrão corresponder ao padrão `branches-ignore`, o fluxo de trabalho não será executado. Os padrões definidos em `branches-ignore` são avaliados em relação ao nome da referência do Git. Por exemplo, o seguinte fluxo de trabalho será executado sempre que houver um evento `pull_request`, a menos que a solicitação de pull seja direcionada a:
 
@@ -203,7 +203,7 @@ on:
       - 'releases/**-alpha'
 ```
 
-#### Exemplo: Incluindo e excluindo branches { #example-including-and-excluding-branches }
+#### Exemplo: Incluindo e excluindo branches
 
 Não é possível usar `branches` e `branches-ignore` para filtrar o mesmo evento em um só fluxo de trabalho. Caso deseje incluir e excluir padrões de branch para um só evento, use o filtro `branches` com o caractere `!` para indicar os branches que devem ser excluídos.
 
@@ -224,7 +224,7 @@ on:
       - '!releases/**-alpha'
 ```
 
-### Usando filtros para destinar eventos de push a branches ou tags específicas { #using-filters-to-target-specific-branches-or-tags-for-push-events }
+### Usando filtros para destinar eventos de push a branches ou tags específicas
 
 Ao usar o evento `push`, você pode configurar um fluxo de trabalho para ser executado em marcas ou em branches específicos.
 
@@ -236,7 +236,7 @@ Se você definir apenas `tags`/`tags-ignore` or apenas `branches`/`branches-igno
 
 As palavras-chave `branches`, `branches-ignore`, `tags` e `tags-ignore` aceitam padrões glob que usam caracteres como `*`, `**`, `+`, `?`, `!` e outros para corresponder a mais de um nome de marca ou de branch. Se um nome contiver um desses caracteres e você quiser ter uma correspondência literal, *faça escape* de cada um desses caracteres especiais com ``. Para obter mais informações sobre padrões glob, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#filter-pattern-cheat-sheet).
 
-#### Exemplo: Incluindo ramificações e etiquetas { #example-including-branches-and-tags }
+#### Exemplo: Incluindo ramificações e etiquetas
 
 Os padrões definidos em `branches` e `tags` são avaliados em relação ao nome de referência do Git. Por exemplo, o seguinte fluxo de trabalho será executado sempre que houver um evento `push` para:
 
@@ -260,7 +260,7 @@ on:
       - v1.*
 ```
 
-#### Exemplo: Excluindo branches e tags { #example-excluding-branches-and-tags }
+#### Exemplo: Excluindo branches e tags
 
 Quando um padrão corresponder ao padrão `branches-ignore` ou `tags-ignore`, o fluxo de trabalho não será executado. Os padrões definidos em `branches` e `tags` são avaliados em relação ao nome de referência do Git. Por exemplo, o seguinte fluxo de trabalho será executado sempre que houver um evento `push`, a menos que o evento `push` seja para:
 
@@ -282,7 +282,7 @@ on:
       - v1.*
 ```
 
-#### Exemplo: Incluindo e excluindo branches e tags { #example-including-and-excluding-branches-and-tags }
+#### Exemplo: Incluindo e excluindo branches e tags
 
 Não é possível usar `branches` e `branches-ignore` para filtrar o mesmo evento em um fluxo de trabalho individual. Da mesma forma, não é possível usar `tags` e `tags-ignore` para filtrar o mesmo evento em um fluxo de trabalho individual. Caso deseje incluir e excluir padrões de branch para um evento individual, use o filtro `branches` ou `tags` com o caractere `!` para indicar as marcas ou os branches que devem ser excluídos.
 
@@ -303,7 +303,7 @@ on:
       - '!releases/**-alpha'
 ```
 
-### Usando filtros para especificar caminhos específicos para eventos de pull request ou de push { #using-filters-to-target-specific-paths-for-pull-request-or-push-events }
+### Usando filtros para especificar caminhos específicos para eventos de pull request ou de push
 
 Ao usar os eventos `push` e `pull_request`, você pode configurar um fluxo de trabalho para ser executado com base nos caminhos de arquivo alterados. Os filtros de caminho não são avaliados em envios de tags.
 
@@ -319,7 +319,7 @@ Se você definir `branches`/`branches-ignore` e `paths`/`paths-ignore`, o fluxo 
 
 As palavras-chave `paths` e `paths-ignore` aceitam padrões glob que usam os caracteres curinga `*` e `**` para fazer a correspondência com mais de um nome de caminho. Para obter mais informações, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#filter-pattern-cheat-sheet).
 
-#### Exemplo: Incluindo caminhos { #example-including-paths }
+#### Exemplo: Incluindo caminhos
 
 Se, pelo menos, um caminho corresponder a um padrão no filtro `paths`, o fluxo de trabalho será executado. Por exemplo, o fluxo de trabalho a seguir será executado sempre que você efetuar push de um arquivo JavaScript (`.js`).
 
@@ -332,7 +332,7 @@ on:
 
 Se um fluxo de trabalho for ignorado devido à filtragem de caminho, [à filtragem de ramificação](../../../reference/workflows-and-actions/workflow-syntax.md#onpull_requestpull_request_targetbranchesbranches-ignore) ou a uma [mensagem de confirmação](../../manage-workflow-runs/skip-workflow-runs.md), as verificações associadas a esse fluxo de trabalho permanecerão no estado "Pendente". Uma solicitação de pull que exige que essas verificações sejam bem-sucedidas não poderá ser mesclada.
 
-#### Exemplo: Excluindo caminhos { #example-excluding-paths }
+#### Exemplo: Excluindo caminhos
 
 Quando todos os nomes de caminho corresponderem aos padrões de `paths-ignore`, o fluxo de trabalho não será executado. Se qualquer nome de caminho não corresponder aos padrões de `paths-ignore`, mesmo que alguns nomes de caminho correspondam aos padrões, o fluxo de trabalho será executado.
 
@@ -345,7 +345,7 @@ on:
       - 'docs/**'
 ```
 
-#### Exemplo: Incluindo e excluindo caminhos { #example-including-and-excluding-paths }
+#### Exemplo: Incluindo e excluindo caminhos
 
 Não é possível usar `paths` e `paths-ignore` para filtrar o mesmo evento em um só fluxo de trabalho. Caso deseje incluir e excluir padrões de caminho para um evento individual, use o filtro `paths` prefixado o caractere `!` para indicar os caminhos que devem ser excluídos.
 
@@ -366,7 +366,7 @@ on:
       - '!sub-project/docs/**'
 ```
 
-#### Comparações de Git diff { #git-diff-comparisons }
+#### Comparações de Git diff
 
 O filtro determina se um fluxo de trabalho deve ser executado avaliando os arquivos alterados e executando-os na lista `paths-ignore` ou `paths`. Se não houver arquivos alterados, o fluxo de trabalho não será executado.
 
@@ -386,7 +386,7 @@ Se você observar esses comportamentos, talvez seja necessário tornar seus filt
 
 Para saber mais, confira [Branches](https://docs.github.com/pt/pull-requests/reference/branches).
 
-### Usando filtros para direcionar branches específicos para eventos de execução de fluxo de trabalho { #using-filters-to-target-specific-branches-for-workflow-run-events }
+### Usando filtros para direcionar branches específicos para eventos de execução de fluxo de trabalho
 
 Ao usar o evento `workflow_run`, você pode especificar em quais ramificações o fluxo de trabalho acionador deve ser executado para acionar seu fluxo de trabalho.
 
@@ -433,7 +433,7 @@ on:
       - '!releases/**-alpha'
 ```
 
-## Definindo entradas para fluxos de trabalho acionados manualmente { #defining-inputs-for-manually-triggered-workflows }
+## Definindo entradas para fluxos de trabalho acionados manualmente
 
 Ao usar o evento `workflow_dispatch`, opcionalmente, você pode especificar as entradas que são transmitidas para o fluxo de trabalho.
 
@@ -480,15 +480,15 @@ jobs:
         run: echo  The tags are ${{ inputs.tags }}
 ```
 
-## Definindo entradas, saídas e segredos para fluxos de trabalho reutilizáveis { #defining-inputs-outputs-and-secrets-for-reusable-workflows }
+## Definindo entradas, saídas e segredos para fluxos de trabalho reutilizáveis
 
 É possível definir entradas e segredos que um fluxo de trabalho reutilizável deve receber de um fluxo de trabalho chamado. Também é possível especificar saídas que um fluxo de trabalho reutilizável disponibilizará para um fluxo de trabalho chamado. Para saber mais, confira [Reutilizar fluxos de trabalho](../../reuse-automations/reuse-workflows.md).
 
-## Usando informações do evento { #using-event-information }
+## Usando informações do evento
 
 As informações sobre o evento que disparou uma execução de fluxo de trabalho estão disponíveis no contexto `github.event`. As propriedades no contexto `github.event` dependem do tipo de evento que disparou o fluxo de trabalho. Por exemplo, um fluxo de trabalho acionado quando um problema está etiquetado teria informações sobre o problema e a etiqueta.
 
-### Visualizando todas as propriedades de um evento { #viewing-all-properties-of-an-event }
+### Visualizando todas as propriedades de um evento
 
 Consulte a documentação sobre eventos de webhook para propriedades comuns e exemplos de cargas. Para saber mais, confira [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads).
 
@@ -505,7 +505,7 @@ jobs:
           echo $EVENT_CONTEXT
 ```
 
-### Acessando e usando as propriedades do evento { #accessing-and-using-event-properties }
+### Acessando e usando as propriedades do evento
 
 Use o contexto `github.event` no fluxo de trabalho. Por exemplo, o fluxo de trabalho a seguir é executado quando uma solicitação de pull que altera `package*.json`, `.github/CODEOWNERS` ou `.github/workflows/**` é aberta. Se o autor do pull request (`github.event.pull_request.user.login`) não for `octobot` nem `dependabot[bot]`, o fluxo de trabalho usará o GitHub CLI para rotular e comentar no pull request (`github.event.pull_request.number`).
 
@@ -537,15 +537,15 @@ jobs:
 
 Para obter mais informações sobre contextos, confira [Referência de contextos](../../../reference/workflows-and-actions/contexts.md). Para obter mais informações sobre payloads de eventos, confira [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads).
 
-## Controlando ainda mais como seu fluxo de trabalho será executado { #further-controlling-how-your-workflow-will-run }
+## Controlando ainda mais como seu fluxo de trabalho será executado
 
 Se você quiser um controle mais granular do que o fornecido por eventos, tipos de atividade do evento ou filtros de evento, use condicionais e ambientes para controlar se trabalhos ou etapas individuais serão executados no fluxo de trabalho.
 
-### Usando condicionais { #using-conditionals }
+### Usando condicionais
 
 Você pode usar condicionais para controlar ainda mais se os trabalhos ou etapas no seu fluxo de trabalho serão executados.
 
-#### Exemplo de uso de um valor na carga do evento { #example-using-a-value-in-the-event-payload }
+#### Exemplo de uso de um valor na carga do evento
 
 Por exemplo, caso você deseje que o fluxo de trabalho seja executado quando um rótulo específico for adicionado a um problema, dispare o tipo de atividade do evento `issues labeled` e use um condicional para verificar qual rótulo disparou o fluxo de trabalho. O fluxo de trabalho a seguir será executado quando qualquer rótulo for adicionado a um problema no repositório do fluxo de trabalho, mas o trabalho `run_if_label_matches` só será executado se o rótulo for chamado `bug`.
 
@@ -563,7 +563,7 @@ jobs:
       - run: echo 'The label was bug'
 ```
 
-#### Exemplo de uso do tipo de evento { #example-using-event-type }
+#### Exemplo de uso do tipo de evento
 
 Por exemplo, se você deseja executar diferentes tarefas ou etapas, dependendo de qual evento acionou o fluxo de trabalho, você poderá usar uma condicional para verificar se um tipo de evento específico existe no contexto do evento. O fluxo de trabalho seguinte será executado sempre que um problema ou pull request for fechado. Se o fluxo de trabalho tiver sido executado porque um problema foi fechado, o contexto `github.event` conterá um valor para `issue`, mas não para `pull_request`. Portanto, a etapa `if_issue` será executada, mas a etapa `if_pr` não. Por outro lado, se o fluxo de trabalho for executado porque uma solicitação de pull foi fechada, a etapa `if_pr` será executada, mas a etapa `if_issue` não será executada.
 
@@ -592,7 +592,7 @@ jobs:
 
 Para obter mais informações sobre as informações que estão disponíveis no contexto do evento, confira [Como usar as informações do evento](#using-event-information). Para obter mais informações sobre como usar condicionais, confira [Avaliar expressões em fluxos de trabalho e ações](../../../reference/workflows-and-actions/expressions.md).
 
-### Usando ambientes para acionar trabalhos de fluxo de trabalho manualmente { #using-environments-to-manually-trigger-workflow-jobs }
+### Usando ambientes para acionar trabalhos de fluxo de trabalho manualmente
 
 Se você quiser acionar manualmente uma tarefa específica em um fluxo de trabalho, você pode usar um ambiente que exige a aprovação de uma equipe ou usuário específico. Primeiro, configure um ambiente com os revisores necessários. Para saber mais, confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md). Em seguida, referencie o nome do ambiente em um trabalho no fluxo de trabalho usando a chave `environment:`. Qualquer trabalho que faz referência ao ambiente não será executado até que pelo menos um revisor aprove o trabalho.
 
@@ -626,6 +626,6 @@ jobs:
     Ambientes, segredos de ambiente e regras de proteção para implantações estão disponíveis em repositórios públicos para todos os planos atuais GitHub . Eles não estão disponíveis em planos antigos, como Bronze, Prata ou Ouro. Para acesso a ambientes, segredos de ambiente e ramificações de implantação em repositórios privados ou internos, você deve usar GitHub Pro, GitHub Team, ou GitHub Enterprise.
     Se você estiver em um GitHub Free, GitHub Proou GitHub Team plano, outras regras de proteção de implantação, como um temporizador de espera ou revisores necessários, só estarão disponíveis para repositórios públicos.
 
-## Eventos disponíveis { #available-events }
+## Eventos disponíveis
 
 Para obter uma lista completa de eventos disponíveis, confira [Eventos que disparam fluxos de trabalho](../../../reference/workflows-and-actions/events-that-trigger-workflows.md).

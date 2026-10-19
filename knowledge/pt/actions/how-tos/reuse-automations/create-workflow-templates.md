@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/reuse-automations/create-workflow-templates
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Reuse automations
 ---
 
-# Criar modelos de fluxo de trabalho para sua organização { #creating-workflow-templates-for-your-organization }
+# Criar modelos de fluxo de trabalho para sua organização
 
 _Saiba como você pode criar modelos de fluxo de trabalho para ajudar as pessoas de sua equipe a adicionar novos fluxos de trabalho com mais facilidade._
 
-## Criando modelos de fluxo de trabalho { #creating-workflow-templates }
+## Criando modelos de fluxo de trabalho
 
 Esse procedimento demonstra como criar um modelo de fluxo de trabalho e um arquivo de metadados. O arquivo de metadados descreve como os modelos de fluxo de trabalho serão apresentados aos usuários quando eles criarem um novo fluxo de trabalho.
 
@@ -46,7 +46,7 @@ Esse procedimento demonstra como criar um modelo de fluxo de trabalho e um arqui
 
          - name: Run a one-line script
            run: echo Hello from Octo Organization
-            ```
+   ```
 
 4. Crie um arquivo de metadados no diretório `workflow-templates`. O arquivo de metadados precisa ter o mesmo nome do arquivo de fluxo de trabalho, mas, em vez da extensão `.yml`, é preciso acrescentar `.properties.json` a ele. Por exemplo, este arquivo chamado `octo-organization-ci.properties.json` contém os metadados para o arquivo de fluxo de trabalho chamado `octo-organization-ci.yml`:
 
@@ -64,7 +64,7 @@ Esse procedimento demonstra como criar um modelo de fluxo de trabalho e um arqui
            ".*\\.md$"
        ]
    }
-            ```
+   ```
 
    * `name`
 
@@ -96,6 +96,6 @@ Esse procedimento demonstra como criar um modelo de fluxo de trabalho e um arqui
 
 5. Para adicionar outro modelo de fluxo de trabalho, adicione seus arquivos ao mesmo diretório `workflow-templates`.
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 * Para obter informações de referência sobre modelos de fluxo de trabalho, consulte [Reutilizando configurações de fluxo de trabalho](../../reference/workflows-and-actions/reusing-workflow-configurations.md#workflow-templates).

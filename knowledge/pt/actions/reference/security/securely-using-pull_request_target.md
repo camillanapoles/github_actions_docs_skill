@@ -6,17 +6,17 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/security/securely-using-pull_request_target
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Reference / Security
 ---
 
-# Uso seguro de pull_request_target { #securely-using-pullrequesttarget }
+# Uso seguro de pull_request_target
 
 _Saiba mais sobre os riscos de segurança do pull_request_target evento._
 
 Este guia ajuda você a avaliar se o fluxo de trabalho deve usar o `pull_request_target` evento e entender os riscos de segurança envolvidos. Ele também explica as proteções que GitHub se aplicam a esses riscos por padrão e como recusar essas proteções, se necessário.
 
-## Riscos de `pull_request_target` { #risks-of-pullrequesttarget }
+## Riscos de `pull_request_target`
 
 Fluxos de trabalho acionados por `pull_request_target` são executados com confiança elevada: o job recebe o `GITHUB_TOKEN` do repositório base e acesso aos segredos do repositório e da organização. São os mesmos privilégios dados a eventos como `push`, que apenas colaboradores podem disparar, e é isso que torna `pull_request_target` útil para automações que respondem a solicitações pull de bifurcações, como rotulagem, triagem ou a publicação de verificações de status autenticadas.
 
@@ -56,11 +56,11 @@ Esse padrão é conhecido como "pwn request" e tem sido a causa raiz de vários 
 As solicitações pwn também não são exclusivas para `pull_request_target`. Qualquer evento que seja executado com segredos pode introduzir uma solicitação pwn se fizer check-out ou baixar e executar código não confiável. Por exemplo, um fluxo de trabalho `issue_comment` ou `workflow_run` que busca e executa o código de uma pull request de um fork é vulnerável da mesma forma. Um fluxo de trabalho `workflow_run` deve tratar artefatos carregados por outros fluxos de trabalho como dados não confiáveis, pois o conteúdo pode vir de uma bifurcação.
 
 ```
-## Política padrão para `pull_request_target` { #default-policy-for-pullrequesttarget }
+## Política padrão para `pull_request_target`
 
 Para ajudar a proteger seus fluxos de trabalho contra solicitações de pull não confiáveis, GitHub fornece uma política de evento padrão que bloqueia o `pull_request_target` evento em repositórios públicos.
 
-### Como funciona a política padrão { #how-the-default-policy-works }
+### Como funciona a política padrão
 
 Para repositórios públicos que ainda não têm uma política de evento actions aplicável, GitHub adiciona uma política padrão que bloqueia os fluxos de trabalho disparados por `pull_request_target`. Para obter mais informações sobre políticas, consulte [Sobre as políticas do Actions](../../concepts/about-actions-policies.md).
 
@@ -78,7 +78,7 @@ Em 2 de novembro de 2026, GitHub imporá a política padrão para repositórios 
 
 <!-- end expires 2026-11-02 -->
 
-### Revisar o impacto antes da imposição { #reviewing-the-impact-before-enforcement }
+### Revisar o impacto antes da imposição
 
 Enquanto a política estiver no modo de avaliação, examine seus insights de política para identificar os fluxos de trabalho que usam `pull_request_target` e serão bloqueados quando a política for imposta.
 
@@ -91,9 +91,9 @@ Para cada fluxo de trabalho afetado, decida se `pull_request_target` ainda é ne
 !!! warning
     `pull_request_target` Permitir somente quando for necessário. Os fluxos de trabalho acionados por este evento não devem obter, compilar nem executar código de um pull request não confiável com acesso aos segredos do repositório ou a um `GITHUB_TOKEN` privilegiado.
 
-Para obter mais informações sobre como configurar políticas de eventos e exibir insights, consulte [Controlando quem pode executar GitHub Actions fluxos de trabalho](../../how-tos/administer/control-workflow-execution.md). Para gerenciar políticas programaticamente, consulte [Pontos de extremidade da API REST para políticas de GitHub Actions](https://docs.github.com/pt/rest/actions/policies).
+Para obter mais informações sobre como configurar políticas de eventos e exibir insights, consulte [Controle da execução de GitHub Actions fluxos de trabalho](../../how-tos/administer/control-workflow-execution.md). Para gerenciar políticas programaticamente, consulte [Pontos de extremidade da API REST para políticas de GitHub Actions](https://docs.github.com/pt/rest/actions/policies).
 
-## Decidir se deve ser usado `pull_request_target` { #deciding-whether-to-use-pullrequesttarget }
+## Decidir se deve ser usado `pull_request_target`
 
 Alguns fluxos de trabalho precisam obter o código da solicitação pull de uma bifurcação com mais privilégios, e foi por isso que `pull_request_target` foi criado desde o início. Por exemplo, gerar relatórios de cobertura que exigem um registro privado de artefatos ou gerar e executar verificações autenticadas nas alterações introduzidas pelo pull request. Considere as perguntas abaixo antes de usar `pull_request_target` ou ativar a flag `allow-unsafe-pr-checkout` em `actions/checkout`.
 
@@ -103,7 +103,7 @@ Alguns fluxos de trabalho precisam obter o código da solicitação pull de uma 
 * **O código de check-out já foi executado?** Essa é a falha que apresenta vulnerabilidades de solicitação pwn. Isso costuma ser introduzido com `actions/checkout` ao fazer check-out do cabeçalho de uma solicitação pull no diretório de trabalho e, em seguida, executá-la. A menos que a `path` entrada seja definida, `actions/checkout` grava o código no `$GITHUB_WORKSPACE` diretório, que normalmente é o diretório de trabalho em que os comandos subsequentes são executados. A execução não está limitada às suas próprias etapas: comandos de compilação e teste, como `npm install` e `npm run build`, além de arquivos de configuração e dependências que o código traz com ele, podem executar código controlado pelo invasor. A execução não requer uma etapa de build óbvia.
   **Você deve garantir que o código extraído seja inspecionado apenas como dados e nunca executado antes de usar um evento `pull_request_target`**.
 
-## Reforço da segurança de um `pull_request_target` fluxo de trabalho { #hardening-a-pullrequesttarget-workflow }
+## Reforço da segurança de um `pull_request_target` fluxo de trabalho
 
 Se você tiver confirmado que precisa `pull_request_target`, aplique esses controles para limitar o impacto desse evento de alto risco. Elas se aplicam se o fluxo de trabalho verifica ou não o código da solicitação pull.
 
@@ -115,7 +115,7 @@ Se você tiver confirmado que precisa `pull_request_target`, aplique esses contr
 
 * **Impor práticas recomendadas de GitHub Actions segurança.** Além dos riscos específicos de solicitações pwn, outras vulnerabilidades comuns, como injeção de comando, podem existir e afetar o código executado neste evento privilegiado. Para obter mais informações, consulte [Como manter seus GitHub Actions e fluxos de trabalho seguros: entrada não confiável](https://securitylab.github.com/resources/github-actions-untrusted-input/) no GitHub Security Lab. Para identificar e proteger proativamente contra vulnerabilidades comuns GitHub Actions , habilite CodeQL para GitHub Actions. Para obter mais informações, consulte [Como definir a configuração padrão da verificação de código](https://docs.github.com/pt/code-security/how-tos/find-and-fix-code-vulnerabilities/configure-code-scanning/configure-code-scanning).
 
-## Recusar proteções internas { #opting-out-of-built-in-protections }
+## Recusar proteções internas
 
 Se você analisou as perguntas acima e confirmou que seu fluxo de trabalho requer `pull_request_target` e o utiliza com segurança, pode desativar a política padrão de eventos e a proteção `actions/checkout`.
 

@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs/cancel-a-workflow-run
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Manage workflow runs
 ---
 
-# Cancelar a execução do fluxo de trabalho { #canceling-a-workflow-run }
+# Cancelar a execução do fluxo de trabalho
 
 _Você pode cancelar uma execução de fluxo de trabalho que está em andamento, incluindo todas as tarefas e etapas._
 
-## Cancelar a execução do fluxo de trabalho { #canceling-a-workflow-run-1 }
+## Cancelar a execução do fluxo de trabalho
 
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
@@ -28,6 +28,6 @@ _Você pode cancelar uma execução de fluxo de trabalho que está em andamento,
 
 ![Captura de tela que mostra o resumo de um fluxo de trabalho que está em execução no momento. O botão "Cancelar fluxo de trabalho" está realçado com um contorno laranja escuro.](https://docs.github.com/assets/images/help/repository/cancel-check-suite-updated.png)
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 Para saber mais sobre o processo GitHub usa para cancelar uma execução de fluxo de trabalho, bem como as maneiras pelas quais você pode liberar recursos relacionados, consulte [Referência de cancelamento de fluxo de trabalho](../../reference/workflows-and-actions/workflow-cancellation.md).

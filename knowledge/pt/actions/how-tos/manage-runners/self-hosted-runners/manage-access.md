@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/self-hosted-runners/manage-access
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Manage runners / Self hosted runners
 ---
 
-# Gerenciar o acesso a executores auto-hospedados usando grupos { #managing-access-to-self-hosted-runners-using-groups }
+# Gerenciar o acesso a executores auto-hospedados usando grupos
 
 _Você pode usar políticas para limitar o acesso a runners auto-hospedados que foram adicionados a uma conta corporativa._
 
-## Criar um grupo de executor auto-hospedado para uma organização { #creating-a-self-hosted-runner-group-for-an-organization }
+## Criar um grupo de executor auto-hospedado para uma organização
 
 !!! warning
     Recomendamos que você use apenas executores auto-hospedados com repositórios privados. Isso acontece porque as bifurcações do seu repositório público podem executar código perigoso em seu computador de executor auto-hospedado criando uma solicitação de pull que executa o código em um fluxo de trabalho.
@@ -49,7 +49,7 @@ Para obter informações sobre como criar um grupo de executores com a API REST,
 
 7. Clique em **Criar grupo** para criar o grupo e aplicar a política.
 
-## Como alterar quais repositórios podem acessar um grupo de executores { #creating-a-self-hosted-runner-group-for-an-enterprise }
+## Como alterar quais repositórios podem acessar um grupo de executores
 
 !!! warning
     Recomendamos que você use apenas executores auto-hospedados com repositórios privados. Isso acontece porque as bifurcações do seu repositório público podem executar código perigoso em seu computador de executor auto-hospedado criando uma solicitação de pull que executa o código em um fluxo de trabalho.
@@ -72,7 +72,7 @@ Para grupos de executores em uma organização, você pode alterar quais reposit
 
 6. Clique em **Salvar grupo**.
 
-## Alterando o nome de um grupo de runners { #changing-which-organizations-can-access-a-runner-group }
+## Alterando o nome de um grupo de runners
 
 1. Acesse a página principal da organização em que os grupos de executores estão localizados.
 2. Clique em **(gear) Settings**.
@@ -81,7 +81,7 @@ Para grupos de executores em uma organização, você pode alterar quais reposit
 5. Insira o novo nome do grupo de executores no campo de texto em "Nome do grupo".
 6. Clique em **Save** (Salvar).
 
-## Adicionando um executor auto-hospedado a um grupo automaticamente { #changing-which-repositories-can-access-a-runner-group }
+## Adicionando um executor auto-hospedado a um grupo automaticamente
 
 Você pode usar o script de configuração para adicionar automaticamente um novo executor a um grupo. Por exemplo, esse comando registra um novo executor e usa o parâmetro `--runnergroup` para adicioná-lo a um grupo chamado `rg-runnergroup`.
 
@@ -95,7 +95,7 @@ O comando irá falhar se o grupo do executor não existir:
 Could not find any self-hosted runner group named "rg-runnergroup".
 ```
 
-## Mover um executor auto-hospedado para um grupo { #changing-which-workflows-can-access-a-runner-group }
+## Mover um executor auto-hospedado para um grupo
 
 Se você não especificar o grupo de um executor durante o processo de registro, seus novos executores são automaticamente atribuídos ao grupo padrão e poderão ser transferidos para outro grupo.
 
@@ -108,7 +108,7 @@ Se você não especificar o grupo de um executor durante o processo de registro,
 5. Selecione o menu suspenso **Grupo de executores**.
 6. Em "Transferir executor para o grupo", escolha um grupo de destino para o executor.
 
-## Remover um grupo de executor auto-hospedado { #changing-the-name-of-a-runner-group }
+## Remover um grupo de executor auto-hospedado
 
 Para remover um grupo de executores, primeiro você deve mover ou remover todos os executores do grupo.
 

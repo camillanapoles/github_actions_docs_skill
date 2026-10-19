@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/get-started/actions-vs-apps
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Get started
 ---
 

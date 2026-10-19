@@ -6,11 +6,11 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/monitor-workflows/view-job-execution-time
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Monitor workflows
 ---
 
-# Visualizar o tempo de execução do trabalho { #viewing-job-execution-time }
+# Visualizar o tempo de execução do trabalho
 
 _Você pode visualizar o tempo de execução de um trabalho, incluindo os minutos faturáveis que um trabalho acumulou._
 

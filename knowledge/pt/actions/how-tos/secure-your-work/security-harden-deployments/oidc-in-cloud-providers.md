@@ -6,21 +6,21 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-cloud-providers
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Secure your work / Security harden deployments
 ---
 
-# Configurando OpenID Connect em provedores da nuvem { #configuring-openid-connect-in-cloud-providers }
+# Configurando OpenID Connect em provedores da nuvem
 
 _Use o OpenID Connect dentro de seus fluxos de trabalho para efetuar a autenticação com provedores de nuvem._
 
-## Visão geral { #overview }
+## Visão geral
 
 O OIDC (OpenID Connect) permite que seus GitHub Actions fluxos de trabalho acessem recursos em seu provedor de nuvem, sem precisar armazenar credenciais como segredos de GitHub longa duração.
 
 Para usar o OIDC, primeiro você precisará configurar seu provedor de nuvem para confiar no GitHubOIDC como uma identidade federada e, em seguida, deve atualizar seus fluxos de trabalho para autenticar usando tokens.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 * Para saber os conceitos básicos de como GitHub usa o OpenID Connect (OIDC) e sua arquitetura e benefícios, consulte [OpenID Connect](../../../concepts/security/openid-connect.md).
 
@@ -28,7 +28,7 @@ Para usar o OIDC, primeiro você precisará configurar seu provedor de nuvem par
 
 * Os tokens OIDC solicitados para Dependabot trabalhos de atualização têm uma declaração `event_name` de `dynamic`. Se sua política de confiança se destina a autorizar apenas GitHub Actions fluxos de trabalho e seu provedor de nuvem dá suporte a condições `event_name`, permita apenas os nomes de eventos esperados por seus fluxos de trabalho. Para obter mais informações, consulte [Referência do OpenID Connect](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
-## Atualizando seu GitHub Actions fluxo de trabalho { #updating-your-github-actions-workflow }
+## Atualizando seu GitHub Actions fluxo de trabalho
 
 Para atualizar seus fluxos de trabalho para o OIDC, você deverá fazer duas alterações no seu YAML:
 
@@ -40,7 +40,7 @@ Se seu provedor de nuvem ainda não oferece uma ação oficial, você pode atual
 !!! note
     Quando os ambientes são usados em fluxos de trabalho ou em políticas OIDC, recomendamos adicionar regras de proteção ao ambiente para segurança adicional. Por exemplo, você pode configurar regras de implantação em um ambiente para restringir quais ramificações e tags podem ser implantadas no ambiente ou acessar segredos de ambiente. Para saber mais, confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md).
 
-### Adicionando configurações de permissões { #adding-permissions-settings }
+### Adicionando configurações de permissões
 
 A execução do trabalho ou do fluxo de trabalho requer uma configuração `permissions` com [`id-token: write`](../../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token) para permitir que o provedor OIDC de GitHub crie um token JWT para cada execução.
 
@@ -48,13 +48,13 @@ A execução do trabalho ou do fluxo de trabalho requer uma configuração `perm
 
 Para obter informações detalhadas sobre permissões necessárias, exemplos de configuração e cenários avançados, confira [Referência do OpenID Connect](../../../reference/security/oidc.md#workflow-permissions-for-the-requesting-the-oidc-token).
 
-### Usando ações oficiais { #using-official-actions }
+### Usando ações oficiais
 
 Se o provedor de nuvem tiver criado uma ação oficial para usar o OIDC, GitHub Actionsele permitirá que você troque facilmente o token OIDC por um token de acesso. Em seguida, você pode atualizar seus fluxos de trabalho para usar este token ao acessar recursos da nuvem.
 
 Por exemplo, Alibaba Cloud criou [`aliyun/configure-aliyun-credentials-action`](https://github.com/aliyun/configure-aliyun-credentials-action) para integrar-se usando OIDC com GitHub.
 
-## Usando ações personalizadas { #using-custom-actions }
+## Usando ações personalizadas
 
 Se o provedor de nuvem não tiver uma ação oficial ou se você preferir criar scripts personalizados, poderá solicitar manualmente o JWT (Token Web JSON) do GitHubprovedor OIDC.
 
@@ -66,7 +66,7 @@ Para atualizar seus fluxos de trabalho usando esta abordagem, você deverá faze
 2. Adicione o código que solicita o token OIDC do provedor OIDC de GitHub.
 3. Adicione um código que troque o token OIDC com seu provedor de nuvem por um token de acesso.
 
-### Solicitando o JWT usando o kit de ferramentas principal do Actions { #requesting-the-jwt-using-the-actions-core-toolkit }
+### Solicitando o JWT usando o kit de ferramentas principal do Actions
 
 O exemplo a seguir demonstra como usar `actions/github-script` com o kit de ferramentas `core` para solicitar o JWT do provedor OIDC de GitHub. Para saber mais, confira [Criando uma ação de JavaScript](../../../tutorials/create-actions/create-a-javascript-action.md#adding-actions-toolkit-packages).
 
@@ -87,7 +87,7 @@ jobs:
           core.setOutput('id_token', id_token)
 ```
 
-### Solicitando o JWT usando variáveis de ambiente { #requesting-the-jwt-using-environment-variables }
+### Solicitando o JWT usando variáveis de ambiente
 
 O exemplo a seguir demonstra como usar variáveis de ambiente para solicitar um Token Web JSON.
 
@@ -129,7 +129,7 @@ Em seguida, você pode usar `curl` para recuperar um JWT do provedor OIDC GitHub
       id: tokenid
 ```
 
-### Obtendo o token de acesso do provedor da nuvem { #getting-the-access-token-from-the-cloud-provider }
+### Obtendo o token de acesso do provedor da nuvem
 
 Você precisará apresentar o token web JSON do OIDC para seu provedor de nuvem a fim de obter um token de acesso.
 
@@ -137,7 +137,7 @@ Para cada implantação, seus fluxos de trabalho devem usar ações de login em 
 
 As etapas para trocar o token do OIDC por um token de acesso irão variar para cada provedor de nuvem.
 
-### Acessando recursos no seu provedor da nuvem { #accessing-resources-in-your-cloud-provider }
+### Acessando recursos no seu provedor da nuvem
 
 Depois de obter o token de acesso, você pode usar as ações específicas da nuvem ou scripts para efetuar a autenticação no provedor da nuvem e fazer a implantação nos seus recursos. Essas etapas podem ser diferentes para cada provedor da nuvem.
 
@@ -145,7 +145,7 @@ Por exemplo, o Alibaba Cloud mantém suas próprias instruções para autentica�
 
 Além disso, o tempo de expiração padrão desse token de acesso pode variar entre as nuvens e pode ser configurável no lado do provedor de nuvem.
 
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 * [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](oidc-with-reusable-workflows.md)
 * [Referência de executores auto-hospedados](../../../reference/runners/self-hosted-runners.md)

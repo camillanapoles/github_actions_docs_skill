@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/manage-your-work/add-labels-to-issues
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Tutorials / Manage your work
 ---
 
-# Adicionando etiquetas a problemas { #adding-labels-to-issues }
+# Adicionando etiquetas a problemas
 
 _Você pode usar GitHub Actions para rotular problemas automaticamente._
 
-## Introdução { #introduction }
+## Introdução
 
 Este tutorial demonstra como usar o GitHub CLI fluxo de trabalho para rotular problemas recém-abertos ou reabertos. Por exemplo, você pode adicionar o rótulo `triage` sempre que um problema é aberto ou reaberto. Em seguida, veja todos os problemas que precisam ser triados, filtrando pelos problemas com o rótulo `triage`.
 
@@ -22,7 +22,7 @@ O GitHub CLI permite que você use facilmente a API GitHub em um fluxo de trabal
 
 No tutorial, primeiro você criará um arquivo de fluxo de trabalho que usa o GitHub CLI. Então, você personalizará o fluxo de trabalho para atender às suas necessidades.
 
-## Criar o fluxo de trabalho { #creating-the-workflow }
+## Criar o fluxo de trabalho
 
 1. Escolha um repositório onde você deseja aplicar este fluxo de trabalho de gerenciamento de projetos. Você pode usar um repositório existente ao qual você tem acesso de gravação ou criar um novo repositório. Para saber mais sobre como criar um repositório, confira [Criar um repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/creating-a-new-repository).
 
@@ -49,7 +49,7 @@ No tutorial, primeiro você criará um arquivo de fluxo de trabalho que usa o Gi
              GH_REPO: ${{ github.repository }}
              NUMBER: ${{ github.event.issue.number }}
              LABELS: triage
-            ```
+   ```
 
 4. Personalize os valores `env` no seu arquivo de fluxo de trabalho:
    * Os valores `GH_TOKEN`, `GH_REPO` e `NUMBER` são configurados automaticamente usando os contextos `github` e `secrets`. Não é necessário alterar esses padrões.
@@ -57,7 +57,7 @@ No tutorial, primeiro você criará um arquivo de fluxo de trabalho que usa o Gi
 
 5. Faça o commit do arquivo de fluxo de trabalho para o branch padrão do seu repositório. Para saber mais, confira [Criar novos arquivos](https://docs.github.com/pt/repositories/working-with-files/managing-files/creating-new-files).
 
-## Testar o fluxo de trabalho { #testing-the-workflow }
+## Testar o fluxo de trabalho
 
 Toda vez que um problema no seu repositório for aberto ou reaberto, esse fluxo de trabalho adicionará as etiquetas que você especificou ao problema.
 
@@ -67,7 +67,7 @@ Teste o seu fluxo de trabalho criando um problema no seu repositório.
 2. Para ver a execução do fluxo de trabalho que foi acionada criando o problema, veja o histórico de execuções do seu fluxo de trabalho. Para saber mais, confira [Visualizar o histórico de execução do fluxo de trabalho](../../how-tos/monitor-workflows/view-workflow-run-history.md).
 3. Quando o fluxo de trabalho é concluído, o problema que você criou deve ter as etiquetas especificadas adicionadas.
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 * Para saber mais sobre outras ações que você pode realizar com o GitHub CLI, consulte o [manual do GitHub CLI](https://cli.github.com/manual/).
 * Para saber mais sobre diferentes eventos que podem disparar seu fluxo de trabalho, confira [Eventos que disparam fluxos de trabalho](../../reference/workflows-and-actions/events-that-trigger-workflows.md#issues).

@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Write workflows / Choose when workflows run
 ---
 
-# Controlar a simultaneidade de fluxos de trabalho e tarefas { #control-the-concurrency-of-workflows-and-jobs }
+# Controlar a simultaneidade de fluxos de trabalho e tarefas
 
 _Gerencie os fluxos de trabalho e os trabalhos que podem ser executados juntos._
 
-## Usar a simultaneidade em diferentes cenários { #using-concurrency-in-different-scenarios }
+## Usar a simultaneidade em diferentes cenários
 
 Você pode usar `jobs.<job_id>.concurrency` para garantir que apenas um trabalho ou fluxo de trabalho que usa o mesmo grupo de simultaneidade seja executado por vez. Um grupo de concorrência pode ser qualquer string ou expressão. Contextos de expressão permitidos: [`github`](../../../reference/workflows-and-actions/contexts.md#github-context), [`inputs`](../../../reference/workflows-and-actions/contexts.md#inputs-context), [`vars`](../../../reference/workflows-and-actions/contexts.md#vars-context), [`needs`](../../../reference/workflows-and-actions/contexts.md#needs-context), [`strategy`](../../../reference/workflows-and-actions/contexts.md#strategy-context) e [`matrix`](../../../reference/workflows-and-actions/contexts.md#matrix-context). Para obter mais informações sobre expressões, confira [Avaliar expressões em fluxos de trabalho e ações](../../../reference/workflows-and-actions/expressions.md).
 
@@ -35,7 +35,7 @@ A combinação de `queue: max` e `cancel-in-progress: true` não é permitida e 
     * O nome do grupo de simultaneidade não diferencia maiúsculas de minúsculas. Por exemplo, `prod` e `Prod` serão tratados como o mesmo grupo de simultaneidade.
     * Trabalhos ou execuções de fluxo de trabalho no mesmo grupo de simultaneidade são processados na ordem de primeiro a entrar em primeiro lugar (FIFO), de acordo com o momento em que cada um começou a esperar no grupo de simultaneidade, não o tempo em que cada fluxo de trabalho foi expedido. Como o horário de início efetivo de um trabalho ou execução pode variar, a ordenação não é garantida.
 
-### Exemplos: Usar a simultaneidade e o comportamento padrão { #example-using-concurrency-and-the-default-behavior }
+### Exemplos: Usar a simultaneidade e o comportamento padrão
 
 O comportamento GitHub Actions padrão é permitir que vários trabalhos ou execuções de fluxo de trabalho sejam executados simultaneamente. A palavra-chave `concurrency` permite controlar a simultaneidade de execuções de fluxo de trabalho.
 
@@ -68,7 +68,7 @@ jobs:
       cancel-in-progress: true
 ```
 
-### Exemplo: grupos de concorrência { #example-concurrency-groups }
+### Exemplo: grupos de concorrência
 
 Os grupos de simultaneidade fornecem uma maneira de gerenciar e limitar a execução de fluxos de trabalho ou tarefas que compartilham a mesma chave de simultaneidade.
 
@@ -102,7 +102,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: Enfileirando várias tarefas pendentes { #example-queueing-multiple-pending-runs }
+### Exemplo: Enfileirando várias tarefas pendentes
 
 Por padrão, apenas uma execução de tarefa ou de fluxo de trabalho pode estar `pending` em um grupo de simultaneidade por vez. Para permitir várias execuções na fila em vez de serem canceladas, defina `queue: max`. Com `queue: max`, até 100 trabalhos ou execuções de fluxo de trabalho podem aguardar no grupo de simultaneidade; depois que a fila estiver cheia, quaisquer execuções adicionais são canceladas.
 
@@ -121,7 +121,7 @@ concurrency:
 
 Observe que `queue: max` não pode ser combinado com `cancel-in-progress: true`, porque as duas opções descrevem comportamentos conflitantes para lidar com execuções em andamento.
 
-### Exemplo: Usar a concorrência para cancelar qualquer trabalho em andamento ou em execução { #example-using-concurrency-to-cancel-any-in-progress-job-or-run }
+### Exemplo: Usar a concorrência para cancelar qualquer trabalho em andamento ou em execução
 
 Para usar a simultaneidade para cancelar qualquer trabalho em andamento GitHub Actions ou execução, você pode usar a tecla `concurrency` com a opção `cancel-in-progress` definida como `true`:
 
@@ -133,7 +133,7 @@ concurrency:
 
 Observe que, neste exemplo, sem definir um grupo de simultaneidade específico, GitHub Actions cancelará a execução de qualquer trabalho ou fluxo de trabalho em andamento.
 
-### Exemplo: Usando um valor para segunda opção { #example-using-a-fallback-value }
+### Exemplo: Usando um valor para segunda opção
 
 Se você construir o nome do grupo com uma propriedade que só é definida para eventos específicos, você pode usar um valor de segunda opção. Por exemplo, `github.head_ref` só é definido em eventos `pull_request`. Se o fluxo de trabalho responder a outros eventos além de eventos `pull_request`, você precisará fornecer um fallback para evitar um erro de sintaxe. O grupo de simultaneidade a seguir cancela os trabalhos em andamento ou é executado somente em eventos `pull_request`. Se `github.head_ref` for indefinido, o grupo de simultaneidade fará fallback para a ID de execução, que tem a garantia de ser exclusiva e definida para a execução.
 
@@ -143,7 +143,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: Cancele somente tarefas em andamento ou execuções no fluxo de trabalho atual { #example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow }
+### Exemplo: Cancele somente tarefas em andamento ou execuções no fluxo de trabalho atual
 
 Se você tiver vários fluxos de trabalho no mesmo repositório, os nomes dos grupos de execução concorrente devem ser únicos em todos os fluxos de trabalho para evitar o cancelamento de tarefas ou execuções em andamento de outros fluxos de trabalho. Caso contrário, qualquer trabalho em andamento ou pendente será cancelado, independentemente do fluxo de trabalho.
 
@@ -155,7 +155,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Exemplo: cancelar apenas trabalhos em andamento em ramificações específicas { #example-only-cancel-in-progress-jobs-on-specific-branches }
+### Exemplo: cancelar apenas trabalhos em andamento em ramificações específicas
 
 Se você quiser cancelar trabalhos em andamento em determinadas ramificações, mas não em outras, poderá usar expressões condicionais com `cancel-in-progress`. Por exemplo, é possível fazer isso se quiser cancelar trabalhos em andamento em branches de desenvolvimento, mas não em branches de lançamento.
 
@@ -169,6 +169,6 @@ concurrency:
 
 Neste exemplo, vários envios por push para um branch `release/1.2.3` não cancelariam execuções em andamento. Envios por push para outro branch, como `main`, cancelariam execuções em andamento.
 
-## Monitorando os seus trabalhos atuais na sua organização ou empresa { #monitoring-your-current-jobs-in-your-organization-or-enterprise }
+## Monitorando os seus trabalhos atuais na sua organização ou empresa
 
 Para identificar quaisquer restrições com simultaneidade ou enfileiramento, você pode verificar quantos trabalhos estão sendo processados atualmente nos GitHubexecutores hospedados em sua organização ou empresa. Para saber mais, confira [Visualizando suas tarefas atuais](../../manage-runners/github-hosted-runners/view-current-jobs.md).

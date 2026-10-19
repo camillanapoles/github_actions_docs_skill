@@ -6,19 +6,19 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/automated-migrations/jenkins-migration
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: Tutorials / Migrate to github actions / Automated migrations
 ---
 
-# Migrando do Jenkins com o Importador de GitHub Actions { #migrating-from-jenkins-with-github-actions-importer }
+# Migrando do Jenkins com o Importador de GitHub Actions
 
 _Saiba como usar GitHub Actions Importer para automatizar a migração dos pipelines do Jenkins para GitHub Actions._
 
-## Sobre a migração a partir do Jenkins com o Importador de GitHub Actions { #about-migrating-from-jenkins-with-github-actions-importer }
+## Sobre a migração a partir do Jenkins com o Importador de GitHub Actions
 
 As instruções a seguir orientarão você na configuração do ambiente a ser usado GitHub Actions Importer para migrar pipelines do Jenkins para GitHub Actions.
 
-### Pré-requisitos { #prerequisites }
+### Pré-requisitos
 
 * Uma conta ou organização jenkins com pipelines e trabalhos que você deseja converter em GitHub Actions fluxos de trabalho.
 * Acesso para criar um token de API pessoal do Jenkins para sua conta ou sua organização.
@@ -30,7 +30,7 @@ As instruções a seguir orientarão você na configuração do ambiente a ser u
 
   > A CLI e o contêiner do GitHub Actions Importer não precisam ser instalados no mesmo servidor que a plataforma de CI.
 
-### Limitações { #limitations }
+### Limitações
 
 Há algumas limitações ao migrar do Jenkins para GitHub Actions com GitHub Actions Importer. Por exemplo, você precisa migrar os seguintes constructos manualmente:
 
@@ -42,13 +42,13 @@ Há algumas limitações ao migrar do Jenkins para GitHub Actions com GitHub Act
 
 Para saber mais sobre migrações manuais, confira [Migrando do Jenkins para o GitHub Actions](../manual-migrations/migrate-from-jenkins.md).
 
-## Instalando a extensão da GitHub Actions Importer CLI { #installing-the-github-actions-importer-cli-extension }
+## Instalando a extensão da GitHub Actions Importer CLI
 
 1. Instale a extensão da CLI do GitHub Actions Importer:
 
             ```bash copy
    gh extension install github/gh-actions-importer
-            ```
+   ```
 
 2. Verifique se a extensão foi instalada:
 
@@ -65,9 +65,9 @@ Para saber mais sobre migrações manuais, confira [Migrando do Jenkins para o G
      forecast   Forecast GitHub Actions usage from historical pipeline utilization.
      dry-run    Convert a pipeline to a GitHub Actions workflow and output its yaml file.
      migrate    Convert a pipeline to a GitHub Actions workflow and open a pull request with the changes.
-            ```
+   ```
 
-## Como configurar credenciais { #configuring-credentials }
+## Como configurar credenciais
 
 O `configure` comando da CLI é usado para definir as credenciais e as opções necessárias para GitHub Actions Importer trabalhar com Jenkins e GitHub.
 
@@ -85,7 +85,7 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
 
             ```shell
    gh actions-importer configure
-            ```
+   ```
 
    O comando `configure` solicitará que você insira as seguintes informações:
 
@@ -108,22 +108,22 @@ O `configure` comando da CLI é usado para definir as credenciais e as opções 
    ✔ Username of Jenkins user: admin
    ✔ Base url of the Jenkins instance: https://localhost
    Environment variables successfully updated.
-            ```
+   ```
 
 4. No terminal, execute o comando CLI GitHub Actions Importer`update` para se conectar a GitHub PackagesContainer registry e garantir que a imagem do contêiner esteja atualizada para a versão mais recente:
 
             ```shell
    gh actions-importer update
-            ```
+   ```
 
    A saída do comando será parecida com a mostrada abaixo:
 
             ```shell
    Updating ghcr.io/actions-importer/cli:latest...
    ghcr.io/actions-importer/cli:latest up-to-date
-            ```
+   ```
 
-## Executar uma auditoria do Jenkins { #perform-an-audit-of-jenkins }
+## Executar uma auditoria do Jenkins
 
 Use o comando `audit` para obter uma exibição de alto nível de todos os pipelines de um servidor do Jenkins.
 
@@ -133,7 +133,7 @@ O comando `audit` executa as seguintes etapas:
 2. Converte cada pipeline em seu fluxo de trabalho equivalente GitHub Actions .
 3. Gera um relatório que resume o quão completa e complexa de uma migração é possível com GitHub Actions Importer.
 
-### Como executar o comando de auditoria { #running-the-audit-command }
+### Como executar o comando de auditoria
 
 Para executar uma auditoria de um servidor do Jenkins, execute o seguinte comando no terminal:
 
@@ -141,7 +141,7 @@ Para executar uma auditoria de um servidor do Jenkins, execute o seguinte comand
 gh actions-importer audit jenkins --output-dir tmp/audit
 ```
 
-### Como inspecionar os resultados da auditoria { #inspecting-the-audit-results }
+### Como inspecionar os resultados da auditoria
 
 Os arquivos do diretório de saída especificado contêm os resultados da auditoria. Confira o arquivo `audit_summary.md` para ver um resumo dos resultados da auditoria.
 
@@ -161,7 +161,7 @@ Veja abaixo alguns termos importantes que podem aparecer na seção "Pipelines":
   * GitHub Actions Importer encontrou um erro interno ao convertê-lo.
   * Houve uma resposta de rede malsucedida que tornou o pipeline inacessível, o que geralmente ocorre devido a credenciais inválidas.
 
-#### Etapas de compilação { #build-steps }
+#### Etapas de compilação
 
 A seção "Etapas de compilação" contém uma visão geral das etapas de compilação individuais usadas em todos os pipelines e de quantas delas foram convertidas automaticamente por GitHub Actions Importer.
 
@@ -176,7 +176,7 @@ A seguir estão alguns termos-chave que podem aparecer na seção "Build steps":
   * Se você usar GitHub Enterprise Server, reunindo a lista de ações para sincronizar com sua instância.
   * Definir uma lista de permissões em nível organizacional para as ações utilizadas. Essa lista de ações é abrangente e inclui as ações que as equipes de segurança ou conformidade podem precisar analisar.
 
-#### Tarefas manuais { #manual-tasks }
+#### Tarefas manuais
 
 A seção "Tarefas manuais" contém uma visão geral das tarefas que GitHub Actions Importer não podem ser concluídas automaticamente e que você deve concluir manualmente.
 
@@ -185,7 +185,7 @@ Veja abaixo alguns termos importantes que podem aparecer na seção "Tarefas man
 * Um **segredo** é um segredo no nível do repositório ou da organização que é usado nos pipelines convertidos. Esses segredos devem ser criados manualmente no GitHub Actions para que esses pipelines funcionem corretamente. Para saber mais, confira [Usar segredos em ações do GitHub](../../../how-tos/write-workflows/choose-what-workflows-do/use-secrets.md).
 * Um **executor auto-hospedado refere-se** a um rótulo de um executor que é referenciado em um pipeline convertido que não é um GitHubexecutor hospedado. Será necessário definir manualmente esses executores para que os pipelines funcionem de maneira correta.
 
-#### Arquivos { #files }
+#### Arquivos
 
 A seção final do relatório de auditoria fornece um manifesto de todos os arquivos que foram gravados em disco durante a auditoria.
 
@@ -198,11 +198,11 @@ Cada arquivo de pipeline tem diversos arquivos incluídos na auditoria, incluind
 
 Além disso, o arquivo `workflow_usage.csv` contém uma lista separada por vírgula de todas as ações, todos os segredos e todos os executores usados pelos pipelines convertidos com sucesso. Isso pode ser útil para determinar quais fluxos de trabalho usam quais ações, segredos ou executores e para executar revisões de segurança.
 
-## Prever o uso potencial do executor de compilação { #forecast-potential-build-runner-usage }
+## Prever o uso potencial do executor de compilação
 
 Você pode usar o comando para prever o `forecast` uso potencial GitHub Actions calculando métricas de execuções de pipeline concluídas no servidor Jenkins.
 
-### Pré-requisitos para executar o comando de previsão { #prerequisites-for-running-the-forecast-command }
+### Pré-requisitos para executar o comando de previsão
 
 Para executar o comando `forecast` em uma instância do Jenkins, você precisa instalar o [ plug-in `paginated-builds`](https://plugins.jenkins.io/paginated-builds) no servidor do Jenkins. Esse plug-in permite recuperar com eficiência dados históricos de build para trabalhos GitHub Actions Importer que têm um grande número de builds. Como o Jenkins não fornece um método para recuperar dados de build paginados, o uso desse plug-in impede tempos limite do servidor do Jenkins que possam ocorrer durante a busca de um grande volume de dados históricos. O plugin `paginated-builds` é de código aberto e expõe um endpoint da API REST para buscar dados de compilação em páginas, em vez de tudo de uma vez.
 
@@ -212,7 +212,7 @@ Para instalar o plug-in `paginated-builds`:
 2. Procure o plug-in `paginated-builds`.
 3. Marque a caixa à esquerda e selecione **Instalar sem reiniciar**.
 
-### Como executar o comando de previsão { #running-the-forecast-command }
+### Como executar o comando de previsão
 
 Para executar uma previsão de potencial GitHub Actions, execute o comando a seguir em seu terminal. Por padrão, GitHub Actions Importer inclui os sete dias anteriores no relatório de previsão.
 
@@ -220,7 +220,7 @@ Para executar uma previsão de potencial GitHub Actions, execute o comando a seg
 gh actions-importer forecast jenkins --output-dir tmp/forecast
 ```
 
-### Como inspecionar o relatório de previsão { #inspecting-the-forecast-report }
+### Como inspecionar o relatório de previsão
 
 O arquivo `forecast_report.md` no diretório de saída especificado contém os resultados da previsão.
 
@@ -237,48 +237,48 @@ Veja abaixo alguns termos importantes que podem aparecer no relatório de previs
 
 Além disso, essas métricas são definidas para cada fila de executores no Jenkins. Isso é especialmente útil se há uma combinação de executores hospedados ou auto-hospedados, ou computadores de especificação alta ou baixa, de modo que você possa ver métricas específicas para diferentes tipos de executores.
 
-        ```
-## Executar uma migração de simulação de um pipeline do Jenkins { #perform-a-dry-run-migration-of-a-jenkins-pipeline }
+  ```
+## Executar uma migração de simulação de um pipeline do Jenkins
 
 Você pode usar o `dry-run` comando para converter um pipeline jenkins em seu fluxo de trabalho equivalente GitHub Actions .
 
-### Como executar o comando de simulação { #running-the-dry-run-command }
+### Como executar o comando de simulação
 
 Você pode usar o `dry-run` comando para converter um pipeline jenkins em um fluxo de trabalho equivalente GitHub Actions . Uma simulação cria os arquivos de saída em um diretório especificado, mas não abre uma solicitação de pull para migrar o pipeline.
 
 Para executar uma execução seca de migração dos pipelines do Jenkins para GitHub Actionsexecutar o comando a seguir no terminal, substituindo `my-jenkins-project` pela URL do trabalho do Jenkins.
 
-```
+```shell
 gh actions-importer dry-run jenkins --source-url my-jenkins-project --output-dir tmp/dry-run
 ```
 
-### Como inspecionar os fluxos de trabalho convertidos { #inspecting-the-converted-workflows }
+### Como inspecionar os fluxos de trabalho convertidos
 
 Você pode ver os logs da simulação e os arquivos de fluxo de trabalho convertidos no diretório de saída especificado.
 
 Se houver algo que GitHub Actions Importer não foi capaz de converter automaticamente, como etapas de build desconhecidas ou um pipeline parcialmente bem-sucedido, talvez você queira criar transformadores personalizados para personalizar ainda mais o processo de conversão. Para saber mais, confira [Estendendo o Importador do GitHub Actions com transformadores personalizados](../../../reference/github-actions-importer/custom-transformers.md).
 
-## Executar uma migração de produção de um pipeline do Jenkins { #perform-a-production-migration-of-a-jenkins-pipeline }
+## Executar uma migração de produção de um pipeline do Jenkins
 
 Você pode usar o `migrate` comando para converter um pipeline do Jenkins e abrir uma solicitação de pull com o fluxo de trabalho equivalente GitHub Actions .
 
-### Como executar o comando de migração { #running-the-migrate-command }
+### Como executar o comando de migração
 
 Para migrar um pipeline do Jenkins, GitHub Actionsexecute o seguinte comando em seu terminal, substituindo o `target-url` valor pela URL do repositório GitHub e `my-jenkins-project` pela URL do trabalho do Jenkins.
 
-```
+```shell
 gh actions-importer migrate jenkins --target-url https://github.com/:owner/:repo --output-dir tmp/migrate --source-url my-jenkins-project
 ```
 
 A saída do comando inclui a URL para a solicitação de pull que adiciona o fluxo de trabalho convertido ao seu repositório. Um exemplo de uma saída bem-sucedida é semelhante ao seguinte:
 
-```
+```shell
 $ gh actions-importer migrate jenkins --target-url https://github.com/octo-org/octo-repo --output-dir tmp/migrate --source-url http://localhost:8080/job/monas_dev_work/job/monas_freestyle
 [2022-08-20 22:08:20] Logs: 'tmp/migrate/log/actions-importer-20220916-014033.log'
 [2022-08-20 22:08:20] Pull request: 'https://github.com/octo-org/octo-repo/pull/1'
 ```
 
-### Como inspecionar a solicitação de pull { #inspecting-the-pull-request }
+### Como inspecionar a solicitação de pull
 
 A saída de uma execução bem-sucedida do comando `migrate` contém um link para a nova solicitação de pull que adiciona o fluxo de trabalho convertido ao seu repositório.
 
@@ -289,11 +289,11 @@ Alguns elementos importantes da solicitação de pull incluem:
 
 Quando terminar de inspecionar a pull request, você poderá mesclá-la para adicionar o fluxo de trabalho ao repositório do GitHub.
 
-## Referência { #reference }
+## Referência
 
 Esta seção contém informações de referência sobre variáveis de ambiente, argumentos opcionais e sintaxe com suporte ao usar GitHub Actions Importer para migrar do Jenkins.
 
-### Usando variáveis de ambiente { #using-environment-variables }
+### Usando variáveis de ambiente
 
 O GitHub Actions Importer usa variáveis de ambiente para a configuração de autenticação. Essas variáveis são definidas durante o processo de configuração com o comando `configure`. Para obter mais informações, confira a seção [Como configurar as credenciais](#configuring-credentials).
 
@@ -317,7 +317,7 @@ GitHub Actions Importer usa as seguintes variáveis de ambiente para se conectar
 
 Essas variáveis de ambiente podem ser especificadas em um `.env.local` arquivo que é carregado pelo GitHub Actions Importer quando ele é executado.
 
-### Como usar argumentos opcionais { #using-optional-arguments }
+### Como usar argumentos opcionais
 
 Há argumentos opcionais que você pode usar com os subcomandos do GitHub Actions Importer para personalizar sua migração.
 
@@ -329,11 +329,11 @@ Por padrão, GitHub Actions Importer busca o conteúdo do pipeline do controle d
 
 Caso você deseje fornecer vários arquivos de origem ao executar o subcomando `forecast`, use padrões correspondentes no valor do caminho do arquivo. Por exemplo, `gh forecast --source-file-path ./tmp/previous_forecast/jobs/*.json` fornece todos os GitHub Actions Importer arquivos de origem que correspondam ao caminho do `./tmp/previous_forecast/jobs/*.json` arquivo.
 
-##### Exemplo de pipeline do Jenkinsfile { #jenkinsfile-pipeline-example }
+##### Exemplo de pipeline do Jenkinsfile
 
 Neste exemplo, GitHub Actions Importer usa o Jenkinsfile especificado como o arquivo de origem para executar uma execução seca.
 
-```
+```shell
 gh actions-importer dry-run jenkins --output-dir path/to/output/ --source-file-path path/to/Jenkinsfile --source-url :url_to_jenkins_job
 ```
 
@@ -345,17 +345,17 @@ Por padrão, GitHub Actions Importer busca o conteúdo do pipeline do controle d
 
 Quando você usa a opção `--config-file-path` com os `dry-run` subcomandos ou `migrate` subcomandos, GitHub Actions Importer corresponde à lesma do repositório ao trabalho representado pela opção `--source-url` para selecionar o pipeline. Ele usa o `config-file-path` para efetuar pull do arquivo de origem especificado.
 
-##### Exemplo de auditoria { #audit-example }
+##### Exemplo de auditoria
 
 Neste exemplo, GitHub Actions Importer usa o arquivo de configuração YAML especificado para executar uma auditoria.
 
-```
+```shell
 gh actions-importer audit jenkins --output-dir path/to/output/ --config-file-path path/to/jenkins/config.yml
 ```
 
 Para auditar uma instância do Jenkins usando um arquivo de configuração, o arquivo de configuração precisa estar no seguinte formato e cada valor `repository_slug` precisa ser exclusivo:
 
-```
+```yaml
 source_files:
   - repository_slug: pipeline-name
     path: path/to/Jenkinsfile
@@ -367,26 +367,26 @@ source_files:
         path: path/to/Jenkinsfile
 ```
 
-### Sintaxe com suporte para pipelines do Jenkins { #supported-syntax-for-jenkins-pipelines }
+### Sintaxe com suporte para pipelines do Jenkins
 
 As tabelas a seguir mostram que o tipo de propriedades GitHub Actions Importer é capaz de converter no momento. Para obter mais detalhes sobre como a sintaxe de pipeline do Jenkins se alinha GitHub Actions, consulte [Migrando do Jenkins para o GitHub Actions](../manual-migrations/migrate-from-jenkins.md).
 
 Para obter informações sobre os plug-ins do Jenkins com suporte, confira o [ repositório `github/gh-actions-importer`](https://github.com/github/gh-actions-importer/blob/main/docs/jenkins/index.md).
 
-#### Sintaxe suportada para pipelines Freestyle { #supported-syntax-for-freestyle-pipelines }
+#### Sintaxe suportada para pipelines Freestyle
 
 | Jenkins           | GitHub Actions            | Status          |
-| :---------------- | :------------------------ | :-------------- |
+|:----------------|:------------------------|:--------------|
 | modelo do Docker  | `jobs.<job_id>.container` | Com suporte     |
 | build             | `jobs`                    | Suporte parcial |
 | compilar ambiente | `env`                     | Suporte parcial |
 | gatilhos de build | `on`                      | Suporte parcial |
 | geral             | `runners`                 | Suporte parcial |
 
-#### Sintaxe suportada para pipelines Jenkinsfile { #supported-syntax-for-jenkinsfile-pipelines }
+#### Sintaxe suportada para pipelines Jenkinsfile
 
 | Jenkins      | GitHub Actions                  | Status          |
-| :----------- | :------------------------------ | :-------------- |
+|:-----------|:------------------------------|:--------------|
 | docker       | `jobs.<job_id>.container`       | Com suporte     |
 | fase         | `jobs.<job_id>`                 | Com suporte     |
 | agente       | `runners`                       | Suporte parcial |
@@ -400,25 +400,25 @@ Para obter informações sobre os plug-ins do Jenkins com suporte, confira o [ r
 | opções       | `jobs.<job_id>.strategy`        | Sem suporte     |
 | parâmetros   | `inputs`                        | Sem suporte     |
 
-### Sintaxe das variáveis de ambiente { #environment-variables-syntax }
+### Sintaxe das variáveis de ambiente
 
 GitHub Actions Importer usa o mapeamento na tabela abaixo para converter variáveis de ambiente jenkins padrão para o equivalente mais próximo em GitHub Actions.
 
-| Jenkins           | GitHub Actions                                                                        |
-| :---------------- | :------------------------------------------------------------------------------------ |
-| `${BUILD_ID}`     | `${{ github.run_id }}`                                                                |
-| `${BUILD_NUMBER}` | `${{ github.run_id }}`                                                                |
-| `${BUILD_TAG}`    | `${{ github.workflow }}-${{ github.run_id }}`                                         |
-| `${BUILD_URL}`    | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
-| `${JENKINS_URL}`  | `${{ github.server_url }}`                                                            |
-| `${JOB_NAME}`     | `${{ github.workflow }}`                                                              |
-| `${WORKSPACE}`    | `${{ github.workspace }}`                                                             |
+| Jenkins | GitHub Actions |
+| :-- | :-- |
+| `${BUILD_ID}` | `${{ github.run_id }}` |
+| `${BUILD_NUMBER}` | `${{ github.run_id }}` |
+| `${BUILD_TAG}` | `${{ github.workflow }}-${{ github.run_id }}` |
+| `${BUILD_URL}` | `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}` |
+| `${JENKINS_URL}` | `${{ github.server_url }}` |
+| `${JOB_NAME}` | `${{ github.workflow }}` |
+| `${WORKSPACE}` | `${{ github.workspace }}` |
 
-## Aviso legal { #legal-notice }
+## Aviso legal
 
 Partes foram adaptadas do <https://github.com/github/gh-actions-importer/> de acordo com a licença MIT:
 
-```
+```text
 MIT License
 
 Copyright (c) 2022 GitHub

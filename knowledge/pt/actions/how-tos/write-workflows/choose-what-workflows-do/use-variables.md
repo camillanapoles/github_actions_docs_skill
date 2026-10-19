@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Write workflows / Choose what workflows do
 ---
 
-# Armazenar informações em variáveis { #store-information-in-variables }
+# Armazenar informações em variáveis
 
 _GitHub define variáveis padrão para cada GitHub Actions execução de fluxo de trabalho. Você também pode definir variáveis personalizadas para uso em um ou vários fluxos de trabalho._
 
-## Definir variáveis de ambiente para um único fluxo de trabalho { #defining-environment-variables-for-a-single-workflow }
+## Definir variáveis de ambiente para um único fluxo de trabalho
 
 Para definir uma variável de ambiente personalizada para uso em um único fluxo de trabalho, é possível usar a chave `env` no arquivo do fluxo de trabalho. O escopo de uma variável personalizada definida por este método fica limitado ao elemento em que ele está definido. Você pode definir variáveis cujos escopos são definidos como:
 
@@ -49,7 +49,7 @@ Os comandos nas etapas `run` de um fluxo de trabalho, ou uma ação referenciada
 
 Como a interpolação de variável de ambiente do executor é feita depois que um trabalho do fluxo de trabalho é enviado para uma máquina do executor, você deve usar a sintaxe apropriada para o shell usado no executor. Neste exemplo, o fluxo de trabalho especifica `ubuntu-latest`. Por padrão, os executores do Linux usam o shell do Bash. Portanto, você precisa usar a sintaxe `$NAME`. Por padrão, os executores do Windows usam o PowerShell, então, você usaria a sintaxe `$env:NAME`. Para saber mais sobre shells, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idstepsshell).
 
-## Como definir variáveis de configuração para vários fluxos de trabalho { #defining-configuration-variables-for-multiple-workflows }
+## Como definir variáveis de configuração para vários fluxos de trabalho
 
 Você pode criar variáveis de configuração para uso em vários fluxos de trabalho e pode defini-las no nível da [organização](#creating-configuration-variables-for-an-organization), do [repositório](#creating-configuration-variables-for-a-repository) ou do [ambiente](#creating-configuration-variables-for-an-environment).
 
@@ -57,7 +57,7 @@ Por exemplo, você pode usar variáveis de configuração para definir valores p
 
 Quando você define variáveis de configuração, elas ficam automaticamente disponíveis no contexto `vars`. Para obter mais informações, confira [Como usar o `vars`contexto para acessar valores de variáveis de configuração](#using-the-vars-context-to-access-configuration-variable-values).
 
-### Criando variáveis de configuração para um repositório { #creating-configuration-variables-for-a-repository }
+### Criando variáveis de configuração para um repositório
 
 Para criar segredos ou variáveis em GitHub para um repositório de organização, você deve ter `write` acesso. Para um repositório de conta pessoal, você deve ser um colaborador do repositório.
 
@@ -75,7 +75,7 @@ Para criar segredos ou variáveis em GitHub para um repositório de organizaçã
 3. No campo **Valor**, insira o valor da variável.
 4. Clique em **Adicionar variável**.
 
-### Como criar variáveis de configuração para um ambiente { #creating-configuration-variables-for-an-environment }
+### Como criar variáveis de configuração para um ambiente
 
 Para criar segredos ou variáveis para um ambiente em um repositório de conta pessoal, você deve ser o proprietário do repositório. Para criar segredos ou variáveis para um ambiente em um repositório de uma organização, é necessário ter acesso `admin`. Para saber mais sobre os ambientes, confira [Gerenciar ambientes para implantação](../../deploy/configure-and-manage-deployments/manage-environments.md).
 
@@ -90,7 +90,7 @@ Para criar segredos ou variáveis para um ambiente em um repositório de conta p
 7. No campo **Valor**, insira o valor da variável.
 8. Clique em **Adicionar variável**.
 
-### Como criar variáveis de configuração para uma organização { #creating-configuration-variables-for-an-organization }
+### Como criar variáveis de configuração para uma organização
 
 !!! note
     Os segredos e variáveis no nível da organização não são acessíveis por repositórios privados para GitHub Free. Para obter mais informações sobre como atualizar sua GitHub assinatura, consulte [Atualizando o plano da sua conta](https://docs.github.com/pt/billing/how-tos/manage-plan-and-licenses/upgrade-plan).
@@ -121,13 +121,13 @@ Os proprietários "Gerenciar variáveis de ações da organização" ou "Gerenci
 
 9. Clique em **Adicionar variável**.
 
-## Como usar contextos para acessar valores de variáveis { #using-contexts-to-access-variable-values }
+## Como usar contextos para acessar valores de variáveis
 
 Os contextos são uma forma de acessar informações sobre execuções de fluxo de trabalho, variáveis, ambientes dos executores, trabalhos e etapas. Para obter mais informações, consulte [Referência de contextos](../../../reference/workflows-and-actions/contexts.md). Há muitos outros contextos que você pode usar para uma série de finalidades nos seus fluxos de trabalho. Para obter detalhes sobre quando usar contextos específicos em um fluxo de trabalho, confira [Referência de contextos](../../../reference/workflows-and-actions/contexts.md#context-availability).
 
 Você pode acessar valores de variáveis de ambiente usando o contexto `env` e valores de variáveis de configuração usando o contexto `vars`.
 
-### Como usar o contexto `env` para acessar valores de variáveis de ambiente { #using-the-env-context-to-access-environment-variable-values }
+### Como usar o contexto `env` para acessar valores de variáveis de ambiente
 
 Além das variáveis de ambiente do runner, GitHub Actions permite definir e ler os valores de chave de `env` por meio de contextos. As variáveis e os contextos do ambiente são destinados a serem usados em diferentes pontos do fluxo de trabalho.
 
@@ -168,7 +168,7 @@ run: echo "${{ env.Greeting }} ${{ env.First_Name }}. Today is ${{ env.DAY_OF_WE
     [!WARNING]
     Ao criar fluxos de trabalho e ações, sempre considere se o código poderá executar entradas não confiáveis de possíveis invasores. Certos contextos devem ser tratados como entradas não confiáveis, uma vez que um invasor pode inserir seu próprio conteúdo malicioso. Para saber mais, confira [Referência de uso seguro](../../../reference/security/secure-use.md#good-practices-for-mitigating-script-injection-attacks).
 
-### Como usar o contexto `vars` para acessar valores de variáveis de configuração { #using-the-vars-context-to-access-configuration-variable-values }
+### Como usar o contexto `vars` para acessar valores de variáveis de configuração
 
 As variáveis de configuração podem ser acessadas em todo o fluxo de trabalho usando o contexto `vars`. Para saber mais, confira [Referência de contextos](../../../reference/workflows-and-actions/contexts.md#vars-context).
 
@@ -209,7 +209,7 @@ jobs:
         who-to-greet: ${{ vars.GREET_NAME }}
 ```
 
-## Detectando o sistema operacional { #detecting-the-operating-system }
+## Detectando o sistema operacional
 
 Você pode escrever um único arquivo de fluxo de trabalho que pode ser usado para sistemas operacionais diferentes usando a `RUNNER_OS` variável de ambiente padrão e a propriedade `${{ runner.os }}`de contexto correspondente. Por exemplo, o fluxo de trabalho a seguir poderá ser executado com sucesso se você alterar o sistema operacional de `macos-latest` para `windows-latest` sem precisar alterar a sintaxe das variáveis de ambiente, que varia conforme o shell que está sendo usado pelo executor.
 
@@ -231,12 +231,12 @@ jobs:
 Neste exemplo, as duas instruções `if` verificam a propriedade `os` do contexto `runner` para determinar o sistema operacional do executor.
 `if` as condicionais são processadas por GitHub Actions, e apenas as etapas em que a verificação é resolvida conforme `true` são enviadas para o executor. Aqui, uma das verificações sempre será `true` e a outra `false`. Portanto, apenas uma dessas etapas será enviada ao executor. Assim que o trabalho for enviado ao executor, a etapa será executada e a variável de ambiente no comando `echo` será interpolada com a sintaxe apropriada (`$env:NAME` para o PowerShell no Windows e `$NAME` para o Bash e o sh no Linux e no macOS). Neste exemplo, a instrução `runs-on: macos-latest` significa que a segunda etapa será executada.
 
-## Passando valores entre etapas e trabalhos em um fluxo de trabalho { #passing-values-between-steps-and-jobs-in-a-workflow }
+## Passando valores entre etapas e trabalhos em um fluxo de trabalho
 
 Se você gerar um valor em uma etapa de um trabalho, poderá usar o valor em etapas posteriores do mesmo trabalho atribuindo o valor a uma variável de ambiente nova ou existente e gravando isso no arquivo de ambiente `GITHUB_ENV`. O arquivo de ambiente pode ser usado diretamente por uma ação ou em um comando do shell no arquivo de fluxo de trabalho usando a palavra-chave `run`. Para saber mais, confira [Comandos de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-commands.md#setting-an-environment-variable).
 
 Se você deseja passar um valor de uma etapa de um trabalho em um fluxo de trabalho para uma etapa de outro trabalho no fluxo de trabalho, você poderá definir o valor como uma saída de trabalho. Em seguida, você poderá fazer referência a saída desse trabalho a partir de uma etapa em outro trabalho. Para saber mais, confira [Sintaxe de fluxo de trabalho para o GitHub Actions](../../../reference/workflows-and-actions/workflow-syntax.md#jobsjob_idoutputs).
 
-## Próximas etapas { #next-steps }
+## Próximas etapas
 
 Para obter informações de referência, confira [Referência de variáveis](../../../reference/workflows-and-actions/variables.md).

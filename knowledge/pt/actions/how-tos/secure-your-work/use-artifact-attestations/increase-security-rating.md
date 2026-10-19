@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/use-artifact-attestations/increase-security-rating
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Secure your work / Use artifact attestations
 ---
 
-# Usando atestados de artefatos e fluxos de trabalho reutilizáveis para alcançar o SLSA v1 Build Level 3 { #using-artifact-attestations-and-reusable-workflows-to-achieve-slsa-v1-build-level-3 }
+# Usando atestados de artefatos e fluxos de trabalho reutilizáveis para alcançar o SLSA v1 Build Level 3
 
 _A criação de software com fluxos de trabalho reutilizáveis e atestados de artefatos pode simplificar a segurança da sua cadeia de fornecedores e ajudar você a alcançar o SLSA v1.0 Build Level 3._
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Antes de começar este guia, você deve ter familiaridade com:
 
@@ -22,15 +22,15 @@ Antes de começar este guia, você deve ter familiaridade com:
 * Gerando atestados de artefatos Confira [Usar atestados de artefatos para estabelecer a procedência de compilações](use-artifact-attestations.md).
 * Escrever e usar fluxos de trabalho reutilizáveis. Confira [Reutilizar fluxos de trabalho](../../reuse-automations/reuse-workflows.md).
 
-## Etapa 1: Configurando suas compilações { #step-1-configuring-your-builds }
+## Etapa 1: Configurando suas compilações
 
 Primeiro, precisamos compilar com atestados de artefatos e um fluxo de trabalho reutilizável.
 
-### Construir com um fluxo de trabalho reutilizável { #building-with-a-reusable-workflow }
+### Construir com um fluxo de trabalho reutilizável
 
 Se você ainda não estiver usando fluxos de trabalho reutilizáveis para compilar seu software, precisará executar suas etapas de build e movê-las para um fluxo de trabalho reutilizável.
 
-### Compilar com atestados de artefatos. { #building-with-artifact-attestations }
+### Compilar com atestados de artefatos.
 
 O fluxo de trabalho reutilizável que você usa para criar seu software também deve gerar atestados de artefato para estabelecer a procedência do build.
 
@@ -45,7 +45,7 @@ permissions:
 
 Se você estiver compilando imagens de contêiner, também precisará incluir a permissão `packages: write`.
 
-## Etapa 2: Verificar atestados de artefato compilados com um fluxo de trabalho reutilizável { #step-2-verifying-artifact-attestations-built-with-a-reusable-workflow }
+## Etapa 2: Verificar atestados de artefato compilados com um fluxo de trabalho reutilizável
 
 Para verificar as certificações de artefatos geradas com suas compilações, você pode usar [`gh attestation verify`](https://cli.github.com/manual/gh_attestation_verify) a partir da CLI do GitHub.
 

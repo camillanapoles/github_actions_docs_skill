@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Secure your work / Security harden deployments
 ---
 
-# Configurando o OpenID Connect no Amazon Web Services { #configuring-openid-connect-in-amazon-web-services }
+# Configurando o OpenID Connect no Amazon Web Services
 
 _Use o OpenID Connect dentro de seus fluxos de trabalho para efetuar a autenticação com Amazon Web Services._
 
-## Visão geral { #overview }
+## Visão geral
 
 O OIDC (OpenID Connect) permite que seus GitHub Actions fluxos de trabalho acessem recursos no AWS (Amazon Web Services), sem a necessidade de armazenar as credenciais do AWS como segredos de GitHub longa duração.
 
@@ -23,7 +23,7 @@ Este guia explica como configurar o AWS para confiar no GitHubOIDC como uma iden
 !!! note
     O suporte para declarações personalizadas de OIDC não está disponível na AWS.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 * Para saber os conceitos básicos de como GitHub usa o OpenID Connect (OIDC) e sua arquitetura e benefícios, consulte [OpenID Connect](../../../concepts/security/openid-connect.md).
 
@@ -31,14 +31,14 @@ Este guia explica como configurar o AWS para confiar no GitHubOIDC como uma iden
 
 * Os tokens OIDC solicitados para Dependabot trabalhos de atualização têm uma declaração `event_name` de `dynamic`. Se sua política de confiança se destina a autorizar apenas GitHub Actions fluxos de trabalho e seu provedor de nuvem dá suporte a condições `event_name`, permita apenas os nomes de eventos esperados por seus fluxos de trabalho. Para obter mais informações, consulte [Referência do OpenID Connect](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
-## Adicionando o provedor de identidade ao AWS { #adding-the-identity-provider-to-aws }
+## Adicionando o provedor de identidade ao AWS
 
 Para adicionar o GitHub provedor OIDC ao IAM, consulte a [documentação do AWS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html).
 
 * Para a URL do provedor: Usar `https://token.actions.githubusercontent.com`
 * Em "Público-alvo": use `sts.amazonaws.com` se você estiver usando a [ação oficial](https://github.com/aws-actions/configure-aws-credentials).
 
-### Configurando a função e a política de confiança { #configuring-the-role-and-trust-policy }
+### Configurando a função e a política de confiança
 
 Para configurar a função e a política de confiança no IAM, consulte a documentação da AWS [Configurar credenciais da AWS para ações do GitHub](https://github.com/aws-actions/configure-aws-credentials#configure-aws-credentials-for-github-actions) e [Configurando uma função para o provedor de identidade OIDC do GitHub](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html#idp_oidc_Create_GitHub).
 
@@ -106,14 +106,14 @@ No exemplo a seguir, `StringLike` é usado com um operador curinga (`*`) para pe
 }
 ```
 
-## Atualizando seu GitHub Actions fluxo de trabalho { #updating-your-github-actions-workflow }
+## Atualizando seu GitHub Actions fluxo de trabalho
 
 Para atualizar seus fluxos de trabalho para o OIDC, você deverá fazer duas alterações no seu YAML:
 
 1. Adicionar configurações de permissões para o token.
 2. Use a ação [`aws-actions/configure-aws-credentials`](https://github.com/aws-actions/configure-aws-credentials) para trocar o token OIDC (JWT) por um token de acesso à nuvem.
 
-### Adicionando configurações de permissões { #adding-permissions-settings }
+### Adicionando configurações de permissões
 
 A execução do trabalho ou do fluxo de trabalho requer uma configuração `permissions` com [`id-token: write`](../../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token) para permitir que o provedor OIDC de GitHub crie um token JWT para cada execução.
 
@@ -121,7 +121,7 @@ A execução do trabalho ou do fluxo de trabalho requer uma configuração `perm
 
 Para obter informações detalhadas sobre permissões necessárias, exemplos de configuração e cenários avançados, confira [Referência do OpenID Connect](../../../reference/security/oidc.md#workflow-permissions-for-the-requesting-the-oidc-token).
 
-### Solicitando o token de acesso { #requesting-the-access-token }
+### Solicitando o token de acesso
 
 A `aws-actions/configure-aws-credentials` ação recebe um JWT do provedor OIDC GitHub e solicita um token de acesso da AWS. Para obter mais informações, confira a [documentação](https://github.com/aws-actions/configure-aws-credentials) da AWS.
 
@@ -133,10 +133,10 @@ A `aws-actions/configure-aws-credentials` ação recebe um JWT do provedor OIDC 
 ```
 # Sample workflow to access AWS resources when workflow is tied to branch
 # The workflow creates a static website using Amazon S3
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
-# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
-# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
-# online. { #documentation }
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
+# São fornecidas por terceiros e regidas por
+# termos de serviço, política de privacidade e suporte separados
+# online.
 name: AWS example workflow
 on:
   push
@@ -166,7 +166,7 @@ jobs:
 ```
 
 ```
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 * [Usando o OpenID Connect com fluxos de trabalho reutilizáveis](oidc-with-reusable-workflows.md)
 * [Referência de executores auto-hospedados](../../../reference/runners/self-hosted-runners.md)

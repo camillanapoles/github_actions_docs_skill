@@ -6,11 +6,11 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs/skip-workflow-runs
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Manage workflow runs
 ---
 
-# Ignorar execuções de fluxo de trabalho { #skipping-workflow-runs }
+# Ignorar execuções de fluxo de trabalho
 
 _Você pode ignorar as execuções de fluxo de trabalho disparadas pelos eventos push e pull_request incluindo um comando na mensagem de commit._
 

@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/deploy-to-third-party-platforms/azure-kubernetes-service
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Deploy / Deploy to third party platforms
 ---
 
-# Implantando no Azure Kubernetes Service { #deploying-to-azure-kubernetes-service }
+# Implantando no Azure Kubernetes Service
 
 _Saiba como implantar um projeto no serviço Azure Kubernetes (AKS) como parte de um fluxo de trabalho de implantação contínua (CD)._
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Antes de criar seu fluxo de trabalho de GitHub Actions, primeiro você precisa concluir as etapas de configuração a seguir:
 
@@ -22,7 +22,7 @@ Antes de criar seu fluxo de trabalho de GitHub Actions, primeiro você precisa c
 
 1. Crie um segredo chamado `AZURE_CREDENTIALS` para armazenar suas credenciais de Azure. Para obter mais informações sobre como encontrar essas informações e estruturar o segredo, consulte [a documentação da ação `Azure/login`](https://github.com/Azure/login#configure-a-service-principal-with-a-secret).
 
-## Criar o fluxo de trabalho { #creating-the-workflow }
+## Criar o fluxo de trabalho
 
 Depois de preencher os pré-requisitos, você pode prosseguir com a criação do fluxo de trabalho.
 
@@ -38,14 +38,14 @@ Esse fluxo de trabalho usa o mecanismo de renderização `helm` para a ação [`
 
 ```yaml copy
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
-# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
-# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
-# online. { #documentation }
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
+# São fornecidas por terceiros e regidas por
+# termos de serviço, política de privacidade e suporte separados
+# online.
 
-# O GitHub recomenda fixar ações em um SHA de commit. { #github-recommends-pinning-actions-to-a-commit-sha }
-# Para obter uma versão mais recente, você precisará atualizar o SHA. { #to-get-a-newer-version-you-will-need-to-update-the-sha }
-# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso. { #you-can-also-reference-a-tag-or-branch-but-the-action-may-change-without-warning }
+# O GitHub recomenda fixar ações em um SHA de commit.
+# Para obter uma versão mais recente, você precisará atualizar o SHA.
+# Você também pode fazer referência a uma marca ou branch, mas a ação pode ser alterada sem aviso.
 
 name: Build and deploy to Azure Kubernetes Service
 
@@ -110,7 +110,7 @@ jobs:
 ```
 
 ```
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 * Para o modelo de fluxo de trabalho original, confira [`azure-kubernetes-service.yml`](https://github.com/actions/starter-workflows/blob/main/deployments/azure-kubernetes-service.yml) no repositório `starter-workflows` do GitHub Actions.
 * As ações usadas neste fluxo de trabalho são as ações oficiais do Azure [`Azure/login`](https://github.com/Azure/login), [`Azure/aks-set-context`](https://github.com/Azure/aks-set-context), [`Azure/CLI`](https://github.com/Azure/CLI), [`Azure/k8s-bake`](https://github.com/Azure/k8s-bake) e [`Azure/k8s-deploy`](https://github.com/Azure/k8s-deploy).

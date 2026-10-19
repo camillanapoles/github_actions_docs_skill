@@ -6,11 +6,11 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/monitor-workflows/view-workflow-run-history
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Monitor workflows
 ---
 
-# Visualizar o histórico de execução do fluxo de trabalho { #viewing-workflow-run-history }
+# Visualizar o histórico de execução do fluxo de trabalho
 
 _Você pode visualizar registros para cada execução de um fluxo de trabalho. Os registros incluem a situação de cada trabalho e a etapa de um fluxo de trabalho._
 
@@ -28,7 +28,7 @@ _Você pode visualizar registros para cada execução de um fluxo de trabalho. O
 !!! note
     Para saber mais sobre GitHub CLI, confira [Sobre GitHub CLI](https://docs.github.com/pt/github-cli/github-cli/about-github-cli).
 
-## Visualizando execuções de fluxo de trabalho recentes { #viewing-recent-workflow-runs }
+## Visualizando execuções de fluxo de trabalho recentes
 
 Para listar as execuções de fluxo de trabalho recentes, use o subcomando `run list`.
 
@@ -48,7 +48,7 @@ Para retornar apenas as execuções de fluxo de trabalho especificadas, use o si
 gh run list --workflow WORKFLOW
 ```
 
-## Visualização de detalhes de uma execução específica do fluxo de trabalho { #viewing-details-for-a-specific-workflow-run }
+## Visualização de detalhes de uma execução específica do fluxo de trabalho
 
 Para ver os detalhes de uma execução de fluxo de trabalho específica, use o subcomando `run view`. Substitua `run-id` pela ID da execução que deseja ver. Se você não especificar um `run-id`, o GitHub CLI retornará um menu interativo para você escolher uma execução recente.
 

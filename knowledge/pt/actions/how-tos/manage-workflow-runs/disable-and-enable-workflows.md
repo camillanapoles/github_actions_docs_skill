@@ -6,11 +6,11 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs/disable-and-enable-workflows
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Manage workflow runs
 ---
 
-# Desabilitar e habilitar um fluxo de trabalho { #disabling-and-enabling-a-workflow }
+# Desabilitar e habilitar um fluxo de trabalho
 
 _Você pode desabilitar e habilitar novamente um fluxo de trabalho usando a interface do usuário de GitHub, a API REST, ou GitHub CLI._
 
@@ -28,7 +28,7 @@ Desabilitar temporariamente um fluxo de trabalho pode ser útil em vários cená
 
 Também é possível desabilitar e habilitar um fluxo de trabalho usando a API REST. Para saber mais, confira [Endpoints da API REST para fluxos de trabalho](https://docs.github.com/pt/rest/actions/workflows).
 
-## Desabilitar um fluxo de trabalho { #disabling-a-workflow }
+## Desabilitar um fluxo de trabalho
 
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(play) Actions**.
@@ -48,7 +48,7 @@ Para desabilitar um fluxo de trabalho, use o subcomando `workflow disable`. Subs
 gh workflow disable WORKFLOW
 ```
 
-## Habilitar um fluxo de trabalho { #enabling-a-workflow }
+## Habilitar um fluxo de trabalho
 
 Você pode habilitar novamente um fluxo de trabalho que foi desabilitado anteriormente.
 

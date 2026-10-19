@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/administer/view-metrics
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Administer
 ---
 
-# Como ver as métricas do GitHub Actions { #viewing-github-actions-metrics }
+# Como ver as métricas do GitHub Actions
 
 _Você pode visualizar métricas para monitorar onde sua organização ou repositórios usam GitHub Actions e como elas estão se saindo._
 
-## Exibindo GitHub Actions métricas para sua organização { #viewing-github-actions-metrics-for-your-organization }
+## Exibindo GitHub Actions métricas para sua organização
 
 !!! note
     Pode haver uma discrepância entre a contagem de trabalhos da guia **Fluxos de Trabalho** e a contagem da guia **Trabalhos** devido a diferenças em como os trabalhos únicos são identificados. Isso não afeta o total de minutos calculados.
@@ -36,7 +36,7 @@ _Você pode visualizar métricas para monitorar onde sua organização ou reposi
    6. Clique em **Aplicar**.
 8. Opcionalmente, para baixar as métricas de uso em um arquivo CSV, clique em (Download report).
 
-## Exibindo GitHub Actions métricas para seu repositório { #viewing-github-actions-metrics-for-your-repository }
+## Exibindo GitHub Actions métricas para seu repositório
 
 !!! note
     Pode haver uma discrepância entre a contagem de trabalhos da guia **Fluxos de Trabalho** e a contagem da guia **Trabalhos** devido a diferenças em como os trabalhos únicos são identificados. Isso não afeta o total de minutos calculados.
@@ -55,7 +55,7 @@ _Você pode visualizar métricas para monitorar onde sua organização ou reposi
    6. Clique em **Aplicar**.
 7. Opcionalmente, para baixar as métricas de uso em um arquivo CSV, clique em (Download report).
 
-## Noções básicas sobre GitHub Actions agregação de métricas { #understanding-github-actions-metrics-aggregation }
+## Noções básicas sobre GitHub Actions agregação de métricas
 
 O recurso de seleção de período permite que você veja as métricas do GitHub Actions em períodos predefinidos, conforme detalhado na tabela a seguir. Essas métricas excluem execuções ignoradas e aquelas que usam zero minutos. Os dados são apresentados usando dias em Tempo Universal Coordenado (UTC).
 

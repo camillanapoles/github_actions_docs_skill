@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-jfrog
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Secure your work / Security harden deployments
 ---
 
-# Configurando o OpenID Connect no JFrog { #configuring-openid-connect-in-jfrog }
+# Configurando o OpenID Connect no JFrog
 
 _Use o OpenID Connect em seus fluxos de trabalho para se autenticar no JFrog._
 
-## Visão geral { #overview }
+## Visão geral
 
 O OIDC (OpenID Connect) permite que seus GitHub Actions fluxos de trabalho se autentiquem com [jFrog](https://jfrog.com/) para baixar e publicar artefatos sem armazenar senhas JFrog, tokens ou chaves de API em GitHub.
 
@@ -24,7 +24,7 @@ Para ver um fluxo de trabalho de exemplo GitHub Actions, consulte [Integração 
 
 Para obter um exemplo GitHub Actions de fluxo de trabalho usando a CLI JFrog, consulte [`build-publish.yml`](https://github.com/jfrog/jfrog-github-oidc-example/blob/main/.github/workflows/build-publish.yml) no `jfrog-github-oidc-example` repositório.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 * Para saber os conceitos básicos de como GitHub usa o OpenID Connect (OIDC) e sua arquitetura e benefícios, consulte [OpenID Connect](../../../concepts/security/openid-connect.md).
 
@@ -32,7 +32,7 @@ Para obter um exemplo GitHub Actions de fluxo de trabalho usando a CLI JFrog, co
 
 * Os tokens OIDC solicitados para Dependabot trabalhos de atualização têm uma declaração `event_name` de `dynamic`. Se sua política de confiança se destina a autorizar apenas GitHub Actions fluxos de trabalho e seu provedor de nuvem dá suporte a condições `event_name`, permita apenas os nomes de eventos esperados por seus fluxos de trabalho. Para obter mais informações, consulte [Referência do OpenID Connect](../../../reference/security/oidc.md#oidc-claims-used-to-define-trust-conditions-on-cloud-roles).
 
-* Para ser seguro, você precisa definir um JSON de declarações no JFrog ao configurar mapeamentos de identidade. Para saber mais, confira [Configure identity mappings](https://jfrog.com/help/r/jfrog-platform-administration-documentation/configure-identity-mappings) e [Referência do OpenID Connect](../../../reference/security/oidc.md#customizing-the-token-claims).
+* Para ser seguro, você precisa definir um JSON de declarações no JFrog ao configurar mapeamentos de identidade. Para saber mais, confira [AUTOTITLE](https://jfrog.com/help/r/jfrog-platform-administration-documentation/configure-identity-mappings) e [Referência do OpenID Connect](../../../reference/security/oidc.md#customizing-the-token-claims).
 
   Por exemplo, você pode definir `iss` como `https://token.actions.githubusercontent.com` e definir o(a) `repository` como algo como `octo-org/octo-repo`. Os mapeamentos de identidade do JFrog comparam cada declaração com um valor exato; portanto, para garantir que apenas os fluxos de trabalho GitHub Actions do repositório especificado tenham acesso à sua plataforma JFrog, também defina `event_name` como o evento que aciona seu fluxo de trabalho, como `push`. Isso impede que os tokens OIDC solicitados para trabalhos de atualização Dependabot, que têm um `event_name` de `dynamic`, coincidam com o mapeamento de identidade. Se os fluxos de trabalho forem disparados por mais de um evento, crie um mapeamento de identidade separado para cada nome de evento. A seguir, um exemplo de JSON de declarações ao configurar mapeamentos de identidade.
 
@@ -42,9 +42,9 @@ Para obter um exemplo GitHub Actions de fluxo de trabalho usando a CLI JFrog, co
       "repository": "octo-org/octo-repo",
       "event_name": "push"
   }
-        ```
+  ```
 
-## Adicionando o provedor de identidade ao JFrog { #adding-the-identity-provider-to-jfrog }
+## Adicionando o provedor de identidade ao JFrog
 
 Para usar o OIDC com o JFrog, estabeleça uma relação de confiança entre GitHub Actions e a plataforma JFrog. Para obter mais informações sobre esse processo, consulte [Integração do OpenID Connect](https://docs.jfrog.com/administration/docs/openid-connect-integration) na documentação do JFrog.
 
@@ -52,9 +52,9 @@ Para usar o OIDC com o JFrog, estabeleça uma relação de confiança entre GitH
 2. Configure a confiança entre o JFrog e seus GitHub Actions fluxos de trabalho.
 3. Configurar mapeamentos de identidade.
 
-## Atualizando seu GitHub Actions fluxo de trabalho { #updating-your-github-actions-workflow }
+## Atualizando seu GitHub Actions fluxo de trabalho
 
-### Autenticação com JFrog usando OIDC { #authenticating-with-jfrog-using-oidc }
+### Autenticação com JFrog usando OIDC
 
 GitHub Actions No arquivo de fluxo de trabalho, verifique se você está usando o nome do provedor e o público que você configurou na Plataforma JFrog.
 
@@ -62,10 +62,10 @@ O exemplo a seguir usa os espaços reservados `YOUR_PROVIDER_NAME` e `YOUR_AUDIE
 
 ```yaml
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github }
-# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by }
-# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support }
-# online. { #documentation }
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
+# São fornecidas por terceiros e regidas por
+# termos de serviço, política de privacidade e suporte separados
+# online.
 permissions:
   id-token: write
   contents: read
@@ -93,14 +93,14 @@ jobs:
     Para referenciar essas saídas, certifique-se de que a etapa tenha `id` explícito definido (por exemplo, `id: setup-jfrog-cli`).
 
 ```
-### Usando credenciais do OIDC em outras etapas { #using-oidc-credentials-in-other-steps }
+### Usando credenciais do OIDC em outras etapas
 
 ```yaml
 ```
-# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub. { #this-workflow-uses-actions-that-are-not-certified-by-github-1 }
-# São fornecidas por terceiros e regidas por { #they-are-provided-by-a-third-party-and-are-governed-by-1 }
-# termos de serviço, política de privacidade e suporte separados { #separate-terms-of-service-privacy-policy-and-support-1 }
-# online. { #documentation-1 }
+# Esse fluxo de trabalho usa ações que não são certificadas pelo GitHub.
+# São fornecidas por terceiros e regidas por
+# termos de serviço, política de privacidade e suporte separados
+# online.
       - name: Sign in to Artifactory Docker registry
         uses: docker/login-action@v3
         with:
@@ -110,7 +110,7 @@ jobs:
 ```
 
 ```
-## Leitura adicional { #further-reading }
+## Leitura adicional
 
 * [Integração do OpenID Connect](https://docs.jfrog.com/administration/docs/openid-connect-integration) na documentação do JFrog
 * [Mapeamentos de identidade](https://jfrog.com/help/r/jfrog-platform-administration-documentation/identity-mappings) na documentação do JFrog

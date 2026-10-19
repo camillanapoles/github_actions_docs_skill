@@ -6,15 +6,15 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/larger-runners/use-custom-images
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Manage runners / Larger runners
 ---
 
-# Usando imagens personalizadas { #using-custom-images }
+# Usando imagens personalizadas
 
 _Crie, gerencie e use imagens personalizadas para Executores maiores hospedados no GitHub sua organização ou empresa._
 
-## Imagens personalizadas { #custom-images }
+## Imagens personalizadas
 
 Você pode criar uma imagem personalizada para definir o ambiente exato que você Executores maiores hospedados no GitHub usa. As imagens personalizadas permitem pré-instalar ferramentas, dependências e configurações para acelerar fluxos de trabalho e melhorar a consistência entre trabalhos.
 
@@ -26,7 +26,7 @@ O processo de uso de uma imagem personalizada envolve três etapas principais:
 2. [Gerando uma imagem personalizada](#generating-a-custom-image): gere sua imagem personalizada executando um fluxo de trabalho usando o executor de geração de imagem.
 3. [Instalando imagens personalizadas](#installing-custom-images): crie um executor que use sua imagem personalizada.
 
-## Pré-requisitos { #prerequisites }
+## Pré-requisitos
 
 Antes de criar imagens personalizadas, verifique se os requisitos a seguir são atendidos.
 
@@ -39,7 +39,7 @@ Antes de criar imagens personalizadas, verifique se os requisitos a seguir são 
 
   Para saber mais, confira [Permissões de funções de organização personalizadas](https://docs.github.com/pt/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles).
 
-## Configurando um executor de geração de imagem { #setting-up-an-image-generation-runner }
+## Configurando um executor de geração de imagem
 
 Para criar uma imagem personalizada, primeiro você deve configurar um executor de geração de imagem. Quando você cria o executor, a plataforma selecionada para ele deve corresponder à plataforma da imagem que você deseja criar. A plataforma do executor pode ser Linux x64, Linux ARM64 ou Windows x64.
 
@@ -54,7 +54,7 @@ Para criar uma imagem personalizada, primeiro você deve configurar um executor 
      * Para plataformas ARM64, você também pode selecionar uma imagem mantida pelo ARM com ferramentas pré-instaladas.
    * **Grupo de runners**: selecione o grupo do qual o runner será associado. Depois que a imagem personalizada for criada, apenas os executores neste grupo de executores poderão gerar novas versões dessa imagem.
 
-## Gerando uma imagem personalizada { #generating-a-custom-image }
+## Gerando uma imagem personalizada
 
 Depois de criar um executor de geração de imagem, execute um fluxo de trabalho que inclui a `snapshot` palavra-chave para gerar uma imagem personalizada.
 
@@ -74,7 +74,7 @@ A imagem é gerada somente quando o trabalho é concluído com êxito. Isso impe
 
 Depois que a imagem é gerada, ela está disponível para uso em seus fluxos de trabalho. Para obter mais informações sobre como gerenciar imagens personalizadas, consulte [Gerenciando imagens personalizadas](#managing-custom-images).
 
-### Sintaxe de cadeia de caracteres { #string-syntax }
+### Sintaxe de cadeia de caracteres
 
 Você pode usar a sintaxe de cadeia de caracteres com `snapshot` para definir o nome da imagem. Esse método cria uma nova imagem ou adiciona uma nova versão a uma imagem existente com o mesmo nome. Não é possível especificar um número de versão usando essa sintaxe.
 
@@ -87,7 +87,7 @@ jobs:
       # Add any steps to download and setup any dependencies here
 ```
 
-### Sintaxe de mapeamento { #mapping-syntax }
+### Sintaxe de mapeamento
 
 Você pode usar a sintaxe de mapeamento com `snapshot` para definir tanto o `image-name` quanto o opcional `version`. Quando você especifica uma versão principal, a versão secundária é incrementada automaticamente se essa versão principal já existir. Não há suporte para versões de patch.
 
@@ -102,7 +102,7 @@ jobs:
       # Add any steps to download and setup any dependencies here
 ```
 
-### Condicionais { #conditionals }
+### Condicionais
 
 A palavra-chave `snapshot` dá suporte à execução condicional usando a palavra-chave `if` em torno do mapeamento de instantâneo. Você pode usar condições para controlar quando um instantâneo de imagem é criado. Por exemplo, o seguinte trabalho ignora a criação de imagem para compilações com marcação.
 
@@ -120,18 +120,18 @@ jobs:
 
 Para obter mais informações sobre a palavra-chave `if`, confira [Usando condições para controlar a execução do trabalho](../../write-workflows/choose-when-workflows-run/control-jobs-with-conditions.md).
 
-## Controle de versão { #versioning }
+## Controle de versão
 
 Quando você gera imagens personalizadas, GitHub atribui automaticamente números de versão para ajudá-lo a gerenciar atualizações e acompanhar o histórico de imagens.
 
-### Comportamento padrão { #default-behavior }
+### Comportamento padrão
 
 Se uma imagem com o nome especificado não existir em sua organização ou empresa, GitHub crie-a com um número de versão inicial de 1.0.0.
 Se uma imagem com o mesmo nome já existir, GitHub criará uma nova versão incrementando o número de versão secundária (por exemplo, 1.1.0, 1.2.0 etc.).
 
 Se você não especificar uma versão em seu arquivo YAML, a geração de imagem usará esse comportamento padrão.
 
-### Especificando uma versão em seu fluxo de trabalho { #specifying-a-version-in-your-workflow }
+### Especificando uma versão em seu fluxo de trabalho
 
 Se você incluir uma versão no mapeamento YAML, GitHub verifique primeiro o número da versão principal.
 
@@ -140,7 +140,7 @@ Se você incluir uma versão no mapeamento YAML, GitHub verifique primeiro o nú
 
 Não há suporte para versões de patch.
 
-### Última etiqueta { #latest-tag }
+### Última etiqueta
 
 A execução de fluxo de trabalho mais recente para uma imagem é sempre identificada como a última.
 Se você especificar uma versão principal mais antiga no YAML (por exemplo, versão: 1.\* quando existe uma versão 2.0), GitHub gerará uma nova versão secundária na versão principal mais antiga e a marcará como mais recente.
@@ -148,19 +148,19 @@ Se você especificar uma versão principal mais antiga no YAML (por exemplo, ver
 !!! note
     A criação de Runner maior hospedado no GitHub não dá suporte a curingas na seleção da versão da imagem.
 
-## Expiração para imagens criadas a partir de imagens personalizadas { #expiration-for-images-built-from-custom-images }
+## Expiração para imagens criadas a partir de imagens personalizadas
 
 Quando uma imagem personalizada é criada a partir de outra imagem personalizada, a imagem derivada herda a linha do tempo de expiração de sua imagem base. A idade máxima da versão é calculada de quando a imagem personalizada base foi criada, não quando a imagem derivada foi criada.
 
 Por exemplo, se a Imagem Personalizada A for criada no dia 2 e a Imagem Personalizada B for criada a partir de A no dia 4 com uma política de idade máxima de versão de 7 dias, A e B expirarão no dia 9.
 
-## Cobrança e armazenamento de imagens personalizadas { #billing-and-storage-for-custom-images }
+## Cobrança e armazenamento de imagens personalizadas
 
 Trabalhos que usam imagens personalizadas são cobrados na mesma taxa por minuto que o executor avançado que usa a imagem. O armazenamento para imagens personalizadas é cobrado separadamente por meio do armazenamento GitHub Actions.
 
 Se você recompilar imagens com frequência e reter versões mais antigas, o uso do armazenamento poderá crescer rapidamente porque cada trabalho de fluxo de trabalho bem-sucedido que inclui a palavra-chave `snapshot` cria uma nova versão de imagem. Para obter mais informações, consulte [Cobrança do GitHub Actions](https://docs.github.com/pt/billing/concepts/product-billing/github-actions#custom-image-storage) e [Impor políticas para GitHub Actions em sua empresa](https://docs.github.com/pt/enterprise-cloud@latest/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#custom-images-retention-policies).
 
-## Gerenciando imagens personalizadas { #managing-custom-images }
+## Gerenciando imagens personalizadas
 
 Você pode exibir informações detalhadas sobre cada imagem, excluir imagens não utilizados ou versões específicas e acompanhar versões de imagem ao longo do tempo.
 
@@ -172,7 +172,7 @@ Você pode exibir informações detalhadas sobre cada imagem, excluir imagens n�
 4. Na página "Imagens personalizadas", você pode exibir todas as imagens personalizadas que foram criadas em sua organização ou empresa.
 5. Para exibir detalhes sobre uma imagem específica, clique no nome da imagem.
 
-## Instalando imagens personalizadas { #installing-custom-images }
+## Instalando imagens personalizadas
 
 Depois que sua imagem personalizada estiver pronta, você poderá instalá-la em um novo Runner maior hospedado no GitHub.
 
@@ -197,11 +197,11 @@ Depois que sua imagem personalizada estiver pronta, você poderá instalá-la em
        runs-on: my-custom-runner
        steps:
        # Add any steps for your workflow here
-            ```
+   ```
 
 4. Execute seu fluxo de trabalho para verificar se ele foi concluído com êxito. Os registros de trabalho mostrarão o nome da imagem e a versão na seção "Configuração da tarefa".
 
-## Práticas recomendadas de segurança para imagens personalizadas { #security-best-practices-for-custom-images }
+## Práticas recomendadas de segurança para imagens personalizadas
 
 Para evitar alterações não autorizadas em suas imagens, siga estas práticas recomendadas.
 

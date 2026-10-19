@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/configure-and-manage-deployments
-captured: '2026-10-11'
+captured: '2026-10-19'
 section: How tos / Deploy
 ---
 
