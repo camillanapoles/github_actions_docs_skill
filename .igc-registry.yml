@@ -7,7 +7,7 @@ linhagens:
   github-actions-docs-skill:
     branch: main
     base_sha: 0ddafab815385d69ea8f70d93c3479daa7f50175
-    checkpoint_ref: 5c19b1164bf7f0f9e698c6da12f116a434e6edae
+    checkpoint_ref: 85391d6ed12454c3cd79890b4349f8c112c05c24
     ativa: true
     modo: continuidade
     estado_fsm: EXEC
