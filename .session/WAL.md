@@ -223,3 +223,6 @@ Nunca editar/apagar entrada — correção é entrada nova.
 | 2026-10-20T04:51:34+00:00 | EMIT-PREP ralf-39371766487@8cd444d2df25 | FIX | emissão autorizada para gate site | emit_guard (E2) | chave=ralf-39371766487@8cd444d2df25 | 8cd444d2df25 |
 | 2026-10-20T04:51:35+00:00 | CI run 39371766487 (guardian) | FIX | execução do gate 'guardian' no CI | pipeline gate-driven + testes determinísticos | status 2 · 5/7 gates aprovados | 8cd444d2df25 |
 | 2026-10-20T05:00:15+00:00 | CI run 39372461455 (pipeline) | FIX | execução do gate 'pipeline' no CI | pipeline gate-driven + testes determinísticos | status 1 · 2/7 gates aprovados | af18a7295513 |
+| 2026-10-20T11:36:53+00:00 | AUDIT | CONTINUE | gestor único audita escopo global (spec) e pendências | audit(): registry + DEBT.md + gates medidos + sweep G5 | 17 débitos abertos (5 bloqueantes); gates vermelhos {'site': 2, 'release': 2} | - |
+| 2026-10-20T11:36:53+00:00 | EMIT-PREP ralf-39416185204@76258ee376a6 | FIX | emissão autorizada para gate site | emit_guard (E2) | chave=ralf-39416185204@76258ee376a6 | 76258ee376a6 |
+| 2026-10-20T11:36:53+00:00 | CI run 39416185204 (guardian) | FIX | execução do gate 'guardian' no CI | pipeline gate-driven + testes determinísticos | status 2 · 5/7 gates aprovados | 76258ee376a6 |
