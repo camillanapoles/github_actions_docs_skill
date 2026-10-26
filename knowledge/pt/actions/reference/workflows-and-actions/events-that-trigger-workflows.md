@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/events-that-trigger-workflows
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: Reference / Workflows and actions
 ---
 
@@ -136,7 +136,7 @@ on:
 |-------------------------------------------------------------------|------------------|-----------------------|------------------------------------------------------------------------|
 | [`deployment`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#deployment) | Não aplicável      | Commit a ser implantado | Branch ou tag a ser implantado (vazio, se criado com o SHA de um commit) |
 
-Executa o fluxo de trabalho quando alguém cria uma implantação no repositório do fluxo de trabalho. As implantações criadas com um SHA de commit podem não ter uma referência do Git. Para obter informações sobre as APIs usadas para criar uma implantação, confira [Deployments](https://docs.github.com/pt/graphql/reference/deployments#mutation-createdeployment) na documentação da API do GraphQL ou [Pontos de extremidade da API REST para repositórios](https://docs.github.com/pt/rest/repos#deployments).
+Executa o fluxo de trabalho quando alguém cria uma implantação no repositório do fluxo de trabalho. As implantações criadas com um SHA de commit podem não ter uma referência do Git. Para obter informações sobre as APIs usadas para criar uma implantação, confira [Implantações](https://docs.github.com/pt/graphql/reference/deployments#mutation-createdeployment) na documentação da API do GraphQL ou [Pontos de extremidade da API REST para repositórios](https://docs.github.com/pt/rest/repos#deployments).
 
 Por exemplo, você poderá executar um fluxo de trabalho quando o evento `deployment` ocorrer.
 
@@ -154,7 +154,7 @@ on:
 !!! note
     Quando o estado de um status de implantação for definido como `inactive`, um fluxo de trabalho não será disparado.
 
-Executa o fluxo de trabalho quando uma terceira parte fornece um status de implantação. As implantações criadas com um SHA de commit podem não ter uma referência do Git. Para obter informações sobre as APIs usadas para criar um status de implantação, confira [Deployments](https://docs.github.com/pt/graphql/reference/deployments#mutation-createdeploymentstatus) na documentação da API do GraphQL ou [Pontos de extremidade da API REST para implantações](https://docs.github.com/pt/rest/deployments#create-a-deployment-status).
+Executa o fluxo de trabalho quando uma terceira parte fornece um status de implantação. As implantações criadas com um SHA de commit podem não ter uma referência do Git. Para obter informações sobre as APIs usadas para criar um status de implantação, confira [Implantações](https://docs.github.com/pt/graphql/reference/deployments#mutation-createdeploymentstatus) na documentação da API do GraphQL ou [Pontos de extremidade da API REST para implantações](https://docs.github.com/pt/rest/deployments#create-a-deployment-status).
 
 Por exemplo, você poderá executar um fluxo de trabalho quando o evento `deployment_status` ocorrer.
 
@@ -1141,7 +1141,7 @@ jobs:
 
     * Esse evento vai disparar apenas um fluxo de trabalho executado se o arquivo de fluxo de trabalho existe no branch padrão.
 
-Executa o fluxo de trabalho quando o repositório do fluxo de trabalho é favoritado. Para obter informações sobre as APIs de solicitação de pull, confira [Activity](https://docs.github.com/pt/graphql/reference/activity#mutation-addstar) na documentação da API do GraphQL ou [Pontos de extremidade da API REST para estrela](https://docs.github.com/pt/rest/activity/starring)."
+Executa o fluxo de trabalho quando o repositório do fluxo de trabalho é favoritado. Para obter informações sobre as APIs de solicitação de pull, confira [Atividade](https://docs.github.com/pt/graphql/reference/activity#mutation-addstar) na documentação da API do GraphQL ou [Pontos de extremidade da API REST para estrela](https://docs.github.com/pt/rest/activity/starring)."
 
 Por exemplo, você poderá executar um fluxo de trabalho quando alguém adiciona um repositório aos favoritos, que é o tipo de atividade `started` para um evento de inspeção.
 

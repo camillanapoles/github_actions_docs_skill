@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos / Deploy / Configure and manage deployments
 ---
 
@@ -103,7 +103,7 @@ Também é possível excluir ambientes por meio da API REST. Para saber mais, co
 
 Quando um trabalho de fluxo de trabalho que referencia um ambiente é executado, ele cria um objeto de implantação com a propriedade `environment` definida como o nome do ambiente. À medida que o fluxo de trabalho progride, ele também cria objetos de status de implantação com a propriedade `environment` definida como o nome do ambiente, a propriedade `environment_url` definida como a URL para o ambiente (se especificado no fluxo de trabalho) e a propriedade `state` definida como o status do trabalho.
 
-Você pode acessar esses objetos por meio da API REST ou API do GraphQL. Você também pode se inscrever nesses eventos de webhook. Para obter mais informações, confira [Pontos de extremidade da API REST para repositórios](https://docs.github.com/pt/rest/repos#deployments), [Deployments](https://docs.github.com/pt/graphql/reference/deployments#object-deployment) (API do GraphQL) ou [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#deployment).
+Você pode acessar esses objetos por meio da API REST ou API do GraphQL. Você também pode se inscrever nesses eventos de webhook. Para obter mais informações, confira [Pontos de extremidade da API REST para repositórios](https://docs.github.com/pt/rest/repos#deployments), [Implantações](https://docs.github.com/pt/graphql/reference/deployments#object-deployment) (API do GraphQL) ou [Eventos e cargas de webhook](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#deployment).
 
 ## Próximas etapas
 

@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/administer/enforce-workflow-lockfiles
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos / Administer
 ---
 
@@ -68,7 +68,7 @@ Quando alguém adiciona ou edita um fluxo de trabalho, execute outro fluxo de tr
 
 Ao Copilot editar um arquivo de fluxo de trabalho, faça com que execute o comando para atualizar o arquivo de bloqueio no mesmo conjunto de alterações.
 
-O recurso deve informar Copilot para regenerar o arquivo de bloqueio com a CLI sempre que houver alterações em um fluxo de trabalho ou em uma ação local, e nunca editar o arquivo de bloqueio diretamente. Isso abrange apenas edições feitas com Copilot, portanto, trate-a como uma conveniência em vez de um controle. Consulte [Sobre as habilidades do agente](https://docs.github.com/pt/copilot/concepts/agents/about-agent-skills).
+O recurso deve informar Copilot para regenerar o arquivo de bloqueio com a CLI sempre que houver alterações em um fluxo de trabalho ou em uma ação local, e nunca editar o arquivo de bloqueio diretamente. Isso abrange apenas edições feitas com Copilot, portanto, trate-a como uma conveniência em vez de um controle. Consulte [Habilidades do agente](https://docs.github.com/pt/copilot/concepts/agents/about-agent-skills).
 
 ### Um hook de pré-commit
 

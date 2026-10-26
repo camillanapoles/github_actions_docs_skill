@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/self-hosted-runners
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos / Manage runners
 ---
 
@@ -50,4 +50,4 @@ _Você pode hospedar seus próprios executores para executar fluxos de trabalho 
 
 * [Remover executores auto-hospedados](self-hosted-runners/remove-runners.md)
 
-  Você pode remover permanentemente um executor auto-hospedado de um repositório.
+  Você pode remover permanentemente um executor auto-hospedado de um repositório ou organização.

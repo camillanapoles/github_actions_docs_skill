@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/build-and-test-code/net
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: Tutorials / Build and test code
 ---
 
@@ -111,7 +111,21 @@ steps:
 
 ### Memorizar dependências
 
-Você pode armazenar em cache dependências do NuGet para fluxos de trabalho futuros usando a entrada opcional `cache`. Por exemplo, o YAML abaixo armazena em cache a pasta NuGet `global-packages` e, em seguida, instala o pacote `Newtonsoft`. Uma segunda entrada opcional, `cache-dependency-path`, pode ser usada para especificar o caminho para um arquivo de dependência: `packages.lock.json`.
+Você pode armazenar em cache dependências do NuGet para fluxos de trabalho futuros usando a entrada opcional `cache`. O cache requer um arquivo `packages.lock.json`. Se a ação não conseguir encontrar um arquivo de bloqueio correspondente, ela falhará.
+
+Antes de habilitar cache:
+
+1. No diretório que contém seu projeto ou solução, gere os arquivos de bloqueio localmente.
+
+            ```shell
+   dotnet restore --use-lock-file
+   ```
+
+2. Faça commit dos arquivos `packages.lock.json` gerados no repositório para que eles fiquem disponíveis quando o fluxo de trabalho for executado.
+
+Para obter mais informações, consulte [Como bloquear dependências](https://learn.microsoft.com/nuget/consume-packages/package-references-in-project-files#locking-dependencies) na documentação do NuGet.
+
+Por padrão, `setup-dotnet` procura um arquivo de bloqueio na raiz do repositório. Use `cache-dependency-path` para especificar arquivos de bloqueio em subdiretórios ou vários arquivos de bloqueio. O exemplo a seguir armazena em cache a pasta NuGet `global-packages` usando arquivos de bloqueio em todo o repositório e, em seguida, restaura as dependências no modo bloqueado.
 
 Para saber mais, confira [Referência do cache de dependência](../../reference/workflows-and-actions/dependency-caching.md).
 
@@ -123,8 +137,9 @@ steps:
   with:
     dotnet-version: '6.x'
     cache: true
-- name: Install dependencies
-  run: dotnet add package Newtonsoft.Json --version 12.0.1
+    cache-dependency-path: '**/packages.lock.json'
+- name: Restore dependencies
+  run: dotnet restore --locked-mode
 ```
 
 !!! note
@@ -168,23 +183,23 @@ jobs:
       matrix:
         dotnet-version: [ '3.1.x', '6.0.x' ]
 
-      steps:
-        - uses: actions/checkout@v6
-        - name: Setup dotnet
-          uses: actions/setup-dotnet@v4
-          with:
-            dotnet-version: ${{ matrix.dotnet-version }}
-        - name: Install dependencies
-          run: dotnet restore
-        - name: Test with dotnet
-          run: dotnet test --no-restore --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
-        - name: Upload dotnet test results
-          uses: actions/upload-artifact@v4
-          with:
-            name: dotnet-results-${{ matrix.dotnet-version }}
-            path: TestResults-${{ matrix.dotnet-version }}
-          # Use always() to always run this step to publish test results when there are test failures
-          if: ${{ always() }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Test with dotnet
+        run: dotnet test --no-restore --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+      - name: Upload dotnet test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dotnet-results-${{ matrix.dotnet-version }}
+          path: TestResults-${{ matrix.dotnet-version }}
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
 ```
 
 ## Publicar nos registros do pacote

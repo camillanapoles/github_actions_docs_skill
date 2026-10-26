@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-where-workflows-run/run-jobs-in-a-container
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos / Write workflows / Choose where workflows run
 ---
 

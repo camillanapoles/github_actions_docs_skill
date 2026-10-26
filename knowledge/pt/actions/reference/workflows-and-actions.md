@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: Reference
 ---
 
@@ -50,7 +50,7 @@ _Veja informações sobre fluxos de trabalho e ações no GitHub Actions._
 
 * [Reutilizando configurações de fluxo de trabalho](workflows-and-actions/reusing-workflow-configurations.md)
 
-  Encontre informações sobre como evitar a duplicação ao criar um fluxo de trabalho reutilizando fluxos de trabalho existentes YAML.
+  Encontre informações sobre como evitar a duplicação ao criar um fluxo de trabalho reutilizando fluxos de trabalho existentes e usando âncoras e aliases YAML.
 
 * [Referência de sintaxe de metadados](workflows-and-actions/metadata-syntax.md)
 

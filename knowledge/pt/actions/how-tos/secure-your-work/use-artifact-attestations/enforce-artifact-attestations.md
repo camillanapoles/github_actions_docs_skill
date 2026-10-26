@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/use-artifact-attestations/enforce-artifact-attestations
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos / Secure your work / Use artifact attestations
 ---
 

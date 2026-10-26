@@ -6,7 +6,7 @@ documentType: category
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: Actions
 ---
 
@@ -60,6 +60,6 @@ _Crie habilidades e conhecimento sobre o GitHub Actions por meio de atividades p
 
   Você pode usar Actions Runner Controller para hospedar seus próprios executores em um cluster do Kubernetes.
 
-* [Desenvolver fluxos de trabalho agente no GitHub Actions](tutorials/develop-agentic-workflows-in-github-actions.md)
+* [Desenvolver fluxos de trabalho agênticos no GitHub Actions](tutorials/develop-agentic-workflows-in-github-actions.md)
 
   Use GitHub Agentic Workflows para transformar instruções do Markdown em automações alimentadas por agentes de codificação de terceiros.

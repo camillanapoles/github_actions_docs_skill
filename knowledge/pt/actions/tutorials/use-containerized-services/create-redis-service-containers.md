@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/use-containerized-services/create-redis-service-containers
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: Tutorials / Use containerized services
 ---
 

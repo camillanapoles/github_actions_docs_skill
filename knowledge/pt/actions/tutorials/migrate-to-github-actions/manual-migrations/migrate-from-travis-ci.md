@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/migrate-to-github-actions/manual-migrations/migrate-from-travis-ci
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: Tutorials / Migrate to github actions / Manual migrations
 ---
 

@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/runners/self-hosted-runners
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: Reference / Runners
 ---
 
@@ -53,7 +53,6 @@ Você pode usar um computador como um executor auto-hospedado, desde que ele ate
 
 * `x64` – Linux, macOS e Windows.
 * `ARM64` – Linux, macOS, Windows (atualmente em prévia pública).
-* `ARM32` – Linux.
 
 ## Precedência de encaminhamento para executores auto-hospedados
 

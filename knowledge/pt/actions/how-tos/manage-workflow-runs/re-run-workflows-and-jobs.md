@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs/re-run-workflows-and-jobs
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos / Manage workflow runs
 ---
 
@@ -17,6 +17,8 @@ _Você pode executar novamente um fluxo de trabalho, todos os trabalhos que falh
 As re-execuções usam os privilégios do ator que inicialmente disparou o fluxo de trabalho, não os privilégios do ator que iniciou a nova execução. O fluxo de trabalho também usará o mesmo `GITHUB_SHA` (commit SHA) e `GITHUB_REF` (git ref) do evento original que disparou a execução do fluxo de trabalho.
 
 Uma execução de fluxo de trabalho pode ser executada novamente no máximo 50 vezes. Esse limite inclui tanto reexecuções completas quanto reexecuções de um subconjunto de tarefas.
+
+Você não pode executar novamente uma execução de fluxo de trabalho ou qualquer um de seus trabalhos enquanto o fluxo de trabalho está desabilitado. Você precisa habilitar o fluxo de trabalho primeiro. Consulte [Desabilitar e habilitar um fluxo de trabalho](disable-and-enable-workflows.md).
 
 ## Reexecutar todos os trabalhos em um fluxo de trabalho
 

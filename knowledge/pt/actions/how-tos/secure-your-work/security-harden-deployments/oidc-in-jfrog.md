@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-jfrog
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos / Secure your work / Security harden deployments
 ---
 
@@ -102,7 +102,7 @@ jobs:
 # termos de serviço, política de privacidade e suporte separados
 # online.
       - name: Sign in to Artifactory Docker registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
         with:
           registry: ${{ env.JF_URL }}
           username: ${{ steps.setup-jfrog-cli.outputs.oidc-user }}

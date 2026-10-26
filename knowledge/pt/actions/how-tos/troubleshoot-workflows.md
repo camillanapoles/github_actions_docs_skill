@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/troubleshoot-workflows
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos
 ---
 
@@ -114,6 +114,10 @@ Nesses casos, você pode aproveitar a API para forçar o cancelamento da execuç
 Uma causa comum pode ser usar a `always()`[função de verificação de status](../reference/workflows-and-actions/expressions.md#status-check-functions) que retorna `true`, mesmo em caso de cancelamento. Uma alternativa é usar o inverso da função `cancelled()`, `${{ !cancelled() }}`.
 
 Para saber mais, confira [Usando condições para controlar a execução do trabalho](write-workflows/choose-when-workflows-run/control-jobs-with-conditions.md) e [Cancelar a execução do fluxo de trabalho](manage-workflow-runs/cancel-a-workflow-run.md).
+
+Se uma execução permanecer na fila ou em andamento após tentativas de cancelamento, ela pode estar presa em um estado anormal em vez de continuar por causa de `always()`. Os sinais incluem a não criação de trabalhos, a interface do usuário exibindo "Falha ao cancelar o fluxo de trabalho" ou os pontos de extremidade da API REST `force-cancel` ou `cancel` retornando HTTP `500` ou `409`.
+
+O cancelamento de autoatendimento, incluindo o cancelamento forçado, pode não limpar uma execução de fluxo de trabalho paralisada ou fora de sincronização ou uma check suite. Se o repositório usar concorrência, a execução paralisada poderá continuar bloqueando execuções posteriores no mesmo grupo de concorrência. Nessa situação, entre em contato nos por meio do portal  para obter ajuda para limpar a execução.
 
 ## Como solucionar problemas de executores
 

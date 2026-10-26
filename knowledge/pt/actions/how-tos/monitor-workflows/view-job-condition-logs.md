@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/monitor-workflows/view-job-condition-logs
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos / Monitor workflows
 ---
 
@@ -20,7 +20,7 @@ Quando a condição `if` de um trabalho é avaliada, GitHub Actions registra a a
 
 1. Navegue até o resumo da execução do fluxo de trabalho.
 2. Clique na tarefa.
-3. Clique em **(gear icon)**.
+3. Clique em **(Ícone de engrenagem)**.
 4. Selecione **Baixar arquivo de log**.
 5. Extraia o arquivo ZIP e abra o `JOB-NAME/system.txt` arquivo.
 

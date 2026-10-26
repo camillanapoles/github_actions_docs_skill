@@ -1,20 +1,22 @@
 ---
 title: Desabilitar e habilitar um fluxo de trabalho
-description: Você pode desabilitar e habilitar novamente um fluxo de trabalho usando a interface do usuário de GitHub, a API REST, ou GitHub CLI.
+description: Você pode desabilitar e reabilitar um fluxo de trabalho usando a UI GitHub, a API REST ou GitHub CLI.
 product: GitHub Actions
 documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs/disable-and-enable-workflows
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos / Manage workflow runs
 ---
 
 # Desabilitar e habilitar um fluxo de trabalho
 
-_Você pode desabilitar e habilitar novamente um fluxo de trabalho usando a interface do usuário de GitHub, a API REST, ou GitHub CLI._
+_Você pode desabilitar e reabilitar um fluxo de trabalho usando a UI GitHub, a API REST ou GitHub CLI._
 
-Desabilitar um fluxo de trabalho permite que você impeça que um fluxo de trabalho seja acionado sem ter de excluir o arquivo do repositório. Você pode facilmente reabilitar o fluxo de trabalho novamente em GitHub.
+Desabilitar um fluxo de trabalho permite que você impeça que um fluxo de trabalho seja acionado sem ter de excluir o arquivo do repositório. Você pode habilitar facilmente o fluxo de trabalho novamente em GitHub.
+
+Desabilitar um fluxo de trabalho não cancela suas execuções existentes, mas você não pode executar novamente essas execuções ou seus trabalhos enquanto o fluxo de trabalho estiver desabilitado. Habilite o fluxo de trabalho primeiro para executá-lo novamente.
 
 Desabilitar temporariamente um fluxo de trabalho pode ser útil em vários cenários. Estes são alguns exemplos em que desabilitar um fluxo de trabalho pode ser útil:
 
@@ -35,14 +37,14 @@ Também é possível desabilitar e habilitar um fluxo de trabalho usando a API R
 
    ![Captura de tela das guias do repositório "github/docs". A guia "Ações" está realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-tab-global-nav-update.png)
 3. Na barra lateral esquerda, clique no fluxo de trabalho que deseja desabilitar.
-4. Clique em (Show workflow options) para exibir um menu suspenso e clique em **Desabilitar fluxo de trabalho**.
+4. Clique (Show workflow options) para exibir um menu suspenso e clique em **Desabilitar fluxo de trabalho**.
 
    ![Captura de tela de um fluxo de trabalho. O botão "Mostrar opções de fluxo de trabalho", exibido com um ícone de kebab, e o item de menu "Desativar fluxo de trabalho" estão contornados em laranja.](https://docs.github.com/assets/images/help/repository/actions-disable-workflow-2022.png)
 
 !!! note
     Para saber mais sobre GitHub CLI, confira [Sobre GitHub CLI](https://docs.github.com/pt/github-cli/github-cli/about-github-cli).
 
-Para desabilitar um fluxo de trabalho, use o subcomando `workflow disable`. Substitua `workflow` pelo nome, pela ID ou pelo nome do arquivo de fluxo de trabalho que deseja desabilitar. Por exemplo, `"Link Checker"`, `1234567` ou `"link-check-test.yml"`. Se você não especificar um fluxo de trabalho, GitHub CLI irá retornar um menu interativo para você escolher um fluxo de trabalho.
+Para desabilitar um fluxo de trabalho, use o subcomando `workflow disable`. Substitua `workflow` pelo nome, pela ID ou pelo nome do arquivo de fluxo de trabalho que deseja desabilitar. Por exemplo, `"Link Checker"`, `1234567` ou `"link-check-test.yml"`. Se você não especificar um fluxo de trabalho, GitHub CLI retornará um menu interativo para você escolher um fluxo de trabalho.
 
 ```shell
 gh workflow disable WORKFLOW
@@ -64,7 +66,7 @@ Você pode habilitar novamente um fluxo de trabalho que foi desabilitado anterio
 
 4. Clique em **Habilitar fluxo de trabalho**.
 
-Para habilitar um fluxo de trabalho, use o subcomando `workflow enable`. Substitua `workflow` pelo nome, pela ID ou pelo nome do arquivo de fluxo de trabalho que deseja habilitar. Por exemplo, `"Link Checker"`, `1234567` ou `"link-check-test.yml"`. Se você não especificar um fluxo de trabalho, GitHub CLI irá retornar um menu interativo para você escolher um fluxo de trabalho.
+Para habilitar um fluxo de trabalho, use o subcomando `workflow enable`. Substitua `workflow` pelo nome, pela ID ou pelo nome do arquivo de fluxo de trabalho que deseja habilitar. Por exemplo, `"Link Checker"`, `1234567` ou `"link-check-test.yml"`. Se você não especificar um fluxo de trabalho, GitHub CLI retorna um menu interativo para escolher um fluxo de trabalho.
 
 ```shell
 gh workflow enable WORKFLOW

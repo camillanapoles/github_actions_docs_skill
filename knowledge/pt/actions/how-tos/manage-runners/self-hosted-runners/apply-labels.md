@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/self-hosted-runners/apply-labels
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos / Manage runners / Self hosted runners
 ---
 

@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos
 ---
 
@@ -30,7 +30,7 @@ _Você pode interagir manualmente com execuções de fluxos de trabalho para gar
 
 * [Desabilitar e habilitar um fluxo de trabalho](manage-workflow-runs/disable-and-enable-workflows.md)
 
-  Você pode desabilitar e habilitar novamente um fluxo de trabalho usando a interface do usuário de GitHub, a API REST, ou GitHub CLI.
+  Você pode desabilitar e reabilitar um fluxo de trabalho usando a UI GitHub, a API REST ou GitHub CLI.
 
 * [Ignorar execuções de fluxo de trabalho](manage-workflow-runs/skip-workflow-runs.md)
 

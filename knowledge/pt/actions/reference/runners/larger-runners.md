@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/runners/larger-runners
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: Reference / Runners
 ---
 
@@ -63,7 +63,7 @@ Os computadores a seguir estão disponíveis para macOS executores avançados. Q
 | Grande | Intel | 12 | 30 GB | 14 GB |  |
 | `macos-latest-large`, `macos-14-large`( `macos-15-large` mais recente), `macos-26-large` |  |  |  |  |  |
 | XLarge | arm64 (M2) | 5 (+ 8 aceleração de hardware GPU) | 14 GB | 14 GB |  |
-| `macos-latest-xlarge`, `macos-14-xlarge`, `macos-15-xlarge` (mais recente), `macos-26-xlarge`, `xcode-27-xlarge` (Versão preliminar pública) |  |  |  |  |  |
+| `macos-latest-xlarge`, `macos-14-xlarge`( `macos-15-xlarge` mais recente), `macos-26-xlarge`, `xcode-27-xlarge` |  |  |  |  |  |
 
 ## Limitações para macOS executores avançados
 

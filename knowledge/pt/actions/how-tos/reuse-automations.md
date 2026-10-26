@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/reuse-automations
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos
 ---
 
@@ -31,7 +31,3 @@ _Crie automações modulares que você pode compartilhar e reutilizar em fluxos 
 * [Compartilhamento de ações e fluxos de trabalho com sua organização](reuse-automations/share-with-your-organization.md)
 
   É possível compartilhar uma ação ou um fluxo de trabalho reutilizável com sua organização sem publicá-lo publicamente.
-
-* [Compartilhando ações e fluxos de trabalho com sua empresa](https://docs.github.com/pt/share-with-your-enterprise)
-
-  É possível compartilhar uma ação ou um fluxo de trabalho reutilizável com sua empresa sem publicar a ação ou fluxo de trabalho publicamente.

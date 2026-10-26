@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/administer
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos
 ---
 
@@ -27,7 +27,3 @@ _Gerencie as configurações de GitHub Actions da sua organização ou empresa._
 * [Como ver as métricas do GitHub Actions](administer/view-metrics.md)
 
   Você pode visualizar métricas para monitorar onde sua organização ou repositórios usam GitHub Actions e como elas estão se saindo.
-
-* [Como disponibilizar namespaces desativados no GHE.com](https://docs.github.com/pt/reuse-namespaces-on-ghecom)
-
-  Permita que as pessoas usem namespaces que correspondam às ações que você usou no GitHub.com.

@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/security/securely-using-pull_request_target
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: Reference / Security
 ---
 
@@ -64,7 +64,7 @@ Para ajudar a proteger seus fluxos de trabalho contra solicitações de pull nã
 
 Para repositórios públicos que ainda não têm uma política de evento actions aplicável, GitHub adiciona uma política padrão que bloqueia os fluxos de trabalho disparados por `pull_request_target`. Para obter mais informações sobre políticas, consulte [Sobre as políticas do Actions](../../concepts/about-actions-policies.md).
 
-<!-- expires 2026-11-02 -->
+<!-- expires 2026-12-02 -->
 
 <!-- default policy flips to active -->
 
@@ -74,9 +74,9 @@ A política padrão:
 * Não substitui uma política de evento aplicável que você já configurou.
 * Atualmente, é executado no modo **de avaliação** . Nesse modo, as execuções do fluxo de trabalho continuam, mas você pode usar as informações da política para identificar execuções que seriam bloqueadas após a aplicação da política.
 
-Em 2 de novembro de 2026, GitHub imporá a política padrão para repositórios afetados que estavam usando a política padrão `pull_request_target` antes da disponibilidade geral.
+Em 2 de dezembro de 2026, GitHub imporá a política `pull_request_target` padrão para repositórios afetados que estavam usando a política padrão `pull_request_target` antes da disponibilidade geral.
 
-<!-- end expires 2026-11-02 -->
+<!-- end expires 2026-12-02 -->
 
 ### Revisar o impacto antes da imposição
 

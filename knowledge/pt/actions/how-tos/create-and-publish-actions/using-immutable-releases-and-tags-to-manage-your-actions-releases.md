@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/create-and-publish-actions/using-immutable-releases-and-tags-to-manage-your-actions-releases
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos / Create and publish actions
 ---
 

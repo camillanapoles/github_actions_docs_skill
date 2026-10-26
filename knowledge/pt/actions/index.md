@@ -6,7 +6,7 @@ documentType: product
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: Actions
 ---
 
@@ -286,10 +286,6 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
   É possível compartilhar uma ação ou um fluxo de trabalho reutilizável com sua organização sem publicá-lo publicamente.
 
-* [Compartilhando ações e fluxos de trabalho com sua empresa](https://docs.github.com/pt/share-with-your-enterprise)
-
-  É possível compartilhar uma ação ou um fluxo de trabalho reutilizável com sua empresa sem publicar a ação ou fluxo de trabalho publicamente.
-
 * [Bloqueio de dependências de ação nos fluxos de trabalho de um repositório](how-tos/secure-your-work/lock-workflow-dependencies.md)
 
   Gere um arquivo de bloqueio que fixe cada ação que seus fluxos de trabalho usam em um commit verificado e mantenha-o atual à medida que suas dependências são alteradas.
@@ -461,7 +457,7 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
 * [Desabilitar e habilitar um fluxo de trabalho](how-tos/manage-workflow-runs/disable-and-enable-workflows.md)
 
-  Você pode desabilitar e habilitar novamente um fluxo de trabalho usando a interface do usuário de GitHub, a API REST, ou GitHub CLI.
+  Você pode desabilitar e reabilitar um fluxo de trabalho usando a UI GitHub, a API REST ou GitHub CLI.
 
 * [Ignorar execuções de fluxo de trabalho](how-tos/manage-workflow-runs/skip-workflow-runs.md)
 
@@ -541,7 +537,7 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
 * [Remover executores auto-hospedados](how-tos/manage-runners/self-hosted-runners/remove-runners.md)
 
-  Você pode remover permanentemente um executor auto-hospedado de um repositório.
+  Você pode remover permanentemente um executor auto-hospedado de um repositório ou organização.
 
 * [Gerenciar executores maiores](how-tos/manage-runners/larger-runners/manage-larger-runners.md)
 
@@ -619,10 +615,6 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
   Você pode visualizar métricas para monitorar onde sua organização ou repositórios usam GitHub Actions e como elas estão se saindo.
 
-* [Como disponibilizar namespaces desativados no GHE.com](https://docs.github.com/pt/reuse-namespaces-on-ghecom)
-
-  Permita que as pessoas usem namespaces que correspondam às ações que você usou no GitHub.com.
-
 * [Obtendo ajuda do suporte GitHub sobre GitHub Actions](how-tos/get-support.md)
 
   Saiba como Suporte do GitHub ajudar com GitHub Actions
@@ -661,7 +653,7 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
 * [Reutilizando configurações de fluxo de trabalho](reference/workflows-and-actions/reusing-workflow-configurations.md)
 
-  Encontre informações sobre como evitar a duplicação ao criar um fluxo de trabalho reutilizando fluxos de trabalho existentes YAML.
+  Encontre informações sobre como evitar a duplicação ao criar um fluxo de trabalho reutilizando fluxos de trabalho existentes e usando âncoras e aliases YAML.
 
 * [Referência de sintaxe de metadados](reference/workflows-and-actions/metadata-syntax.md)
 
@@ -895,6 +887,6 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
   Saiba como solucionar Actions Runner Controller erros.
 
-* [Desenvolver fluxos de trabalho agente no GitHub Actions](tutorials/develop-agentic-workflows-in-github-actions.md)
+* [Desenvolver fluxos de trabalho agênticos no GitHub Actions](tutorials/develop-agentic-workflows-in-github-actions.md)
 
   Use GitHub Agentic Workflows para transformar instruções do Markdown em automações alimentadas por agentes de codificação de terceiros.

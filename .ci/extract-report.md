@@ -2,13 +2,13 @@
 
 - **Fonte:** `api`  
 - **Idioma:** `pt`  
-- **Executado em:** 2026-10-19T09:54:50+00:00  
+- **Executado em:** 2026-10-26T10:08:15+00:00  
 - **Páginas OK:** 251  
 - **Falhas:** 0  
 - **Com avisos:** 21  
 - **Score de qualidade (0 = impecável):** 71 em 8 página(s)  
-- **Links internos íntegros:** 1748 (revertidos para URL absoluta: 7)  
-- **Bytes totais:** 2,523,409  
+- **Links internos íntegros:** 1749 (revertidos para URL absoluta: 7)  
+- **Bytes totais:** 2,524,382  
 - **Headings totais:** 2,752  
 - **Blocos de código:** 1,122  
 - **Tabelas:** 131  
@@ -47,7 +47,7 @@
 
 | Página | Título | H | Code | Tabelas | Bytes |
 | --- | --- | --- | --- | --- | --- |
-| `actions/index.md` | Documentação do GitHub Actions | 5 | 0 | 0 | 51,281 |
+| `actions/index.md` | Documentação do GitHub Actions | 5 | 0 | 0 | 50,812 |
 | `actions/get-started.md` | Introdução ao GitHub Actions | 2 | 0 | 0 | 1,325 |
 | `actions/get-started/quickstart.md` | Guia Rápido do GitHub Actions | 7 | 0 | 0 | 11,817 |
 | `actions/get-started/understand-github-actions.md` | Noções básicas sobre GitHub Actions | 9 | 0 | 0 | 9,744 |

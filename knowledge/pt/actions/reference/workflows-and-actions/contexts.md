@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/contexts
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: Reference / Workflows and actions
 ---
 

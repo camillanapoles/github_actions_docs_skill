@@ -6,15 +6,13 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/self-hosted-runners/remove-runners
-captured: '2026-10-19'
+captured: '2026-10-26'
 section: How tos / Manage runners / Self hosted runners
 ---
 
 # Remover executores auto-hospedados
 
 _Você pode remover permanentemente um executor auto-hospedado de um repositório ou organização._
-
-Você pode remover permanentemente um executor auto-hospedado de um repositório.
 
 ## Remover um executor de um repositório
 
