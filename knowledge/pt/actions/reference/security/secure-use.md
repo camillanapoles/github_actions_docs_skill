@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/security/secure-use
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: Reference / Security
 ---
 
@@ -191,7 +191,7 @@ As SBOMs estão disponíveis para imagens de executáveis do Ubuntu, Windows e m
 
 #### Negar acesso a hosts
 
-Os executores hospedados pelo GitHub são provisionados com um arquivo `etc/hosts` que bloqueia o acesso à rede a vários pools de mineração de criptomoedas e sites mal-intencionados. Hosts como MiningMadness.com e cpu-pool.com são redirecionados para localhost para que não apresentem um risco de segurança significativo. Para obter mais informações, consulte [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md).
+GitHubrunners hospedados são provisionados com um `/etc/hosts` arquivo que bloqueia o acesso à rede a vários pools de mineração de criptomoedas e sites mal-intencionados. Hosts como MiningMadness.com e cpu-pool.com são redirecionados para localhost para que não apresentem um risco de segurança significativo. Para obter mais informações, consulte [Executores hospedados no GitHub](../../concepts/runners/github-hosted-runners.md).
 
 ### Fortalecimento para executores auto-hospedados
 

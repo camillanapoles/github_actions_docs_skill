@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/limits
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: Reference
 ---
 
@@ -80,13 +80,18 @@ GitHub Plano | Total de tarefas simultâneas | Máximo de tarefas macOS simultâ
 
 GitHub O **suporte não pode** aumentar os limites de armazenamento para GitHub Actions.
 
-| Plano                         | Armazenamento de artefatos | Minutos (por mês) | Armazenamento em cache (por repositório) | Armazenamento de imagens personalizadas |
-|-----------------------------|--------------------------|-----------------|----------------------------------------|---------------------------------------|
-| GitHub Free                   | 500 MB                     | 2.000             | 10 GB                                    | Não aplicável                           |
-| GitHub Pro                    | 1 GB                       | 3.000             | 10 GB                                    | Não aplicável                           |
-| GitHub Free para organizações | 500 MB                     | 2.000             | 10 GB                                    | Não aplicável                           |
-| GitHub Team                   | 2 GB                       | 3.000             | 10 GB                                    | 75 GB                                   |
-| GitHub Enterprise Cloud       | 50 GB                      | 50,000            | 10 GB                                    | 150 GB                                  |
+| Plano | Armazenamento de artefatos |
+Uso de computação incluído (por mês) | Armazenamento em cache (por repositório) | Armazenamento de imagens personalizadas |
+| ------- | ------- | --------- | ------- | ------- |
+| GitHub Free | 500 MB |
+$12 USD | 10 GB | Não aplicável |
+| GitHub Pro | 1 GB |
+US$ 18 | 10 GB | Não aplicável |
+| GitHub Free para organizações | 500 MB | $12 USD | 10 GB | Não aplicável |
+| GitHub Team | 2 GB |
+US$ 18 | 10 GB | 75 GB |
+| GitHub Enterprise Cloud | 50 GB |
+US$ 300 | 10 GB | 150 GB |
 
 Para obter informações sobre os limites de armazenamento em cache e como aumentá-los, consulte [limites de uso e política de remoção](workflows-and-actions/dependency-caching.md#usage-limits-and-eviction-policy).
 

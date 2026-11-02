@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/security/securely-using-pull_request_target
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: Reference / Security
 ---
 

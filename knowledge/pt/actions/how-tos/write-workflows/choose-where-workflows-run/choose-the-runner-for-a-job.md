@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: How tos / Write workflows / Choose where workflows run
 ---
 
@@ -134,7 +134,7 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
 
 ### Executores hospedados padrão GitHubpara  privados
 
-Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a alocação de minutos gratuitos da sua GitHub conta e, posteriormente, são cobrados a taxas por minuto de uso. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
+Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a computação incluída na sua  contaGitHub e, em seguida, são cobrados de acordo com as taxas por minuto. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
 | **Máquina virtual** | **Processador (CPU)** | **Memória (RAM)** | **Armazenamento (SSD)** | **Arquitetura** | **Rótulo do fluxo de trabalho** |
 | --- | --- | --- | --- | --- | --- |

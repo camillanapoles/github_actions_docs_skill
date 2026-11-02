@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/troubleshoot-workflows
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: How tos
 ---
 
@@ -141,7 +141,42 @@ Serviços de inteligência contra ameaças de terceiros, scanners de reputação
 
 GitHub não controla listas de reputação de IP de terceiros e não pode comentar sua precisão ou frequência de atualização. Para verificar se um endereço IP pertence a runners hospedados em GitHub, verifique os intervalos de IP retornados pela API Meta.
 
-Se você tiver uma preocupação de segurança com um endereço IP de propriedade Microsoft, denuncie-o ao [Microsoft Security Response Center (MSRC)](https://msrc.microsoft.com/report/).
+Relatar preocupações de segurança sobre um endereço IP para o provedor de infraestrutura que o possui. Para endereços IP de propriedade Microsoft, relate preocupações ao [Microsoft Security Response Center (MSRC)](https://msrc.microsoft.com/report/).
+
+### falhas de autenticação do SDK do Azure
+
+Os aplicativos que usam SDK do Azure `DefaultAzureCredential` podem falhar ao autenticar em runners no pool de computação de várias nuvens, mesmo quando uma etapa anterior `azure/login` é bem-sucedida.
+
+O AWS EC2 e Azure expõem seus serviços de metadados de instância no mesmo endereço, `169.254.169.254`. Alguns Azure SDKs de Identidade interpretam a resposta de metadados EC2 como uma falha de autenticação de identidade gerenciada Azure. Isso interrompe a cadeia de credenciais antes de tentar a sessão de CLI do Azure estabelecida por `azure/login`.
+
+O erro pode incluir:
+
+```text
+DefaultAzureCredential: failed to acquire a token.
+ManagedIdentityCredential authentication failed.
+GET http://169.254.169.254/metadata/identity/oauth2/token
+RESPONSE 401: 401 Unauthorized
+```
+
+Se o aplicativo deve usar a sessão CLI do Azure estabelecida por`azure/login`, selecione `AzureCLICredential` explicitamente. Para aplicativos Go que usam o módulo Azure Identity `azidentity` versão 1.11.0 ou posterior, defina `AZURE_TOKEN_CREDENTIALS` na etapa do aplicativo após um logon bem-sucedido:
+
+```yaml
+- name: Run application
+  env:
+    AZURE_TOKEN_CREDENTIALS: AzureCLICredential
+  run: ./application
+```
+
+Substitua `./application` pelo comando que executa seu aplicativo.
+
+Como alternativa, use uma destas abordagens:
+
+* Construa `AzureCLICredential` diretamente em seu aplicativo.
+* Configure completamente as credenciais de identidade de ambiente ou de carga de trabalho, que são avaliadas antes da identidade gerenciada.
+
+Uma etapa bem-sucedida `azure/login` não configura por si só a credencial de identidade de carga de trabalho do SDK.
+
+O suporte para restringir `DefaultAzureCredential` varia de acordo com o idioma e a versão do pacote. Para a configuração go e a ordem de credencial, consulte [Cadeias de credenciais na biblioteca de identidades do Azure para Go](https://learn.microsoft.com/en-us/azure/developer/go/sdk/authentication/credential-chains). Para outros idiomas, consulte a documentação da versão do SDK Azure Identity do seu aplicativo.
 
 ## Sugestões de solução de problemas de rede
 
@@ -185,6 +220,8 @@ Podem ocorrer problemas de cadeias de certificados autoassinados ou personalizad
 Listas de permissão ou negação de IP podem interromper as comunicações esperadas. Se houver um problema, examine os logs disponíveis, a documentação do fornecedor ou consulte os administradores para obter assistência adicional.
 
 Para obter informações sobre os endereços IP de GitHub, como os usados por executores hospedados em GitHub, consulte [Sobre os endereços IP do GitHub](https://docs.github.com/pt/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses).
+
+Para executores que usam computação em várias nuvens, as políticas que permitem apenas Azure ou intervalos de IP de propriedade Microsoft podem bloquear conexões ou autenticação, inclusive por meio de Acesso condicional do Microsoft Entra. Mantenha as políticas de rede em sincronia com todos os intervalos de IP publicados dos runners. Consulte [endereços IP](../reference/runners/github-hosted-runners.md#ip-addresses).
 
 Endereços IP estáticos estão disponíveis para uso com executores maiores hospedados em GitHub. Confira [Gerenciar executores maiores](manage-runners/larger-runners/manage-larger-runners.md) para obter mais informações.
 

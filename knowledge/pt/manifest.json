@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-26T10:08:15+00:00",
+  "generated": "2026-11-02T12:25:03+00:00",
   "source": "api",
   "lang": "pt",
   "page_count": 251,
-  "total_bytes": 2524382,
+  "total_bytes": 2536062,
   "pages": [
     {
       "path": "actions/index.md",
@@ -14,7 +14,7 @@
       "section": "Actions",
       "lang": "pt",
       "source": "api",
-      "bytes": 50812,
+      "bytes": 50770,
       "headings": 5,
       "h2": 3,
       "code_blocks": 0,
@@ -34,7 +34,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -69,7 +69,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -104,7 +104,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -139,7 +139,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -174,7 +174,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -209,7 +209,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -244,7 +244,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -261,7 +261,7 @@
       "section": "Actions",
       "lang": "pt",
       "source": "api",
-      "bytes": 1447,
+      "bytes": 1405,
       "headings": 2,
       "h2": 1,
       "code_blocks": 0,
@@ -281,7 +281,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -316,7 +316,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -351,7 +351,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -386,7 +386,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -421,7 +421,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -456,7 +456,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -491,7 +491,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -526,7 +526,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -561,7 +561,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -578,7 +578,7 @@
       "section": "Concepts / Workflows and actions",
       "lang": "pt",
       "source": "api",
-      "bytes": 2003,
+      "bytes": 2011,
       "headings": 1,
       "h2": 0,
       "code_blocks": 0,
@@ -598,7 +598,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -635,7 +635,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -670,7 +670,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -705,7 +705,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -742,7 +742,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -757,14 +757,14 @@
       "section": "Concepts / Runners",
       "lang": "pt",
       "source": "api",
-      "bytes": 8751,
+      "bytes": 10456,
       "headings": 8,
       "h2": 5,
       "code_blocks": 0,
       "tables": 0,
       "admonitions": 2,
-      "links_internal": 7,
-      "links_external": 3,
+      "links_internal": 9,
+      "links_external": 4,
       "images": 0,
       "children": [],
       "quality_score": 0,
@@ -777,7 +777,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -792,7 +792,7 @@
       "section": "Concepts / Runners",
       "lang": "pt",
       "source": "api",
-      "bytes": 4203,
+      "bytes": 4270,
       "headings": 6,
       "h2": 5,
       "code_blocks": 0,
@@ -812,7 +812,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -847,7 +847,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -882,7 +882,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -917,7 +917,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -952,7 +952,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -987,7 +987,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1022,7 +1022,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1057,7 +1057,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1092,7 +1092,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1127,7 +1127,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1162,7 +1162,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1197,7 +1197,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1232,7 +1232,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1247,13 +1247,13 @@
       "section": "Concepts / Security",
       "lang": "pt",
       "source": "api",
-      "bytes": 4835,
-      "headings": 8,
+      "bytes": 6092,
+      "headings": 9,
       "h2": 5,
       "code_blocks": 2,
       "tables": 0,
       "admonitions": 0,
-      "links_internal": 1,
+      "links_internal": 2,
       "links_external": 0,
       "images": 0,
       "children": [],
@@ -1267,7 +1267,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1302,7 +1302,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1337,7 +1337,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1372,7 +1372,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1383,11 +1383,11 @@
       "url": "https://docs.github.com/pt/actions/concepts/billing-and-usage",
       "title": "Cobrança e uso",
       "short_title": "",
-      "description": "Há limites de uso para GitHub Actions fluxos de trabalho. As taxas de uso são aplicadas a repositórios que excedem a quantidade de minutos gratuitos e armazenamento disponíveis gratuitamente.",
+      "description": "Entenda qual uso de GitHub Actions está incluído no seu plano, quando os encargos se aplicam e quais limites de uso os administradores podem gerenciar.",
       "section": "Concepts",
       "lang": "pt",
       "source": "api",
-      "bytes": 5109,
+      "bytes": 5124,
       "headings": 7,
       "h2": 6,
       "code_blocks": 0,
@@ -1407,7 +1407,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1442,7 +1442,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1477,7 +1477,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1512,7 +1512,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1547,7 +1547,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1582,7 +1582,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1617,7 +1617,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1652,7 +1652,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1687,7 +1687,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1722,7 +1722,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1737,7 +1737,7 @@
       "section": "How tos / Write workflows / Choose where workflows run",
       "lang": "pt",
       "source": "api",
-      "bytes": 15513,
+      "bytes": 15508,
       "headings": 11,
       "h2": 4,
       "code_blocks": 6,
@@ -1757,7 +1757,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1792,7 +1792,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1827,7 +1827,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1862,7 +1862,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1897,7 +1897,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1932,7 +1932,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -1969,7 +1969,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -2006,7 +2006,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2041,7 +2041,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2076,7 +2076,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2111,7 +2111,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2146,7 +2146,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2181,7 +2181,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2216,7 +2216,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2251,7 +2251,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2286,7 +2286,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2321,7 +2321,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2356,7 +2356,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2391,7 +2391,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2406,30 +2406,32 @@
       "section": "How tos / Secure your work",
       "lang": "pt",
       "source": "api",
-      "bytes": 8284,
-      "headings": 8,
+      "bytes": 11629,
+      "headings": 11,
       "h2": 6,
-      "code_blocks": 2,
+      "code_blocks": 6,
       "tables": 0,
-      "admonitions": 0,
-      "links_internal": 4,
-      "links_external": 3,
+      "admonitions": 2,
+      "links_internal": 5,
+      "links_external": 4,
       "images": 0,
       "children": [],
-      "quality_score": 0,
+      "quality_score": 5,
       "quality_issues": {
         "table": 0,
-        "fence": 0,
+        "fence": 1,
         "alert": 0,
         "html": 0,
         "bullet": 0,
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
-      "warnings": [],
+      "warnings": [
+        "markdown da API com imperfeições (score=5{'table': 0, 'fence': 1, 'alert': 0, 'html': 0, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não melhorou o score (score html=5)"
+      ],
       "error": ""
     },
     {
@@ -2461,7 +2463,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2496,7 +2498,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2531,7 +2533,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2566,7 +2568,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2601,7 +2603,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2636,7 +2638,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2671,7 +2673,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2706,7 +2708,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2741,7 +2743,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2776,7 +2778,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2811,7 +2813,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2846,7 +2848,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2881,7 +2883,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2916,7 +2918,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2951,7 +2953,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2986,7 +2988,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3021,7 +3023,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3056,7 +3058,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3091,7 +3093,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3126,7 +3128,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -3163,7 +3165,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3198,7 +3200,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3233,7 +3235,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3268,7 +3270,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3303,7 +3305,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3338,7 +3340,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3373,7 +3375,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3408,7 +3410,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3443,7 +3445,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3478,7 +3480,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3513,7 +3515,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3548,7 +3550,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3583,7 +3585,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3618,7 +3620,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3653,7 +3655,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3688,7 +3690,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3723,7 +3725,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3758,7 +3760,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3793,7 +3795,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3828,7 +3830,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3863,7 +3865,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3898,7 +3900,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3933,7 +3935,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3968,7 +3970,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -4005,7 +4007,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4040,7 +4042,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4075,7 +4077,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4110,7 +4112,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4145,7 +4147,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4180,7 +4182,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -4217,7 +4219,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -4254,7 +4256,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -4291,7 +4293,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4326,7 +4328,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4361,7 +4363,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4396,7 +4398,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4431,7 +4433,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4466,7 +4468,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4501,7 +4503,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4536,7 +4538,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4571,7 +4573,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4606,7 +4608,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4641,7 +4643,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4676,7 +4678,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4711,7 +4713,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4746,7 +4748,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4781,7 +4783,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4816,7 +4818,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4851,7 +4853,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4886,7 +4888,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4921,7 +4923,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4956,7 +4958,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4991,7 +4993,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5026,7 +5028,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5041,7 +5043,7 @@
       "section": "How tos / Manage runners / Larger runners",
       "lang": "pt",
       "source": "api",
-      "bytes": 18732,
+      "bytes": 18760,
       "headings": 12,
       "h2": 8,
       "code_blocks": 1,
@@ -5061,7 +5063,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5096,7 +5098,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5131,7 +5133,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5166,7 +5168,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5201,7 +5203,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5236,7 +5238,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5251,14 +5253,14 @@
       "section": "How tos / Manage runners / Use actions runner controller",
       "lang": "pt",
       "source": "api",
-      "bytes": 57215,
+      "bytes": 57704,
       "headings": 78,
       "h2": 43,
       "code_blocks": 36,
       "tables": 1,
-      "admonitions": 46,
+      "admonitions": 48,
       "links_internal": 20,
-      "links_external": 40,
+      "links_external": 41,
       "images": 0,
       "children": [],
       "quality_score": 5,
@@ -5271,7 +5273,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -5308,7 +5310,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -5345,7 +5347,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5380,7 +5382,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5415,7 +5417,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -5452,7 +5454,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5487,7 +5489,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -5524,7 +5526,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5559,7 +5561,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5594,7 +5596,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5629,7 +5631,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5644,14 +5646,14 @@
       "section": "How tos",
       "lang": "pt",
       "source": "api",
-      "bytes": 17340,
-      "headings": 29,
+      "bytes": 19966,
+      "headings": 30,
       "h2": 7,
-      "code_blocks": 0,
+      "code_blocks": 2,
       "tables": 0,
       "admonitions": 0,
-      "links_internal": 25,
-      "links_external": 12,
+      "links_internal": 26,
+      "links_external": 13,
       "images": 0,
       "children": [],
       "quality_score": 0,
@@ -5664,7 +5666,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5699,7 +5701,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5714,7 +5716,7 @@
       "section": "How tos / Administer",
       "lang": "pt",
       "source": "api",
-      "bytes": 8311,
+      "bytes": 9147,
       "headings": 8,
       "h2": 3,
       "code_blocks": 0,
@@ -5734,7 +5736,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5749,14 +5751,14 @@
       "section": "How tos / Administer",
       "lang": "pt",
       "source": "api",
-      "bytes": 7946,
-      "headings": 10,
+      "bytes": 9216,
+      "headings": 8,
       "h2": 5,
       "code_blocks": 0,
       "tables": 0,
       "admonitions": 2,
       "links_internal": 4,
-      "links_external": 4,
+      "links_external": 6,
       "images": 0,
       "children": [],
       "quality_score": 0,
@@ -5769,7 +5771,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5804,7 +5806,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5839,7 +5841,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5874,7 +5876,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5909,7 +5911,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5924,7 +5926,7 @@
       "section": "Reference / Workflows and actions",
       "lang": "pt",
       "source": "api",
-      "bytes": 197385,
+      "bytes": 197380,
       "headings": 225,
       "h2": 98,
       "code_blocks": 142,
@@ -5944,7 +5946,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5979,7 +5981,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6014,7 +6016,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6049,7 +6051,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6084,7 +6086,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6119,7 +6121,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6154,7 +6156,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6189,7 +6191,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6224,7 +6226,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6259,7 +6261,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6294,7 +6296,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -6331,7 +6333,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -6368,7 +6370,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6383,13 +6385,13 @@
       "section": "Reference / Runners",
       "lang": "pt",
       "source": "api",
-      "bytes": 20627,
+      "bytes": 21277,
       "headings": 13,
       "h2": 5,
       "code_blocks": 12,
       "tables": 3,
       "admonitions": 6,
-      "links_internal": 8,
+      "links_internal": 9,
       "links_external": 9,
       "images": 0,
       "children": [],
@@ -6403,7 +6405,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6438,7 +6440,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6473,7 +6475,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6508,7 +6510,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6523,7 +6525,7 @@
       "section": "Reference / Security",
       "lang": "pt",
       "source": "api",
-      "bytes": 43200,
+      "bytes": 43189,
       "headings": 33,
       "h2": 4,
       "code_blocks": 4,
@@ -6543,7 +6545,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6578,7 +6580,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6613,7 +6615,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6648,7 +6650,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6663,19 +6665,19 @@
       "section": "Reference",
       "lang": "pt",
       "source": "api",
-      "bytes": 16251,
+      "bytes": 15607,
       "headings": 8,
       "h2": 2,
       "code_blocks": 0,
-      "tables": 2,
+      "tables": 1,
       "admonitions": 2,
       "links_internal": 4,
       "links_external": 3,
       "images": 0,
       "children": [],
-      "quality_score": 3,
+      "quality_score": 24,
       "quality_issues": {
-        "table": 1,
+        "table": 8,
         "fence": 0,
         "alert": 0,
         "html": 0,
@@ -6683,11 +6685,11 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
-        "markdown da API com imperfeições (score=3{'table': 1, 'fence': 0, 'alert': 0, 'html': 0, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não preservou o conteúdo (15291/15871 B, 0/8 headings) (score html=0)"
+        "markdown da API com imperfeições (score=24{'table': 8, 'fence': 0, 'alert': 0, 'html': 0, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não preservou o conteúdo (14695/15227 B, 0/8 headings) (score html=0)"
       ],
       "error": ""
     },
@@ -6720,7 +6722,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6755,7 +6757,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6790,7 +6792,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6825,7 +6827,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6860,7 +6862,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6895,7 +6897,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6930,7 +6932,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6965,7 +6967,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7000,7 +7002,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7035,7 +7037,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7070,7 +7072,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7105,7 +7107,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7140,7 +7142,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7175,7 +7177,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7210,7 +7212,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -7247,7 +7249,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7282,7 +7284,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7317,7 +7319,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7352,7 +7354,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7387,7 +7389,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7422,7 +7424,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7457,7 +7459,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7492,7 +7494,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7527,7 +7529,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7562,7 +7564,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7597,7 +7599,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7632,7 +7634,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7667,7 +7669,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7702,7 +7704,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7737,7 +7739,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7772,7 +7774,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7807,7 +7809,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7842,7 +7844,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7877,7 +7879,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7912,7 +7914,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7947,7 +7949,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7982,7 +7984,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8017,7 +8019,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8052,7 +8054,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8087,7 +8089,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8122,7 +8124,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8157,7 +8159,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8192,7 +8194,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -8229,7 +8231,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8264,7 +8266,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8299,7 +8301,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8334,7 +8336,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8369,7 +8371,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8404,7 +8406,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -8441,7 +8443,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8476,7 +8478,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8511,7 +8513,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8546,7 +8548,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8581,7 +8583,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8616,7 +8618,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8651,7 +8653,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8686,7 +8688,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8721,7 +8723,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8736,12 +8738,12 @@
       "section": "Tutorials",
       "lang": "pt",
       "source": "api",
-      "bytes": 7206,
+      "bytes": 7339,
       "headings": 10,
       "h2": 7,
       "code_blocks": 2,
       "tables": 1,
-      "admonitions": 4,
+      "admonitions": 2,
       "links_internal": 0,
       "links_external": 4,
       "images": 0,
@@ -8756,7 +8758,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8791,7 +8793,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8826,7 +8828,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-10-26",
+      "captured": "2026-11-02",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8838,8 +8840,8 @@
   "plan": "free-pro-team@latest,enterprise-cloud@latest",
   "links": {
     "files": 252,
-    "links": 1756,
+    "links": 1762,
     "reverted": 7,
-    "ok": 1749
+    "ok": 1755
   }
 }

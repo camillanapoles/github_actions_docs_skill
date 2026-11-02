@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/administer/control-workflow-execution
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: How tos / Administer
 ---
 
@@ -78,11 +78,17 @@ As regras de evento controlam quais eventos são permitidos, como`push`, , `pull
 
 ### Exigir lockfile
 
-A proteção **Exigir arquivo de bloqueio** bloqueia execuções de fluxos de trabalho com `uses:` dependências de outras ações, a menos que as dependências sejam fixadas em um arquivo de bloqueio de dependência. Isso garante que os fluxos de trabalho direcionados executem código previsível e validado, em vez de qualquer tag ou branch para a qual apontem em tempo de execução. Consulte [Arquivos de bloqueio de dependências do fluxo de trabalho](../../concepts/security/workflow-dependency-lockfiles.md).
+A proteção **Require lockfile** bloqueia execuções de fluxos de trabalho direcionados que não estão incluídos no arquivo de bloqueio do repositório. Dessa forma, os fluxos de trabalho direcionados executam código validado e previsível, em vez de qualquer coisa para a qual uma tag ou branch aponta em tempo de execução. Essa proteção e os arquivos de bloqueio em geral abrangem apenas as ações chamadas no nível da etapa (`jobs.<job_id>.steps[*].uses`). Eles não abrangem fluxos de trabalho reutilizáveis chamados no nível do trabalho (`jobs.<job_id>.uses`). Se um fluxo de trabalho reutilizável chamado não estiver integrado ao lockfile em seu próprio repositório, essa proteção bloqueará a execução do workflow chamador. Consulte [Arquivos de bloqueio de dependências do fluxo de trabalho](../../concepts/security/workflow-dependency-lockfiles.md).
 
 Gere e verifique os arquivos de bloqueio nos repositórios que você está direcionando antes de definir essa proteção como **Ativa**. Caso contrário, você bloqueará as execuções de fluxo de trabalho em repositórios que não estão prontos. Para obter um lançamento gradual, consulte [Aplicar lockfiles para dependências de ação](enforce-workflow-lockfiles.md).
 
-Você pode manter **Exigir que as ações sejam fixadas a um SHA de commit completo** habilitado ao adotar arquivos de bloqueio. Para dependências cobertas por um arquivo de bloqueio, GitHub avalia esse requisito usando a SHA do commit bloqueado. Manter a política habilitada durante uma implantação gradual preserva a imposição de fixação de SHA para fluxos de trabalho que ainda não adotaram os arquivos de bloqueio.
+Você pode manter a política **Exigir que ações sejam fixadas em um SHA de commit completo** habilitada ao adotar arquivos de bloqueio. Um lockfile atende ao requisito de fixação SHA para fluxos de trabalho que são integrados a um lockfile.
+
+Ambas as políticas são verificações independentes e uma execução de fluxo de trabalho deve passar ambas quando ambas estiverem habilitadas:
+
+* Um fluxo de trabalho que está no arquivo de bloqueio passa em ambas as políticas, sem necessidade de SHAs no arquivo de fluxo de trabalho.
+* Um fluxo de trabalho que não está no arquivo de bloqueio, com `uses:` referências fixadas a uma SHA do commit de comprimento completo, passa a fixação SHA, mas é bloqueado por **Exigir arquivo de bloqueio**.
+* Um fluxo de trabalho que não está no arquivo de bloqueio, com `uses:` referências a uma tag ou branch, é bloqueado por ambas as políticas.
 
 ## Avaliando políticas
 

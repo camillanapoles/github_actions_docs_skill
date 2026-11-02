@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/runners/github-hosted-runners
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: Reference / Runners
 ---
 
@@ -96,7 +96,7 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
 
 ### Executores hospedados padrão GitHubpara  privados
 
-Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a alocação de minutos gratuitos da sua GitHub conta e, posteriormente, são cobrados a taxas por minuto de uso. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
+Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados na tabela abaixo serão executados em máquinas virtuais com as especificações associadas. Esses executores usam a computação incluída na sua  contaGitHub e, em seguida, são cobrados de acordo com as taxas por minuto. Confira [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
 
 | **Máquina virtual** | **Processador (CPU)** | **Memória (RAM)** | **Armazenamento (SSD)** | **Arquitetura** | **Rótulo do fluxo de trabalho** |
 | --- | --- | --- | --- | --- | --- |
@@ -209,7 +209,9 @@ As máquinas virtuais do Windows estão configuradas para ser executadas como ad
 
 Para obter uma lista de intervalos de endereços IP que GitHub Actions usa para executores hospedados em GitHub, você pode usar a API REST GitHub. Para obter mais informações, confira a chave `actions` na resposta do endpoint `GET /meta`. Para saber mais, confira [Pontos de extremidade da API REST para metadados](https://docs.github.com/pt/rest/meta/meta#get-github-meta-information).
 
-Os executores do Windows e Ubuntu são hospedados no Azure e, consequentemente, têm as mesmas faixas de endereços IP que os centros de dados do Azure. Os executores do macOS são hospedados na GitHubprópria nuvem do macOS.
+Os runners Linux qualificados usam um pool de computação multicloud, portanto, seus endereços IP de saída não se limitam aos intervalos de datacenter do Azure. Mantenha todas as listas de permissões de IP ou políticas de acesso baseadas em rede usadas por seus fluxos de trabalho em sincronia com todos os intervalos no array `actions`, em vez de depender de intervalos específicos do provedor de nuvem. As políticas que permitem apenas Azure ou intervalos de propriedade Microsoft, incluindo políticas de Acesso condicional do Microsoft Entra, podem bloquear conexões ou autenticação desses executores.
+
+Para elegibilidade para multicloud, consulte [hosts de nuvem usados por GitHubrunners hospedados](../../concepts/runners/github-hosted-runners.md#cloud-hosts-used-by-github-hosted-runners). Os executores do macOS são hospedados na GitHubprópria nuvem do macOS.
 
 Como há muitas faixas de endereços IP para os executores hospedados em GitHub, não recomendamos que você as use como lista de permissões para seus recursos internos. Em vez disso, recomendamos que você use executor avançados com um intervalo de endereços IP estático ou executores auto-hospedados. Para obter mais informações, confira [Usando executores maiores](../../how-tos/manage-runners/larger-runners.md) ou [Executores auto-hospedados](../../concepts/runners/self-hosted-runners.md).
 

@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/runners/github-hosted-runners
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: Concepts / Runners
 ---
 
@@ -71,7 +71,19 @@ Para começar a usar imagens personalizadas, consulte [Usando imagens personaliz
 
 ## Hosts de nuvem usados por executores hospedados em GitHub
 
-GitHub hospeda executores Linux e Windows em máquinas virtuais em Microsoft Azure com o aplicativo de executor do GitHub Actions instalado. O aplicativo de executor hospedado em GitHub é uma ramificação do Agente do Azure Pipelines. Os pacotes ICMP de entrada estão bloqueados para todas as máquinas virtuais do Azure. Portanto, é possível que os comandos ping ou traceroute não funcionem.
+GitHub Actions usa um pool de computação de várias nuvens para ajudar a melhorar a disponibilidade do runner para trabalhos qualificados do Linux. Esses trabalhos podem ser executados no AWS (Amazon Web Services) ou Microsoft Azure.
+
+A computação em várias nuvens é usada para executores Linux padrão de 2 núcleos e 4 núcleos e executores compatíveis de 2 núcleos e 4 núcleos executores avançados sem configurações especializadas. Ele não se aplica a runners do Windows ou runners com rede privada ou outras configurações especializadas. Os trabalhos são agendados automaticamente em todos os provedores de nuvem disponíveis.
+
+> [!NOTE] Se você usou GitHubexecutores do Linux hospedados antes da introdução da computação em várias nuvens, os rótulos existentes do executor e a sintaxe do fluxo de trabalho permanecerão inalterados.
+
+<!-- Before publication, confirm GHE.com availability: the release description and later release discussion conflict. -->
+
+Os runners elegíveis em GitHub Free, GitHub Pro e GitHub Team usam automaticamente a computação multinuvem. As empresas no GitHub Enterprise Cloud podem aderir. Confira [Impor políticas para GitHub Actions em sua empresa](https://docs.github.com/pt/enterprise-cloud@latest/admin/enforcing-policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enabling-multi-cloud-compute).
+
+Se seus fluxos de trabalho dependerem de listas de permissões de rede ou SDK do Azure credenciais, a execução em um provedor de nuvem diferente poderá causar falhas de conexão ou autenticação. Examine [os requisitos de endereço IP](../../reference/runners/github-hosted-runners.md#ip-addresses) e [solução de problemas de autenticação do SDK do Azure](../../how-tos/troubleshoot-workflows.md#azure-sdk-authentication-failures).
+
+GitHub hospeda executores do Windows e do Linux que não usam computação multinuvem em máquinas virtuais no Azure. Os pacotes ICMP de entrada são bloqueados para máquinas virtuais do Azure, portanto, os comandos ping ou traceroute podem não funcionar.
 GitHub hospeda corredores macOS em data centers Azure.
 
 ## Continuidade do fluxo de trabalho
@@ -80,6 +92,6 @@ Se os serviços de GitHub Actions estiverem temporariamente indisponíveis, a ex
 
 Além disso, se a execução do fluxo de trabalho entrar na fila com sucesso, mas não foi processado por um executor hospedado em GitHub dentro de 45 minutos, a execução do fluxo de trabalho na fila será descartada.
 
-## O arquivo `etc/hosts`
+## O arquivo `/etc/hosts`
 
-Os executores hospedados pelo GitHub são provisionados com um arquivo `etc/hosts` que bloqueia o acesso à rede a vários pools de mineração de criptomoedas e sites mal-intencionados. Hosts como MiningMadness.com e cpu-pool.com são redirecionados para localhost para que não apresentem um risco de segurança significativo.
+GitHubrunners hospedados são provisionados com um `/etc/hosts` arquivo que bloqueia o acesso à rede a vários pools de mineração de criptomoedas e sites mal-intencionados. Hosts como MiningMadness.com e cpu-pool.com são redirecionados para localhost para que não apresentem um risco de segurança significativo.

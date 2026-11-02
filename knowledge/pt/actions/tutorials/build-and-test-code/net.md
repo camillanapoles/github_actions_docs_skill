@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/build-and-test-code/net
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: Tutorials / Build and test code
 ---
 

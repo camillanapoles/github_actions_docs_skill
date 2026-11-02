@@ -6,16 +6,13 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/develop-agentic-workflows-in-github-actions
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: Tutorials
 ---
 
 # Desenvolver fluxos de trabalho agênticos no GitHub Actions
 
 _Use GitHub Agentic Workflows para transformar instruções do Markdown em automações alimentadas por agentes de codificação de terceiros._
-
-!!! note
-    GitHub Agentic Workflows estão sujeitos prévia pública a alterações.
 
 ## Introduction
 
@@ -64,7 +61,7 @@ Este artigo explica uma configuração simples que adiciona a credencial do agen
 | `GEMINI_API_KEY` que contém uma chave de API do Google AI Studio |  |  |
 | Copilot CLI (predefinição) | `copilot` | Nenhum segredo necessário para repositórios da organização (veja abaixo). Para repositórios pessoais, `COPILOT_GITHUB_TOKEN` que contém um token de acesso pessoal de granularidade fina personal access token com **Copilot Requests** definido como **Read**. |
 
-Outros mecanismos, como Pi (experimental), também têm suporte. Para obter a lista completa, consulte a [GitHub Agentic Workflows referência de autenticação](https://github.github.com/gh-aw/reference/auth/).
+Outros mecanismos, como Pi (experimental), também têm suporte. Para obter a lista completa, consulte a [GitHub Agentic Workflows referência de autenticação](https://github.github.com/gh-aw/reference/auth/?utm_source=agentic-workflow-actions-docs-linking-gh-aw-auth-reference\&utm_medium=docs\&utm_campaign=universe-2026).
 
 ### Cobrança da organização GitHub Copilot
 
@@ -119,4 +116,4 @@ O fluxo de trabalho gerado é disparado automaticamente em pull requests, portan
 ## Próximas Etapas
 
 * Para criar um fluxo de trabalho que produz um relatório semanal de atividade de issues, consulte [Criando fluxos de trabalho agênticos do GitHub](https://docs.github.com/pt/copilot/how-tos/github-agentic-workflows/creating-github-agentic-workflows).
-* Para obter configuração avançada do mecanismo, saídas seguras e mais exemplos de fluxo de trabalho, consulte o site de [GitHub Agentic Workflows documentação](https://github.github.com/gh-aw/).
+* Para obter configuração avançada do mecanismo, saídas seguras e mais exemplos de fluxo de trabalho, consulte o site de [GitHub Agentic Workflows documentação](https://github.github.com/gh-aw/?utm_source=linking-agentic-workflows-actions-docs-gh-aw-repo\&utm_medium=docs\&utm_campaign=universe-2026).

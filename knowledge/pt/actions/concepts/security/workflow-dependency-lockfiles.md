@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/security/workflow-dependency-lockfiles
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: Concepts / Security
 ---
 
@@ -14,19 +14,18 @@ section: Concepts / Security
 
 _Um arquivo de bloqueio fixa todas as ações das quais seus fluxos de trabalho dependem em um commit verificado, portanto, o código que você analisou é o código que é executado._
 
-> [!NOTE] Os arquivos de bloqueio de dependência de fluxo de trabalho estão em prévia pública e sujeitos a alterações.
-
 ## Por que bloquear dependências de fluxo de trabalho?
 
-Quando um fluxo de trabalho faz referência a uma ação por uma marca ou branch, como `uses: octo-org/deploy-action@v3` ou `uses: octo-org/deploy-action@main`, GitHub Actions resolve essa referência para qualquer commit para o qual a marca ou branch aponta em tempo de execução.
+Os fluxos de trabalho geralmente fazem referência a uma ação por uma tag ou branch, como `uses: octo-org/deploy-action@v3` ou `uses: octo-org/deploy-action@main`.
+GitHub Actions resolve essa referência para qualquer commit para o qual a tag ou branch aponta em tempo de execução.
 
-Tags e branches podem ser movidos, portanto, não há garantia de que o código executado seja o código que o autor do fluxo de trabalho revisou originalmente. Se a conta de um mantenedor upstream for comprometida e uma tag for redirecionada, seus repositórios poderão executar código mal-intencionado.
+Tags e branches podem se mover. Como resultado, o código executado não tem a garantia de ser o código que o autor do fluxo de trabalho revisou originalmente. Se a conta de um mantenedor upstream for comprometida e uma tag for redirecionada, seus repositórios poderão executar código mal-intencionado.
 
-Um arquivo de bloqueio de dependência de fluxo de trabalho associa um SHA do commit a cada ação (incluindo dependências transitivas) e a qualquer fluxo de trabalho reutilizável de que seus fluxos de trabalho dependam. Isso lhe dá:
+Um arquivo de bloqueio de dependência de fluxo de trabalho associa um SHA do commit a cada ação da qual seus fluxos de trabalho dependem, incluindo dependências transitivas. Ele não vincula chamadas a fluxos de trabalho reutilizáveis (`jobs.<job_id>.uses`). Para fixar um fluxo de trabalho reutilizável, referencie-o por sua SHA do commit completa. Um lockfile controla qual código de ação é executado no runner. Ele não controla outras entradas de build, como parâmetros de entrada, segredos ou a imagem do executor. Um arquivo de bloqueio fornece o seguinte para o código da action que ele aborda:
 
-* Compilações reproduzíveis
+* Resolução reproduzível de dependências entre ações
 * Alterações de dependência revisíveis e Dependabot atualizações de versão
-* Um inventário auditável das dependências dos seus sistemas de CI/CD
+* Um inventário auditável das dependências de ação dos seus sistemas de CI/CD
 
 ## Como funciona o arquivo de bloqueio?
 
@@ -35,9 +34,10 @@ O arquivo de bloqueio é definido em um repositório em `.github/workflows/actio
 Você pode integrar os fluxos de trabalho de um repositório ao arquivo de bloqueio um de cada vez ou tudo de uma vez. Depois que um fluxo de trabalho é configurado:
 
 * Cada dependência de ação que o fluxo de trabalho usa deve estar presente no arquivo de bloqueio.
-* O commit bloqueado é o que é executado quando o fluxo de trabalho é executado e o que as políticas de ações permitidas verificam. Esse commit deve existir em um branch do repositório de origem.
+* O commit bloqueado é o que é executado quando o fluxo de trabalho é executado e o que as políticas de ações permitidas verificam.
+* Esse commit deve ser acessível a partir do branch ou da tag registrados para ele no arquivo de bloqueio, no repositório da própria ação. Um commit que existe apenas em um fork, ou que não é mais acessível a partir desse branch ou tag, é rejeitado quando o fluxo de trabalho é executado.
 
-Um arquivo de bloqueio abrange os fluxos de trabalho em seu próprio repositório. Ele se estende a dependências transitivas (ações que *as dependências da sua ação* usam), **exceto** para dependências de chamadas de fluxo de trabalho reutilizáveis. Um fluxo de trabalho reutilizável é coberto pelo lockfile do repositório em que ele é definido.
+Um arquivo de bloqueio abrange os fluxos de trabalho em seu próprio repositório, incluindo dependências transitivas (ações que *suas dependências de ação* usam), **exceto** para dependências de chamadas de fluxo de trabalho reutilizáveis. Fluxos de trabalho reutilizáveis também podem ter seus próprios arquivos de bloqueio. As dependências de um fluxo de trabalho reutilizável são cobertas pelo arquivo de bloqueio do repositório em que ele é definido, não pelo arquivo de bloqueio do repositório que o chama.
 
 ## O que o arquivo de bloqueio registra?
 
@@ -48,7 +48,8 @@ O arquivo de bloqueio tem duas seções.
 ```
 # This file is machine-generated by `gh actions-lock`.
 # Do not edit by hand; run `gh actions-lock` to update.
-version: 'v0.0.2'
+# Docs: https://gh.io/actions-lockfile
+version: 'v0.0.3'
 workflows:
     '.github/workflows/ci.yml':
         - 'octo-org/deploy-action@v3.1.0'
@@ -62,14 +63,22 @@ dependencies:
 
 Cada dependência registra:
 
-* **`ref`**: a referência que o fluxo de trabalho usa, como uma marca ou ramificação.
+* **`ref`**: A tag ou branch da qual o commit foi resolvido.
 * **`commit`**: o commit exato ao qual a referência foi resolvida. Esse é o código que será executado.
 * **`owner_id` e `repo_id`**: a identidade numérica do repositório de origem. GitHub Actions usa-os para confirmar em tempo de execução que o repositório por trás do nome ainda é aquele que você travou.
+
+Esse formato estruturado fornece a ferramentas como Dependabot um registro legível por computador que elas podem usar para gerenciar atualizações de dependência, sem depender de comentários YAML como anotações de versão.
 
 ```
 ## Como os arquivos de bloqueio se comparam com a fixação por SHA?
 
-GitHub historicamente recomendou fixar ações de terceiros em um SHA de commit completo em seus arquivos de fluxo de trabalho. Para repositórios que adotam um arquivo de bloqueio, a fixação SHA em arquivos de fluxo de trabalho **não é mais necessária**. O arquivo de bloqueio é a melhor opção porque dá suporte a dependências transitivas, facilita a leitura de arquivos de fluxo de trabalho e registra a identidade do repositório de origem.
+GitHub historicamente recomendou fixar ações de terceiros em um SHA de commit completo em seus arquivos de fluxo de trabalho. Para repositórios que adotam um arquivo de bloqueio, a fixação SHA em arquivos de fluxo de trabalho **não é mais necessária**. O lockfile é a melhor opção porque:
+
+* Dá suporte a dependências transitivas
+* Torna os arquivos de fluxo de trabalho mais fáceis de ler
+* Registra a identidade do repositório de origem
+
+Um arquivo lockfile também satisfaz a política separada **Exigir que as ações sejam fixadas em um SHA de commit completo** para fluxos de trabalho que aderiram a ela. Consulte [Controle da execução de GitHub Actions fluxos de trabalho](../../how-tos/administer/control-workflow-execution.md#require-lockfile).
 
 ## Próximas Etapas
 

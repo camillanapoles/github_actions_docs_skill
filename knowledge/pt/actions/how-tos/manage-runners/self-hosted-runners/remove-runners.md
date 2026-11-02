@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/self-hosted-runners/remove-runners
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: How tos / Manage runners / Self hosted runners
 ---
 

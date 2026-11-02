@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/monitor-workflows
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: How tos
 ---
 

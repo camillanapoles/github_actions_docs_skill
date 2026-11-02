@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/dependency-caching
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: Reference / Workflows and actions
 ---
 

@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/use-actions-runner-controller/deploy-runner-scale-sets
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: How tos / Manage runners / Use actions runner controller
 ---
 
@@ -659,6 +659,9 @@ Para personalizar a especificação, comente ou remova `containerMode` e acresce
 #### Por exemplo: executar `dind-rootless`
 
 Antes de decidir executar `dind-rootless`, esteja ciente das [limitações conhecidas](https://docs.docker.com/engine/security/rootless/#known-limitations).
+
+!!! warning
+    Nos nós do Kubernetes que executam o Ubuntu 24.04 e posteriores, as restrições em namespaces de usuário sem privilégios podem impedir que o RootlessKit inicie o daemon do Docker no `dind` contêiner. Antes de usar essa configuração, consulte [solução de problemas](https://docs.docker.com/engine/security/rootless/troubleshoot/#distribution-specific-hint) na documentação do Docker e examine as diretrizes específicas do Ubuntu com o administrador do cluster.
 
 Para versões do Kubernetes >= v1.29, o contêiner sidecar será usado para executar o daemon do Docker.
 

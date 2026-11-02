@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/larger-runners/manage-larger-runners
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: How tos / Manage runners / Larger runners
 ---
 
@@ -156,11 +156,11 @@ O número de endereços IP disponíveis nos intervalos atribuídos não restring
 5. Para atribuir endereços IP estáticos ao executor, em "Rede", marque **Atribuir intervalos de endereços IP público estáticos e exclusivo para esse executor**.
 6. Clique em **Save** (Salvar).
 
-## Armazenamento do Azure considerações de firewall
+## Considerações sobre o firewall do Armazenamento do Azure
 
 ### Máquinas virtuais e contas de armazenamento na mesma região
 
-Se você usar Armazenamento do Azure contas protegidas por regras de rede, lembre-se de que o tráfego de VMs para contas de executor avançadoarmazenamento na mesma região Azure usará endereços IP de Azure privados em vez do executor avançadointervalo de IP público.
+Se você usar contas do Armazenamento do Azure protegidas por regras de rede, o tráfego de máquinas virtuais hospedadas no executor avançado Azure para contas de armazenamento na mesma região do Azure usará endereços IP privados do Azure. Ele não usa o intervalo de IP público dos runners.
 
 Como resultado, Armazenamento do Azure regras de firewall que dependem apenas de listas de permissões de IP público do executor podem não funcionar conforme o esperado. Isso pode causar falhas de conectividade que aparecem como respostas 403 (AuthorizationFailure), com uma mensagem de erro semelhante a:
 
@@ -169,21 +169,21 @@ The request may be blocked by network rules of storage account. Please check net
   If you want to change the default action to apply when no rule matches, please use 'az storage account update'.
 ```
 
-Para obter mais informações, consulte a documentação Microsoft para [diretrizes e limitações para o firewall de Armazenamento do Azure](https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security-limitations) e configurar a [preferência de roteamento de rede para Armazenamento do Azure](https://learn.microsoft.com/en-us/azure/storage/common/configure-network-routing-preference?tabs=azure-portal\&source=docs).
+Para obter mais informações, consulte a documentação Microsoft para [diretrizes e limitações para o firewall do Armazenamento do Azure](https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security-limitations) e [Configurar a preferência de roteamento de rede do Armazenamento do Azure](https://learn.microsoft.com/en-us/azure/storage/common/configure-network-routing-preference?tabs=azure-portal\&source=docs).
 
 !!! note
-    Não recomendamos configurar Armazenamento do Azure regras de rede de firewall para executor avançados, a menos que você use um ou um `static public IP ranges``Azure VNet`.
+    Não recomendamos configurar regras de rede do firewall do Armazenamento do Azure para executor avançados, a menos que você use `static public IP ranges` ou um `Azure VNet`.
     Os intervalos de IP públicos podem ser dinâmicos, portanto, as regras baseadas em lista de permissões podem quebrar e causar falhas de conectividade intermitentes.
     Confira [Referência de executores avançados](../../../reference/runners/larger-runners.md#networking-for-larger-runners)
 
-### Usar intervalos de IP estáticos e pontos de extremidade de serviço
+### Usar intervalos de IP estáticos e endpoints de serviço
 
-Uma opção para habilitar com segurança as regras de rede da Conta de Armazenamento é usar executores com IPs estáticos e solicitar suporte para configurar Armazenamento do Azure pontos de extremidade de serviço para a rede virtual que hospeda esses IPs estáticos. Consulte [Azure pontos de extremidade de serviço de rede virtual](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview) para obter mais informações.
+Uma opção para habilitar com segurança as regras de rede da Conta de Armazenamento é usar executores com IPs estáticos e solicitar suporte para configurar pontos de extremidade de serviço do Armazenamento do Azure para a rede virtual que hospeda esses IPs estáticos. Consulte [pontos de extremidade de serviço da rede virtual do Azure](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview) para obter mais informações.
 
 Entre em contato com GitHub Suporte para configurar essa configuração por meio do [portal de suporte do GitHub](https://support.github.com/).
 
 ### Configurar Azure VNET
 
-Outra opção para se conectar com segurança a contas Armazenamento do Azure é habilitar Azure VNET com GitHubexecutores hospedados.
+Outra opção para se conectar com segurança a contas do Armazenamento do Azure é habilitar o Azure VNET com GitHubrunners hospedados.
 
 * [Sobre a rede privada do Azure para executores hospedados por GitHub em sua organização](https://docs.github.com/pt/organizations/managing-organization-settings/about-azure-private-networking-for-github-hosted-runners-in-your-organization)

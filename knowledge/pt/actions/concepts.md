@@ -6,7 +6,7 @@ documentType: category
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: Actions
 ---
 
@@ -34,7 +34,7 @@ _Conheça os principais conceitos que você precisará para entender o GitHub Ac
 
 * [Cobrança e uso](concepts/billing-and-usage.md)
 
-  Há limites de uso para GitHub Actions fluxos de trabalho. As taxas de uso são aplicadas a repositórios que excedem a quantidade de minutos gratuitos e armazenamento disponíveis gratuitamente.
+  Entenda qual uso de GitHub Actions está incluído no seu plano, quando os encargos se aplicam e quais limites de uso os administradores podem gerenciar.
 
 * [Sobre as políticas do Actions](concepts/about-actions-policies.md)
 

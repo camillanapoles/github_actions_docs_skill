@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/concepts/runners/larger-runners
-captured: '2026-10-26'
+captured: '2026-11-02'
 section: Concepts / Runners
 ---
 
@@ -54,7 +54,7 @@ Para obter mais informações sobre como configurar executores avançados para a
 ## Faturamento
 
 !!! note
-    Executor avançados não são elegíveis para o uso de minutos incluídos em repositórios privados. Para repositórios privados e públicos, quando executores avançados forem utilizados, eles sempre serão cobrados à taxa por minuto.
+    Quando disponível, os custos de executor avançado podem vir do uso de computação incluído para contas em GitHub Team e GitHub Enterprise Cloud. Depois que a franquia incluída é consumida, o uso é cobrado na taxa por minuto. O uso em repositórios públicos também é cobrado na taxa por minuto.
 
 Em comparação com os executores hospedados GitHub padrão, executores avançados são cobrados de forma diferente.
 Executor avançado são cobrados somente pela taxa por minuto do tempo em que os fluxos de trabalho são executados neles. Não há nenhum custo associado à criação de um executor avançado que não está sendo usado pelo fluxo de trabalho. Para obter mais informações, consulte [Precificação do executor de ações](https://docs.github.com/pt/billing/reference/actions-runner-pricing).
