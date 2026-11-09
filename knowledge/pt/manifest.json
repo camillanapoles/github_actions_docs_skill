@@ -1,9 +1,9 @@
 {
-  "generated": "2026-11-02T12:25:03+00:00",
+  "generated": "2026-11-09T12:52:45+00:00",
   "source": "api",
   "lang": "pt",
   "page_count": 251,
-  "total_bytes": 2536062,
+  "total_bytes": 2535529,
   "pages": [
     {
       "path": "actions/index.md",
@@ -34,7 +34,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -69,7 +69,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -104,7 +104,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -139,7 +139,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -174,7 +174,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -209,7 +209,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -244,7 +244,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -281,7 +281,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -316,7 +316,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -351,7 +351,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -386,7 +386,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -421,7 +421,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -456,7 +456,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -491,7 +491,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -526,7 +526,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -561,7 +561,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -598,7 +598,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -635,7 +635,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -670,7 +670,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -705,7 +705,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -742,7 +742,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -777,7 +777,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -812,7 +812,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -847,7 +847,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -882,7 +882,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -917,7 +917,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -952,7 +952,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -987,7 +987,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1022,7 +1022,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1057,7 +1057,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1092,7 +1092,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1127,7 +1127,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1162,7 +1162,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1197,7 +1197,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1232,7 +1232,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1267,7 +1267,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1302,7 +1302,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1337,7 +1337,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1372,7 +1372,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1407,7 +1407,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1442,7 +1442,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1477,7 +1477,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1512,7 +1512,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1547,7 +1547,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1582,7 +1582,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1617,7 +1617,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1652,7 +1652,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1687,7 +1687,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1722,7 +1722,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1737,7 +1737,7 @@
       "section": "How tos / Write workflows / Choose where workflows run",
       "lang": "pt",
       "source": "api",
-      "bytes": 15508,
+      "bytes": 15256,
       "headings": 11,
       "h2": 4,
       "code_blocks": 6,
@@ -1757,7 +1757,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1792,7 +1792,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1827,7 +1827,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1862,7 +1862,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1897,7 +1897,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -1932,7 +1932,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -1969,7 +1969,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -2006,7 +2006,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2041,7 +2041,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2076,7 +2076,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2111,7 +2111,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2146,7 +2146,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2181,7 +2181,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2216,7 +2216,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2251,7 +2251,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2286,7 +2286,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2321,7 +2321,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2356,7 +2356,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2391,7 +2391,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2426,7 +2426,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -2463,7 +2463,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2498,7 +2498,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2533,7 +2533,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2568,7 +2568,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2603,7 +2603,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2638,7 +2638,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2673,7 +2673,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2708,7 +2708,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2743,7 +2743,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2778,7 +2778,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2813,7 +2813,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2848,7 +2848,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2883,7 +2883,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2918,7 +2918,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2953,7 +2953,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -2988,7 +2988,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3023,7 +3023,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3058,7 +3058,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3093,7 +3093,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3128,7 +3128,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -3165,7 +3165,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3200,7 +3200,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3235,7 +3235,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3270,7 +3270,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3305,7 +3305,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3340,7 +3340,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3375,7 +3375,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3410,7 +3410,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3445,7 +3445,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3480,7 +3480,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3515,7 +3515,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3550,7 +3550,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3585,7 +3585,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3620,7 +3620,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3655,7 +3655,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3690,7 +3690,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3725,7 +3725,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3760,7 +3760,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3795,7 +3795,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3830,7 +3830,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3865,7 +3865,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3900,7 +3900,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3935,7 +3935,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -3970,7 +3970,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -4007,7 +4007,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4042,7 +4042,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4077,7 +4077,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4112,7 +4112,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4147,7 +4147,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4182,7 +4182,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -4219,7 +4219,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -4256,7 +4256,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -4293,7 +4293,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4328,7 +4328,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4363,7 +4363,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4398,7 +4398,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4433,7 +4433,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4468,7 +4468,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4503,7 +4503,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4538,7 +4538,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4573,7 +4573,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4608,7 +4608,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4643,7 +4643,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4678,7 +4678,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4713,7 +4713,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4748,7 +4748,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4783,7 +4783,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4818,7 +4818,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4853,7 +4853,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4888,7 +4888,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4923,7 +4923,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4958,7 +4958,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -4993,7 +4993,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5028,7 +5028,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5063,7 +5063,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5098,7 +5098,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5133,7 +5133,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5168,7 +5168,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5203,7 +5203,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5238,7 +5238,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5273,7 +5273,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -5310,7 +5310,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -5347,7 +5347,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5382,7 +5382,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5417,7 +5417,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -5454,7 +5454,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5489,7 +5489,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -5526,7 +5526,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5561,7 +5561,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5596,7 +5596,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5631,7 +5631,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5666,7 +5666,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5701,7 +5701,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5736,7 +5736,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5771,7 +5771,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5806,7 +5806,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5841,7 +5841,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5876,7 +5876,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5911,7 +5911,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5926,14 +5926,14 @@
       "section": "Reference / Workflows and actions",
       "lang": "pt",
       "source": "api",
-      "bytes": 197380,
+      "bytes": 197386,
       "headings": 225,
       "h2": 98,
       "code_blocks": 142,
       "tables": 12,
       "admonitions": 58,
       "links_internal": 134,
-      "links_external": 57,
+      "links_external": 58,
       "images": 0,
       "children": [],
       "quality_score": 0,
@@ -5946,7 +5946,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -5981,7 +5981,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6016,7 +6016,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6051,7 +6051,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6086,7 +6086,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6121,7 +6121,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6156,7 +6156,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6191,7 +6191,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6226,7 +6226,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6261,7 +6261,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6296,7 +6296,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -6333,7 +6333,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -6370,7 +6370,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6385,7 +6385,7 @@
       "section": "Reference / Runners",
       "lang": "pt",
       "source": "api",
-      "bytes": 21277,
+      "bytes": 21025,
       "headings": 13,
       "h2": 5,
       "code_blocks": 12,
@@ -6405,7 +6405,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6420,7 +6420,7 @@
       "section": "Reference / Runners",
       "lang": "pt",
       "source": "api",
-      "bytes": 12581,
+      "bytes": 12546,
       "headings": 10,
       "h2": 7,
       "code_blocks": 10,
@@ -6440,7 +6440,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6475,7 +6475,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6510,7 +6510,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6545,7 +6545,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6580,7 +6580,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6615,7 +6615,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6650,7 +6650,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6685,7 +6685,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -6722,7 +6722,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6757,7 +6757,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6792,7 +6792,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6827,7 +6827,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6862,7 +6862,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6897,7 +6897,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6932,7 +6932,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -6967,7 +6967,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7002,7 +7002,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7037,7 +7037,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7072,7 +7072,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7107,7 +7107,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7142,7 +7142,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7177,7 +7177,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7212,7 +7212,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -7249,7 +7249,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7284,7 +7284,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7319,7 +7319,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7354,7 +7354,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7389,7 +7389,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7424,7 +7424,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7459,7 +7459,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7494,7 +7494,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7529,7 +7529,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7564,7 +7564,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7599,7 +7599,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7634,7 +7634,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7669,7 +7669,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7704,7 +7704,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7739,7 +7739,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7774,7 +7774,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7809,7 +7809,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7844,7 +7844,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7879,7 +7879,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7914,7 +7914,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7949,7 +7949,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -7984,7 +7984,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8019,7 +8019,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8054,7 +8054,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8089,7 +8089,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8124,7 +8124,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8159,7 +8159,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8194,7 +8194,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -8231,7 +8231,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8266,7 +8266,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8301,7 +8301,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8336,7 +8336,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8371,7 +8371,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8406,7 +8406,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [
@@ -8443,7 +8443,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8478,7 +8478,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8513,7 +8513,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8548,7 +8548,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8583,7 +8583,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8618,7 +8618,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8653,7 +8653,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8688,7 +8688,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8723,7 +8723,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8758,7 +8758,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8793,7 +8793,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],
@@ -8828,7 +8828,7 @@
         "liquid": 0,
         "noise": 0
       },
-      "captured": "2026-11-02",
+      "captured": "2026-11-09",
       "status": "ok",
       "selector": "api:/api/article",
       "warnings": [],

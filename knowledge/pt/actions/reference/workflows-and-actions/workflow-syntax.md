@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/workflow-syntax
-captured: '2026-11-02'
+captured: '2026-11-09'
 section: Reference / Workflows and actions
 ---
 
@@ -855,7 +855,7 @@ Além disso, você pode usar a chave `permissions` para adicionar e remover perm
 
 ### Permissões para execuções de fluxo de trabalho disparadas por Dependabot
 
-As execuções de fluxo de trabalho disparadas por solicitações de pull Dependabot são executadas como se fossem de um repositório bifurcado e, portanto, usam `GITHUB_TOKEN` somente leitura. Estas execuções de fluxo de trabalho não podem acessar nenhum segredo. Para obter mais informações sobre as estratégias para manter esses fluxos de trabalho seguros, confira [Referência de uso seguro](../security/secure-use.md).
+Por padrão, as execuções de fluxo de trabalho disparadas por Dependabot solicitações de pull usam um `GITHUB_TOKEN` somente leitura e não podem acessar segredos que não sejam Dependabot segredos. Você pode usar a tecla `permissions` em seu fluxo de trabalho para aumentar o nível de acesso do token. Para obter mais informações, consulte [Solução de problemas do Dependabot no GitHub Actions](https://docs.github.com/pt/code-security/reference/supply-chain-security/troubleshoot-dependabot/dependabot-on-actions). Para obter mais informações sobre as estratégias para manter esses fluxos de trabalho seguros, confira [Referência de uso seguro](../security/secure-use.md).
 
 ## `env`
 
@@ -1424,7 +1424,7 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
   <td> arm64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md">macos-14</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code></td>
 </tr>
 ```
 
@@ -1486,7 +1486,7 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
   <td> arm64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md">macos-14</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code></td>
 </tr>
 ```
 

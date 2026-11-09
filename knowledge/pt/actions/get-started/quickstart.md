@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/get-started/quickstart
-captured: '2026-11-02'
+captured: '2026-11-09'
 section: Get started
 ---
 

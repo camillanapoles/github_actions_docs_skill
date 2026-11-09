@@ -2,13 +2,13 @@
 
 - **Fonte:** `api`  
 - **Idioma:** `pt`  
-- **Executado em:** 2026-11-02T12:25:03+00:00  
+- **Executado em:** 2026-11-09T12:52:45+00:00  
 - **Páginas OK:** 251  
 - **Falhas:** 0  
 - **Com avisos:** 22  
 - **Score de qualidade (0 = impecável):** 97 em 9 página(s)  
 - **Links internos íntegros:** 1755 (revertidos para URL absoluta: 7)  
-- **Bytes totais:** 2,536,062  
+- **Bytes totais:** 2,535,529  
 - **Headings totais:** 2,755  
 - **Blocos de código:** 1,128  
 - **Tabelas:** 130  

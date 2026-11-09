@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables
-captured: '2026-11-02'
+captured: '2026-11-09'
 section: How tos / Write workflows / Choose what workflows do
 ---
 
@@ -59,7 +59,7 @@ Quando você define variáveis de configuração, elas ficam automaticamente dis
 
 ### Criando variáveis de configuração para um repositório
 
-Para criar segredos ou variáveis em GitHub para um repositório de organização, você deve ter `write` acesso. Para um repositório de conta pessoal, você deve ser um colaborador do repositório.
+Para criar segredos ou variáveis para um repositório da organização no GitHub, você deve ter acesso `write`. Para um repositório de conta pessoal, você deve ser um colaborador do repositório.
 
 1. Em GitHub, acesse a página principal do repositório.
 2. No nome do repositório, clique em **(gear) Settings**. Caso não consiga ver a guia "Configurações", selecione o menu suspenso **(More)** , clique em **Configurações**.

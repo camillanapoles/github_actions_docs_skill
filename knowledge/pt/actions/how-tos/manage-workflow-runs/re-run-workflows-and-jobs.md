@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-workflow-runs/re-run-workflows-and-jobs
-captured: '2026-11-02'
+captured: '2026-11-09'
 section: How tos / Manage workflow runs
 ---
 

@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/tutorials/develop-agentic-workflows-in-github-actions
-captured: '2026-11-02'
+captured: '2026-11-09'
 section: Tutorials
 ---
 

@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/larger-runners
-captured: '2026-11-02'
+captured: '2026-11-09'
 section: How tos / Manage runners
 ---
 

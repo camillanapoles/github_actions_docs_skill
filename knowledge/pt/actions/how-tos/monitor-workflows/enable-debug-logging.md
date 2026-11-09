@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/monitor-workflows/enable-debug-logging
-captured: '2026-11-02'
+captured: '2026-11-09'
 section: How tos / Monitor workflows
 ---
 
@@ -16,7 +16,7 @@ _Se os logs do fluxo de trabalho não fornecerem detalhes suficientes para diagn
 
 Esses logs extras são habilitados pela definição de segredos ou variáveis no repositório que contém o fluxo de trabalho. Portanto, os mesmos requisitos de permissão são aplicáveis:
 
-* Para criar segredos ou variáveis em GitHub para um repositório de organização, você deve ter `write` acesso. Para um repositório de conta pessoal, você deve ser um colaborador do repositório.
+* Para criar segredos ou variáveis para um repositório da organização no GitHub, você deve ter acesso `write`. Para um repositório de conta pessoal, você deve ser um colaborador do repositório.
 * Para criar segredos ou variáveis para um ambiente em um repositório de conta pessoal, você deve ser o proprietário do repositório. Para criar segredos ou variáveis para um ambiente em um repositório de uma organização, é necessário ter acesso `admin`. Para saber mais sobre os ambientes, confira [Gerenciar ambientes para implantação](../deploy/configure-and-manage-deployments/manage-environments.md).
 * Os proprietários "Gerenciar variáveis de ações da organização" ou "Gerenciar segredos de ações da organização" podem criar segredos ou variáveis no nível da organização.
 

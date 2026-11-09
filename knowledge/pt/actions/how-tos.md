@@ -6,7 +6,7 @@ documentType: category
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos
-captured: '2026-11-02'
+captured: '2026-11-09'
 section: Actions
 ---
 
