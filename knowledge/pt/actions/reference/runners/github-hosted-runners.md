@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/runners/github-hosted-runners
-captured: '2026-11-09'
+captured: '2026-11-16'
 section: Reference / Runners
 ---
 
@@ -155,6 +155,10 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
     <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code></td>
 </tr>
 ```
+
+!!! note
+    Durante períodos de alta demanda, os trabalhos executados em runners do macOS podem levar mais tempo para serem iniciados.
+    GitHub monitora o uso do macOS e planeja a capacidade de atender à demanda ao longo do tempo.
 
 Os registros do fluxo de trabalho listam o executor usado para rodar uma tarefa. Para saber mais, confira [Visualizar o histórico de execução do fluxo de trabalho](../../how-tos/monitor-workflows/view-workflow-run-history.md).
 

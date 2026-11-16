@@ -184,7 +184,7 @@
 [ 179/251] ok  actions/reference/workflows-and-actions/workflow-cancellation.md (2713 bytes)
 [ 180/251] ok  actions/reference/workflows-and-actions/dockerfile-support.md (7019 bytes)
 [ 181/251] ok  actions/reference/runners.md (1018 bytes)
-[ 182/251] ok  actions/reference/runners/github-hosted-runners.md (21025 bytes)
+[ 182/251] ok  actions/reference/runners/github-hosted-runners.md (21262 bytes)
 [ 183/251] ok  actions/reference/runners/larger-runners.md (12546 bytes)
 [ 184/251] ok  actions/reference/runners/self-hosted-runners.md (18854 bytes)
 [ 185/251] ok  actions/reference/security.md (1078 bytes)
@@ -192,7 +192,7 @@
 [ 187/251] ok  actions/reference/security/securely-using-pull_request_target.md (15138 bytes)
 [ 188/251] ok  actions/reference/security/secrets.md (3604 bytes)
 [ 189/251] ok  actions/reference/security/oidc.md (43585 bytes)
-[ 190/251] ok  actions/reference/limits.md (15607 bytes)
+[ 190/251] ok  actions/reference/limits.md (15762 bytes)
 [ 191/251] ok  actions/reference/github-actions-importer.md (1045 bytes)
 [ 192/251] ok  actions/reference/github-actions-importer/supplemental-arguments-and-settings.md (10289 bytes)
 [ 193/251] ok  actions/reference/github-actions-importer/custom-transformers.md (11703 bytes)
@@ -254,6 +254,6 @@
 [ 249/251] ok  actions/tutorials/develop-agentic-workflows-in-github-actions.md (7339 bytes)
 [ 250/251] ok  actions/how-tos/reuse-automations/share-with-your-enterprise.md (3640 bytes)
 [ 251/251] ok  actions/how-tos/administer/reuse-namespaces-on-ghecom.md (2693 bytes)
-[info] captura em 57.2s (251 ok / 0 falhas)
+[info] captura em 57.8s (251 ok / 0 falhas)
 [info] integridade de links: {'files': 252, 'links': 1762, 'reverted': 7, 'ok': 1755}
 [done] 251 ok / 0 falhas / 22 avisos → /home/runner/work/github_actions_docs_skill/github_actions_docs_skill/knowledge/pt

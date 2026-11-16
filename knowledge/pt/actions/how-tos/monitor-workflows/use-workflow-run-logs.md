@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/monitor-workflows/use-workflow-run-logs
-captured: '2026-11-09'
+captured: '2026-11-16'
 section: How tos / Monitor workflows
 ---
 

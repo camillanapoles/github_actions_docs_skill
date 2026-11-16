@@ -2,13 +2,13 @@
 
 - **Fonte:** `api`  
 - **Idioma:** `pt`  
-- **Executado em:** 2026-11-09T12:52:45+00:00  
+- **Executado em:** 2026-11-16T12:45:44+00:00  
 - **Páginas OK:** 251  
 - **Falhas:** 0  
 - **Com avisos:** 22  
 - **Score de qualidade (0 = impecável):** 97 em 9 página(s)  
 - **Links internos íntegros:** 1755 (revertidos para URL absoluta: 7)  
-- **Bytes totais:** 2,535,529  
+- **Bytes totais:** 2,535,921  
 - **Headings totais:** 2,755  
 - **Blocos de código:** 1,128  
 - **Tabelas:** 130  
@@ -39,7 +39,7 @@
 | `actions/how-tos/monitor-workflows/view-job-execution-time.md` | poucos headings | 2,232 |
 | `actions/reference/workflows-and-actions/workflow-cancellation.md` | poucos headings | 2,713 |
 | `actions/reference/workflows-and-actions/dockerfile-support.md` | markdown da API com imperfeições (score=5{'table': 0, 'fence': 1, 'alert': 0, 'html': 0, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não melhorou o score (score html=5) | 7,019 |
-| `actions/reference/limits.md` | markdown da API com imperfeições (score=24{'table': 8, 'fence': 0, 'alert': 0, 'html': 0, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não preservou o conteúdo (14695/15227 B, 0/8 headings) (score html=0) | 15,607 |
+| `actions/reference/limits.md` | markdown da API com imperfeições (score=24{'table': 8, 'fence': 0, 'alert': 0, 'html': 0, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não preservou o conteúdo (14844/15382 B, 0/8 headings) (score html=0) | 15,762 |
 | `actions/tutorials/build-and-test-code/ruby.md` | markdown da API com imperfeições (score=5{'table': 0, 'fence': 1, 'alert': 0, 'html': 0, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não melhorou o score (score html=5) | 14,240 |
 | `actions/tutorials/migrate-to-github-actions/automated-migrations/azure-devops-migration.md` | markdown da API com imperfeições (score=5{'table': 0, 'fence': 1, 'alert': 0, 'html': 0, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não melhorou o score (score html=5) | 40,499 |
 | `actions/tutorials/migrate-to-github-actions/automated-migrations/travis-ci-migration.md` | markdown da API com imperfeições (score=40{'table': 1, 'fence': 0, 'alert': 0, 'html': 37, 'bullet': 0, 'liquid': 0, 'noise': 0}); HTML não preservou o conteúdo (23386/27792 B, 0/34 headings) (score html=0) | 28,289 |

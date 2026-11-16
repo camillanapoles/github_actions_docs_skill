@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/create-and-publish-actions/create-a-cli-action
-captured: '2026-11-09'
+captured: '2026-11-16'
 section: How tos / Create and publish actions
 ---
 
