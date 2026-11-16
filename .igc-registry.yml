@@ -7,7 +7,7 @@ linhagens:
   github-actions-docs-skill:
     branch: main
     base_sha: 0ddafab815385d69ea8f70d93c3479daa7f50175
-    checkpoint_ref: 3e8e5b18bbd7826b9cda0f76f2dd73f3a6b01f58
+    checkpoint_ref: bc5da7dd0e07d753f9634f021b95fdc6e0f6b4b0
     ativa: true
     modo: continuidade
     estado_fsm: EXEC
@@ -19,7 +19,7 @@ linhagens:
     - DEV-2
     - DEV-3
     - DEV-4
-    ultima_verificacao: status 1 · 2/7 gates aprovados
+    ultima_verificacao: status 2 · 5/7 gates aprovados
     next_issue: 'D26: 679 avisos mkdocs --strict (pós-merge)'
     atualizado_em: '2026-11-16'
     pr: '#2'
