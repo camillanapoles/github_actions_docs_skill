@@ -7,7 +7,7 @@ linhagens:
   github-actions-docs-skill:
     branch: main
     base_sha: 0ddafab815385d69ea8f70d93c3479daa7f50175
-    checkpoint_ref: 59d29a3b23f87dc9a02c2c1f8784557c4f55fbcd
+    checkpoint_ref: b79700d087316d622e453902e6a6726b570f7eec
     ativa: true
     modo: continuidade
     estado_fsm: EXEC
@@ -19,9 +19,9 @@ linhagens:
     - DEV-2
     - DEV-3
     - DEV-4
-    ultima_verificacao: status 1 · 2/7 gates aprovados
+    ultima_verificacao: status 2 · 5/7 gates aprovados
     next_issue: 'D26: 679 avisos mkdocs --strict (pós-merge)'
-    atualizado_em: '2026-11-17'
+    atualizado_em: '2026-11-18'
     pr: '#2'
     gestor: guardian
     spec: .igc-spec.yml
