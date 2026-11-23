@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/monitor-workflows
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: How tos
 ---
 
@@ -38,7 +38,7 @@ _Você pode monitorar GitHub Actions fluxos de trabalho usando ferramentas como 
 
 * [Exibindo logs de expressão de condição de tarefa](monitor-workflows/view-job-condition-logs.md)
 
-  Aprenda como acessar e interpretar os logs de avaliação de expressões para condições de nível de tarefa if em GitHub Actions.
+  Saiba como acessar e interpretar logs de avaliação de expressão para condições if no nível do trabalho em GitHub Actions.
 
 * [Habilitando o log de depuração](monitor-workflows/enable-debug-logging.md)
 

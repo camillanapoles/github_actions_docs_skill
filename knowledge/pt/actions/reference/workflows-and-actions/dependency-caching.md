@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/dependency-caching
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: Reference / Workflows and actions
 ---
 
@@ -293,6 +293,9 @@ Para o detalhamento dos gatilhos confiáveis versus os de baixa confiança, cons
 
 O executor expõe o modo efetivo na variável de ambiente `ACTIONS_CACHE_MODE`, e a ação `actions/cache` e o kit de ferramentas `@actions/cache` o respeitam. A restauração é ignorada quando o modo não permite leituras (`none` ou `write-only`), e o salvamento é ignorado quando o modo não permite gravações (`none` ou `read`). Quando uma operação de cache é ignorada devido ao modo, a ação registra uma mensagem informativa, e a etapa e a execução continuam sem falhar. Uma restauração ignorada é tratada como uma falha de cache; uma salvação ignorada simplesmente não é executada.
 
+!!! note
+    `ACTIONS_CACHE_MODE` é definido apenas no ambiente de ações de JavaScript e de contêiner do Docker. Ele não está disponível para `run` etapas, incluindo `run` etapas em ações compostas.
+
 ### Acesso ao cache em fluxos de trabalho reutilizáveis
 
 `cache-mode` é propagado do fluxo de trabalho chamador para os fluxos de trabalho reutilizáveis que ele chama. Um explícito `cache-mode` no trabalho de chamada ou herdado do fluxo de trabalho do chamador limita o acesso ao cache que o fluxo de trabalho chamado pode solicitar.
@@ -310,7 +313,7 @@ Um trabalho ou fluxo de trabalho que declara `cache-mode: write` ou `cache-mode:
 
 Antes de definir um `cache-mode` com permissão de gravação em um fluxo de trabalho com um gatilho não confiável, considere se uma mitigação mais restrita atende às suas necessidades:
 
-* Mantenha em vigor a restrição de acesso seguro ao cache, declarando explicitamente `cache-mode: read` no job, e deixe que um fluxo de trabalho confiável, disparado por `push`, gerencie o cache. Consulte [Acesso ao cache para gatilhos de fluxo de trabalho de baixa confiança](#cache-access-for-low-trust-workflow-triggers).
+* Mantenha em vigor a restrição de acesso seguro ao cache, declarando explicitamente `cache-mode: read` no job, e deixe que um fluxo de trabalho confiável, disparado por `push`, gerencie o cache. Consulte [o acesso ao Cache para gatilhos de fluxo de trabalho de baixa confiança](#cache-access-for-low-trust-workflow-triggers).
 * Declare apenas um `cache-mode` com permissão de gravação para gatilhos de baixa confiança em trabalhos que não processam entrada não confiável antes de gravar no cache. Isso inclui código obtido de fontes não confiáveis, como forks e pull requests.
 * Se você substituir o padrão seguro, trate o cache resultante como não confiável em todo fluxo de trabalho em que ele for restaurado e evite restaurá-lo em uma execução que tenha acesso de gravação aos segredos ou permissões elevadas.
 * Siga as diretrizes sobre as [práticas recomendadas para usar caches com segurança](#best-practices-for-using-caches-securely).

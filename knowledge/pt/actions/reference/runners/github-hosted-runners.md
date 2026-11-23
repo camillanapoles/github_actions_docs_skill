@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/runners/github-hosted-runners
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: Reference / Runners
 ---
 
@@ -40,7 +40,8 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
 | --- | --- | --- | --- | --- | --- |
 | Linux | 1 | 5 GB | 14 GB | x64 | `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`<br>Linux<br>4<br>16 GB<br>14 GB<br>x64 |
 ```
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code>
+  </td>
 </tr>
 <tr>
   <td>Windows</td>
@@ -50,7 +51,8 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
   <td> x64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-2025</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-2025-vs2026</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md">windows-2022</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-2025</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-2025-vs2026</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md">windows-2022</a></code>
+  </td>
 </tr>
 <tr>
   <td>Linux</td>
@@ -60,7 +62,8 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
   <td> arm64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md">ubuntu-24.04-arm</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md">ubuntu-22.04-arm</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md">ubuntu-26.04-arm</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md">ubuntu-24.04-arm</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md">ubuntu-22.04-arm</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md">ubuntu-26.04-arm</a></code>
+  </td>
 </tr>
 <tr>
   <td>Windows</td>
@@ -70,7 +73,8 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
   <td>arm64</td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-Readme.md">windows-11-arm</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md">windows-11-vs2026-arm</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md">windows-11-arm</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md">windows-11-vs2026-arm</a></code>
+  </td>
 </tr>
 <tr>
   <td>macOS</td>
@@ -80,7 +84,8 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
   <td> Intel </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md">macos-15-intel</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md">macos-26-intel</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md">macos-15-intel</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md">macos-26-intel</a></code>
+  </td>
 </tr>
 <tr>
   <td>macOS</td>
@@ -90,7 +95,8 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
   <td> arm64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code>
+  </td>
 </tr>
 ```
 
@@ -102,7 +108,8 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
 | --- | --- | --- | --- | --- | --- |
 | Linux | 1 | 5 GB | 14 GB | x64 | `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`<br>Linux<br>2<br>8 GB<br>14 GB<br>x64 |
 ```
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code>
+  </td>
 </tr>
 <tr>
   <td>Windows</td>
@@ -112,7 +119,8 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
   <td> x64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-latest</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-2025</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md">windows-2022</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-2025</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-2025-vs2026</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md">windows-2022</a></code>
+  </td>
 </tr>
 <tr>
   <td>Linux</td>
@@ -122,7 +130,8 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
   <td> arm64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md">ubuntu-24.04-arm</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md">ubuntu-22.04-arm</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md">ubuntu-26.04-arm</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md">ubuntu-24.04-arm</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md">ubuntu-22.04-arm</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md">ubuntu-26.04-arm</a></code>
+  </td>
 </tr>
 <tr>
   <td>Windows</td>
@@ -132,7 +141,8 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
   <td> arm64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-Readme.md">windows-11-arm</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-VS2026-Readme.md">windows-11-vs2026-arm</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md">windows-11-arm</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md">windows-11-vs2026-arm</a></code>
+  </td>
 </tr>
 <tr>
   <td>macOS</td>
@@ -142,7 +152,8 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
   <td> Intel </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md">macos-15-intel</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md">macos-26-intel</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md">macos-15-intel</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md">macos-26-intel</a></code>
+  </td>
 </tr>
 <tr>
   <td>macOS</td>
@@ -152,7 +163,8 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
   <td> arm64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code>
+  </td>
 </tr>
 ```
 
@@ -211,13 +223,13 @@ As máquinas virtuais do Windows estão configuradas para ser executadas como ad
 
 ## Endereços IP
 
-Para obter uma lista de intervalos de endereços IP que GitHub Actions usa para executores hospedados em GitHub, você pode usar a API REST GitHub. Para obter mais informações, confira a chave `actions` na resposta do endpoint `GET /meta`. Para saber mais, confira [Pontos de extremidade da API REST para metadados](https://docs.github.com/pt/rest/meta/meta#get-github-meta-information).
+Para obter o conjunto completo de intervalos de endereços IP dos quais GitHubos executores hospedados podem receber um endereço IP, use a `actions` chave na resposta do ponto de extremidade da `GET /meta` API REST. Para saber mais, confira [Pontos de extremidade da API REST para metadados](https://docs.github.com/pt/rest/meta/meta#get-github-meta-information).
 
-Os runners Linux qualificados usam um pool de computação multicloud, portanto, seus endereços IP de saída não se limitam aos intervalos de datacenter do Azure. Mantenha todas as listas de permissões de IP ou políticas de acesso baseadas em rede usadas por seus fluxos de trabalho em sincronia com todos os intervalos no array `actions`, em vez de depender de intervalos específicos do provedor de nuvem. As políticas que permitem apenas Azure ou intervalos de propriedade Microsoft, incluindo políticas de Acesso condicional do Microsoft Entra, podem bloquear conexões ou autenticação desses executores.
+Esses intervalos não são dedicados a GitHub Actions. Eles abrangem o espaço de endereço mais amplo das regiões do provedor de nuvem em GitHubque os executores hospedados são executados e incluem endereços IP usados por serviços e clientes não relacionados. Os executores do macOS são hospedados na GitHubprópria nuvem do macOS.
 
-Para elegibilidade para multicloud, consulte [hosts de nuvem usados por GitHubrunners hospedados](../../concepts/runners/github-hosted-runners.md#cloud-hosts-used-by-github-hosted-runners). Os executores do macOS são hospedados na GitHubprópria nuvem do macOS.
+Se você usar uma lista de permissões para controlar o acesso aos seus recursos internos a partir de executores hospedados pela GitHub, não recomendamos adicionar esses intervalos a ela. Permitir todo o conjunto em uma lista de permissões permite o acesso à rede de cargas de trabalho não relacionadas dentro desses intervalos, não apenas de seus GitHub Actions executores. Isso amplia substancialmente o acesso e prejudica as restrições que sua lista de permissões pretende impor. Em vez disso, recomendamos que você use executor avançados com um intervalo de endereços IP estático ou executores auto-hospedados. Para obter mais informações, confira [Usando executores maiores](../../how-tos/manage-runners/larger-runners.md) ou [Executores auto-hospedados](../../concepts/runners/self-hosted-runners.md).
 
-Como há muitas faixas de endereços IP para os executores hospedados em GitHub, não recomendamos que você as use como lista de permissões para seus recursos internos. Em vez disso, recomendamos que você use executor avançados com um intervalo de endereços IP estático ou executores auto-hospedados. Para obter mais informações, confira [Usando executores maiores](../../how-tos/manage-runners/larger-runners.md) ou [Executores auto-hospedados](../../concepts/runners/self-hosted-runners.md).
+Os runners Linux qualificados usam um pool de computação multicloud, portanto, seus endereços IP de saída não se limitam aos intervalos de datacenter do Azure. As políticas que permitem apenas Azure ou intervalos de propriedade Microsoft, incluindo políticas de Acesso condicional do Microsoft Entra, podem bloquear conexões ou autenticação desses executores. Para elegibilidade para multicloud, consulte [hosts de nuvem usados por GitHubrunners hospedados](../../concepts/runners/github-hosted-runners.md#cloud-hosts-used-by-github-hosted-runners).
 
 A lista de GitHub Actions endereços IP retornados pela API é atualizada uma vez por semana.
 

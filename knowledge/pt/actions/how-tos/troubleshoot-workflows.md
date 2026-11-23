@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/troubleshoot-workflows
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: How tos
 ---
 
@@ -117,7 +117,7 @@ Para saber mais, confira [Usando condições para controlar a execução do trab
 
 Se uma execução permanecer na fila ou em andamento após tentativas de cancelamento, ela pode estar presa em um estado anormal em vez de continuar por causa de `always()`. Os sinais incluem a não criação de trabalhos, a interface do usuário exibindo "Falha ao cancelar o fluxo de trabalho" ou os pontos de extremidade da API REST `force-cancel` ou `cancel` retornando HTTP `500` ou `409`.
 
-O cancelamento de autoatendimento, incluindo o cancelamento forçado, pode não limpar uma execução de fluxo de trabalho paralisada ou fora de sincronização ou uma check suite. Se o repositório usar concorrência, a execução paralisada poderá continuar bloqueando execuções posteriores no mesmo grupo de concorrência. Nessa situação, entre em contato nos por meio do portal  para obter ajuda para limpar a execução.
+O cancelamento de autoatendimento, incluindo o cancelamento forçado, pode não limpar uma execução de fluxo de trabalho paralisada ou fora de sincronização ou uma check suite. Se o repositório usar concorrência, a execução paralisada poderá continuar bloqueando execuções posteriores no mesmo grupo de concorrência. Nessa situação, entre em contato Contate-nos por meio do portal [GitHub Support](https://support.github.com) para obter ajuda para limpar a execução.
 
 ## Como solucionar problemas de executores
 

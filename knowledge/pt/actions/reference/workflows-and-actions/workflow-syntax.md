@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/workflow-syntax
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: Reference / Workflows and actions
 ---
 
@@ -742,6 +742,19 @@ Um booliano que especifica se a entrada precisa ser fornecida.
 
 O valor deste parâmetro é uma string que especifica o tipo de dados da entrada. Precisa ser `boolean`, `choice`, `number`, `environment` ou `string`.
 
+## `on.workflow_dispatch.inputs.<input_id>.description`
+
+Uma descrição de cadeia de caracteres do parâmetro de entrada.
+
+## `on.workflow_dispatch.inputs.<input_id>.default`
+
+O valor padrão usado quando a entrada não é especificada quando o fluxo de trabalho é disparado manualmente. Para entradas com `type: choice`, o padrão deve ser um dos valores listados em `options`.
+
+## `on.workflow_dispatch.inputs.<input_id>.options`
+
+Uma sequência de cadeias de caracteres que define as opções da lista suspensa para uma entrada com `type: choice`.
+`options` é válido apenas para `choice` entradas: um fluxo de trabalho que define `options` em uma entrada de qualquer outro tipo é inválido e não é executado.
+
 ## `permissions`
 
 Use `permissions` para modificar as permissões padrão concedidas ao `GITHUB_TOKEN`, adicionando ou removendo o acesso conforme necessário, de modo que você só permita o acesso mínimo necessário. Para saber mais, confira [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md#modifying-the-permissions-for-the-github_token).
@@ -1374,7 +1387,8 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
 | --- | --- | --- | --- | --- | --- |
 | Linux | 1 | 5 GB | 14 GB | x64 | `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`<br>Linux<br>4<br>16 GB<br>14 GB<br>x64 |
 ```
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code>
+  </td>
 </tr>
 <tr>
   <td>Windows</td>
@@ -1384,7 +1398,8 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
   <td> x64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-2025</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-2025-vs2026</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md">windows-2022</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-2025</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-2025-vs2026</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md">windows-2022</a></code>
+  </td>
 </tr>
 <tr>
   <td>Linux</td>
@@ -1394,7 +1409,8 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
   <td> arm64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md">ubuntu-24.04-arm</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md">ubuntu-22.04-arm</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md">ubuntu-26.04-arm</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md">ubuntu-24.04-arm</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md">ubuntu-22.04-arm</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md">ubuntu-26.04-arm</a></code>
+  </td>
 </tr>
 <tr>
   <td>Windows</td>
@@ -1404,7 +1420,8 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
   <td>arm64</td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-Readme.md">windows-11-arm</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md">windows-11-vs2026-arm</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md">windows-11-arm</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md">windows-11-vs2026-arm</a></code>
+  </td>
 </tr>
 <tr>
   <td>macOS</td>
@@ -1414,7 +1431,8 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
   <td> Intel </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md">macos-15-intel</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md">macos-26-intel</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md">macos-15-intel</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md">macos-26-intel</a></code>
+  </td>
 </tr>
 <tr>
   <td>macOS</td>
@@ -1424,7 +1442,8 @@ Com exceção dos executores de CPU única, cada executor hospedado por GitHub �
   <td> arm64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code>
+  </td>
 </tr>
 ```
 
@@ -1436,7 +1455,8 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
 | --- | --- | --- | --- | --- | --- |
 | Linux | 1 | 5 GB | 14 GB | x64 | `[ubuntu-slim](https://github.com/actions/runner-images/blob/main/images/ubuntu-slim/ubuntu-slim-Readme.md)`<br>Linux<br>2<br>8 GB<br>14 GB<br>x64 |
 ```
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md">ubuntu-24.04</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md">ubuntu-22.04</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Readme.md">ubuntu-26.04</a></code>
+  </td>
 </tr>
 <tr>
   <td>Windows</td>
@@ -1446,7 +1466,8 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
   <td> x64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-latest</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md">windows-2025</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md">windows-2022</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-2025</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md">windows-2025-vs2026</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md">windows-2022</a></code>
+  </td>
 </tr>
 <tr>
   <td>Linux</td>
@@ -1456,7 +1477,8 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
   <td> arm64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md">ubuntu-24.04-arm</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md">ubuntu-22.04-arm</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md">ubuntu-26.04-arm</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Arm64-Readme.md">ubuntu-24.04-arm</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Arm64-Readme.md">ubuntu-22.04-arm</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2604-Arm64-Readme.md">ubuntu-26.04-arm</a></code>
+  </td>
 </tr>
 <tr>
   <td>Windows</td>
@@ -1466,7 +1488,8 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
   <td> arm64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-Readme.md">windows-11-arm</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-Arm64-VS2026-Readme.md">windows-11-vs2026-arm</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md">windows-11-arm</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/windows/Windows11-VS2026-Arm64-Readme.md">windows-11-vs2026-arm</a></code>
+  </td>
 </tr>
 <tr>
   <td>macOS</td>
@@ -1476,7 +1499,8 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
   <td> Intel </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md">macos-15-intel</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md">macos-26-intel</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md">macos-15-intel</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md">macos-26-intel</a></code>
+  </td>
 </tr>
 <tr>
   <td>macOS</td>
@@ -1486,7 +1510,8 @@ Para  privados, os trabalhos que usam os rótulos de fluxo de trabalho mostrados
   <td> arm64 </td>
   <td>
 
-    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code></td>
+    <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-latest</a></code>, <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md">macos-15</a></code>, , <code><a href="https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md">macos-26</a></code><code><a href="https://github.com/actions/runner-images/blob/main/images/macos/xcode-27-arm64-Readme.md">xcode-27</a></code>
+  </td>
 </tr>
 ```
 
@@ -2194,11 +2219,11 @@ jobs:
         uses: docker://alpine:3.8
 ```
 
-### Exemplo: usando o GitHub PackagesContainer registry
+### Exemplo: usando o GitHub Packages Container registry
 
 `docker://{host}/{image}:{tag}`
 
-Uma imagem pública do Docker na GitHub PackagesContainer registry.
+Uma imagem pública do Docker no registro público do Docker GitHub Packages Container registry.
 
 ```yaml
 jobs:
@@ -2415,7 +2440,7 @@ jobs:
 
 ## `jobs.<job_id>.steps[*].with.args`
 
-Uma `string` que define as entradas para um contêiner do Docker.               O GitHub passa o `args` para o `ENTRYPOINT` do contêiner quando o contêiner é iniciado. Não há suporte para uma `array of strings` nesse parâmetro. Um único argumento que inclui espaços deve ser cercado por aspas duplas `""`.
+Uma `string` que define as entradas para um contêiner do Docker. O GitHub passa o `args` para o `ENTRYPOINT` do contêiner quando o contêiner é iniciado. Não há suporte para uma `array of strings` nesse parâmetro. Um único argumento que inclui espaços deve ser cercado por aspas duplas `""`.
 
 ### Exemplo de `jobs.<job_id>.steps[*].with.args`
 
@@ -2635,7 +2660,7 @@ O número máximo de minutos para permitir que o trabalho seja executado antes q
 Se o tempo-limite exceder o tempo limite de execução do trabalho para o executor, o trabalho será cancelado quando o tempo limite de execução for atingido. Para obter mais informações sobre os limites de tempo de execução de trabalho, consulte [Cobrança e uso](../../concepts/billing-and-usage.md#usage-limits-and-policy) para executores hospedados em GitHub e, para limites de uso de executores auto-hospedados, consulte [Limites do Actions](../limits.md).
 
 !!! note
-    O `GITHUB_TOKEN` expira quando um trabalho é concluído ou após, no máximo, 24 horas. Para executores auto-hospedados, o token pode ser o fator limitante se o tempo limite do trabalho for maior que 24 horas. Para obter mais informações sobre `GITHUB_TOKEN`, consulte [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md).
+    O `GITHUB_TOKEN` expira quando um trabalho é concluído ou após, no máximo, 24 horas. Para executores autogeridos, o token pode ser o fator limitante se o tempo limite do trabalho for maior que 24 horas. Para obter mais informações sobre `GITHUB_TOKEN`, consulte [Usar GITHUB_TOKEN para autenticação em fluxos de trabalho](../../tutorials/authenticate-with-github_token.md).
 
 ## `jobs.<job_id>.strategy`
 
@@ -3138,7 +3163,7 @@ jobs:
 
 Um par composto de um identificador de string para a entrada e o valor da entrada. O identificador precisa corresponder ao nome de uma entrada definida por [`on.workflow_call.inputs.<inputs_id>`](metadata-syntax.md#inputsinput_id) no fluxo de trabalho chamado. O tipo de dados do valor precisa corresponder ao tipo definido por [`on.workflow_call.inputs.<input_id>.type`](#onworkflow_callinputsinput_idtype) no fluxo de trabalho chamado.
 
-Contextos de expressão permitidos: `github` e `needs`.
+Contextos de expressão permitidos: `github`, `needs`, `strategy`, `matrix`, `inputs` e `vars`.
 
 ## `jobs.<job_id>.secrets`
 
@@ -3188,7 +3213,7 @@ jobs:
 
 Um par composto por um identificador string para o segredo e o valor do segredo. O identificador precisa corresponder ao nome de um segredo definido por [`on.workflow_call.secrets.<secret_id>`](#onworkflow_callsecretssecret_id) no fluxo de trabalho chamado.
 
-Contextos de expressão permitidos: `github`, `needs` e `secrets`.
+Contextos de expressão permitidos: `github`, `needs`, `strategy`, `matrix`, `secrets`, `inputs` e `vars`.
 
 ## Folha de dados de padrão de filtro
 
@@ -3257,5 +3282,5 @@ Padrões de caminhos devem corresponder ao caminho completo e iniciar a partir d
 | `'**/*-post.md'` | Um arquivo com o sufixo `-post.md` em qualquer lugar no repositório. | `my-post.md`<br/><br/>`path/their-post.md` |
 | `'**/migrate-*.sql'` | Um arquivo com o prefixo `migrate-` e o sufixo `.sql` em qualquer lugar no repositório. | `migrate-10909.sql`<br/><br/>`db/migrate-v1.0.sql`<br/><br/>`db/sept/migrate-v1.sql` |
 | `'*.md'`<br/><br/>`'!README.md'` | O uso de um sinal de exclamação (`!`) na frente de um padrão o anula. Quando um arquivo corresponde a um padrão e também corresponde a um padrão negativo definido posteriormente no arquivo, o arquivo não será incluído. | `hello.md`<br/><br/> |
-| *Não corresponde a*<br/><br/>`README.md`<br/><br/>`docs/hello.md` |  |  |
+| *Não corresponde*<br/><br/>`README.md`<br/><br/>`docs/hello.md` |  |  |
 | `'*.md'`<br/><br/>`'!README.md'`<br/><br/>`README*` | Os padrões são verificados sequencialmente. Um padrão que anula um padrão anterior irá incluir caminhos de arquivos novamente. | `hello.md`<br/><br/>`README.md`<br/><br/>`README.doc` |

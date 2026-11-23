@@ -6,7 +6,7 @@ documentType: category
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/get-started
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: Actions
 ---
 
@@ -18,7 +18,7 @@ _Conheça as noções básicas do GitHub Actions._
 
 * [Guia Rápido do GitHub Actions](get-started/quickstart.md)
 
-  Experimente os principais recursos em GitHub Actions minutos.
+  Experimente os principais recursos de GitHub Actions em minutos.
 
 * [Noções básicas sobre GitHub Actions](get-started/understand-github-actions.md)
 

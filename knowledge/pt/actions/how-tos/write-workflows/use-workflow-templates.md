@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/write-workflows/use-workflow-templates
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: How tos / Write workflows
 ---
 
@@ -34,13 +34,16 @@ _GitHub fornece modelos de fluxo de trabalho para uma variedade de linguagens e 
 
 7. Opcionalmente, faça as alterações adicionais. Por exemplo, você pode querer alterar o valor de `on` quando o fluxo de trabalho for executado.
 
-8. Clique em **Iniciar commit**.
+8. Clique **em Confirmar alterações...**.
 
 9. Escreva uma mensagem de commit e decida se você deseja de fazer o commit diretamente para o branch padrão ou abrir um pull request.
 
 ## Leitura adicional
 
 * [Integração contínua](../../get-started/continuous-integration.md)
+
 * [Gerenciar fluxos de trabalho](../manage-workflow-runs.md)
+
 * [Monitorar fluxos de trabalho](../monitor-workflows.md)
+
 * [Cobrança do GitHub Actions](https://docs.github.com/pt/billing/concepts/product-billing/github-actions)

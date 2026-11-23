@@ -6,7 +6,7 @@ documentType: subcategory
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/secure-your-work
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: How tos
 ---
 

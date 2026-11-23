@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/events-that-trigger-workflows
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: Reference / Workflows and actions
 ---
 
@@ -325,7 +325,7 @@ jobs:
 
 | Carga de evento webhook | Tipos de Atividade | `GITHUB_SHA` | `GITHUB_REF` |
 | --- | --- | --- | --- |
-| [`issues`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#issues) | - `opened`<br>- `edited`<br>- `deleted`<br>- `transferred`<br>- `pinned`<br>- `unpinned`<br>- `closed`<br>- `reopened`<br>- `assigned`<br>- `unassigned`<br>- `labeled`<br>- `unlabeled`<br>- `locked`<br>- `unlocked`<br>- `milestoned`<br> - `demilestoned`<br> - `typed`<br> - `untyped`<br> - `field_added`<br> - `field_removed` | Último commit no branch padrão | Branch padrão |
+| [`issues`](https://docs.github.com/pt/webhooks/webhook-events-and-payloads#issues) | - `opened`<br>- `edited`<br>- `deleted`<br>- `transferred`<br>- `pinned`<br>- `unpinned`<br>- `closed`<br>- `reopened`<br>- `assigned`<br>- `unassigned`<br>- `labeled`<br>- `unlabeled`<br>- `locked`<br>- `unlocked`<br>- `milestoned`<br> - `demilestoned`<br> - `typed`<br> - `untyped`<br> - `field_added`<br> - `field_removed`<br> - `status_changed` | Último commit no branch padrão | Branch padrão |
 
 !!! note
     *
@@ -349,6 +349,62 @@ Você também pode executar um fluxo de trabalho quando um valor de campo de pro
 on:
   issues:
     types: [field_added, field_removed]
+```
+
+!!! note
+    Os status dos problemas estão dentro de prévia e só estão disponíveis para contas registradas na versão prévia. Os conteúdos do webhook e o `status_changed` tipo de atividade estão sujeitos a alterações.
+
+Você também pode executar um fluxo de trabalho quando o status de um problema é alterado. Um fluxo de trabalho que usa o `status_changed` tipo de atividade é executado sempre que o status de um problema é alterado, inclusive quando um problema é criado, fechado ou reaberto. No fluxo de trabalho, as propriedades a seguir do `github.event` contexto descrevem a alteração.
+
+* `github.event.status` contém o status para o qual o issue foi alterado.
+* `github.event.changes.status.from` contém o status anterior ou `null` se o problema não tinha um.
+* `github.event.issue.status` contém o status do problema quando o payload foi criado. Os payloads de cada `issues` tipo de atividade incluem essa propriedade.
+
+Para obter mais informações, confira [Status de problemas, webhooks e fluxos de trabalho](https://docs.github.com/pt/issues/tracking-your-work-with-issues/using-issues/issue-status-webhooks-and-workflows).
+
+!!! important
+    Fluxos de trabalho que usam o evento `issues` sem `types` também são executados para `status_changed`. Esses fluxos de trabalho são executados sempre que alguém altera o status de um problema e executa um tempo extra quando um problema é criado, fechado ou reaberto, porque GitHub envia `status_changed` , bem como `opened`, `closed`ou `reopened`. Para evitar execuções inesperadas, liste os tipos de atividade de que seu fluxo de trabalho precisa.
+
+Durante o prévia, editores que validam arquivos de fluxo de trabalho, como o editor de fluxo de trabalho em GitHub, podem relatar `status_changed` como um tipo de atividade inválido. Pode ignorar este erro.
+
+Para encontrar um status, use seu ID. Você pode encontrar a ID de um status no `status` objeto de uma `status_changed` carga. Por exemplo, se o ID do status Em revisão for `8`, o fluxo de trabalho a seguir será executado quando um problema for movido para Em revisão.
+
+```yaml
+on:
+  issues:
+    types: [status_changed]
+
+jobs:
+  in-review:
+    if: ${{ github.event.status.id == 8 }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Issue #$NUMBER moved to $STATUS"
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+          STATUS: ${{ github.event.status.name }}
+```
+
+Para corresponder a cada status em uma categoria, use o `category` do status. Por exemplo, o fluxo de trabalho a seguir é executado quando um problema é movido para a `started` categoria de um status em outra categoria ou de nenhum status. Ele não é executado novamente quando o item se move entre dois status na categoria `started`, como de Em andamento para Em revisão.
+
+```yaml
+on:
+  issues:
+    types: [status_changed]
+
+jobs:
+  work-started:
+    if: >-
+      ${{ github.event.status.category == 'started' &&
+      (github.event.changes.status.from == null ||
+      github.event.changes.status.from.category != 'started') }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Work started on issue #$NUMBER"
+        env:
+          NUMBER: ${{ github.event.issue.number }}
 ```
 
 ## `label`
@@ -487,7 +543,7 @@ Observe que o `GITHUB_SHA` desse evento é o último commit de mesclagem do bran
 Para solicitações de pull abertas e mescláveis, os fluxos de trabalho acionados pelo evento `pull_request` definem o `GITHUB_REF` para o branch de mesclagem. Como o `actions/checkout` usa o `GITHUB_REF` por padrão, ele faz o checkout do branch de mesclagem. Os testes de CI são executados no resultado mesclado, não apenas no branch principal:
 
 * `GITHUB_REF` é definido como `refs/pull/PULL_REQUEST_NUMBER/merge`.
-* `GITHUB_SHA` é o SHA do commit de mesclagem no branch de mesclagem
+* `GITHUB_SHA` é o SHA da confirmação de mesclagem no branch de mesclagem
 
 Para testar apenas os commits do branch principal sem simular uma mesclagem, faça o checkout do branch principal usando `github.event.pull_request.head.sha` em seu fluxo de trabalho.
 
@@ -586,7 +642,7 @@ on:
 
 ### Executar o fluxo de trabalho de `pull_request` quando ocorrer uma mesclagem de solicitação de pull
 
-Quando uma pull request faz merge, a pull request é automaticamente fechada. Para executar um fluxo de trabalho quando uma solicitação de pull surgir, use o tipo de evento `pull_request``closed` juntamente com uma condicional que verifica o valor `merged` do evento. Por exemplo, o fluxo de trabalho a seguir será executado sempre que uma pull request for fechada. O trabalho `if_merged` só será executado se a pull request também tiver sido mesclada.
+Quando uma pull request faz merge, a pull request é automaticamente fechada. Para executar um fluxo de trabalho quando uma solicitação de pull é mesclada, use o `pull_request` `closed` tipo de evento junto com uma condicional que verifica o `merged` valor do evento. Por exemplo, o fluxo de trabalho a seguir será executado sempre que uma pull request for fechada. O trabalho `if_merged` só será executado se a pull request também tiver sido mesclada.
 
 ```yaml
 on:
@@ -797,7 +853,7 @@ on:
 
 ### Executar o fluxo de trabalho de `pull_request_target` quando ocorrer uma mesclagem de solicitação de pull
 
-Quando uma pull request faz merge, a pull request é automaticamente fechada. Para executar um fluxo de trabalho quando uma solicitação de pull surgir, use o tipo de evento `pull_request_target``closed` juntamente com uma condicional que verifica o valor `merged` do evento. Por exemplo, o fluxo de trabalho a seguir será executado sempre que uma pull request for fechada. O trabalho `if_merged` só será executado se a pull request também tiver sido mesclada.
+Quando uma pull request faz merge, a pull request é automaticamente fechada. Para executar um fluxo de trabalho quando uma solicitação de pull é mesclada, use o `pull_request_target` `closed` tipo de evento junto com uma condicional que verifica o `merged` valor do evento. Por exemplo, o fluxo de trabalho a seguir será executado sempre que uma pull request for fechada. O trabalho `if_merged` só será executado se a pull request também tiver sido mesclada.
 
 ```yaml
 on:
@@ -1009,7 +1065,7 @@ jobs:
 
 O evento `schedule` permite disparar um fluxo de trabalho em um horário agendado.
 
-**Exemplo:**
+**Example:**
 
 ```yaml
  on:
@@ -1089,7 +1145,7 @@ As notificações de fluxos de trabalho agendados são enviadas ao usuário que 
 !!! note
     Para uma empresa com Enterprise Managed Users, disparar um fluxo de trabalho agendado requer que o status da conta de `actor` usuário associada ao fluxo de trabalho esteja ativo no momento (ou seja, não está suspenso ou excluído).
 
-    * Os fluxos de trabalho agendados não serão executados se o último `actor` associado ao fluxo de trabalho agendado tiver sido desprovisionado pelo Enterprise Managed User IdP (provedor de identidade). No entanto, se o último `actor`Enterprise Managed User não tiver sido desprovisionado pelo IdP e tiver sido removido apenas como membro de uma determinada organização na empresa, os fluxos de trabalho agendados ainda serão executados com esse usuário definido como .`actor`
+    * Os fluxos de trabalho agendados não serão executados se o último `actor` associado ao fluxo de trabalho agendado tiver sido desprovisionado pelo Enterprise Managed User IdP (provedor de identidade). No entanto, se o último `actor` Enterprise Managed User não tiver sido desprovisionado pelo IdP e tiver sido removido apenas como membro de uma determinada organização na empresa, os fluxos de trabalho agendados ainda serão executados com esse usuário definido como .`actor`
     * Da mesma forma, para uma empresa sem Enterprise Managed Users, a remoção de um usuário de uma organização não impedirá que fluxos de trabalho agendados que tinham esse usuário como seu `actor` sejam executados.
     * Assim, o status *da conta de usuário*, tanto em cenários Enterprise Managed User quanto em cenários nãoEnterprise Managed User, é o que importa, *não* o *status de associação* do usuário na organização onde o fluxo de trabalho agendado está localizado.
 

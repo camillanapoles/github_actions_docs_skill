@@ -6,7 +6,7 @@ documentType: product
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: Actions
 ---
 
@@ -18,7 +18,7 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
 * [Guia Rápido do GitHub Actions](get-started/quickstart.md)
 
-  Experimente os principais recursos em GitHub Actions minutos.
+  Experimente os principais recursos de GitHub Actions em minutos.
 
 * [Noções básicas sobre GitHub Actions](get-started/understand-github-actions.md)
 
@@ -62,13 +62,13 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
 * [Guia Rápido do GitHub Actions](get-started/quickstart.md)
 
-  Experimente os principais recursos em GitHub Actions minutos.
+  Experimente os principais recursos de GitHub Actions em minutos.
 
 ## Articles
 
 * [Guia Rápido do GitHub Actions](get-started/quickstart.md)
 
-  Experimente os principais recursos em GitHub Actions minutos.
+  Experimente os principais recursos de GitHub Actions em minutos.
 
 * [Noções básicas sobre GitHub Actions](get-started/understand-github-actions.md)
 
@@ -593,7 +593,7 @@ _Automatize, personalize e execute seus fluxos de trabalho de desenvolvimento de
 
 * [Exibindo logs de expressão de condição de tarefa](how-tos/monitor-workflows/view-job-condition-logs.md)
 
-  Aprenda como acessar e interpretar os logs de avaliação de expressões para condições de nível de tarefa `if` em GitHub Actions.
+  Saiba como acessar e interpretar logs de avaliação de expressão para condições `if` no nível do trabalho em GitHub Actions.
 
 * [Habilitando o log de depuração](how-tos/monitor-workflows/enable-debug-logging.md)
 

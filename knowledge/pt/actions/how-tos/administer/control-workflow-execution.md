@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/administer/control-workflow-execution
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: How tos / Administer
 ---
 
@@ -60,7 +60,7 @@ Em uma empresa:
 Em seguida, crie uma nova política.
 
 1. Escolha um nome para a política.
-2. Escolha um status de aplicação. Se você selecionar **Avaliar** (GitHub Enterprise Cloud somente), poderá monitorar quando os usuários atingirem a restrição nos insights de política.
+2. Escolha um status de aplicação. Se você selecionar **Avaliar**, poderá monitorar quando os usuários seriam afetados pela restrição nos insights de política.
 3. Direcione seus fluxos de trabalho, organizações ou repositórios desejados.
 4. Configure as seguintes proteções de execução de fluxo de trabalho.
 

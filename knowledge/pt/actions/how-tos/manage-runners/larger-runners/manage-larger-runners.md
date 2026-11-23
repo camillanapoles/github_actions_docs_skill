@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/manage-runners/larger-runners/manage-larger-runners
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: How tos / Manage runners / Larger runners
 ---
 
@@ -141,7 +141,7 @@ Você pode controlar o número máximo de trabalhos permitidos para execução s
     * Para usar endereços IP estáticos, sua organização deve usar GitHub Enterprise Cloud. Para obter mais informações sobre como você pode experimentar o GitHub Enterprise Cloud gratuitamente, confira [Como configurar uma avaliação do GitHub Enterprise Cloud](https://docs.github.com/pt/enterprise-cloud@latest/admin/overview/setting-up-a-trial-of-github-enterprise-cloud).
     * Os macOS executor avançadonão dão suporte a endereços IP estáticos.
 
-Você pode habilitar endereços IP estáticos para executor avançados. Quando você faz isso, os executor avançados recebem intervalos de endereços IP estáticos. Todos os endereços IP no intervalo atribuído são utilizáveis. Por padrão, você pode configurar até 10 executor avançado pools com intervalos de endereços IP estáticos para sua conta. Se você quiser usar mais de 10 pools de executores maiores com intervalos de endereços IP estáticos, entre em contato com nos por meio do portal .
+Você pode habilitar endereços IP estáticos para executor avançados. Quando você faz isso, os executor avançados recebem intervalos de endereços IP estáticos. Todos os endereços IP no intervalo atribuído são utilizáveis. Por padrão, você pode configurar até 10 executor avançado pools com intervalos de endereços IP estáticos para sua conta. Se você quiser usar mais de 10 pools de executores maiores com intervalos de endereços IP estáticos, entre em contato com Contate-nos por meio do portal [GitHub Support](https://support.github.com).
 
 Cada executor avançado que você cria não é uma única máquina. É um pool de executores que é dimensionado automaticamente para lidar com trabalhos simultâneos, até a simultaneidade máxima definida ao criar o executor. Todos os trabalhos no pool compartilham o mesmo intervalo de endereços IP estáticos. Isso significa que um único executor avançado com um intervalo de IP estático pode lidar com muitos trabalhos em execução ao mesmo tempo sem exigir corredores adicionais.
 

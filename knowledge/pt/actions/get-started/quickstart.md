@@ -1,24 +1,24 @@
 ---
 title: Guia Rápido do GitHub Actions
-description: Experimente os principais recursos em GitHub Actions minutos.
+description: Experimente os principais recursos de GitHub Actions em minutos.
 product: GitHub Actions
 documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/get-started/quickstart
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: Get started
 ---
 
 # Guia Rápido do GitHub Actions
 
-_Experimente os principais recursos em GitHub Actions minutos._
+_Experimente os principais recursos de GitHub Actions em minutos._
 
 ## Introdução
 
-GitHub Actions é uma plataforma de integração contínua e entrega contínua (CI/CD) que permite automatizar a sua compilação, testar e pipeline de implantação. Você pode criar fluxos de trabalho que executam testes sempre que você envia uma alteração por push para o repositório ou que implantam solicitações de pull mescladas para produção.
+GitHub Actions é uma plataforma de integração contínua e entrega contínua (CI/CD) que permite automatizar a sua compilação, testar e pipeline de implantação. Você pode criar fluxos de trabalho que executam testes sempre que faz push de uma alteração no seu repositório ou que implantam em produção solicitações de pull mescladas.
 
-Este guia de início rápido mostra como usar a interface do usuário para adicionar um fluxo de GitHub trabalho que demonstra alguns dos recursos essenciais de GitHub Actions.
+Este guia de início rápido mostra como usar a interface do usuário de GitHub para adicionar um fluxo de trabalho que demonstra alguns dos recursos essenciais de GitHub Actions.
 
 Para começar a usar fluxos de trabalho pré-configurados, navegue pela lista de modelos no repositório [actions/starter-workflows](https://github.com/actions/starter-workflows). Para saber mais, confira [Usando modelos de fluxo de trabalho](../how-tos/write-workflows/use-workflow-templates.md).
 
@@ -46,11 +46,11 @@ Este guia supõe que:
 * Você tem um repositório no GitHub qual pode adicionar arquivos.
 * Você tem acesso a GitHub Actions.
 
-  > [!NOTE] Se a guia **(play) Ações** não for exibida com o nome do repositório ativado GitHub, pode ser porque As ações estão desabilitadas para o repositório. Para saber mais, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository).
+  > [!NOTE] Se a guia **(play) Actions** não estiver sendo exibida sob o nome do seu repositório em GitHub, isso pode ser porque o Actions está desabilitado para o repositório. Para saber mais, confira [Gerenciando configurações de GitHub Actions para um repositório](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository).
 
 ## Criar o seu primeiro fluxo de trabalho
 
-1. Em seu repositório, GitHubcrie um arquivo de fluxo de trabalho chamado `github-actions-demo.yml` no `.github/workflows` diretório. Para fazer isso:
+1. No seu repositório em GitHub, crie um arquivo de fluxo de trabalho chamado `github-actions-demo.yml` no diretório `.github/workflows`. Para fazer isso:
    * Se o `.github/workflows` diretório já existir, navegue até esse diretório, clique em GitHub**Adicionar arquivo** e, em seguida, clique em **Criar novo arquivo** e nomeie o arquivo`github-actions-demo.yml`.
 
    * Se o repositório não tiver um `.github/workflows` diretório, vá para a página principal do repositório, clique em GitHub e, em seguida, clique em \*\*\*\***Criar novo arquivo** e nomeie o arquivo`.github/workflows/github-actions-demo.yml`. Isso criará os diretórios `.github` e `workflows` e o arquivo `github-actions-demo.yml` em uma única etapa.
@@ -109,9 +109,7 @@ Se você optar por iniciar uma solicitação de pull, poderá continuar e criar 
 
 4. Na lista de execuções de fluxo de trabalho, clique no nome da execução que você deseja ver, neste exemplo "USERNAME está testando GitHub Actions".
 
-5. Na barra lateral esquerda da página de execução do fluxo de trabalho, em **Jobs**, clique no trabalho **Explore-GitHub-Actions**.
-
-   ![Captura de tela da página "Execução do fluxo de trabalho". Na barra lateral esquerda, a tarefa "Explore-GitHub-Actions" é realçada com um contorno laranja escuro.](https://docs.github.com/assets/images/help/repository/actions-quickstart-job.png)
+5. Na barra lateral esquerda da página de execução do fluxo de trabalho, em **Todos os trabalhos**, clique no trabalho **Explore-GitHub-Actions**.
 
 6. O registro mostra como cada uma das etapas foi processada. Expanda qualquer um dos passos para ver seus detalhes.
 
@@ -121,7 +119,7 @@ Se você optar por iniciar uma solicitação de pull, poderá continuar e criar 
 
    ![Captura de tela da etapa "Listar arquivos no repositório" expandida para mostrar a saída do log. A saída da etapa é realçada com um contorno laranja.](https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png)
 
-O fluxo de trabalho de exemplo que você acabou de adicionar é disparado sempre que o código é enviado por push para o branch e mostra como GitHub Actions você pode trabalhar com o conteúdo do repositório. Para obter um tutorial detalhado, confira [Noções básicas sobre GitHub Actions](understand-github-actions.md).
+O fluxo de trabalho de exemplo que você acabou de adicionar é acionado sempre que há um push de código para a ramificação e mostra como GitHub Actions pode funcionar com o conteúdo do seu repositório. Para obter um tutorial detalhado, confira [Noções básicas sobre GitHub Actions](understand-github-actions.md).
 
 ## Próximas etapas
 

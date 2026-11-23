@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/security/oidc
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: Reference / Security
 ---
 

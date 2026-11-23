@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/limits
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: Reference
 ---
 
@@ -14,7 +14,7 @@ section: Reference
 
 _Há limites no GitHub Actions que você pode atingir à medida que escala seu uso; alguns deles podem aumentar ao entrar em contato com o suporte._
 
-Você pode sofrer limitação de taxa pelo GitHub Actions ao escalar seu uso. Alguns limites podem aumentar ao entrar em contato com o nos por meio do portal .
+Você pode sofrer limitação de taxa pelo GitHub Actions ao escalar seu uso. Alguns limites podem aumentar ao entrar em contato com o Contate-nos por meio do portal [GitHub Support](https://support.github.com).
 
 A menos que seja indicado de outra forma, o comportamento esperado quando um limite é atingido é que o fluxo de trabalho/trabalho seja cancelado.
 
@@ -110,7 +110,7 @@ GitHubOs [limites de taxa da API REST](https://docs.github.com/pt/rest/using-the
 * **Usuários autenticados** - É possível usar um personal access token para fazer solicitações à API. Além disso, você pode autorizar um GitHub App ou OAuth app, que depois podem fazer solicitações à API em seu nome.
 
   Todas essas solicitações contam para o limite de taxa pessoal de solicitações de 5.000 por hora. O limite de taxa será mais alto (15.000 solicitações por hora) se as solicitações forem feitas em seu nome por um GitHub App pertencente a uma organização do GitHub Enterprise Cloud. Da mesma forma, as solicitações feitas em seu nome por um OAuth app que pertence ou é aprovado por uma organização GitHub Enterprise Cloud têm um limite de taxa mais alto de 15.000 solicitações por hora se você é membro da organização GitHub Enterprise Cloud. No entanto, as solicitações feitas por um aplicativo de limite mais alto reduzem o orçamento restante disponível para métodos de autenticação de limite inferior. Por exemplo, se um aplicativo com um limite de solicitação de 15.000 fizer 10.000 solicitações em seu nome, você terá esgotado o orçamento de 5.000 solicitações para o personal access tokens, mesmo que o aplicativo tenha 5.000 solicitações restantes.
-* **Instalações de aplicativo do GitHub** - Os GitHub Apps que se autenticam com um token de acesso de instalação usam o limite mínimo da taxa de instalação de 5.000 solicitações por hora. Se a instalação estiver em uma organização do GitHub Enterprise Cloud, a instalação terá um limite de taxa de 15 mil solicitações por hora.
+* **instalações de aplicativo do GitHub** - Os GitHub Apps que se autenticam com um token de acesso de instalação usam o limite mínimo da taxa de instalação de 5.000 solicitações por hora. Se a instalação estiver em uma organização do GitHub Enterprise Cloud, a instalação terá um limite de taxa de 15 mil solicitações por hora.
 
   Para instalações que não estão em uma organização do GitHub Enterprise Cloud, o limite de taxa para a instalação será dimensionado com o número de usuários e repositórios. As instalações com mais de 20 repositórios recebem outras 50 solicitações por hora para cada repositório. Instalações que estão em uma organização com mais de 20 usuários recebem outras 50 solicitações por hora para cada uma dessas pessoas. Não é possível ampliar o limite de taxa para além de 12.500 solicitações por hora.
 
@@ -121,6 +121,6 @@ GitHubOs [limites de taxa da API REST](https://docs.github.com/pt/rest/using-the
 
 ### Limite de taxa do Docker Hub para GitHub Actions
 
-* \*\*              Executores hospedados pelo GitHub extraindo imagens públicas:\*\* não se aplica o limite de taxa do Docker Hub.
+* **GitHub-hosted runners estão puxando imagens públicas:** o limite de taxa do Docker Hub não é aplicado.
 * \*\*              Executores hospedados pelo GitHub que extraem imagens privadas:\*\* a extração de imagens privadas do Docker Hub está sujeita ao limite de taxa.
-* **Executores auto-hospedados que extraem imagens públicas ou privadas:** a extração de imagens do Docker Hub está sempre sujeita ao limite de taxa.
+* **Corredores auto-hospedados baixando imagens públicas ou privadas:** A extração de imagens do Docker Hub está sempre sujeita ao limite de taxa de transferência.

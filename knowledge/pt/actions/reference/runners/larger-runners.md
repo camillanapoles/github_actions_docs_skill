@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/runners/larger-runners
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: Reference / Runners
 ---
 
@@ -90,7 +90,7 @@ Por padrão, executores avançados receba um endereço IP dinâmico que é alter
 Quando ativado, as instâncias do executor avançado receberão endereços IP de faixas específicas exclusivas do executor, permitindo que você use essas faixas para configurar uma lista de permissões no firewall. Cada executor avançado é um pool que é escalado automaticamente até sua concorrência máxima configurada, e todos os trabalhos nesse pool compartilham o mesmo intervalo de endereços IP estáticos. Isso significa que você não precisa criar corredores adicionais para executar trabalhos mais simultâneos.
 Você pode usar até 10 executor avançado pools com intervalos de endereços IP estáticos no total em todos os seus executores avançados. Para saber mais, confira [Gerenciar executores maiores](../../how-tos/manage-runners/larger-runners/manage-larger-runners.md).
 
-Se você quiser usar mais de 10 pools de executores maiores com intervalos de endereços IP estáticos, entre em contato com nos por meio do portal .
+Se você quiser usar mais de 10 pools de executores maiores com intervalos de endereços IP estáticos, entre em contato com Contate-nos por meio do portal [GitHub Support](https://support.github.com).
 
 !!! note
     Se os executores não forem usados por mais de 90 dias, os respectivos intervalos de endereços IP serão removidos automaticamente e não poderão ser recuperados.

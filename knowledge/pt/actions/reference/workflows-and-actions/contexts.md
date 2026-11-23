@@ -6,7 +6,7 @@ documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/reference/workflows-and-actions/contexts
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: Reference / Workflows and actions
 ---
 
@@ -89,7 +89,7 @@ A tabela a seguir lista as restrições nas quais cada contexto e função espec
 | `jobs.<job_id>.name` | `github, needs, strategy, matrix, vars, inputs` | Nenhum |
 | `jobs.<job_id>.outputs.<output_id>` | `github, needs, strategy, matrix, job, runner, env, vars, secrets, steps, inputs` | Nenhum |
 | `jobs.<job_id>.runs-on` | `github, needs, strategy, matrix, vars, inputs` | Nenhum |
-| `jobs.<job_id>.secrets.<secrets_id>` | `github, needs, strategy, matrix, secrets, inputs, vars` | Nenhum |
+| `jobs.<job_id>.secrets.<secret_id>` | `github, needs, strategy, matrix, secrets, inputs, vars` | Nenhum |
 | `jobs.<job_id>.services` | `github, needs, strategy, matrix, vars, inputs` | Nenhum |
 | `jobs.<job_id>.services.<service_id>.credentials` | `github, needs, strategy, matrix, env, vars, secrets, inputs` | Nenhum |
 | `jobs.<job_id>.services.<service_id>.env.<env_id>` | `github, needs, strategy, matrix, job, runner, env, vars, secrets, inputs` | Nenhum |
@@ -103,7 +103,7 @@ A tabela a seguir lista as restrições nas quais cada contexto e função espec
 | `jobs.<job_id>.steps.working-directory` | `github, needs, strategy, matrix, job, runner, env, vars, secrets, steps, inputs` | `hashFiles` |
 | `jobs.<job_id>.strategy` | `github, needs, vars, inputs` | Nenhum |
 | `jobs.<job_id>.timeout-minutes` | `github, needs, strategy, matrix, vars, inputs` | Nenhum |
-| `jobs.<job_id>.with.<with_id>` | `github, needs, strategy, matrix, inputs, vars` | Nenhum |
+| `jobs.<job_id>.with.<input_id>` | `github, needs, strategy, matrix, inputs, vars` | Nenhum |
 | `on.workflow_call.inputs.<inputs_id>.default` | `github, inputs, vars` | Nenhum |
 | `on.workflow_call.outputs.<output_id>.value` | `github, jobs, vars, inputs` | Nenhum |
 
@@ -162,7 +162,7 @@ O contexto `github` contém informações sobre a execução do fluxo de trabalh
 | `github` | `object` | Contexto de nível mais alto disponível em qualquer trabalho ou etapa de um fluxo de trabalho. Este objeto contém todas as propriedades listadas abaixo. |
 | `github.action` | `string` | O nome da ação atualmente em execução ou a [`id`](workflow-syntax.md#jobsjob_idstepsid) de uma etapa. |
 | GitHub remove caracteres especiais e usa o nome `__run` quando a etapa atual executa um script sem um `id`. Se você usar a mesma ação mais de uma vez no mesmo trabalho, o nome incluirá um sufixo com o número da sequência com o sublinhado antes dele. Por exemplo, o primeiro script que você executar terá o nome `__run`, e o segundo script será chamado `__run_2`. Da mesma forma, a segunda invocação de `actions/checkout` será `actionscheckout2`. |  |  |
-| `github.action_path` | `string` | O caminho onde uma ação está localizada. Esta propriedade só é compatível com ações compostas. Você pode usar esse caminho para acessar arquivos localizados no mesmo repositório da ação, por exemplo, alterando diretórios para o caminho (usando a variável de ambiente correspondente): `cd "$GITHUB_ACTION_PATH"`. Para obter mais informações sobre variáveis de ambiente, consulte [Referência de uso seguro](../security/secure-use.md#use-an-intermediate-environment-variable). |
+| `github.action_path` | `string` | O caminho onde uma ação está localizada. Esta propriedade só é compatível com ações compostas. Você pode usar esse caminho para acessar arquivos localizados no mesmo repositório da ação, por exemplo, alterando diretórios para o caminho (usando a variável de ambiente correspondente):  `cd "$GITHUB_ACTION_PATH"` . Para obter mais informações sobre variáveis de ambiente, consulte [Referência de uso seguro](../security/secure-use.md#use-an-intermediate-environment-variable). |
 | `github.action_ref` | `string` | Para uma etapa executando uma ação, este é o ref da ação que está sendo executada. Por exemplo, `v2`.<br><br>Não use na palavra-chave `run`. Para que esse contexto funcione com ações compostas, referencie-o no contexto `env` da ação composta. |
 | `github.action_repository` | `string` | Para uma etapa que executa uma ação, este é o nome do proprietário e do repositório da ação. Por exemplo, `actions/checkout`.<br><br>Não use na palavra-chave `run`. Para que esse contexto funcione com ações compostas, referencie-o no contexto `env` da ação composta. |
 | `github.action_status` | `string` | Para uma ação composta, o resultado atual da ação composta. |

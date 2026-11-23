@@ -1,26 +1,26 @@
 ---
 title: Exibindo logs de expressão de condição de tarefa
-description: Aprenda como acessar e interpretar os logs de avaliação de expressões para condições de nível de tarefa if em GitHub Actions.
+description: Saiba como acessar e interpretar logs de avaliação de expressão para condições if no nível do trabalho em GitHub Actions.
 product: GitHub Actions
 documentType: article
 lang: pt-BR
 plan: free-pro-team@latest
 source: https://docs.github.com/pt/actions/how-tos/monitor-workflows/view-job-condition-logs
-captured: '2026-11-16'
+captured: '2026-11-23'
 section: How tos / Monitor workflows
 ---
 
 # Exibindo logs de expressão de condição de tarefa
 
-_Aprenda como acessar e interpretar os logs de avaliação de expressões para condições de nível de tarefa if em GitHub Actions._
+_Saiba como acessar e interpretar logs de avaliação de expressão para condições if no nível do trabalho em GitHub Actions._
 
-Quando a condição `if` de um trabalho é avaliada, GitHub Actions registra a avaliação da expressão para ajudar você a entender o resultado. Isso é útil para depurar tanto o motivo pelo qual uma tarefa foi ignorada quanto o motivo pelo qual uma tarefa foi executada quando você esperava que ela fosse ignorada.
+Quando a condição de `if` um trabalho é avaliada, GitHub Actions registra a avaliação da expressão para ajudá-lo a entender o resultado. Isso é útil para depurar tanto o motivo pelo qual uma tarefa foi ignorada quanto o motivo pelo qual uma tarefa foi executada quando você esperava que ela fosse ignorada.
 
 ## Acessando registros de expressões
 
 1. Navegue até o resumo da execução do fluxo de trabalho.
-2. Clique na tarefa.
-3. Clique em **(Ícone de engrenagem)**.
+2. Clique no job.
+3. Clique **(The Gear icon)**.
 4. Selecione **Baixar arquivo de log**.
 5. Extraia o arquivo ZIP e abra o `JOB-NAME/system.txt` arquivo.
 
